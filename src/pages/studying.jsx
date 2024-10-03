@@ -4,7 +4,7 @@ import './studying.css';
 export default function Studying() {
   return (
     <>
-      <div className="school" style={{ top: '200px' }}>
+      <div className="schoolPage">
         <School />
       </div>
     </>

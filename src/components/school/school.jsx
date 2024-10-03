@@ -37,7 +37,11 @@ export default function School() {
 
   // 加载时显示的内容
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="loading">
+        <p>學校資訊加載中⋯⋯</p>
+      </div>
+    );
   }
 
   // 如果没有学校数据，显示提示信息
@@ -48,7 +52,11 @@ export default function School() {
   return (
     <>
       {schools.map((school, index) => (
-        <Link key={index} to={`/school/${school.slug.current}`}>
+        <Link
+          key={index}
+          to={`/school/${school.slug.current}`}
+          className="schoolCard"
+        >
           <div className="school">
             {school.slideshow && school.slideshow.length > 0 ? (
               <div className="schoolimg">

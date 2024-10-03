@@ -10,7 +10,7 @@ export default function Post() {
   };
 
   return (
-    <div className="postPage" style={{ top: '200px' }}>
+    <div className="postPage">
       <div>
         <PostCategary handleCategoryClick={handleCategoryClick} />
         <div>
@@ -18,7 +18,10 @@ export default function Post() {
           <img src="/src/assets/LOGO-07.png" style={{ width: '90%' }} />
         </div>
       </div>
-      <PostArea selectedCategory={selectedCategory} />
+      <PostArea
+        selectedCategory={selectedCategory}
+        handleCategoryClick={handleCategoryClick}
+      />
     </div>
   );
 }

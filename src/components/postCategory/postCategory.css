@@ -1,5 +1,6 @@
 li {
   list-style: circle !important;
+  margin: 1rem 0 !important;
 }
 h4 {
   position: relative;

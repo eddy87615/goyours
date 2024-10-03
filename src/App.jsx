@@ -9,6 +9,7 @@ import Contact from './pages/contact';
 import PostDetail from './pages/postDetail';
 import About from './pages/about';
 import SchoolDetail from './pages/schoolDetail';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/working" element={<Working />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

@@ -8,7 +8,7 @@ import { BiShow, BiCalendar, BiEditAlt, BiPurchaseTag } from 'react-icons/bi';
 
 // PostArea 組件：顯示文章摘要
 // eslint-disable-next-line react/prop-types
-export default function PostArea({ selectedCategory }) {
+export default function PostArea({ selectedCategory, handleCategoryClick }) {
   const [posts, setPosts] = useState([]); // 狀態來保存數據
   const [loading, setLoading] = useState(true); // 用來處理加載狀態
 
@@ -85,7 +85,12 @@ export default function PostArea({ selectedCategory }) {
               <li className="category">
                 <BiPurchaseTag style={{ fontSize: '1.2rem' }} />
                 {post.categories.map((category, index) => (
-                  <a key={index}>{category.title}</a>
+                  <a
+                    key={index}
+                    onClick={() => handleCategoryClick(category.title)}
+                  >
+                    {category.title}
+                  </a>
                 ))}
               </li>
             ) : (
