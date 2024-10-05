@@ -20,8 +20,12 @@ export default function PostCategary({ handleCategoryClick }) {
       <ul>
         <h4>文章分類</h4>
         {categories.map((category, index) => (
-          <li key={index} onClick={() => handleCategoryClick(category.value)}>
-            <GoTriangleRight />
+          <li
+            key={index}
+            onClick={() => handleCategoryClick(category.value)}
+            className="postCategory"
+          >
+            <GoTriangleRight className="icon" />
             <a>{category.label}</a>
           </li>
         ))}

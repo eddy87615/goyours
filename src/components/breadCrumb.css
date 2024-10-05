@@ -1,0 +1,15 @@
+.breadCrumb {
+  position: absolute;
+  top: 0;
+  transform: translate(0, -100%);
+}
+.breadCrumb ul,
+.breadCrumb li {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  font-size: 0.9rem;
+
+  margin: 0.5rem 0;
+}

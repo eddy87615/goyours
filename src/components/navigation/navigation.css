@@ -1,4 +1,4 @@
-nav {
+.mainNav {
   position: absolute;
   top: 1rem;
   left: 50%;
@@ -21,7 +21,7 @@ nav {
 .navMenu {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .navLogo {

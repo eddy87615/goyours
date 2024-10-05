@@ -39,7 +39,7 @@ export default function PostArea({ selectedCategory, handleCategoryClick }) {
 
   if (loading) {
     return (
-      <div className="loading">
+      <div className="postLoading">
         <p>文章加載中⋯⋯</p>
       </div>
     );
@@ -66,16 +66,16 @@ export default function PostArea({ selectedCategory, handleCategoryClick }) {
           )}
           <ul className="info">
             <li className="view">
-              <BiShow style={{ fontSize: '1.2rem' }} />
+              <BiShow className="icon" />
               {post.views || 0}
             </li>
             <li className="date">
-              <BiCalendar style={{ fontSize: '1.2rem' }} />
+              <BiCalendar className="icon" />
               {new Date(post.publishedAt).toLocaleDateString()}
             </li>
             {post.author ? (
               <li className="author">
-                <BiEditAlt style={{ fontSize: '1.2rem' }} />
+                <BiEditAlt className="icon" />
                 {post.author.name}
               </li>
             ) : (
@@ -83,7 +83,7 @@ export default function PostArea({ selectedCategory, handleCategoryClick }) {
             )}
             {post.categories && post.categories.length > 0 ? (
               <li className="category">
-                <BiPurchaseTag style={{ fontSize: '1.2rem' }} />
+                <BiPurchaseTag className="icon" />
                 {post.categories.map((category, index) => (
                   <a
                     key={index}

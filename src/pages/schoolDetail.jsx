@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // 用來獲取 URL 中的 slug
-import { client, urlFor } from '../cms/sanityClient';
+import { client } from '../cms/sanityClient';
+import { IoLocationOutline, IoSchoolOutline } from 'react-icons/io5';
+import { BsTelephone } from 'react-icons/bs';
 
+import BreadCrumb from '../components/breadCrumb';
+import SliderComponent from '../components/slider/slider';
 import './schoolDetail.css';
 // 文章詳情頁
 export default function SchoolDetail() {
@@ -43,28 +47,43 @@ export default function SchoolDetail() {
   }
 
   return (
-    <>
-      <h1>{school.name}</h1>
-      <ul>
-        <li>住址：{school.address}</li>
-        <li>電話：{school.phone}</li>
-      </ul>
-      <div>
-        <p>{school.description}</p>
+    <div className="schoolDetailPage">
+      <div className="picSlider">
+        <BreadCrumb
+          paths={[
+            { name: '日本留學', url: '/studying' },
+            { name: school.name },
+          ]}
+        />
+        {school.slideshow && school.slideshow.length > 0 ? (
+          <SliderComponent
+            slideshow={school.slideshow}
+            schoolName={school.name}
+          />
+        ) : (
+          <p>沒有圖片</p>
+        )}
       </div>
-      {school.slideshow && school.slideshow.length > 0 ? (
-        <div className="slider">
-          {school.slideshow.map((image, imgIndex) => (
-            <img
-              key={imgIndex}
-              src={urlFor(image).url()} // 使用 urlFor 函數生成圖片 URL
-              alt={`${school.name} image ${imgIndex + 1}`}
-            />
-          ))}
-        </div>
-      ) : (
-        <p>No images available</p> // 如果沒有圖片，顯示提示信息
-      )}
-    </>
+      <div>
+        <h1>{school.name}</h1>
+        <ul className="schoolInfo">
+          <li>
+            <IoLocationOutline className="icon" />
+            <label>住址：</label>
+            {school.address}
+          </li>
+          <li>
+            <BsTelephone className="icon" />
+            <label>電話：</label>
+            {school.phone}
+          </li>
+          <li>
+            <IoSchoolOutline className="icon" />
+            <label>學校簡介：</label>
+          </li>
+          <p>{school.description}</p>
+        </ul>
+      </div>
+    </div>
   );
 }

@@ -26,12 +26,16 @@
   gap: 1rem;
 }
 
-li {
+.view,
+.author,
+.date,
+.category {
   display: flex;
   gap: 0.5rem;
 }
 
-.loading {
+.postLoading {
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;

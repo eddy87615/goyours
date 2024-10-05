@@ -7,3 +7,7 @@ a {
   font-weight: bold;
   cursor: pointer;
 }
+
+.icon {
+  font-size: 20px;
+}

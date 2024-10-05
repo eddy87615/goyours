@@ -1,0 +1,56 @@
+.slider-container {
+  width: 100%;
+  height: 100%;
+}
+.slider-container img {
+  width: 100%;
+
+  border-radius: 0.2rem;
+}
+
+/* 自定義 */
+
+.slick-dots {
+  position: relative !important;
+  bottom: -100% !important;
+
+  display: flex !important;
+  gap: 0.5rem !important;
+}
+.slick-dots li {
+  width: 5rem !important;
+}
+
+.slick-prev {
+  left: 0 !important;
+  z-index: 99;
+}
+.slick-next {
+  right: 0 !important;
+  z-index: 99;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick';
+  font-size: 1.2rem;
+  line-height: 1;
+  opacity: 0.5;
+  color: #999;
+}
+
+/* 小圖示 */
+
+.slick-thumb .slick-active img {
+  filter: none;
+  opacity: 1;
+}
+.slick-thumb img {
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+.slick-thumb img:hover {
+  filter: none;
+  opacity: 1;
+}

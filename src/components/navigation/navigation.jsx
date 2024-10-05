@@ -3,7 +3,7 @@ import './navigation.css';
 
 export default function Navigation() {
   return (
-    <nav>
+    <nav className="mainNav">
       <div className="navLogo">
         <Link to="/">
           <img src="/src/assets/LOGO-03.png" alt="logo" width={150} />

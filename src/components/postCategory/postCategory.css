@@ -1,5 +1,4 @@
-li {
-  list-style: circle !important;
+.postCategory {
   margin: 1rem 0 !important;
 }
 h4 {

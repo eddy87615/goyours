@@ -1,6 +1,8 @@
 import { client, urlFor } from '../../cms/sanityClient'; // 导入 client 和 urlFor
 import { useEffect, useState } from 'react'; // 导入 useEffect 和 useState
 import { Link } from 'react-router-dom'; // 导入 Link 用于页面跳转
+import { IoLocationOutline } from 'react-icons/io5';
+
 import './school.css'; // 导入样式表
 
 export default function School() {
@@ -21,6 +23,7 @@ export default function School() {
             description,
             slideshow,
             mainImage,
+            location,
             slug
           }
         `);
@@ -68,7 +71,16 @@ export default function School() {
             ) : (
               <p>No images available</p> // 如果没有图片，显示提示信息
             )}
-            <h2>{school.name}</h2>
+            <div>
+              <h2>{school.name}</h2>
+              <ul>
+                <li>
+                  <IoLocationOutline style={{ fontSize: '1.5rem' }} />
+                  {school.location}
+                </li>
+                <li>{school.description}</li>
+              </ul>
+            </div>
           </div>
         </Link>
       ))}

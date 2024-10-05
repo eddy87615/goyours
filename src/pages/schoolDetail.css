@@ -1,5 +1,21 @@
-.slider {
+.schoolDetailPage {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+
+  width: 90dvw;
+  margin: 0 auto;
+  margin-top: 200px;
 }
-.slider img {
-  width: 10%;
+
+.picSlider {
+  width: 50%;
+}
+
+.schoolInfo {
+  line-height: 2rem;
+}
+.schoolInfo label {
+  font-weight: bold;
+  margin: 0 0.5rem;
 }
