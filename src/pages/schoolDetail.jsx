@@ -32,7 +32,7 @@ export default function SchoolDetail() {
 
   if (loading) {
     return (
-      <div>
+      <div className="loading">
         <p>文章加載中⋯⋯</p>
       </div>
     );
@@ -40,7 +40,7 @@ export default function SchoolDetail() {
 
   if (!school) {
     return (
-      <div>
+      <div className="loading">
         <p>沒有文章</p>
       </div>
     );
