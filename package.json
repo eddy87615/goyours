@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "@portabletext/react": "^3.1.0",
     "@sanity/client": "^6.22.0",
     "@sanity/image-url": "^1.0.2",

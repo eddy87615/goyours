@@ -6,13 +6,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --goyoursYellow: #fcb900;
 }
 
 body,
 html {
   margin: 0;
   padding: 0;
-  width: 100vw;
+
+  background-color: #fff8ef;
 }
 
 ul,

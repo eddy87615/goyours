@@ -1,37 +1,51 @@
 .postarea {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  overflow: hidden;
+  display: flex;
+  gap: 2rem;
+
+  padding: 3rem 0;
+  border-bottom: 2px solid #dfdfdf;
+}
+
+.postListInfo h1 {
+  margin-top: 0;
+}
+
+.imgLink {
+  width: 450px;
+  height: auto;
 }
 
 .postRight {
   display: flex;
-  gap: 2rem;
+  /* gap: 5rem; */
 
   flex-direction: column;
 }
 .postRight img {
-  width: 100%;
-}
-
-.postPage {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr;
+  width: 450px;
 }
 
 .info {
   display: flex;
   gap: 1rem;
+
+  font-weight: bold;
+
+  color: var(--goyoursYellow);
+}
+.category a {
+  font-weight: bold;
+
+  color: var(--goyoursYellow);
 }
 
-.view,
-.author,
-.date,
-.category {
-  display: flex;
-  gap: 0.5rem;
+.date {
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .postLoading {
@@ -45,5 +59,10 @@
 }
 
 .textPart {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
   color: #a1a1a1;
 }

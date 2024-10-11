@@ -4,7 +4,7 @@ import { client } from '../cms/sanityClient';
 import { IoLocationOutline, IoSchoolOutline } from 'react-icons/io5';
 import { BsTelephone } from 'react-icons/bs';
 
-import BreadCrumb from '../components/breadCrumb';
+import BreadCrumb from '../components/breadCrumb/breadCrumb';
 import SliderComponent from '../components/slider/slider';
 import './schoolDetail.css';
 // 文章詳情頁

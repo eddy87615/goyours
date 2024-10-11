@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import './postCategory.css';
-import { GoTriangleRight } from 'react-icons/go';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 // eslint-disable-next-line react/prop-types
-export default function PostCategary({ handleCategoryClick }) {
+export default function PostCategary({ handleCategoryClick, handleSearch }) {
   const categories = [
     { label: '所有文章', value: null },
     { label: '最新消息', value: '最新消息' },
@@ -15,21 +16,43 @@ export default function PostCategary({ handleCategoryClick }) {
     { label: '打工度假', value: '打工度假' },
   ];
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    // handleSearch(e.target.value);
+    console.log('Search term:', e.target.value); // 確認輸入的值是否正確
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch(searchTerm); // 按下 Enter 鍵後觸發搜尋功能
+      setSearchTerm(''); // 清空搜尋欄
+    }
+  };
   return (
-    <>
+    <div className="postcategory">
+      <div className="search">
+        <FaMagnifyingGlass className="magnify" />
+        <input
+          type="text"
+          placeholder="搜尋文章..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          onKeyDown={handleKeyDown} // 監聽鍵盤事件
+        />
+      </div>
       <ul>
-        <h4>文章分類</h4>
+        <h4 className="postcategoryh4">文章分類</h4>
         {categories.map((category, index) => (
           <li
             key={index}
             onClick={() => handleCategoryClick(category.value)}
-            className="postCategory"
+            className="postCategoryList"
           >
-            <GoTriangleRight className="icon" />
-            <a>{category.label}</a>
+            <a className="categoryLabel">{category.label}</a>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
