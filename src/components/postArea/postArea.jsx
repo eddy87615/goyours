@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 import Pagination from '../pagination/pagination';
 import './postArea.css'; // 导入样式表
 
-import { BiShow, BiCalendar, BiEditAlt, BiPurchaseTag } from 'react-icons/bi';
+// import { BiShow, BiCalendar, BiEditAlt, BiPurchaseTag } from 'react-icons/bi';
 
 // PostArea 組件：渲染傳入的文章數據
 // eslint-disable-next-line react/prop-types
 export default function PostArea({ posts, handleCategoryClick }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const postPerPage = 10;
+  const postPerPage = 2;
 
   // 分頁邏輯
   const indexOfLastPost = currentPage * postPerPage;

@@ -20,6 +20,10 @@
   /* gap: 5rem; */
 
   flex-direction: column;
+
+  /* height: 100vh;
+
+  overflow: auto; */
 }
 .postRight img {
   width: 450px;
