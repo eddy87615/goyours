@@ -1,6 +1,91 @@
 .footer {
+  position: relative;
+
   width: 100%;
-  height: 200px;
+  height: 100%;
   margin-top: 100px;
+  padding: 4rem 0;
   background-color: #333;
+
+  color: #fff;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+}
+
+.footer h3 {
+  width: 100%;
+
+  font-size: 1.2rem;
+}
+
+/*footerInfo*/
+.footerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.businessicon {
+  width: 1.2rem;
+  height: 1.2rem;
+
+  margin-right: 1rem;
+}
+
+/*footerNews*/
+.footerNews {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.footerNews a,
+.footerNews p {
+  color: #fff;
+}
+
+.footerNewsPosts {
+  border: 1px solid #fff;
+  border-radius: 1rem;
+
+  padding: 0 2rem;
+}
+
+/*footerMedia*/
+.footerMedia {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 2rem;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.footerMedia a {
+  color: #fff;
+}
+
+/*Top btn*/
+.footer button {
+  cursor: pointer;
+
+  position: absolute;
+  bottom: 4rem;
+  right: 4rem;
+
+  background-color: transparent;
+
+  border: 2px solid #fff;
+  border-radius: 100rem;
+  width: 5rem;
+  height: 5rem;
+
+  color: #fff;
+  font-weight: bold;
 }

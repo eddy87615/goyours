@@ -12,7 +12,7 @@ import './postArea.css'; // 导入样式表
 // eslint-disable-next-line react/prop-types
 export default function PostArea({ posts, handleCategoryClick }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const postPerPage = 2;
+  const postPerPage = 10;
 
   // 分頁邏輯
   const indexOfLastPost = currentPage * postPerPage;
