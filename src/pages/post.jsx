@@ -69,8 +69,15 @@ export default function Post() {
 
   if (loading) {
     return (
-      <div className="loading">
-        <p>文章加載中...</p>
+      <div className="postLoading">
+        <p>文章加載中⋯⋯</p>
+      </div>
+    );
+  }
+  if (!posts.length) {
+    return (
+      <div className="postLoading">
+        <p>沒有文章</p>
       </div>
     );
   }
@@ -96,11 +103,17 @@ export default function Post() {
         handleCategoryClick={handleCategoryClick}
         handleSearch={handleSearch}
       />
-      <PostArea
-        posts={filteredPosts} // 傳遞篩選後的文章數據
-        selectedCategory={selectedCategory}
-        handleCategoryClick={handleCategoryClick}
-      />
+      {filteredPosts.length === 0 ? (
+        <div className="postLoading">
+          <p>沒有這個標籤的文章ＱＡＱ"</p>
+        </div>
+      ) : (
+        <PostArea
+          posts={filteredPosts} // 傳遞篩選後的文章數據
+          selectedCategory={selectedCategory}
+          handleCategoryClick={handleCategoryClick}
+        />
+      )}
     </div>
   );
 }

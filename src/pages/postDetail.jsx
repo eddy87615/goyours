@@ -54,7 +54,7 @@ export default function PostDetail() {
 
   if (loading) {
     return (
-      <div>
+      <div className="postLoading">
         <p>文章加載中⋯⋯</p>
       </div>
     );
@@ -63,7 +63,7 @@ export default function PostDetail() {
   if (!post) {
     return (
       <div>
-        <p>沒有文章</p>
+        <p className="postLoading">沒有文章</p>
       </div>
     );
   }

@@ -2,5 +2,446 @@
   width: 100%;
   height: 100dvh;
 
-  background-color: #ffc3c3;
+  border-radius: 0 0 100% 0;
+
+  overflow: hidden;
+}
+.kvlogo {
+  position: absolute;
+  right: 8%;
+  bottom: 0;
+
+  width: 32%;
+  height: auto;
+}
+.kvSlider img {
+  width: 100%;
+  height: 100vh;
+}
+
+/*scroll down arrow*/
+.scrollDownArrow {
+  position: absolute;
+  bottom: 6%;
+  right: 3%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scrollText {
+  transform: rotate(90deg);
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  margin-bottom: 4rem;
+
+  color: #757575;
+}
+.arrowLine {
+  width: 2px;
+  height: 200px;
+}
+.arrowLine::after {
+  content: '';
+  position: absolute;
+  background-color: #757575;
+  width: 2px;
+  animation: scrollDownArrowLine 2s infinite ease-in-out;
+}
+.arrowDot {
+  transform: translate(0, -200px);
+
+  width: 10px;
+  height: 10px;
+  background-color: #757575;
+
+  border-radius: 50px;
+
+  animation: scrollDownArrowDot 2s infinite ease-in-out;
+}
+/*scroll down arrow*/
+
+/*homrintroSection*/
+.homrintroSection {
+  position: relative;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homeintrotxt {
+  font-weight: bold;
+  line-height: 3rem;
+  text-align: center;
+
+  width: 50%;
+}
+.homeintroImgDiv0,
+.homeintroImgDiv1,
+.homeintroImgDiv2 {
+  position: absolute;
+  border-radius: 100rem;
+  overflow: hidden;
+}
+.homeintroImgDiv0 {
+  top: 30%;
+  left: -4%;
+  width: 500px;
+  height: 500px;
+
+  animation: homeintroImg0 3s infinite linear;
+}
+.homeintroImgDiv1 {
+  top: 4%;
+  left: 60%;
+  width: 250px;
+  height: 250px;
+
+  animation: homeintroImg0 4s infinite linear;
+}
+.homeintroImgDiv2 {
+  bottom: 10%;
+  right: 0;
+  width: 350px;
+  height: 350px;
+
+  animation: homeintroImg0 1.5s infinite linear;
+}
+.homeintroImg0,
+.homeintroImg1,
+.homeintroImg2 {
+  width: 100%;
+  height: 100%;
+}
+
+/*homeNewsSection*/
+.homeNewsSection {
+  height: 80vh;
+  width: 100vw;
+  margin: 0 auto;
+}
+.homeNewsSection h1,
+.homeschoolList h1 {
+  width: 80vw;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+.homeNewsDiv {
+  width: 100%;
+  height: 100%;
+
+  overflow: scroll;
+
+  gap: 2rem;
+  margin-top: 10rem;
+}
+.homeNewsDiv button {
+  width: 5rem;
+  height: 5rem;
+}
+.homeNewsDiv button::before {
+  font-size: 5rem;
+  color: #fff;
+}
+.homeNewsDiv button::after {
+  font-size: 5rem;
+  color: #fff;
+}
+.homeNewsDiv h3,
+.homeNewsDiv p {
+  margin: 0.5rem 0;
+}
+.homeNewspostImg {
+  width: 100%;
+}
+.homeNewsDiv img {
+  width: 100%;
+
+  border-radius: 1rem;
+}
+.homeNewsDiv .slick-slider .slick-track {
+  display: flex;
+  gap: 1rem;
+}
+.homeNewsprePost {
+  width: fit-content;
+  height: fit-content;
+}
+
+.centerSlide {
+  transition-duration: 1s;
+}
+.sideSlide {
+  filter: grayscale(100%);
+}
+
+/*HomeschoolList*/
+.homeschoolList {
+  height: 100%;
+}
+.schoolListDiv {
+  width: 80vw;
+  margin: 0 auto;
+  margin-top: 10rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 4rem;
+}
+.schoolListPre {
+  position: relative;
+
+  width: 100%;
+  height: 20rem;
+
+  border-radius: 2rem;
+}
+
+.schoolListPre:hover .schoolListCover h4,
+.schoolListPre:hover .schoolListCover p {
+  opacity: 0;
+
+  transition-duration: 0.5s;
+}
+.schoolListPre:hover .schoolListCover img {
+  transition-duration: 0.5s;
+  transform: scale(0.5);
+  clip-path: circle(40% at 0 0);
+}
+.schoolListPre:hover .schoolListCover {
+  transition-duration: 1s;
+  clip: circle(40% at 0 0);
+}
+.schoolListCover {
+  transition-duration: 0.5s;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* background-color: #fff; */
+  transform-origin: top left;
+
+  border-radius: 2rem 2rem 10rem 2rem;
+
+  /* display: none; */
+}
+
+.schoolListCover h4 {
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  background-color: var(--goyoursYellow);
+  color: #fff;
+
+  display: flex;
+
+  width: fit-content;
+
+  font-size: 1.3rem;
+
+  transform: translate(-1rem, 1rem);
+
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+.schoolListCover p {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+
+  width: fit-content;
+
+  transform: translate(-1rem, 2rem);
+
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+.schoolListCover img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+
+  border-radius: 2rem 2rem 10rem 2rem;
+
+  transform-origin: top left;
+  transition-duration: 0.5s;
+}
+.schoolListBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  background-color: #f8b300;
+  border-radius: 2rem;
+
+  font-weight: bold;
+
+  line-height: 1.8rem;
+}
+.schoolListBack h3 {
+  position: relative;
+  text-align: center;
+  color: #fff;
+
+  font-size: 1.4rem;
+}
+.schoolListBack h3::after {
+  content: '';
+
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translate(-50%);
+
+  width: 30rem;
+  height: 2px;
+
+  background-color: #fff;
+}
+.schoolListBack p {
+  text-align: center;
+  width: 84%;
+}
+.schoolListBack ul {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: fit-content;
+
+  gap: 1rem;
+
+  padding: 0 3rem;
+
+  color: #fff;
+  font-weight: bold;
+}
+
+.schoolListBack ul span {
+  background-color: #fff;
+
+  font-weight: bold;
+  color: #f8b300;
+
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+
+  border-radius: 0.5rem;
+}
+.schoolListDetailBtn {
+  position: absolute;
+  bottom: 6%;
+  right: 4%;
+
+  border-radius: 400rem;
+
+  border: 0;
+  background-color: #414042;
+  color: #fff;
+
+  font-weight: bold;
+
+  padding: 0.5rem 1rem;
+
+  transition-duration: 0.5s;
+  opacity: 0;
+
+  cursor: pointer;
+}
+.schoolListPre:hover .schoolListDetailBtn {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+.schoolListPointer {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+
+  color: #fff;
+  width: 4rem;
+  height: 4rem;
+
+  transform: rotate(-45deg);
+
+  transition-duration: 0.5s;
+
+  z-index: 2;
+}
+.schoolListPre:hover .schoolListPointer {
+  transition-duration: 0.2s;
+  opacity: 0;
+  transform: translate(1rem, 1rem);
+}
+
+/*ANIMATION*/
+@keyframes scrollDownArrowDot {
+  0% {
+    opacity: 1;
+  }
+  /* 90% {
+    opacity: 1;
+    transform: translate(0, -100px);
+  } */
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes scrollDownArrowLine {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  /* 90% {
+    height: 100px;
+    opacity: 1;
+  } */
+
+  100% {
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+@keyframes homeintroImg0 {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(-1px);
+  }
 }

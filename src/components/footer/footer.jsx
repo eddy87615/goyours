@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { client } from '../../cms/sanityClient';
 import { FaInstagram, FaFacebook, FaLine } from 'react-icons/fa';
-import { FaBuildingUser, FaPhone, FaLocationDot } from 'react-icons/fa6';
+import {
+  FaBuildingUser,
+  FaPhone,
+  FaLocationDot,
+  FaArrowUpLong,
+} from 'react-icons/fa6';
 
 import './footer.css';
 
@@ -24,16 +29,18 @@ export default function Footer() {
   // 從 Sanity 獲取最新消息標籤的文章
   useEffect(() => {
     async function fetchLatestNewsPosts() {
+      // 查詢 "最新消息" 標籤的文章
+      //&& "最新消息" in categories[]->title
       const result = await client.fetch(`
-        *[_type == "post" && "最新消息" in categories[]->title] | order(publishedAt desc)[0...3] {
+        *[_type == "post"] | order(publishedAt desc)[0...3] {
           title,
           slug,
           publishedAt,
         }
       `);
+
       setLatestNewsPosts(result);
     }
-
     fetchLatestNewsPosts();
   }, []);
 
@@ -61,7 +68,15 @@ export default function Footer() {
         {latestNewPosts.map((post, index) => (
           <li key={index} className="footerNewsPosts">
             <a href={`/post/${encodeURIComponent(post.slug.current)}`}>
-              <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+              <p>
+                {new Date(post.publishedAt)
+                  .toLocaleDateString('zh-TW', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })
+                  .replace(/\//g, '.')}
+              </p>
               <h4>{post.title}</h4>
             </a>
           </li>
@@ -88,7 +103,9 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <button className="backtotop">TOP</button>
+      <button className="backtotop">
+        <FaArrowUpLong style={{ width: '1.2rem', height: '1.2rem' }} />
+      </button>
     </div>
   );
 }

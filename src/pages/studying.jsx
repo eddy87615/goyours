@@ -4,9 +4,9 @@ import './studying.css';
 export default function Studying() {
   return (
     <>
-      <div className="schoolPage">
-        <School />
-      </div>
+      {/* <div className="schoolPage"> */}
+      <School />
+      {/* </div> */}
     </>
   );
 }

@@ -67,7 +67,13 @@ export default function PostArea({ posts, handleCategoryClick }) {
             </ul>
             <p className="date">
               {/* <BiCalendar className="icon" /> */}
-              {new Date(post.publishedAt).toLocaleDateString()}
+              {new Date(post.publishedAt)
+                .toLocaleDateString('zh-TW', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                })
+                .replace(/\//g, '.')}
             </p>
             <div className="textPart">
               <PortableText value={post.body} />

@@ -1,9 +1,28 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './navigation.css';
 
 export default function Navigation() {
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    const isVisible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
+
+    setVisible(isVisible);
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScrollPos]);
+
   return (
-    <nav className="mainNav">
+    <nav className={`mainNav ${visible ? 'visible' : 'hidden'}`}>
       <div className="navLogo">
         <Link to="/">
           <img src="/src/assets/LOGO-03.png" alt="logo" width={150} />

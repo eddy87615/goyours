@@ -41,7 +41,7 @@ export default function School() {
   // 加载时显示的内容
   if (loading) {
     return (
-      <div className="loading">
+      <div className="postLoading">
         <p>學校資訊加載中⋯⋯</p>
       </div>
     );
@@ -49,7 +49,11 @@ export default function School() {
 
   // 如果没有学校数据，显示提示信息
   if (!schools.length) {
-    return <p>No schools available</p>;
+    return (
+      <div className="postLoading">
+        <p>沒有學校資訊</p>
+      </div>
+    );
   }
 
   return (

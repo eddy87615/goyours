@@ -19,13 +19,13 @@
   border-radius: 50%;
 }
 .pagination a:hover {
-  background-color: #333;
   color: #fff;
   transition-duration: 0.5s;
+  background-color: #ffe498;
 }
 
 .active {
-  background-color: #333;
+  background-color: var(--goyoursYellow);
 
   color: #fff;
   transition-duration: 0.5s;
