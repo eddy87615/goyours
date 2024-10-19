@@ -119,60 +119,69 @@
 
 /*homeNewsSection*/
 .homeNewsSection {
-  height: 80vh;
+  height: fit-content;
   width: 100vw;
   margin: 0 auto;
 }
 .homeNewsSection h1,
-.homeschoolList h1 {
+.homeschoolList h1,
+.workingholidaySection h1 {
   width: 80vw;
   margin: 0 auto;
 
   display: flex;
   flex-direction: column;
 }
-.homeNewsDiv {
+
+.homeNewsprePost {
+  width: 30% !important;
+  height: 30% !important;
+}
+.homeNewspostImg img {
   width: 100%;
-  height: 100%;
 
-  overflow: scroll;
-
-  gap: 2rem;
-  margin-top: 10rem;
+  border-radius: 1rem;
 }
-.homeNewsDiv button {
-  width: 5rem;
-  height: 5rem;
-}
-.homeNewsDiv button::before {
-  font-size: 5rem;
-  color: #fff;
-}
-.homeNewsDiv button::after {
-  font-size: 5rem;
-  color: #fff;
+.homeNewsDiv {
+  padding-top: 10rem;
 }
 .homeNewsDiv h3,
 .homeNewsDiv p {
   margin: 0.5rem 0;
 }
-.homeNewspostImg {
-  width: 100%;
+.homeNewsDiv h3 {
+  font-size: 1.2rem;
 }
-.homeNewsDiv img {
-  width: 100%;
-
-  border-radius: 1rem;
-}
-.homeNewsDiv .slick-slider .slick-track {
-  display: flex;
-  gap: 1rem;
-}
-.homeNewsprePost {
-  width: fit-content;
-  height: fit-content;
+.homeNewsDiv p {
+  font-size: 1.1rem;
+  margin-top: 0;
 }
 
+.swiper {
+}
+.swiper-button-prev {
+  background-color: #fff;
+
+  width: 5rem !important;
+  height: 5rem !important;
+  border-radius: 100rem;
+
+  color: #333 !important;
+
+  opacity: 0.5;
+}
+
+.swiper-button-next {
+  background-color: #fff;
+
+  width: 5rem !important;
+  height: 5rem !important;
+  border-radius: 100rem;
+
+  color: #333 !important;
+
+  opacity: 0.5;
+}
 .centerSlide {
   transition-duration: 1s;
 }
@@ -183,11 +192,13 @@
 /*HomeschoolList*/
 .homeschoolList {
   height: 100%;
+
+  padding: 10rem 0;
 }
 .schoolListDiv {
   width: 80vw;
   margin: 0 auto;
-  margin-top: 10rem;
+  padding: 10rem 0;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -203,20 +214,26 @@
   border-radius: 2rem;
 }
 
+.schoolListBg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 2rem;
+
+  clip-path: circle(82% at 40% 2%);
+  transition-duration: 0.5s;
+}
+.schoolListPre:hover .schoolListBg {
+  transition-duration: 0.5s;
+  clip-path: circle(20% at 0 0);
+}
+
 .schoolListPre:hover .schoolListCover h4,
 .schoolListPre:hover .schoolListCover p {
   opacity: 0;
 
   transition-duration: 0.5s;
-}
-.schoolListPre:hover .schoolListCover img {
-  transition-duration: 0.5s;
-  transform: scale(0.5);
-  clip-path: circle(40% at 0 0);
-}
-.schoolListPre:hover .schoolListCover {
-  transition-duration: 1s;
-  clip: circle(40% at 0 0);
 }
 .schoolListCover {
   transition-duration: 0.5s;
@@ -228,7 +245,7 @@
   /* background-color: #fff; */
   transform-origin: top left;
 
-  border-radius: 2rem 2rem 10rem 2rem;
+  border-radius: 2rem;
 
   /* display: none; */
 }
@@ -279,7 +296,7 @@
   object-fit: cover;
   z-index: -1;
 
-  border-radius: 2rem 2rem 10rem 2rem;
+  border-radius: 2rem;
 
   transform-origin: top left;
   transition-duration: 0.5s;
@@ -340,7 +357,6 @@
   color: #fff;
   font-weight: bold;
 }
-
 .schoolListBack ul span {
   background-color: #fff;
 
@@ -395,6 +411,104 @@
   transition-duration: 0.2s;
   opacity: 0;
   transform: translate(1rem, 1rem);
+}
+
+.formoreBtntoPage {
+  background-color: #f8b300;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+
+  border: 0;
+  border-radius: 20rem;
+
+  padding: 0.8rem 5rem;
+
+  display: flex;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+/*workingholidaySection*/
+
+.workingholidaySection {
+  height: fit-content;
+  width: 80vw;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+}
+.workingholidayDiv {
+  width: 80vw;
+  margin: 0 auto;
+  height: 100%;
+  padding: 10rem 0;
+}
+
+/*homeContactusSection*/
+
+.homeContactusSection {
+  width: 80vw;
+
+  margin: 0 auto;
+}
+.homeContactusDiv {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #ffeed9;
+
+  border-radius: 4rem;
+
+  padding: 4rem 0;
+
+  overflow: hidden;
+}
+
+.homeContactusDiv h2 {
+  text-align: center;
+  font-size: 12rem;
+  color: #ffe2bc;
+
+  margin: 1rem 0;
+}
+.homeContactusDiv div {
+  width: fit-content;
+
+  padding: 0 10rem;
+}
+.homeContactusDiv p {
+  line-height: 2rem;
+}
+
+.homecontactusBtn {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  font-weight: bold;
+  font-size: 3rem;
+
+  right: 0;
+  bottom: 0;
+
+  width: 20rem;
+  height: 20rem;
+
+  border-radius: 100rem 0 0 0;
+
+  background-color: var(--goyoursYellow);
+}
+
+.homecontactusArrow {
+  transform: translate(2rem, 2rem);
 }
 
 /*ANIMATION*/

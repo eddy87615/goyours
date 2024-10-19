@@ -32,3 +32,7 @@ a {
 .yellow {
   color: var(--goyoursYellow);
 }
+
+button {
+  cursor: pointer;
+}

@@ -1,28 +1,18 @@
 import { useEffect, useState } from 'react';
 import { client } from '../cms/sanityClient';
 import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
-import { FaLocationDot } from 'react-icons/fa6';
+import { FaLocationDot, FaArrowRightLong } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
 
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import './home.css';
 
 const News = () => {
   const [NewsPosts, setNewsPosts] = useState([]);
-  const [currentSlide, setCurrentSlide] = useState(0); // 当前的幻灯片索引
-  const settings = {
-    className: 'center',
-    centerMode: true,
-    infinite: true,
-    centerPadding: '1rem',
-    slidesToShow: 5,
-    // autoplay: true,
-    speed: 500,
-    beforeChange: (oldIndex, newIndex) => {
-      setCurrentSlide(newIndex); // 更新当前索引
-    },
-  };
 
   // 從 Sanity 獲取最新消息標籤的文章
   useEffect(() => {
@@ -30,7 +20,7 @@ const News = () => {
       // 查詢 "最新消息" 標籤的文章
       //&& "最新消息" in categories[]->title
       const result = await client.fetch(`
-          *[_type == "post"] | order(publishedAt desc)[0...10] {
+          *[_type == "post"] | order(publishedAt desc)[0...6] {
             title,
             slug,
             publishedAt,
@@ -48,14 +38,17 @@ const News = () => {
         <span className="yellow">News</span>最新消息
       </h1>
       <div className="homeNewsDiv">
-        <Slider {...settings}>
+        <Swiper
+          spaceBetween={100}
+          slidesPerView={5}
+          centeredSlides={true}
+          navigation={true}
+          // autoplay={{ delay: 3000, disableOnInteraction: false }}
+          modules={[Autoplay, Navigation]}
+          loop={true}
+        >
           {NewsPosts.map((post, index) => (
-            <div
-              key={index}
-              className={`homeNewsprePost ${
-                index === currentSlide ? 'centerSlide' : 'sideSlide'
-              }`}
-            >
+            <SwiperSlide key={index} className="homeNewsprePost">
               <a href={`/post/${encodeURIComponent(post.slug.current)}`}>
                 {post.mainImage && (
                   <div className="homeNewspostImg">
@@ -65,7 +58,7 @@ const News = () => {
                 <h3>{post.title}</h3>
                 <p className="yellow">
                   {new Date(post.publishedAt)
-                    .toDateString('zh-TW', {
+                    .toLocaleDateString('zh-TW', {
                       year: 'numeric',
                       month: '2-digit',
                       day: '2-digit',
@@ -73,9 +66,9 @@ const News = () => {
                     .replace(/\//g, '.')}
                 </p>
               </a>
-            </div>
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
       </div>
     </>
   );
@@ -149,11 +142,14 @@ const HomeschoolList = () => {
             return (
               <div key={index} className="schoolListPre">
                 <div className="schoolListCover">
-                  <h4>{school.name}</h4>
-                  <p>
-                    <FaLocationDot /> {school.location}
-                  </p>
-                  <img src={school.src} alt={school.name} />
+                  <div className="schoolListBg">
+                    <h4>{school.name}</h4>
+                    <p>
+                      <FaLocationDot /> {school.location}
+                    </p>
+                    <img src={school.src} alt={school.name} />
+                  </div>
+                  <button className="schoolListDetailBtn">了解學校詳情</button>
                 </div>
                 <div className="schoolListBack">
                   <h3>{school.name}</h3>
@@ -170,11 +166,62 @@ const HomeschoolList = () => {
                   </ul>
                 </div>
                 <LiaHandPointer className="schoolListPointer" />
-                <button className="schoolListDetailBtn">了解學校詳情</button>
               </div>
             );
           })}
         </div>
+      </div>
+      <a className="formoreBtntoPage" href="./studying">
+        看更多學校
+      </a>
+    </>
+  );
+};
+
+const Wokringholiday = () => {
+  return (
+    <>
+      <div>
+        <h1>
+          <span className="yellow">Working Holiday</span>打工度假職缺一覽
+        </h1>
+        <div className="workingholidayDiv"></div>
+        <a className="formoreBtntoPage" href="./working">
+          看更多職缺
+        </a>
+      </div>
+    </>
+  );
+};
+
+const Contactus = () => {
+  return (
+    <>
+      <div className="homeContactusDiv">
+        <h2>Contact us</h2>
+        <div>
+          <h3>聯絡GoYours</h3>
+          <p>
+            無論是短期進修、語言學校，還是打工度假體驗不同人生，
+            <br />
+            背上背包，跟我們一起冒險，留下無悔的足跡！
+          </p>
+        </div>
+        <div>
+          <h3>打工度假、留學免費諮詢</h3>
+          <p>
+            透過表單預約與我們一對一諮詢。
+            <br />
+            也歡迎Line或FB聯繫，GoYours將是您打工度假、留學的最佳夥伴！
+          </p>
+        </div>
+        <a
+          className="homecontactusBtn"
+          href="./contact"
+          alt="to Contact Us page"
+        >
+          <FaArrowRightLong className="homecontactusArrow" />
+        </a>
       </div>
     </>
   );
@@ -198,23 +245,27 @@ export default function Home() {
   }, []);
   //nav height get
 
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    // autoplay: true,
-  };
-
   return (
     <>
       <div className="kv">
         <div className="kvSlider">
-          <Slider {...settings}>
-            <img src="/src/assets/KV_fujisan03.jpg" />
-            <img src="/src/assets/KV_fujisan04.jpg" />
-            <img src="/src/assets/KV_fujisan05.jpg" />
-          </Slider>
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            loop={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            // modules={[Autoplay]}
+          >
+            <SwiperSlide>
+              <img src="/src/assets/KV_fujisan03.jpg" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="/src/assets/KV_fujisan04.jpg" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="/src/assets/KV_fujisan05.jpg" />
+            </SwiperSlide>
+          </Swiper>
         </div>
         <img src="/src/assets/LOGO-09.png" alt="LOGO-09" className="kvlogo" />
         <div className="scrollDownArrow">
@@ -249,6 +300,12 @@ export default function Home() {
       </div>
       <div className="homeschoolList">
         <HomeschoolList />
+      </div>
+      <div className="workingholidaySection">
+        <Wokringholiday />
+      </div>
+      <div className="homeContactusSection">
+        <Contactus />
       </div>
     </>
   );

@@ -5,7 +5,6 @@ import { IoLocationOutline, IoSchoolOutline } from 'react-icons/io5';
 import { BsTelephone } from 'react-icons/bs';
 
 import BreadCrumb from '../components/breadCrumb/breadCrumb';
-import SliderComponent from '../components/slider/slider';
 import './schoolDetail.css';
 // 文章詳情頁
 export default function SchoolDetail() {
@@ -55,14 +54,6 @@ export default function SchoolDetail() {
             { name: school.name },
           ]}
         />
-        {school.slideshow && school.slideshow.length > 0 ? (
-          <SliderComponent
-            slideshow={school.slideshow}
-            schoolName={school.name}
-          />
-        ) : (
-          <p>沒有圖片</p>
-        )}
       </div>
       <div>
         <h1>{school.name}</h1>
