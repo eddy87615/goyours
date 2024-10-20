@@ -156,9 +156,6 @@
   font-size: 1.1rem;
   margin-top: 0;
 }
-
-.swiper {
-}
 .swiper-button-prev {
   background-color: #fff;
 
@@ -476,7 +473,8 @@
 
   margin: 1rem 0;
 }
-.homeContactusDiv div {
+.contactTxt01,
+.contactTxt02 {
   width: fit-content;
 
   padding: 0 10rem;
@@ -509,6 +507,14 @@
 
 .homecontactusArrow {
   transform: translate(2rem, 2rem);
+}
+.arc-text {
+  position: absolute;
+  top: -104%;
+  left: -50%;
+  /* transform: rotate(345deg); */
+
+  font-size: 1.2rem;
 }
 
 /*ANIMATION*/
