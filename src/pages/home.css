@@ -11,8 +11,10 @@
   right: 8%;
   bottom: 0;
 
-  width: 32%;
+  width: 40%;
   height: auto;
+
+  z-index: 9;
 }
 .kvSlider img {
   width: 100%;
@@ -87,10 +89,10 @@
   overflow: hidden;
 }
 .homeintroImgDiv0 {
-  top: 30%;
-  left: -4%;
-  width: 500px;
-  height: 500px;
+  top: 10%;
+  left: -10%;
+  width: 32rem;
+  height: 32rem;
 
   animation: homeintroImg0 3s infinite linear;
 }
@@ -103,12 +105,12 @@
   animation: homeintroImg0 4s infinite linear;
 }
 .homeintroImgDiv2 {
-  bottom: 10%;
+  bottom: 4%;
   right: 0;
-  width: 350px;
-  height: 350px;
+  width: 24rem;
+  height: 24rem;
 
-  animation: homeintroImg0 1.5s infinite linear;
+  animation: homeintroImg0 2s infinite linear;
 }
 .homeintroImg0,
 .homeintroImg1,
@@ -125,6 +127,7 @@
 }
 .homeNewsSection h1,
 .homeschoolList h1,
+.homeHotpostSection h1,
 .workingholidaySection h1 {
   width: 80vw;
   margin: 0 auto;
@@ -157,25 +160,29 @@
   margin-top: 0;
 }
 .swiper-button-prev {
-  background-color: #fff;
+  background-color: #414042;
 
-  width: 5rem !important;
-  height: 5rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
   border-radius: 100rem;
 
-  color: #333 !important;
+  color: #fff !important;
 
   opacity: 0.5;
 }
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 1.5rem;
+}
 
 .swiper-button-next {
-  background-color: #fff;
+  background-color: #414042;
 
-  width: 5rem !important;
-  height: 5rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
   border-radius: 100rem;
 
-  color: #333 !important;
+  color: #fff !important;
 
   opacity: 0.5;
 }
@@ -426,7 +433,71 @@
   width: fit-content;
 }
 
-/*workingholidaySection*/
+/*homeHotpostSection*/
+.homeHotpostSection {
+  height: 100%;
+}
+
+.homehotpostDiv {
+  padding: 10rem 0;
+}
+
+.homeperhotpost {
+  width: 30% !important;
+  height: 30% !important;
+
+  border: 2px solid #333;
+  border-radius: 2rem;
+
+  padding: 2rem;
+}
+.homeperhotpost ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.homeperhotpost img {
+  width: 100%;
+
+  border-radius: 1rem;
+}
+.homeprehotpost {
+  padding: 2rem;
+}
+.homehotpostPreview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
+  color: #a1a1a1;
+
+  margin: 0;
+  padding: 0;
+}
+.homehotpostPreview h1,
+.homehotpostPreview h2,
+.homehotpostPreview h3,
+.homehotpostPreview h4,
+.homehotpostPreview p {
+  margin: 0;
+  padding: 0;
+}
+
+.homehotpostDate {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  gap: 1rem;
+}
+.homehotpostDate img {
+  width: 2rem;
+  height: 2rem;
+}
+/*homeHotpostSection*/
+
+/*workingholiday*/
 
 .workingholidaySection {
   height: fit-content;
@@ -434,87 +505,106 @@
   margin: 0 auto;
   margin-bottom: 10rem;
 }
+
 .workingholidayDiv {
   width: 80vw;
   margin: 0 auto;
-  height: 100%;
   padding: 10rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 4rem;
 }
 
-/*homeContactusSection*/
+.jobListPre {
+  display: flex;
 
-.homeContactusSection {
-  width: 80vw;
-
-  margin: 0 auto;
-}
-.homeContactusDiv {
   position: relative;
 
   width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  background-color: #ffeed9;
-
-  border-radius: 4rem;
-
-  padding: 4rem 0;
-
-  overflow: hidden;
-}
-
-.homeContactusDiv h2 {
-  text-align: center;
-  font-size: 12rem;
-  color: #ffe2bc;
-
-  margin: 1rem 0;
-}
-.contactTxt01,
-.contactTxt02 {
-  width: fit-content;
-
-  padding: 0 10rem;
-}
-.homeContactusDiv p {
-  line-height: 2rem;
-}
-
-.homecontactusBtn {
-  position: absolute;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: #fff;
-  font-weight: bold;
-  font-size: 3rem;
-
-  right: 0;
-  bottom: 0;
-
-  width: 20rem;
   height: 20rem;
 
-  border-radius: 100rem 0 0 0;
+  border-radius: 2rem;
 
   background-color: var(--goyoursYellow);
 }
 
-.homecontactusArrow {
-  transform: translate(2rem, 2rem);
-}
-.arc-text {
-  position: absolute;
-  top: -104%;
-  left: -50%;
-  /* transform: rotate(345deg); */
+.jobListPre h3 {
+  font-size: 1.3rem;
 
-  font-size: 1.2rem;
+  color: #fff;
+}
+.jobListPre p {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+
+  width: fit-content;
+}
+
+.jobListimg {
+  transition-duration: 0.5s;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  transform-origin: top left;
+  border-radius: 2rem;
+}
+.jobListimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+
+  border-radius: 2rem 0 0 2rem;
+
+  transform-origin: top left;
+  transition-duration: 0.5s;
+}
+
+.jobListcontent {
+  width: 50%;
+
+  padding: 1rem;
+}
+
+.jobListcontent ul {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: fit-content;
+
+  gap: 1rem;
+
+  padding: 2rem 0;
+
+  color: #fff;
+  font-weight: bold;
+}
+.jobListcontent ul span {
+  background-color: #fff;
+
+  font-weight: bold;
+  color: #f8b300;
+
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+
+  border-radius: 0.5rem;
+}
+
+.workingholidaySection .schoolListDetailBtn {
+  bottom: 6%;
+  right: 4%;
+  opacity: 1;
 }
 
 /*ANIMATION*/

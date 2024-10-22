@@ -1,13 +1,16 @@
 import { client, urlFor } from '../../cms/sanityClient'; // 导入 client 和 urlFor
 import { useEffect, useState } from 'react'; // 导入 useEffect 和 useState
 import { Link } from 'react-router-dom'; // 导入 Link 用于页面跳转
-import { IoLocationOutline } from 'react-icons/io5';
+import { FaLocationDot } from 'react-icons/fa6';
+import Pagination from '../../components/pagination/pagination'; // 导入 Pagination 组件
 
 import './school.css'; // 导入样式表
 
-export default function School() {
+export default function School({ selectedCategory }) {
   const [schools, setSchools] = useState([]); // 存储学校数据
   const [loading, setLoading] = useState(true); // 加载状态
+  const [currentPage, setCurrentPage] = useState(1); // 当前页
+  const schoolsPerPage = 15; // 每页显示的学校数量
 
   // 使用 useEffect 來處理異步數據加載
   useEffect(() => {
@@ -16,7 +19,7 @@ export default function School() {
         const result = await client.fetch(`
           *[_type == "school"] | order(publishedAt desc) {
             name,
-            adress,
+            address,
             transportation,
             phone,
             website,
@@ -24,7 +27,8 @@ export default function School() {
             slideshow,
             mainImage,
             location,
-            slug
+            slug,
+            sort
           }
         `);
         setSchools(result); // 将返回的数据存储在状态中
@@ -56,38 +60,50 @@ export default function School() {
     );
   }
 
+  // 根据分页计算当前显示的学校
+  const indexOfLastSchool = currentPage * schoolsPerPage;
+  const indexOfFirstSchool = indexOfLastSchool - schoolsPerPage;
+  const currentSchools = schools.slice(indexOfFirstSchool, indexOfLastSchool);
+
+  // 计算总页数
+  const totalPages = Math.ceil(schools.length / schoolsPerPage);
+
+  // 处理页面更改
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
-    <>
-      {schools.map((school, index) => (
-        <Link
-          key={index}
-          to={`/school/${school.slug.current}`}
-          className="schoolCard"
-        >
-          <div className="school">
-            {school.slideshow && school.slideshow.length > 0 ? (
-              <div className="schoolimg">
-                <img
-                  src={urlFor(school.mainImage).url()} // 使用 urlFor 函數生成圖片 URL
-                  alt={`${school.name} image`}
-                />
-              </div>
-            ) : (
-              <p>No images available</p> // 如果没有图片，显示提示信息
-            )}
-            <div>
-              <h2>{school.name}</h2>
-              <ul>
-                <li>
-                  <IoLocationOutline style={{ fontSize: '1.5rem' }} />
-                  {school.location}
-                </li>
-                <li>{school.description}</li>
-              </ul>
+    <div>
+      <div className="schoolPageschoolSection">
+        <h1 className="tagnow">
+          #{selectedCategory ? ` ${selectedCategory}` : '所有學校'}
+        </h1>
+        {currentSchools.map((school, index) => (
+          <Link
+            key={index}
+            to={`/school/${school.slug.current}`}
+            className="schoolCard"
+          >
+            <h2>
+              <FaLocationDot />
+              {school.location}
+            </h2>
+            <div className="schoollinkimg">
+              <img
+                src={urlFor(school.mainImage.asset).url()} // 使用 urlFor 函數生成圖片 URL
+                alt={`${school.name} image`}
+              />
             </div>
-          </div>
-        </Link>
-      ))}
-    </>
+            <h4>{school.name}</h4>
+          </Link>
+        ))}
+      </div>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
+    </div>
   );
 }

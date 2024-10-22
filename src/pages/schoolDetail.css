@@ -1,21 +1,126 @@
+.schoolDetailwrapper {
+  width: 90vw;
+  margin: 0 auto;
+}
 .schoolDetailPage {
   position: relative;
   display: flex;
-  gap: 2rem;
+  gap: 5rem;
 
-  width: 90dvw;
-  margin: 0 auto;
-  margin-top: 8rem;
+  padding: 13rem 0;
 }
 
 .picSlider {
-  width: 50%;
+  width: 44%;
+  height: 100%;
+}
+
+.upperSlider {
+  height: 30rem;
+
+  border-radius: 1rem;
+
+  margin-bottom: 1rem;
+}
+.upperSlider img {
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.downSlider {
+  height: 5rem;
+}
+.downSlider img {
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.picSlider img {
+  width: 100%;
+
+  border-radius: 1rem;
+}
+.schoolUnfoSection {
+  position: relative;
 }
 
 .schoolInfo {
-  line-height: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.5rem;
 }
-.schoolInfo label {
-  font-weight: bold;
-  margin: 0 0.5rem;
+.schoolInfo li {
+  display: flex;
+  justify-content: start;
+
+  gap: 1.3rem;
+}
+.schoolInfo ul {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+.schoollogo {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 8rem;
+}
+
+.schoolDetailicon {
+  color: var(--goyoursYellow);
+
+  font-size: 1.5rem;
+}
+
+/*Modal*/
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.modalContent {
+  border-radius: 10px;
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.closeModalBtn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+
+  font-size: 1.5rem;
+
+  background-color: transparent;
+  color: white;
+  border: none;
+
+  cursor: pointer;
 }

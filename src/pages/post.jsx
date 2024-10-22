@@ -5,6 +5,18 @@ import PostCategary from '../components/postCategory/postCategory';
 import './post.css';
 
 export default function Post() {
+  const categories = [
+    { label: '所有文章', value: null },
+    { label: '最新消息', value: '最新消息' },
+    { label: '日本SGU項目', value: '日本SGU項目' },
+    { label: '日本EJU', value: '日本EJU' },
+    { label: '日本介護・護理相關', value: '日本介護・護理相關' },
+    { label: '日本特定技能一號簽證', value: '日本特定技能一號簽證' },
+    { label: '日本相關', value: '日本相關' },
+    { label: '日本留學', value: '日本留學' },
+    { label: '打工度假', value: '打工度假' },
+  ];
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -100,12 +112,13 @@ export default function Post() {
   return (
     <div className="postPage">
       <PostCategary
+        categories={categories}
         handleCategoryClick={handleCategoryClick}
         handleSearch={handleSearch}
       />
       {filteredPosts.length === 0 ? (
         <div className="postLoading">
-          <p>沒有這個標籤的文章ＱＡＱ"</p>
+          <p>這個標籤裡沒有文章ಥ∀ಥ</p>
         </div>
       ) : (
         <PostArea

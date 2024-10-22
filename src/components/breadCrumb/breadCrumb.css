@@ -1,7 +1,7 @@
 .breadCrumb {
   position: absolute;
-  top: 0;
-  transform: translate(0, -100%);
+  top: 8rem;
+  left: 0;
 }
 .breadCrumb ul,
 .breadCrumb li {

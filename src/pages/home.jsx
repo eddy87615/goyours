@@ -1,11 +1,14 @@
-import { useEffect, useState, useRef } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
 import { client } from '../cms/sanityClient';
 import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
-import { FaLocationDot, FaArrowRightLong } from 'react-icons/fa6';
+import { FaLocationDot } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
+import { PortableText } from '@portabletext/react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
+import ContactUs from '../components/contactUs/contactUs';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -179,72 +182,210 @@ const HomeschoolList = () => {
 };
 
 const Wokringholiday = () => {
+  const jobListContent = [
+    {
+      jobName: '巧克力工廠',
+      location: '東京都・千葉縣',
+      src: '/src/assets/巧克力工廠.jpg',
+      alt: '巧克力工廠',
+      introtxt: '',
+      jobContent: '巧克力工廠作業員',
+      traffic: '新京成線稔台站',
+      salary: '1100円',
+    },
+    {
+      jobName: '舞濱物流生產線作業員',
+      location: '東京都',
+      src: '/src/assets/生產線.jpg',
+      alt: '生產線',
+      introtxt: '',
+      jobContent: '生產線輕作業',
+      traffic: '舞濱車站巴士・徒步',
+      salary: '1300円',
+    },
+    {
+      jobName: '溫泉飯店餐廳服務員',
+      location: '栃木縣',
+      src: '/src/assets/鬼怒川溫泉站.jpg',
+      alt: '鬼怒川溫泉站',
+      introtxt: '',
+      jobContent: '自助餐廳服務員',
+      traffic: '鬼怒川溫泉站',
+      salary: '1300円',
+    },
+    {
+      jobName: '關西機場免稅店',
+      location: '關西機場',
+      src: '/src/assets/關西機場.jpg.webp',
+      alt: '關西機場',
+      introtxt: '',
+      jobContent: '機場免稅店',
+      traffic: 'JR關空快線',
+      salary: '1100円',
+    },
+    {
+      jobName: '滑雪中心',
+      location: '長野縣',
+      src: '/src/assets/滑雪中心.jpg',
+      alt: '長野縣滑雪中心',
+      introtxt: '',
+      jobContent: '滑雪場相關業務',
+      traffic: '飯山站',
+      salary: '1200円',
+    },
+    {
+      jobName: '倉庫作業員',
+      location: '東京都',
+      src: '/src/assets/上野倉庫作業員.jpeg',
+      alt: '上野倉庫作業員',
+      introtxt: '',
+      jobContent: '倉庫內輕作業及食品分類人員',
+      traffic: '上野站',
+      salary: '1150円',
+    },
+  ];
   return (
     <>
       <div>
         <h1>
           <span className="yellow">Working Holiday</span>打工度假職缺一覽
         </h1>
-        <div className="workingholidayDiv"></div>
-        <a className="formoreBtntoPage" href="./working">
-          看更多職缺
-        </a>
+        <div className="workingholidayDiv">
+          {jobListContent.map((job, index) => {
+            return (
+              <div key={index} className="jobListPre">
+                <div className="jobListimg">
+                  <img src={job.src} alt={job.jobName} />
+                </div>
+                <div className="jobListcontent">
+                  <h3>{job.jobName}</h3>
+                  <p>
+                    <FaLocationDot /> {job.location}
+                  </p>
+                  {/* <p dangerouslySetInnerHTML={{ __html: job.introtxt }}></p> */}
+                  <ul>
+                    <li>
+                      <span>職稱</span>
+                      {job.jobContent}
+                    </li>
+                    <li>
+                      <span>內容</span>
+                      {job.traffic}
+                    </li>
+                    <li>
+                      <span>時薪</span>
+                      {job.salary}
+                    </li>
+                  </ul>
+                  <button className="schoolListDetailBtn">了解職缺詳情</button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+      <a className="formoreBtntoPage" href="./working">
+        看更多職缺
+      </a>
     </>
   );
 };
 
-const Contactus = () => {
-  const ArcText = ({ text }) => {
-    return (
-      <div className="arc-text">
-        <svg width="800" height="800" viewBox="0 0 800 800">
-          <defs>
-            <path
-              id="circlePath"
-              d="
-                 M 160, 640
-                 A 320, 320, 0, 0, 1, 480, 320" // 使用320px (20rem)作為圓弧的半徑
-            />
-          </defs>
-          <text fill="#ff8c00" fontSize="20" fontWeight="bold">
-            <textPath href="#circlePath" startOffset="52%">
-              {text}
-            </textPath>
-          </text>
-        </svg>
-      </div>
-    );
-  };
+const Hotpost = () => {
+  const [NewsPosts, setNewsPosts] = useState([]);
+
+  // 從 Sanity 獲取最新消息標籤的文章
+  useEffect(() => {
+    async function fetchNewsPosts() {
+      // 查詢 "最新消息" 標籤的文章
+      //&& "最新消息" in categories[]->title
+      const result = await client.fetch(`
+          *[_type == "post"] | order(views desc)[0...6] {
+            title,
+            slug,
+            publishedAt,
+            mainImage,
+            views,
+            categories[]->{
+            title,
+            },
+            body,
+          }
+        `);
+
+      setNewsPosts(result);
+    }
+    fetchNewsPosts();
+  }, []);
+
   return (
     <>
-      <div className="homeContactusDiv">
-        <h2>Contact us</h2>
-        <div className="contactTxt01">
-          <h3>聯絡GoYours</h3>
-          <p>
-            無論是短期進修、語言學校，還是打工度假體驗不同人生，
-            <br />
-            背上背包，跟我們一起冒險，留下無悔的足跡！
-          </p>
-        </div>
-        <div className="contactTxt01">
-          <h3>打工度假、留學免費諮詢</h3>
-          <p>
-            透過表單預約與我們一對一諮詢。
-            <br />
-            也歡迎Line或FB聯繫，GoYours將是您打工度假、留學的最佳夥伴！
-          </p>
-        </div>
-        <a
-          className="homecontactusBtn"
-          href="./contact"
-          alt="to Contact Us page"
+      <h1>
+        <span className="yellow">Hot Post</span>熱門文章
+      </h1>
+      <div className="homehotpostDiv">
+        <Swiper
+          spaceBetween={100}
+          slidesPerView={5}
+          centeredSlides={true}
+          navigation={true}
+          // autoplay={{ delay: 3000, disableOnInteraction: false }}
+          modules={[Autoplay, Navigation]}
+          loop={true}
         >
-          <ArcText text="填寫表單，我們將聯絡您！" />
-          <FaArrowRightLong className="homecontactusArrow" />
-        </a>
+          {NewsPosts.map((post, index) => (
+            <SwiperSlide key={index} className="homeperhotpost">
+              <a
+                href={`/post/${encodeURIComponent(post.slug.current)}`}
+                className="homeprehotpost"
+              >
+                {post.mainImage && (
+                  <div className="homeNewspostImg">
+                    <img src={urlFor(post.mainImage).url()} alt={post.title} />
+                  </div>
+                )}
+                <h3>{post.title}</h3>
+                <ul>
+                  {post.categories.map((category, index) => (
+                    <li key={index} className="category yellow">
+                      #{category.title}
+                    </li>
+                  ))}
+                </ul>
+                <div className="homehotpostPreview">
+                  {post.body ? (
+                    <PortableText
+                      value={post.body}
+                      components={{
+                        marks: {
+                          link: ({ children }) => <>{children}</>, // 不渲染 <a> 標籤
+                        },
+                      }}
+                    />
+                  ) : (
+                    <p>本文無內容</p>
+                  )}
+                </div>
+                <div className="homehotpostDate">
+                  <img src="/src/assets/圓形logo.png" />
+                  <p>
+                    {new Date(post.publishedAt)
+                      .toLocaleDateString('zh-TW', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })
+                      .replace(/\//g, '.')}
+                  </p>
+                </div>
+              </a>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
+      <a className="formoreBtntoPage" href="./post">
+        看所有文章
+      </a>
     </>
   );
 };
@@ -326,8 +467,11 @@ export default function Home() {
       <div className="workingholidaySection">
         <Wokringholiday />
       </div>
+      <div className="homeHotpostSection">
+        <Hotpost />
+      </div>
       <div className="homeContactusSection">
-        <Contactus />
+        <ContactUs />
       </div>
     </>
   );

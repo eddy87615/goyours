@@ -38,18 +38,6 @@ export default function PostArea({ posts, handleCategoryClick }) {
               <Link to={`/post/${post.slug.current}`}>{post.title}</Link>{' '}
             </h1>
             <ul className="info">
-              {/* <li className="view">
-                <BiShow className="icon" />
-                {post.views || 0}
-              </li> */}
-              {/* {post.author ? (
-                <li className="author">
-                  <BiEditAlt className="icon" />
-                  {post.author.name}
-                </li>
-              ) : (
-                <li className="author">無作者</li>
-              )} */}
               {post.categories && post.categories.length > 0 ? (
                 <>
                   {/* <BiPurchaseTag className="icon" /> */}

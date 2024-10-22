@@ -18,6 +18,8 @@ export default function BreadCrumb({ paths }) {
           <li key={index}>
             {path.url ? (
               <a href={path.url}>{path.name}</a>
+            ) : path.onClick ? (
+              <a onClick={path.onClick}>{path.name}</a>
             ) : (
               <span>{path.name}</span>
             )}

@@ -1,22 +1,3 @@
-.school {
-  display: flex;
-  gap: 2rem;
-
-  position: relative;
-  height: 20rem;
-  width: 100%;
-}
-
-.schoolimg {
-  width: 100rem;
-  height: 100%;
-}
-.school img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .loading {
   width: 100dvw;
   height: 100vh;
@@ -25,4 +6,74 @@
   justify-content: center;
 
   font-weight: bold;
+}
+
+.schoolPageschoolSection {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
+  gap: 4rem;
+  padding-top: 12rem;
+}
+.tagnow {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+
+  color: var(--goyoursYellow);
+
+  font-size: 2.5rem;
+}
+
+.schoolCard {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+.schoolCard h2 {
+  position: absolute;
+  top: 1rem;
+  left: -4%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  background-color: var(--goyoursYellow);
+
+  font-size: 1rem;
+  color: #fff;
+  font-weight: bold;
+  width: fit-content;
+}
+.schoolCard h4 {
+  margin: 0.5rem 0 0 0;
+  width: 80%;
+  height: 2rem;
+
+  text-align: center;
+  font-size: 1.1rem;
+}
+.schoolCard img {
+  width: 100%;
+}
+
+.schoollinkimg {
+  width: 100%;
+  height: 13rem;
+}
+.schoollinkimg img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 1rem;
 }
