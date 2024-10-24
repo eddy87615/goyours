@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { PortableText } from '@portabletext/react'; // 用來顯示富文本
 import { useParams, useNavigate } from 'react-router-dom'; // 用來獲取 URL 中的 slug
@@ -18,6 +19,29 @@ import BreadCrumb from '../components/breadCrumb/breadCrumb';
 import ContactUs from '../components/contactUs/contactUs';
 import './schoolDetail.css';
 
+const Features = ({ school }) => {
+  return (
+    <>
+      <div>
+        <h1 className="features">
+          <span className="yellow">Feature</span>學校特色
+        </h1>
+        <div className="featurestxt">
+          <ul>
+            {school.character.map((character, index) => (
+              <li key={index}>
+                {/* <div>{index + 1}</div> */}
+                <h2>{character.title}</h2>
+                <p>{character.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+};
+
 // 文章詳情頁
 export default function SchoolDetail() {
   const { slug } = useParams(); // 從 URL 獲取文章 slug
@@ -34,7 +58,7 @@ export default function SchoolDetail() {
       const school = await client.fetch(
         `
         *[_type == "school" && slug.current == $slug][0] {
-          name,address,transportation,phone,website,description,gallery,slug,logo,officialSite,sort
+          name,address,transportation,phone,website,description,gallery,slug,logo,officialSite,sort,character
         }
       `,
         { slug }
@@ -158,6 +182,7 @@ export default function SchoolDetail() {
           <img src={urlFor(school.logo).url()} className="schoollogo" />
         </div>
       </div>
+      <Features school={school} />
       <ContactUs />
 
       {/* 放大圖片的模態框 */}

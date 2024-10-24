@@ -1,0 +1,79 @@
+.postDetailSection {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 6rem;
+}
+.postbody {
+  padding-top: 4rem;
+}
+.postbody img {
+  width: 100%;
+
+  border-radius: 2rem;
+}
+.postbody h1 {
+  font-size: 2.5rem;
+  margin-top: 0;
+}
+
+.postinfolist {
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--goyoursYellow);
+
+  font-weight: bold;
+}
+.postinfolist ul {
+  display: flex;
+
+  gap: 2rem;
+}
+.postDetaildate {
+  position: relative;
+}
+.postDetaildate p {
+  padding-left: 2.5rem;
+}
+.postDetaildate::before {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-image: url(/src/assets/圓形logo.png);
+  background-position: center;
+  background-size: cover;
+}
+.postDetailviews {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.viewsicon {
+  font-size: 2rem;
+
+  color: var(--goyoursYellow);
+}
+.postDetialContactus {
+  width: 80vw;
+  margin: 0 auto;
+  padding-top: 10rem;
+}
+
+.gallery {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  margin-bottom: 2rem;
+}

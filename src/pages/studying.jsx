@@ -7,13 +7,13 @@ import './studying.css';
 import PostCategary from '../components/postCategory/postCategory';
 
 export default function Studying() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const location = useLocation(); // 获取路由传递的状态
+  const initialCategory = location.state?.selectedCategory || null; // 获取传递的分类
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory); // 将 initialCategory 设置为初始值
+
   const [searchQuery, setSearchQuery] = useState('');
   const [schools, setSchools] = useState([]); // 存储学校数据
   const [loading, setLoading] = useState(true); // 加载状态
-
-  const location = useLocation(); // 获取路由传递的状态
-  const initialCategory = location.state?.category || null; // 获取传递的分类
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);

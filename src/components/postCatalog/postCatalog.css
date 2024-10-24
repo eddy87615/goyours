@@ -1,0 +1,89 @@
+.postCatalog {
+  width: fit-content;
+
+  background-color: #ffeed9;
+
+  padding: 2rem;
+
+  border-radius: 2rem;
+
+  counter-reset: section;
+}
+
+.postCatalog h2 {
+  margin-top: 0;
+
+  color: var(--goyoursYellow);
+}
+
+.postCatalog li {
+  position: relative;
+
+  line-height: 2rem;
+}
+
+.postCatalog li::before {
+  counter-increment: section;
+  content: counter(section);
+
+  font-weight: bold;
+
+  color: var(--goyoursYellow);
+
+  padding: 1rem;
+}
+
+.postCatalog a {
+  font-weight: 500;
+}
+
+.postCatalog .catalogH2::before {
+  counter-increment: section;
+  content: counter(section) '.';
+
+  font-weight: bold;
+  color: var(--goyoursYellow);
+
+  padding: 1rem 0.2rem;
+}
+
+.postCatalog .catalogH3 {
+  counter-reset: subsection;
+}
+.postCatalog .catalogH3 li {
+  padding-left: 1rem;
+}
+.postCatalog .catalogH3 li::before {
+  counter-increment: subsection;
+  content: counter(section) '-' counter(subsection) '.';
+  font-weight: bold;
+  color: var(--goyoursYellow);
+  padding: 1rem 0.2rem;
+}
+
+.postTxtarea li {
+  list-style: disc;
+}
+.postTxtarea {
+  counter-reset: textSrea;
+
+  line-height: 2rem;
+}
+
+.postTxtarea h2 {
+  display: flex;
+  align-items: center;
+}
+
+.postTxtarea h2::before {
+  counter-increment: textSrea;
+  content: counter(textSrea);
+
+  font-weight: bold;
+  font-size: 6rem;
+  font-style: oblique;
+
+  color: #ffeed9;
+
+  padding: 1rem;
+}

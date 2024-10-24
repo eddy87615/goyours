@@ -5,18 +5,18 @@
 .schoolDetailPage {
   position: relative;
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
 
-  padding: 13rem 0;
+  padding: 13rem 0 10rem 0;
 }
 
 .picSlider {
-  width: 44%;
+  width: 50%;
   height: 100%;
 }
 
 .upperSlider {
-  height: 30rem;
+  height: 24rem;
 
   border-radius: 1rem;
 
@@ -46,7 +46,13 @@
 .schoolUnfoSection {
   position: relative;
 }
+.schoolUnfoSection h1 {
+  width: 75%;
 
+  border-bottom: 2px solid #d0d0d0;
+  padding-bottom: 1rem;
+  margin-top: 0;
+}
 .schoolInfo {
   display: flex;
   flex-direction: column;
@@ -63,7 +69,12 @@
   display: flex;
   flex-direction: column;
 
-  gap: 1rem;
+  width: 100%;
+
+  gap: 0.2rem;
+}
+.schoolInfo ul > li {
+  line-height: 2rem;
 }
 
 .schoollogo {
@@ -123,4 +134,49 @@
   border: none;
 
   cursor: pointer;
+}
+
+.features {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+}
+
+.featurestxt {
+  width: 60vw;
+
+  margin: 0 auto;
+  padding: 10rem 0;
+
+  counter-reset: section;
+}
+
+.featurestxt ul {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+.featurestxt li {
+  line-height: 2rem;
+  font-size: 1.1rem;
+}
+.featurestxt p {
+  padding-left: 6rem;
+}
+.featurestxt h2::before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero);
+
+  font-weight: bold;
+
+  background-color: var(--goyoursYellow);
+  color: #fff;
+
+  padding: 1.5rem;
+  margin-right: 1rem;
+
+  clip-path: circle(40%);
 }

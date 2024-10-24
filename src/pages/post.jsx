@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom'; // 確保使用 useLocation 來監聽傳遞的狀態
+
 import { client } from '../cms/sanityClient';
 import PostArea from '../components/postArea/postArea';
 import PostCategary from '../components/postCategory/postCategory';
@@ -22,6 +24,14 @@ export default function Post() {
     setSelectedCategory(category);
     setSearchQuery('');
   };
+
+  // 监听 location.state 的变化
+  const location = useLocation(); // 接收路由傳遞的狀態
+  useEffect(() => {
+    if (location.state?.selectedCategory) {
+      setSelectedCategory(location.state.selectedCategory); // 如果有新的分类传入，更新 selectedCategory
+    }
+  }, [location.state]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [posts, setPosts] = useState([]);
@@ -118,7 +128,7 @@ export default function Post() {
       />
       {filteredPosts.length === 0 ? (
         <div className="postLoading">
-          <p>這個標籤裡沒有文章ಥ∀ಥ</p>
+          <p>沒有相關文章ಥ∀ಥ</p>
         </div>
       ) : (
         <PostArea
