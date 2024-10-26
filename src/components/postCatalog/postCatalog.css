@@ -60,30 +60,3 @@
   color: var(--goyoursYellow);
   padding: 1rem 0.2rem;
 }
-
-.postTxtarea li {
-  list-style: disc;
-}
-.postTxtarea {
-  counter-reset: textSrea;
-
-  line-height: 2rem;
-}
-
-.postTxtarea h2 {
-  display: flex;
-  align-items: center;
-}
-
-.postTxtarea h2::before {
-  counter-increment: textSrea;
-  content: counter(textSrea);
-
-  font-weight: bold;
-  font-size: 6rem;
-  font-style: oblique;
-
-  color: #ffeed9;
-
-  padding: 1rem;
-}

@@ -15,9 +15,7 @@ import './postDetail.css';
 const customComponents = {
   types: {
     image: ({ value }) => {
-      if (!value.asset) {
-        return null;
-      }
+      if (!value.asset) return null;
       return (
         <div className="post-image">
           <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
@@ -25,9 +23,7 @@ const customComponents = {
       );
     },
     gallery: ({ value }) => {
-      if (!value.images || value.images.length === 0) {
-        return null;
-      }
+      if (!value.images || value.images.length === 0) return null;
       return (
         <div className="gallery">
           {value.images.map((image, index) => (
@@ -44,7 +40,10 @@ const customComponents = {
   },
   marks: {
     color: ({ children, value }) => (
-      <span style={{ color: value.hex }}>{children}</span>
+      <span style={{ color: value?.hex || '#000' }}>{children}</span>
+    ),
+    favoriteColor: ({ children, value }) => (
+      <span style={{ color: value?.hex || '#000' }}>{children}</span>
     ),
   },
 };

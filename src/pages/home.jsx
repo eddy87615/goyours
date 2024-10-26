@@ -391,9 +391,9 @@ const Hotpost = () => {
 
 export default function Home() {
   const HomeIntroimgList = [
-    { src: '/src/assets/KV_fujisan06.jpg', alt: '' },
-    { src: '/src/assets/KV_fujisan05.jpg', alt: '' },
-    { src: '/src/assets/KV_fujisan04.jpg', alt: '' },
+    { src: '/src/assets/KV_08.jpg', alt: '' },
+    { src: '/src/assets/KV_01.jpg', alt: '' },
+    { src: '/src/assets/KV_09.jpg', alt: '' },
   ];
 
   //nav height get
@@ -419,13 +419,16 @@ export default function Home() {
             // modules={[Autoplay]}
           >
             <SwiperSlide>
-              <img src="/src/assets/KV_fujisan03.jpg" />
+              <img src="/src/assets/KV_03.jpg" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/src/assets/KV_fujisan04.jpg" />
+              <img src="/src/assets/KV_02.jpg" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/src/assets/KV_fujisan05.jpg" />
+              <img src="/src/assets/KV_10.jpg" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="/src/assets/KV_11.jpg" />
             </SwiperSlide>
           </Swiper>
         </div>

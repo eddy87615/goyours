@@ -37,7 +37,7 @@
   position: relative;
 }
 .postDetaildate p {
-  padding-left: 2.5rem;
+  padding-left: 3rem;
 }
 .postDetaildate::before {
   content: '';
@@ -67,13 +67,60 @@
   padding-top: 10rem;
 }
 
+.postTxtarea li {
+  list-style: disc;
+}
+.postTxtarea {
+  counter-reset: textSrea;
+
+  line-height: 2rem;
+  padding-top: 2rem;
+}
+.postTxtarea p,
+.postTxtarea h3 {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.postTxtarea h2 {
+  display: flex;
+  align-items: center;
+}
+
+.postTxtarea h2::before {
+  counter-increment: textSrea;
+  content: counter(textSrea);
+
+  font-weight: bold;
+  font-size: 7rem;
+  font-style: oblique;
+
+  color: #ffeed9;
+
+  padding: 1rem;
+}
+
 .gallery {
   column-count: 2;
   column-gap: 2rem;
+
+  width: 80%;
+  margin: 0 auto;
 }
 
 .gallery img {
   width: 100%;
   display: block;
+
+  border-radius: 1rem;
   margin-bottom: 2rem;
+}
+
+.post-image {
+  width: 50%;
+
+  padding-left: 6rem;
+}
+.post-image img {
+  border-radius: 0%;
 }
