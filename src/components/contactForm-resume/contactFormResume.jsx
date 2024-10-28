@@ -1,51 +1,27 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
 import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
 import { Link } from 'react-router-dom';
 
-import './contactForm.css';
+import { FaCirclePlus } from 'react-icons/fa6';
+import { BsTrashFill } from 'react-icons/bs';
 
-export default function ContactForm() {
-  const location = useLocation();
-  const initialMessage = location.state?.initialMessage || '';
+import './contactFormResume.css';
 
+export default function ContactFormResume() {
   const [formData, setFormData] = useState({
     name: '',
     age: '',
     phone: '',
     lineId: '',
     email: '',
-    selectedCases: [],
     callTime: '',
-    tellus: initialMessage,
+    resume: null,
   });
-
-  useEffect(() => {
-    setFormData((prevData) => ({
-      ...prevData,
-      tellus: initialMessage,
-    }));
-  }, [initialMessage]);
-
-  const [caseOptions, setCaseOptions] = useState([]);
   const [isSubmited, setIsSubmited] = useState(false);
   const [posts, setPosts] = useState([]);
   const [randomPosts, setRandomPosts] = useState([]);
 
-  // 從Sanity中獲取方案選項
-  useEffect(() => {
-    async function fetchCaseOptions() {
-      const cases = await client.fetch(`
-        *[_type == "caseOptions"]{
-          _id, title
-        }
-      `);
-      setCaseOptions(cases);
-    }
-
-    fetchCaseOptions();
-  }, []);
   useEffect(() => {
     async function fetchPosts() {
       const posts = await client.fetch(`
@@ -72,24 +48,16 @@ export default function ContactForm() {
   }, [posts, isSubmited]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
-
-  const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
-    if (checked) {
+    const { name, value, type, checked, files } = e.target;
+    if (type === 'file') {
       setFormData((prevData) => ({
         ...prevData,
-        selectedCases: [...prevData.selectedCases, value],
+        resume: files[0],
       }));
     } else {
       setFormData((prevData) => ({
         ...prevData,
-        selectedCases: prevData.selectedCases.filter((item) => item !== value),
+        [name]: type === 'checked' ? checked : value,
       }));
     }
   };
@@ -99,20 +67,36 @@ export default function ContactForm() {
 
     const currentDateTime = new Date().toISOString();
 
+    let resumeAsset;
+    if (formData.resume) {
+      try {
+        resumeAsset = await client.assets.upload('file', formData.resume, {
+          filename: formData.resume.name,
+        });
+      } catch (error) {
+        console.error('上傳履歷失敗：', error);
+        alert('上傳履歷失敗，請稍後再試');
+        return;
+      }
+    }
     // 準備發送到 Sanity 的資料
     const contactData = {
-      _type: 'contact',
+      _type: 'jobapply',
       name: formData.name,
       age: formData.age,
       phone: formData.phone,
       lineId: formData.lineId,
       email: formData.email,
-      case: formData.selectedCases,
       callTime: formData.callTime,
       contacted: false, // 初始聯絡狀態為 false
-      remarks: formData.tellus, // 備註初始為空
+      remarks: '', // 備註初始為空
       upTime: currentDateTime, // 表單送出時間
-      tellus: formData.tellus,
+      resume: resumeAsset?._id
+        ? {
+            _type: 'file',
+            asset: { _type: 'reference', _ref: resumeAsset._id },
+          }
+        : null,
     };
 
     try {
@@ -126,14 +110,33 @@ export default function ContactForm() {
         phone: '',
         lineId: '',
         email: '',
-        selectedCases: [],
         callTime: '',
+        resume: null,
       });
     } catch (error) {
       console.error('提交失敗:', error);
       alert('提交失敗，請稍後再試');
     }
   };
+
+  const [files, setFiles] = useState([]);
+
+  const handleFileChange = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+
+    if (files.length + selectedFiles.length > 4) {
+      alert('最多只能上傳 4 個文件！');
+      return;
+    }
+
+    setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
+  };
+
+  const removeFile = (index) => {
+    setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+  };
+
+  const fileInputRef = useRef(null);
 
   return (
     <>
@@ -186,13 +189,13 @@ export default function ContactForm() {
         </>
       ) : (
         <div className="contactusComponent">
-          <h1>Contact us</h1>
+          <h1>Application</h1>
           <div className="contactimg">
             <img src="/src/assets/LOGO-09.png" />
             <img src="/src/assets/LOGO-02.png" />
           </div>
-          <form className="contactForm" onSubmit={handleSubmit}>
-            <label htmlFor="name">
+          <form className="contactFormResume" onSubmit={handleSubmit}>
+            <label htmlFor="name" className="realName">
               <p>真實姓名：</p>
               <br />
               <input
@@ -205,7 +208,7 @@ export default function ContactForm() {
               />
             </label>
 
-            <label htmlFor="age">
+            <label htmlFor="age" className="age">
               <p>年齡：</p>
               <br />
               <input
@@ -218,7 +221,7 @@ export default function ContactForm() {
               />
             </label>
 
-            <label htmlFor="phone">
+            <label htmlFor="phone" className="phone">
               <p>行動電話：</p>
               <br />
               <input
@@ -229,7 +232,7 @@ export default function ContactForm() {
                 required
               />
             </label>
-            <label htmlFor="lineId">
+            <label htmlFor="lineId" className="lineId">
               <p>LINE ID：</p>
               <br />
               <input
@@ -240,7 +243,7 @@ export default function ContactForm() {
                 required
               />
             </label>
-            <label htmlFor="email">
+            <label htmlFor="email" className="email">
               <p>電子郵件：</p>
               <br />
               <input
@@ -251,27 +254,8 @@ export default function ContactForm() {
                 required
               />
             </label>
-            <label htmlFor="case">
-              <p>想詢問的方案：</p>
-              <br />
-              <div className="caseOptions">
-                {caseOptions.map((option) => (
-                  <label key={option._id}>
-                    <input
-                      type="checkbox"
-                      value={option.title}
-                      checked={formData.selectedCases.includes(option.title)}
-                      onChange={handleCheckboxChange}
-                      // required={
-                      //   index === 0 && formData.selectedCases.length === 0
-                      // }
-                    />
-                    {option.title}
-                  </label>
-                ))}
-              </div>
-            </label>
-            <label>
+
+            <label className="contactTime">
               <p>方便聯絡時段：</p>
               <br />
               <input
@@ -283,13 +267,56 @@ export default function ContactForm() {
                 required
               />
             </label>
-            <label>
+            <div className="upload">
+              <p>上傳履歷：</p>
+              <div className="uploadSection">
+                <div className="uploadTool">
+                  <input
+                    type="file"
+                    multiple
+                    accept=".pdf,.doc,.docx"
+                    onChange={handleFileChange}
+                    ref={fileInputRef}
+                    style={{ display: 'none' }} // 隱藏
+                  />
+                  <span className="uploadNotice">
+                    最大檔案大小為30MB。不支援 .bat、.exe
+                    等檔案類型；最多上傳四個檔案。
+                  </span>
+                  <div
+                    className="uploadBtn"
+                    onClick={(e) => {
+                      e.stopPropagation(); // 阻止事件冒泡
+                      fileInputRef.current.click();
+                    }}
+                  >
+                    <FaCirclePlus />
+                    點我上傳檔案
+                  </div>
+                </div>
+                <div className="fileList">
+                  <ul>
+                    {files.map((file, index) => (
+                      <li key={index}>
+                        {file.name}
+
+                        <button onClick={() => removeFile(index)}>
+                          <BsTrashFill />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <label className="tellus">
               <p>想對我們說的話：</p>
               <br />
               <textarea
-                value={formData.tellus}
+                type="textarea"
                 id="tellus"
                 name="tellus"
+                value={formData.tellus}
                 onChange={handleChange}
               />
             </label>

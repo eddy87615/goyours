@@ -76,10 +76,11 @@
   line-height: 2rem;
   padding-top: 2rem;
 }
+.postTxtarea ul,
+.postTxtarea ol,
 .postTxtarea p,
 .postTxtarea h3 {
-  width: 80%;
-  margin: 0 auto;
+  padding-left: 6rem;
 }
 
 .postTxtarea h2 {

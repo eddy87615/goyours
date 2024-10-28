@@ -238,7 +238,7 @@ const Wokringholiday = () => {
       src: '/src/assets/上野倉庫作業員.jpeg',
       alt: '上野倉庫作業員',
       introtxt: '',
-      jobContent: '倉庫內輕作業及食品分類人員',
+      jobContent: '倉庫輕作業及食品分類人員',
       traffic: '上野站',
       salary: '1150円',
     },

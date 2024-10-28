@@ -13,6 +13,7 @@ import About from './pages/about';
 import SchoolDetail from './pages/schoolDetail';
 import Footer from './components/footer/footer';
 import ScrollToTop from './components/scrollToTop/scrollToTop';
+import ContactResume from './pages/contactResume';
 
 function App() {
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/school/:slug" element={<SchoolDetail />} />
         <Route path="/working" element={<Working />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/contactResume" element={<ContactResume />} />
       </Routes>
       <Footer />
     </Router>

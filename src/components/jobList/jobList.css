@@ -1,0 +1,158 @@
+.jobListSection {
+  padding-top: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.joblist {
+  width: 100%;
+
+  padding-bottom: 2rem;
+
+  border-bottom: 1px solid #888;
+}
+
+.joblist img {
+  width: 30%;
+
+  border-radius: 1.5rem;
+}
+
+.listintro {
+  position: relative;
+
+  display: flex;
+  gap: 2rem;
+}
+.listintro ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  font-weight: bold;
+}
+.listintro ul > li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.joblistBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.listintro .openDetail {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+
+  bottom: 0;
+  right: 0;
+  border: none;
+  background-color: transparent;
+
+  opacity: 1;
+  transition-duration: 0.2s;
+}
+.moreBtn {
+  margin-left: 0.6rem;
+
+  font-size: 1.2rem;
+}
+.joblistBtn > button:nth-child(1) {
+  background-color: var(--goyoursYellow);
+  color: #fff;
+
+  padding: 1rem 2rem;
+  border-radius: 50rem;
+
+  border: none;
+}
+.joblistBtn > button:nth-child(2) {
+  background-color: #414042;
+  color: #fff;
+
+  padding: 1rem 2rem;
+  border-radius: 50rem;
+
+  border: none;
+}
+
+.listdetail {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 22rem;
+
+  transition-duration: 0.5s;
+
+  font-weight: bold;
+}
+
+.listdetail ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding-left: 34%;
+  padding-top: 2rem;
+}
+.listdetail ul > li {
+  list-style-type: disc;
+}
+.listdetail a {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 1rem;
+
+  color: #fff;
+  font-weight: bold;
+
+  background-color: #414042;
+  padding: 1rem 2rem;
+
+  margin: 2rem 0 0 23rem;
+
+  border-radius: 0.8rem;
+}
+
+.listdetail button {
+  position: absolute;
+
+  bottom: 0;
+  right: 0;
+
+  border: none;
+  background-color: transparent;
+}
+
+.close {
+  overflow: hidden;
+
+  height: 0;
+
+  transition-duration: 0.5s;
+}
+
+.btnClose {
+  opacity: 0 !important;
+
+  transition-duration: 0.2s;
+
+  pointer-events: none;
+}

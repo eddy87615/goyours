@@ -1,8 +1,5 @@
-.contactusSection {
-}
-
 .contactus {
-  background-image: url(/src/assets/KV_13.png);
+  background-image: url(/src/assets/LINE_ALBUM_2024.10.27_241028_1.jpg);
   background-size: cover;
   background-position: center;
   height: 50vh;
@@ -10,8 +7,15 @@
   display: flex;
   align-items: end;
 }
+.jobapplyh1 {
+  width: 100%;
+  text-align: center;
 
+  font-size: 2.5rem;
+}
 .contactusTitle {
+  width: 100%;
+
   padding: 6rem 8rem;
   color: #fff;
 }

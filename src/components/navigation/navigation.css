@@ -29,7 +29,24 @@
 .navMenu {
   display: flex;
   align-items: center;
-  gap: 2rem;
+
+  background-color: #919191;
+
+  border-radius: 1rem;
+}
+.navMenu a {
+  padding: 1.5rem 1.5rem;
+
+  color: #fff;
+}
+.navMenu a:nth-child(5) {
+  background-color: var(--goyoursYellow);
+
+  border-radius: 1rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navLogo {

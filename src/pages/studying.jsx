@@ -25,7 +25,8 @@ export default function Studying() {
 
   const categories = [
     { label: '所有學校', value: null },
-    { label: '關東地區', value: '關東地區' },
+    { label: '關東地區：東京', value: '關東地區：東京' },
+    { label: '關東地區：其他', value: '關東地區：其他' },
     { label: '關西地區', value: '關西地區' },
     { label: '北海道・東北地區', value: '北海道・東北地區' },
     { label: '九州・沖繩地區', value: '九州・沖繩地區' },
@@ -65,13 +66,17 @@ export default function Studying() {
 
   const filteredSchools = schools.filter((school) => {
     const matchesCategory = selectedCategory
-      ? school.sort && school.sort.includes(selectedCategory)
+      ? Array.isArray(school.sort) &&
+        school.sort.some((category) => category === selectedCategory)
       : true;
 
-    // 根據 searchQuery 篩選
     const matchesSearchQuery = searchQuery
       ? school.name.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
+
+    // console.log(
+    //   `Checking school: ${school.name}, sort: ${school.sort}, selectedCategory: ${selectedCategory}, matchesCategory: ${matchesCategory}`
+    // );
 
     return matchesCategory && matchesSearchQuery;
   });
@@ -95,7 +100,11 @@ export default function Studying() {
           <p>這個標籤裡沒有學校ಥ∀ಥ</p>
         </div>
       ) : (
-        <School selectedCategory={selectedCategory} searchQuery={searchQuery} />
+        <School
+          schools={filteredSchools}
+          selectedCategory={selectedCategory}
+          searchQuery={searchQuery}
+        />
       )}
     </div>
   );

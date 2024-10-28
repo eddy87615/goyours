@@ -28,6 +28,7 @@ export default function ContactUs() {
     <>
       <div className="homeContactusDiv">
         <h2>Contact us</h2>
+
         <div className="contactTxt01">
           <h3>聯絡GoYours</h3>
           <p>

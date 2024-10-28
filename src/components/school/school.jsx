@@ -42,6 +42,11 @@ export default function School({ selectedCategory }) {
     fetchSchools(); // 调用异步函数
   }, []); // 空依赖数组表示只在组件挂载时执行一次
 
+  // 篩選符合 selectedCategory 的學校
+  const filteredSchools = schools.filter((school) =>
+    selectedCategory ? school.sort.includes(selectedCategory) : true
+  );
+
   // 加载时显示的内容
   if (loading) {
     return (
@@ -52,7 +57,7 @@ export default function School({ selectedCategory }) {
   }
 
   // 如果没有学校数据，显示提示信息
-  if (!schools.length) {
+  if (!filteredSchools.length) {
     return (
       <div className="postLoading">
         <p>沒有學校資訊</p>
@@ -63,10 +68,13 @@ export default function School({ selectedCategory }) {
   // 根据分页计算当前显示的学校
   const indexOfLastSchool = currentPage * schoolsPerPage;
   const indexOfFirstSchool = indexOfLastSchool - schoolsPerPage;
-  const currentSchools = schools.slice(indexOfFirstSchool, indexOfLastSchool);
+  const currentSchools = filteredSchools.slice(
+    indexOfFirstSchool,
+    indexOfLastSchool
+  );
 
   // 计算总页数
-  const totalPages = Math.ceil(schools.length / schoolsPerPage);
+  const totalPages = Math.ceil(filteredSchools.length / schoolsPerPage);
 
   // 处理页面更改
   const handlePageChange = (pageNumber) => {
