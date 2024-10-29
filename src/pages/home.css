@@ -55,7 +55,7 @@
   animation: scrollDownArrowLine 2s infinite ease-in-out;
 }
 .arrowDot {
-  transform: translate(0, -200px);
+  transform: translate(0, -205px);
 
   width: 10px;
   height: 10px;
@@ -220,6 +220,8 @@
   height: 20rem;
 
   border-radius: 2rem;
+
+  box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
 }
 
 .schoolListBg {
@@ -531,6 +533,8 @@
   border-radius: 2rem;
 
   background-color: var(--goyoursYellow);
+
+  box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
 }
 
 .jobListPre h3 {

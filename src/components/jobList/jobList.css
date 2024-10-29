@@ -1,14 +1,40 @@
 .jobListSection {
-  padding-top: 6rem;
+  padding-top: 10rem;
 
   display: flex;
   flex-direction: column;
   gap: 2rem;
 
   width: 80vw;
+
   margin: 0 auto;
 }
 
+.searchResultArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-bottom: 4rem;
+}
+.searchResultArea h2 {
+  font-size: 2rem;
+
+  margin-bottom: 0.5rem;
+
+  display: flex;
+  align-items: center;
+}
+.searchResultArea svg {
+  padding-right: 1rem;
+}
+
+.searchResult {
+  font-size: 1.5rem;
+
+  font-weight: bold;
+}
 .joblist {
   width: 100%;
 
@@ -27,12 +53,13 @@
   position: relative;
 
   display: flex;
+
   gap: 2rem;
 }
 .listintro ul {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 8%;
 
   font-weight: bold;
 }
@@ -72,13 +99,15 @@
   font-size: 1.2rem;
 }
 .joblistBtn > button:nth-child(1) {
-  background-color: var(--goyoursYellow);
+  background-color: #f8b300;
   color: #fff;
 
   padding: 1rem 2rem;
   border-radius: 50rem;
 
   border: none;
+
+  font-weight: bold;
 }
 .joblistBtn > button:nth-child(2) {
   background-color: #414042;
@@ -88,6 +117,8 @@
   border-radius: 50rem;
 
   border: none;
+
+  font-weight: bold;
 }
 
 .listdetail {
@@ -96,20 +127,25 @@
   display: flex;
   flex-direction: column;
 
-  height: 22rem;
+  height: 24rem;
 
   transition-duration: 0.5s;
-
   font-weight: bold;
 }
 
-.listdetail ul {
+.listdetaillist {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 8%;
 
   padding-left: 34%;
   padding-top: 2rem;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  transition-duration: 0.5s;
 }
 .listdetail ul > li {
   list-style-type: disc;
@@ -117,6 +153,7 @@
 .listdetail a {
   display: flex;
   width: fit-content;
+
   align-items: center;
   gap: 1rem;
 
@@ -126,9 +163,12 @@
   background-color: #414042;
   padding: 1rem 2rem;
 
-  margin: 2rem 0 0 23rem;
+  margin: 2rem 0 0 33%;
 
   border-radius: 0.8rem;
+
+  transition-delay: 0.2s;
+  opacity: 1;
 }
 
 .listdetail button {

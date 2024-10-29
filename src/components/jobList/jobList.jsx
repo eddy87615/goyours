@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { client, urlFor } from '../../cms/sanityClient';
 import { useNavigate } from 'react-router-dom';
@@ -8,39 +10,12 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { RiMoneyCnyCircleFill } from 'react-icons/ri';
 import { FaCirclePlus, FaCircleMinus } from 'react-icons/fa6';
 import { LuDownload } from 'react-icons/lu';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 import './jobList.css';
 
-export default function JobList() {
-  const [jobList, setJobList] = useState([]);
+export default function JobList({ jobList, isSearchTriggered }) {
   const [isOpenList, setIsOpenList] = useState({});
-
-  useEffect(() => {
-    async function fetchJoblist() {
-      const job = await client.fetch(`
-            *[_type == "jobList"] | order(publishedAt desc) {
-              name,
-              publishedAt,
-              mainImage,
-              slug,
-            location,
-            transportation,
-            jobcontent,
-            jobtime,
-            workhour,
-            resttime,
-            jobperiod,
-            salary,
-            privilege,
-            japanese,
-            detailedFile,
-            company
-            }
-            `);
-      setJobList(job);
-    }
-    fetchJoblist();
-  }, []);
 
   const toggleList = (slug) => {
     setIsOpenList((prevState) => ({
@@ -61,84 +36,113 @@ export default function JobList() {
     });
   };
 
+  console.log('JobList received jobs:', jobList); // 檢查 JobList 接收到的數據
+
   return (
     <div className="jobListSection">
-      {jobList.map((job) => (
-        <div key={job.slug.current || job.slug} className="joblist">
-          <div className="listintro">
-            <img src={urlFor(job.mainImage).url()} />
-            <ul>
-              <li>
-                <h2>{job.name}</h2>
-              </li>
-              <li>
-                <MdHomeWork className="yellow jobisticon" />
-                {job.company}
-              </li>
-              <li>
-                <LuClipboardList className="yellow jobisticon" />
-                {job.jobcontent}
-              </li>
-              <li>
-                <FaLocationDot className="yellow jobisticon" />
-                {job.transportation}
-              </li>
-              <li>
-                <RiMoneyCnyCircleFill className="yellow jobisticon" />
-                時薪{job.salary}日幣
-              </li>
-            </ul>
-            <div className="joblistBtn">
-              <button onClick={() => handleInquiry(job.name)}>我要諮詢</button>
-              <button onClick={() => handleInquiryResume(job.name)}>
-                我要申請
+      {isSearchTriggered && jobList.length > 0 ? (
+        <div className="searchResultArea">
+          <h2 className="yellow">
+            <FaMagnifyingGlass />
+            搜尋結果
+          </h2>
+          <span className="yellow searchResult">
+            您所搜尋的資料符合條件共有{jobList.length}筆
+          </span>
+        </div>
+      ) : (
+        <></>
+      )}
+
+      {jobList.length > 0 ? (
+        jobList.map((job) => (
+          <div key={job.slug.current || job.slug} className="joblist">
+            <div className="listintro">
+              <img src={urlFor(job.mainImage).url()} />
+              <ul>
+                <li>
+                  <h2>{job.name}</h2>
+                </li>
+                <li>
+                  <MdHomeWork className="yellow jobisticon" />
+                  {job.company}
+                </li>
+                <li>
+                  <LuClipboardList className="yellow jobisticon" />
+                  {job.jobcontent}
+                </li>
+                <li>
+                  <FaLocationDot className="yellow jobisticon" />
+                  {job.transportation}
+                </li>
+                <li>
+                  <RiMoneyCnyCircleFill className="yellow jobisticon" />
+                  時薪{job.salary}日幣
+                </li>
+              </ul>
+              <div className="joblistBtn">
+                <button onClick={() => handleInquiry(job.name)}>
+                  我要諮詢
+                </button>
+                <button onClick={() => handleInquiryResume(job.name)}>
+                  我要申請
+                </button>
+              </div>
+              <button
+                onClick={() => toggleList(job.slug.current || job.slug)}
+                className={`${
+                  isOpenList[job.slug.current || job.slug]
+                    ? 'openDetail btnClose'
+                    : 'openDetail'
+                }`}
+              >
+                ⋯⋯點我看更多
+                <FaCirclePlus className="yellow moreBtn" />
               </button>
             </div>
-            <button
-              onClick={() => toggleList(job.slug.current || job.slug)}
-              className={`${
-                isOpenList[job.slug.current || job.slug]
-                  ? 'openDetail btnClose'
-                  : 'openDetail'
+            <div
+              className={`listdetail ${
+                isOpenList[job.slug.current || job.slug] ? '' : 'close'
               }`}
             >
-              ⋯⋯點我看更多
-              <FaCirclePlus className="yellow moreBtn" />
-            </button>
-          </div>
-          <div
-            className={`listdetail ${
-              isOpenList[job.slug.current || job.slug] ? '' : 'close'
-            }`}
-          >
-            <ul>
-              <li>工作期間：{job.jobperiod}</li>
-              <li>勤務時間：{job.jobtime}</li>
-              <li>休息時間：{job.resttime}</li>
-              <li>每週工時：{job.workhour}</li>
-              <li>日文程度：{job.japanese}</li>
-              <li>福利厚生：{job.privilege}</li>
-            </ul>
-            {job.detailedFile?.asset?._ref && (
-              <a
-                href={`https://cdn.sanity.io/files/${
-                  client.config().projectId
-                }/${client.config().dataset}/${
-                  job.detailedFile.asset._ref.split('-')[1]
-                }.pdf`} // 使用 _ref 生成 URL
-                download
-                target="blank"
+              <ul
+                className={`listdetaillist ${
+                  isOpenList[job.slug.current || job.slug] ? '' : 'close'
+                }`}
               >
-                <LuDownload />
-                下載求人票
-              </a>
-            )}
-            <button onClick={() => toggleList(job.slug.current || job.slug)}>
-              <FaCircleMinus className="yellow moreBtn" />
-            </button>
+                <li>工作期間：{job.jobperiod}</li>
+                <li>勤務時間：{job.jobtime}</li>
+                <li>休息時間：{job.resttime}</li>
+                <li>每週工時：{job.workhour}</li>
+                <li>日文程度：{job.japanese}</li>
+                <li>福利厚生：{job.privilege}</li>
+              </ul>
+              {job.detailedFile?.asset?._ref && (
+                <a
+                  href={`https://cdn.sanity.io/files/${
+                    client.config().projectId
+                  }/${client.config().dataset}/${
+                    job.detailedFile.asset._ref.split('-')[1]
+                  }.pdf`} // 使用 _ref 生成 URL
+                  download
+                  target="blank"
+                  className={` ${
+                    isOpenList[job.slug.current || job.slug] ? '' : 'btnClose'
+                  }`}
+                >
+                  <LuDownload />
+                  下載求人票
+                </a>
+              )}
+              <button onClick={() => toggleList(job.slug.current || job.slug)}>
+                <FaCircleMinus className="yellow moreBtn" />
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <div className="postLoading postLoadingP">無搜尋結果</div>
+      )}
     </div>
   );
 }

@@ -60,7 +60,7 @@ export default function School({ selectedCategory }) {
   if (!filteredSchools.length) {
     return (
       <div className="postLoading">
-        <p>沒有學校資訊</p>
+        <p>沒有學校資訊ಥ∀ಥ</p>
       </div>
     );
   }

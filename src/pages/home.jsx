@@ -391,9 +391,9 @@ const Hotpost = () => {
 
 export default function Home() {
   const HomeIntroimgList = [
-    { src: '/src/assets/KV_08.jpg', alt: '' },
-    { src: '/src/assets/KV_01.jpg', alt: '' },
-    { src: '/src/assets/KV_09.jpg', alt: '' },
+    { src: '/src/assets/KV_17.jpg', alt: 'maple leaves' },
+    { src: '/src/assets/KV_07.jpg', alt: '' },
+    { src: '/src/assets/KV_26.jpg', alt: '' },
   ];
 
   //nav height get
@@ -422,13 +422,13 @@ export default function Home() {
               <img src="/src/assets/KV_03.jpg" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/src/assets/KV_02.jpg" />
+              <img src="/src/assets/KV_08.jpg" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/src/assets/KV_10.jpg" />
+              <img src="/src/assets/KV_20.jpg" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/src/assets/KV_11.jpg" />
+              <img src="/src/assets/KV_22.jpg" />
             </SwiperSlide>
           </Swiper>
         </div>

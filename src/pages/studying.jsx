@@ -16,6 +16,7 @@ export default function Studying() {
   const [loading, setLoading] = useState(true); // 加载状态
 
   const handleCategoryClick = (category) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // 返回到頁面的最頂端
     setSelectedCategory(category);
   };
 

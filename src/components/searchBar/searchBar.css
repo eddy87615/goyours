@@ -1,0 +1,85 @@
+.searchbar {
+  /* width: 80vw; */
+  /* height: 10rem; */
+
+  background-color: #f8b300;
+  border-radius: 1.5rem;
+
+  margin: 0 auto;
+  transform: translate(0, 50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 2rem 2rem;
+}
+
+.searchup,
+.searchdown {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.searchup input,
+.searchup select {
+  padding: 0.5rem 1rem;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  color: #656466;
+}
+
+.searchdown label {
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  color: #fff;
+  font-weight: bold;
+
+  position: relative;
+}
+.searchdown input {
+  display: none;
+}
+.searchdown label .custom-checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #f1a33b;
+  background-color: #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-right: 0.5rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.searchdown label.active .custom-checkbox {
+  background-color: #414042;
+  border-color: #fff;
+}
+
+.searchdown button {
+  border: none;
+  border-radius: 50rem;
+
+  background-color: #414042;
+  color: #fff;
+  font-weight: bold;
+
+  padding: 0.8rem 4rem;
+}

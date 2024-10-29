@@ -22,6 +22,7 @@ export default function Post() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // 返回到頁面的最頂端
     setSearchQuery('');
   };
 

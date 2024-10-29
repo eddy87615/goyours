@@ -9,7 +9,7 @@ export default function ContactResume() {
 
   return (
     <div className="contactusSection">
-      <div className="contactus">
+      <div className="contactusResume">
         <div className="contactusTitle">
           <h1 className="jobapplyh1">{jobTitle}——打工度假申請</h1>
         </div>

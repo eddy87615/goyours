@@ -1,6 +1,13 @@
 .jobListKv {
-  background-image: url(/src/assets/KV_03.jpg);
+  background-image: url(/src/assets/KV_15.jpg);
   background-size: cover;
   background-position: center;
   height: 50vh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
 }
