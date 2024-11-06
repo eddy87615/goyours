@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
+import { TbBoxMultiple } from 'react-icons/tb';
 
 import './navigation.css';
 
@@ -27,7 +27,7 @@ export default function Navigation() {
     <nav className={`mainNav ${visible ? 'visible' : 'hidden'}`}>
       <div className="navLogo">
         <Link to="/">
-          <img src="/src/assets/LOGO-03.png" alt="logo" width={150} />
+          <img src="/src/assets/LOGO-03.png" alt="logo" width={250} />
         </Link>
       </div>
       <div className="navMenu">
@@ -35,9 +35,9 @@ export default function Navigation() {
         <Link to="/post">文章專區</Link>
         <Link to="/studying">日本留學</Link>
         <Link to="/working">打工度假</Link>
-        <Link to="/contact">
+        <Link to="/contact" target="blank">
           聯絡我們
-          <FaArrowUpRightFromSquare />
+          <TbBoxMultiple />
         </Link>
       </div>
     </nav>

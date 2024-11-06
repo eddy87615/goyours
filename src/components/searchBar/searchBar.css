@@ -53,6 +53,8 @@
   font-weight: bold;
 
   position: relative;
+
+  cursor: pointer;
 }
 .searchdown input {
   display: none;

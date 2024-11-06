@@ -23,50 +23,6 @@
   object-fit: cover;
 }
 
-/*scroll down arrow*/
-.scrollDownArrow {
-  position: absolute;
-  bottom: 6%;
-  right: 3%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.scrollText {
-  transform: rotate(90deg);
-
-  font-size: 1.2rem;
-  font-weight: bold;
-
-  margin-bottom: 4rem;
-
-  color: #757575;
-}
-.arrowLine {
-  width: 2px;
-  height: 200px;
-}
-.arrowLine::after {
-  content: '';
-  position: absolute;
-  background-color: #757575;
-  width: 2px;
-  animation: scrollDownArrowLine 2s infinite ease-in-out;
-}
-.arrowDot {
-  transform: translate(0, -205px);
-
-  width: 10px;
-  height: 10px;
-  background-color: #757575;
-
-  border-radius: 50px;
-
-  animation: scrollDownArrowDot 2s infinite ease-in-out;
-}
-/*scroll down arrow*/
-
 /*homrintroSection*/
 .homrintroSection {
   position: relative;
@@ -83,6 +39,9 @@
 
   width: 50%;
 }
+.homeintrotxt h2 {
+  margin: 0;
+}
 .homeintroImgDiv0,
 .homeintroImgDiv1,
 .homeintroImgDiv2 {
@@ -92,9 +51,9 @@
 }
 .homeintroImgDiv0 {
   top: 10%;
-  left: -10%;
-  width: 32rem;
-  height: 32rem;
+  left: -20%;
+  width: 40rem;
+  height: 40rem;
 
   animation: homeintroImg0 3s infinite linear;
 }
@@ -373,10 +332,10 @@
   font-weight: bold;
   color: #f8b300;
 
-  padding: 0.5rem;
+  padding: 0.3rem 0.5rem;
   margin-right: 0.5rem;
 
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
 }
 .schoolListDetailBtn {
   position: absolute;
@@ -404,12 +363,12 @@
 }
 .schoolListPointer {
   position: absolute;
-  bottom: 2%;
-  right: 2%;
+  bottom: 3%;
+  right: 3%;
 
   color: #fff;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
 
   transform: rotate(-45deg);
 
@@ -437,213 +396,6 @@
   display: flex;
   margin: 0 auto;
   width: fit-content;
-}
-
-/*homeHotpostSection*/
-.homeHotpostSection {
-  height: 100%;
-}
-
-.homehotpostDiv {
-  padding: 10rem 0;
-}
-
-.homeperhotpost {
-  width: 30% !important;
-  height: 30% !important;
-
-  border: 2px solid #333;
-  border-radius: 2rem;
-
-  padding: 2rem;
-}
-.homeperhotpost ul {
-  display: flex;
-  gap: 1rem;
-}
-
-.homeperhotpost img {
-  width: 100%;
-
-  border-radius: 1rem;
-}
-.homeprehotpost {
-  padding: 2rem;
-}
-.homehotpostPreview {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-
-  color: #a1a1a1;
-
-  margin: 0;
-  padding: 0;
-}
-.homehotpostPreview h1,
-.homehotpostPreview h2,
-.homehotpostPreview h3,
-.homehotpostPreview h4,
-.homehotpostPreview p {
-  margin: 0;
-  padding: 0;
-}
-
-.homehotpostDate {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-
-  gap: 1rem;
-}
-.homehotpostDate img {
-  width: 2rem;
-  height: 2rem;
-}
-/*homeHotpostSection*/
-
-/*workingholiday*/
-
-.workingholidaySection {
-  height: fit-content;
-  width: 80vw;
-  margin: 0 auto;
-  margin-bottom: 10rem;
-}
-
-.workingholidayDiv {
-  width: 80vw;
-  margin: 0 auto;
-  padding: 10rem 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 4rem;
-}
-
-.jobListPre {
-  display: flex;
-
-  position: relative;
-
-  width: 100%;
-  height: 20rem;
-
-  border-radius: 2rem;
-
-  background-color: var(--goyoursYellow);
-
-  box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
-}
-
-.jobListPre h3 {
-  font-size: 1.3rem;
-
-  color: #fff;
-}
-.jobListPre p {
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-
-  margin: 0;
-  padding: 0.5rem 1rem;
-
-  background-color: #333;
-  color: #fff;
-  font-weight: bold;
-
-  width: fit-content;
-}
-
-.jobListimg {
-  transition-duration: 0.5s;
-  position: relative;
-  width: 50%;
-  height: 100%;
-  z-index: 1;
-  transform-origin: top left;
-  border-radius: 2rem;
-}
-.jobListimg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-
-  border-radius: 2rem 0 0 2rem;
-
-  transform-origin: top left;
-  transition-duration: 0.5s;
-}
-
-.jobListcontent {
-  width: 50%;
-
-  padding: 1rem;
-}
-
-.jobListcontent ul {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  width: fit-content;
-
-  gap: 1rem;
-
-  padding: 2rem 0;
-
-  color: #fff;
-  font-weight: bold;
-}
-.jobListcontent ul span {
-  background-color: #fff;
-
-  font-weight: bold;
-  color: #f8b300;
-
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-
-  border-radius: 0.5rem;
-}
-
-.workingholidaySection .schoolListDetailBtn {
-  bottom: 6%;
-  right: 4%;
-  opacity: 1;
-}
-
-/*ANIMATION*/
-@keyframes scrollDownArrowDot {
-  0% {
-    opacity: 1;
-  }
-  /* 90% {
-    opacity: 1;
-    transform: translate(0, -100px);
-  } */
-  100% {
-    opacity: 0;
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes scrollDownArrowLine {
-  0% {
-    height: 0;
-    opacity: 1;
-  }
-  /* 90% {
-    height: 100px;
-    opacity: 1;
-  } */
-
-  100% {
-    height: 200px;
-    opacity: 0;
-  }
 }
 
 @keyframes homeintroImg0 {

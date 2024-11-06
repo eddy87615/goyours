@@ -1,0 +1,76 @@
+/*scroll down arrow*/
+.scrollDownArrow {
+  position: absolute;
+  bottom: 6%;
+  right: 3%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scrollText {
+  writing-mode: vertical-lr;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  height: fit-content;
+  margin: 0;
+  margin-bottom: 1rem;
+
+  color: #757575;
+}
+.arrowLine {
+  width: 2px;
+  height: 195px;
+}
+.arrowLine::after {
+  content: '';
+  position: absolute;
+  background-color: #757575;
+  width: 2px;
+  animation: scrollDownArrowLine 2s infinite ease-in-out;
+}
+.arrowDot {
+  transform: translate(0, -205px);
+
+  width: 10px;
+  height: 10px;
+  background-color: #757575;
+
+  border-radius: 50px;
+
+  animation: scrollDownArrowDot 2s infinite ease-in-out;
+}
+/*scroll down arrow*/
+
+/*ANIMATION*/
+@keyframes scrollDownArrowDot {
+  0% {
+    opacity: 1;
+  }
+  /* 90% {
+      opacity: 1;
+      transform: translate(0, -100px);
+    } */
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes scrollDownArrowLine {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  /* 90% {
+      height: 100px;
+      opacity: 1;
+    } */
+
+  100% {
+    height: 200px;
+    opacity: 0;
+  }
+}

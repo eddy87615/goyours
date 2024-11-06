@@ -19,17 +19,17 @@
 
   border-radius: 4rem;
 
-  padding: 4rem 0;
+  padding: 0 0 4rem 0;
 
   overflow: hidden;
 }
 
 .homeContactusDiv h2 {
   text-align: center;
-  font-size: 12rem;
+  font-size: 14rem;
   color: #ffe2bc;
 
-  margin: 1rem 0;
+  margin: 0;
 }
 .contactTxt01,
 .contactTxt02 {

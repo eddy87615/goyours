@@ -15,7 +15,7 @@ export default function ContactUs() {
                      A 320, 320, 0, 0, 1, 480, 320" // 使用320px (20rem)作為圓弧的半徑
             />
           </defs>
-          <text fill="#ff8c00" fontSize="20" fontWeight="bold">
+          <text fill="#F8B300" fontSize="20" fontWeight="bold">
             <textPath href="#circlePath" startOffset="52%">
               {text}
             </textPath>

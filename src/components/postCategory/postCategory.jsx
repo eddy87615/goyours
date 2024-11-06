@@ -10,6 +10,8 @@ export default function PostCategary({
   handleSearch,
 }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [placeholdertxt, setPlaceholdertxt] = useState('搜尋文章...');
+
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -26,10 +28,13 @@ export default function PostCategary({
         <FaMagnifyingGlass className="magnify" />
         <input
           type="text"
-          placeholder="搜尋文章..."
+          placeholder={placeholdertxt}
           value={searchTerm}
           onChange={handleSearchChange}
           onKeyDown={handleKeyDown} // 監聽鍵盤事件
+          onFocus={() => setPlaceholdertxt('')}
+          onBlur={() => setPlaceholdertxt('搜尋文章...')}
+          className="placeholder"
         />
       </div>
       <ul>

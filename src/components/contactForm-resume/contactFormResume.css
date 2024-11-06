@@ -16,11 +16,35 @@
 
   color: #ffe2bc;
   text-align: center;
+
+  margin-bottom: 4rem;
 }
+
+.contactusTitleforApply {
+  width: 100%;
+  height: fit-content;
+
+  position: relative;
+}
+.contactusTitleforApply h2 {
+  position: absolute;
+
+  top: 60%;
+  left: 50%;
+
+  font-size: 2rem;
+  margin: 0;
+
+  transform: translate(-50%, -50%);
+
+  background-color: #ffeed9;
+}
+
 .contactimg {
   position: absolute;
   top: 20%;
-  right: 12%;
+  right: 10;
+
   display: flex;
   flex-direction: column;
 
@@ -66,7 +90,7 @@
   flex-grow: 1;
   height: 2rem;
   border: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #d0d0d0;
   background-color: transparent;
 }
 
@@ -123,7 +147,7 @@
 }
 
 .fileList {
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
   display: flex;
   flex-direction: column;
 }
@@ -224,7 +248,7 @@
   padding-top: 5rem;
 }
 .submitedPostArea span {
-  border-bottom: 2px solid #999;
+  border-bottom: 2px solid #d0d0d0;
 
   padding-bottom: 0.5rem;
 }

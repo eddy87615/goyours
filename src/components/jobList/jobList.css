@@ -40,7 +40,7 @@
 
   padding-bottom: 2rem;
 
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #d0d0d0;
 }
 
 .joblist img {
@@ -163,7 +163,7 @@
   background-color: #414042;
   padding: 1rem 2rem;
 
-  margin: 2rem 0 0 33%;
+  margin: 1% 0 0 33%;
 
   border-radius: 0.8rem;
 

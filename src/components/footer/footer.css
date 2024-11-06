@@ -56,6 +56,12 @@
 
   display: flex;
 }
+.footerNewsPosts p {
+  margin: 1rem 0 0 0;
+}
+.footerNewsPosts h4 {
+  margin: 0.5rem 0 1rem 0;
+}
 
 /*footerMedia*/
 .footerMedia {
@@ -63,7 +69,8 @@
   align-items: center;
   flex-wrap: wrap;
 
-  gap: 2rem;
+  row-gap: 2rem;
+  column-gap: 3rem;
 }
 
 .icon {

@@ -41,7 +41,7 @@
 .picSlider img {
   width: 100%;
 
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 .schoolUnfoSection {
   position: relative;
@@ -179,4 +179,44 @@
   margin-right: 1rem;
 
   clip-path: circle(40%);
+}
+
+.video h1 {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.videoItself {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 4rem;
+}
+
+.backToschoolList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8rem;
+}
+
+.backToschoolList a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  background-color: #f8b300;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+
+  border-radius: 20rem;
+
+  padding: 0.8rem 5rem;
+
+  width: fit-content;
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
 import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
 import { Link } from 'react-router-dom';
@@ -9,6 +10,19 @@ import { BsTrashFill } from 'react-icons/bs';
 import './contactFormResume.css';
 
 export default function ContactFormResume() {
+  const [placeholdertxt, setPlaceholdertxt] = useState([
+    '王小明',
+    '25',
+    '0912345678',
+    'example12345',
+    'example12345@gmail.com',
+    '早上10:00-12:00/下午14:00-17:00',
+    '我對這份工作有興趣',
+  ]);
+  const location = useLocation();
+  const jobTitle =
+    location.state?.initialMessage || '聯絡GoYours，打工度假、留學免費諮詢';
+
   const [formData, setFormData] = useState({
     name: '',
     age: '',
@@ -64,6 +78,7 @@ export default function ContactFormResume() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // 返回到頁面的最頂端
 
     const currentDateTime = new Date().toISOString();
 
@@ -82,6 +97,7 @@ export default function ContactFormResume() {
     // 準備發送到 Sanity 的資料
     const contactData = {
       _type: 'jobapply',
+      jobname: jobTitle,
       name: formData.name,
       age: formData.age,
       phone: formData.phone,
@@ -138,6 +154,22 @@ export default function ContactFormResume() {
 
   const fileInputRef = useRef(null);
 
+  const handleFocus = (index) => {
+    setPlaceholdertxt((prev) => {
+      const updatedPlaceholders = [...prev];
+      updatedPlaceholders[index] = '';
+      return updatedPlaceholders;
+    });
+  };
+
+  const handleBlur = (index, defaultText) => {
+    setPlaceholdertxt((prev) => {
+      const updatedPlaceholders = [...prev];
+      updatedPlaceholders[index] = defaultText;
+      return updatedPlaceholders;
+    });
+  };
+
   return (
     <>
       {isSubmited ? (
@@ -189,7 +221,10 @@ export default function ContactFormResume() {
         </>
       ) : (
         <div className="contactusComponent">
-          <h1>Application</h1>
+          <div className="contactusTitleforApply">
+            <h1>Application</h1>
+            <h2 className="jobapplyh1">{jobTitle}——打工度假申請</h2>
+          </div>
           <div className="contactimg">
             <img src="/src/assets/LOGO-09.png" />
             <img src="/src/assets/LOGO-02.png" />
@@ -199,6 +234,10 @@ export default function ContactFormResume() {
               <p>真實姓名：</p>
               <br />
               <input
+                placeholder={placeholdertxt[0]}
+                onFocus={() => handleFocus(0)}
+                onBlur={() => handleBlur(0, '王小明')}
+                className="placeholder"
                 type="text"
                 id="name"
                 name="name"
@@ -212,6 +251,10 @@ export default function ContactFormResume() {
               <p>年齡：</p>
               <br />
               <input
+                placeholder={placeholdertxt[1]}
+                onFocus={() => handleFocus(1)}
+                onBlur={() => handleBlur(1, '25')}
+                className="placeholder"
                 type="text"
                 id="age"
                 name="age"
@@ -225,6 +268,10 @@ export default function ContactFormResume() {
               <p>行動電話：</p>
               <br />
               <input
+                placeholder={placeholdertxt[2]}
+                onFocus={() => handleFocus(2)}
+                onBlur={() => handleBlur(2, '0912345678')}
+                className="placeholder"
                 id="phone"
                 name="phone"
                 value={formData.phone}
@@ -236,6 +283,10 @@ export default function ContactFormResume() {
               <p>LINE ID：</p>
               <br />
               <input
+                placeholder={placeholdertxt[3]}
+                onFocus={() => handleFocus(3)}
+                onBlur={() => handleBlur(3, 'example12345')}
+                className="placeholder"
                 id="lineId"
                 name="lineId"
                 value={formData.lineId}
@@ -247,6 +298,10 @@ export default function ContactFormResume() {
               <p>電子郵件：</p>
               <br />
               <input
+                placeholder={placeholdertxt[4]}
+                onFocus={() => handleFocus(4)}
+                onBlur={() => handleBlur(4, 'example12345@gmail.com')}
+                className="placeholder"
                 id="email"
                 name="email"
                 value={formData.email}
@@ -259,6 +314,10 @@ export default function ContactFormResume() {
               <p>方便聯絡時段：</p>
               <br />
               <input
+                placeholder={placeholdertxt[5]}
+                onFocus={() => handleFocus(5)}
+                onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
+                className="placeholder"
                 type="text"
                 id="callTime"
                 name="callTime"
@@ -283,6 +342,19 @@ export default function ContactFormResume() {
                     最大檔案大小為30MB。不支援 .bat、.exe
                     等檔案類型；最多上傳四個檔案。
                   </span>
+                  <div className="fileList">
+                    <ul>
+                      {files.map((file, index) => (
+                        <li key={index}>
+                          {file.name}
+
+                          <button onClick={() => removeFile(index)}>
+                            <BsTrashFill />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                   <div
                     className="uploadBtn"
                     onClick={(e) => {
@@ -294,25 +366,16 @@ export default function ContactFormResume() {
                     點我上傳檔案
                   </div>
                 </div>
-                <div className="fileList">
-                  <ul>
-                    {files.map((file, index) => (
-                      <li key={index}>
-                        {file.name}
-
-                        <button onClick={() => removeFile(index)}>
-                          <BsTrashFill />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </div>
             <label className="tellus">
               <p>想對我們說的話：</p>
               <br />
               <textarea
+                placeholder={placeholdertxt[6]}
+                onFocus={() => handleFocus(6)}
+                onBlur={() => handleBlur(6, '我對這份工作有興趣')}
+                className="placeholder"
                 type="textarea"
                 id="tellus"
                 name="tellus"

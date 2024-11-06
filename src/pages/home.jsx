@@ -3,11 +3,16 @@ import { client } from '../cms/sanityClient';
 import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
 import { FaLocationDot } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
-import { PortableText } from '@portabletext/react';
+import { Link } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import ContactUs from '../components/contactUs/contactUs';
+import Hotpost from '../components/hotPost/hotPost';
+import HomeJobList from '../components/homeJobList/homeJobList';
+import ScroolDown from '../components/scroolDown/scroolDown';
+
+import 'swiper/css/effect-fade';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -41,7 +46,7 @@ const News = () => {
       </h1>
       <div className="homeNewsDiv">
         <Swiper
-          spaceBetween={100}
+          spaceBetween={50}
           slidesPerView={5}
           centeredSlides={true}
           navigation={true}
@@ -93,6 +98,7 @@ const HomeschoolList = () => {
       src: '/src/assets/日建宇都宮校舎外観.jpg',
       traffic: '宇都宮站徒歩約10分鐘',
       highlight: '在學期間住宿免費・課外體驗活動',
+      href: '/school/utsunimiyanikken',
       introtxt:
         '面向來日本學習日本語的留學生設立的日本語學科。日本語學科以外的日本學生也在同一校園內共同學習及互相交流，給留學生提供良好的學習日語的環境。僅是語言，同時還可以學習日本的文化習俗和禮儀，培養立足世界的能力。',
     },
@@ -102,6 +108,7 @@ const HomeschoolList = () => {
       src: '/src/assets/雙葉外語學校バス旅行.jpg',
       traffic: 'JR千葉站東口徒步10分鐘・京成千葉中央站西口徒步1分鐘',
       highlight: '細緻的升學・就職指導',
+      href: '/school/utsunimiyanikken',
       introtxt:
         '雙葉外語學校的活動不僅僅限於語言教育，還為能夠真正建立日本與其他各國之間的交流的紐帶，不同國籍的人之間能得以真心地相互理解對方的文化，人與人直接交流提供寶貴的機會。',
     },
@@ -111,6 +118,7 @@ const HomeschoolList = () => {
       src: '/src/assets/関西外語専門学校日本語學科.jpg',
       traffic: '天王寺站步行10分鐘',
       highlight: '校內奬學金：①理事長特別獎學金 ②優秀成績者獎學金 ③升學獎金',
+      href: '/school/utsunimiyanikken',
       introtxt:
         '關西外語專門學校是1967年所創立的商業語言專門學校。日本的外語教育普遍被認為偏重文法教育，本校以培育能擁有在世界各地運用自如之高水準外語能力的人才為目標。',
     },
@@ -120,6 +128,7 @@ const HomeschoolList = () => {
       src: '/src/assets/ARC日本語學校-京都校.png',
       traffic: '地下鐵丸太町站直走6分鐘',
       highlight: '校外學習，與日語互動',
+      href: '/school/utsunimiyanikken',
       introtxt:
         'ARC日本語學校是於1986年創立的語言學校，ARC有通往世界橋梁的意思。京都校創立於2003年，並於2019年４月遷移到全新校舍。校區位於京都市區丸太町站，徒步６分鐘即可抵達，交通便利。',
     },
@@ -129,6 +138,7 @@ const HomeschoolList = () => {
       src: '/src/assets/赤門會日本語言學校.JPG',
       traffic: '日暮里站步行10分・西日暮里站步行11分・三河島站步行5分',
       highlight: '職務體驗・就職支援班：以實現在日就業的目的。',
+      href: '/school/utsunimiyanikken',
       introtxt:
         '赤門會日本語學校，於1985年創校于東京大學的赤門前，成功培養了超過80個國家，2萬多名的畢業生，教學成績有目共睹。<br />在 2005 年，學校被認證為學校法人。',
     },
@@ -151,7 +161,9 @@ const HomeschoolList = () => {
                     </p>
                     <img src={school.src} alt={school.name} />
                   </div>
-                  <button className="schoolListDetailBtn">了解學校詳情</button>
+                  <Link className="schoolListDetailBtn" to={school.href}>
+                    了解學校詳情
+                  </Link>
                 </div>
                 <div className="schoolListBack">
                   <h3>{school.name}</h3>
@@ -180,215 +192,6 @@ const HomeschoolList = () => {
   );
 };
 
-const Wokringholiday = () => {
-  const jobListContent = [
-    {
-      jobName: '巧克力工廠',
-      location: '東京都・千葉縣',
-      src: '/src/assets/巧克力工廠.jpg',
-      alt: '巧克力工廠',
-      introtxt: '',
-      jobContent: '巧克力工廠作業員',
-      traffic: '新京成線稔台站',
-      salary: '1100円',
-    },
-    {
-      jobName: '舞濱物流生產線作業員',
-      location: '東京都',
-      src: '/src/assets/生產線.jpg',
-      alt: '生產線',
-      introtxt: '',
-      jobContent: '生產線輕作業',
-      traffic: '舞濱車站巴士・徒步',
-      salary: '1300円',
-    },
-    {
-      jobName: '溫泉飯店餐廳服務員',
-      location: '栃木縣',
-      src: '/src/assets/鬼怒川溫泉站.jpg',
-      alt: '鬼怒川溫泉站',
-      introtxt: '',
-      jobContent: '自助餐廳服務員',
-      traffic: '鬼怒川溫泉站',
-      salary: '1300円',
-    },
-    {
-      jobName: '關西機場免稅店',
-      location: '關西機場',
-      src: '/src/assets/關西機場.jpg.webp',
-      alt: '關西機場',
-      introtxt: '',
-      jobContent: '機場免稅店',
-      traffic: 'JR關空快線',
-      salary: '1100円',
-    },
-    {
-      jobName: '滑雪中心',
-      location: '長野縣',
-      src: '/src/assets/滑雪中心.jpg',
-      alt: '長野縣滑雪中心',
-      introtxt: '',
-      jobContent: '滑雪場相關業務',
-      traffic: '飯山站',
-      salary: '1200円',
-    },
-    {
-      jobName: '倉庫作業員',
-      location: '東京都',
-      src: '/src/assets/上野倉庫作業員.jpeg',
-      alt: '上野倉庫作業員',
-      introtxt: '',
-      jobContent: '倉庫輕作業及食品分類人員',
-      traffic: '上野站',
-      salary: '1150円',
-    },
-  ];
-  return (
-    <>
-      <div>
-        <h1>
-          <span className="yellow">Working Holiday</span>打工度假職缺一覽
-        </h1>
-        <div className="workingholidayDiv">
-          {jobListContent.map((job, index) => {
-            return (
-              <div key={index} className="jobListPre">
-                <div className="jobListimg">
-                  <img src={job.src} alt={job.jobName} />
-                </div>
-                <div className="jobListcontent">
-                  <h3>{job.jobName}</h3>
-                  <p>
-                    <FaLocationDot /> {job.location}
-                  </p>
-                  {/* <p dangerouslySetInnerHTML={{ __html: job.introtxt }}></p> */}
-                  <ul>
-                    <li>
-                      <span>職稱</span>
-                      {job.jobContent}
-                    </li>
-                    <li>
-                      <span>內容</span>
-                      {job.traffic}
-                    </li>
-                    <li>
-                      <span>時薪</span>
-                      {job.salary}
-                    </li>
-                  </ul>
-                  <button className="schoolListDetailBtn">了解職缺詳情</button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <a className="formoreBtntoPage" href="./working">
-        看更多職缺
-      </a>
-    </>
-  );
-};
-
-const Hotpost = () => {
-  const [NewsPosts, setNewsPosts] = useState([]);
-
-  // 從 Sanity 獲取最新消息標籤的文章
-  useEffect(() => {
-    async function fetchNewsPosts() {
-      // 查詢 "最新消息" 標籤的文章
-      //&& "最新消息" in categories[]->title
-      const result = await client.fetch(`
-          *[_type == "post"] | order(views desc)[0...6] {
-            title,
-            slug,
-            publishedAt,
-            mainImage,
-            views,
-            categories[]->{
-            title,
-            },
-            body,
-          }
-        `);
-
-      setNewsPosts(result);
-    }
-    fetchNewsPosts();
-  }, []);
-
-  return (
-    <>
-      <h1>
-        <span className="yellow">Hot Post</span>熱門文章
-      </h1>
-      <div className="homehotpostDiv">
-        <Swiper
-          spaceBetween={100}
-          slidesPerView={5}
-          centeredSlides={true}
-          navigation={true}
-          // autoplay={{ delay: 3000, disableOnInteraction: false }}
-          modules={[Autoplay, Navigation]}
-          loop={true}
-        >
-          {NewsPosts.map((post, index) => (
-            <SwiperSlide key={index} className="homeperhotpost">
-              <a
-                href={`/post/${encodeURIComponent(post.slug.current)}`}
-                className="homeprehotpost"
-              >
-                {post.mainImage && (
-                  <div className="homeNewspostImg">
-                    <img src={urlFor(post.mainImage).url()} alt={post.title} />
-                  </div>
-                )}
-                <h3>{post.title}</h3>
-                <ul>
-                  {post.categories.map((category, index) => (
-                    <li key={index} className="category yellow">
-                      #{category.title}
-                    </li>
-                  ))}
-                </ul>
-                <div className="homehotpostPreview">
-                  {post.body ? (
-                    <PortableText
-                      value={post.body}
-                      components={{
-                        marks: {
-                          link: ({ children }) => <>{children}</>, // 不渲染 <a> 標籤
-                        },
-                      }}
-                    />
-                  ) : (
-                    <p>本文無內容</p>
-                  )}
-                </div>
-                <div className="homehotpostDate">
-                  <img src="/src/assets/圓形logo.png" />
-                  <p>
-                    {new Date(post.publishedAt)
-                      .toLocaleDateString('zh-TW', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      })
-                      .replace(/\//g, '.')}
-                  </p>
-                </div>
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-      <a className="formoreBtntoPage" href="./post">
-        看所有文章
-      </a>
-    </>
-  );
-};
-
 export default function Home() {
   const HomeIntroimgList = [
     { src: '/src/assets/KV_17.jpg', alt: 'maple leaves' },
@@ -412,11 +215,12 @@ export default function Home() {
       <div className="kv">
         <div className="kvSlider">
           <Swiper
-            spaceBetween={30}
-            centeredSlides={true}
-            loop={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            // modules={[Autoplay]}
+          // centeredSlides={true}
+          // loop={true}
+          // autoplay={{ delay: 3000 }}
+          // effect="fade"
+          // fadeEffect={{ crossFade: true }}
+          // modules={[Autoplay, EffectFade]}
           >
             <SwiperSlide>
               <img src="/src/assets/KV_03.jpg" />
@@ -425,7 +229,7 @@ export default function Home() {
               <img src="/src/assets/KV_08.jpg" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/src/assets/KV_20.jpg" />
+              <img src="/src/assets/KV_24.jpg" />
             </SwiperSlide>
             <SwiperSlide>
               <img src="/src/assets/KV_22.jpg" />
@@ -433,20 +237,15 @@ export default function Home() {
           </Swiper>
         </div>
         <img src="/src/assets/LOGO-09.png" alt="LOGO-09" className="kvlogo" />
-        <div className="scrollDownArrow">
-          <div className="scrollText">Scroll</div>
-          <div className="arrowLine"></div>
-          <div className="arrowDot"></div>
-        </div>
+        <ScroolDown />
       </div>
       <div className="homrintroSection">
         <p className="homeintrotxt">
-          <span>國外打工度假、遊留學的好夥伴</span>
-          <br />
+          <h2>國外打工度假、遊留學的好夥伴</h2>
           世界這麼大 你不該只留在原地 何年何月何日何時 你會在哪裡？ <br />
           去你自己的打工度假、留遊學吧！ <br />
-          Go Yours 團隊幫你找出適合的路 去各個國家打工度假、留遊學 體驗各種生活
-          感受世界各地 ～
+          Go Yours 團隊幫你找出適合的路
+          去各個國家打工度假、留遊學體驗各種生活感受世界各地 ～
         </p>
         {HomeIntroimgList.map((img, index) => {
           return (
@@ -467,7 +266,7 @@ export default function Home() {
         <HomeschoolList />
       </div>
       <div className="workingholidaySection">
-        <Wokringholiday />
+        <HomeJobList />
       </div>
       <div className="homeHotpostSection">
         <Hotpost />

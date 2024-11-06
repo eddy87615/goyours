@@ -17,13 +17,13 @@
   color: #ffe2bc;
   text-align: center;
 
-  padding-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
 .contactimg {
   position: absolute;
   top: 20%;
-  right: 12%;
+  right: 10%;
   display: flex;
   flex-direction: column;
 
@@ -69,7 +69,7 @@
   flex-grow: 1;
   height: 2rem;
   border: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #d0d0d0;
   background-color: transparent;
 }
 
@@ -78,12 +78,12 @@
   display: flex;
   align-items: center;
 }
-.contactForm label:nth-of-type(6),
+.contactForm label:nth-of-type(7),
 .contactForm label:nth-of-type(8) {
   width: 100%;
   align-items: start;
 }
-.contactForm label:nth-of-type(6) input {
+.contactForm label:nth-of-type(7) input {
   flex-grow: 0;
   height: 1rem;
   background-color: transparent;
@@ -162,7 +162,7 @@
   padding-top: 5rem;
 }
 .submitedPostArea span {
-  border-bottom: 2px solid #999;
+  border-bottom: 2px solid #d0d0d0;
 
   padding-bottom: 0.5rem;
 }

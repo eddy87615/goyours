@@ -4,6 +4,7 @@ import { PortableText } from '@portabletext/react'; // 用來顯示富文本
 import { useParams, useNavigate } from 'react-router-dom'; // 用來獲取 URL 中的 slug
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 import Modal from 'react-modal'; // 引入 Modal 組件
 Modal.setAppElement('#root');
@@ -14,6 +15,7 @@ import { FaLocationDot, FaEarthAmericas } from 'react-icons/fa6';
 import { FaSchool } from 'react-icons/fa';
 import { IoMdTrain } from 'react-icons/io';
 import { ImCross } from 'react-icons/im';
+import { TiArrowBackOutline } from 'react-icons/ti';
 
 import BreadCrumb from '../components/breadCrumb/breadCrumb';
 import ContactUs from '../components/contactUs/contactUs';
@@ -37,6 +39,23 @@ const Features = ({ school }) => {
             ))}
           </ul>
         </div>
+        {school.video && (
+          <div className="video">
+            <h1 className="features">
+              <span className="yellow">Video</span>學校影片
+            </h1>
+            <div className="videoItself">
+              <iframe
+                width="800"
+                height="500"
+                src={school.video}
+                title="學校介紹影片"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
@@ -58,7 +77,7 @@ export default function SchoolDetail() {
       const school = await client.fetch(
         `
         *[_type == "school" && slug.current == $slug][0] {
-          name,address,transportation,phone,website,description,gallery,slug,logo,officialSite,sort,character
+          name,address,transportation,phone,website,description,gallery,slug,logo,officialSite,sort,character,video
         }
       `,
         { slug }
@@ -183,6 +202,12 @@ export default function SchoolDetail() {
         </div>
       </div>
       <Features school={school} />
+      <div className="backToschoolList">
+        <Link to="/studying">
+          <TiArrowBackOutline />
+          看更多學校
+        </Link>
+      </div>
       <ContactUs />
 
       {/* 放大圖片的模態框 */}
