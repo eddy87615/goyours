@@ -10,6 +10,18 @@
   padding: 15rem 0 10rem 0;
 }
 
+.schoolDetailH1 {
+  width: 80vw;
+  margin: 0 auto;
+}
+.schoolDetailH1 h1 {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
 .picSlider {
   width: 50%;
   height: 100%;
@@ -136,19 +148,11 @@
   cursor: pointer;
 }
 
-.features {
-  width: 80vw;
-  display: flex;
-  flex-direction: column;
-
-  margin: 0 auto;
-}
-
 .featurestxt {
   width: 60vw;
 
   margin: 0 auto;
-  padding: 10rem 0;
+  padding: 4rem 0;
 
   counter-reset: section;
 }

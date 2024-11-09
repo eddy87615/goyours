@@ -1,13 +1,114 @@
-import { IoDownloadOutline } from 'react-icons/io5';
-import { RiQuestionAnswerLine } from 'react-icons/ri';
-import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
-import { LuThumbsUp } from 'react-icons/lu';
-import { BsTranslate } from 'react-icons/bs';
-import { LiaIdCardSolid } from 'react-icons/lia';
+import { useEffect, useRef, useState } from 'react';
+
+import { client } from '../cms/sanityClient';
+
+import ContactUs from '../components/contactUs/contactUs';
+import GoyoursBear from '../components/goyoursBear/goyoursBear';
 
 import './about.css';
 
+function getRandomSixFeedbacks(feedbacks) {
+  const shuffled = [...feedbacks].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, 6);
+}
+
+const ProgressBar = () => {
+  const [animated, setAnimated] = useState([false, false, false, false]); // 用于跟踪每个进度条的动画状态
+  const progressRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = progressRefs.current.indexOf(entry.target);
+          if (entry.isIntersecting && !animated[index]) {
+            const progressBar = entry.target.querySelector('.progress-bar');
+            const progressNumber =
+              entry.target.querySelector('.progress-number');
+            const targetValue = parseInt(
+              progressBar.getAttribute('data-target')
+            );
+
+            progressBar.style.width = `${targetValue}%`;
+
+            let currentValue = 0;
+            const increment = Math.ceil(targetValue / 100);
+            const interval = setInterval(() => {
+              currentValue += increment;
+              if (currentValue >= targetValue) {
+                currentValue = targetValue;
+                clearInterval(interval);
+
+                if (targetValue === 100) {
+                  progressNumber.classList.add('completed');
+                }
+              }
+              progressNumber.innerText = `${currentValue}%`;
+            }, 20);
+
+            setAnimated((prev) => {
+              const newAnimated = [...prev];
+              newAnimated[index] = true;
+              return newAnimated;
+            });
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    progressRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+    return () => {
+      observer.disconnect();
+    };
+  }, [animated]);
+
+  return (
+    <div className="progress-section">
+      {[
+        { label: '想改變生活的渴望超過...', target: 87 },
+        { label: '想換工作的執著超過...', target: 87 },
+        { label: '出國體驗人生的期待超過...', target: 87 },
+        { label: '那我們能給你的協助就是', target: 100 },
+      ].map((item, index) => (
+        <div
+          className="progress-item"
+          key={index}
+          ref={(el) => (progressRefs.current[index] = el)}
+        >
+          <div className="progress-txt">
+            <p>{item.label}</p>
+            <p className="progress-number">0%</p>
+          </div>
+          <div className="progress-bar-area">
+            <div className="progress-bar-container">
+              <div className="progress-bar" data-target={item.target}></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export default function About() {
+  const [feedbacks, setFeedBacks] = useState([]);
+  useEffect(() => {
+    async function fetchfeedback() {
+      const feedbackData = await client.fetch(
+        `*[_type == 'feedBack']{
+      name,
+      feedback,
+      }`
+      );
+      console.log('Fetched feedback data:', feedbackData); // 调试输出
+      const randomFeedBacks = getRandomSixFeedbacks(feedbackData);
+      setFeedBacks(randomFeedBacks);
+    }
+    fetchfeedback();
+  }, []);
+
   const topImg = [
     { src: '/src/assets/aboutRandom/about_01.png' },
     { src: '/src/assets/aboutRandom/about_02.png' },
@@ -25,12 +126,12 @@ export default function About() {
   ];
 
   const services = [
-    { label: '資料下載', icon: <IoDownloadOutline /> },
-    { label: '1對1諮詢', icon: <RiQuestionAnswerLine /> },
-    { label: '行前說明會', icon: <LiaChalkboardTeacherSolid /> },
-    { label: '方案推薦', icon: <LuThumbsUp /> },
-    { label: '中日翻譯', icon: <BsTranslate /> },
-    { label: '簽證申請協助', icon: <LiaIdCardSolid /> },
+    { label: '資料下載', icon: '/src/assets/download.png' },
+    { label: '1對1諮詢', icon: '/src/assets/conversation.png' },
+    { label: '行前說明會', icon: '/src/assets/presentation.png' },
+    { label: '方案推薦', icon: '/src/assets/feedback.png' },
+    { label: '中日翻譯', icon: '/src/assets/language.png' },
+    { label: '簽證申請協助', icon: '/src/assets/info.png' },
   ];
 
   // useEffect(() => {
@@ -103,6 +204,22 @@ export default function About() {
       </div>
       <div className="goyoursIntro">
         <h1>
+          <span className="goyoursbear">
+            <svg
+              version="1.1"
+              id="_レイヤー_1"
+              x="0px"
+              y="0px"
+              viewBox="0 0 340.2 338"
+            >
+              <path
+                className="goyoursbear-line"
+                d="M36.6,337.5c0,0-13.5-150.2,68.7-211.6c0,0-5.4-16.2-40.1-28c0,0-12.5-5.6-15.7-16.7c0,0-1.1-14.6,0.7-16.9
+	c0,0,0.9-1.8,3-2.1c0,0,39.1-7.4,41.8-8.1c0,0,2.5-1.2,3.3-3.3c0,0-0.5-9.9,1.9-11.8c0,0,1.4-1.4,2.3-1.9c0,0,27.8-8.8,48.3-12.7
+	h1.8c0,0,3.7-17.8,22.7-10.1c0,0,11.1,5.6,5.8,20.3c0,0,0.2,2.5,0,4.8c0,0,46.4,29.8,51.6,84.9c0,0,79.4,32.1,70.9,213.5"
+              />
+            </svg>
+          </span>
           <span className="yellow">About Us</span>關於我們
         </h1>
         <p>
@@ -128,6 +245,7 @@ export default function About() {
       <div className="goyoursservice">
         <h1>
           <span className="yellow">Service</span>服務內容
+          <GoyoursBear />
         </h1>
         <div className="serviceArea">
           <p>
@@ -155,18 +273,46 @@ export default function About() {
                 style={{ '--i': index }}
               >
                 <div className="serviceContent">
-                  <span className="serviceIcon">{service.icon}</span>
+                  <img
+                    src={service.icon}
+                    alt={service.label}
+                    className="serviceIcon"
+                  />
                   <span className="serviceTxt">{service.label}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="ifYou">
+      </div>
+      <div className="Review">
+        <div className="reviewTitle">
           <h1>
-            <span className="yellow">If You...</span>如果你
+            <span className="yellow">Review</span>學員心得
+            <GoyoursBear />
           </h1>
         </div>
+        <div className="feedBackArea">
+          {feedbacks.map((feedback, index) => (
+            <div key={index} className="feedbackList">
+              <div className="feedbackInfo">
+                <p>By {feedback.name}</p>
+              </div>
+              <div className="feedbackTxt">
+                <p>{feedback.feedback}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="ifYou">
+        <h1>
+          <span className="yellow">If You...</span>如果你
+        </h1>
+        <ProgressBar />
+      </div>
+      <div className="aboutContactArea">
+        <ContactUs />
       </div>
     </>
   );

@@ -47,7 +47,8 @@ export default function JobList({ jobList, isSearchTriggered }) {
             搜尋結果
           </h2>
           <span className="yellow searchResult">
-            您所搜尋的資料符合條件共有{jobList.length}筆
+            您所搜尋的資料符合條件共有
+            <span className="searchNumber">{jobList.length}</span>筆
           </span>
         </div>
       ) : (

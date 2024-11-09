@@ -11,6 +11,7 @@ import ContactUs from '../components/contactUs/contactUs';
 import Hotpost from '../components/hotPost/hotPost';
 import HomeJobList from '../components/homeJobList/homeJobList';
 import ScroolDown from '../components/scroolDown/scroolDown';
+import GoyoursBear from '../components/goyoursBear/goyoursBear';
 
 import 'swiper/css/effect-fade';
 import 'swiper/css';
@@ -41,9 +42,12 @@ const News = () => {
   }, []);
   return (
     <>
-      <h1>
-        <span className="yellow">News</span>最新消息
-      </h1>
+      <div className="homeNewsH1">
+        <h1>
+          <span className="yellow">News</span>最新消息
+          <GoyoursBear />
+        </h1>
+      </div>
       <div className="homeNewsDiv">
         <Swiper
           spaceBetween={50}
@@ -145,45 +149,46 @@ const HomeschoolList = () => {
   ];
   return (
     <>
-      <div>
+      <div className="homeschoolH1">
         <h1>
           <span className="yellow">School</span>學校一覽
+          <GoyoursBear />
         </h1>
-        <div className="schoolListDiv">
-          {schoolListContent.map((school, index) => {
-            return (
-              <div key={index} className="schoolListPre">
-                <div className="schoolListCover">
-                  <div className="schoolListBg">
-                    <h4>{school.name}</h4>
-                    <p>
-                      <FaLocationDot /> {school.location}
-                    </p>
-                    <img src={school.src} alt={school.name} />
-                  </div>
-                  <Link className="schoolListDetailBtn" to={school.href}>
-                    了解學校詳情
-                  </Link>
+      </div>
+      <div className="schoolListDiv">
+        {schoolListContent.map((school, index) => {
+          return (
+            <div key={index} className="schoolListPre">
+              <div className="schoolListCover">
+                <div className="schoolListBg">
+                  <h4>{school.name}</h4>
+                  <p>
+                    <FaLocationDot /> {school.location}
+                  </p>
+                  <img src={school.src} alt={school.name} />
                 </div>
-                <div className="schoolListBack">
-                  <h3>{school.name}</h3>
-                  <p dangerouslySetInnerHTML={{ __html: school.introtxt }}></p>
-                  <ul>
-                    <li>
-                      <span>特色</span>
-                      {school.highlight}
-                    </li>
-                    <li>
-                      <span>交通</span>
-                      {school.traffic}
-                    </li>
-                  </ul>
-                </div>
-                <LiaHandPointer className="schoolListPointer" />
+                <Link className="schoolListDetailBtn" to={school.href}>
+                  了解學校詳情
+                </Link>
               </div>
-            );
-          })}
-        </div>
+              <div className="schoolListBack">
+                <h3>{school.name}</h3>
+                <p dangerouslySetInnerHTML={{ __html: school.introtxt }}></p>
+                <ul>
+                  <li>
+                    <span>特色</span>
+                    {school.highlight}
+                  </li>
+                  <li>
+                    <span>交通</span>
+                    {school.traffic}
+                  </li>
+                </ul>
+              </div>
+              <LiaHandPointer className="schoolListPointer" />
+            </div>
+          );
+        })}
       </div>
       <a className="formoreBtntoPage" href="./studying">
         看更多學校
@@ -240,13 +245,15 @@ export default function Home() {
         <ScroolDown />
       </div>
       <div className="homrintroSection">
-        <p className="homeintrotxt">
+        <div className="homeintrotxt">
           <h2>國外打工度假、遊留學的好夥伴</h2>
-          世界這麼大 你不該只留在原地 何年何月何日何時 你會在哪裡？ <br />
-          去你自己的打工度假、留遊學吧！ <br />
-          Go Yours 團隊幫你找出適合的路
-          去各個國家打工度假、留遊學體驗各種生活感受世界各地 ～
-        </p>
+          <p>
+            世界這麼大 你不該只留在原地 何年何月何日何時 你會在哪裡？ <br />
+            去你自己的打工度假、留遊學吧！ <br />
+            Go Yours 團隊幫你找出適合的路
+            去各個國家打工度假、留遊學體驗各種生活感受世界各地 ～
+          </p>
+        </div>
         {HomeIntroimgList.map((img, index) => {
           return (
             <div className={`homeintroImgDiv${index}`} key={index}>

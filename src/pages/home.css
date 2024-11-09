@@ -88,15 +88,24 @@
   width: 100vw;
   margin: 0 auto;
 }
-.homeNewsSection h1,
-.homeschoolList h1,
-.homeHotpostSection h1,
-.workingholidaySection h1 {
+
+.homeNewsH1,
+.homeschoolH1,
+.homeJobH1,
+.homeHotpostH1 {
   width: 80vw;
   margin: 0 auto;
+}
+.homeNewsH1 h1,
+.homeschoolH1 h1,
+.homeJobH1 h1,
+.homeHotpostH1 h1 {
+  position: relative;
 
   display: flex;
   flex-direction: column;
+
+  width: fit-content;
 }
 
 .homeNewsprePost {

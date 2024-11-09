@@ -13,10 +13,16 @@
 .searchResultArea {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 
+  height: 24rem;
+  margin-bottom: 6rem;
   padding-bottom: 4rem;
+
+  background: url(/src/assets/goyoursBear-bg.svg) no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .searchResultArea h2 {
   font-size: 2rem;
@@ -29,9 +35,12 @@
 .searchResultArea svg {
   padding-right: 1rem;
 }
+.searchNumber {
+  color: #414042;
+}
 
 .searchResult {
-  font-size: 1.5rem;
+  font-size: 1rem;
 
   font-weight: bold;
 }

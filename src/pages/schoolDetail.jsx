@@ -19,15 +19,19 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 
 import BreadCrumb from '../components/breadCrumb/breadCrumb';
 import ContactUs from '../components/contactUs/contactUs';
+import GoyoursBears from '../components/goyoursBear/goyoursBear';
 import './schoolDetail.css';
 
 const Features = ({ school }) => {
   return (
     <>
       <div>
-        <h1 className="features">
-          <span className="yellow">Feature</span>學校特色
-        </h1>
+        <div className="schoolDetailH1">
+          <h1 className="features">
+            <span className="yellow">Feature</span>學校特色
+            <GoyoursBears />
+          </h1>
+        </div>
         <div className="featurestxt">
           <ul>
             {school.character.map((character, index) => (

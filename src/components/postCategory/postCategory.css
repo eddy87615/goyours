@@ -37,10 +37,12 @@
 
 .search {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
 
   position: relative;
+
+  width: 90%;
 }
 .magnify {
   position: absolute;
@@ -67,7 +69,14 @@
 
   font-size: 1rem;
 }
-
+.search::after {
+  position: absolute;
+  content: url(/src/assets/goyoursbear-line-G.svg);
+  left: 100%;
+  bottom: 10%;
+  width: 2rem;
+  height: 2rem;
+}
 .placeholder:focus {
   border: 2px solid var(--goyoursYellow);
   outline: none;

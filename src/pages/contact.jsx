@@ -1,7 +1,25 @@
+import { useState, useEffect } from 'react';
+import { client } from '../cms/sanityClient';
+
 import ContactForm from '../components/contactForm/contactForm';
 import './contact.css';
 
 export default function Contact() {
+  const [faqs, setFaqs] = useState([]);
+  useEffect(() => {
+    async function fetchfeedback() {
+      const faqs = await client.fetch(
+        `*[_type == 'faqs']{
+      question,
+      answer,
+      type,
+      }`
+      );
+      console.log('Fetched feedback data:', faqs); // 调试输出
+      setFaqs(faqs);
+    }
+    fetchfeedback();
+  }, []);
   return (
     <div className="contactusSection">
       <div className="contactus">
@@ -20,6 +38,51 @@ export default function Contact() {
         </div>
       </div>
       <ContactForm />
+      <div className="qaSection">
+        <h1>
+          <span className="yellow">FAQs</span>常見QA
+        </h1>
+        <div>
+          <div className="part1">
+            <h2 className="yellow">Part1 日本留學</h2>
+            {faqs
+              .filter((faq) => faq.type === 'studying')
+              .map((faq, index) => (
+                <div key={index} className="preQA">
+                  <div className="question">
+                    <div className="Qmark">Q</div>
+                    <h3>{faq.question}</h3>
+                  </div>
+                  <div className="answer">
+                    <div className="answerLogo">
+                      <img src="/src/assets/LOGO-07.png" />
+                    </div>
+                    <p>{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+          </div>
+          <div className="part2">
+            <h2 className="yellow">Part2 打工度假</h2>
+            {faqs
+              .filter((faq) => faq.type === 'working')
+              .map((faq, index) => (
+                <div key={index} className="preQA">
+                  <div className="question">
+                    <div className="Qmark">Q</div>
+                    <h3>{faq.question}</h3>
+                  </div>
+                  <div className="answer">
+                    <div className="answerLogo">
+                      <img src="/src/assets/LOGO-07.png" />
+                    </div>
+                    <p>{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

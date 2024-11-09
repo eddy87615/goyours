@@ -5,6 +5,8 @@ import { PortableText } from '@portabletext/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
+import GoyoursBear from '../goyoursBear/goyoursBear';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './hotPost.css';
@@ -38,9 +40,12 @@ export default function Hotpost() {
 
   return (
     <>
-      <h1>
-        <span className="yellow">Hot Post</span>熱門文章
-      </h1>
+      <div className="homeHotpostH1">
+        <h1>
+          <span className="yellow">Hot</span>熱門文章
+          <GoyoursBear />
+        </h1>
+      </div>
       <div className="homehotpostDiv">
         <Swiper
           spaceBetween={50}
