@@ -266,7 +266,7 @@
 }
 
 .goyoursservice {
-  width: 65vw;
+  width: 70vw;
   margin: 0 auto;
 }
 .goyoursservice h1 {
@@ -309,13 +309,15 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100px; /* 根據你的 logo 尺寸調整 */
-  height: 100px;
-  background-color: #ffeed9;
+  width: 9rem; /* 根據你的 logo 尺寸調整 */
+  height: 9rem;
+  background-color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  z-index: 1;
 }
 .circleMenuLogo img {
   width: 60%;
@@ -323,18 +325,17 @@
   transform: rotate(45deg);
 }
 .serviceBgCircle {
+  background-image: url(/src/assets/service-content-bg.svg);
+  background-repeat: no-repeat;
+
   position: absolute;
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(45deg);
 
-  border: 1rem solid #ffeed9;
-  background-color: transparent;
-  border-radius: 50%;
-
-  width: 18rem;
-  height: 18rem;
+  width: 30rem;
+  height: 30rem;
 }
 
 .serviceCircle {
@@ -352,6 +353,16 @@
   border-radius: 50%;
 
   color: #fff;
+
+  z-index: 1;
+
+  border: 2px solid #fff;
+}
+.serviceCircle:nth-child(even) {
+  background-color: #414042;
+}
+.serviceCircle:nth-child(odd) {
+  background-color: #f8b300;
 }
 
 .serviceContent {

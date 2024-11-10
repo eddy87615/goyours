@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_1" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.52 42.52">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="1.13" y="7.78" width="40.26" height="26.95" rx="4.34" ry="4.34"/>
+  <g>
+    <path class="cls-2" d="M15.8,12.26H7.02c-1.1,0-2,.89-2,2v14.01c0,1.1.89,2,2,2h8.78c1.1,0,2-.89,2-2v-14.01c0-1.1-.89-2-2-2ZM11.41,16.57c1.51,0,2.73,1.22,2.73,2.73s-1.22,2.73-2.73,2.73-2.73-1.22-2.73-2.73,1.22-2.73,2.73-2.73ZM15.47,28.79H7.35s0-3.26,0-3.26c0-1.53,1.24-2.76,2.76-2.76h2.59c1.53,0,2.76,1.24,2.76,2.76v3.26Z"/>
+    <g>
+      <line class="cls-1" x1="21.27" y1="14.47" x2="37.5" y2="14.47"/>
+      <line class="cls-1" x1="21.27" y1="19" x2="37.5" y2="19"/>
+      <line class="cls-1" x1="21.27" y1="23.52" x2="37.5" y2="23.52"/>
+      <line class="cls-1" x1="21.27" y1="28.05" x2="37.5" y2="28.05"/>
+    </g>
+  </g>
+</svg>

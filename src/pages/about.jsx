@@ -126,12 +126,12 @@ export default function About() {
   ];
 
   const services = [
-    { label: '資料下載', icon: '/src/assets/download.png' },
-    { label: '1對1諮詢', icon: '/src/assets/conversation.png' },
-    { label: '行前說明會', icon: '/src/assets/presentation.png' },
-    { label: '方案推薦', icon: '/src/assets/feedback.png' },
-    { label: '中日翻譯', icon: '/src/assets/language.png' },
-    { label: '簽證申請協助', icon: '/src/assets/info.png' },
+    { label: '1對1諮詢', icon: '/src/assets/service-icon_consult.svg' },
+    { label: '行前說明會', icon: '/src/assets/service-icon_teaching.svg' },
+    { label: '中日翻譯', icon: '/src/assets/service-icon_translate.svg' },
+    { label: '方案推薦', icon: '/src/assets/service-icon_recommend.svg' },
+    { label: '簽證申請協助', icon: '/src/assets/service-icon_visa.svg' },
+    { label: '資料下載', icon: '/src/assets/service-icon_download.svg' },
   ];
 
   // useEffect(() => {
@@ -264,7 +264,6 @@ export default function About() {
           <div className="circleMenu">
             <div className="circleMenuLogo">
               <img src="/src/assets/LOGO-02.png" alt="goyours logo" />
-              <div className="serviceBgCircle"></div>
             </div>
             {services.map((service, index) => (
               <div
@@ -282,6 +281,8 @@ export default function About() {
                 </div>
               </div>
             ))}
+            <div className="serviceBgCircle"></div>
+            {/* <img src="/src/assets/service-content.svg" /> */}
           </div>
         </div>
       </div>
