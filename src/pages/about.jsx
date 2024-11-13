@@ -110,25 +110,25 @@ export default function About() {
   }, []);
 
   const topImg = [
-    { src: '/src/assets/aboutRandom/about_01.jpeg' },
-    { src: '/src/assets/aboutRandom/about_02.jpeg' },
-    { src: '/src/assets/aboutRandom/about_03.jpeg' },
-    { src: '/src/assets/aboutRandom/about_04.jpeg' },
-    { src: '/src/assets/aboutRandom/about_05.jpeg' },
-    { src: '/src/assets/aboutRandom/about_06.jpeg' },
-    { src: '/src/assets/aboutRandom/about_07.jpeg' },
-    { src: '/src/assets/aboutRandom/about_08.jpeg' },
-    { src: '/src/assets/aboutRandom/about_09.jpeg' },
-    { src: '/src/assets/aboutRandom/about_13.jpeg' },
+    { src: '/aboutRandom/about_01.jpeg' },
+    { src: '/aboutRandom/about_02.jpeg' },
+    { src: '/aboutRandom/about_03.jpeg' },
+    { src: '/aboutRandom/about_04.jpeg' },
+    { src: '/aboutRandom/about_05.jpeg' },
+    { src: '/aboutRandom/about_06.jpeg' },
+    { src: '/aboutRandom/about_07.jpeg' },
+    { src: '/aboutRandom/about_08.jpeg' },
+    { src: '/aboutRandom/about_09.jpeg' },
+    { src: '/aboutRandom/about_13.jpeg' },
   ];
 
   const services = [
-    { label: '1對1諮詢', icon: '/src/assets/service-icon_consult.svg' },
-    { label: '行前說明會', icon: '/src/assets/service-icon_teaching.svg' },
-    { label: '中日翻譯', icon: '/src/assets/service-icon_translate.svg' },
-    { label: '方案推薦', icon: '/src/assets/service-icon_recommend.svg' },
-    { label: '簽證申請協助', icon: '/src/assets/service-icon_visa.svg' },
-    { label: '資料下載', icon: '/src/assets/service-icon_download.svg' },
+    { label: '1對1諮詢', icon: '/service-icon_consult.svg' },
+    { label: '行前說明會', icon: '/service-icon_teaching.svg' },
+    { label: '中日翻譯', icon: '/service-icon_translate.svg' },
+    { label: '方案推薦', icon: '/service-icon_recommend.svg' },
+    { label: '簽證申請協助', icon: '/service-icon_visa.svg' },
+    { label: '資料下載', icon: '/service-icon_download.svg' },
   ];
 
   // useEffect(() => {
@@ -181,11 +181,7 @@ export default function About() {
   return (
     <>
       <div className="aboutTop">
-        <img
-          src="/src/assets/LOGO-09.png"
-          alt="goyours logo"
-          className="centerLogo"
-        />
+        <img src="/LOGO-09.png" alt="goyours logo" className="centerLogo" />
         {topImg.map((img, index) => (
           <div key={index} className="aboutusTopImg">
             <img src={img.src} alt={`about us top img ${index}`} />
@@ -261,7 +257,7 @@ export default function About() {
             </p>
             <div className="circleMenu">
               <div className="circleMenuLogo">
-                <img src="/src/assets/LOGO-02.png" alt="goyours logo" />
+                <img src="/LOGO-02.png" alt="goyours logo" />
               </div>
               {services.map((service, index) => (
                 <div
@@ -280,7 +276,7 @@ export default function About() {
                 </div>
               ))}
               <div className="serviceBgCircle"></div>
-              {/* <img src="/src/assets/service-content.svg" /> */}
+              {/* <img src="/service-content.svg" /> */}
             </div>
           </div>
           <div className="servicecontentBg"></div>
