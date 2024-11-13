@@ -71,6 +71,12 @@
 
   row-gap: 2rem;
   column-gap: 3rem;
+
+  width: 20%;
+}
+.footerMedia li:nth-child(5) {
+  display: flex;
+  width: 100%;
 }
 
 .icon {

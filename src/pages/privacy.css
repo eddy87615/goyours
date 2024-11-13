@@ -1,0 +1,57 @@
+.privacy {
+  height: 100%;
+}
+
+.privacy .contactusTitle {
+  padding: 2rem 10%;
+
+  line-height: 2rem;
+}
+
+.privacy-content {
+  width: 80vw;
+  margin: 0 auto;
+
+  padding: 2rem 0;
+
+  line-height: 2rem;
+}
+
+.privacy h3,
+.privacy h4 {
+  color: var(--goyoursYellow);
+}
+.privacy h3 {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.privacy h3 > span {
+  margin: 0;
+}
+
+.privacy-content p {
+  padding: 0 2rem;
+}
+
+.privacy-content p:last-child {
+  text-align: center;
+
+  font-size: 1.25rem;
+
+  color: var(--goyoursYellow);
+
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  padding-top: 4rem;
+}
+
+.privacy-content p:last-child::before {
+  content: url(/src/assets/goyoursbear-Y.svg);
+  width: 1.5rem;
+}

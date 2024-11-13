@@ -8,7 +8,7 @@
 .goyoursBearJob {
   position: absolute;
   margin: 0 auto;
-  right: -28%;
+  right: -32%;
   top: 30%;
 }
 
@@ -16,4 +16,10 @@
   position: absolute;
   right: -130%;
   top: -90%;
+}
+
+.goyoursbear-relatedpost {
+  position: absolute;
+  right: -56%;
+  top: 8%;
 }

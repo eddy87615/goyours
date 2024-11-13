@@ -21,6 +21,7 @@ export default function Working() {
       setTotalItems(jobs.length); // 設置總項目數
       setJobList(jobs); // 設置完整職缺數據
       setFilteredJobList(jobs); // 設置過濾後的職缺數據
+      setLoading(false);
     }
     fetchJobList();
   }, []);
@@ -148,6 +149,16 @@ export default function Working() {
   };
 
   console.log('Current jobs displayed in JobList:', currentJobs);
+
+  const [loading, setLoading] = useState(true);
+
+  if (loading) {
+    return (
+      <div className="postLoading loading">
+        <p>畫面加載中⋯⋯</p>
+      </div>
+    );
+  }
 
   return (
     <div className="workingholiday">

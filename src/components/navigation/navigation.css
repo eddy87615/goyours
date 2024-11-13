@@ -39,19 +39,26 @@
   height: fit-content;
 }
 .navMenu a {
-  padding: 1.3rem 2rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
 
   color: #fff;
 
   font-size: 0.87rem;
 }
-.navMenu a:nth-child(1),
+.navMenu a:nth-child(1) {
+  padding-left: 2rem;
+  padding-right: 1rem;
+}
 .navMenu a:nth-child(2),
-.navMenu a:nth-child(3) {
-  padding-right: 0;
+.navMenu a:nth-child(3),
+.navMenu a:nth-child(4) {
+  padding: 1.3rem 1rem;
 }
 .navMenu a:nth-child(5) {
   background-color: var(--goyoursYellow);
+
+  padding: 1.3rem 2rem;
 
   border-radius: 1rem;
 

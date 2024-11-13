@@ -1,8 +1,11 @@
 .schoolDetailwrapper {
-  width: 90vw;
+  /* width: 90vw; */
   margin: 0 auto;
 }
 .schoolDetailPage {
+  width: 90vw;
+  margin: 0 auto;
+
   position: relative;
   display: flex;
   gap: 3rem;
@@ -128,10 +131,14 @@
   overflow: hidden;
 }
 
+.modalomgWrapper {
+  position: relative;
+}
+
 .modalImage {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .closeModalBtn {
@@ -149,19 +156,25 @@
 }
 
 .featurestxt {
-  width: 60vw;
-
-  margin: 0 auto;
-  padding: 4rem 0;
+  /* width: 60vw; */
+  /* margin: 0 auto; */
+  padding-top: 4rem;
 
   counter-reset: section;
 }
 
 .featurestxt ul {
+  width: 60vw;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 
   gap: 2rem;
+
+  padding-bottom: 6rem;
+
+  position: relative;
+  z-index: 2;
 }
 .featurestxt li {
   line-height: 2rem;
@@ -184,12 +197,22 @@
 
   clip-path: circle(40%);
 }
+.video {
+  position: relative;
 
-.video h1 {
+  z-index: 1;
+}
+
+.videoH1 {
   width: 80vw;
+  margin: 0 auto;
+}
+.video h1 {
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+
+  position: relative;
 }
 
 .videoItself {
@@ -206,6 +229,17 @@
   align-items: center;
 
   padding: 8rem;
+
+  position: relative;
+}
+.videoBg {
+  position: absolute;
+  width: 36%;
+
+  bottom: 0;
+  right: 0;
+
+  z-index: -1;
 }
 
 .backToschoolList a {
@@ -223,4 +257,10 @@
   padding: 0.8rem 5rem;
 
   width: fit-content;
+}
+
+.schooldetailContactus {
+  width: 90vw;
+
+  margin: 0 auto;
 }

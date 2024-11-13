@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import PostCategary from '../components/postCategory/postCategory';
 import ContactUs from '../components/contactUs/contactUs';
 import PostCatalog from '../components/postCatalog/postCatalog';
+import GoyoursBearRelatedPost from '../components/goyoursBear/goyoursBear-relatedpost';
 
 import { LuEye } from 'react-icons/lu';
 
@@ -240,7 +241,12 @@ export default function PostDetail({ handleSearch }) {
 
           {relatedPosts.length > 0 && (
             <div className="relatedPosts">
-              <h2 className="yellow">更多相關文章</h2>
+              <div className="relatedpostH2">
+                <h2 className="yellow">
+                  更多相關文章
+                  <GoyoursBearRelatedPost />
+                </h2>
+              </div>
               <div className="relatedpostsList">
                 {relatedPosts.map((relatedPost, index) => (
                   <Link

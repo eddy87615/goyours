@@ -56,8 +56,18 @@
 
   font-size: 1.2rem;
   font-weight: bold;
-}
 
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.date span {
+  display: flex;
+  align-items: center;
+}
+.date img {
+  width: 2rem;
+}
 .textPart {
   display: -webkit-box;
   -webkit-box-orient: vertical;

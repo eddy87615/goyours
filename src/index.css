@@ -18,6 +18,8 @@ html {
   padding: 0;
 
   background-color: #fff8ef;
+
+  overflow-x: clip;
 }
 
 ul,

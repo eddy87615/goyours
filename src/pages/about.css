@@ -31,6 +31,8 @@
   object-fit: contain;
   opacity: 1;
 
+  left: -25%;
+
   animation: fade-in 1.5s ease-in;
 }
 .aboutusTopImg:nth-of-type(2) {
@@ -43,10 +45,12 @@
   overflow: hidden;
 }
 .aboutusTopImg:nth-of-type(2) img {
-  width: 100%;
+  height: 100%;
   object-fit: contain;
 
   opacity: 0;
+
+  left: -40%;
 
   animation: fade-in 1.5s ease-in;
   animation-delay: 0.5s;
@@ -54,7 +58,7 @@
 }
 .aboutusTopImg:nth-of-type(3) {
   position: absolute;
-  bottom: -10%;
+  bottom: -15%;
   left: 0;
   width: 21rem;
   height: 24rem;
@@ -70,6 +74,8 @@
 .aboutusTopImg:nth-of-type(3) img {
   height: 100%;
   object-fit: contain;
+
+  left: -30%;
 }
 .aboutusTopImg:nth-of-type(4) {
   position: absolute;
@@ -89,6 +95,8 @@
 .aboutusTopImg:nth-of-type(4) img {
   height: 100%;
   object-fit: cover;
+
+  left: -25%;
 }
 .aboutusTopImg:nth-of-type(5) {
   position: absolute;
@@ -122,8 +130,10 @@
   overflow: hidden;
 }
 .aboutusTopImg:nth-of-type(6) img {
-  width: 100%;
+  height: 100%;
   object-fit: cover;
+
+  left: -25%;
 
   opacity: 0;
 
@@ -141,8 +151,10 @@
   overflow: hidden;
 }
 .aboutusTopImg:nth-of-type(7) img {
-  width: 100%;
+  height: 100%;
   object-fit: cover;
+
+  left: -50%;
 
   opacity: 0;
 
@@ -155,7 +167,7 @@
   top: 0;
   right: 0;
   width: 14rem;
-  height: 16rem;
+  height: 18rem;
 
   overflow: hidden;
 
@@ -164,7 +176,7 @@
   align-items: center;
 }
 .aboutusTopImg:nth-of-type(8) img {
-  width: 100%;
+  height: 100%;
   object-fit: cover;
 
   opacity: 0;
@@ -183,7 +195,7 @@
   overflow: hidden;
 }
 .aboutusTopImg:nth-of-type(9) img {
-  height: 100%;
+  width: 100%;
   object-fit: cover;
 
   opacity: 0;
@@ -264,10 +276,43 @@
   margin: 0 auto;
   padding-top: 1rem;
 }
+.goyoursIntro p > span {
+  background-color: var(--goyoursYellow);
+  color: #fff;
+  font-weight: bold;
+  padding: 0.1rem;
+  margin: 0.1rem;
+}
 
 .goyoursservice {
   width: 70vw;
+  height: 70vh;
   margin: 0 auto;
+  position: relative;
+
+  z-index: 1;
+}
+.goyoursserviceWrapper {
+  position: relative;
+}
+.goyoursserviceWrapper::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100vw;
+  height: 80vw;
+  background-color: #fff;
+  clip-path: ellipse(90% 100% at 50% 100%);
+}
+.goyoursserviceWrapper::after {
+  content: url(/src/assets/goyoursBear-bg-white.svg);
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 40%;
+
+  z-index: 0;
 }
 .goyoursservice h1 {
   position: relative;
@@ -279,9 +324,9 @@
 
 .serviceArea {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.8fr 1fr;
 
-  gap: 5rem;
+  gap: 2rem;
 }
 .serviceArea p {
   line-height: 3rem;
@@ -393,6 +438,8 @@
 }
 
 .ifYou {
+  position: relative;
+  z-index: 1;
   width: 70vw;
   margin: 0 auto;
   padding-top: 8rem;
@@ -469,7 +516,20 @@
   margin: 0 auto;
 }
 .Review {
-  padding-top: 10rem;
+  padding-top: 4rem;
+
+  position: relative;
+}
+.Review::before {
+  content: '';
+  position: absolute;
+  top: -16%;
+  left: 0;
+
+  width: 100vw;
+  height: 80vw;
+  background-color: #fff8ef;
+  clip-path: ellipse(90% 100% at 50% 100%);
 }
 .Review h1 {
   position: relative;
@@ -570,7 +630,7 @@
 /*scroll down arrow*/
 .aboutScroolDown {
   position: absolute;
-  bottom: 20%;
+  bottom: 12%;
   right: 46%;
   transform: translate(-50%);
 
@@ -680,11 +740,18 @@
 
 .progress-number.completed {
   font-size: 1.5rem;
-  color: red;
+  color: transparent;
   font-weight: bold;
   z-index: 99;
 
+  transition-delay: -0.5s;
+
   animation: bounceOut 0.3s ease forwards;
+}
+.completed::after {
+  content: url(/src/assets/100.png);
+  animation: bounceOut 0.3s ease forwards;
+  transition-delay: 0.1s;
 }
 
 /* 彈跳動畫 */
@@ -702,6 +769,6 @@
     transform: scale(1.2) translateY(-10px) translateX(4rem);
   } */
   100% {
-    transform: scale(1) translateY(-1rem) translateX(5rem) rotate(30deg);
+    transform: scale(1) translateY(0) translateX(9rem) rotate(10deg);
   }
 }

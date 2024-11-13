@@ -1,0 +1,32 @@
+.homebg-Wave {
+  width: 100vw;
+  fill: #fff;
+
+  position: relative;
+  z-index: -2;
+}
+
+.homebg-intro-Wave {
+  position: absolute;
+  z-index: 0;
+
+  bottom: -36%;
+}
+.homebg-school-Wave {
+  position: absolute;
+
+  top: -8%;
+  z-index: -2;
+}
+
+.homebg-job-Wave {
+  position: absolute;
+  top: -16%;
+  z-index: -2;
+}
+
+.homebg-hot-Wave {
+  position: absolute;
+  top: -20%;
+  z-index: -2;
+}

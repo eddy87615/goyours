@@ -8,6 +8,7 @@ export default function PostCategary({
   categories,
   handleCategoryClick,
   handleSearch,
+  title,
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [placeholdertxt, setPlaceholdertxt] = useState('搜尋文章...');
@@ -19,7 +20,6 @@ export default function PostCategary({
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSearch(searchTerm); // 按下 Enter 鍵後觸發搜尋功能
-      setSearchTerm(''); // 清空搜尋欄
     }
   };
   return (
@@ -38,7 +38,7 @@ export default function PostCategary({
         />
       </div>
       <ul>
-        <h4 className="postcategoryh4">文章分類</h4>
+        <h4 className="postcategoryh4">{title}</h4>
         {categories.map((category, index) => (
           <li
             key={index}

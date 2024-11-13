@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { FaArrowRightLong } from 'react-icons/fa6';
 import './contactUs.css';
 
 export default function ContactUs() {
@@ -51,7 +50,9 @@ export default function ContactUs() {
           alt="to Contact Us page"
         >
           <ArcText text="填寫表單，我們將聯絡您！" />
-          <FaArrowRightLong className="homecontactusArrow" />
+          <span className="homecontactusArrow ">
+            <img src="/src/assets/submit-arrow.svg" />
+          </span>
         </a>
       </div>
     </>

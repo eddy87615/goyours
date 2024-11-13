@@ -64,9 +64,9 @@
   color: var(--goyoursYellow);
 }
 .postDetialContactus {
-  width: 80vw;
+  width: 90vw;
   margin: 0 auto;
-  padding-top: 10rem;
+  padding-top: 4rem;
 }
 
 .postTxtarea li {
@@ -130,15 +130,17 @@
 
 .relatedPosts {
   border-top: 1px solid #d0d0d0;
+
+  padding-top: 4rem;
 }
 
 .relatedPosts h2 {
+  width: fit-content;
+  position: relative;
   padding-top: 2rem;
 }
-.relatedPosts span {
-  border-bottom: 2px solid #d0d0d0;
-
-  padding-bottom: 0.5rem;
+.relatedPostsH2 {
+  padding-bottom: 2rem;
 }
 
 .relatedpostsList {
@@ -146,7 +148,7 @@
   flex-direction: column;
   gap: 2rem;
 
-  padding-top: 2rem;
+  padding-top: 4rem;
 }
 .relatedpostsLink {
   display: grid;

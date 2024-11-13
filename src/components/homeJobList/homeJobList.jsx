@@ -1,5 +1,6 @@
 import { FaLocationDot } from 'react-icons/fa6';
 import GoyoursBearJob from '../goyoursBear/goyoursBearJob';
+import HomeBg from '../homeBg/homeBg';
 
 import './homeJobList.css';
 
@@ -68,13 +69,16 @@ export default function HomeJobList() {
   ];
   return (
     <>
-      <div>
+      <div className="homeJobWrapper">
         <div className="homeJobH1">
           <h1>
             <span className="yellow">Working Holiday</span>
             打工度假職缺一覽
             <GoyoursBearJob />
           </h1>
+        </div>
+        <div className="homebg-job-Wave">
+          <HomeBg />
         </div>
         <div className="workingholidayDiv">
           {jobListContent.map((job, index) => {

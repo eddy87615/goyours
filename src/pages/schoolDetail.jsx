@@ -25,7 +25,7 @@ import './schoolDetail.css';
 const Features = ({ school }) => {
   return (
     <>
-      <div>
+      <div className="schoolDetailInfo">
         <div className="schoolDetailH1">
           <h1 className="features">
             <span className="yellow">Feature</span>學校特色
@@ -45,9 +45,12 @@ const Features = ({ school }) => {
         </div>
         {school.video && (
           <div className="video">
-            <h1 className="features">
-              <span className="yellow">Video</span>學校影片
-            </h1>
+            <div className="videoH1">
+              <h1 className="features">
+                <span className="yellow">Video</span>學校影片
+                <GoyoursBears />
+              </h1>
+            </div>
             <div className="videoItself">
               <iframe
                 width="800"
@@ -58,8 +61,18 @@ const Features = ({ school }) => {
                 allowFullScreen
               ></iframe>
             </div>
+            <img
+              src="/src/assets/goyoursBear-bg-schooldetail.svg"
+              className="videoBg"
+            />
           </div>
         )}
+        <div className="backToschoolList">
+          <Link to="/studying">
+            <TiArrowBackOutline />
+            看更多學校
+          </Link>
+        </div>
       </div>
     </>
   );
@@ -95,8 +108,8 @@ export default function SchoolDetail() {
 
   if (loading) {
     return (
-      <div className="postLoading">
-        <p>文章加載中⋯⋯</p>
+      <div className="postLoading loading">
+        <p>學校資訊加載中⋯⋯</p>
       </div>
     );
   }
@@ -206,13 +219,9 @@ export default function SchoolDetail() {
         </div>
       </div>
       <Features school={school} />
-      <div className="backToschoolList">
-        <Link to="/studying">
-          <TiArrowBackOutline />
-          看更多學校
-        </Link>
+      <div className="schooldetailContactus">
+        <ContactUs />
       </div>
-      <ContactUs />
 
       {/* 放大圖片的模態框 */}
       <Modal
@@ -222,7 +231,9 @@ export default function SchoolDetail() {
         className="modalContent"
         overlayClassName="modalOverlay"
       >
-        <img src={currentImage} alt="Enlarged" className="modalImage" />
+        <div className="modalimgWrapper">
+          <img src={currentImage} alt="Enlarged" className="modalImage" />
+        </div>
         <button onClick={closeModal} className="closeModalBtn">
           <ImCross />
         </button>

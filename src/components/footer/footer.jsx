@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fa6';
 
 import './footer.css';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const [latestNewPosts, setLatestNewsPosts] = useState([]);
@@ -101,6 +102,11 @@ export default function Footer() {
           <a href="https://line.me/R/ti/p/%40749omkba" target="_blank">
             <FaLine className="icon" />
           </a>
+        </li>
+        <li>
+          <h3>
+            <Link to="/contact#faqsSection">常見Q&A</Link>
+          </h3>
         </li>
       </ul>
       <button className="backtotop">

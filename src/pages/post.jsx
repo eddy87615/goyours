@@ -92,8 +92,8 @@ export default function Post() {
 
   if (loading) {
     return (
-      <div className="postLoading">
-        <p>文章加載中⋯⋯</p>
+      <div className="postLoading loading">
+        <p>畫面加載中⋯⋯</p>
       </div>
     );
   }
@@ -126,6 +126,7 @@ export default function Post() {
         categories={categories}
         handleCategoryClick={handleCategoryClick}
         handleSearch={handleSearch}
+        title="文章分類"
       />
       {filteredPosts.length === 0 ? (
         <div className="postLoading">

@@ -110,19 +110,16 @@ export default function About() {
   }, []);
 
   const topImg = [
-    { src: '/src/assets/aboutRandom/about_01.png' },
-    { src: '/src/assets/aboutRandom/about_02.png' },
-    { src: '/src/assets/aboutRandom/about_03.png' },
-    { src: '/src/assets/aboutRandom/about_04.png' },
-    { src: '/src/assets/aboutRandom/about_05.png' },
-    { src: '/src/assets/aboutRandom/about_06.png' },
-    { src: '/src/assets/aboutRandom/about_07.png' },
-    { src: '/src/assets/aboutRandom/about_08.png' },
-    { src: '/src/assets/aboutRandom/about_09.png' },
-    // { src: '/src/assets/aboutRandom/about_10.png' },
-    // { src: '/src/assets/aboutRandom/about_11.png' },
-    // { src: '/src/assets/aboutRandom/about_12.png' },
-    { src: '/src/assets/aboutRandom/about_13.png' },
+    { src: '/src/assets/aboutRandom/about_01.jpeg' },
+    { src: '/src/assets/aboutRandom/about_02.jpeg' },
+    { src: '/src/assets/aboutRandom/about_03.jpeg' },
+    { src: '/src/assets/aboutRandom/about_04.jpeg' },
+    { src: '/src/assets/aboutRandom/about_05.jpeg' },
+    { src: '/src/assets/aboutRandom/about_06.jpeg' },
+    { src: '/src/assets/aboutRandom/about_07.jpeg' },
+    { src: '/src/assets/aboutRandom/about_08.jpeg' },
+    { src: '/src/assets/aboutRandom/about_09.jpeg' },
+    { src: '/src/assets/aboutRandom/about_13.jpeg' },
   ];
 
   const services = [
@@ -233,59 +230,63 @@ export default function About() {
           <br />
           當你最堅強的後盾，給予大家去到國外真實遇到的狀況
           <br />
-          GoYours諮詢過你會感受到我們的用心
+          <span>GoYours</span>諮詢過你會感受到我們的用心
           <br />
-          GoYours夥伴有最豐實的經驗
+          <span>GoYours</span>夥伴有最豐實的經驗
           <br />
-          GoYours用最真誠的心給你最實用的資訊與陪伴
+          <span>GoYours</span>用最真誠的心給你最實用的資訊與陪伴
           <br />
           這一次不為誰，只為了你的夢想起飛～ 去吧！去你的打工度假！
         </p>
       </div>
-      <div className="goyoursservice">
-        <h1>
-          <span className="yellow">Service</span>服務內容
-          <GoyoursBear />
-        </h1>
-        <div className="serviceArea">
-          <p>
-            GoYours團隊集合了數位有著業界多年經驗的顧問
-            <br />
-            無論您是想要短期進修、語言學校、打工度假
-            <br />
-            我們都將給你最完善的服務與協助
-            <br />
-            約時間與我們一對一諮詢
-            <br />
-            也歡迎用Line、FB讓我們了解大家的需求
-            <br />
-            讓高優成為你們打工度假、留學圓夢的好夥伴！
-          </p>
-          <div className="circleMenu">
-            <div className="circleMenuLogo">
-              <img src="/src/assets/LOGO-02.png" alt="goyours logo" />
-            </div>
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="serviceCircle"
-                style={{ '--i': index }}
-              >
-                <div className="serviceContent">
-                  <img
-                    src={service.icon}
-                    alt={service.label}
-                    className="serviceIcon"
-                  />
-                  <span className="serviceTxt">{service.label}</span>
-                </div>
+      <div className="goyoursserviceWrapper">
+        <div className="goyoursservice">
+          <h1>
+            <span className="yellow">Service</span>服務內容
+            <GoyoursBear />
+          </h1>
+          <div className="serviceArea">
+            <p>
+              GoYours團隊集合了數位有著業界多年經驗的顧問
+              <br />
+              無論您是想要短期進修、語言學校、打工度假
+              <br />
+              我們都將給你最完善的服務與協助
+              <br />
+              約時間與我們一對一諮詢
+              <br />
+              也歡迎用Line、FB讓我們了解大家的需求
+              <br />
+              讓高優成為你們打工度假、留學圓夢的好夥伴！
+            </p>
+            <div className="circleMenu">
+              <div className="circleMenuLogo">
+                <img src="/src/assets/LOGO-02.png" alt="goyours logo" />
               </div>
-            ))}
-            <div className="serviceBgCircle"></div>
-            {/* <img src="/src/assets/service-content.svg" /> */}
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="serviceCircle"
+                  style={{ '--i': index }}
+                >
+                  <div className="serviceContent">
+                    <img
+                      src={service.icon}
+                      alt={service.label}
+                      className="serviceIcon"
+                    />
+                    <span className="serviceTxt">{service.label}</span>
+                  </div>
+                </div>
+              ))}
+              <div className="serviceBgCircle"></div>
+              {/* <img src="/src/assets/service-content.svg" /> */}
+            </div>
           </div>
+          <div className="servicecontentBg"></div>
         </div>
       </div>
+
       <div className="Review">
         <div className="reviewTitle">
           <h1>

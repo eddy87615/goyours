@@ -359,13 +359,9 @@ export default function ContactForm() {
               <input type="checkbox" id="privicy" name="privicy" />
               <span>
                 我已閱讀
-                <a
-                  href="https://go-yours.com/privacy-policy/"
-                  target="blank"
-                  required
-                >
+                <Link to="/privacy" target="blank" required>
                   隱私政策*
-                </a>
+                </Link>
               </span>
             </div>
 

@@ -75,12 +75,10 @@ export default function Studying() {
       ? school.name.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
 
-    // console.log(
-    //   `Checking school: ${school.name}, sort: ${school.sort}, selectedCategory: ${selectedCategory}, matchesCategory: ${matchesCategory}`
-    // );
-
     return matchesCategory && matchesSearchQuery;
   });
+
+  console.log('Filtered Schools:', filteredSchools); // 確認篩選結果
 
   // 监听 location.state 的变化
   useEffect(() => {
@@ -88,16 +86,23 @@ export default function Studying() {
       setSelectedCategory(location.state.category); // 如果有新的分类传入，更新 selectedCategory
     }
   }, [location.state]);
-
+  if (loading) {
+    return (
+      <div className="postLoading loading">
+        <p>畫面加載中⋯⋯</p>
+      </div>
+    );
+  }
   return (
     <div className="schoolPage">
       <PostCategary
         categories={categories}
         handleCategoryClick={handleCategoryClick}
         handleSearch={handleSearch}
+        title="學校分類"
       />
       {filteredSchools.length === 0 ? (
-        <div className="postLoading">
+        <div className="postLoading post-empty">
           <p>這個標籤裡沒有學校ಥ∀ಥ</p>
         </div>
       ) : (

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { client } from '../../cms/sanityClient';
 
 import './faqs.css';
@@ -20,8 +21,19 @@ export default function Faqs() {
     fetchfeedback();
   }, []);
 
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [hash]);
+
   return (
-    <div className="qaSection">
+    <div className="qaSection" id="faqsSection">
       <h1>
         <span className="yellow">FAQs</span>常見QA
       </h1>

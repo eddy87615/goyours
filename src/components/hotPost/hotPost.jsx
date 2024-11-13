@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
 import GoyoursBear from '../goyoursBear/goyoursBear';
+import HomeBg from '../homeBg/homeBg';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -46,13 +47,16 @@ export default function Hotpost() {
           <GoyoursBear />
         </h1>
       </div>
+      <div className="homebg-hot-Wave">
+        <HomeBg />
+      </div>
       <div className="homehotpostDiv">
         <Swiper
           spaceBetween={50}
           slidesPerView={5}
           centeredSlides={true}
           navigation={true}
-          // autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Autoplay, Navigation]}
           loop={true}
         >

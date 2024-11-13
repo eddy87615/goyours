@@ -5,6 +5,8 @@
   border-radius: 0 0 100% 0;
 
   overflow: hidden;
+
+  border-bottom: 4rem solid #ffe2bc;
 }
 .kvlogo {
   position: absolute;
@@ -24,13 +26,27 @@
 }
 
 /*homrintroSection*/
-.homrintroSection {
+
+.homeintroSection {
   position: relative;
+  z-index: 1;
   height: 100vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.homeintrotxt::after {
+  position: absolute;
+  content: '';
+  width: 30rem;
+  height: 30rem;
+  background-image: url(/src/assets/Japan.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  right: -10%;
+  top: 50%;
 }
 .homeintrotxt {
   font-weight: bold;
@@ -38,18 +54,44 @@
   text-align: center;
 
   width: 50%;
+
+  position: relative;
 }
 .homeintrotxt h2 {
   margin: 0;
 }
+
+.homepicdecoBear {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+}
+
 .homeintroImgDiv0,
 .homeintroImgDiv1,
 .homeintroImgDiv2 {
-  position: absolute;
-  border-radius: 100rem;
+  border-radius: 500rem;
   overflow: hidden;
+
+  width: 100%;
+  height: 100%;
 }
 .homeintroImgDiv0 {
+  box-shadow: 2rem 1rem 0px #ffe2bc;
+}
+.homeintroImgDiv1 {
+  box-shadow: -0.5rem -0.5rem 0px #ffe2bc;
+}
+.homeintroImgDiv2 {
+  box-shadow: -1rem 1rem 0px #ffe2bc;
+}
+
+.homeintroImgWrapper0,
+.homeintroImgWrapper1,
+.homeintroImgWrapper2 {
+  position: absolute;
+}
+.homeintroImgWrapper0 {
   top: 10%;
   left: -20%;
   width: 40rem;
@@ -57,7 +99,18 @@
 
   animation: homeintroImg0 3s infinite linear;
 }
-.homeintroImgDiv1 {
+.homeintroImgWrapper0::after {
+  position: absolute;
+  content: url(/src/assets/homepic-3-bear.svg);
+
+  width: 4rem;
+
+  top: 5%;
+  right: 8.5%;
+  transform: rotate(-5deg);
+}
+
+.homeintroImgWrapper1 {
   top: 4%;
   left: 60%;
   width: 250px;
@@ -65,7 +118,18 @@
 
   animation: homeintroImg0 4s infinite linear;
 }
-.homeintroImgDiv2 {
+.homeintroImgWrapper1::after {
+  position: absolute;
+  content: url(/src/assets/goyoursBear-bg-home.svg);
+
+  width: 4rem;
+
+  top: -30%;
+  right: 50%;
+  transform: rotate(-12deg);
+}
+
+.homeintroImgWrapper2 {
   bottom: 4%;
   right: 0;
   width: 24rem;
@@ -80,6 +144,8 @@
   height: 100%;
 
   object-fit: cover;
+
+  position: relative;
 }
 
 /*homeNewsSection*/
@@ -87,6 +153,9 @@
   height: fit-content;
   width: 100vw;
   margin: 0 auto;
+
+  position: relative;
+  z-index: 2;
 }
 
 .homeNewsH1,
@@ -95,6 +164,9 @@
 .homeHotpostH1 {
   width: 80vw;
   margin: 0 auto;
+
+  position: relative;
+  z-index: 1;
 }
 .homeNewsH1 h1,
 .homeschoolH1 h1,
@@ -107,15 +179,26 @@
 
   width: fit-content;
 }
-
+.homeperhotpost .homeNewspostImg {
+  background-color: transparent;
+}
 .homeNewsprePost {
   width: 30% !important;
   height: 30% !important;
 }
+.homeNewspostImg {
+  background-color: var(--goyoursYellow);
+
+  border-radius: 1rem;
+}
 .homeNewspostImg img {
   width: 100%;
 
+  display: block;
+
   border-radius: 1rem;
+
+  transition-duration: 0.5s;
 }
 .homeNewsDiv {
   padding-top: 10rem;
@@ -130,6 +213,29 @@
 .homeNewsDiv p {
   font-size: 1.1rem;
   margin-top: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.homeNewsBear {
+  display: flex;
+  align-items: center;
+
+  width: 2rem;
+  height: 2rem;
+}
+.homeNewsBear img {
+  width: 100%;
+  height: 100%;
+}
+.homeNewsDiv a:hover img {
+  transform: scale(0.8);
+
+  transition-duration: 0.5s;
+}
+.homeperhotpost:hover img {
+  animation: shake 0.5s ease-out;
 }
 .swiper-button-prev {
   background-color: #414042;
@@ -166,8 +272,15 @@
 }
 
 /*HomeschoolList*/
+.homeschoolWrapper {
+  position: relative;
+
+  z-index: 2;
+}
 .homeschoolList {
+  position: relative;
   height: 100%;
+  z-index: 1;
 
   padding: 10rem 0;
 }
@@ -405,6 +518,17 @@
   display: flex;
   margin: 0 auto;
   width: fit-content;
+
+  transition-duration: 0.5s;
+
+  position: relative;
+  z-index: 2;
+}
+.formoreBtntoPage:hover {
+  animation: btnbounce 0.5s ease-out;
+  background-color: hsl(34, 100%, 91%);
+  color: #414042;
+  transition-duration: 0.5s;
 }
 
 @keyframes homeintroImg0 {
@@ -422,5 +546,23 @@
   }
   100% {
     transform: translateY(-1px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

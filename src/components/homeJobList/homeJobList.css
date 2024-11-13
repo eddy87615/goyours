@@ -1,9 +1,12 @@
 /*workingholiday*/
-
+.homeJobWrapper {
+  position: relative;
+  z-index: 1;
+}
 .workingholidaySection {
   height: fit-content;
-  width: 80vw;
-  margin: 0 auto;
+  /* width: 80vw; */
+  /* margin: 0 auto; */
   margin-bottom: 10rem;
 }
 

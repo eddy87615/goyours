@@ -14,6 +14,8 @@ import SchoolDetail from './pages/schoolDetail';
 import Footer from './components/footer/footer';
 import ScrollToTop from './components/scrollToTop/scrollToTop';
 import ContactResume from './pages/contactResume';
+import Privacy from './pages/privacy';
+import Opening from './components/opening/opening';
 
 function App() {
   useEffect(() => {
@@ -24,6 +26,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <Navigation />
+      {/* <Opening /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -34,6 +37,7 @@ function App() {
         <Route path="/working" element={<Working />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/contactResume" element={<ContactResume />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
       <Footer />
     </Router>

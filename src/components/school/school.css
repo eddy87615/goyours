@@ -37,6 +37,22 @@
 
   width: 100%;
 }
+
+.schoolListNameHover {
+  display: inline; /* 保持多行效果 */
+  background-image: linear-gradient(to right, #f8b300, #f8b300);
+  background-size: 0% 0.2rem; /* 初始寬度設為 0 */
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease; /* 添加動畫效果 */
+
+  padding-bottom: 0.5rem;
+}
+
+.schoolCard:hover .schoolListNameHover {
+  background-size: 100% 0.2rem; /* hover 時展開到 100% */
+}
+
 .schoolCard h2 {
   position: absolute;
   top: 1rem;
@@ -57,7 +73,9 @@
 .schoolCard h4 {
   margin: 0.5rem 0 0 0;
   width: 90%;
-  height: 2rem;
+  height: 4rem;
+
+  line-height: 2rem;
 
   text-align: center;
   font-size: 1.1rem;

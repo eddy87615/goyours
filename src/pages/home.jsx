@@ -6,12 +6,13 @@ import { LiaHandPointer } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import ContactUs from '../components/contactUs/contactUs';
 import Hotpost from '../components/hotPost/hotPost';
 import HomeJobList from '../components/homeJobList/homeJobList';
 import ScroolDown from '../components/scroolDown/scroolDown';
 import GoyoursBear from '../components/goyoursBear/goyoursBear';
+import HomeBg from '../components/homeBg/homeBg';
 
 import 'swiper/css/effect-fade';
 import 'swiper/css';
@@ -54,7 +55,7 @@ const News = () => {
           slidesPerView={5}
           centeredSlides={true}
           navigation={true}
-          // autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Autoplay, Navigation]}
           loop={true}
         >
@@ -68,6 +69,9 @@ const News = () => {
                 )}
                 <h3>{post.title}</h3>
                 <p className="yellow">
+                  <span className="homeNewsBear">
+                    <img src="/assets/圓形logo.png" />
+                  </span>
                   {new Date(post.publishedAt)
                     .toLocaleDateString('zh-TW', {
                       year: 'numeric',
@@ -90,16 +94,17 @@ const HomeschoolList = () => {
     {
       name: '東京亞細亞學友會',
       location: '東京都',
-      src: '/src/assets/東京亞細亞學友會教室.jpg',
+      src: '/assets/東京亞細亞學友會教室.jpg',
       traffic: '東武伊勢崎線蒲生駅徒歩約3分',
       highlight: '獨創高水準的先進教學模式。',
+      href: '/school/tokyoasia',
       introtxt:
         '東京亞細亞學友會，日本語教育振興協會認定校，東京入管局指定百分之3優良校，駐日本中國大使館認定自費出國留學提攜校。日本為數不多只招收來自世界各地大學以上學歷留學生的一流日本語學校。',
     },
     {
       name: '宇都宮日建工科専門学校ー日本語学科',
       location: '栃木県',
-      src: '/src/assets/日建宇都宮校舎外観.jpg',
+      src: '/assets/日建宇都宮校舎外観.jpg',
       traffic: '宇都宮站徒歩約10分鐘',
       highlight: '在學期間住宿免費・課外體驗活動',
       href: '/school/utsunimiyanikken',
@@ -109,7 +114,7 @@ const HomeschoolList = () => {
     {
       name: '雙葉外語學校',
       location: '千葉県',
-      src: '/src/assets/雙葉外語學校バス旅行.jpg',
+      src: '/assets/雙葉外語學校バス旅行.jpg',
       traffic: 'JR千葉站東口徒步10分鐘・京成千葉中央站西口徒步1分鐘',
       highlight: '細緻的升學・就職指導',
       href: '/school/utsunimiyanikken',
@@ -119,7 +124,7 @@ const HomeschoolList = () => {
     {
       name: '關西外語專門學校日本語學科',
       location: '大阪府',
-      src: '/src/assets/関西外語専門学校日本語學科.jpg',
+      src: '/assets/関西外語専門学校日本語學科.jpg',
       traffic: '天王寺站步行10分鐘',
       highlight: '校內奬學金：①理事長特別獎學金 ②優秀成績者獎學金 ③升學獎金',
       href: '/school/utsunimiyanikken',
@@ -129,7 +134,7 @@ const HomeschoolList = () => {
     {
       name: 'ARC日本語學校-京都校',
       location: '京都市',
-      src: '/src/assets/ARC日本語學校-京都校.png',
+      src: '/assets/ARC日本語學校-京都校.png',
       traffic: '地下鐵丸太町站直走6分鐘',
       highlight: '校外學習，與日語互動',
       href: '/school/utsunimiyanikken',
@@ -139,16 +144,16 @@ const HomeschoolList = () => {
     {
       name: '赤門會日本語言學校',
       location: '東京都',
-      src: '/src/assets/赤門會日本語言學校.JPG',
+      src: '/assets/赤門會日本語言學校.JPG',
       traffic: '日暮里站步行10分・西日暮里站步行11分・三河島站步行5分',
       highlight: '職務體驗・就職支援班：以實現在日就業的目的。',
-      href: '/school/utsunimiyanikken',
+      href: '/school/akamonkai',
       introtxt:
         '赤門會日本語學校，於1985年創校于東京大學的赤門前，成功培養了超過80個國家，2萬多名的畢業生，教學成績有目共睹。<br />在 2005 年，學校被認證為學校法人。',
     },
   ];
   return (
-    <>
+    <div className="homeschoolWrapper">
       <div className="homeschoolH1">
         <h1>
           <span className="yellow">School</span>學校一覽
@@ -193,15 +198,15 @@ const HomeschoolList = () => {
       <a className="formoreBtntoPage" href="./studying">
         看更多學校
       </a>
-    </>
+    </div>
   );
 };
 
 export default function Home() {
   const HomeIntroimgList = [
-    { src: '/src/assets/KV_17.jpg', alt: 'maple leaves' },
-    { src: '/src/assets/KV_07.jpg', alt: '' },
-    { src: '/src/assets/KV_26.jpg', alt: '' },
+    { src: '/assets/KV_17.jpg', alt: 'maple leaves' },
+    { src: '/assets/KV_07.jpg', alt: '' },
+    { src: '/assets/KV_26.jpg', alt: '' },
   ];
 
   //nav height get
@@ -215,53 +220,61 @@ export default function Home() {
   }, []);
   //nav height get
 
+  const homeslider = [
+    { src: '/assets/KV_03.jpg' },
+    { src: '/assets/KV_08.jpg' },
+    { src: '/assets/KV_18.jpg' },
+    { src: '/assets/KV_09.jpg' },
+    { src: '/assets/KV_23.jpg' },
+    { src: '/assets/KV_25.jpg' },
+  ];
+
   return (
     <>
       <div className="kv">
         <div className="kvSlider">
           <Swiper
-          // centeredSlides={true}
-          // loop={true}
-          // autoplay={{ delay: 3000 }}
-          // effect="fade"
-          // fadeEffect={{ crossFade: true }}
-          // modules={[Autoplay, EffectFade]}
+            centeredSlides={true}
+            loop={true}
+            autoplay={{ delay: 3000 }}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            modules={[Autoplay, EffectFade]}
           >
-            <SwiperSlide>
-              <img src="/src/assets/KV_03.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="/src/assets/KV_08.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="/src/assets/KV_24.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="/src/assets/KV_22.jpg" />
-            </SwiperSlide>
+            {homeslider.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <img src={slide.src} alt={`{slider photo${index}`} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
-        <img src="/src/assets/LOGO-09.png" alt="LOGO-09" className="kvlogo" />
+        <img src="/assets/LOGO-09.png" alt="LOGO-09" className="kvlogo" />
         <ScroolDown />
       </div>
-      <div className="homrintroSection">
+      <div className="homeintroSection">
+        <div className="homebg-intro-Wave">
+          <HomeBg />
+        </div>
         <div className="homeintrotxt">
           <h2>國外打工度假、遊留學的好夥伴</h2>
           <p>
             世界這麼大 你不該只留在原地 何年何月何日何時 你會在哪裡？ <br />
             去你自己的打工度假、留遊學吧！ <br />
-            Go Yours 團隊幫你找出適合的路
-            去各個國家打工度假、留遊學體驗各種生活感受世界各地 ～
+            Go Yours 團隊幫你找出適合的路 去各個國家打工度假、留遊學
+            <br />
+            體驗各種生活感受世界各地 ～
           </p>
         </div>
         {HomeIntroimgList.map((img, index) => {
           return (
-            <div className={`homeintroImgDiv${index}`} key={index}>
-              <img
-                src={img.src}
-                alt={img.alt}
-                className={`homeintroImg${index}`}
-              />
+            <div key={index} className={`homeintroImgWrapper${index}`}>
+              <div className={`homeintroImgDiv${index}`}>
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className={`homeintroImg${index}`}
+                />
+              </div>
             </div>
           );
         })}
@@ -271,6 +284,9 @@ export default function Home() {
       </div>
       <div className="homeschoolList">
         <HomeschoolList />
+        <div className="homebg-school-Wave">
+          <HomeBg />
+        </div>
       </div>
       <div className="workingholidaySection">
         <HomeJobList />

@@ -54,7 +54,9 @@ export default function PostArea({ posts, handleCategoryClick }) {
               )}
             </ul>
             <p className="date">
-              {/* <BiCalendar className="icon" /> */}
+              <span>
+                <img src="/src/assets/圓形logo.png" alt="goyours logo" />
+              </span>
               {new Date(post.publishedAt)
                 .toLocaleDateString('zh-TW', {
                   year: 'numeric',
