@@ -177,7 +177,7 @@ export default function PostDetail({ handleSearch }) {
 
   if (loading) {
     return (
-      <div className="postLoading">
+      <div className="postLoading loading">
         <p>文章加載中⋯⋯</p>
       </div>
     );
@@ -198,6 +198,7 @@ export default function PostDetail({ handleSearch }) {
           categories={categories}
           handleCategoryClick={handleSortClick}
           handleSearch={handleSearch}
+          title="文章分類"
         />
         <div className="postbody">
           {post.mainImage && (

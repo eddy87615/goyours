@@ -51,7 +51,7 @@ export default function ContactUs() {
         >
           <ArcText text="填寫表單，我們將聯絡您！" />
           <span className="homecontactusArrow ">
-            <img src="/src/assets/submit-arrow.svg" />
+            <img src="/submit-arrow.svg" alt="submit button arrow" />
           </span>
         </a>
       </div>

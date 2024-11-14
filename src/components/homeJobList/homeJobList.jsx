@@ -9,7 +9,7 @@ export default function HomeJobList() {
     {
       jobName: '巧克力工廠',
       location: '東京都・千葉縣',
-      src: '/巧克力工廠.jpg',
+      src: '/巧克力工廠.webp',
       alt: '巧克力工廠',
       introtxt: '',
       jobContent: '巧克力工廠作業員',
@@ -19,7 +19,7 @@ export default function HomeJobList() {
     {
       jobName: '舞濱物流生產線作業員',
       location: '東京都',
-      src: '/生產線.jpg',
+      src: '/生產線.webp',
       alt: '生產線',
       introtxt: '',
       jobContent: '生產線輕作業',
@@ -29,7 +29,7 @@ export default function HomeJobList() {
     {
       jobName: '溫泉飯店餐廳服務員',
       location: '栃木縣',
-      src: '/鬼怒川溫泉站.jpg',
+      src: '/鬼怒川溫泉站.webp',
       alt: '鬼怒川溫泉站',
       introtxt: '',
       jobContent: '自助餐廳服務員',
@@ -39,7 +39,7 @@ export default function HomeJobList() {
     {
       jobName: '關西機場免稅店',
       location: '關西機場',
-      src: '/關西機場.jpg.webp',
+      src: '/關西機場.webp',
       alt: '關西機場',
       introtxt: '',
       jobContent: '機場免稅店',
@@ -49,7 +49,7 @@ export default function HomeJobList() {
     {
       jobName: '滑雪中心',
       location: '長野縣',
-      src: '/滑雪中心.jpg',
+      src: '/滑雪中心.webp',
       alt: '長野縣滑雪中心',
       introtxt: '',
       jobContent: '滑雪場相關業務',
@@ -59,7 +59,7 @@ export default function HomeJobList() {
     {
       jobName: '倉庫作業員',
       location: '東京都',
-      src: '/上野倉庫作業員.jpeg',
+      src: '/上野倉庫作業員.webp',
       alt: '上野倉庫作業員',
       introtxt: '',
       jobContent: '倉庫輕作業及食品分類人員',

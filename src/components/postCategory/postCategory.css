@@ -71,7 +71,7 @@
 }
 .search::after {
   position: absolute;
-  content: url(/src/assets/goyoursbear-line-G.svg);
+  content: url(/goyoursbear-line-G.svg);
   left: 100%;
   bottom: 10%;
   width: 2rem;

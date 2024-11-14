@@ -55,7 +55,7 @@ export default function PostArea({ posts, handleCategoryClick }) {
             </ul>
             <p className="date">
               <span>
-                <img src="/src/assets/圓形logo.png" alt="goyours logo" />
+                <img src="/圓形logo.png" alt="goyours logo" />
               </span>
               {new Date(post.publishedAt)
                 .toLocaleDateString('zh-TW', {

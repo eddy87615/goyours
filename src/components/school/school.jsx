@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { urlFor } from '../../cms/sanityClient'; // 导入 client 和 urlFor
 import { useState } from 'react'; // 导入 useEffect 和 useState
 import { Link } from 'react-router-dom'; // 导入 Link 用于页面跳转

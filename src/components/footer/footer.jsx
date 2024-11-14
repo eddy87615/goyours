@@ -49,7 +49,7 @@ export default function Footer() {
     <div className="footer">
       <ul className="footerInfo">
         <li>
-          <img src="/src/assets/圓形logo.png" alt="圓形logo" />
+          <img src="/圓形logo.png" alt="圓形logo" />
         </li>
         <li>
           <FaBuildingUser className="businessicon" />

@@ -6,48 +6,19 @@
   top: 0;
   left: 0;
 
-  background-color: var(--goyoursYellow);
+  background-color: #fff8ef;
 
   z-index: 999;
-  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-out-hesitate both;
+  animation: blur 1s 2s forwards;
   transition-delay: -1s;
 }
-.st0 {
-  fill: none;
-  stroke: #b79105;
-  stroke-width: 15;
-  stroke-miterlimit: 10;
-}
-.goyoursbearWrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2rem;
 
-  width: 10rem;
-  height: 10rem;
-
-  /* background-color: #fff; */
-
-  clip-path: circle(100%);
-}
-.goyoursbearWrapper img {
-  width: 100%;
-}
-
-@keyframes circle-out-hesitate {
-  0% {
-    clip-path: circle(125%);
+@keyframes blur {
+  from {
+    opacity: 1;
   }
-  40% {
-    clip-path: circle(40%);
+  to {
+    opacity: 0;
+    display: none;
   }
-  100% {
-    clip-path: circle(0%);
-  }
-}
-
-[transition-style='out:circle:hesitate'] {
-  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-out-hesitate both;
 }

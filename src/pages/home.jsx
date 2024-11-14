@@ -70,7 +70,7 @@ const News = () => {
                 <h3>{post.title}</h3>
                 <p className="yellow">
                   <span className="homeNewsBear">
-                    <img src="/圓形logo.png" />
+                    <img src="/圓形logo.png" alt="goyours logo" />
                   </span>
                   {new Date(post.publishedAt)
                     .toLocaleDateString('zh-TW', {
@@ -94,7 +94,7 @@ const HomeschoolList = () => {
     {
       name: '東京亞細亞學友會',
       location: '東京都',
-      src: '/東京亞細亞學友會教室.jpg',
+      src: '/東京亞細亞學友會教室.webp',
       traffic: '東武伊勢崎線蒲生駅徒歩約3分',
       highlight: '獨創高水準的先進教學模式。',
       href: '/school/tokyoasia',
@@ -104,7 +104,7 @@ const HomeschoolList = () => {
     {
       name: '宇都宮日建工科専門学校ー日本語学科',
       location: '栃木県',
-      src: '/日建宇都宮校舎外観.jpg',
+      src: '/日建宇都宮校舎外観.webp',
       traffic: '宇都宮站徒歩約10分鐘',
       highlight: '在學期間住宿免費・課外體驗活動',
       href: '/school/utsunimiyanikken',
@@ -114,7 +114,7 @@ const HomeschoolList = () => {
     {
       name: '雙葉外語學校',
       location: '千葉県',
-      src: '/雙葉外語學校バス旅行.jpg',
+      src: '/雙葉外語學校バス旅行.webp',
       traffic: 'JR千葉站東口徒步10分鐘・京成千葉中央站西口徒步1分鐘',
       highlight: '細緻的升學・就職指導',
       href: '/school/utsunimiyanikken',
@@ -124,7 +124,7 @@ const HomeschoolList = () => {
     {
       name: '關西外語專門學校日本語學科',
       location: '大阪府',
-      src: '/関西外語専門学校日本語學科.jpg',
+      src: '/関西外語専門学校日本語學科.webp',
       traffic: '天王寺站步行10分鐘',
       highlight: '校內奬學金：①理事長特別獎學金 ②優秀成績者獎學金 ③升學獎金',
       href: '/school/utsunimiyanikken',
@@ -144,7 +144,7 @@ const HomeschoolList = () => {
     {
       name: '赤門會日本語言學校',
       location: '東京都',
-      src: '/赤門會日本語言學校.JPG',
+      src: '/赤門會日本語言學校.webp',
       traffic: '日暮里站步行10分・西日暮里站步行11分・三河島站步行5分',
       highlight: '職務體驗・就職支援班：以實現在日就業的目的。',
       href: '/school/akamonkai',
@@ -204,9 +204,9 @@ const HomeschoolList = () => {
 
 export default function Home() {
   const HomeIntroimgList = [
-    { src: '/KV_17.jpg', alt: 'maple leaves' },
-    { src: '/KV_07.jpg', alt: '' },
-    { src: '/KV_26.jpg', alt: '' },
+    { src: '/KV/KV_17.webp', alt: 'maple leaves' },
+    { src: '/KV/KV_10.webp', alt: 'japanese temple and couple' },
+    { src: '/KV/KV_26.webp', alt: 'japanese jinjya' },
   ];
 
   //nav height get
@@ -221,12 +221,12 @@ export default function Home() {
   //nav height get
 
   const homeslider = [
-    { src: '/KV_03.jpg' },
-    { src: '/KV_08.jpg' },
-    { src: '/KV_18.jpg' },
-    { src: '/KV_09.jpg' },
-    { src: '/KV_23.jpg' },
-    { src: '/KV_25.jpg' },
+    { src: '/KV/KV_about_13.webp' },
+    { src: '/KV/KV_03.webp' },
+    { src: '/KV/KV_09.webp' },
+    { src: '/KV/KV_about_07.webp' },
+    { src: '/KV/KV_about_05.webp' },
+    { src: '/KV/KV_25.webp' },
   ];
 
   return (
@@ -248,7 +248,7 @@ export default function Home() {
             ))}
           </Swiper>
         </div>
-        <img src="/LOGO-09.png" alt="LOGO-09" className="kvlogo" />
+        <img src="/LOGO-09.png" alt="goyours logo" className="kvlogo" />
         <ScroolDown />
       </div>
       <div className="homeintroSection">

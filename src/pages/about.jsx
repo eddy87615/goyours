@@ -110,16 +110,16 @@ export default function About() {
   }, []);
 
   const topImg = [
-    { src: '/aboutRandom/about_01.jpeg' },
-    { src: '/aboutRandom/about_02.jpeg' },
-    { src: '/aboutRandom/about_03.jpeg' },
-    { src: '/aboutRandom/about_04.jpeg' },
-    { src: '/aboutRandom/about_05.jpeg' },
-    { src: '/aboutRandom/about_06.jpeg' },
-    { src: '/aboutRandom/about_07.jpeg' },
-    { src: '/aboutRandom/about_08.jpeg' },
-    { src: '/aboutRandom/about_09.jpeg' },
-    { src: '/aboutRandom/about_13.jpeg' },
+    { src: '/aboutRandom/about_01.jpg' },
+    { src: '/aboutRandom/about_02.jpg' },
+    { src: '/aboutRandom/about_03.jpg' },
+    { src: '/aboutRandom/about_04.jpg' },
+    { src: '/aboutRandom/about_05.jpg' },
+    { src: '/aboutRandom/about_06.jpg' },
+    { src: '/aboutRandom/about_07.jpg' },
+    { src: '/aboutRandom/about_08.jpg' },
+    { src: '/aboutRandom/about_09.jpg' },
+    { src: '/aboutRandom/about_13.jpg' },
   ];
 
   const services = [
@@ -276,7 +276,6 @@ export default function About() {
                 </div>
               ))}
               <div className="serviceBgCircle"></div>
-              {/* <img src="/service-content.svg" /> */}
             </div>
           </div>
           <div className="servicecontentBg"></div>

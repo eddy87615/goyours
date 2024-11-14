@@ -228,8 +228,8 @@ export default function ContactFormResume() {
             <h2 className="jobapplyh1">{jobTitle}——打工度假申請</h2>
           </div>
           <div className="contactimg">
-            <img src="/src/assets/LOGO-09.png" />
-            <img src="/src/assets/LOGO-02.png" />
+            <img src="/src/assets/LOGO-09.png" alt="goyours logo only words" />
+            <img src="/src/assets/LOGO-02.png" alt="goyours logo" />
           </div>
           <form className="contactFormResume" onSubmit={handleSubmit}>
             <label htmlFor="name" className="realName">

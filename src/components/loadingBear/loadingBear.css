@@ -1,0 +1,37 @@
+.loadingBearAnimation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.loadingBear {
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 1101.9990234375;
+  stroke-dashoffset: 1101.9990234375;
+  animation: drawPath 2s linear forwards, fadeOut 2s 2s forwards;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drawPath {
+  0% {
+    stroke-dashoffset: 1101.9990234375;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  90% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}

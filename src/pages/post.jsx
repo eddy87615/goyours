@@ -93,7 +93,7 @@ export default function Post() {
   if (loading) {
     return (
       <div className="postLoading loading">
-        <p>畫面加載中⋯⋯</p>
+        <p>文章加載中⋯⋯</p>
       </div>
     );
   }

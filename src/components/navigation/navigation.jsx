@@ -27,7 +27,7 @@ export default function Navigation() {
     <nav className={`mainNav ${visible ? 'visible' : 'hidden'}`}>
       <div className="navLogo">
         <Link to="/">
-          <img src="/src/assets/LOGO-03.png" alt="logo" width={250} />
+          <img src="/LOGO-03.png" alt="goyours logo" width={250} />
         </Link>
       </div>
       <div className="navMenu">

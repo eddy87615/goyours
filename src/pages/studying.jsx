@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { client } from '../cms/sanityClient';
@@ -89,7 +88,7 @@ export default function Studying() {
   if (loading) {
     return (
       <div className="postLoading loading">
-        <p>畫面加載中⋯⋯</p>
+        <p>學校加載中⋯⋯</p>
       </div>
     );
   }

@@ -9,6 +9,7 @@ import SearchBar from '../components/searchBar/searchBar';
 export default function Working() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  // eslint-disable-next-line no-unused-vars
   const [totalItems, setTotalItems] = useState(0);
   const [jobList, setJobList] = useState([]);
   const [filteredJobList, setFilteredJobList] = useState([]);
@@ -155,7 +156,7 @@ export default function Working() {
   if (loading) {
     return (
       <div className="postLoading loading">
-        <p>畫面加載中⋯⋯</p>
+        <p>職缺加載中⋯⋯</p>
       </div>
     );
   }

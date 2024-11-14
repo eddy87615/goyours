@@ -68,7 +68,7 @@ export default function Faqs() {
                 </div>
                 <div className="answer">
                   <div className="answerLogo">
-                    <img src="/src/assets/LOGO-07.png" />
+                    <img src="/LOGO-07.png" alt="goyours logo" />
                   </div>
                   <p>{faq.answer}</p>
                 </div>
@@ -105,7 +105,7 @@ export default function Faqs() {
                 </div>
                 <div className="answer">
                   <div className="answerLogo">
-                    <img src="/src/assets/LOGO-07.png" />
+                    <img src="/LOGO-07.png" alt="goyours logo" />
                   </div>
                   <p>{faq.answer}</p>
                 </div>

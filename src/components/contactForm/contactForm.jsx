@@ -169,11 +169,7 @@ export default function ContactForm() {
         <>
           <div className="contactusComponent">
             <h1>Thank you</h1>
-            <img
-              src="/src/assets/LOGO-02.png"
-              alt="goyours logo"
-              className="formlogo"
-            />
+            <img src="/LOGO-02.png" alt="goyours logo" className="formlogo" />
             <p className="subitedtxt">
               感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！
             </p>
@@ -222,8 +218,8 @@ export default function ContactForm() {
         <div className="contactusComponent">
           <h1>Contact us</h1>
           <div className="contactimg">
-            <img src="/src/assets/LOGO-09.png" />
-            <img src="/src/assets/LOGO-02.png" />
+            <img src="/LOGO-09.png" alt="goyours logo only words" />
+            <img src="/LOGO-02.png" alt="goyours logo" />
           </div>
           <form className="contactForm" onSubmit={handleSubmit}>
             <label htmlFor="name">
@@ -359,7 +355,12 @@ export default function ContactForm() {
               <input type="checkbox" id="privicy" name="privicy" />
               <span>
                 我已閱讀
-                <Link to="/privacy" target="blank" required>
+                <Link
+                  to="/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  required
+                >
                   隱私政策*
                 </Link>
               </span>

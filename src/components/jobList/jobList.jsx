@@ -59,7 +59,7 @@ export default function JobList({ jobList, isSearchTriggered }) {
         jobList.map((job) => (
           <div key={job.slug.current || job.slug} className="joblist">
             <div className="listintro">
-              <img src={urlFor(job.mainImage).url()} />
+              <img src={urlFor(job.mainImage).url()} alt={job.name} />
               <ul>
                 <li>
                   <h2>{job.name}</h2>

@@ -6,6 +6,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+
 import Modal from 'react-modal'; // 引入 Modal 組件
 Modal.setAppElement('#root');
 
@@ -62,7 +67,8 @@ const Features = ({ school }) => {
               ></iframe>
             </div>
             <img
-              src="/src/assets/goyoursBear-bg-schooldetail.svg"
+              src="/goyoursBear-bg-schooldetail.svg"
+              alt="background pics"
               className="videoBg"
             />
           </div>
@@ -206,7 +212,7 @@ export default function SchoolDetail() {
             </li>
             <li>
               <FaEarthAmericas className="schoolDetailicon" />
-              <a href={school.officialSite} target="blank">
+              <a href={school.officialSite} target="_blank">
                 {school.officialSite}
               </a>
             </li>
@@ -215,7 +221,11 @@ export default function SchoolDetail() {
               <PortableText value={school.description} />
             </li>
           </ul>
-          <img src={urlFor(school.logo).url()} className="schoollogo" />
+          <img
+            src={urlFor(school.logo).url()}
+            alt={`${school.name} logo`}
+            className="schoollogo"
+          />
         </div>
       </div>
       <Features school={school} />
@@ -232,7 +242,7 @@ export default function SchoolDetail() {
         overlayClassName="modalOverlay"
       >
         <div className="modalimgWrapper">
-          <img src={currentImage} alt="Enlarged" className="modalImage" />
+          <img src={currentImage} alt="Enlarged pics" className="modalImage" />
         </div>
         <button onClick={closeModal} className="closeModalBtn">
           <ImCross />

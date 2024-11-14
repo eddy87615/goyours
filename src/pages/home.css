@@ -41,7 +41,7 @@
   content: '';
   width: 30rem;
   height: 30rem;
-  background-image: url(/src/assets/Japan.png);
+  background-image: url(/Japan.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -101,7 +101,7 @@
 }
 .homeintroImgWrapper0::after {
   position: absolute;
-  content: url(/src/assets/homepic-3-bear.svg);
+  content: url(/homepic-3-bear.svg);
 
   width: 4rem;
 
@@ -120,7 +120,7 @@
 }
 .homeintroImgWrapper1::after {
   position: absolute;
-  content: url(/src/assets/goyoursBear-bg-home.svg);
+  content: url(/goyoursBear-bg-home.svg);
 
   width: 4rem;
 
@@ -155,7 +155,7 @@
   margin: 0 auto;
 
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .homeNewsH1,
@@ -229,7 +229,7 @@
   width: 100%;
   height: 100%;
 }
-.homeNewsDiv a:hover img {
+.homeNewsprePost a:hover .homeNewspostImg > img {
   transform: scale(0.8);
 
   transition-duration: 0.5s;
@@ -280,7 +280,7 @@
 .homeschoolList {
   position: relative;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
 
   padding: 10rem 0;
 }

@@ -5,6 +5,9 @@
 
   margin: 0 auto;
   padding-top: 10rem;
+
+  position: relative;
+  z-index: 2;
 }
 .homeContactusDiv {
   position: relative;
@@ -70,7 +73,7 @@
   background-color: var(--goyoursYellow);
 }
 .homecontactusBtn::before {
-  content: url(/src/assets/goyoursbear-Y.svg);
+  content: url(/goyoursbear-Y.svg);
   position: absolute;
   width: 2rem;
   top: 3.2rem;

@@ -1,4 +1,5 @@
 import './privacy.css';
+import './contact.css';
 
 export default function Privacy() {
   return (

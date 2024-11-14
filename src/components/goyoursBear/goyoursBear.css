@@ -3,6 +3,10 @@
   margin: 0 auto;
   right: -80%;
   top: 30%;
+
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
 }
 
 .goyoursBearJob {
@@ -10,16 +14,28 @@
   margin: 0 auto;
   right: -32%;
   top: 30%;
+
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
 }
 
 .goyoursbear-morepost {
   position: absolute;
   right: -130%;
   top: -90%;
+
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
 }
 
 .goyoursbear-relatedpost {
   position: absolute;
   right: -56%;
   top: 8%;
+
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
 }

@@ -94,7 +94,7 @@ export default function Hotpost() {
                   )}
                 </div>
                 <div className="homehotpostDate">
-                  <img src="/src/assets/圓形logo.png" />
+                  <img src="/圓形logo.png" alt="goyours logo" />
                   <p>
                     {new Date(post.publishedAt)
                       .toLocaleDateString('zh-TW', {
