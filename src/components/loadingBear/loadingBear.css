@@ -14,7 +14,7 @@
   stroke-miterlimit: 10;
   stroke-dasharray: 1101.9990234375;
   stroke-dashoffset: 1101.9990234375;
-  animation: drawPath 2s linear forwards, fadeOut 2s 2s forwards;
+  animation: drawPath 1.5s linear forwards, fadeOut 2s 2s forwards;
   animation-iteration-count: infinite;
 }
 

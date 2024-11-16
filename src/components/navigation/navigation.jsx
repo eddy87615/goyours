@@ -31,11 +31,12 @@ export default function Navigation() {
         </Link>
       </div>
       <div className="navMenu">
-        <Link to="/about">關於Go Yours</Link>
-        <Link to="/post">文章專區</Link>
-        <Link to="/studying">日本留學</Link>
-        <Link to="/working">打工度假</Link>
-        <Link to="/contact" target="blank">
+        <Link to="/about-us">關於Go Yours</Link>
+        <Link to="/goyours-post">文章專區</Link>
+        <Link to="/studying-in-jp">日本留學</Link>
+        <Link to="/working-holiday">打工度假</Link>
+        <Link to="/Q&A-section">常見Q&A</Link>
+        <Link to="/contact-us" target="blank">
           聯絡我們
           <TbBoxMultiple />
         </Link>

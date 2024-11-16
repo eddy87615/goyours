@@ -26,12 +26,12 @@ export default function JobList({ jobList, isSearchTriggered }) {
 
   const navigate = useNavigate();
   const handleInquiry = (jobName) => {
-    navigate('/contact', {
+    navigate('/contact-us', {
       state: { initialMessage: `我對${jobName}職缺有興趣，想要諮詢` },
     });
   };
   const handleInquiryResume = (jobName) => {
-    navigate('/contactResume', {
+    navigate('/working-holiday-application', {
       state: { initialMessage: `${jobName}` },
     });
   };

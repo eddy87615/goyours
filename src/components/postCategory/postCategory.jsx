@@ -9,9 +9,10 @@ export default function PostCategary({
   handleCategoryClick,
   handleSearch,
   title,
+  placeholder,
 }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [placeholdertxt, setPlaceholdertxt] = useState('搜尋文章...');
+  const [placeholdertxt, setPlaceholdertxt] = useState(placeholder);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -33,7 +34,7 @@ export default function PostCategary({
           onChange={handleSearchChange}
           onKeyDown={handleKeyDown} // 監聽鍵盤事件
           onFocus={() => setPlaceholdertxt('')}
-          onBlur={() => setPlaceholdertxt('搜尋文章...')}
+          onBlur={() => setPlaceholdertxt(placeholder)}
           className="placeholder"
         />
       </div>

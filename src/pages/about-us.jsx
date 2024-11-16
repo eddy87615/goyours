@@ -5,7 +5,7 @@ import { client } from '../cms/sanityClient';
 import ContactUs from '../components/contactUs/contactUs';
 import GoyoursBear from '../components/goyoursBear/goyoursBear';
 
-import './about.css';
+import './about-us.css';
 
 function getRandomSixFeedbacks(feedbacks) {
   const shuffled = [...feedbacks].sort(() => 0.5 - Math.random());

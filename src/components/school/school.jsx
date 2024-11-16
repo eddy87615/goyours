@@ -74,7 +74,6 @@ export default function School({ selectedCategory, schools }) {
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}
-        title="文章分類"
       />
     </div>
   );

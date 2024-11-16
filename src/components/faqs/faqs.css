@@ -2,6 +2,13 @@
   position: absolute;
 
   bottom: 100%;
+  width: 4rem;
+}
+
+.goyoursbear-line {
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
 }
 
 .qaSection {

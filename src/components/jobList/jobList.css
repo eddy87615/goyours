@@ -13,12 +13,12 @@
 .searchResultArea {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
 
-  height: 24rem;
-  margin-bottom: 6rem;
-  padding-bottom: 4rem;
+  height: 10rem;
+  /* margin-bottom: 6rem; */
+  /* padding-bottom: 4rem; */
 
   background: url(/goyoursBear-bg.svg) no-repeat;
   background-position: center;

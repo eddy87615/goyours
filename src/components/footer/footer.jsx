@@ -105,7 +105,7 @@ export default function Footer() {
         </li>
         <li>
           <h3>
-            <Link to="/contact#faqsSection">常見Q&A</Link>
+            <Link to="/QAsection">常見Q&A</Link>
           </h3>
         </li>
       </ul>

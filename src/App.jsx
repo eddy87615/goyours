@@ -15,15 +15,16 @@ import LoadingBear from './components/loadingBear/loadingBear';
 
 // 使用 React.lazy 延遲加載每個頁面組件
 const Home = lazy(() => import('./pages/home'));
-const About = lazy(() => import('./pages/about'));
-const Post = lazy(() => import('./pages/post'));
+const About = lazy(() => import('./pages/about-us'));
+const Post = lazy(() => import('./pages/goyours-post'));
 const PostDetail = lazy(() => import('./pages/postDetail'));
 const Studying = lazy(() => import('./pages/studying'));
 const SchoolDetail = lazy(() => import('./pages/schoolDetail'));
 const Working = lazy(() => import('./pages/working'));
-const Contact = lazy(() => import('./pages/contact'));
+const Contact = lazy(() => import('./pages/contact-us'));
 const ContactResume = lazy(() => import('./pages/contactResume'));
 const Privacy = lazy(() => import('./pages/privacy'));
+const QAsection = lazy(() => import('./pages/Qasection'));
 
 function AppContent() {
   const location = useLocation();
@@ -34,7 +35,7 @@ function AppContent() {
     setLoadingComplete(false);
     const timer = setTimeout(() => {
       setLoadingComplete(true);
-    }, 1500); // 設置兩秒延遲
+    }, 2000); // 設置兩秒延遲
 
     return () => clearTimeout(timer); // 清理計時器
   }, [location.pathname]);
@@ -54,15 +55,19 @@ function AppContent() {
         >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/post" element={<Post />} />
-            <Route path="/post/:slug" element={<PostDetail />} />
-            <Route path="/studying" element={<Studying />} />
-            <Route path="/school/:slug" element={<SchoolDetail />} />
-            <Route path="/working" element={<Working />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/contactResume" element={<ContactResume />} />
-            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/about-us" element={<About />} />
+            <Route path="/goyours-post" element={<Post />} />
+            <Route path="/goyours-post/:slug" element={<PostDetail />} />
+            <Route path="/studying-in-jp" element={<Studying />} />
+            <Route path="/school-detail/:slug" element={<SchoolDetail />} />
+            <Route path="/working-holiday" element={<Working />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route
+              path="/working-holiday-application"
+              element={<ContactResume />}
+            />
+            <Route path="/privacy-policy" element={<Privacy />} />
+            <Route path="/Q&A-section" element={<QAsection />} />
           </Routes>
         </Suspense>
       ) : (

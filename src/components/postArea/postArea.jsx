@@ -29,13 +29,15 @@ export default function PostArea({ posts, handleCategoryClick }) {
       {currentPosts.map((post, index) => (
         <div key={index} className="postarea">
           {post.mainImage && (
-            <Link to={`/post/${post.slug.current}`} className="imgLink">
+            <Link to={`/goyours-post/${post.slug.current}`} className="imgLink">
               <img src={urlFor(post.mainImage).url()} alt={post.title} />
             </Link>
           )}
           <div className="postListInfo">
             <h1>
-              <Link to={`/post/${post.slug.current}`}>{post.title}</Link>{' '}
+              <Link to={`/goyours-post/${post.slug.current}`}>
+                {post.title}
+              </Link>{' '}
             </h1>
             <ul className="info">
               {post.categories && post.categories.length > 0 ? (

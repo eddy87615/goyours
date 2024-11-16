@@ -4,6 +4,7 @@ import { client } from '../cms/sanityClient';
 import School from '../components/school/school'; // 导入 School 组件
 import './studying.css';
 import PostCategary from '../components/postCategory/postCategory';
+import SchoolSearch from '../components/schoolSearch/schoolSearch';
 
 export default function Studying() {
   const location = useLocation(); // 获取路由传递的状态
@@ -39,7 +40,7 @@ export default function Studying() {
     async function fetchSchools() {
       try {
         const result = await client.fetch(`
-          *[_type == "school"] | order(publishedAt desc) {
+          *[_type == "school" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
             name,
             address,
             transportation,
@@ -93,24 +94,29 @@ export default function Studying() {
     );
   }
   return (
-    <div className="schoolPage">
-      <PostCategary
-        categories={categories}
-        handleCategoryClick={handleCategoryClick}
-        handleSearch={handleSearch}
-        title="學校分類"
-      />
-      {filteredSchools.length === 0 ? (
-        <div className="postLoading post-empty">
-          <p>這個標籤裡沒有學校ಥ∀ಥ</p>
-        </div>
-      ) : (
-        <School
-          schools={filteredSchools}
-          selectedCategory={selectedCategory}
-          searchQuery={searchQuery}
+    <>
+      <SchoolSearch />
+
+      <div className="schoolPage">
+        <PostCategary
+          categories={categories}
+          handleCategoryClick={handleCategoryClick}
+          handleSearch={handleSearch}
+          placeholder="搜尋學校⋯"
+          title="學校分類"
         />
-      )}
-    </div>
+        {filteredSchools.length === 0 ? (
+          <div className="postLoading post-empty">
+            <p>這個標籤裡沒有學校ಥ∀ಥ</p>
+          </div>
+        ) : (
+          <School
+            schools={filteredSchools}
+            selectedCategory={selectedCategory}
+            searchQuery={searchQuery}
+          />
+        )}
+      </div>
+    </>
   );
 }

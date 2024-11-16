@@ -1,6 +1,5 @@
 import ContactForm from '../components/contactForm/contactForm';
-import Faqs from '../components/faqs/faqs';
-import './contact.css';
+import './contact-us.css';
 
 export default function Contact() {
   return (
@@ -21,7 +20,6 @@ export default function Contact() {
         </div>
       </div>
       <ContactForm />
-      <Faqs />
     </div>
   );
 }

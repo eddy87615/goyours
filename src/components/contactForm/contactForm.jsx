@@ -5,7 +5,6 @@ import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
 import { Link } from 'react-router-dom';
 
 import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
-import Faqs from '../faqs/faqs';
 
 import './contactForm.css';
 
@@ -174,43 +173,40 @@ export default function ContactForm() {
               感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！
             </p>
           </div>
-          <div className="submittedLayout">
-            <Faqs />
-            <div className="submitedPostArea">
-              <div className="morepostH2">
-                <h2 className="yellow">
-                  延伸閱讀
-                  <GoyoursBearMorePost />
-                </h2>
-              </div>
-              <div className="submitPostList">
-                {randomPosts.map((post, index) => (
-                  <Link
-                    key={index}
-                    className="submitPostLink"
-                    to={`/post/${post.slug.current}`}
-                  >
-                    <img src={urlFor(post.mainImage).url()} alt={post.title} />
-                    <h3>{post.title}</h3>
-                    <ul>
-                      {post.categories.map((category, index) => (
-                        <li key={index}>#{category.title}</li>
-                      ))}
-                    </ul>
-                    <div className="submitPostDate">
-                      <p>
-                        {new Date(post.publishedAt)
-                          .toLocaleDateString('zh-TW', {
-                            year: 'numeric',
-                            month: '2-digit',
-                            day: '2-digit',
-                          })
-                          .replace(/\//g, '.')}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+          <div className="submitedPostArea">
+            <div className="morepostH2">
+              <h2 className="yellow">
+                延伸閱讀
+                <GoyoursBearMorePost />
+              </h2>
+            </div>
+            <div className="submitPostList">
+              {randomPosts.map((post, index) => (
+                <Link
+                  key={index}
+                  className="submitPostLink"
+                  to={`/post/${post.slug.current}`}
+                >
+                  <img src={urlFor(post.mainImage).url()} alt={post.title} />
+                  <h3>{post.title}</h3>
+                  <ul>
+                    {post.categories.map((category, index) => (
+                      <li key={index}>#{category.title}</li>
+                    ))}
+                  </ul>
+                  <div className="submitPostDate">
+                    <p>
+                      {new Date(post.publishedAt)
+                        .toLocaleDateString('zh-TW', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                        })
+                        .replace(/\//g, '.')}
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </>

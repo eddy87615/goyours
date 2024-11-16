@@ -9,6 +9,12 @@
   stroke-width: 15;
 }
 
+.goyoursbear-line {
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
+}
+
 .goyoursBearJob {
   position: absolute;
   margin: 0 auto;

@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { BsTrashFill } from 'react-icons/bs';
 
+import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
+
 import './contactFormResume.css';
-import Faqs from '../faqs/faqs';
+import '../contactForm/contactForm.css';
 
 export default function ContactFormResume() {
   const [placeholdertxt, setPlaceholdertxt] = useState([
@@ -177,47 +179,45 @@ export default function ContactFormResume() {
         <>
           <div className="contactusComponent">
             <h1>Thank you</h1>
-            <img
-              src="/src/assets/LOGO-02.png"
-              alt="goyours logo"
-              className="formlogo"
-            />
+            <img src="/LOGO-02.png" alt="goyours logo" className="formlogo" />
             <p className="subitedtxt">
               感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！
             </p>
           </div>
-          <div className="submittedLayout">
-            <Faqs />
-            <div className="submitedPostArea">
-              <h2 className="yellow">延伸閱讀</h2>
-              <div className="submitPostList">
-                {randomPosts.map((post, index) => (
-                  <Link
-                    key={index}
-                    className="submitPostLink"
-                    to={`/post/${post.slug.current}`}
-                  >
-                    <img src={urlFor(post.mainImage).url()} alt={post.title} />
-                    <h3>{post.title}</h3>
-                    <ul>
-                      {post.categories.map((category, index) => (
-                        <li key={index}>#{category.title}</li>
-                      ))}
-                    </ul>
-                    <div className="submitPostDate">
-                      <p>
-                        {new Date(post.publishedAt)
-                          .toLocaleDateString('zh-TW', {
-                            year: 'numeric',
-                            month: '2-digit',
-                            day: '2-digit',
-                          })
-                          .replace(/\//g, '.')}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+          <div className="submitedPostArea">
+            <div className="morepostH2">
+              <h2 className="yellow">
+                延伸閱讀
+                <GoyoursBearMorePost />
+              </h2>
+            </div>
+            <div className="submitPostList">
+              {randomPosts.map((post, index) => (
+                <Link
+                  key={index}
+                  className="submitPostLink"
+                  to={`/post/${post.slug.current}`}
+                >
+                  <img src={urlFor(post.mainImage).url()} alt={post.title} />
+                  <h3>{post.title}</h3>
+                  <ul>
+                    {post.categories.map((category, index) => (
+                      <li key={index}>#{category.title}</li>
+                    ))}
+                  </ul>
+                  <div className="submitPostDate">
+                    <p>
+                      {new Date(post.publishedAt)
+                        .toLocaleDateString('zh-TW', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                        })
+                        .replace(/\//g, '.')}
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </>
@@ -228,8 +228,8 @@ export default function ContactFormResume() {
             <h2 className="jobapplyh1">{jobTitle}——打工度假申請</h2>
           </div>
           <div className="contactimg">
-            <img src="/src/assets/LOGO-09.png" alt="goyours logo only words" />
-            <img src="/src/assets/LOGO-02.png" alt="goyours logo" />
+            <img src="/LOGO-09.png" alt="goyours logo only words" />
+            <img src="/LOGO-02.png" alt="goyours logo" />
           </div>
           <form className="contactFormResume" onSubmit={handleSubmit}>
             <label htmlFor="name" className="realName">
