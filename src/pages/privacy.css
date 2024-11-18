@@ -14,7 +14,7 @@
 }
 
 .privacyTitle {
-  margin: 0 10% 14% 10%;
+  margin: 0 10% 12% 10%;
 
   line-height: 2rem;
 
@@ -32,9 +32,17 @@
   width: 80vw;
   margin: 0 auto;
 
-  padding: 2rem 0;
+  padding: 8rem 0 2rem 0;
 
   line-height: 2rem;
+
+  margin-top: -10%;
+}
+
+.privacy-wrapper {
+  clip-path: ellipse(200% 100% at 50% 100%);
+
+  background-color: #fff8ef;
 }
 
 .privacy h3,
@@ -103,7 +111,7 @@
   stroke: #f4bf00;
   stroke-width: 15;
 }
-
+/* 
 .privacy-content::before {
   content: '';
   position: absolute;
@@ -112,7 +120,7 @@
   width: 100vw;
   height: 500px;
   background-color: #fff8ef;
-  clip-path: ellipse(55% 50% at 50% 100%);
+  clip-path: ellipse(180% 100% at 50% 100%);
 
   z-index: 0;
-}
+} */

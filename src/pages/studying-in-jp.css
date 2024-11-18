@@ -15,7 +15,7 @@
   flex-direction: column;
 
   /* padding-bottom: 50px; */
-  padding-top: 8%;
+  padding-top: 10%;
 
   position: relative;
 
@@ -42,8 +42,10 @@
   height: 220%;
 
   background-size: contain;
-  bottom: -50%;
+  bottom: -60%;
   right: -110%;
+
+  z-index: 1;
 }
 .guide-text::before {
   position: absolute;
@@ -59,6 +61,8 @@
   background-size: contain;
   bottom: -55%;
   left: -100%;
+
+  z-index: 1;
 }
 
 .guide-title {
@@ -202,8 +206,13 @@
   position: relative;
 
   z-index: 1;
+
+  clip-path: ellipse(200% 100% at 50% 100%);
+  margin-top: -12%;
+
+  padding-top: 10rem;
 }
-.guide-content::before {
+/* .guide-content::before {
   content: '';
   position: absolute;
   transform: translateY(-98%);
@@ -214,7 +223,7 @@
   clip-path: ellipse(55% 50% at 50% 100%);
 
   z-index: 0;
-}
+} */
 
 .aboutstudyingH2 {
   width: 50vw;

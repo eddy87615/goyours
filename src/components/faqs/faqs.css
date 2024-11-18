@@ -5,6 +5,15 @@
   width: 4rem;
 }
 
+.fqa-KV {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url(/guidePage/about_05.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 90vh;
+}
+
 .goyoursbear-line {
   fill: none;
   stroke: #f4bf00;
@@ -12,12 +21,25 @@
 }
 
 .qaSection {
+  /* padding-top: 6rem; */
+
+  /* width: 70vw; */
+
+  /* margin: 0 auto; */
+}
+.fqa-wrapper {
   padding-top: 6rem;
-
   width: 70vw;
-
   margin: 0 auto;
 }
+.fqa-body {
+  clip-path: ellipse(200% 100% at 50% 100%);
+
+  background-color: #fff8ef;
+
+  margin-top: -10%;
+}
+
 .qaSection h1 {
   display: flex;
   flex-direction: column;
