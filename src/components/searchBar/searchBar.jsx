@@ -126,7 +126,11 @@ export default function SearchBar({ onSearch }) {
           {dotOption.map((option, index) => (
             <label
               key={index}
-              className={selectedTags.includes(option.value) ? 'active' : ''}
+              className={
+                selectedTags.includes(option.value)
+                  ? 'customCheckBox-active'
+                  : ''
+              }
               onClick={() => handleTagClick(option.value)}
             >
               <span className="custom-checkbox"></span>

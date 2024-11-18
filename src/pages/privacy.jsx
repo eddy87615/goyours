@@ -1,11 +1,11 @@
 import './privacy.css';
-import './contact.css';
+import './contact-us.css';
 
 export default function Privacy() {
   return (
     <div className="privacy">
-      <div className="contactus">
-        <div className="contactusTitle">
+      <div className="privacy-KV">
+        <div className="privacyTitle">
           <h2>Go Yours 高優國際留學有限公司 隱私權政策</h2>
           <p>
             Go Yours 高優國際留學有限公司（以下稱為本公司）

@@ -45,3 +45,23 @@
   stroke: #f4bf00;
   stroke-width: 15;
 }
+
+.goyoursbear-component-school {
+  position: absolute;
+  right: -40%;
+  top: 30%;
+
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
+}
+
+.goyoursbear-aboutstudying {
+  position: absolute;
+  right: -130%;
+  top: 10%;
+
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
+}

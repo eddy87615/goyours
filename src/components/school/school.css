@@ -1,5 +1,5 @@
 .loading {
-  width: 100dvw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -11,12 +11,61 @@
 .schoolPageschoolSection {
   position: relative;
 
+  width: 90%;
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
   gap: 4rem;
-  padding-top: 12rem;
+
+  padding-top: 10rem;
 }
+
+.searchResultArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 10rem;
+  /* margin-bottom: 6rem; */
+  /* padding-bottom: 4rem; */
+
+  background: url(/goyoursBear-bg.svg) no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  grid-column: 1 / -1; /* 跨整個 grid 的所有列 */
+}
+.searchResultArea h2 {
+  font-size: 2rem;
+
+  margin-bottom: 0.5rem;
+
+  display: flex;
+  align-items: center;
+}
+.searchResultArea svg {
+  padding-right: 1rem;
+}
+.searchNumber {
+  color: #414042;
+}
+
+.searchResult {
+  font-size: 1rem;
+
+  font-weight: bold;
+}
+
+.schoolResultText {
+  grid-column: 1 / -1; /* 跨整個 grid 的所有列 */
+  text-align: center; /* 文字水平居中 */
+  align-self: center; /* 讓文字在 grid 中垂直置中 */
+  justify-self: center; /* 水平居中 */
+}
+
 .tagnow {
   position: absolute;
   top: 4rem;

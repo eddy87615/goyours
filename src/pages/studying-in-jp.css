@@ -1,0 +1,343 @@
+.studying-in-jp-section {
+  height: 100%;
+}
+
+.guidePage-studying-top {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #3a270f;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+
+  /* padding-bottom: 50px; */
+  padding-top: 8%;
+
+  position: relative;
+
+  z-index: 0;
+}
+
+.guide-text {
+  text-align: center;
+
+  line-height: 2rem;
+
+  position: relative;
+}
+
+.guide-text::after {
+  position: absolute;
+  content: '';
+
+  background-image: url(/guidePage/studying-B.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  width: 20rem;
+  height: 220%;
+
+  background-size: contain;
+  bottom: -50%;
+  right: -110%;
+}
+.guide-text::before {
+  position: absolute;
+
+  content: '';
+  background-image: url(/guidePage/studying-G.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  width: 20rem;
+  height: 210%;
+
+  background-size: contain;
+  bottom: -55%;
+  left: -100%;
+}
+
+.guide-title {
+  width: 100%;
+}
+.guide-title h1 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.guide-title h1::after {
+  content: '';
+  width: 4rem;
+  margin: 0 auto;
+  padding-top: 3rem;
+  border-bottom: 0.6rem solid var(--goyoursYellow);
+}
+
+.guide-vertical-slide-left {
+  position: absolute;
+  top: 0;
+  left: 4%;
+  width: 12%;
+  height: 100%;
+
+  display: flex;
+  flex: content;
+  flex-direction: column;
+}
+.guideImgFrame-left {
+  width: 100%;
+  height: 28%;
+
+  overflow: hidden;
+
+  position: absolute;
+
+  animation-name: scrollDown;
+  bottom: 100%;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  border-radius: 1rem;
+}
+
+.silde-text-wrapper-right01 {
+  position: absolute;
+  top: 0;
+  right: 1%;
+
+  height: 110%;
+  width: 2rem;
+}
+.silde-text-wrapper-left01 {
+  position: absolute;
+  top: 0;
+  left: 1%;
+
+  height: 110%;
+  width: 2rem;
+}
+.silde-text-wrapper-right01 p,
+.silde-text-wrapper-left01 p {
+  width: 100%;
+  min-width: 100%; /* 確保不會小於設定寬度 */
+  max-width: 100%; /* 確保不會超過設定寬度 */
+
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+
+  width: 100%;
+  height: 120px;
+  font-size: 1.3rem;
+  color: #f8b300;
+  font-weight: bold;
+
+  position: absolute;
+  /* bottom: 100%; */
+  transform: translateY(-100%);
+  right: 0;
+  margin: 0;
+
+  opacity: 0.5;
+
+  animation: scrollDownText;
+  animation-duration: 13s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.right02 {
+  right: 17%;
+}
+.left02 {
+  left: 17%;
+}
+
+.guide-vertical-slide-right {
+  position: absolute;
+  top: 0;
+  right: 4%;
+  width: 12%;
+  height: 100%;
+
+  display: flex;
+  flex: content;
+  flex-direction: column;
+}
+.guideImgFrame-right {
+  width: 100%;
+  height: 28%;
+
+  overflow: hidden;
+
+  position: absolute;
+
+  animation-name: scrollUp;
+  top: 100%;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  border-radius: 1rem;
+}
+
+.guideImgFrame-right img,
+.guideImgFrame-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.guide-content {
+  width: 100vw;
+  height: 100%;
+
+  background-color: #fff8ef;
+
+  position: relative;
+
+  z-index: 1;
+}
+.guide-content::before {
+  content: '';
+  position: absolute;
+  transform: translateY(-98%);
+  left: 0;
+  width: 100vw;
+  height: 500px;
+  background-color: #fff8ef;
+  clip-path: ellipse(55% 50% at 50% 100%);
+
+  z-index: 0;
+}
+
+.aboutstudyingH2 {
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.aboutstudyingH2 h2 {
+  width: fit-content;
+  position: relative;
+  padding-top: 2rem;
+}
+
+.studying-page-button {
+  width: 54vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 4rem;
+
+  padding-top: 6rem;
+}
+
+.to-all-school {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
+    url(/guidePage/slide003.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 20rem;
+
+  border-radius: 1.5rem;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  transition-duration: 0.2s;
+}
+
+.to-QA-page {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(/guidePage/slide017.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  width: 100%;
+  height: 20rem;
+
+  border-radius: 1.5rem;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  transition-duration: 0.2s;
+}
+
+.to-all-school h4,
+.to-QA-page h4 {
+  color: #fff;
+  font-size: 1.25rem;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.white-icon img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.button-arrow {
+  color: #fff;
+  font-size: 3rem;
+
+  border: 2px solid #fff;
+  border-radius: 50%;
+
+  padding: 2rem;
+}
+
+.to-all-school:hover,
+.to-QA-page:hover {
+  box-shadow: 5px 5px 1px 1px #3a340f;
+
+  transition-duration: 0.2s;
+}
+
+.guide-morePost {
+  padding-top: 8rem;
+}
+
+.guide-page-contact-wrapper {
+  width: 90vw;
+  margin: 0 auto;
+
+  padding-top: 8rem;
+}
+
+/****/
+
+.goyoursbear-line {
+  fill: none;
+  stroke: #f4bf00;
+  stroke-width: 15;
+}
+.goyoursbear {
+  width: 5%;
+  margin: 0 auto;
+}

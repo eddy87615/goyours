@@ -1,0 +1,77 @@
+.morepostH2 {
+  width: 50vw;
+
+  margin: 0 auto;
+}
+.morepostH2 h2 {
+  width: fit-content;
+
+  position: relative;
+}
+
+.submitPostList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding-top: 3rem;
+}
+
+.submitPostLink {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'img title'
+    'img catrgory'
+    'img date';
+  column-gap: 2rem;
+
+  margin: 0 auto;
+}
+.submitPostLink img {
+  grid-area: img;
+  width: 10rem;
+  height: 10rem;
+
+  object-fit: cover;
+
+  border-radius: 1rem;
+}
+.submitPostLink h3 {
+  grid-area: title;
+}
+.submitPostLink ul {
+  grid-area: catrgory;
+  display: flex;
+  gap: 1rem;
+
+  color: var(--goyoursYellow);
+}
+
+.submitedPostArea {
+  padding-top: 6rem;
+}
+
+.submitPostDate {
+  position: relative;
+  grid-area: date;
+
+  color: var(--goyoursYellow);
+}
+.submitPostDate p {
+  padding-left: 3rem;
+}
+.submitPostDate::before {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-image: url(/圓形logo.png);
+  background-position: center;
+  background-size: cover;
+}

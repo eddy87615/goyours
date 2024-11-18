@@ -195,7 +195,7 @@ const HomeschoolList = () => {
           );
         })}
       </div>
-      <a className="formoreBtntoPage" href="./studying">
+      <a className="formoreBtntoPage" href="./studying-in-jp-school">
         看更多學校
       </a>
     </div>

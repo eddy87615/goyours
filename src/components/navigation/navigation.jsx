@@ -31,7 +31,8 @@ export default function Navigation() {
         </Link>
       </div>
       <div className="navMenu">
-        <Link to="/about-us">關於Go Yours</Link>
+        <Link to="/">Home</Link>
+        <Link to="/about-us">About</Link>
         <Link to="/goyours-post">文章專區</Link>
         <Link to="/studying-in-jp">日本留學</Link>
         <Link to="/working-holiday">打工度假</Link>

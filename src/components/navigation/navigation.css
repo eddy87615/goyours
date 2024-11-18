@@ -16,7 +16,7 @@
 
   font-size: 1.2rem;
 
-  display: none;
+  /* display: none; */
 }
 
 .mainNav.visible {
@@ -55,10 +55,11 @@
 .navMenu a:nth-child(2),
 .navMenu a:nth-child(3),
 .navMenu a:nth-child(4),
-.navMenu a:nth-child(5) {
+.navMenu a:nth-child(5),
+.navMenu a:nth-child(6) {
   padding: 1.3rem 1rem;
 }
-.navMenu a:nth-child(6) {
+.navMenu a:nth-child(7) {
   background-color: var(--goyoursYellow);
 
   padding: 1.3rem 2rem;

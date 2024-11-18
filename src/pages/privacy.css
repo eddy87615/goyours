@@ -2,10 +2,30 @@
   height: 100%;
 }
 
-.privacy .contactusTitle {
-  padding: 2rem 10%;
+.privacy-KV {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url(/guidePage/about_05.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+
+  display: flex;
+  align-items: end;
+}
+
+.privacyTitle {
+  margin: 0 10% 14% 10%;
 
   line-height: 2rem;
+
+  border-left: 2px solid #fff;
+  color: #fff;
+}
+.privacyTitle h2,
+.privacyTitle p {
+  margin: 0;
+
+  padding-left: 1rem;
 }
 
 .privacy-content {
@@ -82,4 +102,17 @@
   fill: none;
   stroke: #f4bf00;
   stroke-width: 15;
+}
+
+.privacy-content::before {
+  content: '';
+  position: absolute;
+  transform: translateY(-90%);
+  left: 0;
+  width: 100vw;
+  height: 500px;
+  background-color: #fff8ef;
+  clip-path: ellipse(55% 50% at 50% 100%);
+
+  z-index: 0;
 }

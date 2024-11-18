@@ -25,6 +25,8 @@ const Contact = lazy(() => import('./pages/contact-us'));
 const ContactResume = lazy(() => import('./pages/contactResume'));
 const Privacy = lazy(() => import('./pages/privacy'));
 const QAsection = lazy(() => import('./pages/Qasection'));
+const StudyingInJp = lazy(() => import('./pages/studying-in-jp'));
+const WorkingHoliday = lazy(() => import('./pages/working-holiday'));
 
 function AppContent() {
   const location = useLocation();
@@ -35,7 +37,7 @@ function AppContent() {
     setLoadingComplete(false);
     const timer = setTimeout(() => {
       setLoadingComplete(true);
-    }, 2000); // 設置兩秒延遲
+    }, 3000); // 設置兩秒延遲
 
     return () => clearTimeout(timer); // 清理計時器
   }, [location.pathname]);
@@ -58,10 +60,15 @@ function AppContent() {
             <Route path="/about-us" element={<About />} />
             <Route path="/goyours-post" element={<Post />} />
             <Route path="/goyours-post/:slug" element={<PostDetail />} />
-            <Route path="/studying-in-jp" element={<Studying />} />
-            <Route path="/school-detail/:slug" element={<SchoolDetail />} />
-            <Route path="/working-holiday" element={<Working />} />
+            <Route path="/studying-in-jp-school" element={<Studying />} />
+            <Route
+              path="/studying-in-jp-school/:slug"
+              element={<SchoolDetail />}
+            />
+            <Route path="/working-holiday-job" element={<Working />} />
             <Route path="/contact-us" element={<Contact />} />
+            <Route path="/studying-in-jp" element={<StudyingInJp />} />
+            <Route path="/working-holiday" element={<WorkingHoliday />} />
             <Route
               path="/working-holiday-application"
               element={<ContactResume />}

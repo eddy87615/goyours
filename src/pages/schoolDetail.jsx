@@ -24,6 +24,7 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 
 import BreadCrumb from '../components/breadCrumb/breadCrumb';
 import ContactUs from '../components/contactUs/contactUs';
+import GoyoursBearsSchoolCondition from '../components/goyoursBear/goyoursBear-schoolConditions';
 import GoyoursBears from '../components/goyoursBear/goyoursBear';
 import './schoolDetail.css';
 
@@ -84,6 +85,90 @@ const Features = ({ school }) => {
   );
 };
 
+const Conditions = ({ school }) => {
+  const formatCurrency = (amount) => {
+    if (!amount || isNaN(amount)) return 'N/A'; // 確保金額有效
+    return `¥${Number(amount).toLocaleString('ja-JP')}`; // 使用日本格式添加日圓符號和千位分隔
+  };
+  const renderTuition = (money) => {
+    if (!money) return '學費資訊未提供';
+    const [min, max] = money.split('~').map(Number); // 分割範圍並轉換為數字
+    return `${formatCurrency(min)} ~ ${formatCurrency(max)}`;
+  };
+
+  return (
+    <div className="schoolConditions">
+      <div className="schoolDetailH1">
+        <h1 className="features">
+          <span className="yellow" lang="en">
+            Conditions
+          </span>
+          學校性質
+          <GoyoursBearsSchoolCondition />
+        </h1>
+      </div>
+      <div className="schoolConditions-detail">
+        <ul className="conditionsList">
+          <li>
+            <span className="conditionTitle">學校地區</span>
+            {school.city}
+          </li>
+          <li>
+            <span className="conditionTitle">學校費用</span>約
+            {renderTuition(school.money)}
+            （依照課程而異）
+          </li>
+          <li>
+            <span className="conditionTitle">學習目的</span>
+            {school.purpose.map((purpose, index) => (
+              <span key={index}>
+                {purpose}
+                {index < school.purpose.length - 1 && '／'}
+              </span>
+            ))}
+          </li>
+          <li>
+            <span className="conditionTitle">入學時間</span>
+            {school.enrollTime.map((time, index) => (
+              <span key={index}>
+                {time}
+                {index < school.enrollTime.length - 1 && '／'}
+              </span>
+            ))}
+          </li>
+          <li>
+            <span className="conditionTitle">上課時段</span>
+            {school.others.schoolTime.map((time, index) => (
+              <span key={index}>
+                {time}
+                {index < school.others.schoolTime.length - 1 && '／'}
+              </span>
+            ))}
+          </li>
+          <li>
+            <span className="conditionTitle">修業時間</span>
+            {school.others.period.map((period, index) => (
+              <span key={index}>
+                {period}
+                {index < school.others.period.length - 1 && '／'}
+              </span>
+            ))}
+          </li>
+          <li>
+            <span className="conditionTitle">支援服務</span>
+            {school.others.support.map((support, index) => (
+              <span key={index}>
+                {support}
+                {index < school.others.support.length - 1 && '／'}
+              </span>
+            ))}
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 // 文章詳情頁
 export default function SchoolDetail() {
   const { slug } = useParams(); // 從 URL 獲取文章 slug
@@ -93,14 +178,35 @@ export default function SchoolDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchPost() {
       const school = await client.fetch(
         `
         *[_type == "school" && slug.current == $slug][0] {
-          name,address,transportation,phone,website,description,gallery,slug,logo,officialSite,sort,character,video
+          mainImage,
+          logo,
+          name,
+          slug,
+          address,
+          city,
+          transportation,
+          phone,
+          enrollTime,
+          purpose,
+          others {
+            schoolTime,
+            period,
+            support
+          },
+          support,
+          officialSite,
+          video,
+          description,
+          character,
+          gallery,
+          money,
         }
       `,
         { slug }
@@ -128,9 +234,9 @@ export default function SchoolDetail() {
     );
   }
 
-  const handleSortClick = (sort) => {
-    navigate('/studying', { state: { category: sort } });
-  };
+  // const handleSortClick = (sort) => {
+  //   navigate('/studying-in-jp', { state: { category: sort } });
+  // };
 
   const openModal = (image) => {
     setCurrentImage(image);
@@ -147,10 +253,10 @@ export default function SchoolDetail() {
         <div className="picSlider">
           <BreadCrumb
             paths={[
-              { name: '日本留學', url: '/studying' },
+              { name: '日本留學', url: '/studying-in-jp' },
               {
-                name: `#${school.sort?.[0]}`,
-                onClick: () => handleSortClick(school.sort?.[0]),
+                name: '日本語言學校',
+                url: '/studying-in-jp-school',
               },
               { name: school.name },
             ]}
@@ -228,6 +334,7 @@ export default function SchoolDetail() {
           />
         </div>
       </div>
+      <Conditions school={school} />
       <Features school={school} />
       <div className="schooldetailContactus">
         <ContactUs />
