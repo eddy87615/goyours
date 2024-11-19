@@ -24,7 +24,7 @@ const Working = lazy(() => import('./pages/working'));
 const Contact = lazy(() => import('./pages/contact-us'));
 const ContactResume = lazy(() => import('./pages/contactResume'));
 const Privacy = lazy(() => import('./pages/privacy'));
-const QAsection = lazy(() => import('./pages/Qasection'));
+const QAsection = lazy(() => import('./pages/QAsection'));
 const StudyingInJp = lazy(() => import('./pages/studying-in-jp'));
 const WorkingHoliday = lazy(() => import('./pages/working-holiday'));
 
