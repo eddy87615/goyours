@@ -12,6 +12,10 @@ a {
   font-size: 20px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .postLoading {
   width: 100%;
   height: 100%;

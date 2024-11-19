@@ -79,34 +79,34 @@ export default function StudyingInJp() {
           ))}
         </div>
         <div className="silde-text-wrapper-right01">
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
         </div>
         <div className="silde-text-wrapper-right01 right02">
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
         </div>
         <div className="guide-vertical-slide-right">
           {sliderRight.map((img, index) => (
@@ -116,34 +116,34 @@ export default function StudyingInJp() {
           ))}
         </div>
         <div className="silde-text-wrapper-left01">
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
         </div>
         <div className="silde-text-wrapper-left01 left02">
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
-          <p>Go Yours・</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
+          <p>Go Yours･</p>
         </div>
       </div>
       <div className="guide-content">

@@ -385,7 +385,7 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
       title: '修業期間',
       value: '修業期間',
       options: [
-        { title: '短期（3個月以下）', value: '短期（3個月以下）' },
+        { title: '短期（三個月以下）', value: '短期（三個月以下）' },
         { title: '長期（半年以上）', value: '長期（半年以上）' },
       ],
     },
@@ -441,6 +441,7 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
             city,
           }
         `);
+        console.log('Fetched schools:', schoolinfo); // 檢查資料結構
       } catch (error) {
         console.error('Failed to fetch schools:', error);
       }
@@ -484,7 +485,7 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
       others: othersState.selected,
       selectedTags,
     };
-
+    console.log('Filters:', newFilters); // 檢查組裝的篩選條件
     onSearchFilters(newFilters); // 傳遞篩選條件給父組件
 
     setActiveMenu(false);

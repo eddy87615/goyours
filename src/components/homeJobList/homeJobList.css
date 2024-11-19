@@ -12,6 +12,7 @@
 
 .workingholidayDiv {
   width: 80vw;
+  max-width: 1152px;
   margin: 0 auto;
   padding: 10rem 0;
   display: grid;

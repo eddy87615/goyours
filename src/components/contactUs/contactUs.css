@@ -8,6 +8,8 @@
 
   position: relative;
   z-index: 2;
+
+  padding-bottom: 8rem;
 }
 .homeContactusDiv {
   position: relative;
@@ -25,6 +27,25 @@
   padding: 0 0 4rem 0;
 
   overflow: hidden;
+
+  transition-duration: 0.5s;
+}
+
+.homeContactusDiv:hover {
+  background-color: #ffe2bc;
+  transition-duration: 0.5s;
+}
+.homeContactusDiv:hover h2 {
+  color: #fff;
+  transition-duration: 0.5s;
+}
+.homeContactusDiv:hover .homecontactusArrow {
+  animation: shakeX;
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
+.homeContactusDiv:hover .contactTxt01 {
+  transition-duration: 0.5s;
+  border-left: 0.5rem solid #fff;
 }
 
 .homeContactusDiv h2 {
@@ -35,6 +56,7 @@
   margin: 2rem;
 }
 .contactTxt01 {
+  transition-duration: 0.5s;
   margin-bottom: 2rem;
 }
 .contactTxt01,
@@ -43,6 +65,8 @@
 
   padding-left: 1rem;
   margin-left: 10rem;
+
+  font-weight: 600;
 
   border-left: 0.5rem solid var(--goyoursYellow);
 }
@@ -79,10 +103,6 @@
   top: 3.2rem;
   left: 3.5rem;
   transform: rotate(-45deg);
-}
-.homecontactusBtn:hover .homecontactusArrow {
-  animation: shakeX;
-  animation-duration: 2s; /* don't forget to set a duration! */
 }
 
 .homecontactusArrow {

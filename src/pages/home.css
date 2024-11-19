@@ -111,7 +111,7 @@
 }
 
 .homeintroImgWrapper1 {
-  top: 4%;
+  top: 0;
   left: 60%;
   width: 250px;
   height: 250px;
@@ -156,6 +156,8 @@
 
   position: relative;
   z-index: 3;
+
+  padding-top: 4rem;
 }
 
 .homeNewsH1,
@@ -286,6 +288,7 @@
 }
 .schoolListDiv {
   width: 80vw;
+  max-width: 1152px;
   margin: 0 auto;
   padding: 10rem 0;
 
@@ -461,8 +464,8 @@
 }
 .schoolListDetailBtn {
   position: absolute;
-  bottom: 6%;
-  right: 4%;
+  bottom: 4%;
+  right: 2%;
 
   border-radius: 400rem;
 
@@ -478,6 +481,10 @@
   opacity: 0;
 
   cursor: pointer;
+}
+.schoolListDetailBtn:hover {
+  background-color: #fff;
+  color: #414041;
 }
 .schoolListPre:hover .schoolListDetailBtn {
   opacity: 1;
@@ -526,8 +533,8 @@
 }
 .formoreBtntoPage:hover {
   animation: btnbounce 0.5s ease-out;
-  background-color: hsl(34, 100%, 91%);
-  color: #414042;
+  background-color: #414042;
+  color: #fff;
   transition-duration: 0.5s;
 }
 

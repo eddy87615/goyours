@@ -94,7 +94,7 @@ const HomeschoolList = () => {
     {
       name: '東京亞細亞學友會',
       location: '東京都',
-      src: '/東京亞細亞學友會教室.webp',
+      src: '/東京亞細亞學友會教室.jpg',
       traffic: '東武伊勢崎線蒲生駅徒歩約3分',
       highlight: '獨創高水準的先進教學模式。',
       href: '/school/tokyoasia',
@@ -104,7 +104,7 @@ const HomeschoolList = () => {
     {
       name: '宇都宮日建工科専門学校ー日本語学科',
       location: '栃木県',
-      src: '/日建宇都宮校舎外観.webp',
+      src: '/日建宇都宮校舎外観.jpg',
       traffic: '宇都宮站徒歩約10分鐘',
       highlight: '在學期間住宿免費・課外體驗活動',
       href: '/school/utsunimiyanikken',
@@ -114,7 +114,7 @@ const HomeschoolList = () => {
     {
       name: '雙葉外語學校',
       location: '千葉県',
-      src: '/雙葉外語學校バス旅行.webp',
+      src: '/雙葉外語學校バス旅行.jpg',
       traffic: 'JR千葉站東口徒步10分鐘・京成千葉中央站西口徒步1分鐘',
       highlight: '細緻的升學・就職指導',
       href: '/school/utsunimiyanikken',
@@ -124,7 +124,7 @@ const HomeschoolList = () => {
     {
       name: '關西外語專門學校日本語學科',
       location: '大阪府',
-      src: '/関西外語専門学校日本語學科.webp',
+      src: '/関西外語専門学校日本語學科.jpg',
       traffic: '天王寺站步行10分鐘',
       highlight: '校內奬學金：①理事長特別獎學金 ②優秀成績者獎學金 ③升學獎金',
       href: '/school/utsunimiyanikken',
@@ -144,7 +144,7 @@ const HomeschoolList = () => {
     {
       name: '赤門會日本語言學校',
       location: '東京都',
-      src: '/赤門會日本語言學校.webp',
+      src: '/赤門會日本語言學校.jpg',
       traffic: '日暮里站步行10分・西日暮里站步行11分・三河島站步行5分',
       highlight: '職務體驗・就職支援班：以實現在日就業的目的。',
       href: '/school/akamonkai',

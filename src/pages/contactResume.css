@@ -1,8 +1,8 @@
 .contactusResume {
-  background-image: url(/KV_01.webp);
+  /* background-image: url(/KV_01.webp); */
   background-size: cover;
   background-position: center;
-  height: 50vh;
+  /* height: 50vh; */
 
   display: flex;
   align-items: end;

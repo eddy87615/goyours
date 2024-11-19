@@ -7,6 +7,15 @@ import './navigation.css';
 export default function Navigation() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
+  const navigation = [
+    { to: '/', title: 'Home', target: '_self' },
+    { to: '/about-us', title: 'About', target: '_self' },
+    { to: '/goyours-post', title: '文章專區', target: '_self' },
+    { to: '/studying-in-jp', title: '日本留學', target: '_self' },
+    { to: '/working-holiday', title: '打工度假', target: '_self' },
+    { to: '/Q&A-section', title: '常見Q&A', target: '_self' },
+    { to: '/contact-us', title: '聯絡我們', target: '_blank' },
+  ];
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -31,7 +40,32 @@ export default function Navigation() {
         </Link>
       </div>
       <div className="navMenu">
-        <Link to="/">Home</Link>
+        <ul>
+          {navigation.map((nav, index) => (
+            <li key={index}>
+              <Link to={nav.to} target={nav.target}>
+                <span className="nav-wrapper">
+                  <span className="upperP-wrapper">
+                    <p id={`navText${index}`}>
+                      {nav.title}
+                      <span className="nav-icon">
+                        {index === 6 ? <TbBoxMultiple /> : null}
+                      </span>
+                    </p>
+                  </span>
+                  <span className="downP-wrapper">
+                    <p id={`navText${index}`}>
+                      {nav.title}
+                      <span className="nav-icon">
+                        {index === 6 ? <TbBoxMultiple /> : null}
+                      </span>
+                    </p>
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+          {/* <Link to="/">Home</Link>
         <Link to="/about-us">About</Link>
         <Link to="/goyours-post">文章專區</Link>
         <Link to="/studying-in-jp">日本留學</Link>
@@ -40,7 +74,8 @@ export default function Navigation() {
         <Link to="/contact-us" target="blank">
           聯絡我們
           <TbBoxMultiple />
-        </Link>
+        </Link> */}
+        </ul>
       </div>
     </nav>
   );

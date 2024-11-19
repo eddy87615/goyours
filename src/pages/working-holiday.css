@@ -1,5 +1,10 @@
 .working-holiday-section {
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #3a270f;
 }
 
 .guidePage-working-holiday-top {
@@ -11,11 +16,8 @@
 
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-direction: column;
-
-  /* padding-bottom: 50px; */
-  padding-top: 8%;
 
   position: relative;
 
@@ -29,8 +31,11 @@
 
   position: relative;
 }
+.guidePage-working-holiday-top {
+  position: relative;
+}
 
-.guide-text::after {
+.guidePage-working-holiday-top::after {
   position: absolute;
   content: '';
 
@@ -38,14 +43,18 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
-  width: 20rem;
-  height: 210%;
+  width: 320px;
+  height: 633px;
 
   background-size: contain;
-  bottom: -80%;
-  right: -70%;
+
+  bottom: 0;
+  transform: translateY(12%);
+  right: 12%;
+
+  z-index: 1;
 }
-.guide-text::before {
+.guidePage-working-holiday-top::before {
   position: absolute;
 
   content: '';
@@ -53,18 +62,22 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
-  width: 28rem;
-  height: 250%;
+  width: 320px;
+  height: 633px;
 
   background-size: contain;
-  bottom: -100%;
-  left: -84%;
+
+  bottom: 0;
+  transform: translateY(10%);
+  left: 12%;
 
   z-index: 1;
 }
 
 .guide-title {
   width: 100%;
+
+  /* padding-top: 10vh; */
 }
 .guide-title h1 {
   display: flex;
@@ -178,7 +191,7 @@
   position: absolute;
 
   animation-name: scrollUp;
-  top: 100%;
+  top: 110%;
   animation-duration: 15s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -204,27 +217,14 @@
 
   z-index: 1;
 
-  clip-path: ellipse(200% 100% at 50% 100%);
-  margin-top: -12%;
-
-  padding-top: 10rem;
+  clip-path: ellipse(150% 100% at 50% 100%);
 }
-/* .guide-content::before {
-  content: '';
-  position: absolute;
-  transform: translateY(-98%);
-  left: 0;
-  width: 100vw;
-  height: 500px;
-  background-color: #fff8ef;
-  clip-path: ellipse(55% 50% at 50% 100%);
-
-  z-index: 0;
-} */
 
 .aboutstudyingH2 {
-  width: 50vw;
+  width: 60vw;
   margin: 0 auto;
+
+  padding-top: 8rem;
 }
 
 .aboutstudyingH2 h2 {
@@ -234,7 +234,7 @@
 }
 
 .studying-page-button {
-  width: 54vw;
+  width: 60vw;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -263,6 +263,8 @@
   align-items: flex-end;
 
   transition-duration: 0.2s;
+
+  cursor: pointer;
 }
 
 .to-QA-page {
@@ -289,6 +291,8 @@
   align-items: flex-end;
 
   transition-duration: 0.2s;
+
+  cursor: pointer;
 }
 
 .to-all-job h4,
@@ -301,6 +305,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  margin: 0;
 }
 
 .white-icon img {
@@ -312,7 +318,7 @@
   color: #fff;
   font-size: 3rem;
 
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   border-radius: 50%;
 
   padding: 2rem;
@@ -320,6 +326,7 @@
 
 .to-all-job:hover,
 .to-QA-page:hover {
+  transform: translate(-5px, -5px);
   box-shadow: 5px 5px 1px 1px #3a340f;
 
   transition-duration: 0.2s;
@@ -333,7 +340,7 @@
   width: 90vw;
   margin: 0 auto;
 
-  padding-top: 8rem;
+  padding: 8rem 0;
 }
 
 /****/

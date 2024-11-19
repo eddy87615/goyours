@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { client } from '../cms/sanityClient';
 import School from '../components/school/school'; // 导入 School 组件
 import './studying.css';
@@ -97,7 +97,6 @@ export default function Studying() {
   //   }
   // }, [location.state]);
 
-  // 處理 SchoolSearch 傳遞的搜尋條件
   const handleSearchFilters = (filters = {}) => {
     const {
       keyword = '',
@@ -105,58 +104,61 @@ export default function Studying() {
       enrollTime = [],
       purpose = [],
       others = {},
-      selectedTags = [], // 新增標籤選項
+      selectedTags = [],
     } = filters;
 
     const tagFilters = ['我們的推薦', '高人氣學校'];
     const sortOptions = ['學校更新時間', '學費由高到低'];
 
-    // 分離出標籤條件和排序條件
+    // 獲取選中的標籤和排序條件
     const activeTags = selectedTags.filter((tag) => tagFilters.includes(tag));
     const activeSort = selectedTags.find((tag) => sortOptions.includes(tag));
 
+    const selectedCities = Object.values(regions).flat();
+
     let filtered = schools.filter((school) => {
-      // 防止 null 或 undefined 導致篩選邏輯失效
       const matchesKeyword = keyword
         ? school.name?.toLowerCase().includes(keyword.toLowerCase())
         : true;
 
-      const selectedCities = Object.values(regions).flat();
       const matchesRegion = selectedCities.length
         ? selectedCities.includes(school.city)
         : true;
 
       const matchesEnrollTime = enrollTime.length
-        ? enrollTime.some((time) =>
-            Array.isArray(school.enrollTime)
-              ? school.enrollTime.includes(time)
-              : false
-          )
+        ? enrollTime.some((time) => school.enrollTime?.includes(time))
         : true;
 
       const matchesPurpose = purpose.length
         ? purpose.some((p) =>
-            Array.isArray(school.purpose) ? school.purpose.includes(p) : false
+            Array.isArray(school.purpose)
+              ? school.purpose.some(
+                  (item) => item.trim().toLowerCase() === p.trim().toLowerCase()
+                )
+              : false
           )
         : true;
 
       const matchesOthers = Object.entries(others).every(([key, values]) =>
         values.length
-          ? values.some((value) =>
-              Array.isArray(school.others?.[key])
-                ? school.others[key].includes(value)
-                : false
+          ? Array.isArray(school.others?.[key]) &&
+            values.some((value) =>
+              school.others[key].some(
+                (item) =>
+                  item.trim().toLowerCase() === value.trim().toLowerCase()
+              )
             )
           : true
       );
 
       const matchesTags =
         activeTags.length > 0
-          ? activeTags.some(
-              (tag) => Array.isArray(school.tags) && school.tags.includes(tag)
-            )
+          ? activeTags.some((tag) => school.tags?.includes(tag))
           : true;
-
+      console.log('School Purpose:', school.purpose);
+      console.log('School Others:', school.others);
+      console.log('Filters Purpose:', purpose);
+      console.log('Filters Others:', others);
       return (
         matchesKeyword &&
         matchesRegion &&
@@ -180,7 +182,7 @@ export default function Studying() {
       });
     }
 
-    console.log('Filtered Schools:', filtered);
+    console.log('Filtered Schools:', filtered); // 調試篩選結果
     setFilteredSchools(filtered);
     setIsSearchTriggered(true);
   };

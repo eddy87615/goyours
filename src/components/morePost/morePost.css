@@ -1,5 +1,5 @@
 .morepostH2 {
-  width: 50vw;
+  width: 60vw;
 
   margin: 0 auto;
 }
@@ -12,13 +12,13 @@
 .submitPostList {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
 
   padding-top: 3rem;
 }
 
 .submitPostLink {
-  width: 50%;
+  width: 60%;
   display: grid;
   grid-template-columns: 0.1fr 1fr;
   grid-template-rows: auto auto auto;
@@ -32,8 +32,8 @@
 }
 .submitPostLink img {
   grid-area: img;
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
 
   object-fit: cover;
 
@@ -41,6 +41,8 @@
 }
 .submitPostLink h3 {
   grid-area: title;
+
+  margin-top: 0;
 }
 .submitPostLink ul {
   grid-area: catrgory;

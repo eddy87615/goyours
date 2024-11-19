@@ -13,10 +13,9 @@
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   font-size: 1.2rem;
-
-  /* display: none; */
 }
 
 .mainNav.visible {
@@ -36,42 +35,121 @@
 
   border-radius: 0.8rem;
 
-  box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 30%);
 
   height: fit-content;
 }
-.navMenu a {
-  padding-top: 1.3rem;
-  padding-bottom: 1.3rem;
+
+.navMenu ul {
+  display: flex;
+}
+.navMenu ul li {
+  width: fit-content;
+  height: fit-content;
+}
+
+.navMenu p {
+  margin: 0;
+  background-color: #919191;
+
+  z-index: 1;
+}
+#navText6 {
+  background-color: var(--goyoursYellow);
+}
+
+.navMenu ul a {
+  position: relative;
+
+  padding: 1.3rem 1.8rem;
 
   color: #fff;
 
   font-size: 0.87rem;
-}
-.navMenu a:nth-child(1) {
-  padding-left: 2rem;
-  padding-right: 1rem;
-}
-.navMenu a:nth-child(2),
-.navMenu a:nth-child(3),
-.navMenu a:nth-child(4),
-.navMenu a:nth-child(5),
-.navMenu a:nth-child(6) {
-  padding: 1.3rem 1rem;
-}
-.navMenu a:nth-child(7) {
-  background-color: var(--goyoursYellow);
-
-  padding: 1.3rem 2rem;
-
-  border-radius: 1rem;
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
+  font-weight: normal;
+}
+
+.nav-wrapper {
+  position: relative;
+}
+
+.upperP-wrapper {
+  position: relative;
+}
+.downP-wrapper p {
+  position: absolute;
+  top: 100%;
+}
+.mainNav li p:nth-child(2) {
+  top: 100%;
+  left: 1.8rem;
+  pointer-events: none;
+}
+.navMenu li .upperP-wrapper p {
+  transition-duration: 0.2s;
+}
+
+.navMenu li a:hover p:nth-child(1) {
+  transform: translateY(-100%);
+
+  transition-duration: 0.2s;
+}
+.navmenu li a:hover .downP-wrapper p {
+  top: 0;
+  transition-duration: 0.2s;
+}
+.navMenu li a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  width: 100%;
+  height: 100%;
+  background-image: url(/goyoursbear-nav-hover.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 70%; /* 確保背景大小適應 */
+
+  transform-origin: center; /* 從中心放大 */
+
+  transition-duration: 0.2s;
+}
+.navMenu li a:hover::after {
+  transform: scale(1);
+  transition-duration: 0.2s;
+}
+.navMenu a p:nth-child(2) {
+  position: absolute;
+  transition-duration: 0.2s;
+  visibility: hidden;
+}
+.navMenu li:nth-child(7) {
+  background-color: var(--goyoursYellow);
 
   border-radius: 0.8rem;
 
   gap: 0.5rem;
+}
+.navMenu li:nth-child(7) a {
+  font-weight: bold;
+}
+.navMenu li:nth-child(7) p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navMenu a span {
+  overflow: hidden;
+}
+
+.nav-icon {
+  display: flex;
 }
 
 .navLogo {

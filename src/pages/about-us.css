@@ -543,7 +543,7 @@
 
   margin: 0 auto;
 
-  padding-top: 8rem;
+  padding: 8rem 0;
 }
 .reviewTitle {
   width: 70vw;
@@ -665,7 +665,7 @@
 .aboutScroolDown {
   position: absolute;
   bottom: 12%;
-  right: 46%;
+  right: 47%;
   transform: translate(-50%);
 
   display: flex;
