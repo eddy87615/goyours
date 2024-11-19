@@ -107,6 +107,40 @@ export default function Studying() {
       selectedTags = [],
     } = filters;
 
+    console.log('Received Filters:', filters);
+
+    const processedSchools = schools.map((school) => ({
+      ...school,
+      others: Object.fromEntries(
+        Object.entries(school.others || {}).map(([key, values]) => [
+          key,
+          Array.isArray(values)
+            ? values.map((value) => value.trim().toLowerCase())
+            : [],
+        ])
+      ),
+    }));
+
+    const keyMapping = {
+      修業期間: 'period',
+      上課時段: 'schoolTime',
+      支援服務: 'support',
+    };
+
+    // 清理篩選條件
+    const formattedPurpose = purpose.map((item) => item.trim().toLowerCase());
+    // 修正 others 條件的鍵
+    const formattedOthers = Object.fromEntries(
+      Object.entries(others).map(([key, values]) => [
+        keyMapping[key] || key, // 使用映射表轉換鍵
+        values,
+      ])
+    );
+
+    console.log('Processed Schools:', processedSchools); // 確認學校資料的清理結果
+    console.log('Formatted Purpose:', formattedPurpose); // 確認學習目的的清理結果
+    console.log('Formatted Others:', formattedOthers); // 確認其他條件的清理結果
+
     const tagFilters = ['我們的推薦', '高人氣學校'];
     const sortOptions = ['學校更新時間', '學費由高到低'];
 
@@ -116,7 +150,10 @@ export default function Studying() {
 
     const selectedCities = Object.values(regions).flat();
 
-    let filtered = schools.filter((school) => {
+    // 濾除不符合條件的學校
+    let filtered = processedSchools.filter((school) => {
+      console.log('檢查學校資料:', school.purpose, school.others);
+
       const matchesKeyword = keyword
         ? school.name?.toLowerCase().includes(keyword.toLowerCase())
         : true;
@@ -129,36 +166,30 @@ export default function Studying() {
         ? enrollTime.some((time) => school.enrollTime?.includes(time))
         : true;
 
-      const matchesPurpose = purpose.length
-        ? purpose.some((p) =>
-            Array.isArray(school.purpose)
-              ? school.purpose.some(
-                  (item) => item.trim().toLowerCase() === p.trim().toLowerCase()
-                )
-              : false
+      const matchesPurpose = formattedPurpose.length
+        ? formattedPurpose.some((p) =>
+            school.purpose?.some((item) => item.trim().toLowerCase() === p)
           )
         : true;
 
-      const matchesOthers = Object.entries(others).every(([key, values]) =>
-        values.length
-          ? Array.isArray(school.others?.[key]) &&
-            values.some((value) =>
-              school.others[key].some(
-                (item) =>
-                  item.trim().toLowerCase() === value.trim().toLowerCase()
-              )
-            )
-          : true
+      const matchesOthers = Object.entries(formattedOthers).every(
+        ([key, values]) =>
+          values.length
+            ? (school.others?.[key] || []).some((item) => values.includes(item))
+            : true
       );
 
       const matchesTags =
         activeTags.length > 0
           ? activeTags.some((tag) => school.tags?.includes(tag))
           : true;
-      console.log('School Purpose:', school.purpose);
-      console.log('School Others:', school.others);
-      console.log('Filters Purpose:', purpose);
-      console.log('Filters Others:', others);
+
+      console.log('matchesKeyword:', matchesKeyword);
+      console.log('matchesRegion:', matchesRegion);
+      console.log('matchesEnrollTime:', matchesEnrollTime);
+      console.log('matchesPurpose:', matchesPurpose);
+      console.log('matchesOthers:', matchesOthers);
+
       return (
         matchesKeyword &&
         matchesRegion &&
@@ -194,6 +225,7 @@ export default function Studying() {
       </div>
     );
   }
+
   return (
     <>
       <div className="schoolPage">

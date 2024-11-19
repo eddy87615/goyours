@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { PortableText } from '@portabletext/react'; // 用來顯示富文本
-import { useParams, useNavigate } from 'react-router-dom'; // 用來獲取 URL 中的 slug
+import { useParams } from 'react-router-dom'; // 用來獲取 URL 中的 slug
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { Link } from 'react-router-dom';

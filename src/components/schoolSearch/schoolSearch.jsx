@@ -437,8 +437,8 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
           *[_type == "school"&& !(_id in path("drafts.**"))] | order(publishedAt desc) {
             enrollTime,
             purpose,
-            others,
             city,
+          others,
           }
         `);
         console.log('Fetched schools:', schoolinfo); // 檢查資料結構
