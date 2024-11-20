@@ -11,13 +11,8 @@ const sanityClient = createClient({
 const SECRET_KEY = import.meta.env.VITE_SECRET_KEY; // 與前端加密的密鑰相同
 
 const decryptData = (encryptedData) => {
-  try {
-    const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
-    return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-  } catch (error) {
-    console.error('Decryption failed:', error);
-    throw new Error('Decryption failed');
-  }
+  const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
+  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 };
 
 export default async function handler(req, res) {
