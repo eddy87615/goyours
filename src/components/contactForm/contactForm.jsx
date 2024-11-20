@@ -109,7 +109,7 @@ export default function ContactForm() {
 
     try {
       // 加密資料
-      const SECRET_KEY = import.meta.env.VITE_FIXED_SECRET_KEY;
+      const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
       const encryptedData = CryptoJS.AES.encrypt(
         JSON.stringify(rawData),
         SECRET_KEY
@@ -139,6 +139,8 @@ export default function ContactForm() {
         callTime: '',
         tellus: '',
       });
+      console.log('Encrypted Data:', encryptedData);
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('提交失敗:', error);

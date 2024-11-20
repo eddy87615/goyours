@@ -2,17 +2,22 @@ import { createClient } from '@sanity/client';
 import CryptoJS from 'crypto-js';
 
 const sanityClient = createClient({
-  projectId: 'your-project-id',
-  dataset: 'your-dataset',
+  projectId: import.meta.env.VITE_SANITY_API_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_SANITY_API_SANITY_DATASET,
   useCdn: false,
-  token: 'your-sanity-api-token',
+  token: import.meta.env.VITE_SANITY_API_SANITY_TOKEN,
 });
 
-const SECRET_KEY = 'your-secret-key'; // 與前端加密的密鑰相同
+const SECRET_KEY = import.meta.env.VITE_SECRET_KEY; // 與前端加密的密鑰相同
 
 const decryptData = (encryptedData) => {
-  const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
-  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  try {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
+    return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  } catch (error) {
+    console.error('Decryption failed:', error);
+    throw new Error('Decryption failed');
+  }
 };
 
 export default async function handler(req, res) {
@@ -25,12 +30,16 @@ export default async function handler(req, res) {
 
     // 解密資料
     const decryptedData = decryptData(encryptedData);
+    console.log('Decrypted Data:', decryptedData);
+    console.log('Received encryptedData:', encryptedData);
 
     // 儲存到 Sanity
     const result = await sanityClient.create({
       _type: 'contact',
       ...decryptedData, // 存儲解密後的資料
     });
+
+    console.log('Decrypted Data:', decryptedData);
 
     res.status(200).json({ message: '資料成功存儲', result });
   } catch (error) {
