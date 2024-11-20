@@ -16,6 +16,17 @@ const decryptData = (encryptedData) => {
 };
 
 export default async function handler(req, res) {
+  console.log('環境變數測試:');
+  console.log('PROJECT_ID:', import.meta.env.VITE_SANITY_API_SANITY_PROJECT_ID);
+  console.log('DATASET:', import.meta.env.VITE_SANITY_API_SANITY_DATASET);
+  console.log(
+    'TOKEN:',
+    import.meta.env.VITE_SANITY_API_SANITY_TOKEN ? '存在' : '不存在'
+  );
+  console.log(
+    'SECRET_KEY:',
+    import.meta.env.VITE_SECRET_KEY ? '存在' : '不存在'
+  );
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
