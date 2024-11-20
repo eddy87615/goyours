@@ -50,6 +50,9 @@
 
   color: #656466;
 }
+.schoolSearchBar-upper input::placeholder {
+  color: #dadada;
+}
 .schoolSearchBar-down label {
   font-size: 1rem;
 
@@ -115,7 +118,7 @@
   font-size: 0.8rem;
   font-weight: bold;
 
-  background-color: red;
+  background-color: #414042;
   color: #fff;
 
   width: 1.5rem;
@@ -149,8 +152,6 @@
   opacity: 0;
   visibility: hidden;
 
-  background-color: #fff;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -163,6 +164,21 @@
   gap: 2rem;
 
   z-index: 99;
+}
+
+.schoolsearch,
+.enrollTime,
+.purpose,
+.otherCondition {
+  border-radius: 1rem;
+  background-color: #fff8ef;
+  box-shadow: 0 0 8px rgb(0 0 0 / 30%);
+}
+.city-button,
+.enrollTime-button,
+.purpose-button,
+.others-button {
+  background-color: #fff;
 }
 
 .schoolsearch label {
@@ -209,7 +225,7 @@
 
   font-size: 0.8rem;
 
-  color: rgb(237, 0, 0);
+  color: #cacaca;
 
   text-decoration: underline;
 
@@ -246,7 +262,6 @@
   left: calc(50% - 250px);
   width: 500px;
   height: fit-content;
-  background-color: #fff;
 
   opacity: 0;
   visibility: hidden;
@@ -298,7 +313,7 @@
 }
 
 .selected {
-  background-color: var(--goyoursYellow);
+  background-color: var(--goyoursYellow) !important;
   border: 1px solid var(--goyoursYellow);
   color: #fff;
 

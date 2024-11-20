@@ -261,8 +261,8 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
       value: '學校更新時間',
     },
     {
-      title: '學費由高到低',
-      value: '學費由高到低',
+      title: '學費由低到高',
+      value: '學費由低到高',
     },
   ];
 
@@ -357,8 +357,8 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
         { title: '熊本縣', value: '熊本縣' },
         { title: '大分縣', value: '大分縣' },
         { title: '宮崎縣', value: '宮崎縣' },
-        { title: '鹿兒島縣', value: '鹿兒島縣' },
         { title: '沖繩縣', value: '沖繩縣' },
+        { title: '鹿兒島縣', value: '鹿兒島縣' },
       ],
     },
   ];

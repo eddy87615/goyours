@@ -1,8 +1,10 @@
 import { FaLocationDot } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import GoyoursBearJob from '../goyoursBear/goyoursBearJob';
 import HomeBg from '../homeBg/homeBg';
 
 import './homeJobList.css';
+import '../../pages/home.css';
 
 export default function HomeJobList() {
   const jobListContent = [
@@ -113,6 +115,27 @@ export default function HomeJobList() {
             );
           })}
         </div>
+      </div>
+      <div className="more-school-button">
+        <ul>
+          <li>
+            <Link
+            // to="/studying-in-jp-school"
+            >
+              <span className="button-wrapper">
+                <span className="upperP-wrapper">
+                  <p>看更多職缺</p>
+                </span>
+                <span className="downP-wrapper">
+                  <p>看更多職缺</p>
+                </span>
+              </span>
+              <span className="more-school-icon">
+                <img src="/goyoursbear-icon-w.svg" />
+              </span>
+            </Link>
+          </li>
+        </ul>
       </div>
       <a className="formoreBtntoPage" href="./working-holiday-job">
         看更多職缺

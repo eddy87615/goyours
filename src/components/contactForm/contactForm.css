@@ -100,7 +100,20 @@
   border: none;
   border-bottom: 1px solid #d0d0d0;
   font-size: 1.1rem;
-  background-color: transparent;
+  background-color: transparent !important; /* 確保背景透明 */
+  transition: border-color 0.3s ease; /* 添加邊框變化效果 */
+}
+
+.contactForm input:focus {
+  border-color: #ff9900 !important; /* 聚焦時邊框顏色 */
+  outline: none; /* 移除默認聚焦框 */
+}
+
+/* Autofill 背景處理 */
+input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #000; /* 字體顏色 */
 }
 
 .contactForm label {
@@ -160,15 +173,18 @@
 .submitBtn {
   border-radius: 50rem;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
 
   font-weight: bold;
+  font-size: 1.2rem;
 
   color: #fff;
   background-color: var(--goyoursYellow);
 
   width: fit-content;
   margin: 0 auto;
+
+  cursor: pointer;
 }
 
 .formlogo {

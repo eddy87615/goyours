@@ -207,9 +207,9 @@ export default function Studying() {
       );
     } else if (activeSort === '學費由高到低') {
       filtered = filtered.sort((a, b) => {
-        const [minA] = (a.money || '').split('~').map(Number);
+        const [minA] = (a.money || '').split('~').map(Number); // 取得最小值
         const [minB] = (b.money || '').split('~').map(Number);
-        return minB - minA;
+        return minA - minB; // 由低到高
       });
     }
 

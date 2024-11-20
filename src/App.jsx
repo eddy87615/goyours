@@ -1,7 +1,4 @@
 /* eslint-disable no-unused-vars */
-import '@fontsource/inter/400.css'; // Regular
-import '@fontsource/inter/600.css'; // Semi-bold
-import '@fontsource/inter/700.css'; // Bold
 
 import './App.css';
 import React, { useEffect, Suspense, lazy, useState } from 'react';

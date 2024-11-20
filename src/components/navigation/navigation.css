@@ -98,7 +98,7 @@
 
   transition-duration: 0.2s;
 }
-.navmenu li a:hover .downP-wrapper p {
+.navMenu li a:hover p:nth-child(2) {
   top: 0;
   transition-duration: 0.2s;
 }

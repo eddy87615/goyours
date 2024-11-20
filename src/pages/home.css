@@ -315,7 +315,7 @@
 
   border-radius: 2rem;
 
-  clip-path: circle(82% at 40% 2%);
+  clip-path: circle(84% at 40% 2%);
   transition-duration: 0.5s;
 }
 .schoolListPre:hover .schoolListBg {
@@ -530,6 +530,8 @@
 
   position: relative;
   z-index: 2;
+
+  display: none;
 }
 .formoreBtntoPage:hover {
   animation: btnbounce 0.5s ease-out;
@@ -572,4 +574,97 @@
   100% {
     transform: rotate(0deg);
   }
+}
+
+.more-school-button {
+  display: flex;
+  align-items: center;
+
+  background-color: #f8b300;
+
+  border-radius: 50rem;
+
+  height: fit-content;
+  width: fit-content;
+
+  margin: 0 auto;
+
+  z-index: ２;
+}
+.more-school-button ul {
+  display: flex;
+}
+.more-school-button ul li {
+  width: fit-content;
+  height: fit-content;
+}
+
+.more-school-button p {
+  margin: 0;
+
+  z-index: 1;
+
+  transition-duration: 0.2s;
+}
+
+.more-school-button ul a {
+  position: relative;
+
+  padding: 0.8rem 5rem;
+
+  color: #fff;
+
+  font-size: 0.87rem;
+
+  display: flex;
+  flex-direction: column;
+
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.more-school-button span {
+  overflow: hidden;
+}
+.button-wrapper {
+  position: relative;
+}
+.more-school-icon {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-100%) scale(0);
+  right: 20%;
+  width: 1.3rem;
+  height: 100%;
+  transform-origin: bottom center;
+
+  display: flex;
+  align-self: center;
+
+  transition-duration: 0.1s;
+}
+.more-school-button img {
+  width: 100%;
+  height: 100%;
+}
+
+.more-school-button li a:hover p:nth-child(1) {
+  transform: translateY(-100%);
+  transition-duration: 0.2s;
+}
+.more-school-button li a:hover p:nth-child(2) {
+  top: 0;
+  transition-duration: 0.2s;
+}
+.more-school-button li a:hover .more-school-icon {
+  top: 0;
+  transform: translateY(0) scale(1); /* hover 狀態：放大到 1 倍 */
+}
+.more-school-button li a:hover {
+  border-radius: 50rem;
+  background-color: #414041;
+}
+.more-school-button a p:nth-child(2) {
+  position: absolute;
+  transition-duration: 0.2s;
+  visibility: hidden;
 }

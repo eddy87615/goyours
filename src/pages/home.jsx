@@ -195,6 +195,27 @@ const HomeschoolList = () => {
           );
         })}
       </div>
+      <div className="more-school-button">
+        <ul>
+          <li>
+            <Link
+            // to="/studying-in-jp-school"
+            >
+              <span className="button-wrapper">
+                <span className="upperP-wrapper">
+                  <p>看更多學校</p>
+                </span>
+                <span className="downP-wrapper">
+                  <p>看更多學校</p>
+                </span>
+              </span>
+              <span className="more-school-icon">
+                <img src="/goyoursbear-icon-w.svg" />
+              </span>
+            </Link>
+          </li>
+        </ul>
+      </div>
       <a className="formoreBtntoPage" href="./studying-in-jp-school">
         看更多學校
       </a>

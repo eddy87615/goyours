@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
+import { client } from '../../cms/sanityClient';
 import { Link } from 'react-router-dom';
 
 import './contactForm.css';
 import MorePost from '../morePost/morePost';
+
+import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {
   const location = useLocation();
@@ -77,13 +79,20 @@ export default function ContactForm() {
     }
   };
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 防止重複提交
+    if (loading) return;
+
+    setLoading(true); // 開始 loading 狀態
 
     const currentDateTime = new Date().toISOString();
 
     // 準備發送到 Sanity 的資料
-    const contactData = {
+    const rawData = {
       _type: 'contact',
       name: formData.name,
       age: formData.age,
@@ -99,10 +108,27 @@ export default function ContactForm() {
     };
 
     try {
-      // 將資料發送到 Sanity
-      await client.create(contactData);
+      // 加密資料
+      const SECRET_KEY = import.meta.env.VITE_FIXED_SECRET_KEY;
+      const encryptedData = CryptoJS.AES.encrypt(
+        JSON.stringify(rawData),
+        SECRET_KEY
+      ).toString();
+
+      // 發送加密資料到 Serverless Function
+      const response = await fetch('/api/saveContact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ encryptedData }),
+      });
+
+      if (!response.ok) {
+        throw new Error('提交失敗');
+      }
+
       setIsSubmited(true);
-      // alert('資料已成功提交');
       setFormData({
         name: '',
         age: '',
@@ -111,10 +137,14 @@ export default function ContactForm() {
         email: '',
         selectedCases: [],
         callTime: '',
+        tellus: '',
       });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('提交失敗:', error);
       alert('提交失敗，請稍後再試');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -139,6 +169,19 @@ export default function ContactForm() {
       {isSubmited ? (
         <>
           <div className="contactusComponent">
+            <div className="contactusTitle">
+              <h2>聯絡GoYours，打工度假、留學免費諮詢</h2>
+              <p>
+                無論是短期進修、語言學校，還是打工度假體驗不同人生，
+                <br />
+                背上背包，跟我們一起冒險，留下無悔的足跡！
+                <br />
+                透過表單預約與我們一對一諮詢。
+                <br />
+                也歡迎Line或FB聯繫，GoYours將是您打工度假、留學的最佳夥伴！
+                <br />
+              </p>
+            </div>
             <h1>Thank you</h1>
             <img src="/LOGO-02.png" alt="goyours logo" className="formlogo" />
             <p className="subitedtxt">
@@ -314,8 +357,8 @@ export default function ContactForm() {
               </span>
             </div>
 
-            <button type="submit" className="submitBtn">
-              送出表單
+            <button type="submit" className="submitBtn" disabled={loading}>
+              {loading ? '送出中...' : '送出表單'}
             </button>
           </form>
         </div>
