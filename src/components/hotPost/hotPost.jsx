@@ -53,7 +53,7 @@ export default function Hotpost() {
       <div className="homehotpostDiv">
         <Swiper
           spaceBetween={50}
-          slidesPerView={5}
+          slidesPerView="auto"
           centeredSlides={true}
           navigation={true}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -67,7 +67,7 @@ export default function Hotpost() {
                 className="homeprehotpost"
               >
                 {post.mainImage && (
-                  <div className="homeNewspostImg">
+                  <div className="homeHotpostImg">
                     <img src={urlFor(post.mainImage).url()} alt={post.title} />
                   </div>
                 )}

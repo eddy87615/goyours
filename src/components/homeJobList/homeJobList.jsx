@@ -119,9 +119,7 @@ export default function HomeJobList() {
       <div className="more-school-button">
         <ul>
           <li>
-            <Link
-            // to="/studying-in-jp-school"
-            >
+            <Link to="/working-holiday-job">
               <span className="button-wrapper">
                 <span className="upperP-wrapper">
                   <p>看更多職缺</p>

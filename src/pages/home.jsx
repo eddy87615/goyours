@@ -53,10 +53,10 @@ const News = () => {
       <div className="homeNewsDiv">
         <Swiper
           spaceBetween={50}
-          slidesPerView={5}
+          slidesPerView="auto"
           centeredSlides={true}
           navigation={true}
-          // autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Autoplay, Navigation]}
           loop={true}
         >
@@ -115,7 +115,7 @@ const HomeschoolList = () => {
     {
       name: '雙葉外語學校',
       location: '千葉県',
-      src: '/雙葉外語學校バス旅行.jpg',
+      src: '/雙葉外語學校校舍.png',
       traffic: '千葉站徒步10分鐘・京成千葉中央站徒步1分鐘',
       highlight: '細緻的升學・就職指導',
       href: '/studying-in-jp-school/utsunimiyanikken',
@@ -202,9 +202,7 @@ const HomeschoolList = () => {
       <div className="more-school-button">
         <ul>
           <li>
-            <Link
-            // to="/studying-in-jp-school"
-            >
+            <Link to="/studying-in-jp-school">
               <span className="button-wrapper">
                 <span className="upperP-wrapper">
                   <p>看更多學校</p>

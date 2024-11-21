@@ -681,6 +681,9 @@
 }
 
 @media screen and (max-width: 500px) {
+  a:hover {
+    all: unset;
+  }
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
     border-bottom-right-radius: calc(300 * 1em / 16);
@@ -814,19 +817,33 @@
   .homeschoolList {
     padding-top: 0;
     padding-bottom: 4rem;
-    pointer-events: none;
+    /* pointer-events: none; */
+  }
+  .schoolListPre:hover .schoolListBg {
+    clip-path: none;
+  }
+  .schoolListPre:hover .schoolListCover h4,
+  .schoolListPre:hover .schoolListCover p {
+    opacity: 1;
   }
   .homeschoolH1 h1 {
     font-size: 1rem;
   }
   .schoolListDiv {
     grid-template-columns: 1fr;
-    padding-bottom: 4rem;
+    padding: 4rem 0;
+    gap: 2rem;
   }
   .schoolListPre {
     height: 12rem;
     border-radius: 1.5rem;
   }
+  .schoolListPre:nth-child(4),
+  .schoolListPre:nth-child(5),
+  .schoolListPre:nth-child(6) {
+    display: none;
+  }
+
   .schoolListBg {
     clip-path: none;
   }
@@ -869,6 +886,7 @@
     height: 2rem;
 
     pointer-events: all;
+    z-index: 1;
   }
   .homecontactusArrow.schoolList img {
     width: 80%;
@@ -884,13 +902,158 @@
     font-size: 1rem;
   }
 
+  .workingholidayDiv {
+    grid-template-columns: 1fr;
+    padding: 4rem 0;
+    gap: 2rem;
+  }
+  .jobListPre {
+    height: 12rem;
+    border-radius: 1.5rem;
+  }
+  .jobListPre:nth-child(4),
+  .jobListPre:nth-child(5),
+  .jobListPre:nth-child(6) {
+    display: none;
+  }
+  .jobListPre img {
+    border-radius: 1.5rem 0 0 1.5rem;
+  }
+  .jobListcontent h3 {
+    font-size: 0.875rem;
+  }
+  .jobListPre p {
+    font-size: 0.75rem;
+    background-color: #fff8ef;
+    color: var(--goyoursYellow);
+    padding: 0.3rem 0.5rem;
+  }
+  .jobListcontent ul li:nth-child(2),
+  .jobListcontent ul li:nth-child(3) {
+    display: none;
+  }
+  .jobListcontent ul span {
+    display: none;
+  }
+  .jobListcontent ul {
+    padding: 1rem 0;
+  }
+  .workingholidaySection .schoolListDetailBtn {
+    display: block;
+    font-size: 0.725rem;
+  }
+  .workingholidaySection {
+    margin-bottom: 4rem;
+  }
+  .homeHotpostH1 h1 {
+    font-size: 1rem;
+  }
+  .homehotpostDiv {
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    width: 100%; /* 确保容器宽度为全屏 */
+    overflow: hidden; /* 避免溢出 */
+  }
+  .homehotpostDiv .swiper-wrapper {
+    /* width: 50rem; */
+  }
+  .swiper-slide {
+    width: calc(80% - 3rem); /* 宽度设置为容器宽度的80%，具体可调整 */
+    margin-right: 1rem; /* 每个 slide 间隔 */
+    flex-shrink: 0; /* 防止宽度被压缩 */
+    box-sizing: border-box; /* 包括 padding 和 border */
+  }
+  .homeperhotpost {
+    padding: 0.5rem 1rem;
+    margin-right: 4% !important;
+    border-radius: 1.5rem;
+    border: 1.5px solid #333;
+  }
+  .homeHotpostImg {
+    width: 100%;
+    height: 10rem;
+  }
+  .homeHotpostImg img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .homeprehotpost h2 {
+    font-size: 1rem;
+  }
+  .homeprehotpost h3 {
+    font-size: 0.875rem;
+  }
+  .homeprehotpost ul {
+    font-size: 0.75rem;
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+  .homeprehotpost p {
+    font-size: 0.75rem;
+  }
+  .homehotpostDate {
+    gap: 0.5rem;
+  }
+  .homehotpostDate img {
+    width: 1rem;
+    height: 1rem;
+  }
+  .homebg-hot-Wave {
+    top: -10%;
+  }
+  .homeContactusSection {
+    padding: 4rem 0;
+  }
+  .homeContactusDiv {
+    border-radius: 2rem;
+    padding-bottom: 10rem;
+  }
+  .homeContactusDiv h2 {
+    font-size: 4rem;
+  }
+  .contactTxt01 {
+    margin: 1rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: bold;
+  }
+  .contactTxt01 br {
+    display: none;
+  }
+  .homecontactusBtn {
+    width: 50%;
+    height: 40%;
+    bottom: 0;
+    right: 0;
+    border-radius: 100% 0 0 0;
+  }
+  .homecontactusArrow {
+    top: 36%;
+  }
+  .homecontactusArrow img {
+    width: 60%;
+  }
+  .arc-text {
+    top: -325px;
+    left: -90px;
+  }
+  .arc-text text {
+    fill: #fff;
+  }
+  .arc-text svg {
+    width: 500px;
+  }
   @keyframes scrollDownArrowDot-home {
     0% {
-      opacity: 1;
+      opacity: 0;
     }
 
     100% {
-      opacity: 0;
+      opacity: 1;
       transform: translate(0, 0);
     }
   }
@@ -898,12 +1061,12 @@
   @keyframes scrollDownArrowLine-home {
     0% {
       height: 0;
-      opacity: 1;
+      opacity: 0;
     }
 
     100% {
       height: 150px;
-      opacity: 0;
+      opacity: 1;
     }
   }
 }
