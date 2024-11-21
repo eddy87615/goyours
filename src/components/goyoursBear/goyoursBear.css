@@ -65,3 +65,23 @@
   stroke: #f4bf00;
   stroke-width: 15;
 }
+
+@media screen and (max-width: 500px) {
+  .goyoursbear-component svg {
+    /* width: 8rem; */
+    height: 2.5rem;
+  }
+  .goyoursbear-component {
+    top: 32%;
+    right: -180%;
+  }
+  .goyoursbear-line {
+    stroke-width: 25 !important;
+  }
+  .goyoursBearJob svg {
+    height: 2.5rem;
+  }
+  .goyoursBearJob {
+    right: -40%;
+  }
+}

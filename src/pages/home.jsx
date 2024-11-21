@@ -56,7 +56,7 @@ const News = () => {
           slidesPerView={5}
           centeredSlides={true}
           navigation={true}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          // autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Autoplay, Navigation]}
           loop={true}
         >
@@ -98,7 +98,7 @@ const HomeschoolList = () => {
       src: '/東京亞細亞學友會教室.jpg',
       traffic: '東武伊勢崎線蒲生駅徒歩約3分',
       highlight: '獨創高水準的先進教學模式。',
-      href: '/school/tokyoasia',
+      href: '/studying-in-jp-school/tokyoasia',
       introtxt:
         '東京亞細亞學友會是日本語教育振興協會認定校，東京入管局指定百分之3優良校，駐日本中國大使館認定自費出國留學提攜校。日本為數不多只招收來自世界各地大學以上學歷留學生的一流日本語學校。',
     },
@@ -108,7 +108,7 @@ const HomeschoolList = () => {
       src: '/日建宇都宮校舎外観.jpg',
       traffic: '宇都宮站徒歩約10分鐘',
       highlight: '在學期間住宿免費・課外體驗活動',
-      href: '/school/utsunimiyanikken',
+      href: '/studying-in-jp-school/utsunimiyanikken',
       introtxt:
         '面向來日本學習日本語的留學生設立的日本語學科。日本語學科以外的日本學生也在同一校園內共同學習及互相交流，給留學生提供良好的學習日語的環境。僅是語言，同時還可以學習日本的文化習俗和禮儀，培養立足世界的能力。',
     },
@@ -118,7 +118,7 @@ const HomeschoolList = () => {
       src: '/雙葉外語學校バス旅行.jpg',
       traffic: '千葉站徒步10分鐘・京成千葉中央站徒步1分鐘',
       highlight: '細緻的升學・就職指導',
-      href: '/school/utsunimiyanikken',
+      href: '/studying-in-jp-school/utsunimiyanikken',
       introtxt:
         '雙葉外語學校的活動不僅僅限於語言教育，還為能夠真正建立日本與其他各國之間的交流的紐帶，不同國籍的人之間能得以真心地相互理解對方的文化，人與人直接交流提供寶貴的機會。',
     },
@@ -128,7 +128,7 @@ const HomeschoolList = () => {
       src: '/関西外語専門学校日本語學科.jpg',
       traffic: '天王寺站步行10分鐘',
       highlight: '校內奬學金：①理事長特別獎學金 ②優秀成績者獎學金 ③升學獎金',
-      href: '/school/utsunimiyanikken',
+      href: '/studying-in-jp-school/utsunimiyanikken',
       introtxt:
         '關西外語專門學校是1967年所創立的商業語言專門學校。日本的外語教育普遍被認為偏重文法教育，本校以培育能擁有在世界各地運用自如之高水準外語能力的人才為目標。',
     },
@@ -138,7 +138,7 @@ const HomeschoolList = () => {
       src: '/ARC日本語學校-京都校.png',
       traffic: '地下鐵丸太町站直走6分鐘',
       highlight: '校外學習，與日語互動',
-      href: '/school/utsunimiyanikken',
+      href: '/studying-in-jp-school/utsunimiyanikken',
       introtxt:
         'ARC有通往世界橋梁的意思，京都校創立於2003年，並於2019年４月遷移到全新校舍。校區位於京都市區丸太町站，徒步６分鐘即可抵達，交通便利。',
     },
@@ -148,7 +148,7 @@ const HomeschoolList = () => {
       src: '/赤門會日本語言學校.jpg',
       traffic: '日暮里站步行10分・西日暮里站步行11分・三河島站步行5分',
       highlight: '職務體驗・就職支援班：以實現在日就業的目的。',
-      href: '/school/akamonkai',
+      href: '/studying-in-jp-school/akamonkai',
       introtxt:
         '赤門會日本語學校，於1985年創校于東京大學的赤門前，成功培養了超過80個國家，2萬多名的畢業生，教學成績有目共睹。<br />在 2005 年，學校被認證為學校法人。',
     },
@@ -192,6 +192,9 @@ const HomeschoolList = () => {
                 </ul>
               </div>
               <LiaHandPointer className="schoolListPointer" />
+              <Link className="homecontactusArrow schoolList " to={school.href}>
+                <img src="/submit-arrow.svg" alt="submit button arrow" />
+              </Link>
             </div>
           );
         })}
@@ -243,7 +246,7 @@ export default function Home() {
   //nav height get
 
   const homeslider = [
-    { src: '/KV/KV_about_13.webp' },
+    { src: '/KV/KV_about_08.webp' },
     { src: '/KV/KV_03.webp' },
     { src: '/KV/KV_09.webp' },
     { src: '/KV/KV_about_07.webp' },
@@ -258,7 +261,7 @@ export default function Home() {
           <Swiper
             centeredSlides={true}
             loop={true}
-            autoplay={{ delay: 3000 }}
+            // autoplay={{ delay: 3000 }}
             effect="fade"
             fadeEffect={{ crossFade: true }}
             modules={[Autoplay, EffectFade]}

@@ -676,6 +676,10 @@
   display: none;
 }
 
+.homecontactusArrow.schoolList {
+  display: none;
+}
+
 @media screen and (max-width: 500px) {
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
@@ -727,6 +731,157 @@
     border-radius: 50px;
 
     animation: scrollDownArrowDot-home 2s infinite ease-in-out;
+  }
+  .homeintroImgWrapper0 {
+    width: 9rem;
+    height: 9rem;
+    left: -8%;
+    top: 0;
+  }
+  .homeintroImgDiv0 {
+    box-shadow: 8px 8px 0px #ffe2bc;
+  }
+  .homeintroImgWrapper0::after {
+    top: -28%;
+    right: 4%;
+    transform: rotate(-10deg);
+    z-index: -1;
+  }
+  .homeintroImgWrapper1 {
+    top: unset;
+    bottom: -20% !important;
+  }
+  .homeintroImgWrapper2 {
+    display: none;
+  }
+  .homeintroImgDiv1 {
+    width: 80%;
+    height: 80%;
+  }
+  .homeintroSection {
+    height: 70dvh;
+  }
+  .homeintrotxt {
+    width: 60%;
+    line-height: 2rem;
+  }
+  .homeintrotxt h2 {
+    font-size: 0.9rem;
+  }
+  .homeintrotxt p {
+    font-size: 0.8rem;
+  }
+  .homeintrotxt::after {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 25rem;
+    height: 25rem;
+    z-index: -1;
+  }
+
+  .homeNewsH1 h1 {
+    font-size: 1rem;
+  }
+
+  .homebg-intro-Wave {
+    bottom: -54%;
+  }
+  .homebg-Wave {
+    width: 200vw;
+  }
+  .homeNewsDiv {
+    padding-top: 4rem;
+  }
+  .homeNewsDiv h3 {
+    font-size: 0.875rem;
+  }
+  .homeNewsDiv p {
+    font-size: 0.75rem;
+  }
+  .homeNewsBear {
+    width: 1rem;
+    height: 1rem;
+  }
+  .homeNewsprePost {
+    width: 60% !important;
+    margin-right: 4% !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+
+  .homeschoolList {
+    padding-top: 0;
+    padding-bottom: 4rem;
+    pointer-events: none;
+  }
+  .homeschoolH1 h1 {
+    font-size: 1rem;
+  }
+  .schoolListDiv {
+    grid-template-columns: 1fr;
+    padding-bottom: 4rem;
+  }
+  .schoolListPre {
+    height: 12rem;
+    border-radius: 1.5rem;
+  }
+  .schoolListBg {
+    clip-path: none;
+  }
+  .schoolListBg h4 {
+    font-size: 0.875rem;
+    transform: translate(-0.5rem, 1rem);
+    padding: 0.3rem 0.5rem;
+  }
+  .schoolListBg p {
+    font-size: 0.75rem;
+    transform: translate(-0.5rem, 1.5rem);
+    padding: 0.3rem 0.5rem;
+  }
+  .schoolListBg img {
+    border-radius: 1.5rem 1.5rem 8rem 1.5rem;
+  }
+  .schoolListCover,
+  .schoolListBg {
+    border-radius: 1.5rem;
+  }
+  .schoolListBack {
+    border-radius: 1.5rem;
+  }
+  .schoolListDetailBtn,
+  .schoolListBack h3,
+  .schoolListBack p,
+  .schoolListBack ul {
+    display: none;
+  }
+  .schoolListPointer {
+    display: none;
+  }
+  .homecontactusArrow.schoolList {
+    display: block;
+    top: unset;
+    left: unset;
+    bottom: 2%;
+    right: 2%;
+    width: 2rem;
+    height: 2rem;
+
+    pointer-events: all;
+  }
+  .homecontactusArrow.schoolList img {
+    width: 80%;
+  }
+  .more-school-button li a {
+    font-size: 0.825rem;
+    padding: 0.5rem 3rem;
+  }
+  .homebg-job-Wave {
+    top: -8%;
+  }
+  .homeJobH1 h1 {
+    font-size: 1rem;
   }
 
   @keyframes scrollDownArrowDot-home {

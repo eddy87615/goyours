@@ -4,7 +4,7 @@ import { TbBoxMultiple } from 'react-icons/tb';
 
 import './navigation.css';
 
-const SpMenu = ({ navigation, ishamburgerClicked }) => {
+const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
   return (
     <nav className="hamburger-menu-wrapper">
       <div
@@ -21,7 +21,11 @@ const SpMenu = ({ navigation, ishamburgerClicked }) => {
 
             return (
               <li key={index}>
-                <Link to={nav.to} target={nav.target}>
+                <Link
+                  to={nav.to}
+                  target={nav.target}
+                  onClick={() => setIsHamburgerClicked(!ishamburgerClicked)}
+                >
                   <p id={`navText${index}`}>{nav.title}</p>
                 </Link>
               </li>
@@ -134,7 +138,11 @@ export default function Navigation() {
           ></div>
         </div>
       </nav>
-      <SpMenu navigation={navigation} ishamburgerClicked={ishamburgerClicked} />
+      <SpMenu
+        navigation={navigation}
+        ishamburgerClicked={ishamburgerClicked}
+        setIsHamburgerClicked={setIsHamburgerClicked}
+      />
     </>
   );
 }
