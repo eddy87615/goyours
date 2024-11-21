@@ -75,7 +75,7 @@
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 500px) {
   .scrollDownArrow {
     display: none;
   }

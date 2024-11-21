@@ -685,9 +685,9 @@
     box-sizing: border-box;
     border-bottom: 1rem solid #ffe2bc;
 
-    height: 100%;
+    height: 85dvh;
 
-    margin-bottom: 15vh;
+    margin-bottom: 15dvh;
   }
   .kvSlider {
     height: 85vh;
