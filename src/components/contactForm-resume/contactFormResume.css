@@ -1,4 +1,4 @@
-.contactusComponent {
+.contactusComponent-resume {
   position: relative;
 
   background-color: #ffeed9;
@@ -9,15 +9,17 @@
 
   padding: 0 6rem 4rem 6rem;
   margin-top: -5rem;
+  margin-bottom: 8rem;
 }
-.contactusComponent h1 {
-  font-size: 12rem;
+.contactusComponent-resume h1 {
+  font-size: 1350%;
+
   margin: 0;
 
   color: #ffe2bc;
   text-align: center;
 
-  margin-bottom: 4rem;
+  font-family: 'Lalezar', system-ui;
 }
 
 .contactusTitleforApply {
@@ -216,11 +218,13 @@ input:-webkit-autofill {
   width: fit-content;
 }
 
-.privicy {
+.privicy label {
   display: flex;
   width: fit-content;
   align-items: center;
   justify-content: center;
+
+  gap: 0.5rem;
   margin: 0 auto;
 }
 .privicy a {

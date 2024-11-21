@@ -38,11 +38,11 @@ export default function Faqs() {
       <div className="fqa-body">
         <div className="fqa-wrapper">
           <h1>
-            <span className="yellow">FAQs</span>常見QA
+            <span className="yellow faq-title">FAQs</span>常見QA
           </h1>
           <div>
             <div className="part1">
-              <h2 className="yellow">
+              <h2 className="yellow faq-title">
                 <span className="goyoursbear goyoursbearonfaqs">
                   <svg
                     version="1.1"
@@ -79,7 +79,7 @@ export default function Faqs() {
                 ))}
             </div>
             <div className="part2">
-              <h2 className="yellow">
+              <h2 className="yellow faq-title">
                 <span className="goyoursbear goyoursbearonfaqs">
                   <svg
                     version="1.1"

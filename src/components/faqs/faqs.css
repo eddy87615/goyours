@@ -20,12 +20,8 @@
   stroke-width: 15;
 }
 
-.qaSection {
-  /* padding-top: 6rem; */
-
-  /* width: 70vw; */
-
-  /* margin: 0 auto; */
+.faq-title {
+  font-family: 'inter', system-ui;
 }
 .fqa-wrapper {
   padding-top: 6rem;

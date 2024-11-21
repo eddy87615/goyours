@@ -36,7 +36,7 @@
   transition-duration: 0.5s;
 }
 .homeContactusDiv:hover h2 {
-  color: #fff;
+  color: #fff8ef;
   transition-duration: 0.5s;
 }
 .homeContactusDiv:hover .homecontactusArrow {
@@ -45,7 +45,7 @@
 }
 .homeContactusDiv:hover .contactTxt01 {
   transition-duration: 0.5s;
-  border-left: 0.5rem solid #fff;
+  border-left: 0.5rem solid #fff8ef;
 }
 
 .homeContactusDiv h2 {
@@ -53,7 +53,9 @@
   font-size: 14rem;
   color: #ffe2bc;
 
-  margin: 2rem;
+  font-family: 'Lalezar', system-ui;
+
+  margin: 0;
 }
 .contactTxt01 {
   transition-duration: 0.5s;

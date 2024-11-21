@@ -357,15 +357,19 @@
 }
 
 .serviceArea {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
+  /* display: grid; */
+  display: flex;
+  justify-content: space-between;
+  /* grid-template-columns: 0.8fr 1fr; */
 
-  gap: 2rem;
+  gap: 24%;
 }
 .serviceArea p {
   line-height: 3rem;
 
-  font-weight: bold;
+  width: 100%;
+
+  font-weight: 400;
   margin-top: 4rem;
 
   color: #414042;
@@ -388,8 +392,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 9rem; /* 根據你的 logo 尺寸調整 */
-  height: 9rem;
+  width: 10rem; /* 根據你的 logo 尺寸調整 */
+  height: 10rem;
   background-color: #fff;
   border-radius: 50%;
   display: flex;
@@ -413,8 +417,8 @@
 
   transform: translate(-50%, -50%) rotate(45deg);
 
-  width: 30rem;
-  height: 30rem;
+  width: 35rem;
+  height: 35rem;
 }
 
 .serviceCircle {
@@ -423,11 +427,11 @@
   left: 50%;
   transform-origin: 0 0;
   transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
-    translate(150px) rotate(calc(-60deg * var(--i)));
+    translate(175px) rotate(calc(-60deg * var(--i)));
 
   text-align: center;
-  width: 7rem; /* 每個項目的大小 */
-  height: 7rem;
+  width: 8.75rem; /* 每個項目的大小 */
+  height: 8.75rem;
   background-color: #ffc67f; /* 背景顏色 */
   border-radius: 50%;
 

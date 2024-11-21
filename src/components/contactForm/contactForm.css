@@ -25,16 +25,16 @@
   margin-top: -5rem;
 }
 .contactusComponent h1 {
-  font-size: 1150%;
+  font-size: 1350%;
   /* font-size: 12rem; */
   margin: 0;
 
   color: #ffe2bc;
   text-align: center;
 
-  margin-bottom: 4rem;
-
   position: relative;
+
+  font-family: 'Lalezar', system-ui;
 }
 
 .contactusTitle {
@@ -156,7 +156,7 @@ input:-webkit-autofill {
   width: fit-content;
 }
 
-.privicy {
+.privicy label {
   display: flex;
   width: fit-content;
   align-items: center;

@@ -19,6 +19,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import './home.css';
+import './about-us.css';
 
 const News = () => {
   const [NewsPosts, setNewsPosts] = useState([]);
@@ -99,7 +100,7 @@ const HomeschoolList = () => {
       highlight: '獨創高水準的先進教學模式。',
       href: '/school/tokyoasia',
       introtxt:
-        '東京亞細亞學友會，日本語教育振興協會認定校，東京入管局指定百分之3優良校，駐日本中國大使館認定自費出國留學提攜校。日本為數不多只招收來自世界各地大學以上學歷留學生的一流日本語學校。',
+        '東京亞細亞學友會是日本語教育振興協會認定校，東京入管局指定百分之3優良校，駐日本中國大使館認定自費出國留學提攜校。日本為數不多只招收來自世界各地大學以上學歷留學生的一流日本語學校。',
     },
     {
       name: '宇都宮日建工科専門学校ー日本語学科',
@@ -115,7 +116,7 @@ const HomeschoolList = () => {
       name: '雙葉外語學校',
       location: '千葉県',
       src: '/雙葉外語學校バス旅行.jpg',
-      traffic: 'JR千葉站東口徒步10分鐘・京成千葉中央站西口徒步1分鐘',
+      traffic: '千葉站徒步10分鐘・京成千葉中央站徒步1分鐘',
       highlight: '細緻的升學・就職指導',
       href: '/school/utsunimiyanikken',
       introtxt:
@@ -139,7 +140,7 @@ const HomeschoolList = () => {
       highlight: '校外學習，與日語互動',
       href: '/school/utsunimiyanikken',
       introtxt:
-        'ARC日本語學校是於1986年創立的語言學校，ARC有通往世界橋梁的意思。京都校創立於2003年，並於2019年４月遷移到全新校舍。校區位於京都市區丸太町站，徒步６分鐘即可抵達，交通便利。',
+        'ARC有通往世界橋梁的意思，京都校創立於2003年，並於2019年４月遷移到全新校舍。校區位於京都市區丸太町站，徒步６分鐘即可抵達，交通便利。',
     },
     {
       name: '赤門會日本語言學校',
@@ -271,6 +272,13 @@ export default function Home() {
         </div>
         <img src="/LOGO-09.png" alt="goyours logo" className="kvlogo" />
         <ScroolDown />
+        <div className="aboutScroolDown-Home">
+          <div className="aboutScroolDownArrowArea">
+            <div className="aboutScroolDownLine-home"></div>
+            <div className="aboutScroolDownDot-home"></div>
+          </div>
+          <p className="aboutScroolDownText">Scroll</p>
+        </div>
       </div>
       <div className="homeintroSection">
         <div className="homebg-intro-Wave">

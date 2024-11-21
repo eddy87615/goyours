@@ -102,7 +102,6 @@ export default function ContactForm() {
       case: formData.selectedCases,
       callTime: formData.callTime,
       contacted: false, // 初始聯絡狀態為 false
-      remarks: formData.tellus, // 備註初始為空
       upTime: currentDateTime, // 表單送出時間
       tellus: formData.tellus,
     };
@@ -140,8 +139,6 @@ export default function ContactForm() {
         callTime: '',
         tellus: '',
       });
-      console.log('Encrypted Data:', encryptedData);
-
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('提交失敗:', error);
@@ -346,18 +343,20 @@ export default function ContactForm() {
               />
             </label>
             <div className="privicy">
-              <input type="checkbox" id="privicy" name="privicy" />
-              <span>
-                我已閱讀
-                <Link
-                  to="/privacy-policy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  required
-                >
-                  隱私政策*
-                </Link>
-              </span>
+              <label>
+                <input type="checkbox" id="privicy" name="privicy" />
+                <span>
+                  我已閱讀
+                  <Link
+                    to="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    required
+                  >
+                    隱私政策*
+                  </Link>
+                </span>
+              </label>
             </div>
 
             <button type="submit" className="submitBtn" disabled={loading}>

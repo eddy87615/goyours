@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { BsTrashFill } from 'react-icons/bs';
 
+import CryptoJS from 'crypto-js';
+
 import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
 
 import './contactFormResume.css';
@@ -79,9 +81,14 @@ export default function ContactFormResume() {
     }
   };
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // 返回到頁面的最頂端
+
+    if (loading) return;
+
+    setLoading(true);
 
     const currentDateTime = new Date().toISOString();
 
@@ -98,7 +105,7 @@ export default function ContactFormResume() {
       }
     }
     // 準備發送到 Sanity 的資料
-    const contactData = {
+    const rawData = {
       _type: 'jobapply',
       jobname: jobTitle,
       name: formData.name,
@@ -119,10 +126,30 @@ export default function ContactFormResume() {
     };
 
     try {
+      const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
+      const encryptedData = CryptoJS.AES.encrypt(
+        JSON.stringify(rawData),
+        SECRET_KEY
+      ).toString();
+      console.log('開始提交');
+      const response = await fetch('/api/saveContact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ encryptedData }),
+      });
+      console.log('提交完成,回應:', response);
+
+      if (!response.ok) {
+        throw new Error('提交失敗');
+      }
+
       // 將資料發送到 Sanity
-      await client.create(contactData);
-      setIsSubmited(true);
+      // await client.create(contactData);
+      // setIsSubmited(true);
       // alert('資料已成功提交');
+      setIsSubmited(true);
       setFormData({
         name: '',
         age: '',
@@ -132,9 +159,12 @@ export default function ContactFormResume() {
         callTime: '',
         resume: null,
       });
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // 返回到頁面的最頂端
     } catch (error) {
       console.error('提交失敗:', error);
       alert('提交失敗，請稍後再試');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -177,7 +207,7 @@ export default function ContactFormResume() {
     <>
       {isSubmited ? (
         <>
-          <div className="contactusComponent">
+          <div className="contactusComponent-resume">
             <h1>Thank you</h1>
             <img src="/LOGO-02.png" alt="goyours logo" className="formlogo" />
             <p className="subitedtxt">
@@ -222,7 +252,7 @@ export default function ContactFormResume() {
           </div>
         </>
       ) : (
-        <div className="contactusComponent">
+        <div className="contactusComponent-resume">
           <div className="contactusTitleforApply">
             <h1>Application</h1>
             <h2 className="jobapplyh1">{jobTitle}——打工度假申請</h2>
@@ -386,17 +416,19 @@ export default function ContactFormResume() {
               />
             </label>
             <div className="privicy">
-              <input type="checkbox" id="privicy" name="privicy" />
-              <span>
-                我已閱讀
-                <Link to="privacy-policy" target="blank" required>
-                  隱私政策*
-                </Link>
-              </span>
+              <label>
+                <input type="checkbox" id="privicy" name="privicy" />
+                <span>
+                  我已閱讀
+                  <Link to="privacy-policy" target="blank" required>
+                    隱私政策*
+                  </Link>
+                </span>
+              </label>
             </div>
 
             <button type="submit" className="submitBtn">
-              送出表單
+              {loading ? '送出中...' : '送出表單'}
             </button>
           </form>
         </div>

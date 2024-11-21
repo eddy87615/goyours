@@ -4,6 +4,34 @@ import { TbBoxMultiple } from 'react-icons/tb';
 
 import './navigation.css';
 
+const SpMenu = ({ navigation, ishamburgerClicked }) => {
+  return (
+    <nav className="hamburger-menu-wrapper">
+      <div
+        className={
+          ishamburgerClicked
+            ? 'hamburger-body hamburger-body-clicked '
+            : 'hamburger-body'
+        }
+      >
+        <ul className="hamburger-list">
+          {navigation.map((nav, index) => {
+            // 檢查是否為第一個項目，跳過渲染
+            if (index === 0) return null;
+
+            return (
+              <li key={index}>
+                <Link to={nav.to} target={nav.target}>
+                  <p id={`navText${index}`}>{nav.title}</p>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </nav>
+  );
+};
 export default function Navigation() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
@@ -32,51 +60,81 @@ export default function Navigation() {
     };
   }, [prevScrollPos]);
 
+  const [ishamburgerClicked, setIsHamburgerClicked] = useState(false);
+
+  useEffect(() => {
+    if (ishamburgerClicked) {
+      document.body.style.overflow = 'hidden'; // 禁用滾動
+      document.body.style.position = 'fixed'; // 防止滾動位置變化
+      document.body.style.width = '100%'; // 防止滾動條佔位
+    } else {
+      document.body.style.overflow = ''; // 恢復滾動
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+
+    // 清理副作用
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [ishamburgerClicked]);
+
   return (
-    <nav className={`mainNav ${visible ? 'visible' : 'hidden'}`}>
-      <div className="navLogo">
-        <Link to="/">
-          <img src="/LOGO-03.png" alt="goyours logo" width={250} />
-        </Link>
-      </div>
-      <div className="navMenu">
-        <ul>
-          {navigation.map((nav, index) => (
-            <li key={index}>
-              <Link to={nav.to} target={nav.target}>
-                <span className="nav-wrapper">
-                  <span className="upperP-wrapper">
-                    <p id={`navText${index}`}>
-                      {nav.title}
-                      <span className="nav-icon">
-                        {index === 6 ? <TbBoxMultiple /> : null}
-                      </span>
-                    </p>
+    <>
+      <nav
+        className={`mainNav ${visible ? 'visible' : 'hidden'} ${
+          ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
+        }`}
+      >
+        <div className="navLogo">
+          <Link to="/">
+            <img src="/LOGO-03.png" alt="goyours logo" width={250} />
+          </Link>
+        </div>
+        <div className="navMenu">
+          <ul>
+            {navigation.map((nav, index) => (
+              <li key={index}>
+                <Link to={nav.to} target={nav.target}>
+                  <span className="nav-wrapper">
+                    <span className="upperP-wrapper">
+                      <p id={`navText${index}`}>
+                        {nav.title}
+                        <span className="nav-icon">
+                          {index === 6 ? <TbBoxMultiple /> : null}
+                        </span>
+                      </p>
+                    </span>
+                    <span className="downP-wrapper">
+                      <p id={`navText${index}`}>
+                        {nav.title}
+                        <span className="nav-icon">
+                          {index === 6 ? <TbBoxMultiple /> : null}
+                        </span>
+                      </p>
+                    </span>
                   </span>
-                  <span className="downP-wrapper">
-                    <p id={`navText${index}`}>
-                      {nav.title}
-                      <span className="nav-icon">
-                        {index === 6 ? <TbBoxMultiple /> : null}
-                      </span>
-                    </p>
-                  </span>
-                </span>
-              </Link>
-            </li>
-          ))}
-          {/* <Link to="/">Home</Link>
-        <Link to="/about-us">About</Link>
-        <Link to="/goyours-post">文章專區</Link>
-        <Link to="/studying-in-jp">日本留學</Link>
-        <Link to="/working-holiday">打工度假</Link>
-        <Link to="/Q&A-section">常見Q&A</Link>
-        <Link to="/contact-us" target="blank">
-          聯絡我們
-          <TbBoxMultiple />
-        </Link> */}
-        </ul>
-      </div>
-    </nav>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div
+          className="hamburger-line-wrapper"
+          onClick={() => setIsHamburgerClicked(!ishamburgerClicked)}
+        >
+          <div
+            className={
+              ishamburgerClicked
+                ? 'hamburger-menu-line hamburger-clicked'
+                : 'hamburger-menu-line'
+            }
+          ></div>
+        </div>
+      </nav>
+      <SpMenu navigation={navigation} ishamburgerClicked={ishamburgerClicked} />
+    </>
   );
 }
