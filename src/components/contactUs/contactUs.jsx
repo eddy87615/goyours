@@ -50,6 +50,9 @@ export default function ContactUs() {
           alt="to Contact Us page"
         >
           <ArcText text="填寫表單，我們將聯絡您！" />
+          <span className="contact-button">
+            <img src="/contact-button.svg" alt="contact button" />
+          </span>
           <span className="homecontactusArrow ">
             <img src="/submit-arrow.svg" alt="submit button arrow" />
           </span>

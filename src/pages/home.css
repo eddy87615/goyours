@@ -1030,22 +1030,50 @@
     bottom: 0;
     right: 0;
     border-radius: 100% 0 0 0;
+    background-color: transparent;
+    /* display: none; */
+  }
+  .homecontactusBtn::before {
+    display: none;
   }
   .homecontactusArrow {
-    top: 36%;
+    top: 40%;
+    left: 60%;
   }
   .homecontactusArrow img {
-    width: 60%;
+    width: 54%;
   }
   .arc-text {
     top: -325px;
     left: -90px;
+    display: none;
   }
-  .arc-text text {
+  /* .arc-text text {
     fill: #fff;
   }
   .arc-text svg {
     width: 500px;
+  } */
+  .contact-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 180%;
+    height: 180%;
+    transform: translate(50%, 50%) rotate(-40deg);
+    transform-origin: center;
+  }
+  .homeContactusDiv:hover {
+    background-color: #ffeed9;
+  }
+  .homeContactusDiv:hover h2 {
+    color: #ffe2bc;
+  }
+  .homeContactusDiv:hover .homecontactusArrow {
+    animation: none;
+  }
+  .homeContactusDiv:hover .contactTxt01 {
+    border-left: 0.5rem solid var(--goyoursYellow);
   }
   @keyframes scrollDownArrowDot-home {
     0% {
