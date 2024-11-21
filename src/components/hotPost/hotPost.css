@@ -71,3 +71,43 @@
   height: 2rem;
 }
 /*homeHotpostSection*/
+
+@media screen and (max-width: 480px) {
+  .homeperhotpost {
+    padding: 0.5rem 1rem;
+    margin-right: 4% !important;
+    border-radius: 1.5rem;
+    border: 1.5px solid #333;
+  }
+  .homeHotpostImg {
+    width: 100%;
+    height: 10rem;
+  }
+  .homeHotpostImg img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .homeprehotpost h2 {
+    font-size: 1rem;
+  }
+  .homeprehotpost h3 {
+    font-size: 0.875rem;
+  }
+  .homeprehotpost ul {
+    font-size: 0.75rem;
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+  .homeprehotpost p {
+    font-size: 0.75rem;
+  }
+  .homehotpostDate {
+    gap: 0.5rem;
+  }
+  .homehotpostDate img {
+    width: 1rem;
+    height: 1rem;
+  }
+}

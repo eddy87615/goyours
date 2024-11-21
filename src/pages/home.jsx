@@ -192,7 +192,7 @@ const HomeschoolList = () => {
                 </ul>
               </div>
               <LiaHandPointer className="schoolListPointer" />
-              <Link className="homecontactusArrow schoolList " to={school.href}>
+              <Link className="home-schoolList-arrow" to={school.href}>
                 <img src="/submit-arrow.svg" alt="submit button arrow" />
               </Link>
             </div>
@@ -244,11 +244,11 @@ export default function Home() {
   //nav height get
 
   const homeslider = [
-    { src: '/KV/KV_about_08.webp' },
+    { src: '/KV/KV_about_05.webp' },
     { src: '/KV/KV_03.webp' },
+    { src: '/KV/KV_about_08.webp' },
     { src: '/KV/KV_09.webp' },
     { src: '/KV/KV_about_07.webp' },
-    { src: '/KV/KV_about_05.webp' },
     { src: '/KV/KV_25.webp' },
   ];
 

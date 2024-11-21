@@ -120,3 +120,49 @@
   background-color: #fff8ef;
   color: #414041;
 }
+
+@media screen and (max-width: 480px) {
+  .workingholidayDiv {
+    grid-template-columns: 1fr;
+    padding: 4rem 0;
+    gap: 2rem;
+  }
+  .jobListPre {
+    height: 12rem;
+    border-radius: 1.5rem;
+  }
+  .jobListPre:nth-child(4),
+  .jobListPre:nth-child(5),
+  .jobListPre:nth-child(6) {
+    display: none;
+  }
+  .jobListPre img {
+    border-radius: 1.5rem 0 0 1.5rem;
+  }
+  .jobListcontent h3 {
+    font-size: 0.875rem;
+  }
+  .jobListPre p {
+    font-size: 0.75rem;
+    background-color: #fff8ef;
+    color: var(--goyoursYellow);
+    padding: 0.3rem 0.5rem;
+  }
+  .jobListcontent ul li:nth-child(2),
+  .jobListcontent ul li:nth-child(3) {
+    display: none;
+  }
+  .jobListcontent ul span {
+    display: none;
+  }
+  .jobListcontent ul {
+    padding: 1rem 0;
+  }
+  .workingholidaySection .schoolListDetailBtn {
+    display: block;
+    font-size: 0.725rem;
+  }
+  .workingholidaySection {
+    margin-bottom: 4rem;
+  }
+}
