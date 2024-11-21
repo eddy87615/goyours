@@ -676,7 +676,7 @@
   display: none;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 500px) {
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
     border-bottom-right-radius: calc(300 * 1em / 16);

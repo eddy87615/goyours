@@ -257,7 +257,7 @@
   background-color: #fff;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 500px) {
   .mainNav {
     padding: 1rem 1rem;
 
