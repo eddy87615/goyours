@@ -25,6 +25,7 @@ export default [
     },
     rules: {
       'react/prop-types': 'off',
+      'no-irregular-whitespace': 'off',
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,

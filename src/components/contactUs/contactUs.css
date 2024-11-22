@@ -122,6 +122,34 @@
 
   pointer-events: none;
 }
+.contact-button {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .contact-button {
+    display: block;
+  }
+  .homecontactusArrow {
+    top: 48%;
+    left: 60%;
+  }
+  .homecontactusArrow img {
+    width: 54%;
+  }
+  .homeContactusDiv:hover {
+    background-color: #ffeed9;
+  }
+  .homeContactusDiv:hover h2 {
+    color: #ffe2bc;
+  }
+  .homeContactusDiv:hover .homecontactusArrow {
+    animation: none;
+  }
+  .homeContactusDiv:hover .contactTxt01 {
+    border-left: 0.5rem solid var(--goyoursYellow);
+  }
+}
 
 @keyframes shakeX {
   0%,

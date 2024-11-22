@@ -122,18 +122,18 @@
   position: absolute;
   content: url(/goyoursBear-bg-home.svg);
 
-  width: 3rem;
+  width: 40px;
 
-  top: -24%;
-  right: 50%;
+  top: -20%;
+  right: 54%;
   transform: rotate(-4deg);
 }
 
 .homeintroImgWrapper2 {
   bottom: 4%;
   right: 0;
-  width: 24rem;
-  height: 24rem;
+  width: 20rem;
+  height: 20rem;
 
   animation: homeintroImg0 2s infinite linear;
 }
@@ -702,36 +702,7 @@
     left: 0;
     z-index: 1;
   }
-  .aboutScroolDown-Home {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transform: translate(-50%);
-    display: flex;
-  }
-  .aboutScroolDownLine-home {
-    width: 2px;
-    height: 150px;
-  }
-  .aboutScroolDownLine-home::after {
-    content: '';
-    position: absolute;
-    background-color: #757575;
-    width: 1px;
-    animation: scrollDownArrowLine-home 2s infinite ease-in-out;
-  }
-  .aboutScroolDownDot-home {
-    transform: translate(0, -158px);
 
-    width: 8px;
-    height: 8px;
-    background-color: #757575;
-
-    border-radius: 50px;
-
-    animation: scrollDownArrowDot-home 2s infinite ease-in-out;
-  }
   .homeintroImgWrapper0 {
     width: 9rem;
     height: 9rem;
@@ -940,7 +911,7 @@
     padding-bottom: 10rem;
   }
   .homeContactusDiv h2 {
-    font-size: 4rem;
+    font-size: 5rem;
   }
   .contactTxt01 {
     margin: 1rem;
@@ -963,13 +934,7 @@
   .homecontactusBtn::before {
     display: none;
   }
-  .homecontactusArrow {
-    top: 40%;
-    left: 60%;
-  }
-  .homecontactusArrow img {
-    width: 54%;
-  }
+
   .arc-text {
     top: -325px;
     left: -90px;
@@ -989,40 +954,5 @@
     height: 180%;
     transform: translate(50%, 50%) rotate(-40deg);
     transform-origin: center;
-  }
-  .homeContactusDiv:hover {
-    background-color: #ffeed9;
-  }
-  .homeContactusDiv:hover h2 {
-    color: #ffe2bc;
-  }
-  .homeContactusDiv:hover .homecontactusArrow {
-    animation: none;
-  }
-  .homeContactusDiv:hover .contactTxt01 {
-    border-left: 0.5rem solid var(--goyoursYellow);
-  }
-
-  @keyframes scrollDownArrowDot-home {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-      transform: translate(0, 0);
-    }
-  }
-
-  @keyframes scrollDownArrowLine-home {
-    0% {
-      height: 0;
-      opacity: 0;
-    }
-
-    100% {
-      height: 150px;
-      opacity: 1;
-    }
   }
 }

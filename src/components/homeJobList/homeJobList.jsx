@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import GoyoursBearJob from '../goyoursBear/goyoursBearJob';
@@ -69,6 +70,18 @@ export default function HomeJobList() {
       salary: '1150円',
     },
   ];
+
+  const [isSP, setIsSP] = useState(window.innerWidth <= 500);
+  useEffect(() => {
+    const handleResize = () => setIsSP(window.innerWidth <= 500);
+
+    // 添加事件監聽器
+    window.addEventListener('resize', handleResize);
+
+    // 清除事件監聽器
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <div className="homeJobWrapper">
@@ -109,7 +122,10 @@ export default function HomeJobList() {
                       {job.salary}
                     </li>
                   </ul>
-                  <button className="schoolListDetailBtn">了解職缺詳情</button>
+                  <button className="schoolListDetailBtn">
+                    {isSP ? '了解詳情' : '了解職缺詳情'}
+                    {/* 了解職缺詳情 */}
+                  </button>
                 </div>
               </div>
             );

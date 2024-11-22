@@ -162,5 +162,6 @@
   .footer button {
     right: 8%;
     bottom: 8%;
+    border: 1px solid #fff;
   }
 }

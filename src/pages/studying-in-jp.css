@@ -31,6 +31,8 @@
   line-height: 2rem;
 
   position: relative;
+
+  margin-top: 0;
 }
 
 /* .guide-text::after {
@@ -127,14 +129,14 @@
   content: '';
   width: 4rem;
   margin: 0 auto;
-  padding-top: 3rem;
+  padding-top: 1rem;
   border-bottom: 0.6rem solid var(--goyoursYellow);
 }
 
 .guide-vertical-slide-left {
   position: absolute;
   top: 0;
-  left: 4%;
+  left: 2%;
   width: 12%;
   height: 100%;
 
@@ -162,59 +164,60 @@
 .silde-text-wrapper-right01 {
   position: absolute;
   top: 0;
-  right: 1%;
+  right: 0;
+  transform: translateX(-50%);
 
-  height: 110%;
+  height: 150%;
   width: 2rem;
 }
 .silde-text-wrapper-left01 {
   position: absolute;
   top: 0;
-  left: 1%;
+  left: 0%;
 
-  height: 110%;
+  height: 200%;
   width: 2rem;
 }
 .silde-text-wrapper-right01 p,
 .silde-text-wrapper-left01 p {
   width: 100%;
-  min-width: 100%; /* 確保不會小於設定寬度 */
-  max-width: 100%; /* 確保不會超過設定寬度 */
+  min-width: 100%;
+  max-width: 100%;
 
   writing-mode: vertical-rl;
   text-orientation: mixed;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
 
-  width: 100%;
-  height: 120px;
-  font-size: 1.3rem;
+  height: fit-content;
+  font-size: 0.875rem;
   color: #f8b300;
   font-weight: bold;
 
   position: absolute;
-  /* bottom: 100%; */
-  transform: translateY(-100%);
   right: 0;
   margin: 0;
 
   opacity: 0.5;
 
   animation: scrollDownText;
-  animation-duration: 13s;
+  animation-duration: 15s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 .right02 {
-  right: 17%;
+  right: 14.2%;
 }
 .left02 {
-  left: 17%;
+  left: 14.2%;
 }
 
 .guide-vertical-slide-right {
   position: absolute;
   top: 0;
-  right: 4%;
+  right: calc(2% + 15px);
   width: 12%;
   height: 100%;
 

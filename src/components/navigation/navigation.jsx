@@ -16,9 +16,6 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
       >
         <ul className="hamburger-list">
           {navigation.map((nav, index) => {
-            // 檢查是否為第一個項目，跳過渲染
-            if (index === 0) return null;
-
             return (
               <li key={index}>
                 <Link
@@ -32,6 +29,16 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
                       alt="hamburger menu goyours icon"
                     />
                   </span>
+                  {index === 6 ? (
+                    <span className="hamburger-contact-us-button">
+                      <img
+                        src="/goyoursbear-icon-w.svg"
+                        alt="hamburger menu goyours icon"
+                      />
+                    </span>
+                  ) : (
+                    ''
+                  )}
                   <p id={`navText${index}`}>
                     {index === 1 ? '關於Go Yours' : nav.title}
                   </p>
@@ -137,13 +144,15 @@ export default function Navigation() {
           className="hamburger-line-wrapper"
           onClick={() => setIsHamburgerClicked(!ishamburgerClicked)}
         >
-          <div
-            className={
-              ishamburgerClicked
-                ? 'hamburger-menu-line hamburger-clicked'
-                : 'hamburger-menu-line'
-            }
-          ></div>
+          <span
+            className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+          ></span>
+          <span
+            className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+          ></span>
+          <span
+            className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+          ></span>
         </div>
       </nav>
       <SpMenu

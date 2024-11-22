@@ -153,6 +153,7 @@ const HomeschoolList = () => {
         '赤門會日本語學校，於1985年創校于東京大學的赤門前，成功培養了超過80個國家，2萬多名的畢業生，教學成績有目共睹。<br />在 2005 年，學校被認證為學校法人。',
     },
   ];
+
   return (
     <div className="homeschoolWrapper">
       <div className="homeschoolH1">
