@@ -198,8 +198,8 @@
   color: #fff;
   background-color: transparent !important;
   margin: 0;
-  padding: 1.5rem 0;
-  border-bottom: 0.5px solid #fff;
+  padding: 2rem 0;
+  width: 100%;
 }
 .hamburger-line-wrapper {
   display: none;
@@ -256,8 +256,24 @@
   transform: rotate(-90deg);
   background-color: #fff;
 }
+.hamburger-menu-icon {
+  width: 3.5rem;
+  height: 100%;
+}
 
-@media screen and (max-width: 500px) {
+.hamburger-list li a {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: 0.5px solid #fff;
+  font-weight: bold;
+}
+
+.hamburger-menu-icon img {
+  height: 100%;
+}
+
+@media screen and (max-width: 480px) {
   .mainNav {
     padding: 1rem 1rem;
 

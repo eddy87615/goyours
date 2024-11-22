@@ -1,6 +1,6 @@
 .kv {
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
 
   border-radius: 0 0 100% 0;
 
@@ -689,9 +689,9 @@
     box-sizing: border-box;
     border-bottom: 1rem solid #ffe2bc;
 
-    height: 85dvh;
+    height: 85vh;
 
-    margin-bottom: 15dvh;
+    margin-bottom: 15vh;
   }
   .kvSlider {
     height: 85vh;
@@ -759,7 +759,7 @@
     height: 80%;
   }
   .homeintroSection {
-    height: 70dvh;
+    height: 70vh;
   }
   .homeintrotxt {
     width: 60%;
@@ -1002,6 +1002,7 @@
   .homeContactusDiv:hover .contactTxt01 {
     border-left: 0.5rem solid var(--goyoursYellow);
   }
+
   @keyframes scrollDownArrowDot-home {
     0% {
       opacity: 0;

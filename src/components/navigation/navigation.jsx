@@ -26,7 +26,15 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
                   target={nav.target}
                   onClick={() => setIsHamburgerClicked(!ishamburgerClicked)}
                 >
-                  <p id={`navText${index}`}>{nav.title}</p>
+                  <span className="hamburger-menu-icon">
+                    <img
+                      src="/goyoursbear-line-W.svg"
+                      alt="hamburger menu goyours icon"
+                    />
+                  </span>
+                  <p id={`navText${index}`}>
+                    {index === 1 ? '關於Go Yours' : nav.title}
+                  </p>
                 </Link>
               </li>
             );
