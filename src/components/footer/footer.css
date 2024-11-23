@@ -110,7 +110,7 @@
 @media screen and (max-width: 480px) {
   .footer {
     flex-direction: column;
-    padding: 3rem;
+    /* padding: 3rem 2rem; */
     gap: 2rem;
     width: unset;
 
@@ -163,5 +163,20 @@
     right: 8%;
     bottom: 8%;
     border: 1px solid #fff;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 3rem 2rem;
+  }
+  .footerInfo,
+  .footerNews {
+    width: 100%;
+  }
+  .footer button {
+    width: 4rem;
+    height: 4rem;
+    bottom: 3%;
   }
 }

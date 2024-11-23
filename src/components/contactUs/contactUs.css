@@ -151,6 +151,12 @@
   }
 }
 
+@media screen and (max-width: 320px) {
+  .homeContactusSection {
+    padding-top: 0;
+  }
+}
+
 @keyframes shakeX {
   0%,
   100% {

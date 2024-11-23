@@ -101,13 +101,19 @@
 }
 .homeintroImgWrapper0::after {
   position: absolute;
-  content: url(/homepic-3-bear.svg);
+  content: '';
+  background-image: url(/homepic-3-bear.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
 
-  width: 4rem;
+  width: 8rem;
+  height: 100%;
 
-  top: 5%;
-  right: 8.5%;
-  transform: rotate(-5deg);
+  top: -10%;
+  right: 0;
+  transform: rotate(-20deg);
+
+  z-index: -1;
 }
 
 .homeintroImgWrapper1 {
@@ -120,11 +126,15 @@
 }
 .homeintroImgWrapper1::after {
   position: absolute;
-  content: url(/goyoursBear-bg-home.svg);
+  content: '';
+  background-image: url(/goyoursBear-bg-home.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
 
   width: 40px;
+  height: 100%;
 
-  top: -20%;
+  top: -19%;
   right: 54%;
   transform: rotate(-4deg);
 }
@@ -680,6 +690,12 @@
   display: none;
 }
 
+@media screen and (min-width: 1201px) {
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
 @media screen and (max-width: 480px) {
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
@@ -713,14 +729,19 @@
     box-shadow: 8px 8px 0px #ffe2bc;
   }
   .homeintroImgWrapper0::after {
-    top: -28%;
-    right: 4%;
+    top: -12%;
+    right: -8%;
+    width: 54px;
     transform: rotate(-10deg);
     z-index: -1;
   }
   .homeintroImgWrapper1 {
     top: unset;
     bottom: -20% !important;
+  }
+  .homeintroImgWrapper1::after {
+    width: 30px;
+    top: -15%;
   }
   .homeintroImgWrapper2 {
     display: none;
@@ -730,7 +751,7 @@
     height: 80%;
   }
   .homeintroSection {
-    height: 70vh;
+    height: 100vh;
   }
   .homeintrotxt {
     width: 60%;
@@ -904,7 +925,7 @@
     top: -10%;
   }
   .homeContactusSection {
-    padding: 4rem 0;
+    padding-bottom: 2rem;
   }
   .homeContactusDiv {
     border-radius: 2rem;
@@ -954,5 +975,44 @@
     height: 180%;
     transform: translate(50%, 50%) rotate(-40deg);
     transform-origin: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .homeintrotxt {
+    width: 80%;
+  }
+  .homeintroSection {
+    height: 70vh;
+  }
+  .homeintroImgWrapper0 {
+    top: -4%;
+  }
+  .homeintrotxt::after {
+    width: 20rem;
+    height: 20rem;
+  }
+  .homeNewsprePost {
+    /* width: 70% !important; */
+    width: calc(
+      80% - 2rem
+    ) !important; /* 宽度设置为容器宽度的80%，具体可调整 */
+    margin-right: 5% !important;
+  }
+  .schoolListDiv {
+    width: 90vw;
+  }
+  .schoolListPre {
+    height: 10rem;
+    border-radius: 1.5rem;
+  }
+  .workingholidayDiv {
+    width: 90vw;
+  }
+  .swiper-slide {
+    width: calc(90% - 3rem); /* 宽度设置为容器宽度的80%，具体可调整 */
+    margin-right: 1rem; /* 每个 slide 间隔 */
+    flex-shrink: 0; /* 防止宽度被压缩 */
+    box-sizing: border-box; /* 包括 padding 和 border */
   }
 }

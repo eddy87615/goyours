@@ -35,13 +35,21 @@ function AppContent() {
 
   // 每次路由變更時，重新觸發 loading 畫面，並設置兩秒延遲
   useEffect(() => {
+    console.log('路由发生变化:', location.pathname); // 打印当前路由
     setLoadingComplete(false);
     const timer = setTimeout(() => {
       setLoadingComplete(true);
-    }, 3000); // 設置兩秒延遲
+    }, 3000);
 
     return () => clearTimeout(timer); // 清理計時器
   }, [location.pathname]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingComplete(false);
+      setLoadingComplete(true); // 强制重渲染 LoadingBear
+    }, 0);
+  }, []);
 
   return (
     <>

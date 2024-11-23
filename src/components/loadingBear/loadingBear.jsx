@@ -3,16 +3,19 @@ import './loadingBear.css';
 import { useRef, useEffect } from 'react';
 
 export default function LoadingBear() {
+  console.log('LoadingBear 渲染中'); // 检查是否渲染
   // 創建一個引用來存儲 SVG 路徑
   const pathRef = useRef(null);
 
   useEffect(() => {
-    // 在組件加載後打印出路徑的總長度
     if (pathRef.current) {
       const length = pathRef.current.getTotalLength();
       console.log('路徑總長度:', length);
+      pathRef.current.style.strokeDasharray = length;
+      pathRef.current.style.strokeDashoffset = length;
     }
   }, []);
+
   return (
     <div className="loadingBearAnimation">
       <svg viewBox="0 0 284.2 345.4">
