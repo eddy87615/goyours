@@ -5,11 +5,28 @@
 <style type="text/css">
 	.st0{fill:#F8B300;}
 	.st1{fill:none;}
+	.st2{font-family:'ArialMT';}
+	.st3{font-size:12.9896px;}
+	.st4{fill:#FFFFFF;}
+	.st5{font-family:'NotoSansJP-Bold';}
+	.st6{font-size:9.1619px;}
+	.st7{font-size:12px;}
 </style>
 <circle class="st0" cx="141.7" cy="141.7" r="141.7"/>
 <path id="SVGID_x5F_1_x5F_" class="st1" d="M116.1,265.2C48,251,4.2,184.3,18.3,116.1s80.9-112,149-97.8s112,80.9,97.8,149
 	C251,235.5,184.3,279.3,116.1,265.2z"/>
-<text><textPath  xlink:href="#SVGID_x5F_1_x5F_" startOffset="42.2775%">
-<tspan  style="fill:#FFFFFF; font-family:'NotoSansJP-Bold'; font-size:8.4639px;">填寫表單，我們將聯絡您！</tspan></textPath>
-</text>
+<text transform="matrix(0.9643 -0.265 0.265 0.9643 102.7236 20.2032)" class="st2 st3"> </text>
+<text transform="matrix(0.9756 -0.2193 0.2193 0.9756 106.3526 19.9081)" class="st4 st5 st6">填</text>
+<text transform="matrix(0.9882 -0.1529 0.1529 0.9882 115.2451 17.9071)" class="st4 st5 st6">寫</text>
+<text transform="matrix(0.9963 -8.560017e-02 8.560017e-02 0.9963 124.2527 16.5119)" class="st4 st5 st6">表</text>
+<text transform="matrix(0.9998 -1.793855e-02 1.793855e-02 0.9998 133.334 15.7293)" class="st4 st5 st6">單</text>
+<text transform="matrix(0.9988 4.963380e-02 -4.963380e-02 0.9988 142.4491 15.5661)" class="st4 st5 st6">，</text>
+<text transform="matrix(0.9932 0.1166 -0.1166 0.9932 151.5524 16.0161)" class="st4 st5 st6">我</text>
+<text transform="matrix(0.9832 0.1824 -0.1824 0.9832 160.606 17.0781)" class="st4 st5 st6">們</text>
+<text transform="matrix(0.969 0.2469 -0.2469 0.969 169.57 18.7396)" class="st4 st5 st6">將</text>
+<text transform="matrix(0.9505 0.3108 -0.3108 0.9505 178.4035 20.9883)" class="st4 st5 st6">聯</text>
+<text transform="matrix(0.9275 0.3739 -0.3739 0.9275 187.0692 23.82)" class="st4 st5 st6">絡</text>
+<text transform="matrix(0.9002 0.4355 -0.4355 0.9002 195.5237 27.2268)" class="st4 st5 st6">您</text>
+<text transform="matrix(0.8688 0.4952 -0.4952 0.8688 203.7295 31.1948)" class="st4 st5 st6">！</text>
+<text class="st2 st7"> </text>
 </svg>

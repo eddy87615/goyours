@@ -203,7 +203,7 @@
 
   margin: 0;
 
-  padding: 8% 0;
+  padding: 5% 0;
   width: 100%;
 
   font-size: 1.25rem;
@@ -220,7 +220,7 @@
 
   background-color: var(--goyoursYellow);
   width: 100%;
-  padding: 1.3rem 0;
+  padding: 6% 0;
   margin: 0 auto;
   margin-top: 12%;
   border-radius: 1rem;
@@ -282,7 +282,7 @@
 }
 
 .hamburger-menu-icon {
-  width: 3.5rem;
+  width: 2.5rem;
   height: 100%;
 }
 
@@ -346,5 +346,14 @@
     align-items: center;
     justify-content: space-between;
     z-index: 999;
+  }
+  .hamburger-list li a p {
+    padding: 8% 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .hamburger-list li a p {
+    padding: 5.5% 0;
   }
 }

@@ -110,11 +110,11 @@
 @media screen and (max-width: 480px) {
   .footer {
     flex-direction: column;
-    /* padding: 3rem 2rem; */
+    padding: 3rem 2rem;
     gap: 2rem;
     width: unset;
 
-    padding-bottom: 12rem;
+    /* padding-bottom: 12rem; */
   }
   .footerInfo {
     width: 80%;
@@ -166,7 +166,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
   .footer {
     padding: 3rem 2rem;
   }

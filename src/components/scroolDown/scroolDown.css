@@ -44,7 +44,7 @@
 }
 /*scroll down arrow*/
 
-@media (max-width: 376px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .aboutScroolDown-Home {
     display: block;
     position: absolute;
@@ -100,7 +100,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 320px) {
   .aboutScroolDown-Home {
     bottom: 0;
   }

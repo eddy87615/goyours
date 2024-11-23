@@ -129,13 +129,55 @@
 @media screen and (max-width: 480px) {
   .contact-button {
     display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200%;
+    height: fit-content;
+    transform: translate(50%, 50%);
+    transform-origin: center;
+  }
+  .contact-button img {
+    display: block;
+    transform: rotate(-30deg);
+  }
+  .homecontactusBtn {
+    width: 10rem;
+    height: 10rem;
+    bottom: 0;
+    right: 0;
+    border-radius: 100% 0 0 0;
+    background-color: transparent;
+  }
+  .homecontactusBtn::before {
+    pointer-events: none;
+    display: none;
   }
   .homecontactusArrow {
-    top: 48%;
-    left: 60%;
+    /* top: 70%;
+    left: 50%; */
+    width: fit-content;
+    height: auto;
   }
   .homecontactusArrow img {
-    width: 54%;
+    display: block;
+    width: 2rem;
+  }
+  .homeContactusDiv {
+    border-radius: 2rem;
+    padding-bottom: 10rem;
+  }
+  .contactTxt01 {
+    margin: 1rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: bold;
+  }
+  .contactTxt01 br {
+    display: none;
+  }
+  .homeContactusDiv h2 {
+    font-size: 5rem;
   }
   .homeContactusDiv:hover {
     background-color: #ffeed9;
@@ -151,9 +193,36 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
   .homeContactusSection {
     padding-top: 0;
+  }
+  .homeContactusDiv h2 {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .homeContactusDiv h2 {
+    font-size: 3.5rem;
+  }
+  .contactTxt01 {
+    margin: 0.5rem;
+    font-size: 0.7rem;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  .contactTxt01 p {
+    line-height: 1.5rem;
+  }
+  .contactTxt01 br {
+    display: none;
+  }
+  .contact-button {
+    width: 150%;
+    height: 150%;
+  }
+  .homeContactusDiv {
+    padding-bottom: 6rem;
   }
 }
 
