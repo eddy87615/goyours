@@ -85,6 +85,7 @@ export default function ContactFormResume() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('檔案內容:', formData.resume); // 檢查 `resume` 是否包含檔案物件
 
     if (loading) return;
 
@@ -126,6 +127,12 @@ export default function ContactFormResume() {
         : null,
     };
 
+    console.log('目前的 formData:', formData);
+    if (!formData.resume) {
+      console.error('沒有檔案可供上傳！');
+      return;
+    }
+
     try {
       const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
       const encryptedData = CryptoJS.AES.encrypt(
@@ -146,10 +153,6 @@ export default function ContactFormResume() {
         throw new Error('提交失敗');
       }
 
-      // 將資料發送到 Sanity
-      // await client.create(contactData);
-      // setIsSubmited(true);
-      // alert('資料已成功提交');
       setIsSubmited(true);
       setFormData({
         name: '',
@@ -171,15 +174,36 @@ export default function ContactFormResume() {
 
   const [files, setFiles] = useState([]);
 
-  const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.files);
+  // const handleFileChange = (e) => {
+  //   const selectedFiles = Array.from(e.target.files);
 
+  //   if (files.length + selectedFiles.length > 4) {
+  //     alert('最多只能上傳 4 個文件！');
+  //     return;
+  //   }
+
+  //   setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
+  // };
+
+  const handleFileChange = (e) => {
+    const selectedFiles = Array.from(e.target.files); // 將檔案列表轉為陣列
+
+    // 檢查是否超過限制
     if (files.length + selectedFiles.length > 4) {
       alert('最多只能上傳 4 個文件！');
       return;
     }
 
+    // 更新檔案列表狀態
     setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
+
+    // 如果需要單一檔案上傳，也更新到 formData
+    if (selectedFiles.length > 0) {
+      setFormData((prevData) => ({
+        ...prevData,
+        resume: selectedFiles[0], // 僅取第一個檔案更新到 formData
+      }));
+    }
   };
 
   const removeFile = (index) => {
