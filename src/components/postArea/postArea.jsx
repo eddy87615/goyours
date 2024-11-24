@@ -34,11 +34,11 @@ export default function PostArea({ posts, handleCategoryClick }) {
             </Link>
           )}
           <div className="postListInfo">
-            <h1>
+            <h2>
               <Link to={`/goyours-post/${post.slug.current}`}>
                 {post.title}
               </Link>{' '}
-            </h1>
+            </h2>
             <ul className="info">
               {post.categories && post.categories.length > 0 ? (
                 <>

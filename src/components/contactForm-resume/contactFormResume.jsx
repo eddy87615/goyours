@@ -98,6 +98,7 @@ export default function ContactFormResume() {
         resumeAsset = await client.assets.upload('file', formData.resume, {
           filename: formData.resume.name,
         });
+        console.log('上傳成功，返回的 resumeAsset:', resumeAsset); // 確認回傳的結果
       } catch (error) {
         console.error('上傳履歷失敗：', error);
         alert('上傳履歷失敗，請稍後再試');

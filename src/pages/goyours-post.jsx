@@ -98,7 +98,7 @@ export default function Post() {
   if (!posts.length) {
     return (
       <div className="postLoading">
-        <p>沒有文章</p>
+        <p>沒有相關文章ಥ∀ಥ</p>
       </div>
     );
   }

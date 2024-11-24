@@ -14,7 +14,7 @@
 .submitPostList {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 1rem;
 
   padding-top: 3rem;
 }
@@ -29,13 +29,18 @@
     'img catrgory'
     'img date';
   column-gap: 2rem;
+  row-gap: 0.2rem;
 
   margin: 0 auto;
+
+  padding: 1rem;
+
+  border-radius: 1rem;
 }
 .submitPostLink img {
   grid-area: img;
-  width: 8rem;
-  height: 8rem;
+  width: 6rem;
+  height: 6rem;
 
   object-fit: cover;
 
@@ -44,7 +49,7 @@
 .submitPostLink h3 {
   grid-area: title;
 
-  margin-top: 0;
+  margin: 0;
 }
 .submitPostLink ul {
   grid-area: catrgory;
@@ -66,6 +71,7 @@
 }
 .submitPostDate p {
   padding-left: 3rem;
+  margin: 0;
 }
 .submitPostDate::before {
   content: '';
@@ -78,4 +84,20 @@
   background-image: url(/圓形logo.png);
   background-position: center;
   background-size: cover;
+}
+
+.submitPostLink:hover {
+  background-color: #ffeed9;
+}
+
+@media screen and (min-width: 1201px) {
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+@media screen and (max-width: 480px) {
+  .submitPostLink:hover {
+    background-color: #fff8ef;
+  }
 }

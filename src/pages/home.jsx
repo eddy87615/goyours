@@ -228,9 +228,9 @@ const HomeschoolList = () => {
 
 export default function Home() {
   const HomeIntroimgList = [
-    { src: '/KV/KV_17.webp', alt: 'maple leaves' },
-    { src: '/KV/KV_10.webp', alt: 'japanese temple and couple' },
-    { src: '/KV/KV_26.webp', alt: 'japanese jinjya' },
+    { src: '/home-bubble01.jpg', alt: 'maple leaves' },
+    { src: '/home-bubble02.JPG', alt: 'japanese temple and couple' },
+    { src: '/home-bubble03.JPG', alt: 'japanese jinjya' },
   ];
 
   //nav height get

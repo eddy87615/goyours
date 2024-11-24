@@ -92,8 +92,16 @@ const Conditions = ({ school }) => {
   };
   const renderTuition = (money) => {
     if (!money) return '學費資訊未提供';
-    const [min, max] = money.split('~').map(Number); // 分割範圍並轉換為數字
-    return `${formatCurrency(min)} ~ ${formatCurrency(max)}`;
+    if (money.includes('~')) {
+      const [min, max] = money.split('~').map(Number);
+      return `${formatCurrency(min)} ~ ${formatCurrency(max)}`;
+    } else {
+      const amount = Number(money);
+      if (isNaN(amount)) return '學費資訊格式錯誤';
+      return formatCurrency(amount);
+    }
+    // const [min, max] = money.split('~').map(Number); // 分割範圍並轉換為數字
+    // return `${formatCurrency(min)} ~ ${formatCurrency(max)}`;
   };
 
   return (
@@ -114,10 +122,14 @@ const Conditions = ({ school }) => {
             {school.city}
           </li>
           <li>
-            <span className="conditionTitle">學校費用</span>約
-            {renderTuition(school.money)}
-            （依照課程而異）
+            <span className="conditionTitle">學校費用</span>
+            {school.money ? (
+              <>約 {renderTuition(school.money)} （依照課程而異）</>
+            ) : (
+              <span className="conditionTitle">暫無資料</span>
+            )}
           </li>
+
           <li>
             <span className="conditionTitle">學習目的</span>
             {school.purpose.map((purpose, index) => (
@@ -138,30 +150,43 @@ const Conditions = ({ school }) => {
           </li>
           <li>
             <span className="conditionTitle">上課時段</span>
-            {school.others.schoolTime.map((time, index) => (
-              <span key={index}>
-                {time}
-                {index < school.others.schoolTime.length - 1 && '／'}
-              </span>
-            ))}
+            {school.others?.schoolTime?.length > 0 ? (
+              school.others.schoolTime.map((time, index) => (
+                <span key={index}>
+                  {time}
+                  {index < school.others.schoolTime.length - 1 && '／'}
+                </span>
+              ))
+            ) : (
+              <span className="noInfo-warn">上課時段資訊未提供ಥ∀ಥ</span>
+            )}
           </li>
           <li>
             <span className="conditionTitle">修業時間</span>
-            {school.others.period.map((period, index) => (
-              <span key={index}>
-                {period}
-                {index < school.others.period.length - 1 && '／'}
-              </span>
-            ))}
+
+            {school.others?.period?.length > 0 ? (
+              school.others.period.map((period, index) => (
+                <span key={index}>
+                  {period}
+                  {index < school.others.period.length - 1 && '／'}
+                </span>
+              ))
+            ) : (
+              <span className="noInfo-warn">修業時間資訊未提供ಥ∀ಥ</span>
+            )}
           </li>
           <li>
             <span className="conditionTitle">支援服務</span>
-            {school.others.support.map((support, index) => (
-              <span key={index}>
-                {support}
-                {index < school.others.support.length - 1 && '／'}
-              </span>
-            ))}
+            {school.others?.support?.length > 0 ? (
+              school.others.support.map((support, index) => (
+                <span key={index}>
+                  {support}
+                  {index < school.others.support.length - 1 && '／'}
+                </span>
+              ))
+            ) : (
+              <span className="noInfo-warn">支援服務資訊未提供ಥ∀ಥ</span>
+            )}
           </li>
         </ul>
       </div>

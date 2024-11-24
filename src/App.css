@@ -60,3 +60,7 @@ iframe {
 
   border-radius: 1rem;
 }
+
+.noInfo-warn {
+  font-weight: bold;
+}

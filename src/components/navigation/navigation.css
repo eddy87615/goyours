@@ -176,6 +176,7 @@
 
   width: 100vw;
   height: 100vh;
+  /* height: 100%; */
 
   background-color: #414042;
   /* background-color: rgb(65 64 66/ 90%); */
@@ -222,7 +223,7 @@
   width: 100%;
   padding: 6% 0;
   margin: 0 auto;
-  margin-top: 12%;
+  margin-top: 6%;
   border-radius: 1rem;
 }
 .hamburger-list li:nth-child(7) p {
@@ -354,6 +355,7 @@
 
 @media screen and (max-width: 375px) {
   .hamburger-list li a p {
-    padding: 5.5% 0;
+    padding: 6% 0;
+    font-size: 1rem;
   }
 }
