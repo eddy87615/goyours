@@ -545,7 +545,7 @@
   position: relative;
   z-index: 2;
 
-  display: none;
+  /* display: none; */
 }
 .formoreBtntoPage:hover {
   animation: btnbounce 0.5s ease-out;
@@ -687,6 +687,9 @@
 }
 
 .home-schoolList-arrow {
+  display: none;
+}
+.formoreBtntoPage {
   display: none;
 }
 
@@ -927,9 +930,6 @@
   }
   .homebg-hot-Wave {
     top: -10%;
-  }
-  .homeContactusSection {
-    padding-bottom: 2rem;
   }
 }
 

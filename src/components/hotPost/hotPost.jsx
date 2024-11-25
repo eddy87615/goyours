@@ -4,6 +4,7 @@ import { urlFor } from '../../cms/sanityClient';
 import { PortableText } from '@portabletext/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 import GoyoursBear from '../goyoursBear/goyoursBear';
 import HomeBg from '../homeBg/homeBg';
@@ -110,7 +111,26 @@ export default function Hotpost() {
           ))}
         </Swiper>
       </div>
-      <a className="formoreBtntoPage" href="./post">
+      <div className="more-school-button">
+        <ul>
+          <li>
+            <Link to="/goyours-post">
+              <span className="button-wrapper">
+                <span className="upperP-wrapper">
+                  <p>看所有文章</p>
+                </span>
+                <span className="downP-wrapper">
+                  <p>看所有文章</p>
+                </span>
+              </span>
+              <span className="more-school-icon">
+                <img src="/goyoursbear-icon-w.svg" />
+              </span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <a className="formoreBtntoPage" href="/goyours-post">
         看所有文章
       </a>
     </>

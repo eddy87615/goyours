@@ -62,6 +62,8 @@
   border-bottom: 2px solid #d0d0d0;
 
   background-color: transparent;
+
+  border-radius: 0;
 }
 .placeholder::placeholder {
   font-weight: bold;
@@ -69,14 +71,7 @@
 
   font-size: 1rem;
 }
-/* .search::after {
-  position: absolute;
-  content: url(/goyoursbear-line-G.svg);
-  left: 100%;
-  bottom: 10%;
-  width: 2rem;
-  height: 2rem;
-} */
+
 .search span {
   width: 4rem;
   height: 100%;
@@ -84,6 +79,9 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+}
+.search span img {
+  width: 100%;
 }
 .placeholder:focus {
   border: 2px solid var(--goyoursYellow);
@@ -147,6 +145,8 @@
 
     transform: translateY(100%);
     visibility: hidden;
+
+    bottom: 0;
 
     transition-duration: 0.2s;
   }

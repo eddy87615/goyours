@@ -191,6 +191,9 @@
   .homeContactusDiv:hover .contactTxt01 {
     border-left: 0.5rem solid var(--goyoursYellow);
   }
+  .homeContactusSection {
+    padding: 4rem 0;
+  }
 }
 
 @media screen and (max-width: 375px) {

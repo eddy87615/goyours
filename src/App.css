@@ -64,3 +64,13 @@ iframe {
 .noInfo-warn {
   font-weight: bold;
 }
+
+@media screen and (max-width: 480px) {
+  .postLoading {
+    padding: 2rem 0;
+    font-size: 1rem;
+  }
+  .pageLoading {
+    font-size: 1rem;
+  }
+}
