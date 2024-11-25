@@ -167,7 +167,8 @@
   position: relative;
 }
 .hamburger-body {
-  position: fixed;
+  /* position: fixed; */
+  position: absolute;
   top: 0;
   right: 0;
   /* transform: translateX(100%); */
@@ -176,7 +177,8 @@
 
   width: 100vw;
   height: 100vh;
-  /* height: 100%; */
+
+  overflow: hidden;
 
   background-color: #414042;
   /* background-color: rgb(65 64 66/ 90%); */
@@ -276,6 +278,8 @@
 
 .hamburger-body-clicked {
   /* transform: translateX(0); */
+  position: fixed;
+
   visibility: visible;
   opacity: 1;
 

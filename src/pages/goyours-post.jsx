@@ -14,11 +14,14 @@ export default function Post() {
   const [posts, setPosts] = useState([]);
   const [filteredPostsAfter, setFilteredPostsAfter] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isSpSearchClicked, setIsSpSearchClicked] = useState(false);
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setSearchQuery('');
+    if (selectedCategory === category) return; // 避免重复更新状态
+    setSelectedCategory(category); // 更新分类
+    setSearchQuery(''); // 清空搜索关键字
+    setIsSpSearchClicked(false); // 关闭 SP 搜索视窗
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // 滚动到页面顶部
   };
 
   const location = useLocation();
@@ -113,6 +116,8 @@ export default function Post() {
         handleSearch={handleSearch}
         placeholder="搜尋文章⋯"
         title="文章分類"
+        isSpSearchClicked={isSpSearchClicked}
+        setIsSpSearchClicked={setIsSpSearchClicked}
       />
       {filteredPosts.length === 0 ? (
         <div className="postLoading">

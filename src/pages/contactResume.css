@@ -1,9 +1,13 @@
 .contactusResume {
-  /* background-image: url(/KV_01.webp); */
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url(/KV/KV_about_16.jpg);
   background-size: cover;
   background-position: center;
-  /* height: 50vh; */
-
+  height: 80vh;
   display: flex;
   align-items: end;
 }

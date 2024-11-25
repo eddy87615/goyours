@@ -11,3 +11,22 @@
 
   padding-top: 8rem;
 }
+
+@media screen and (min-width: 1201px) {
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+@media screen and (max-width: 480px) {
+  .postPage {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    padding-top: 6rem;
+
+    position: static;
+  }
+}

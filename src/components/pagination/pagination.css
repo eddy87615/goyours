@@ -30,3 +30,15 @@
   color: #fff;
   transition-duration: 0.5s;
 }
+
+@media screen and (min-width: 1201px) {
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+@media screen and (max-width: 480px) {
+  .pagination {
+    padding: 1rem 0 3rem 0;
+  }
+}

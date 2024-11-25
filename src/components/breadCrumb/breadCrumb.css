@@ -13,3 +13,7 @@
 
   margin: 0.5rem 0;
 }
+
+.breadCrumb li a {
+  display: flex;
+}

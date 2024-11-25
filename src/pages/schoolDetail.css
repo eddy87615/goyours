@@ -265,13 +265,13 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  background-color: #414042;
+  /* background-color: #414042; */
   width: 3rem !important;
   height: 3rem !important;
   border-radius: 100rem;
   color: #fff !important;
   font-weight: bold;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 
 .schoolConditions {

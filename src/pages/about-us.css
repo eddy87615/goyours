@@ -804,5 +804,205 @@
   }
 }
 
+@media screen and (min-width: 1201px) {
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
 @media screen and (max-width: 480px) {
+  .aboutusTopImg:nth-of-type(2),
+  .aboutusTopImg:nth-of-type(4),
+  .aboutusTopImg:nth-of-type(5),
+  .aboutusTopImg:nth-of-type(6),
+  .aboutusTopImg:nth-of-type(7),
+  .aboutusTopImg:nth-of-type(8),
+  .aboutusTopImg:nth-of-type(10) {
+    display: none;
+  }
+  .centerLogo {
+    width: 60%;
+  }
+  .aboutusTopImg:nth-of-type(1) {
+    top: 68.5px;
+
+    width: 13.5rem;
+    height: 13.5rem;
+  }
+  .aboutusTopImg:nth-of-type(3) {
+    bottom: 4%;
+    width: 15rem;
+    height: 17rem;
+  }
+  .aboutusTopImg:nth-of-type(9) {
+    top: 42%;
+    bottom: unset;
+    right: -20%;
+    width: 12rem;
+    height: 8rem;
+  }
+  .aboutScroolDown {
+    right: 0;
+    bottom: 0;
+  }
+  .goyoursbear {
+    width: 10%;
+  }
+  .goyoursbear svg path {
+    stroke-width: 15 !important;
+  }
+  .goyoursIntro {
+    background-size: 100%;
+    background-position: 0 50%;
+    height: 100%;
+    padding-bottom: 4rem;
+  }
+  .goyoursIntro h1 {
+    font-size: 1rem;
+  }
+  .goyoursIntro h1::after {
+    width: 2rem;
+    border-bottom: 0.3rem solid var(--goyoursYellow);
+    padding-top: 1rem;
+  }
+  .goyoursIntro p {
+    font-size: 0.75rem;
+    width: 92%;
+    line-height: 2.5rem;
+    letter-spacing: normal;
+  }
+
+  .goyoursserviceWrapper {
+    height: 90vh;
+  }
+  .goyoursserviceWrapper::before {
+    top: 50%;
+    height: 100vh;
+    clip-path: ellipse(150% 100% at 50% 100%);
+  }
+  .goyoursserviceWrapper::after {
+    bottom: 36%;
+    left: unset;
+    right: -48%;
+    width: 100%;
+  }
+  .goyoursservice h1 {
+    font-size: 1rem;
+  }
+  .goyoursservice {
+    width: 80vw;
+  }
+  .serviceArea {
+    flex-direction: column;
+    gap: 12rem;
+  }
+  .serviceArea p {
+    font-size: 0.75rem;
+    line-height: 2rem;
+
+    margin-top: 3rem;
+  }
+  .serviceBgCircle {
+    width: 20rem;
+    height: 20rem;
+  }
+  .circleMenuLogo {
+    width: 5rem;
+    height: 5rem;
+  }
+  .serviceCircle {
+    width: 5rem;
+    height: 5rem;
+    transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+      translate(100px) rotate(calc(-60deg * var(--i)));
+  }
+  .serviceContent img {
+    width: 1rem;
+    height: 1rem;
+  }
+  .serviceTxt {
+    font-size: 0.7rem;
+  }
+  .serviceContent {
+    gap: 0.2rem;
+  }
+  .Review h1 {
+    font-size: 1rem;
+  }
+  .Review::before {
+    top: -4%;
+  }
+  .feedBackArea {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+  .feedbackList {
+    width: 100%;
+  }
+  .feedbackList:nth-child(4),
+  .feedbackList:nth-child(5),
+  .feedbackList:nth-child(6) {
+    display: none;
+  }
+  .feedbackList:nth-child(odd)::after,
+  .feedbackList:nth-child(even)::after {
+    display: none;
+  }
+  .feedbackTxt p {
+    font-size: 0.75rem;
+  }
+  .feedbackInfo p {
+    position: relative;
+    width: fit-content;
+    font-size: 0.75rem;
+  }
+  .feedbackList:nth-child(even) .feedbackInfo p::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(150%);
+    content: '';
+    width: 1rem;
+    height: 100%;
+    background-image: url(/goyoursbear-icon-w.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .feedbackList:nth-child(odd) .feedbackInfo p::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(150%);
+    content: '';
+    width: 1rem;
+    height: 100%;
+    background-image: url(/goyoursbear-Y.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .ifYou h1 {
+    font-size: 1rem;
+  }
+  .ifYou {
+    width: 80vw;
+    padding: 6rem 0 2rem 0;
+  }
+  .progress-txt p {
+    font-size: 0.75rem;
+  }
+  .aboutContactArea {
+    padding: 4rem 0;
+  }
+
+  @keyframes bounceOut {
+    0% {
+      transform: scale(1) translateY(0) translateX(0);
+    }
+    100% {
+      transform: scale(0.5) translateY(-250%) translateX(70%) rotate(0);
+    }
+  }
 }

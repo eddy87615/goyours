@@ -38,11 +38,11 @@
 .search {
   display: flex;
   justify-content: start;
-  align-items: start;
+  align-items: flex-end;
 
   position: relative;
 
-  width: 90%;
+  width: 100%;
 }
 .magnify {
   position: absolute;
@@ -69,15 +69,108 @@
 
   font-size: 1rem;
 }
-.search::after {
+/* .search::after {
   position: absolute;
   content: url(/goyoursbear-line-G.svg);
   left: 100%;
   bottom: 10%;
   width: 2rem;
   height: 2rem;
+} */
+.search span {
+  width: 4rem;
+  height: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 .placeholder:focus {
   border: 2px solid var(--goyoursYellow);
   outline: none;
+}
+
+.sp-search-bg {
+  display: none;
+}
+
+@media screen and (min-width: 1201px) {
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+@media screen and (max-width: 480px) {
+  .postcategory {
+    padding-top: 0;
+
+    position: static;
+  }
+  .postcategory ul {
+    display: none;
+  }
+
+  .sp-search-bg {
+    display: block;
+    position: absolute;
+
+    width: 100vw;
+    height: 100vh;
+
+    bottom: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition-duration: 0.2s;
+    transition-delay: 0.2s;
+  }
+  .sp-search-window {
+    width: 100%;
+
+    background-color: #fff8ef;
+
+    padding: 2rem;
+
+    box-sizing: border-box;
+
+    border-radius: 1.5rem 1.5rem 0 0;
+
+    transform: translateY(100%);
+    visibility: hidden;
+
+    transition-duration: 0.2s;
+  }
+  .close-window-btn {
+    float: right;
+    margin-bottom: 1rem;
+
+    font-size: 1.5rem;
+  }
+
+  .search-clicked-bg {
+    opacity: 1;
+    visibility: visible;
+
+    position: fixed;
+
+    transition-duration: 0.2s;
+  }
+  .search-clicked-window {
+    transform: translateY(0);
+    visibility: visible;
+
+    transition-delay: 0.2s;
+
+    transition-duration: 0.2s;
+  }
 }

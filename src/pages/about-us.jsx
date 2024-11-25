@@ -118,7 +118,7 @@ export default function About() {
     { src: '/aboutRandom/about_06.jpg' },
     { src: '/aboutRandom/about_07.jpg' },
     { src: '/aboutRandom/about_08.jpg' },
-    { src: '/aboutRandom/about_09.jpg' },
+    { src: '/aboutRandom/about_14.jpeg' },
     { src: '/aboutRandom/about_13.jpg' },
   ];
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TbBoxMultiple } from 'react-icons/tb';
@@ -39,9 +40,7 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
                   ) : (
                     ''
                   )}
-                  <p id={`navText${index}`}>
-                    {index === 1 ? '關於Go Yours' : nav.title}
-                  </p>
+                  <p id={`navText${index}`}>{nav.title}</p>
                 </Link>
               </li>
             );
@@ -84,8 +83,9 @@ export default function Navigation() {
   useEffect(() => {
     if (ishamburgerClicked) {
       document.body.style.overflow = 'hidden'; // 禁用滾動
-      document.body.style.position = 'fixed'; // 防止滾動位置變化
-      document.body.style.width = '100%'; // 防止滾動條佔位
+      // document.body.style.position = 'fixed'; // 防止滾動位置變化
+      // document.body.style.width = '100%'; // 防止滾動條佔位
+      document.body.style.height = '100vh'; // 防止滾動條佔位
     } else {
       document.body.style.overflow = ''; // 恢復滾動
       document.body.style.position = '';
@@ -142,7 +142,11 @@ export default function Navigation() {
         </div>
         <div
           className="hamburger-line-wrapper"
-          onClick={() => setIsHamburgerClicked(!ishamburgerClicked)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsHamburgerClicked(!ishamburgerClicked);
+          }}
         >
           <span
             className={ishamburgerClicked ? 'hamburger-active-line' : ''}
