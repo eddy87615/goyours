@@ -42,6 +42,60 @@
 
   animation: scrollDownArrowDot 2s infinite ease-in-out;
 }
+
+/*SIDE*/
+
+.scrollDown-side {
+  position: absolute;
+  bottom: 12%;
+  right: 47%;
+  transform: translate(-50%);
+
+  display: flex;
+}
+.scrollDown-side-Text {
+  writing-mode: vertical-lr;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  margin: 0;
+  height: fit-content;
+
+  color: #757575;
+}
+.scrollDown-side-ArrowArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollDown-side-Line {
+  width: 2px;
+  height: 195px;
+}
+.scrollDown-side-Line::after {
+  content: '';
+  position: absolute;
+  background-color: #757575;
+  width: 2px;
+  animation: scrollDownArrowLine 2s infinite ease-in-out;
+}
+.scrollDown-side-Dot {
+  transform: translate(0, -205px);
+
+  width: 10px;
+  height: 10px;
+  background-color: #757575;
+
+  border-radius: 50px;
+
+  animation: scrollDownArrowDot 2s infinite ease-in-out;
+}
+/*scroll down arrow*/
+
+/*SIDE*/
 /*scroll down arrow*/
 
 @media screen and (max-width: 480px) {

@@ -1,6 +1,6 @@
-import './scroolDown.css';
+import './scrollDown.css';
 
-export default function ScroolDown() {
+export default function ScrollDown() {
   return (
     <div className="scrollDownArrow">
       <p className="scrollText">Scroll</p>

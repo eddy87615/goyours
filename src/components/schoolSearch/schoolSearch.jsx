@@ -6,6 +6,7 @@ import './schoolSearch.css';
 import '../searchBar/searchBar.css';
 
 import { IoIosArrowDown } from 'react-icons/io';
+import { RxCross2 } from 'react-icons/rx';
 
 const useSelection = (initialState = {}) => {
   const [selected, setSelected] = useState(initialState);
@@ -320,8 +321,8 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
       ],
     },
     {
-      title: '中國・四國',
-      value: '中國・四國',
+      title: '中國 ･ 四國',
+      value: '中國 ･ 四國',
       cities: [
         { title: '鳥取縣', value: '鳥取縣' },
         { title: '島根縣', value: '島根縣' },
@@ -335,8 +336,8 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
       ],
     },
     {
-      title: '北海道・東北',
-      value: '北海道・東北',
+      title: '北海道 ･ 東北',
+      value: '北海道 ･ 東北',
       cities: [
         { title: '北海道', value: '北海道' },
         { title: '青森縣', value: '青森縣' },
@@ -348,8 +349,8 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
       ],
     },
     {
-      title: '九州・沖繩',
-      value: '九州・沖繩',
+      title: '九州 ･ 沖繩',
+      value: '九州 ･ 沖繩',
       cities: [
         { title: '福岡縣', value: '福岡縣' },
         { title: '佐賀縣', value: '佐賀縣' },
@@ -365,9 +366,9 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
 
   const purpose = [
     { title: '就職', value: '就職' },
-    { title: '大學・研究所升學', value: '大學・研究所升學' },
-    { title: '專門學校升學', value: '專門學校升學' },
     { title: '語言學習', value: '語言學習' },
+    { title: '大學 ･ 研究所升學', value: '大學 ･ 研究所升學' },
+    { title: '專門學校升學', value: '專門學校升學' },
   ];
 
   const others = [
@@ -487,12 +488,190 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
     };
     console.log('Filters:', newFilters); // 檢查組裝的篩選條件
     onSearchFilters(newFilters); // 傳遞篩選條件給父組件
+    setIsSearchClicked(false);
 
     setActiveMenu(false);
   };
 
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
+
+  useEffect(() => {
+    if (isSearchClicked) {
+      // 記錄當前滾動位置
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden'; // 禁止滾動
+      document.body.dataset.scrollY = scrollY; // 保存滾動位置到自定義屬性
+    } else {
+      // 恢復滾動位置
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      document.body.dataset.scrollY = '';
+      window.scrollTo(0, scrollY); // 回到正確滾動位置
+    }
+  }, [isSearchClicked]);
+
   return (
     <div className="schoolsearchWrapper" ref={wrapperRef}>
+      {windowSize < 768 && (
+        <>
+          <div
+            className={
+              isSearchClicked
+                ? 'sp-school-search-bg search-school-bg-visible'
+                : 'sp-school-search-bg'
+            }
+            onClick={() => setIsSearchClicked(!isSearchClicked)}
+          ></div>
+          <div
+            className={
+              isSearchClicked
+                ? 'sp-school-search-window search-school-window-visible'
+                : 'sp-school-search-window'
+            }
+          >
+            <span className="search-school-close-btn">
+              <RxCross2 onClick={() => setIsSearchClicked(!isSearchClicked)} />
+            </span>
+            <div className="schoolSearchBar-upper">
+              <li>
+                <label>
+                  <input
+                    type="text"
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.target.value)}
+                    placeholder="輸入關鍵字"
+                    onFocus={(e) => (e.target.placeholder = '')}
+                    onBlur={(e) => (e.target.placeholder = '輸入關鍵字搜尋')}
+                  />
+                </label>
+              </li>
+              <DropdownMenu
+                title="地區"
+                className="regionSection"
+                isActive={activeMenu === 'region'}
+                onClick={() =>
+                  setActiveMenu((prev) => (prev === 'region' ? null : 'region'))
+                }
+                count={regionsState.countSelected}
+              >
+                <Region
+                  isActive={activeMenu === 'region'}
+                  regions={regions}
+                  selectedCities={regionsState.selected}
+                  toggleCitySelection={toggleCitySelection}
+                  clearSelection={clearSelectionInRegion}
+                  selectAllCities={selectAllCitiesInRegion}
+                />
+              </DropdownMenu>
+
+              <DropdownMenu
+                title="入學時間"
+                className="enrollTimeSection"
+                isActive={activeMenu === 'enrollTime'}
+                onClick={() =>
+                  setActiveMenu((prev) =>
+                    prev === 'enrollTime' ? null : 'enrollTime'
+                  )
+                }
+                count={enrollTimeState.countSelected}
+              >
+                <EnrollTime
+                  enrollTime={enrollTime}
+                  isActive={activeMenu === 'enrollTime'}
+                  selected={enrollTimeState.selected}
+                  toggleSelection={enrollTimeState.toggleSelection}
+                />
+              </DropdownMenu>
+              <DropdownMenu
+                title="學習目的"
+                className="purposeSection"
+                isActive={activeMenu === 'purpose'}
+                onClick={() =>
+                  setActiveMenu((prev) =>
+                    prev === 'purpose' ? null : 'purpose'
+                  )
+                }
+                count={purposeState.countSelected}
+              >
+                <Purpose
+                  isActive={activeMenu === 'purpose'}
+                  purpose={purpose}
+                  selected={purposeState.selected}
+                  toggleSelection={purposeState.toggleSelection}
+                />
+              </DropdownMenu>
+
+              <DropdownMenu
+                title="其他條件"
+                className="otherConditionSection"
+                isActive={activeMenu === 'otherCondition'}
+                onClick={() =>
+                  setActiveMenu((prev) =>
+                    prev === 'otherCondition' ? null : 'otherCondition'
+                  )
+                }
+                count={othersState.countSelected}
+              >
+                <OtherCondition
+                  isActive={activeMenu === 'otherCondition'}
+                  others={others}
+                  selected={othersState.selected}
+                  toggleSelection={othersState.toggleSelection}
+                />
+              </DropdownMenu>
+            </div>
+            <div className="schoolSearchBar-down">
+              {dotOption.map((option, index) => (
+                <label
+                  key={index}
+                  className={
+                    selectedTags.includes(option.value)
+                      ? 'customCheckBox-active'
+                      : ''
+                  }
+                  onClick={() => handleTagClick(option.value)}
+                >
+                  <span className="custom-checkbox"></span>
+                  <input
+                    type="checkbox"
+                    name="sortOption"
+                    value={option.value}
+                    checked={selectedTags.includes(option.value)}
+                    onChange={() => handleTagClick(option.value)}
+                  />
+                  {option.title}
+                </label>
+              ))}
+              <button onClick={handleSearch}>立即搜尋</button>
+            </div>
+          </div>
+          <div className="schoolsearchSearchBar sp-search-school">
+            <div className="sp-school-search-filter-btn">
+              <p>2024日本語學校 學校搜索</p>
+              <button onClick={() => setIsSearchClicked(!isSearchClicked)}>
+                篩選條件
+                <span>
+                  <img src="goyoursbear-icon-w.svg" alt="goyours white icon" />
+                </span>
+              </button>
+            </div>
+          </div>
+        </>
+      )}
       <div className="schoolsearchSearchBar">
         <div className="schoolSearchBar-upper">
           <li>

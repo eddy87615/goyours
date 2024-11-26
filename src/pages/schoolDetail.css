@@ -309,8 +309,131 @@
   font-weight: bold;
 
   border-radius: 0.3rem;
+
+  margin-right: 1rem;
 }
 
-.conditionsList span:nth-child(1) {
-  margin-right: 1rem;
+@media screen and (max-width: 480px) {
+  .schoolDetailPage {
+    flex-direction: column-reverse;
+
+    padding: 10rem 0 2rem 0;
+  }
+  .picSlider {
+    width: 100%;
+  }
+  .swiper-free-mode {
+    display: none;
+  }
+  .upperSlider {
+    height: 15rem;
+  }
+
+  .schoolUnfoSection h1 {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+  }
+  .schoollogo {
+    top: -4%;
+    width: 4rem;
+  }
+
+  .schoolInfo {
+    font-size: 0.75rem;
+
+    gap: 1rem;
+  }
+  .schoolInfo li {
+    line-height: 1.5rem;
+  }
+  .schoolInfo li svg {
+    font-size: 1.3rem;
+  }
+
+  .schoolDetailH1 h1 {
+    font-size: 1rem;
+  }
+
+  .schoolConditions {
+    width: 90vw;
+
+    padding-bottom: 0;
+  }
+
+  .schoolConditions-detail {
+    box-sizing: border-box;
+    width: 100%;
+
+    padding: 4rem 0;
+  }
+
+  .conditionsList {
+    padding: 2rem;
+
+    gap: 1.5rem;
+  }
+
+  .conditionsList li {
+    font-size: 0.75rem;
+
+    display: flex;
+    justify-content: flex-start;
+  }
+  .conditionsList span {
+    height: 100%;
+  }
+
+  .condition-wrapper {
+    flex: 1;
+
+    line-height: 1.5rem;
+  }
+
+  .featurestxt ul {
+    width: 90vw;
+
+    padding-bottom: 2rem;
+  }
+  .featurestxt h2 {
+    font-size: 1rem;
+  }
+  .featurestxt h2::before {
+    clip-path: circle(30%);
+  }
+  .featurestxt p {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+
+    padding-left: 5rem;
+  }
+
+  .videoH1 h1 {
+    font-size: 1rem;
+  }
+
+  .videoItself {
+    width: 90vw;
+
+    margin: 0 auto;
+  }
+  iframe {
+    height: 15rem;
+  }
+  .backToschoolList {
+    padding: 4rem;
+  }
+
+  .backToschoolList a {
+    font-size: 0.75rem;
+
+    padding: 0.5rem 3rem;
+  }
+  .schooldetailContactus {
+    padding-bottom: 4rem;
+  }
+  .videoBg {
+    width: 100%;
+    right: -40%;
+  }
 }

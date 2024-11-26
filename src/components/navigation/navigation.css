@@ -248,6 +248,7 @@
   height: 3px;
   background-color: #414042;
   transition-duration: 0.2s;
+  border-radius: 20rem;
   /* transform-origin: top left; */
 }
 .hamburger-line-wrapper span:nth-child(1) {

@@ -693,6 +693,10 @@
   display: none;
 }
 
+.sp-home-scrollDown {
+  display: none;
+}
+
 @media screen and (min-width: 1201px) {
   .homeintroImgWrapper0 {
     width: 30rem;
@@ -704,6 +708,13 @@
 @media (min-width: 481px) and (max-width: 1024px) {
 }
 @media screen and (max-width: 480px) {
+  .sp-home-scrollDown {
+    display: block;
+    position: absolute;
+    bottom: -15%;
+    right: 0;
+    transform: translate(-50%, 50%);
+  }
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
     border-bottom-right-radius: calc(300 * 1em / 16);

@@ -206,3 +206,12 @@
 
   pointer-events: none;
 }
+
+@media screen and (max-width: 480px) {
+  .searchResultArea h2 {
+    font-size: 1.25rem;
+  }
+  .searchResult {
+    font-size: 0.875rem;
+  }
+}

@@ -69,6 +69,8 @@ iframe {
   .postLoading {
     padding: 2rem 0;
     font-size: 1rem;
+
+    height: 100vh;
   }
   .pageLoading {
     font-size: 1rem;

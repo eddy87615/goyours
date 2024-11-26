@@ -20,7 +20,7 @@
   /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
   gap: 4rem;
 
-  padding-top: 8rem;
+  padding-top: 6rem;
 }
 
 .searchResultArea {
@@ -144,4 +144,44 @@
   height: 100%;
 
   border-radius: 1rem;
+}
+
+@media screen and (min-width: 1201px) {
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+@media screen and (max-width: 480px) {
+  .schoolPageschoolSection {
+    display: flex;
+    flex-direction: column;
+
+    width: 60%;
+
+    gap: 1rem;
+  }
+  .schoolCard h2 {
+    font-size: 0.725rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .schoolCard h4 {
+    font-size: 1.125rem;
+  }
+
+  .searchResultArea h2 {
+    font-size: 1.25rem;
+  }
+  .searchResult {
+    font-size: 0.875rem;
+  }
+
+  .schoolListNameHover {
+    display: inline; /* 保持多行效果 */
+    background-image: none;
+    background-size: 0% 0.2rem; /* 初始寬度設為 0 */
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease; /* 添加動畫效果 */
+  }
 }

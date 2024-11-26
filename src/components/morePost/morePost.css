@@ -100,4 +100,49 @@
   .submitPostLink:hover {
     background-color: #fff8ef;
   }
+  .submitPostList {
+    gap: 0;
+
+    padding-top: 2rem;
+  }
+
+  .morepostH2 {
+    width: 90vw;
+  }
+  .morepostH2 h2 {
+    font-size: 1rem;
+  }
+  .submitPostLink {
+    width: 80%;
+
+    column-gap: 1rem;
+  }
+  .submitPostLink h3 {
+    font-size: 0.875rem;
+  }
+  .submitPostLink ul {
+    font-size: 0.625rem;
+
+    column-gap: 0.5rem;
+    row-gap: 0.2rem;
+
+    flex-wrap: wrap;
+  }
+  .submitPostDate p {
+    font-size: 0.75rem;
+    padding-left: 1.5rem;
+  }
+  .submitPostDate {
+    height: fit-content;
+  }
+
+  .submitPostDate::before {
+    width: 1rem;
+    height: 1rem;
+  }
+  .submitPostLink img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0.5rem;
+  }
 }

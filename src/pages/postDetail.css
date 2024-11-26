@@ -143,6 +143,29 @@
   padding-bottom: 2rem;
 }
 
+.submitPostDate {
+  position: relative;
+  grid-area: date;
+
+  color: var(--goyoursYellow);
+}
+.submitPostDate p {
+  padding-left: 3rem;
+  margin: 0;
+}
+.submitPostDate::before {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-image: url(/圓形logo.png);
+  background-position: center;
+  background-size: cover;
+}
+
 .relatedpostsList {
   display: flex;
   flex-direction: column;
@@ -171,6 +194,8 @@
 }
 .relatedpostsLink h3 {
   grid-area: title;
+
+  margin: 0;
 }
 .relatedpostsLink ul {
   grid-area: catrgory;
@@ -178,4 +203,144 @@
   gap: 1rem;
 
   color: var(--goyoursYellow);
+}
+
+@media screen and (max-width: 480px) {
+  .postDetailSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .postcategory {
+    display: none;
+  }
+  .postbody {
+    padding-top: 0;
+  }
+  .postbody img {
+    border-radius: 1rem;
+  }
+  .postinfolist {
+    flex-direction: column;
+  }
+  .postinfolist p {
+    margin: 0.5rem 0;
+
+    padding-left: 1.5rem;
+
+    font-size: 0.725rem;
+  }
+  .postDetaildate::before {
+    width: 1rem;
+    height: 1rem;
+  }
+  .viewsicon {
+    font-size: 1rem;
+  }
+  .postDetailviews {
+    gap: 0;
+  }
+  .postDetailviews p {
+    padding: 0;
+  }
+  .postinfolist ul {
+    gap: 1rem;
+  }
+  .postinfolist ul:nth-child(1) {
+    justify-content: space-between;
+  }
+  .postDetailtags p {
+    padding: 0;
+  }
+
+  .postbody h1 {
+    font-size: 1.8rem;
+  }
+  .postCatalog {
+    border-radius: 1rem;
+  }
+  .postCatalog h2 {
+    font-size: 1rem;
+  }
+  .postCatalog ul {
+    font-size: 0.8rem;
+  }
+  .postTxtarea h2 {
+    font-size: 1rem;
+  }
+  .postTxtarea ul,
+  .postTxtarea ol,
+  .postTxtarea p {
+    font-size: 0.725rem;
+
+    line-height: 1.5rem;
+
+    padding-left: 0;
+  }
+  .postTxtarea h3 {
+    font-size: 0.85rem;
+
+    padding-left: 0;
+  }
+  .relatedpostH2 h2 {
+    font-size: 1rem;
+  }
+
+  .relatedpostsList {
+    gap: 0;
+
+    padding-top: 2rem;
+  }
+  .relatedpostsLink {
+    width: 80%;
+
+    column-gap: 1rem;
+
+    row-gap: 0.2rem;
+    /* margin: 0 auto; */
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  .relatedpostsLink img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0.5rem;
+  }
+  .relatedpostsLink h3 {
+    font-size: 0.875rem;
+  }
+  .relatedpostsLink ul {
+    font-size: 0.625rem;
+
+    column-gap: 0.5rem;
+    row-gap: 0.2rem;
+
+    flex-wrap: wrap;
+  }
+  .submitPostDate p {
+    font-size: 0.75rem;
+    padding-left: 1.5rem;
+  }
+  .submitPostDate {
+    height: fit-content;
+  }
+
+  .submitPostDate::before {
+    width: 1rem;
+    height: 1rem;
+  }
+  .post-image {
+    width: 90%;
+
+    padding-left: 0;
+
+    margin: 0 auto;
+  }
+
+  .relatedPosts {
+    padding-top: 2rem;
+  }
+  .postDetialContactus {
+    padding: 4rem 0;
+  }
 }

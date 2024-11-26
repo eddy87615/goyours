@@ -18,7 +18,7 @@ import { urlFor, client } from '../cms/sanityClient'; // 导入 urlFor
 
 import { FaLocationDot, FaEarthAmericas } from 'react-icons/fa6';
 import { FaSchool } from 'react-icons/fa';
-import { IoMdTrain } from 'react-icons/io';
+import { FaTrainSubway } from 'react-icons/fa6';
 import { ImCross } from 'react-icons/im';
 import { TiArrowBackOutline } from 'react-icons/ti';
 
@@ -132,12 +132,14 @@ const Conditions = ({ school }) => {
 
           <li>
             <span className="conditionTitle">學習目的</span>
-            {school.purpose.map((purpose, index) => (
-              <span key={index}>
-                {purpose}
-                {index < school.purpose.length - 1 && '／'}
-              </span>
-            ))}
+            <div className="condition-wrapper">
+              {school.purpose.map((purpose, index) => (
+                <span key={index}>
+                  {purpose}
+                  {index < school.purpose.length - 1 && '／'}
+                </span>
+              ))}
+            </div>
           </li>
           <li>
             <span className="conditionTitle">入學時間</span>
@@ -177,16 +179,18 @@ const Conditions = ({ school }) => {
           </li>
           <li>
             <span className="conditionTitle">支援服務</span>
-            {school.others?.support?.length > 0 ? (
-              school.others.support.map((support, index) => (
-                <span key={index}>
-                  {support}
-                  {index < school.others.support.length - 1 && '／'}
-                </span>
-              ))
-            ) : (
-              <span className="noInfo-warn">支援服務資訊未提供ಥ∀ಥ</span>
-            )}
+            <div className="condition-wrapper">
+              {school.others?.support?.length > 0 ? (
+                school.others.support.map((support, index) => (
+                  <span key={index}>
+                    {support}
+                    {index < school.others.support.length - 1 && '／'}
+                  </span>
+                ))
+              ) : (
+                <span className="noInfo-warn">支援服務資訊未提供ಥ∀ಥ</span>
+              )}
+            </div>
           </li>
         </ul>
       </div>
@@ -338,7 +342,7 @@ export default function SchoolDetail() {
               {school.address}
             </li>
             <li>
-              <IoMdTrain className="schoolDetailicon" />
+              <FaTrainSubway className="schoolDetailicon" />
               {school.transportation}
             </li>
             <li>

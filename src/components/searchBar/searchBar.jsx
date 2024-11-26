@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './searchBar.css';
+import { RxCross2 } from 'react-icons/rx';
 
 export default function SearchBar({ onSearch }) {
   const [keyword, setKeyword] = useState('');
@@ -80,10 +81,142 @@ export default function SearchBar({ onSearch }) {
       selectedSalary,
       selectedTags,
     });
+    setIsSearchClicked(false);
   };
+
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
+
+  useEffect(() => {
+    if (isSearchClicked) {
+      // 記錄當前滾動位置
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden'; // 禁止滾動
+      document.body.dataset.scrollY = scrollY; // 保存滾動位置到自定義屬性
+    } else {
+      // 恢復滾動位置
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      document.body.dataset.scrollY = '';
+      window.scrollTo(0, scrollY); // 回到正確滾動位置
+    }
+  }, [isSearchClicked]);
 
   return (
     <>
+      {windowSize < 768 && (
+        <>
+          <div
+            className={
+              isSearchClicked
+                ? 'sp-job-search-bg search-job-bg-visible'
+                : 'sp-job-search-bg'
+            }
+            onClick={() => setIsSearchClicked(!isSearchClicked)}
+          ></div>
+          <div
+            className={
+              isSearchClicked
+                ? 'sp-job-search-window search-job-window-visible'
+                : 'sp-job-search-window'
+            }
+          >
+            <span className="search-job-close-btn">
+              <RxCross2 onClick={() => setIsSearchClicked(!isSearchClicked)} />
+            </span>
+            <div className="searchup">
+              <input
+                type="text"
+                placeholder="輸入關鍵字"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+              />
+              <select onChange={(e) => setSelectedJapanese(e.target.value)}>
+                {japaneseOption.map((japanese, index) => (
+                  <option key={index} value={japanese.value}>
+                    {japanese.title}
+                  </option>
+                ))}
+              </select>
+              <select onChange={(e) => setSelectedLocation(e.target.value)}>
+                {locationOption.map((location, index) => (
+                  <option key={index} value={location.value}>
+                    {location.title}
+                  </option>
+                ))}
+              </select>
+              <select onChange={(e) => setSelectedJob(e.target.value)}>
+                {jobOption.map((job, index) => (
+                  <option key={index} value={job.value}>
+                    {job.title}
+                  </option>
+                ))}
+              </select>
+
+              <select onChange={(e) => setSelectedSalary(e.target.value)}>
+                {salaryOption.map((salary, index) => (
+                  <option key={index} value={salary.value}>
+                    {salary.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="searchdown">
+              {dotOption.map((option, index) => (
+                <label
+                  key={index}
+                  className={
+                    selectedTags.includes(option.value)
+                      ? 'customCheckBox-active'
+                      : ''
+                  }
+                  onClick={() => handleTagClick(option.value)}
+                >
+                  <span className="custom-checkbox"></span>
+                  <input
+                    type="checkbox"
+                    name="sortOption"
+                    value={option.value}
+                    checked={selectedTags.includes(option.value)}
+                    onChange={() => handleTagClick(option.value)}
+                  />
+                  {option.title}
+                </label>
+              ))}
+              <button onClick={handleSearch}>立即搜尋</button>
+            </div>
+          </div>
+          <div className="searchbar sp-job-searchBar">
+            <div className="schoolsearchSearchBar sp-search-school">
+              <div className="sp-job-search-filter-btn">
+                <p>2024日本打工度假 職缺搜索</p>
+                <button onClick={() => setIsSearchClicked(!isSearchClicked)}>
+                  篩選條件
+                  <span>
+                    <img
+                      src="goyoursbear-icon-w.svg"
+                      alt="goyours white icon"
+                    />
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <div className="searchbar">
         <div className="searchup">
           <input

@@ -17,3 +17,12 @@
 .breadCrumb li a {
   display: flex;
 }
+
+@media screen and (max-width: 480px) {
+  .breadCrumb {
+    top: 7%;
+  }
+  .breadCrumb li {
+    font-size: 0.75rem;
+  }
+}

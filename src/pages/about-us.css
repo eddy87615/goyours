@@ -665,57 +665,6 @@
   align-items: center;
 }
 
-/*scroll down arrow*/
-.aboutScroolDown {
-  position: absolute;
-  bottom: 12%;
-  right: 47%;
-  transform: translate(-50%);
-
-  display: flex;
-}
-.aboutScroolDownText {
-  writing-mode: vertical-lr;
-
-  font-size: 1.2rem;
-  font-weight: bold;
-
-  margin: 0;
-  height: fit-content;
-
-  color: #757575;
-}
-.aboutScroolDownArrowArea {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.aboutScroolDownLine {
-  width: 2px;
-  height: 195px;
-}
-.aboutScroolDownLine::after {
-  content: '';
-  position: absolute;
-  background-color: #757575;
-  width: 2px;
-  animation: scrollDownArrowLine 2s infinite ease-in-out;
-}
-.aboutScroolDownDot {
-  transform: translate(0, -205px);
-
-  width: 10px;
-  height: 10px;
-  background-color: #757575;
-
-  border-radius: 50px;
-
-  animation: scrollDownArrowDot 2s infinite ease-in-out;
-}
-/*scroll down arrow*/
-
 /*ANIMATION*/
 @keyframes scrollDownArrowDot {
   0% {

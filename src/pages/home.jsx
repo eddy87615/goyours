@@ -10,9 +10,10 @@ import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import ContactUs from '../components/contactUs/contactUs';
 import Hotpost from '../components/hotPost/hotPost';
 import HomeJobList from '../components/homeJobList/homeJobList';
-import ScroolDown from '../components/scroolDown/scroolDown';
+import ScrollDown from '../components/scroolDown/scrollDown';
 import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import HomeBg from '../components/homeBg/homeBg';
+import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 
 import 'swiper/css/effect-fade';
 import 'swiper/css';
@@ -273,13 +274,9 @@ export default function Home() {
           </Swiper>
         </div>
         <img src="/LOGO-09.png" alt="goyours logo" className="kvlogo" />
-        <ScroolDown />
-        <div className="aboutScroolDown-Home">
-          <div className="aboutScroolDownArrowArea">
-            <div className="aboutScroolDownLine-home"></div>
-            <div className="aboutScroolDownDot-home"></div>
-          </div>
-          <p className="aboutScroolDownText">Scroll</p>
+        <ScrollDown />
+        <div className="sp-home-scrollDown">
+          <ScrollDownSide />
         </div>
       </div>
       <div className="homeintroSection">

@@ -48,7 +48,7 @@ export default function MorePost({ isSubmited }) {
           <Link
             key={index}
             className="submitPostLink"
-            to={`/post/${post.slug.current}`}
+            to={`/goyours-post/${post.slug.current}`}
           >
             <img src={urlFor(post.mainImage).url()} alt={post.title} />
             <h3>{post.title}</h3>

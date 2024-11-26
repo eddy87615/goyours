@@ -9,6 +9,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import GoyoursBearAboutStudying from '../components/goyoursBear/goyoursBear-aboutStudying';
 import MorePost from '../components/morePost/morePost';
 import ContactUs from '../components/contactUs/contactUs';
+import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 
 export default function StudyingInJp() {
   const sliderRight = [
@@ -33,6 +34,9 @@ export default function StudyingInJp() {
   return (
     <div className="studying-in-jp-section">
       <div className="guidePage-studying-top">
+        <div className="scrollDown-side-studyingPage">
+          <ScrollDownSide />
+        </div>
         <div className="guide-title">
           <h1>
             <span className="goyoursbear">

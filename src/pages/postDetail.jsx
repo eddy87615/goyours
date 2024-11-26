@@ -253,7 +253,7 @@ export default function PostDetail({ handleSearch }) {
                   <Link
                     key={index}
                     className="relatedpostsLink"
-                    to={`/post/${relatedPost.slug.current}`}
+                    to={`/goyours-post/${relatedPost.slug.current}`}
                     onClick={() =>
                       handleRelatedPostClick(relatedPost.slug.current)
                     }

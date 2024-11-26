@@ -16,3 +16,11 @@
   justify-content: end;
   align-items: end;
 }
+
+@media screen and (max-width: 480px) {
+  .jobListKv {
+    background-image: url(/KV/KV_about_15.JPG);
+    background-size: cover;
+    background-position: 65%;
+  }
+}

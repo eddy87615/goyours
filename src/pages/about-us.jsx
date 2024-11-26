@@ -4,6 +4,7 @@ import { client } from '../cms/sanityClient';
 
 import ContactUs from '../components/contactUs/contactUs';
 import GoyoursBear from '../components/goyoursBear/goyoursBear';
+import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 
 import './about-us.css';
 
@@ -187,13 +188,7 @@ export default function About() {
             <img src={img.src} alt={`about us top img ${index}`} />
           </div>
         ))}
-        <div className="aboutScroolDown">
-          <div className="aboutScroolDownArrowArea">
-            <div className="aboutScroolDownLine"></div>
-            <div className="aboutScroolDownDot"></div>
-          </div>
-          <p className="aboutScroolDownText">Scroll</p>
-        </div>
+        <ScrollDownSide />
       </div>
       <div className="goyoursIntro">
         <h1>

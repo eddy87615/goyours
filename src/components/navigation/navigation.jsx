@@ -82,22 +82,23 @@ export default function Navigation() {
 
   useEffect(() => {
     if (ishamburgerClicked) {
-      document.body.style.overflow = 'hidden'; // 禁用滾動
-      // document.body.style.position = 'fixed'; // 防止滾動位置變化
-      // document.body.style.width = '100%'; // 防止滾動條佔位
-      document.body.style.height = '100vh'; // 防止滾動條佔位
+      // 記錄當前滾動位置
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden'; // 禁止滾動
+      document.body.dataset.scrollY = scrollY; // 保存滾動位置到自定義屬性
     } else {
-      document.body.style.overflow = ''; // 恢復滾動
+      // 恢復滾動位置
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
       document.body.style.position = '';
+      document.body.style.top = '';
       document.body.style.width = '';
-    }
-
-    // 清理副作用
-    return () => {
       document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-    };
+      document.body.dataset.scrollY = '';
+      window.scrollTo(0, scrollY); // 回到正確滾動位置
+    }
   }, [ishamburgerClicked]);
 
   return (

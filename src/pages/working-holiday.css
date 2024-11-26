@@ -358,3 +358,110 @@
   width: 5%;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 480px) {
+  .scrollDown-side-workingPage {
+    position: absolute;
+    display: block;
+    bottom: 5%;
+    left: 52%;
+    transform: translateX(-44%) scale(0.7);
+  }
+  .scrollDown-side-workingPage p {
+    color: #ffcd8d;
+  }
+  .scrollDown-side-workingPage .scrollDown-side-Line::after {
+    background-color: #ffcd8d;
+  }
+  .scrollDown-side-workingPage .scrollDown-side-Dot {
+    background-color: #ffcd8d;
+  }
+  .scrollDown-side-workingPage .scrollDown-side {
+    right: 0;
+    transform: translate(20%);
+  }
+
+  .guide-vertical-slide-right,
+  .guide-vertical-slide-left,
+  .right02,
+  .left02 {
+    display: none;
+  }
+  .silde-text-wrapper-right01 {
+    transform: translate(0);
+  }
+  .guidePage-working-holiday-top::after,
+  .guidePage-working-holiday-top::before {
+    width: 40%;
+    height: 40%;
+    bottom: 0;
+    transform: translateY(30%);
+  }
+  .guidePage-working-holiday-top::after {
+    right: 0;
+  }
+  .guidePage-working-holiday-top::before {
+    left: 0;
+  }
+
+  .guidePage-working-holiday-top {
+    justify-content: flex-start;
+  }
+  .goyoursbear {
+    width: 10%;
+  }
+  .guide-text {
+    font-size: 0.75rem;
+    line-height: 2rem;
+  }
+  .guide-title {
+    padding-top: 30%;
+  }
+
+  .guide-content {
+    clip-path: ellipse(300% 100% at 50% 100%);
+  }
+  .guide-title h1::after {
+    width: 2rem;
+    border-bottom: 0.2rem solid var(--goyoursYellow);
+  }
+  .guide-title h1 {
+    font-size: 1rem;
+  }
+  .aboutstudyingH2 h2 {
+    font-size: 1rem;
+  }
+  .aboutstudyingH2 {
+    width: 90vw;
+    padding-top: 4rem;
+  }
+  .studying-page-button {
+    width: 80vw;
+    grid-template-columns: 1fr;
+
+    padding-top: 3rem;
+
+    gap: 2rem;
+  }
+  .studying-page-button a {
+    box-sizing: border-box;
+
+    height: 16rem;
+  }
+  .to-all-job h4,
+  .to-QA-page h4 {
+    font-size: 0.875rem;
+  }
+
+  .button-arrow {
+    font-size: 1.5rem;
+
+    padding: 1rem;
+  }
+  .guide-page-contact-wrapper {
+    padding: 4rem 0;
+  }
+  .guide-morePost {
+    padding-top: 4rem;
+  }
+}

@@ -136,6 +136,7 @@ export default function PostCategary({
             onClick={() => {
               if (windowSize < 480) setIsSpSearchClicked(true); // 小螢幕時啟用
             }}
+            readOnly={windowSize < 480} // 小螢幕時只讀
           />
           <span>
             <img src="goyoursbear-line-G.svg" />
