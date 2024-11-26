@@ -486,7 +486,6 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
       others: othersState.selected,
       selectedTags,
     };
-    console.log('Filters:', newFilters); // 檢查組裝的篩選條件
     onSearchFilters(newFilters); // 傳遞篩選條件給父組件
     setIsSearchClicked(false);
 

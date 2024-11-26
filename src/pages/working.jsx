@@ -85,7 +85,7 @@ export default function Working() {
       setFilteredJobList(jobList);
       setTotalItems(jobList.length);
       setCurrentPage(1);
-      setIsSearchTriggered(false);
+      setIsSearchTriggered(true);
       return;
     }
 

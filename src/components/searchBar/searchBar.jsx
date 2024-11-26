@@ -72,7 +72,6 @@ export default function SearchBar({ onSearch }) {
   };
 
   const handleSearch = () => {
-    console.log('Search keyword:', keyword); // 查看關鍵字輸入
     onSearch({
       keyword,
       selectedJapanese,
@@ -200,7 +199,7 @@ export default function SearchBar({ onSearch }) {
             </div>
           </div>
           <div className="searchbar sp-job-searchBar">
-            <div className="schoolsearchSearchBar sp-search-school">
+            <div className="jobsearchSearchBar sp-search-job">
               <div className="sp-job-search-filter-btn">
                 <p>2024日本打工度假 職缺搜索</p>
                 <button onClick={() => setIsSearchClicked(!isSearchClicked)}>
