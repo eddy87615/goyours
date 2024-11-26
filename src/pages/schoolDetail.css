@@ -188,10 +188,12 @@
   background-color: var(--goyoursYellow);
   color: #fff;
 
-  padding: 1.5rem;
+  padding: 1rem;
   margin-right: 1rem;
 
   clip-path: circle(40%);
+  -webkit-clip-path: circle(50%); /* 增加兼容性 */
+  border-radius: 50%;
 }
 .video {
   position: relative;

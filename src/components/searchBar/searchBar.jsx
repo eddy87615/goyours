@@ -114,6 +114,8 @@ export default function SearchBar({ onSearch }) {
     }
   }, [isSearchClicked]);
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       {windowSize < 768 && (
@@ -201,7 +203,7 @@ export default function SearchBar({ onSearch }) {
           <div className="searchbar sp-job-searchBar">
             <div className="jobsearchSearchBar sp-search-job">
               <div className="sp-job-search-filter-btn">
-                <p>2024日本打工度假 職缺搜索</p>
+                <p>{currentYear}日本打工度假 職缺搜索</p>
                 <button onClick={() => setIsSearchClicked(!isSearchClicked)}>
                   篩選條件
                   <span>

@@ -523,6 +523,8 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
     }
   }, [isSearchClicked]);
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="schoolsearchWrapper" ref={wrapperRef}>
       {windowSize < 768 && (
@@ -660,7 +662,7 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
           </div>
           <div className="schoolsearchSearchBar sp-search-school">
             <div className="sp-school-search-filter-btn">
-              <p>2024日本語學校 學校搜索</p>
+              <p>{currentYear}日本語學校 學校搜索</p>
               <button onClick={() => setIsSearchClicked(!isSearchClicked)}>
                 篩選條件
                 <span>
