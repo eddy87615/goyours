@@ -70,9 +70,12 @@ iframe {
     padding: 2rem 0;
     font-size: 1rem;
 
-    height: 100vh;
+    height: 50vh;
   }
   .pageLoading {
     font-size: 1rem;
+
+    height: 100vh;
+    padding: 0;
   }
 }

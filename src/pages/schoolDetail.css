@@ -188,11 +188,17 @@
   background-color: var(--goyoursYellow);
   color: #fff;
 
-  padding: 1rem;
+  padding: 0.5rem;
   margin-right: 1rem;
 
+  width: 4rem;
+  height: 4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   clip-path: circle(40%);
-  -webkit-clip-path: circle(50%); /* 增加兼容性 */
+  -webkit-clip-path: circle(40%); /* 增加兼容性 */
   border-radius: 50%;
 }
 .video {
@@ -302,6 +308,20 @@
 
   background-color: #fff;
 }
+.conditionsList li {
+  display: flex;
+  align-items: center;
+}
+
+.conditionsList span {
+  height: 100%;
+}
+.condition-wrapper {
+  line-height: 2.5rem;
+
+  flex: 1;
+}
+
 .conditionTitle {
   background-color: var(--goyoursYellow);
   color: #fff;
@@ -380,8 +400,9 @@
     font-size: 0.75rem;
 
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
   }
+
   .conditionsList span {
     height: 100%;
   }
@@ -401,7 +422,10 @@
     font-size: 1rem;
   }
   .featurestxt h2::before {
-    clip-path: circle(30%);
+    width: 2rem;
+    height: 2rem;
+    clip-path: circle(40%);
+    -webkit-clip-path: circle(40%); /* 增加兼容性 */
   }
   .featurestxt p {
     font-size: 0.875rem;
