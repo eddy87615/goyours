@@ -2,10 +2,24 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TbBoxMultiple } from 'react-icons/tb';
+import { motion } from 'framer-motion';
 
 import './navigation.css';
 
 const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
+  const itemVariants = {
+    hidden: { x: 50, opacity: 0 }, // 初始狀態
+    visible: (i) => ({
+      x: 0,
+      opacity: 1,
+      transition: {
+        delay: i * 0.1, // 每個項目的延遲時間
+        type: 'spring',
+        stiffness: 70,
+      },
+    }),
+  };
+
   return (
     <nav className="hamburger-menu-wrapper">
       <div
@@ -15,10 +29,18 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
             : 'hamburger-body'
         }
       >
-        <ul className="hamburger-list">
+        <motion.ul
+          className="hamburger-list"
+          initial="hidden"
+          animate={ishamburgerClicked ? 'visible' : 'hidden'}
+        >
           {navigation.map((nav, index) => {
             return (
-              <li key={index}>
+              <motion.li
+                key={index}
+                custom={index} // 傳遞索引，用於延遲計算
+                variants={itemVariants}
+              >
                 <Link
                   to={nav.to}
                   target={nav.target}
@@ -42,10 +64,10 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
                   )}
                   <p id={`navText${index}`}>{nav.title}</p>
                 </Link>
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
       </div>
     </nav>
   );

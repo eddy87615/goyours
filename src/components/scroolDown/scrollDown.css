@@ -180,14 +180,13 @@
     height: 0;
     opacity: 1;
   }
-  /* 90% {
-      height: 100px;
-      opacity: 1;
-    } */
-
+  99% {
+    height: 200px;
+    opacity: 1;
+  }
   100% {
     height: 200px;
-    opacity: 0;
+    opacity: 0; /* 在最後一瞬間才隱藏 */
   }
 }
 

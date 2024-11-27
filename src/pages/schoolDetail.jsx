@@ -75,7 +75,7 @@ const Features = ({ school }) => {
           </div>
         )}
         <div className="backToschoolList">
-          <Link to="/studying">
+          <Link to="/studying-in-jp-school">
             <TiArrowBackOutline />
             看更多學校
           </Link>

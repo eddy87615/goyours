@@ -38,6 +38,14 @@ export default function JobList({ jobList, isSearchTriggered }) {
 
   console.log('JobList received jobs:', jobList); // 檢查 JobList 接收到的數據
 
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="jobListSection">
       {isSearchTriggered && jobList.length > 0 ? (
@@ -58,12 +66,31 @@ export default function JobList({ jobList, isSearchTriggered }) {
       {jobList.length > 0 ? (
         jobList.map((job) => (
           <div key={job.slug.current || job.slug} className="joblist">
+            {windowSize < 480 ? (
+              <div className="joblistBtn">
+                <button onClick={() => handleInquiry(job.name)}>
+                  我要諮詢
+                </button>
+                <button onClick={() => handleInquiryResume(job.name)}>
+                  我要申請
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
             <div className="listintro">
-              <img src={urlFor(job.mainImage).url()} alt={job.name} />
+              {windowSize < 480 ? <h2>{job.name}</h2> : <></>}
+              <div className="job-img-wrapper">
+                <img src={urlFor(job.mainImage).url()} alt={job.name} />
+              </div>
               <ul>
-                <li>
-                  <h2>{job.name}</h2>
-                </li>
+                {windowSize < 480 ? (
+                  <></>
+                ) : (
+                  <li>
+                    <h2>{job.name}</h2>
+                  </li>
+                )}
                 <li>
                   <MdHomeWork className="yellow jobisticon" />
                   {job.company}
@@ -81,14 +108,18 @@ export default function JobList({ jobList, isSearchTriggered }) {
                   時薪{job.salary}日幣
                 </li>
               </ul>
-              <div className="joblistBtn">
-                <button onClick={() => handleInquiry(job.name)}>
-                  我要諮詢
-                </button>
-                <button onClick={() => handleInquiryResume(job.name)}>
-                  我要申請
-                </button>
-              </div>
+              {windowSize < 480 ? (
+                <></>
+              ) : (
+                <div className="joblistBtn">
+                  <button onClick={() => handleInquiry(job.name)}>
+                    我要諮詢
+                  </button>
+                  <button onClick={() => handleInquiryResume(job.name)}>
+                    我要申請
+                  </button>
+                </div>
+              )}
               <button
                 onClick={() => toggleList(job.slug.current || job.slug)}
                 className={`${
