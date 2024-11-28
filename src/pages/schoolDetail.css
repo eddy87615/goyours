@@ -357,8 +357,10 @@
     text-align: center;
   }
   .schoollogo {
-    top: -4%;
-    width: 4rem;
+    /* top: -4%;
+    width: 4rem; */
+
+    display: none;
   }
 
   .schoolInfo {

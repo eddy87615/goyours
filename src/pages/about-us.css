@@ -666,7 +666,7 @@
 }
 
 /*ANIMATION*/
-@keyframes scrollDownArrowDot {
+/* @keyframes scrollDownArrowDot {
   0% {
     opacity: 1;
   }
@@ -675,9 +675,9 @@
     opacity: 0;
     transform: translate(0, 0);
   }
-}
+} */
 
-@keyframes scrollDownArrowLine {
+/* @keyframes scrollDownArrowLine {
   0% {
     height: 0;
     opacity: 1;
@@ -687,7 +687,7 @@
     height: 200px;
     opacity: 0;
   }
-}
+} */
 
 @keyframes fade-in-out {
   0% {
@@ -782,13 +782,24 @@
     bottom: 4%;
     width: 15rem;
     height: 17rem;
+
+    animation-delay: 0.5s;
   }
+  .aboutusTopImg:nth-of-type(3) img {
+    animation-delay: 0.5s;
+  }
+
   .aboutusTopImg:nth-of-type(9) {
     top: 42%;
     bottom: unset;
     right: -20%;
     width: 12rem;
     height: 8rem;
+
+    animation-delay: 0.8s;
+  }
+  .aboutusTopImg:nth-of-type(9) img {
+    animation-delay: 0.8s;
   }
   .aboutScroolDown {
     right: 0;
@@ -822,7 +833,9 @@
   }
 
   .goyoursserviceWrapper {
-    height: 90vh;
+    height: 100%;
+
+    padding-bottom: 6rem;
   }
   .goyoursserviceWrapper::before {
     top: 50%;
@@ -942,16 +955,36 @@
   .progress-txt p {
     font-size: 0.75rem;
   }
+  .progress-bar-container {
+    height: 5px;
+  }
   .aboutContactArea {
     padding: 4rem 0;
   }
 
   @keyframes bounceOut {
     0% {
-      transform: scale(1) translateY(0) translateX(0);
+      transform: scale(1) translateY(0) translateX(10%);
+      animation-timing-function: ease-out;
+    }
+    20% {
+      transform: scale(0.9) translateY(-50%) translateX(50%);
+      animation-timing-function: ease-in;
+    }
+    40% {
+      transform: scale(0.8) translateY(-100%) translateX(55%);
+      animation-timing-function: ease-in-out;
+    }
+    60% {
+      transform: scale(0.7) translateY(-150%) translateX(60%);
+      animation-timing-function: ease-in-out;
+    }
+    80% {
+      transform: scale(0.6) translateY(-200%) translateX(65%);
+      animation-timing-function: ease-out;
     }
     100% {
-      transform: scale(0.5) translateY(-250%) translateX(70%) rotate(0);
+      transform: scale(0.5) translateY(-250%) translateX(70%);
     }
   }
 }

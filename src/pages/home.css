@@ -706,12 +706,183 @@
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .kvSlider {
+    position: relative;
+    z-index: 0;
+    border-radius: 0 0 100% 0;
+    overflow: hidden;
+  }
+  .kvlogo {
+    width: 44%;
+  }
+  .homeintroSection {
+    height: 84vh;
+  }
+  .homeintroImgWrapper2 {
+    display: none;
+  }
+  .homeintroImgWrapper0 {
+    width: 18rem;
+    height: 18rem;
+
+    top: unset;
+    bottom: 0;
+    left: -4%;
+  }
+  .homeintroImgWrapper0::after {
+    top: -4%;
+    right: -10%;
+
+    width: 4rem;
+  }
+  .homeintroImgWrapper1 {
+    width: 200px;
+    height: 200px;
+    top: 4%;
+    right: -4%;
+    left: unset;
+  }
+  .homeintroImgWrapper1::after {
+    top: -24%;
+  }
+  .homeintrotxt {
+    width: 80%;
+  }
+
+  .homeNewsSection {
+    padding-top: 10rem;
+  }
+  .homeNewsprePost {
+    width: 50% !important;
+  }
+  .homebg-Wave {
+    width: 200vw;
+  }
+  .homebg-intro-Wave {
+    bottom: -70%;
+  }
+  .homebg-school-Wave {
+    top: 0;
+  }
+
+  .schoolListDiv {
+    width: 90vw;
+
+    gap: 1.8rem;
+
+    padding: 4rem 0;
+  }
+  .schoolListPre {
+    height: 13rem;
+
+    border-radius: 1rem;
+  }
+  .schoolListCover img {
+    border-radius: 1rem;
+  }
+  .schoolListCover h4 {
+    font-size: 1rem;
+  }
+  .schoolListCover p {
+    font-size: 0.75rem;
+
+    transform: translate(-1rem, 1.5rem);
+  }
+  .schoolListBg {
+    border-radius: 1rem;
+
+    clip-path: circle(84% at 40% 4%);
+  }
+  .schoolListBack {
+    border-radius: 1rem;
+  }
+  .schoolListBack h3 {
+    font-size: 1rem;
+  }
+  .schoolListBack h3::after {
+    width: 20rem;
+  }
+  .schoolListBack p {
+    font-size: 0.625rem;
+    line-height: 1.3rem;
+  }
+  .schoolListBack ul {
+    font-size: 0.625rem;
+  }
+  .schoolListBack ul li:nth-child(2) {
+    display: none;
+  }
+  .schoolListDetailBtn {
+    font-size: 0.625rem;
+  }
+
+  .schoolListPre:hover .schoolListBg {
+    transition-duration: 0.5s;
+    clip-path: circle(16% at 0 0);
+  }
+
+  .schoolListPointer {
+    width: 2rem;
+
+    bottom: 2%;
+  }
+
+  .more-school-button ul a {
+    font-size: 1rem;
+
+    padding: 0.8rem 3.5rem;
+  }
+
+  .workingholidayDiv {
+    width: 90vw;
+
+    gap: 1.8rem;
+
+    padding: 4rem 0;
+  }
+  .jobListPre {
+    height: 13rem;
+
+    border-radius: 1rem;
+  }
+  .jobListimg img {
+    border-radius: 1rem 0 0 1rem;
+  }
+  .jobListPre h3 {
+    font-size: 1rem;
+
+    margin-bottom: 0.5rem;
+  }
+  .jobListPre p {
+    font-size: 0.625rem;
+    padding: 0.3rem 0.8rem;
+  }
+  .jobListcontent ul {
+    font-size: 0.625rem;
+
+    padding: 1rem 0;
+  }
+
+  .homehotpostDiv {
+    padding: 4rem 0;
+  }
+
+  .homeperhotpost {
+    width: 44%;
+
+    padding: 1.5rem;
+  }
+  .homeContactusSection {
+    padding: 4rem 0;
+
+    width: 96vw;
+  }
 }
 @media screen and (max-width: 480px) {
   .sp-home-scrollDown {
     display: block;
     position: absolute;
-    bottom: -15%;
+    bottom: -10%;
     right: 0;
     transform: translate(-50%, 50%);
   }
@@ -826,6 +997,7 @@
     padding-bottom: 4rem;
     /* pointer-events: none; */
   }
+
   .schoolListPre:hover .schoolListBg {
     clip-path: none;
   }
@@ -945,6 +1117,9 @@
 }
 
 @media screen and (max-width: 375px) {
+  .sp-home-scrollDown {
+    bottom: -24%;
+  }
   .homeintrotxt {
     width: 80%;
   }
@@ -969,7 +1144,7 @@
     width: 90vw;
   }
   .schoolListPre {
-    height: 10rem;
+    height: 12rem;
     border-radius: 1.5rem;
   }
   .workingholidayDiv {

@@ -71,9 +71,9 @@ export default function HomeJobList() {
     },
   ];
 
-  const [isSP, setIsSP] = useState(window.innerWidth <= 500);
+  const [isSP, setIsSP] = useState(window.innerWidth <= 1024);
   useEffect(() => {
-    const handleResize = () => setIsSP(window.innerWidth <= 500);
+    const handleResize = () => setIsSP(window.innerWidth <= 1024);
 
     // 添加事件監聽器
     window.addEventListener('resize', handleResize);
@@ -123,7 +123,7 @@ export default function HomeJobList() {
                     </li>
                   </ul>
                   <button className="schoolListDetailBtn">
-                    {isSP ? '了解詳情' : '了解職缺詳情'}
+                    {isSP ? '工作詳情' : '了解職缺詳情'}
                     {/* 了解職缺詳情 */}
                   </button>
                 </div>

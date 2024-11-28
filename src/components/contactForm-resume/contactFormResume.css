@@ -335,3 +335,77 @@ input:-webkit-autofill {
   background-position: center;
   background-size: cover;
 }
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+@media screen and (max-width: 480px) {
+  .contactusComponent-resume {
+    width: 100vw;
+    box-sizing: border-box;
+
+    border-radius: 2rem 0 0 0;
+
+    padding: 0 1rem 4rem 1rem;
+
+    margin-bottom: 0;
+  }
+  .contactusTitleforApply h2 {
+    font-size: 1.5rem;
+
+    line-height: 3rem;
+
+    left: 0;
+    top: -100%;
+
+    text-align: left;
+  }
+  .contactusTitleforApply h1 {
+    font-size: 400%;
+  }
+  .contactFormResume label {
+    width: 100%;
+  }
+
+  .contactFormResume p::before {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    padding: 0.5rem;
+
+    margin-right: 0.5rem;
+  }
+
+  .contactFormResume p {
+    font-size: 0.85rem;
+  }
+  .contactFormResume input {
+    font-size: 0.85rem;
+
+    border-radius: 0;
+  }
+  .upload {
+    flex-direction: column;
+
+    gap: 0.5rem;
+  }
+  .uploadNotice {
+    font-size: 0.725rem;
+  }
+  .uploadBtn {
+    font-size: 0.725rem;
+  }
+  .tellus {
+    flex-direction: column;
+  }
+  .contactFormResume label:nth-of-type(7) textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.85rem;
+  }
+}

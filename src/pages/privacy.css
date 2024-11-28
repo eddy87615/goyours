@@ -111,16 +111,50 @@
   stroke: #f4bf00;
   stroke-width: 15;
 }
-/* 
-.privacy-content::before {
-  content: '';
-  position: absolute;
-  transform: translateY(-90%);
-  left: 0;
-  width: 100vw;
-  height: 500px;
-  background-color: #fff8ef;
-  clip-path: ellipse(180% 100% at 50% 100%);
 
-  z-index: 0;
-} */
+@media screen and (max-width: 480px) {
+  .privacyTitle h2 {
+    font-size: 1rem;
+  }
+  .privacyTitle p {
+    font-size: 0.85rem;
+  }
+  .privacyTitle {
+    width: 90vw;
+
+    margin: 0;
+
+    line-height: 1.5rem;
+
+    padding: 4rem 0.5rem;
+  }
+  .privacy-wrapper {
+    clip-path: ellipse(500% 100% at 50% 100%);
+  }
+  .privacy-content {
+    padding: 2rem 2rem 4rem 2rem;
+
+    width: 100vw;
+
+    box-sizing: border-box;
+  }
+  .privacy h3 {
+    font-size: 1rem;
+  }
+  .goyoursbear {
+    width: 15%;
+  }
+  .privacy-content p {
+    font-size: 0.725rem;
+
+    padding: 0 0.5rem;
+  }
+  .privacy h4 {
+    padding-left: 1rem;
+  }
+  .privacy-content p:last-child {
+    font-size: 0.85rem;
+
+    padding-top: 2rem;
+  }
+}

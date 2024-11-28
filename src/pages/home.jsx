@@ -57,7 +57,7 @@ const News = () => {
           slidesPerView="auto"
           centeredSlides={true}
           navigation={true}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          // autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Autoplay, Navigation]}
           loop={true}
         >
@@ -91,7 +91,7 @@ const News = () => {
   );
 };
 
-const HomeschoolList = () => {
+const HomeschoolList = ({ windowSize }) => {
   const schoolListContent = [
     {
       name: '東京亞細亞學友會',
@@ -108,7 +108,7 @@ const HomeschoolList = () => {
       location: '栃木県',
       src: '/日建宇都宮校舎外観.jpg',
       traffic: '宇都宮站徒歩約10分鐘',
-      highlight: '在學期間住宿免費・課外體驗活動',
+      highlight: '在學期間住宿免費',
       href: '/studying-in-jp-school/utsunimiyanikken',
       introtxt:
         '面向來日本學習日本語的留學生設立的日本語學科。日本語學科以外的日本學生也在同一校園內共同學習及互相交流，給留學生提供良好的學習日語的環境。僅是語言，同時還可以學習日本的文化習俗和禮儀，培養立足世界的能力。',
@@ -148,7 +148,7 @@ const HomeschoolList = () => {
       location: '東京都',
       src: '/赤門會日本語言學校.jpg',
       traffic: '日暮里站步行10分・西日暮里站步行11分・三河島站步行5分',
-      highlight: '職務體驗・就職支援班：以實現在日就業的目的。',
+      highlight: '職務體驗・就職支援班',
       href: '/studying-in-jp-school/akamonkai',
       introtxt:
         '赤門會日本語學校，於1985年創校于東京大學的赤門前，成功培養了超過80個國家，2萬多名的畢業生，教學成績有目共睹。<br />在 2005 年，學校被認證為學校法人。',
@@ -176,7 +176,7 @@ const HomeschoolList = () => {
                   <img src={school.src} alt={school.name} />
                 </div>
                 <Link className="schoolListDetailBtn" to={school.href}>
-                  了解學校詳情
+                  {windowSize < 1024 ? '學校詳情' : '了解學校詳情'}
                 </Link>
               </div>
               <div className="schoolListBack">
@@ -254,6 +254,14 @@ export default function Home() {
     { src: '/KV/KV_25.webp' },
   ];
 
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <div className="kv">
@@ -311,7 +319,7 @@ export default function Home() {
         <News />
       </div>
       <div className="homeschoolList">
-        <HomeschoolList />
+        <HomeschoolList windowSize={windowSize} />
         <div className="homebg-school-Wave">
           <HomeBg />
         </div>

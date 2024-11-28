@@ -189,3 +189,87 @@ input:-webkit-autofill {
 
   margin-top: 2rem;
 }
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+@media screen and (max-width: 480px) {
+  .contactusTitle {
+    width: 90vw;
+  }
+  .contactusTitle h2 {
+    font-size: 1rem;
+  }
+  .contactusTitle p {
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+  }
+
+  .contactusComponent {
+    box-sizing: border-box;
+
+    width: 100vw;
+    margin-left: 0;
+
+    border-radius: 2rem 0 0 0;
+
+    padding: 0 1rem 4rem 1rem;
+
+    margin-bottom: 0;
+  }
+  .contactusComponent h1 {
+    font-size: 400%;
+  }
+  .contactForm label {
+    width: 100%;
+  }
+  .contactimg {
+    display: none;
+  }
+  .contactForm p::before {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    padding: 0.5rem;
+
+    margin-right: 0.5rem;
+  }
+  .contactForm p {
+    font-size: 0.85rem;
+  }
+  .contactForm input {
+    font-size: 0.85rem;
+
+    border-radius: 0;
+  }
+  .contactForm label:nth-of-type(7),
+  .contactForm label:nth-of-type(8) {
+    flex-direction: column;
+  }
+  .caseOptions {
+    font-size: 0.725rem;
+
+    margin: 0 auto;
+  }
+  .contactForm label:nth-of-type(8) textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    font-size: 0.85rem;
+  }
+  .privicy {
+    font-size: 1rem;
+  }
+  .privicy label {
+    width: fit-content;
+  }
+  .submitBtn {
+    font-size: 1rem;
+  }
+}

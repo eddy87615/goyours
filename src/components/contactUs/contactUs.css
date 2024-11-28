@@ -126,6 +126,26 @@
   display: none;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .homeContactusDiv {
+    padding-bottom: 20rem;
+  }
+  .homeContactusDiv h2 {
+    font-size: 10rem;
+  }
+  .contactTxt01 {
+    margin-left: 2rem;
+  }
+  .homeContactusDiv h3 {
+    font-size: 1.5rem;
+  }
+  .homeContactusDiv p {
+    font-size: 0.875rem;
+
+    font-weight: normal;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .contact-button {
     display: block;
@@ -140,6 +160,16 @@
   .contact-button img {
     display: block;
     transform: rotate(-35deg);
+  }
+  .homeContactusDiv p {
+    font-size: 0.725rem;
+    font-weight: normal;
+    line-height: 1.5rem;
+  }
+  .homeContactusDiv h3 {
+    font-size: 1rem;
+
+    margin-bottom: 0.5rem;
   }
   .homecontactusBtn {
     width: 10rem;
@@ -172,6 +202,8 @@
     font-size: 0.75rem;
     line-height: 1rem;
     font-weight: bold;
+
+    border-left: 0.3rem solid var(--goyoursYellow);
   }
   .contactTxt01 br {
     display: none;
@@ -189,7 +221,7 @@
     animation: none;
   }
   .homeContactusDiv:hover .contactTxt01 {
-    border-left: 0.5rem solid var(--goyoursYellow);
+    border-left: 0.3rem solid var(--goyoursYellow);
   }
   .homeContactusSection {
     padding: 4rem 0;
@@ -198,7 +230,7 @@
 
 @media screen and (max-width: 375px) {
   .homeContactusSection {
-    padding-top: 0;
+    padding-top: 4rem;
   }
   .homeContactusDiv h2 {
     font-size: 4rem;

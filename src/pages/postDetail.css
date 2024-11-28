@@ -300,6 +300,10 @@
     /* margin: 0 auto; */
     padding: 1rem;
     border-radius: 1rem;
+
+    width: 100%;
+
+    box-sizing: border-box;
   }
   .relatedpostsLink img {
     width: 5rem;

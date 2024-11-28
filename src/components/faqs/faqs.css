@@ -7,7 +7,7 @@
 
 .fqa-KV {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
-    url(/guidePage/about_05.jpg);
+    url(/KV/KV_about_17.JPG);
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -36,6 +36,14 @@
   margin-top: -10%;
 
   padding-bottom: 8rem;
+
+  width: 100vw;
+  height: 100%;
+
+  position: relative;
+
+  will-change: clip-path, transform;
+  transform: translateZ(0); /* 确保硬件加速 */
 }
 
 .qaSection h1 {
@@ -124,4 +132,66 @@
 .part1 h2,
 .part2 h2 {
   position: relative;
+}
+
+@media screen and (max-width: 480px) {
+  .fqa-KV {
+    background: url(/KV/KV_about_17.JPG);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 90vh;
+  }
+  .fqa-body {
+    clip-path: ellipse(500% 100% at 50% 100%);
+    /* background-color: red; */
+    margin-top: -20%;
+
+    padding-bottom: 4rem;
+
+    will-change: clip-path, transform;
+    transform: translateZ(0); /* 确保触发 GPU 加速 */
+  }
+
+  .fqa-wrapper {
+    /* clip-path: ellipse(500% 100% at 50% 100%); */
+
+    background-color: #fff8ef;
+    width: 100vw;
+
+    padding: 2rem 1rem 0 1rem;
+
+    box-sizing: border-box;
+
+    will-change: clip-path, transform;
+    transform: translateZ(0); /* 确保触发 GPU 加速 */
+  }
+  .qaSection h1 {
+    font-size: 1rem;
+  }
+  .qaSection h1::after {
+    width: 3rem;
+    border-bottom: 0.3rem solid var(--goyoursYellow);
+    padding-top: 1rem;
+  }
+  .part1 h2,
+  .part2 h2 {
+    font-size: 1rem;
+  }
+  .part2 {
+    padding-top: 6rem;
+  }
+  .goyoursbearonfaqs {
+    width: 3rem;
+  }
+  .question h3 {
+    font-size: 0.85rem;
+  }
+  .answer p {
+    font-size: 0.725rem;
+  }
+  .Qmark,
+  .answerLogo {
+    margin-right: 1rem;
+  }
 }

@@ -57,7 +57,7 @@ export default function Hotpost() {
           slidesPerView="auto"
           centeredSlides={true}
           navigation={true}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          // autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Autoplay, Navigation]}
           loop={true}
         >

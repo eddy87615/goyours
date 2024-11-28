@@ -157,6 +157,8 @@
   }
   .jobListcontent ul {
     padding: 1rem 0;
+
+    font-size: 0.625rem;
   }
   .workingholidaySection .schoolListDetailBtn {
     display: block;
