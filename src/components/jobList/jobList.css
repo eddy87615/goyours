@@ -220,6 +220,47 @@
   pointer-events: none;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .jobListSection {
+    width: 90vw;
+  }
+
+  .job-img-wrapper {
+    width: 30%;
+    height: 15rem;
+  }
+  .listintro ul > li:first-child {
+    font-size: 1.25rem;
+  }
+  .listintro ul h2 {
+    margin-bottom: 0.5rem;
+  }
+  .listintro ul > li:not(:first-child) {
+    font-size: 0.875rem;
+
+    font-weight: normal;
+  }
+  .joblistBtn > button {
+    font-size: 0.75rem;
+  }
+  .joblistBtn > button:nth-child(1),
+  .joblistBtn > button:nth-child(2) {
+    padding: 1rem 1.2rem;
+  }
+
+  .listdetaillist {
+    padding-left: 37%;
+
+    font-weight: normal;
+  }
+
+  .listdetail a {
+    font-size: 0.75rem;
+
+    padding: 1rem 1.5rem;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .searchResultArea h2 {
     font-size: 1.25rem;

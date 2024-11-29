@@ -97,6 +97,15 @@
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .postcategory {
+    padding-top: 0;
+    margin-bottom: 2rem;
+  }
+  .postcategoryh4 {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
 }
 @media screen and (max-width: 480px) {
   .postcategory {

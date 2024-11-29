@@ -330,7 +330,7 @@
     display: none;
   }
   .mainNav-hamburger-clicked {
-    background-color: #414042;
+    background-color: #fff8ef;
     /* background-color: transparent; */
   }
 
@@ -339,6 +339,10 @@
   }
   .navMenu {
     display: none;
+  }
+  .mainNav-hamburger-clicked::after {
+    transition-duration: 0.5s;
+    display: block;
   }
   .hamburger-line-wrapper {
     /* position: absolute; */
@@ -362,6 +366,10 @@
   }
   .hamburger-list li:nth-child(7) a {
     margin-top: 20%;
+  }
+  .hamburger-active-line:nth-child(1),
+  .hamburger-active-line:nth-child(3) {
+    background-color: #414042;
   }
 }
 

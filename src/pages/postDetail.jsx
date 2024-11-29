@@ -71,11 +71,11 @@ export default function PostDetail({ handleSearch }) {
 
   const navigate = useNavigate();
   const handleSortClick = (selectedCategory) => {
-    navigate('/post', { state: { selectedCategory } });
+    navigate('/goyours-post', { state: { selectedCategory } });
   };
 
   const handleRelatedPostClick = (slug) => {
-    navigate(`/post/${slug}`);
+    navigate(`/goyours-post/${slug}`);
     window.location.reload(); // 强制页面刷新
   };
 

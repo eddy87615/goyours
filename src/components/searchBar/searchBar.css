@@ -91,11 +91,77 @@
   display: none;
 }
 
+.searchup select {
+  /* appearance: none; */
+  -webkit-appearance: none; /*For Safari */
+  -moz-appearance: none; /* For Firefox */
+
+  background-color: #fff;
+
+  padding: 0.5rem 0.5rem;
+
+  min-width: 100px;
+
+  font-size: 0.75rem;
+
+  white-space: nowrap;
+
+  position: relative;
+
+  background-image: url(/select-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: 92% 50%;
+  background-size: 12%;
+}
+
 @media screen and (min-width: 1201px) {
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .searchbar {
+    width: 90vw;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+  .searchup select {
+    /* appearance: none; */
+    -webkit-appearance: none; /*For Safari */
+    -moz-appearance: none; /* For Firefox */
+
+    background-color: #fff;
+
+    padding: 0.5rem 0.5rem;
+
+    min-width: 100px;
+
+    font-size: 0.75rem;
+
+    white-space: nowrap;
+
+    position: relative;
+
+    background-image: url(/select-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: 92% 50%;
+    background-size: 12%;
+  }
+
+  .searchup input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    font-size: 0.75rem;
+  }
+  .searchdown button {
+    font-size: 0.75rem;
+
+    padding: 0.5rem 3rem;
+  }
+  .searchdown label {
+    font-size: 0.75rem;
+  }
 }
 @media screen and (max-width: 480px) {
   .searchbar {

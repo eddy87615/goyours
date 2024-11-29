@@ -10,13 +10,22 @@
   margin: 0 auto;
 
   padding-top: 8rem;
-}
 
+  box-sizing: border-box;
+}
 @media screen and (min-width: 1201px) {
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .postPage {
+    padding-top: 4rem;
+    grid-template-columns: 1fr 2fr;
+
+    gap: 2rem;
+
+    box-sizing: border-box;
+  }
 }
 @media screen and (max-width: 480px) {
   .postPage {

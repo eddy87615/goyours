@@ -134,6 +134,22 @@
   position: relative;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .fqa-body {
+    -webkit-clip-path: ellipse(300% 100% at 50% 100%);
+    clip-path: ellipse(300% 100% at 50% 100%);
+    will-change: clip-path; /* 提前优化 */
+    transform: translateZ(0); /* 触发 GPU 加速 */
+
+    box-sizing: border-box;
+
+    margin-top: -20%;
+  }
+  .fqa-wrapper {
+    width: 90vw;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .fqa-KV {
     background: url(/KV/KV_about_17.JPG);

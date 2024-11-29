@@ -224,20 +224,20 @@
   clip-path: ellipse(150% 100% at 50% 100%);
 }
 
-.aboutstudyingH2 {
+.aboutworkingH2 {
   width: 60vw;
   margin: 0 auto;
 
   padding-top: 8rem;
 }
 
-.aboutstudyingH2 h2 {
+.aboutworkingH2 h2 {
   width: fit-content;
   position: relative;
   padding-top: 2rem;
 }
 
-.studying-page-button {
+.working-page-button {
   width: 60vw;
   margin: 0 auto;
   display: grid;
@@ -359,6 +359,124 @@
   margin: 0 auto;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .guidePage-working-holiday-top {
+    height: 80vh;
+  }
+  .guide-vertical-slide-left,
+  .silde-text-wrapper-left01 {
+    display: none;
+  }
+  .silde-text-wrapper-right01.right02 {
+    width: 100%;
+    height: 2rem;
+    transform: unset;
+    top: calc(55.69px + 21%);
+    right: 0;
+  }
+  .silde-text-wrapper-right01 p,
+  .silde-text-wrapper-left01 p {
+    writing-mode: horizontal-tb;
+    width: fit-content;
+    height: 2rem;
+
+    padding-right: 2rem;
+
+    transform: translateX(100%);
+
+    max-width: unset;
+    min-width: unset;
+
+    animation: scrollLeft;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .silde-text-wrapper-right01 {
+    width: 100%;
+    height: 2rem;
+    transform: unset;
+
+    top: 55.69px;
+  }
+  .guide-vertical-slide-right {
+    top: calc(55.69px + 2rem);
+    right: unset;
+    width: 100%;
+    height: 10rem;
+  }
+  .guideImgFrame-right {
+    width: 14rem;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    animation-name: scrollRight;
+    left: 0;
+    top: 0;
+
+    animation-duration: 12s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    border-radius: 1rem;
+  }
+  .guidePage-working-holiday-top::before {
+    width: 300px;
+    height: 500px;
+    left: -2%;
+    bottom: -4%;
+  }
+  .guidePage-working-holiday-top::after {
+    width: 300px;
+    height: 500px;
+    right: -8%;
+    bottom: -4%;
+  }
+  .scrollDown-side-workingPage {
+    display: none;
+  }
+
+  .guide-title {
+    padding-top: 20%;
+  }
+  .guide-title h1 {
+    font-size: 1.5rem;
+  }
+  .guide-text {
+    font-size: 0.875rem;
+  }
+  .aboutworkingH2 {
+    width: 90vw;
+  }
+  .aboutworkingH2 h2 {
+    font-size: 1.5rem;
+  }
+  .working-page-button {
+    width: 80vw;
+    gap: 2rem;
+  }
+  .guide-content {
+    clip-path: ellipse(230% 100% at 50% 100%);
+  }
+
+  .working-page-button a {
+    width: 100%;
+    height: 16rem;
+
+    box-sizing: border-box;
+  }
+  .button-arrow {
+    font-size: 1.5rem;
+
+    padding: 1.3rem;
+  }
+  .guide-morePost > .morepostH2 {
+    width: 90vw;
+  }
+  .guide-morePost .submitPostList > .submitPostLink {
+    width: 80%;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .scrollDown-side-workingPage {
     position: absolute;
@@ -428,14 +546,14 @@
   .guide-title h1 {
     font-size: 1rem;
   }
-  .aboutstudyingH2 h2 {
+  .aboutworkingH2 h2 {
     font-size: 1rem;
   }
-  .aboutstudyingH2 {
+  .aboutworkingH2 {
     width: 90vw;
     padding-top: 4rem;
   }
-  .studying-page-button {
+  .working-page-button {
     width: 80vw;
     grid-template-columns: 1fr;
 
@@ -443,7 +561,7 @@
 
     gap: 2rem;
   }
-  .studying-page-button a {
+  .working-page-button a {
     box-sizing: border-box;
 
     height: 16rem;

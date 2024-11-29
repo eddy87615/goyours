@@ -17,6 +17,12 @@
   align-items: end;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .jobListKv {
+    height: 60vh;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .jobListKv {
     background-image: url(/KV/KV_about_15.JPG);

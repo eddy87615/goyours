@@ -335,6 +335,53 @@
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .schoolsearchWrapper {
+    height: 60vh;
+  }
+
+  .schoolsearchSearchBar {
+    width: 90vw;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .schoolSearchBar-upper button {
+    padding: 0.5rem 0.5rem;
+
+    justify-content: space-between;
+
+    min-width: 100px;
+
+    font-size: 0.75rem;
+
+    white-space: nowrap;
+  }
+  .schoolSearchBar-upper label input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    font-size: 0.75rem;
+  }
+  .schoolSearchBar-down button {
+    font-size: 0.75rem;
+
+    padding: 0.5rem 3rem;
+  }
+
+  .enrollTime,
+  .purpose {
+    top: calc(100% + 89px);
+  }
+
+  .schoolSearchBar-down label {
+    font-size: 0.75rem;
+  }
+
+  .selectBtn button {
+    width: fit-content;
+    min-width: unset;
+  }
 }
 @media screen and (max-width: 480px) {
   .schoolsearchSearchBar {

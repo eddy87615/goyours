@@ -56,7 +56,7 @@ const SpSearch = ({
               className="placeholder"
             />
             <span>
-              <img src="goyoursbear-line-G.svg" />
+              <img src="/goyoursbear-line-G.svg" alt="goyours bear gray line" />
             </span>
           </div>
           <ul>
@@ -139,7 +139,7 @@ export default function PostCategary({
             readOnly={windowSize < 480} // 小螢幕時只讀
           />
           <span>
-            <img src="goyoursbear-line-G.svg" />
+            <img src="/goyoursbear-line-G.svg" />
           </span>
         </div>
         <ul>

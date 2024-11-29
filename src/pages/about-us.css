@@ -758,6 +758,180 @@
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .centerLogo {
+    width: 19rem;
+
+    top: 40%;
+  }
+  .aboutusTopImg:nth-of-type(1) {
+    top: 36.99px;
+
+    width: 16rem;
+    height: 16rem;
+  }
+  .aboutusTopImg:nth-of-type(2) {
+    width: 11rem;
+    height: 14rem;
+
+    top: 56%;
+    left: 20%;
+  }
+  .aboutusTopImg:nth-of-type(3) {
+    width: 19rem;
+    height: 21rem;
+
+    top: 80%;
+    left: 0;
+  }
+  .aboutusTopImg:nth-of-type(3) img {
+    left: -40%;
+  }
+  .aboutusTopImg:nth-of-type(4) {
+    right: 8%;
+
+    left: unset;
+    top: 50%;
+
+    width: 11rem;
+    height: 8rem;
+  }
+  .aboutusTopImg:nth-of-type(4) img {
+    left: -10%;
+  }
+  .aboutusTopImg:nth-of-type(5) {
+    left: unset;
+    right: 2%;
+    top: 8%;
+
+    width: 17rem;
+    height: 17rem;
+  }
+  .aboutusTopImg:nth-of-type(6) {
+    display: none;
+  }
+  .aboutusTopImg:nth-of-type(7) {
+    width: 9rem;
+    height: 12rem;
+
+    top: 32%;
+    left: 2%;
+  }
+  .aboutusTopImg:nth-of-type(7) img {
+    left: -60%;
+  }
+  .aboutusTopImg:nth-of-type(8) {
+    display: none;
+  }
+  .aboutusTopImg:nth-of-type(9) {
+    bottom: 10%;
+    right: 6%;
+  }
+  .aboutusTopImg:nth-of-type(10) {
+    bottom: unset;
+    top: 36%;
+    right: 0;
+  }
+  .scrollDown-side {
+    left: 54%;
+    right: unset;
+    bottom: unset;
+    top: 50%;
+  }
+
+  .goyoursIntro {
+    padding-top: 10rem;
+
+    background-position: 90% 80%;
+    background-size: 54%;
+  }
+  .goyoursIntro p {
+    width: 60%;
+  }
+
+  .goyoursservice {
+    width: 90vw;
+    height: 60vh;
+  }
+  .goyoursserviceWrapper::after {
+    bottom: 70%;
+    width: 44%;
+  }
+  .serviceArea {
+    justify-content: space-between;
+    gap: 0;
+  }
+  .serviceArea p {
+    font-size: 0.75rem;
+    line-height: 2.5rem;
+  }
+  .circleMenuLogo {
+    width: 7rem;
+    height: 7rem;
+  }
+  .serviceCircle {
+    width: 6rem;
+    height: 6rem;
+
+    transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+      translate(130px) rotate(calc(-60deg * var(--i)));
+  }
+  .serviceBgCircle {
+    width: 26rem;
+    height: 26rem;
+  }
+
+  .Review::before {
+    top: -20%;
+  }
+  .reviewTitle {
+    width: 90vw;
+  }
+  .feedBackArea {
+    width: 90vw;
+    grid-template-columns: 1fr 1fr;
+
+    row-gap: 4rem;
+    column-gap: 2rem;
+
+    box-sizing: border-box;
+  }
+
+  .ifYou {
+    width: 90vw;
+  }
+  .progress-bar-container {
+    height: 8px;
+  }
+
+  @keyframes bounceOut {
+    0% {
+      transform: scale(1) translateY(0) translateX(5%);
+      animation-timing-function: ease-out;
+    }
+    20% {
+      transform: scale(0.9) translateY(-50%) translateX(10%);
+      animation-timing-function: ease-in;
+    }
+    40% {
+      transform: scale(0.8) translateY(-100%) translateX(12%);
+      animation-timing-function: ease-in-out;
+    }
+    60% {
+      transform: scale(0.7) translateY(-150%) translateX(14%);
+      animation-timing-function: ease-in-out;
+    }
+    80% {
+      transform: scale(0.6) translateY(-200%) translateX(18%);
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform: scale(0.7) translateY(-180%) translateX(20%);
+    }
+  }
+
+  .aboutContactArea {
+    padding: 8rem 0 4rem 0;
+  }
 }
 @media screen and (max-width: 480px) {
   .aboutusTopImg:nth-of-type(2),

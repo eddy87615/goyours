@@ -527,7 +527,7 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
 
   return (
     <div className="schoolsearchWrapper" ref={wrapperRef}>
-      {windowSize < 768 && (
+      {windowSize < 481 && (
         <>
           <div
             className={

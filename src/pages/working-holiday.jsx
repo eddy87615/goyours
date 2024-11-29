@@ -1,4 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './working-holiday.css';
@@ -30,6 +31,14 @@ export default function StudyingInJp() {
   ];
 
   const currentYear = new Date().getFullYear();
+
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="working-holiday-section">
@@ -84,21 +93,27 @@ export default function StudyingInJp() {
           ))}
         </div>
         <div className="silde-text-wrapper-right01">
-          {Array.from({ length: 13 }).map((_, index) => (
-            <p key={index}>Go Yours ●</p>
-          ))}
+          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
+            (_, index) => (
+              <p key={index}>Go Yours ●</p>
+            )
+          )}
         </div>
 
         <div className="silde-text-wrapper-right01">
-          {Array.from({ length: 13 }).map((_, index) => (
-            <p key={index}>Go Yours ●</p>
-          ))}
+          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
+            (_, index) => (
+              <p key={index}>Go Yours ●</p>
+            )
+          )}
         </div>
 
         <div className="silde-text-wrapper-right01 right02">
-          {Array.from({ length: 13 }).map((_, index) => (
-            <p key={index}>Go Yours ●</p>
-          ))}
+          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
+            (_, index) => (
+              <p key={index}>Go Yours ●</p>
+            )
+          )}
         </div>
         <div className="guide-vertical-slide-right">
           {sliderRight.map((img, index) => (
@@ -108,25 +123,29 @@ export default function StudyingInJp() {
           ))}
         </div>
         <div className="silde-text-wrapper-left01">
-          {Array.from({ length: 13 }).map((_, index) => (
-            <p key={index}>Go Yours ●</p>
-          ))}
+          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
+            (_, index) => (
+              <p key={index}>Go Yours ●</p>
+            )
+          )}
         </div>
         <div className="silde-text-wrapper-left01 left02">
-          {Array.from({ length: 13 }).map((_, index) => (
-            <p key={index}>Go Yours ●</p>
-          ))}
+          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
+            (_, index) => (
+              <p key={index}>Go Yours ●</p>
+            )
+          )}
         </div>
       </div>
       <div className="guide-content">
         <div>
-          <div className="aboutstudyingH2">
+          <div className="aboutworkingH2">
             <h2 className="yellow">
               關於打工度假
               <GoyoursBearRelatedPost />
             </h2>
           </div>
-          <div className="studying-page-button">
+          <div className="working-page-button">
             <Link className="to-all-job" to="/working-holiday-job">
               <h4>
                 <span className="white-icon">

@@ -205,6 +205,103 @@
   color: var(--goyoursYellow);
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .postDetailSection {
+    padding-top: 4rem;
+    margin-top: 0;
+    grid-template-columns: 1fr 2fr;
+
+    gap: 2rem;
+
+    box-sizing: border-box;
+  }
+  .postDetaildate::before {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .postDetaildate p {
+    padding-left: 2rem;
+  }
+  .postinfolist {
+    flex-wrap: wrap;
+  }
+  .postDetailviews {
+    gap: 0.5rem;
+  }
+  .postinfolist ul {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .postinfolist ul:last-child {
+    justify-content: flex-start;
+  }
+  .postinfolist ul p {
+    margin: 0.5rem 0;
+  }
+
+  .postbody h1 {
+    font-size: 2rem;
+
+    line-height: 3rem;
+  }
+  .postCatalog {
+    border-radius: 1rem;
+  }
+  .postCatalog h2 {
+    font-size: 1.5rem;
+  }
+  .postCatalog a {
+    font-size: 1rem;
+  }
+  .postbody ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .postTxtarea h2 {
+    font-size: 1.5rem;
+
+    line-height: 3rem;
+  }
+
+  .postDetialContactus {
+    padding: 4rem 0;
+  }
+
+  .relatedpostsLink img {
+    width: 7rem;
+    height: 7rem;
+  }
+  .postbody {
+    padding-top: 2rem;
+  }
+  .postbody ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+
+    font-size: 0.85rem;
+
+    height: fit-content;
+  }
+  .postbody ul li {
+    height: fit-content;
+  }
+
+  .submitPostDate::before {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .submitPostDate {
+    display: flex;
+    align-items: center;
+  }
+  .submitPostDate p {
+    padding-left: 2rem;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .postDetailSection {
     display: flex;

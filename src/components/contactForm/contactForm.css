@@ -193,6 +193,69 @@ input:-webkit-autofill {
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .contactusComponent {
+    width: 100vw;
+    box-sizing: border-box;
+
+    border-radius: 3rem 0 0 0;
+
+    margin-bottom: 0;
+  }
+  .contactusComponent h1 {
+    font-size: 1000%;
+  }
+  .contactusComponent {
+    padding: 0 2rem;
+    padding-bottom: 4rem;
+  }
+  .contactForm p::before {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    padding: 1rem;
+
+    margin-right: 0.5rem;
+  }
+  .contactimg {
+    display: none;
+  }
+  .contactForm label {
+    width: 100%;
+  }
+  .contactForm label input {
+    border-radius: 0;
+  }
+  .privicy {
+    font-size: 1rem;
+  }
+  .privicy label {
+    width: fit-content;
+  }
+  .submitBtn {
+    font-size: 1rem;
+  }
+  .contactForm label:nth-of-type(7),
+  .contactForm label:nth-of-type(8) {
+    flex-direction: column;
+  }
+  .caseOptions {
+    font-size: 0.85rem;
+
+    /* margin: 0 auto; */
+
+    margin-left: 4rem;
+  }
+  .contactForm label:nth-of-type(8) textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    font-size: 0.85rem;
+  }
 }
 @media screen and (max-width: 480px) {
   .contactusTitle {
