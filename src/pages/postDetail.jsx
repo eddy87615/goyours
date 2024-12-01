@@ -13,6 +13,10 @@ import GoyoursBearRelatedPost from '../components/goyoursBear/goyoursBear-relate
 import { LuEye } from 'react-icons/lu';
 
 import './postDetail.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css'; // 引入核心樣式
+import 'swiper/css/navigation'; // 引入導航按鈕樣式
 
 const customComponents = {
   types: {
@@ -25,28 +29,55 @@ const customComponents = {
       );
     },
     gallery: ({ value }) => {
+      console.log('Gallery Images:', value.images); // 確認圖片數據是否正確
       if (!value.images || value.images.length === 0) return null;
       return (
         <div className="gallery">
-          {value.images.map((image, index) => (
-            <img
-              key={index}
-              src={urlFor(image).url()}
-              alt={`Gallery Image ${index + 1}`}
-              className="gallery-image"
-            />
-          ))}
+          <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            loop
+            className="mySwiper"
+          >
+            {value.images.map((image, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={urlFor(image).url()}
+                  alt={`Gallery Image ${index + 1}`}
+                  className="gallery-image"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       );
     },
+
+    span: ({ value, children }) => {
+      console.log('覆蓋默認 span 處理:', value);
+      return <span>{children}</span>;
+    },
   },
   marks: {
-    color: ({ children, value }) => (
-      <span style={{ color: value?.hex || '#000' }}>{children}</span>
-    ),
-    favoriteColor: ({ children, value }) => (
-      <span style={{ color: value?.hex || '#000' }}>{children}</span>
-    ),
+    favoriteColor: ({ children, value }) => {
+      console.log('favoriteColor 渲染器接收到的 value:', value);
+      const color = value?.hex.hex || '#FF0000';
+
+      if (!value || !value.hex.hex) {
+        console.error('無法讀取到 hex，使用回退顏色');
+        return <span>{children}</span>;
+      }
+
+      return (
+        <span
+          style={{
+            color,
+          }}
+        >
+          {children}
+        </span>
+      );
+    },
   },
 };
 
@@ -95,7 +126,7 @@ export default function PostDetail({ handleSearch }) {
           },
           author->{
             name
-          }
+          },
         }
       `,
         { slug }

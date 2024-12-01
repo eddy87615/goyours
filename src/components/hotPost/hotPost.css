@@ -39,8 +39,9 @@
 
   border-radius: 1rem;
 }
-.homeprehotpost {
-  padding: 2rem;
+
+.homeprehotpost a {
+  width: 100%;
 }
 .homehotpostPreview {
   display: -webkit-box;
@@ -76,6 +77,10 @@
 .homehotpostDate img {
   width: 2rem;
   height: 2rem;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: #fff;
 }
 
 /*homeHotpostSection*/

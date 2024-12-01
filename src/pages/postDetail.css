@@ -66,7 +66,7 @@
 .postDetialContactus {
   width: 90vw;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding: 4rem 0;
 }
 
 .postTxtarea li {
@@ -102,21 +102,32 @@
 
   padding: 1rem;
 }
-
 .gallery {
-  column-count: 2;
-  column-gap: 2rem;
+  width: 100%; /* 父容器寬度 */
+  max-width: 800px; /* 設定最大寬度，根據設計需求調整 */
+  height: 500px;
+  max-height: 500px;
+  margin: 0 auto; /* 居中對齊 */
 
-  width: 80%;
-  margin: 0 auto;
+  padding: 2rem 0;
 }
 
-.gallery img {
-  width: 100%;
-  display: block;
-
-  border-radius: 1rem;
-  margin-bottom: 2rem;
+.mySwiper {
+  width: 100%; /* 繼承父容器的寬度 */
+  height: 100%; /* 高度根據內容自動調整 */
+}
+.swiper-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.mySwiper img {
+  height: 100%;
+  width: auto;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  color: #333;
 }
 
 .post-image {
@@ -185,12 +196,17 @@
 }
 .relatedpostsLink img {
   grid-area: img;
-  width: 10rem;
-  height: 10rem;
+  width: 6rem;
+  height: 6rem;
 
   object-fit: cover;
 
   border-radius: 1rem;
+  transition-duration: 0.2s;
+}
+.relatedpostsLink:hover img {
+  transition-duration: 0.2s;
+  transform: scale(0.8);
 }
 .relatedpostsLink h3 {
   grid-area: title;

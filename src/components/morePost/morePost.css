@@ -45,6 +45,8 @@
   object-fit: cover;
 
   border-radius: 1rem;
+
+  transition-duration: 0.2s;
 }
 .submitPostLink h3 {
   grid-area: title;
@@ -86,8 +88,9 @@
   background-size: cover;
 }
 
-.submitPostLink:hover {
-  background-color: #ffeed9;
+.submitPostLink:hover img {
+  transition-duration: 0.2s;
+  transform: scale(0.8);
 }
 
 @media screen and (min-width: 1201px) {
