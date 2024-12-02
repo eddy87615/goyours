@@ -36,7 +36,7 @@
   transition-duration: 0.5s;
 }
 .homeContactusDiv:hover h2 {
-  color: #fff8ef;
+  color: var(--goyoursBgColor);
   transition-duration: 0.5s;
 }
 .homeContactusDiv:hover .homecontactusArrow {
@@ -45,7 +45,7 @@
 }
 .homeContactusDiv:hover .contactTxt01 {
   transition-duration: 0.5s;
-  border-left: 0.5rem solid #fff8ef;
+  border-left: 0.5rem solid var(--goyoursBgColor);
 }
 
 .homeContactusDiv h2 {

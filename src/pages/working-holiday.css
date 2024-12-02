@@ -153,7 +153,7 @@
 
   height: fit-content;
   font-size: 0.875rem;
-  color: #f8b300;
+  color: var(--goyoursYellow);
   font-weight: bold;
 
   position: absolute;
@@ -215,7 +215,7 @@
   width: 100vw;
   height: 100%;
 
-  background-color: #fff8ef;
+  background-color: var(--goyoursBgColor);
 
   position: relative;
 
@@ -301,7 +301,7 @@
 
 .to-all-job h4,
 .to-QA-page h4 {
-  color: #fff;
+  color: var(--goyoursBgColor);
   font-size: 1.25rem;
 
   width: 100%;
@@ -351,7 +351,7 @@
 
 .goyoursbear-line {
   fill: none;
-  stroke: #f4bf00;
+  stroke: var(--goyoursYellow);
   stroke-width: 15;
 }
 .goyoursbear {

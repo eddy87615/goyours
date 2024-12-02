@@ -1,7 +1,7 @@
 /*scroll down arrow*/
 .scrollDownArrow {
   position: absolute;
-  bottom: 6%;
+  bottom: 0;
   right: 3%;
 
   display: flex;
@@ -150,6 +150,10 @@
     animation: scrollDownArrowDot-home 2s infinite ease-in-out;
   }
 
+  .scrollDownArrow {
+    display: none;
+  }
+
   @keyframes scrollDownArrowDot-home {
     0% {
       opacity: 0;
@@ -178,21 +182,51 @@
   .aboutScroolDown-Home {
     bottom: 0;
   }
+
+  @keyframes scrollDownArrowDot {
+    0% {
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+    99% {
+      opacity: 1;
+      transform: translate(0, -100px); /* 點移動至頂部 */
+    }
+    100% {
+      opacity: 0;
+      transform: translate(0, -100px); /* 保持在頂部，不閃爍 */
+    }
+  }
+
+  @keyframes scrollDownArrowLine {
+    0% {
+      height: 0;
+      opacity: 0;
+    }
+    99% {
+      height: 100px;
+      opacity: 1;
+    }
+    100% {
+      height: 100px;
+      opacity: 0; /* 在最後一瞬間才隱藏 */
+    }
+  }
 }
 
 /*ANIMATION*/
 @keyframes scrollDownArrowDot {
   0% {
     opacity: 0;
-    transform: translate(0, -200px);
+    transform: translateY(-200px);
   }
   99% {
     opacity: 1;
-    transform: translate(0, 0); /* 點移動至頂部 */
+    transform: translate(0, -100px); /* 點移動至頂部 */
   }
   100% {
     opacity: 0;
-    transform: translate(0, 0); /* 保持在頂部，不閃爍 */
+    transform: translate(0, -100px); /* 保持在頂部，不閃爍 */
   }
 }
 
@@ -202,17 +236,11 @@
     opacity: 0;
   }
   99% {
-    height: 200px;
+    height: 100px;
     opacity: 1;
   }
   100% {
-    height: 200px;
+    height: 100px;
     opacity: 0; /* 在最後一瞬間才隱藏 */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .scrollDownArrow {
-    display: none;
   }
 }

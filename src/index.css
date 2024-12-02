@@ -10,7 +10,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --goyoursYellow: #fcb900;
+  --goyoursYellow: #f8b300;
+  --goyoursBgColor: #fff8ef;
+  --goyoursBlack: #414042;
 
   font-size: 16px;
 }

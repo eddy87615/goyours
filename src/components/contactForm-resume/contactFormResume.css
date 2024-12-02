@@ -110,7 +110,7 @@
 input:-webkit-autofill {
   background-color: transparent !important;
   box-shadow: 0 0 0px 1000px transparent inset !important;
-  -webkit-text-fill-color: #000; /* 字體顏色 */
+  -webkit-text-fill-color: var(--goyoursBlack); /* 字體顏色 */
 }
 
 .realName,
@@ -148,7 +148,7 @@ input:-webkit-autofill {
   justify-content: center;
 
   padding: 0.5rem 1rem;
-  border: 1px solid #333;
+  border: 1px solid var(--goyoursBlack);
 
   background-color: transparent;
   border-radius: 0.3rem;
@@ -156,12 +156,12 @@ input:-webkit-autofill {
   cursor: pointer;
 
   font-weight: normal;
-  color: #333;
+  color: var(--goyoursBlack);
 
   gap: 0.5rem;
 }
 .uploadBtn:hover {
-  background-color: #333;
+  background-color: var(--goyoursBlack);
   color: #fff;
 }
 

@@ -9,7 +9,7 @@
 
 .loadingBear {
   fill: none;
-  stroke: #f4bf00;
+  stroke: var(--goyoursYellow);
   stroke-width: 15;
   stroke-miterlimit: 10;
   stroke-dasharray: 1101.9990234375;

@@ -21,7 +21,7 @@
   width: 30%;
   /* height: 30% !important; */
 
-  border: 2px solid #333;
+  border: 2px solid var(--goyoursBlack);
   border-radius: 2rem;
 
   padding: 2rem;
@@ -113,10 +113,10 @@
 
 @media screen and (max-width: 480px) {
   .homeperhotpost {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     margin-right: 4% !important;
     border-radius: 1.5rem;
-    border: 1.5px solid #333;
+    border: 1.5px solid var(--goyoursBlack);
   }
   .homehotpostPreview h1,
   .homehotpostPreview h2,

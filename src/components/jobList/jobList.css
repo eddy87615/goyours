@@ -1,5 +1,5 @@
 .jobListSection {
-  padding-top: 6rem;
+  padding-top: 10rem;
 
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@
   padding-right: 1rem;
 }
 .searchNumber {
-  color: #414042;
+  color: var(--goyoursBlack);
 }
 
 .searchResult {
@@ -112,7 +112,7 @@
   opacity: 1;
   transition-duration: 0.2s;
 
-  color: #414042;
+  color: var(--goyoursBlack);
   font-weight: bold;
 }
 .moreBtn {
@@ -121,7 +121,7 @@
   font-size: 1.2rem;
 }
 .joblistBtn > button:nth-child(1) {
-  background-color: #f8b300;
+  background-color: var(--goyoursYellow);
   color: #fff;
 
   padding: 1rem 2rem;
@@ -132,7 +132,7 @@
   font-weight: bold;
 }
 .joblistBtn > button:nth-child(2) {
-  background-color: #414042;
+  background-color: var(--goyoursBlack);
   color: #fff;
 
   padding: 1rem 2rem;
@@ -182,7 +182,7 @@
   color: #fff;
   font-weight: bold;
 
-  background-color: #414042;
+  background-color: var(--goyoursBlack);
   padding: 1rem 2rem;
 
   margin: 1% 0 0 33%;
@@ -336,7 +336,7 @@
     font-size: 0.875rem;
 
     background-color: transparent;
-    color: #414042;
-    border: 1px solid #414042;
+    color: var(--goyoursBlack);
+    border: 1px solid var(--goyoursBlack);
   }
 }

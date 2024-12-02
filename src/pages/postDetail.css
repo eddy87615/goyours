@@ -25,6 +25,7 @@
 .postinfolist {
   display: flex;
   justify-content: space-between;
+  flex-direction: column-reverse;
 
   color: var(--goyoursYellow);
 
@@ -34,6 +35,12 @@
   display: flex;
 
   gap: 2rem;
+}
+.postinfolist ul p {
+  margin: 0.5rem 0;
+}
+.postinfolist ul:last-child {
+  flex-wrap: wrap;
 }
 .postDetaildate {
   position: relative;
@@ -98,7 +105,7 @@
   font-size: 7rem;
   font-style: oblique;
 
-  color: #ffeed9;
+  color: var(--goyoursBgColor);
 
   padding: 1rem;
 }

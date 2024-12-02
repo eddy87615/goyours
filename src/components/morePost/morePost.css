@@ -101,7 +101,7 @@
 }
 @media screen and (max-width: 480px) {
   .submitPostLink:hover {
-    background-color: #fff8ef;
+    background-color: var(--goyoursBgColor);
   }
   .submitPostList {
     gap: 0;

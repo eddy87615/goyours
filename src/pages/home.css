@@ -250,7 +250,7 @@
   animation: shake 0.5s ease-out;
 }
 .swiper-button-prev {
-  background-color: #414042;
+  background-color: var(--goyoursBlack);
 
   width: 3rem !important;
   height: 3rem !important;
@@ -266,7 +266,7 @@
 }
 
 .swiper-button-next {
-  background-color: #414042;
+  background-color: var(--goyoursBlack);
 
   width: 3rem !important;
   height: 3rem !important;
@@ -380,7 +380,7 @@
   margin: 0;
   padding: 0.5rem 1rem;
 
-  background-color: #333;
+  background-color: var(--goyoursBlack);
   color: #fff;
   font-weight: bold;
 
@@ -417,7 +417,7 @@
 
   width: 100%;
   height: 100%;
-  background-color: #f8b300;
+  background-color: var(--goyoursYellow);
   border-radius: 2rem;
 
   font-weight: bold;
@@ -469,7 +469,7 @@
   background-color: #fff;
 
   font-weight: bold;
-  color: #f8b300;
+  color: var(--goyoursYellow);
 
   padding: 0.3rem 0.5rem;
   margin-right: 0.5rem;
@@ -484,7 +484,7 @@
   border-radius: 400rem;
 
   border: 0;
-  background-color: #414042;
+  background-color: var(--goyoursBlack);
   color: #fff;
 
   font-weight: bold;
@@ -497,8 +497,8 @@
   cursor: pointer;
 }
 .schoolListDetailBtn:hover {
-  background-color: #fff8ef;
-  color: #414041;
+  background-color: var(--goyoursBgColor);
+  color: var(--goyoursBlack);
 }
 .schoolListPre:hover .schoolListDetailBtn {
   opacity: 1;
@@ -526,7 +526,7 @@
 }
 
 .formoreBtntoPage {
-  background-color: #f8b300;
+  background-color: var(--goyoursYellow);
   color: #fff;
   font-weight: bold;
   font-size: 1.3rem;
@@ -549,7 +549,7 @@
 }
 .formoreBtntoPage:hover {
   animation: btnbounce 0.5s ease-out;
-  background-color: #414042;
+  background-color: var(--goyoursBlack);
   color: #fff;
   transition-duration: 0.5s;
 }
@@ -594,7 +594,7 @@
   display: flex;
   align-items: center;
 
-  background-color: #f8b300;
+  background-color: var(--goyoursYellow);
 
   border-radius: 50rem;
 
@@ -675,7 +675,7 @@
 }
 .more-school-button li a:hover {
   border-radius: 50rem;
-  background-color: #414041;
+  background-color: var(--goyoursBlack);
 }
 .more-school-button a p:nth-child(2) {
   position: absolute;
@@ -903,7 +903,7 @@
   }
   .kvlogo {
     width: 65%;
-    bottom: 10%;
+    bottom: 0;
     left: 0;
     z-index: 1;
   }
@@ -1081,7 +1081,7 @@
   }
   .more-school-button li a:hover {
     border-radius: 50rem;
-    background-color: #fcb900;
+    background-color: var(--goyoursYellow);
   }
   .more-school-button li a {
     font-size: 0.825rem;
@@ -1118,7 +1118,24 @@
 
 @media screen and (max-width: 375px) {
   .sp-home-scrollDown {
-    bottom: -24%;
+    bottom: -28%;
+  }
+  .homeintroImgWrapper1 {
+    bottom: -24% !important;
+  }
+  .homebg-intro-Wave {
+    bottom: -64%;
+  }
+  .homebg-school-Wave {
+    top: -4%;
+    left: -60%;
+  }
+  .homebg-job-Wave {
+    top: -12%;
+  }
+  .homebg-hot-Wave {
+    top: -20%;
+    left: -20%;
   }
   .homeintrotxt {
     width: 80%;

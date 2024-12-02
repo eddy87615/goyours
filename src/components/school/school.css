@@ -20,7 +20,7 @@
   /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
   gap: 4rem;
 
-  padding-top: 6rem;
+  padding-top: 10rem;
 }
 
 .searchResultArea {
@@ -51,7 +51,7 @@
   padding-right: 1rem;
 }
 .searchNumber {
-  color: #414042;
+  color: var(--goyoursBlack);
 }
 
 .searchResult {
@@ -90,7 +90,11 @@
 
 .schoolListNameHover {
   display: inline; /* 保持多行效果 */
-  background-image: linear-gradient(to right, #f8b300, #f8b300);
+  background-image: linear-gradient(
+    to right,
+    var(--goyoursYellow),
+    var(--goyoursYellow)
+  );
   background-size: 0% 0.2rem; /* 初始寬度設為 0 */
   background-position: 0 100%;
   background-repeat: no-repeat;

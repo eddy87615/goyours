@@ -50,7 +50,7 @@
   margin: 0;
   padding: 0.5rem 1rem;
 
-  background-color: #333;
+  background-color: var(--goyoursBlack);
   color: #fff;
   font-weight: bold;
 
@@ -103,7 +103,7 @@
   background-color: #fff;
 
   font-weight: bold;
-  color: #f8b300;
+  color: var(--goyoursYellow);
 
   padding: 0.3rem 0.5rem;
   margin-right: 0.5rem;
@@ -117,8 +117,8 @@
   opacity: 1;
 }
 .schoolListDetailBtn:hover {
-  background-color: #fff8ef;
-  color: #414041;
+  background-color: var(--goyoursBgColor);
+  color: var(--goyoursBlack);
 }
 
 @media screen and (max-width: 480px) {
@@ -144,7 +144,7 @@
   }
   .jobListPre p {
     font-size: 0.75rem;
-    background-color: #fff8ef;
+    background-color: var(--goyoursBgColor);
     color: var(--goyoursYellow);
     padding: 0.3rem 0.5rem;
   }
