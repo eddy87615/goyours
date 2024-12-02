@@ -1,6 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { client } from '../cms/sanityClient';
 import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
+
+import { motion } from 'framer-motion';
+
 import { FaLocationDot } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
@@ -14,6 +18,7 @@ import ScrollDown from '../components/scroolDown/scrollDown';
 import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import HomeBg from '../components/homeBg/homeBg';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
+import AnimationSection from './AnimationSection';
 
 import 'swiper/css/effect-fade';
 import 'swiper/css';
@@ -63,7 +68,9 @@ const News = () => {
         >
           {NewsPosts.map((post, index) => (
             <SwiperSlide key={index} className="homeNewsprePost">
-              <a href={`/post/${encodeURIComponent(post.slug.current)}`}>
+              <a
+                href={`/goyours-post/${encodeURIComponent(post.slug.current)}`}
+              >
                 {post.mainImage && (
                   <div className="homeNewspostImg">
                     <img src={urlFor(post.mainImage).url()} alt={post.title} />
@@ -166,7 +173,7 @@ const HomeschoolList = ({ windowSize }) => {
       <div className="schoolListDiv">
         {schoolListContent.map((school, index) => {
           return (
-            <div key={index} className="schoolListPre">
+            <AnimationSection key={index} className="schoolListPre">
               <div className="schoolListCover">
                 <div className="schoolListBg">
                   <h4>{school.name}</h4>
@@ -197,11 +204,11 @@ const HomeschoolList = ({ windowSize }) => {
               <Link className="home-schoolList-arrow" to={school.href}>
                 <img src="/submit-arrow.svg" alt="submit button arrow" />
               </Link>
-            </div>
+            </AnimationSection>
           );
         })}
       </div>
-      <div className="more-school-button">
+      <AnimationSection className="more-school-button">
         <ul>
           <li>
             <Link to="/studying-in-jp-school">
@@ -219,7 +226,7 @@ const HomeschoolList = ({ windowSize }) => {
             </Link>
           </li>
         </ul>
-      </div>
+      </AnimationSection>
       <a className="formoreBtntoPage" href="./studying-in-jp-school">
         看更多學校
       </a>
@@ -252,6 +259,11 @@ export default function Home() {
     { src: '/KV/KV_09.webp' },
     { src: '/KV/KV_about_07.webp' },
     { src: '/KV/KV_25.webp' },
+    { src: '/KV/KV_about_13.webp' },
+    { src: '/KV/KV_about_04.webp' },
+    { src: '/KV/KV_about_02.webp' },
+    { src: '/KV/KV_01.webp' },
+    { src: '/KV/KV_about_09.webp' },
   ];
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -264,15 +276,22 @@ export default function Home() {
 
   return (
     <>
-      <div className="kv">
+      <motion.div
+        className="kv"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, ease: 'easeOut' }}
+      >
         <div className="kvSlider">
           <Swiper
             centeredSlides={true}
             loop={true}
-            // autoplay={{ delay: 3000 }}
+            autoplay={{ delay: 2000 }}
             effect="fade"
             fadeEffect={{ crossFade: true }}
             modules={[Autoplay, EffectFade]}
+            simulateTouch={false} // 禁用滑鼠模拟触控
+            allowTouchMove={false} // 禁用滑鼠拖动
           >
             {homeslider.map((slide, index) => (
               <SwiperSlide key={index}>
@@ -286,8 +305,8 @@ export default function Home() {
         <div className="sp-home-scrollDown">
           <ScrollDownSide />
         </div>
-      </div>
-      <div className="homeintroSection">
+      </motion.div>
+      <AnimationSection className="homeintroSection">
         <div className="homebg-intro-Wave">
           <HomeBg />
         </div>
@@ -314,25 +333,25 @@ export default function Home() {
             </div>
           );
         })}
-      </div>
-      <div className="homeNewsSection">
+      </AnimationSection>
+      <AnimationSection className="homeNewsSection">
         <News />
-      </div>
-      <div className="homeschoolList">
+      </AnimationSection>
+      <AnimationSection className="homeschoolList">
         <HomeschoolList windowSize={windowSize} />
         <div className="homebg-school-Wave">
           <HomeBg />
         </div>
-      </div>
-      <div className="workingholidaySection">
+      </AnimationSection>
+      <AnimationSection className="workingholidaySection">
         <HomeJobList />
-      </div>
-      <div className="homeHotpostSection">
+      </AnimationSection>
+      <AnimationSection className="homeHotpostSection">
         <Hotpost />
-      </div>
-      <div className="homeContactusSection">
+      </AnimationSection>
+      <AnimationSection className="homeContactusSection">
         <ContactUs />
-      </div>
+      </AnimationSection>
     </>
   );
 }

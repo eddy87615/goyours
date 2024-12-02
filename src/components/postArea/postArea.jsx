@@ -4,6 +4,12 @@ import { PortableText } from '@portabletext/react';
 import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
 import { Link } from 'react-router-dom';
 import Pagination from '../pagination/pagination';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css'; // 引入核心樣式
+import 'swiper/css/navigation'; // 引入導航按鈕樣式
+
 import './postArea.css'; // 导入样式表
 
 // import { BiShow, BiCalendar, BiEditAlt, BiPurchaseTag } from 'react-icons/bi';
@@ -22,6 +28,81 @@ export default function PostArea({ posts, handleCategoryClick }) {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const customComponents = {
+    types: {
+      image: ({ value }) => {
+        // 直接确认 asset 是否存在，无需过多检查
+        if (!value?.asset?._ref) {
+          console.warn('未找到图片资源，跳过渲染:', value);
+          return null;
+        }
+
+        return (
+          <div className="post-image">
+            <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
+          </div>
+        );
+      },
+      gallery: ({ value }) => {
+        console.log('Gallery Images:', value.images); // 確認圖片數據是否正確
+        if (!value.images || value.images.length === 0) return null;
+        return (
+          <div className="gallery">
+            <Swiper
+              navigation={true}
+              modules={[Navigation]}
+              loop
+              className="mySwiper"
+            >
+              {value.images.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={urlFor(image).url()}
+                    alt={`Gallery Image ${index + 1}`}
+                    className="gallery-image"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        );
+      },
+
+      span: ({ value, children }) => {
+        console.log('覆蓋默認 span 處理:', value);
+        return <span>{children}</span>;
+      },
+    },
+    marks: {
+      color: ({ children, value }) => {
+        const color = value?.hex?.hex || '#FF0000';
+
+        return (
+          <span
+            style={{
+              color,
+            }}
+          >
+            {children}
+          </span>
+        );
+      },
+      favoriteColor: ({ children, value }) => {
+        const color = value?.hex?.hex || '#FF0000';
+
+        return (
+          <span
+            style={{
+              color,
+            }}
+          >
+            {children}
+          </span>
+        );
+      },
+    },
   };
 
   return (
@@ -68,7 +149,7 @@ export default function PostArea({ posts, handleCategoryClick }) {
                 .replace(/\//g, '.')}
             </p>
             <div className="textPart">
-              <PortableText value={post.body} />
+              <PortableText value={post.body} components={customComponents} />
             </div>
             {/* <Link to={`/post/${post.slug.current}`}>Read More</Link>{' '} */}
           </div>

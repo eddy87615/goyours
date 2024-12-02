@@ -3,6 +3,7 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import GoyoursBearJob from '../goyoursBear/goyoursBearJob';
 import HomeBg from '../homeBg/homeBg';
+import AnimationSection from '../../pages/AnimationSection';
 
 import './homeJobList.css';
 import '../../pages/home.css';
@@ -84,7 +85,7 @@ export default function HomeJobList() {
 
   return (
     <>
-      <div className="homeJobWrapper">
+      <AnimationSection className="homeJobWrapper">
         <div className="homeJobH1">
           <h1>
             <span className="yellow">Working Holiday</span>
@@ -98,7 +99,7 @@ export default function HomeJobList() {
         <div className="workingholidayDiv">
           {jobListContent.map((job, index) => {
             return (
-              <div key={index} className="jobListPre">
+              <AnimationSection key={index} className="jobListPre">
                 <div className="jobListimg">
                   <img src={job.src} alt={job.jobName} />
                 </div>
@@ -127,12 +128,12 @@ export default function HomeJobList() {
                     {/* 了解職缺詳情 */}
                   </button>
                 </div>
-              </div>
+              </AnimationSection>
             );
           })}
         </div>
-      </div>
-      <div className="more-school-button">
+      </AnimationSection>
+      <AnimationSection className="more-school-button">
         <ul>
           <li>
             <Link to="/working-holiday-job">
@@ -150,7 +151,7 @@ export default function HomeJobList() {
             </Link>
           </li>
         </ul>
-      </div>
+      </AnimationSection>
       <a className="formoreBtntoPage" href="./working-holiday-job">
         看更多職缺
       </a>

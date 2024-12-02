@@ -689,6 +689,11 @@
   }
 } */
 
+.aboutPage-scrollDown {
+  position: absolute;
+  bottom: 20%;
+  left: 52%;
+}
 @keyframes fade-in-out {
   0% {
     opacity: 0;
@@ -728,10 +733,11 @@
 }
 
 .progress-number.completed {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   color: transparent;
   font-weight: bold;
-  z-index: 99;
+
+  /* z-index: 99; */
 
   transition-delay: -0.5s;
 
@@ -739,8 +745,13 @@
 }
 .completed::after {
   content: url(/100.png);
-  animation: bounceOut 0.3s ease forwards;
-  transition-delay: 0.1s;
+  /* animation: bounceOut 0.3s ease forwards;
+  transition-delay: 0.1s; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 100%;
+  bottom: 100%;
 }
 
 /* 彈跳動畫 */
@@ -758,6 +769,9 @@
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .aboutPage-scrollDown {
+    position: unset;
+  }
   .centerLogo {
     width: 19rem;
 
@@ -934,6 +948,9 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .aboutPage-scrollDown {
+    position: unset;
+  }
   .aboutusTopImg:nth-of-type(2),
   .aboutusTopImg:nth-of-type(4),
   .aboutusTopImg:nth-of-type(5),

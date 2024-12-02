@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 import GoyoursBear from '../goyoursBear/goyoursBear';
 import HomeBg from '../homeBg/homeBg';
+import AnimationSection from '../../pages/AnimationSection';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -16,7 +17,12 @@ import './hotPost.css';
 const customComponents = {
   types: {
     image: ({ value }) => {
-      if (!value.asset) return null;
+      // 直接确认 asset 是否存在，无需过多检查
+      if (!value?.asset?._ref) {
+        // console.warn('未找到图片资源，跳过渲染:', value);
+        return null;
+      }
+
       return (
         <div className="post-image">
           <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
@@ -24,7 +30,7 @@ const customComponents = {
       );
     },
     gallery: ({ value }) => {
-      console.log('Gallery Images:', value.images); // 確認圖片數據是否正確
+      // console.log('Gallery Images:', value.images); // 確認圖片數據是否正確
       if (!value.images || value.images.length === 0) return null;
       return (
         <div className="gallery">
@@ -43,19 +49,15 @@ const customComponents = {
       );
     },
     span: ({ value, children }) => {
-      console.log('覆蓋默認 span 處理:', value);
+      // console.log('覆蓋默認 span 處理:', value);
       return <span>{children}</span>;
     },
   },
   marks: {
-    favoriteColor: ({ children, value }) => {
-      console.log('favoriteColor 渲染器接收到的 value:', value);
-      const color = value?.hex.hex || '#FF0000';
+    color: ({ children, value }) => {
+      // console.log('Color Mark Value:', value);
 
-      if (!value || !value.hex.hex) {
-        console.error('無法讀取到 hex，使用回退顏色');
-        return <span>{children}</span>;
-      }
+      const color = value?.hex?.hex || '#FF0000';
 
       return (
         <span
@@ -66,6 +68,24 @@ const customComponents = {
           {children}
         </span>
       );
+    },
+    favoriteColor: ({ children, value }) => {
+      // console.log('Color Mark Value:', value);
+
+      const color = value?.hex?.hex || '#FF0000';
+
+      return (
+        <span
+          style={{
+            color,
+          }}
+        >
+          {children}
+        </span>
+      );
+    },
+    link: ({ children, value }) => {
+      return <span>{children}</span>; // 使用 <span> 替代
     },
   },
 };
@@ -98,7 +118,7 @@ export default function Hotpost() {
   }, []);
 
   return (
-    <>
+    <AnimationSection>
       <div className="homeHotpostH1">
         <h1>
           <span className="yellow">Hot</span>熱門文章
@@ -121,7 +141,7 @@ export default function Hotpost() {
           {NewsPosts.map((post, index) => (
             <SwiperSlide key={index} className="homeperhotpost">
               <a
-                href={`/post/${encodeURIComponent(post.slug.current)}`}
+                href={`/goyours-post/${encodeURIComponent(post.slug.current)}`}
                 className="homeprehotpost"
               >
                 {post.mainImage && (
@@ -131,23 +151,22 @@ export default function Hotpost() {
                 )}
                 <h3>{post.title}</h3>
                 <ul>
-                  {post.categories.map((category, index) => (
-                    <li key={index} className="category yellow">
-                      #{category.title}
-                    </li>
-                  ))}
+                  {post.categories && post.categories.length > 0 ? (
+                    post.categories.map((category, index) => (
+                      <li key={index} className="category">
+                        #{category.title}
+                      </li>
+                    ))
+                  ) : (
+                    <li>無分類</li>
+                  )}
                 </ul>
+
                 <div className="homehotpostPreview">
                   {post.body ? (
                     <PortableText
                       value={post.body}
-                      components={{
-                        ...customComponents, // 展開 customComponents
-                        marks: {
-                          ...customComponents.marks, // 確保 customComponents.marks 被包含
-                          link: ({ children }) => <>{children}</>, // 覆蓋或新增特定的渲染器
-                        },
-                      }}
+                      components={customComponents}
                     />
                   ) : (
                     <p>本文無內容</p>
@@ -170,7 +189,7 @@ export default function Hotpost() {
           ))}
         </Swiper>
       </div>
-      <div className="more-school-button">
+      <AnimationSection className="more-school-button">
         <ul>
           <li>
             <Link to="/goyours-post">
@@ -188,10 +207,10 @@ export default function Hotpost() {
             </Link>
           </li>
         </ul>
-      </div>
+      </AnimationSection>
       <a className="formoreBtntoPage" href="/goyours-post">
         看所有文章
       </a>
-    </>
+    </AnimationSection>
   );
 }

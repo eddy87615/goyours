@@ -5,6 +5,12 @@
   padding: 3rem 0;
   border-bottom: 2px solid #d0d0d0;
 }
+.postarea .gallery {
+  display: none;
+}
+.textPart img {
+  display: none;
+}
 
 .postListInfo h2:first-child {
   font-size: 1.25rem;
@@ -95,6 +101,10 @@
   font-weight: normal;
 }
 
+.gallery {
+  display: none;
+}
+
 @media screen and (min-width: 1201px) {
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
@@ -178,6 +188,7 @@
 
     padding: 1rem 0;
   }
+
   .postarea:first-child {
     padding-top: 0;
   }

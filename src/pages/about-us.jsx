@@ -5,6 +5,7 @@ import { client } from '../cms/sanityClient';
 import ContactUs from '../components/contactUs/contactUs';
 import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
+import AnimationSection from '../pages/AnimationSection';
 
 import './about-us.css';
 
@@ -188,9 +189,11 @@ export default function About() {
             <img src={img.src} alt={`about us top img ${index}`} />
           </div>
         ))}
-        <ScrollDownSide />
+        <div className="aboutPage-scrollDown">
+          <ScrollDownSide />
+        </div>
       </div>
-      <div className="goyoursIntro">
+      <AnimationSection className="goyoursIntro">
         <h1>
           <span className="goyoursbear">
             <svg
@@ -229,8 +232,8 @@ export default function About() {
           <br />
           這一次不為誰，只為了你的夢想起飛～ 去吧！去你的打工度假！
         </p>
-      </div>
-      <div className="goyoursserviceWrapper">
+      </AnimationSection>
+      <AnimationSection className="goyoursserviceWrapper">
         <div className="goyoursservice">
           <h1>
             <span className="yellow">Service</span>服務內容
@@ -252,7 +255,7 @@ export default function About() {
             </p>
             <div className="circleMenu">
               <div className="circleMenuLogo">
-                <img src="/LOGO-02.png" alt="goyours logo" />
+                <img src="/LOGO-02-text.png" alt="goyours logo" />
               </div>
               {services.map((service, index) => (
                 <div
@@ -275,9 +278,9 @@ export default function About() {
           </div>
           <div className="servicecontentBg"></div>
         </div>
-      </div>
+      </AnimationSection>
 
-      <div className="Review">
+      <AnimationSection className="Review">
         <div className="reviewTitle">
           <h1>
             <span className="yellow">Review</span>學員心得
@@ -286,26 +289,26 @@ export default function About() {
         </div>
         <div className="feedBackArea">
           {feedbacks.map((feedback, index) => (
-            <div key={index} className="feedbackList">
+            <AnimationSection key={index} className="feedbackList">
               <div className="feedbackInfo">
                 <p>By {feedback.name}</p>
               </div>
               <div className="feedbackTxt">
                 <p>{feedback.feedback}</p>
               </div>
-            </div>
+            </AnimationSection>
           ))}
         </div>
-      </div>
+      </AnimationSection>
       <div className="ifYou">
         <h1>
           <span className="yellow">If You...</span>如果你
         </h1>
         <ProgressBar />
       </div>
-      <div className="aboutContactArea">
+      <AnimationSection className="aboutContactArea">
         <ContactUs />
-      </div>
+      </AnimationSection>
     </>
   );
 }

@@ -93,19 +93,15 @@ export default function StudyingInJp() {
           ))}
         </div>
         <div className="silde-text-wrapper-right01">
-          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
-            (_, index) => (
-              <p key={index}>Go Yours ●</p>
-            )
-          )}
+          {Array.from({ length: 13 }).map((_, index) => (
+            <p key={index}>Go Yours ●　</p>
+          ))}
         </div>
 
         <div className="silde-text-wrapper-right01 right02">
-          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
-            (_, index) => (
-              <p key={index}>Go Yours ●</p>
-            )
-          )}
+          {Array.from({ length: 13 }).map((_, index) => (
+            <p key={index}>Go Yours ●　</p>
+          ))}
         </div>
 
         <div className="guide-vertical-slide-right">
@@ -116,18 +112,14 @@ export default function StudyingInJp() {
           ))}
         </div>
         <div className="silde-text-wrapper-left01">
-          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
-            (_, index) => (
-              <p key={index}>Go Yours ●</p>
-            )
-          )}
+          {Array.from({ length: 13 }).map((_, index) => (
+            <p key={index}>Go Yours ●　</p>
+          ))}
         </div>
         <div className="silde-text-wrapper-left01 left02">
-          {Array.from({ length: windowSize < 1020 ? 10 : 13 }).map(
-            (_, index) => (
-              <p key={index}>Go Yours ●</p>
-            )
-          )}
+          {Array.from({ length: 13 }).map((_, index) => (
+            <p key={index}>Go Yours ●　</p>
+          ))}
         </div>
       </div>
       <div className="guide-content">

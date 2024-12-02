@@ -21,7 +21,12 @@ import 'swiper/css/navigation'; // 引入導航按鈕樣式
 const customComponents = {
   types: {
     image: ({ value }) => {
-      if (!value.asset) return null;
+      // 直接确认 asset 是否存在，无需过多检查
+      if (!value?.asset?._ref) {
+        console.warn('未找到图片资源，跳过渲染:', value);
+        return null;
+      }
+
       return (
         <div className="post-image">
           <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
@@ -59,14 +64,10 @@ const customComponents = {
     },
   },
   marks: {
-    favoriteColor: ({ children, value }) => {
-      console.log('favoriteColor 渲染器接收到的 value:', value);
-      const color = value?.hex.hex || '#FF0000';
+    color: ({ children, value }) => {
+      console.log('Color Mark Value:', value);
 
-      if (!value || !value.hex.hex) {
-        console.error('無法讀取到 hex，使用回退顏色');
-        return <span>{children}</span>;
-      }
+      const color = value?.hex?.hex || '#FF0000';
 
       return (
         <span
@@ -143,7 +144,6 @@ export default function PostDetail({ handleSearch }) {
     }
 
     fetchPost();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   async function fetchRelatedPosts(categories, currentSlug) {

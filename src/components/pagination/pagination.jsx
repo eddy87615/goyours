@@ -33,17 +33,24 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
     }
   }
 
+  const handlePageChange = (page) => {
+    if (typeof page === 'number') {
+      window.scrollTo(0, 0);
+      onPageChange(page);
+    }
+  };
+
   return (
     <div className="pagination">
       {currentPage > 1 && (
-        <a onClick={() => onPageChange(currentPage - 1)}>
+        <a onClick={() => handlePageChange(currentPage - 1)}>
           <FaArrowLeftLong />
         </a>
       )}
       {pageNumbers.map((number, index) => (
         <a
           key={index}
-          onClick={() => typeof number === 'number' && onPageChange(number)}
+          onClick={() => handlePageChange(number)}
           className={currentPage === number ? 'active' : ''}
           disabled={number === '...'}
         >
@@ -51,7 +58,7 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
         </a>
       ))}
       {currentPage < totalPages && (
-        <a onClick={() => onPageChange(currentPage + 1)}>
+        <a onClick={() => handlePageChange(currentPage + 1)}>
           <FaArrowRightLong />
         </a>
       )}

@@ -76,7 +76,7 @@
   counter-reset: textSrea;
 
   line-height: 2rem;
-  padding-top: 2rem;
+  padding: 4rem 0;
 }
 .postTxtarea ul,
 .postTxtarea ol,
