@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'; // 用來獲取 URL 中的 slug
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -27,6 +28,8 @@ import ContactUs from '../components/contactUs/contactUs';
 import GoyoursBearsSchoolCondition from '../components/goyoursBear/goyoursBear-schoolConditions';
 import GoyoursBears from '../components/goyoursBear/goyoursBear';
 import './schoolDetail.css';
+
+const cache = new Map();
 
 const Features = ({ school }) => {
   return (
@@ -211,6 +214,16 @@ export default function SchoolDetail() {
 
   useEffect(() => {
     async function fetchPost() {
+      const cacheKey = `school-${slug}`;
+      console.log('useEffect triggered with slug:', slug);
+
+      if (cache.has(cacheKey)) {
+        console.log('cache hit');
+        setSchool(cache.get(cacheKey));
+        setLoading(false);
+        return;
+      }
+
       const school = await client.fetch(
         `
         *[_type == "school" && slug.current == $slug][0] {
@@ -240,7 +253,11 @@ export default function SchoolDetail() {
       `,
         { slug }
       );
-      setSchool(school);
+      if (school) {
+        cache.set(cacheKey, school);
+        setSchool(school);
+      }
+      // setSchool(school);
       setLoading(false);
     }
 
@@ -277,7 +294,11 @@ export default function SchoolDetail() {
   };
 
   return (
-    <div className="schoolDetailwrapper">
+    <HelmetProvider className="schoolDetailwrapper">
+      <Helmet>
+        <title>Go Yours語言學校介紹：{school.name}</title>
+        <meta name="description" content={`Go Yours介紹給你：${school.name}`} />
+      </Helmet>
       <div className="schoolDetailPage">
         <div className="picSlider">
           <BreadCrumb
@@ -384,6 +405,6 @@ export default function SchoolDetail() {
           <ImCross />
         </button>
       </Modal>
-    </div>
+    </HelmetProvider>
   );
 }

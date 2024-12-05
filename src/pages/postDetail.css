@@ -11,6 +11,10 @@
 }
 .postbody {
   padding-top: 6rem;
+
+  word-break: break-word; /* 強制換行 */
+  overflow-wrap: break-word; /* 防止長字串超出 */
+  white-space: normal; /* 允許自動換行 */
 }
 .postbody img {
   width: 100%;
@@ -77,7 +81,7 @@
 }
 
 .postTxtarea li {
-  list-style: disc;
+  list-style: auto;
 }
 .postTxtarea {
   counter-reset: textSrea;

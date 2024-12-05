@@ -305,6 +305,15 @@
 .hamburger-menu-icon img {
   height: 100%;
 }
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .mainNav {
+    padding: 3rem 2rem;
+  }
+  .navMenu ul a {
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+  }
+}
 
 @media (min-width: 481px) and (max-width: 1024px) {
   .mainNav {

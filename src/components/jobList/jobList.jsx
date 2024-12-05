@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { client, urlFor } from '../../cms/sanityClient';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { MdHomeWork } from 'react-icons/md';
 import { LuClipboardList } from 'react-icons/lu';
@@ -36,8 +36,6 @@ export default function JobList({ jobList, isSearchTriggered }) {
     });
   };
 
-  console.log('JobList received jobs:', jobList); // 檢查 JobList 接收到的數據
-
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -46,8 +44,13 @@ export default function JobList({ jobList, isSearchTriggered }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const jobDescription = '高優熊介紹打工度假的工作機會給你！';
+
   return (
     <div className="jobListSection">
+      <Helmet>
+        <meta name="description" content={jobDescription} />
+      </Helmet>
       {isSearchTriggered && jobList.length > 0 ? (
         <div className="searchResultArea">
           <h2 className="yellow">
@@ -101,7 +104,7 @@ export default function JobList({ jobList, isSearchTriggered }) {
                 </li>
                 <li>
                   <FaLocationDot className="yellow jobisticon" />
-                  {job.transportation}
+                  {job.transportation ? job.transportation : '未提供'}
                 </li>
                 <li>
                   <RiMoneyCnyCircleFill className="yellow jobisticon" />
@@ -142,12 +145,12 @@ export default function JobList({ jobList, isSearchTriggered }) {
                   isOpenList[job.slug.current || job.slug] ? '' : 'close'
                 }`}
               >
-                <li>工作期間：{job.jobperiod}</li>
-                <li>勤務時間：{job.jobtime}</li>
-                <li>休息時間：{job.resttime}</li>
-                <li>每週工時：{job.workhour}</li>
-                <li>日文程度：{job.japanese}</li>
-                <li>福利厚生：{job.privilege}</li>
+                <li>工作期間：{job.jobperiod ? job.jobperiod : '未提供'}</li>
+                <li>勤務時間：{job.jobtime ? job.jobtime : '未提供'}</li>
+                <li>休息時間：{job.resttime ? job.resttime : '未提供'}</li>
+                <li>每週工時：{job.workhour ? job.workhour : '未提供'}</li>
+                <li>日文程度：{job.japanese ? job.japanese : '未提供'}</li>
+                <li>福利厚生：{job.privilege ? job.privilege : '未提供'}</li>
               </ul>
               {job.detailedFile?.asset?._ref && (
                 <a
@@ -155,9 +158,12 @@ export default function JobList({ jobList, isSearchTriggered }) {
                     client.config().projectId
                   }/${client.config().dataset}/${
                     job.detailedFile.asset._ref.split('-')[1]
-                  }.pdf`} // 使用 _ref 生成 URL
-                  download
-                  target="blank"
+                  }.${job.detailedFile.asset._ref.split('-')[2]}`} // 動態獲取副檔名
+                  download={`${job.name || '求人票'}.${
+                    job.detailedFile.asset._ref.split('-')[2]
+                  }`} // 設置正確的檔案名稱
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={` ${
                     isOpenList[job.slug.current || job.slug] ? '' : 'btnClose'
                   }`}
@@ -166,6 +172,7 @@ export default function JobList({ jobList, isSearchTriggered }) {
                   下載求人票
                 </a>
               )}
+
               <button onClick={() => toggleList(job.slug.current || job.slug)}>
                 <FaCircleMinus className="yellow moreBtn" />
               </button>

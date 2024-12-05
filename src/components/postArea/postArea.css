@@ -4,6 +4,11 @@
 
   padding: 3rem 0;
   border-bottom: 2px solid #d0d0d0;
+
+  width: 100%;
+}
+.postarea:hover img {
+  animation: shake 0.5s ease-out;
 }
 .postarea .gallery {
   display: none;
@@ -28,14 +33,13 @@
 }
 
 .postRight {
+  width: 100%;
   display: flex;
   /* gap: 5rem; */
 
   flex-direction: column;
 
-  /* height: 100vh;
-
-  overflow: auto; */
+  overflow: auto;
 
   padding-top: 4rem;
 }
@@ -86,19 +90,17 @@
   margin-top: 1rem;
 
   color: #a1a1a1;
+
+  word-break: break-word; /* 強制換行 */
+  overflow-wrap: break-word; /* 防止長字串超出 */
+  white-space: normal; /* 允許自動換行 */
 }
-.textPart a {
-  color: #a1a1a1;
-}
-.textPart h1,
-.textPart h2,
-.textPart h3,
-.textPart a,
+
 .textPart p {
   font-size: 1rem !important;
   line-height: 2rem;
   margin: 0;
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 .gallery {
@@ -150,14 +152,7 @@
   .textPart {
     margin: 0.5rem 0;
   }
-  .textPart > p,
-  .textPart > a,
-  .textPart > h4,
-  .textPart > h3,
-  .textPart > h2,
-  .textPart > h2,
-  .textPart > a,
-  .textPart > p > a {
+  .textPart p {
     font-size: 0.825rem !important;
     line-height: 1.5rem;
   }
@@ -212,12 +207,7 @@
   .date img {
     width: 1.5rem;
   }
-  .textPart > p,
-  .textPart > a,
-  .textPart > h4,
-  .textPart > h3,
-  .textPart > h2,
-  .textPart > h1 {
+  .textPart p {
     font-size: 0.75rem !important;
     line-height: 1.2rem;
   }
@@ -225,5 +215,23 @@
     margin-top: 0.5rem;
 
     height: fit-content;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

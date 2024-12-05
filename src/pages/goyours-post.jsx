@@ -4,6 +4,7 @@ import { client } from '../cms/sanityClient';
 import PostArea from '../components/postArea/postArea';
 import PostCategary from '../components/postCategory/postCategory';
 import './goyours-post.css';
+import { filter } from 'framer-motion/client';
 
 export default function Post() {
   const [categories, setCategories] = useState([
@@ -12,16 +13,17 @@ export default function Post() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [posts, setPosts] = useState([]);
-  const [filteredPostsAfter, setFilteredPostsAfter] = useState([]);
+  const [totalPosts, setTotalPosts] = useState(0); // 總文章數
   const [loading, setLoading] = useState(true);
-  const [isSpSearchClicked, setIsSpSearchClicked] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1); // 當前頁
+  const postPerPage = 10; // 每頁文章數
 
   const handleCategoryClick = (category) => {
-    if (selectedCategory === category) return; // 避免重复更新状态
-    setSelectedCategory(category); // 更新分类
-    setSearchQuery(''); // 清空搜索关键字
-    setIsSpSearchClicked(false); // 关闭 SP 搜索视窗
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // 滚动到页面顶部
+    if (selectedCategory === category) return;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setSelectedCategory(category);
+    setSearchQuery('');
+    setCurrentPage(1); // 重置到第1頁
   };
 
   const location = useLocation();
@@ -34,6 +36,7 @@ export default function Post() {
   const handleSearch = (query) => {
     setSearchQuery(query || '');
     setSelectedCategory(null);
+    setCurrentPage(1); // 重置到第1頁
   };
 
   useEffect(() => {
@@ -51,8 +54,19 @@ export default function Post() {
     }
 
     async function fetchPosts() {
-      const posts = await client.fetch(`
-        *[_type == "post"] | order(publishedAt desc) {
+      setLoading(true);
+
+      const start = (currentPage - 1) * postPerPage;
+      const end = start + postPerPage;
+
+      // 根據分類或關鍵字動態生成查詢
+      const categoryFilter = selectedCategory
+        ? `&& "${selectedCategory}" in categories[]->title`
+        : '';
+      const searchFilter = searchQuery ? `&& title match "${searchQuery}"` : '';
+
+      const query = `
+        *[_type == "post" && !(_id in path("drafts.**")) ${categoryFilter} ${searchFilter}] | order(publishedAt desc) [${start}...${end}] {
           title,
           body,
           publishedAt,
@@ -66,30 +80,26 @@ export default function Post() {
             name
           }
         }
-      `);
-      setPosts(posts);
-      setFilteredPostsAfter(posts);
+      `;
+
+      const totalQuery = `
+        count(*[_type == "post" ${categoryFilter} ${searchFilter}])
+      `;
+
+      // 查詢符合條件的文章總數和當前頁數據
+      const [fetchedPosts, total] = await Promise.all([
+        client.fetch(query),
+        client.fetch(totalQuery),
+      ]);
+
+      setPosts(fetchedPosts);
+      setTotalPosts(total);
       setLoading(false);
     }
 
     fetchCategories();
     fetchPosts();
-  }, []);
-
-  useEffect(() => {
-    let tempPosts = [...posts];
-    if (selectedCategory) {
-      tempPosts = tempPosts.filter((post) =>
-        post.categories.some((category) => category.title === selectedCategory)
-      );
-    }
-    if (searchQuery) {
-      tempPosts = tempPosts.filter((post) =>
-        post.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-    setFilteredPostsAfter(tempPosts);
-  }, [searchQuery, selectedCategory, posts]);
+  }, [currentPage, selectedCategory, searchQuery]);
 
   if (loading) {
     return (
@@ -98,15 +108,6 @@ export default function Post() {
       </div>
     );
   }
-  if (!posts.length) {
-    return (
-      <div className="postLoading">
-        <p>沒有相關文章ಥ∀ಥ</p>
-      </div>
-    );
-  }
-
-  const filteredPosts = filteredPostsAfter;
 
   return (
     <div className="postPage">
@@ -116,17 +117,19 @@ export default function Post() {
         handleSearch={handleSearch}
         placeholder="搜尋文章⋯"
         title="文章分類"
-        isSpSearchClicked={isSpSearchClicked}
-        setIsSpSearchClicked={setIsSpSearchClicked}
+        isSpSearchClicked={false}
+        setIsSpSearchClicked={() => {}}
       />
-      {filteredPosts.length === 0 ? (
+      {posts.length === 0 ? (
         <div className="postLoading">
           <p>沒有相關文章ಥ∀ಥ</p>
         </div>
       ) : (
         <PostArea
-          posts={filteredPosts}
-          selectedCategory={selectedCategory}
+          posts={posts}
+          totalPages={Math.ceil(totalPosts / postPerPage)}
+          currentPage={currentPage}
+          onPageChange={(page) => setCurrentPage(page)}
           handleCategoryClick={handleCategoryClick}
         />
       )}

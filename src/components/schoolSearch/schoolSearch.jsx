@@ -23,12 +23,10 @@ const useSelection = (initialState = {}) => {
   const clearSelection = (category) => {
     setSelected((prev) => {
       if (category) {
-        // 清除指定分類
         const updated = { ...prev };
         updated[category] = [];
         return updated;
       }
-      // 清除所有選擇
       return {};
     });
   };
@@ -40,14 +38,13 @@ const useSelection = (initialState = {}) => {
     }));
   };
 
-  const countSelected = Object.values(selected).flat().length;
-
   return {
     selected,
+    setSelected, // 用於直接設置狀態
     toggleSelection,
     clearSelection,
     selectAll,
-    countSelected,
+    countSelected: Object.values(selected).flat().length,
   };
 };
 
@@ -66,10 +63,10 @@ const useArraySelection = (initialState = []) => {
 
   return {
     selected,
+    setSelected, // 用於直接設置狀態
     toggleSelection,
     clearSelection,
     countSelected: selected.length,
-    counted: selected.length,
   };
 };
 
@@ -225,7 +222,7 @@ const OtherCondition = ({ isActive, others, selected, toggleSelection }) => {
   );
 };
 
-export default function SchoolSearch({ onSearchFilters, schools }) {
+export default function SchoolSearch({ onSearchFilters, initialFilters }) {
   const [selectedTags, setSelectedTags] = useState([]); // 用來追蹤被選擇的篩選選項
 
   const [filters, setFilters] = useState({
@@ -488,9 +485,20 @@ export default function SchoolSearch({ onSearchFilters, schools }) {
     };
     onSearchFilters(newFilters); // 傳遞篩選條件給父組件
     setIsSearchClicked(false);
-
-    setActiveMenu(false);
+    setActiveMenu(null);
+    window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    if (initialFilters) {
+      setKeyword(initialFilters.keyword || '');
+      regionsState.setSelected(initialFilters.regions || {}); // 設置地區
+      enrollTimeState.setSelected(initialFilters.enrollTime || []); // 設置入學時間
+      purposeState.setSelected(initialFilters.purpose || []); // 設置學習目的
+      othersState.setSelected(initialFilters.others || {}); // 設置其他條件
+      setSelectedTags(initialFilters.selectedTags || []); // 設置選中的標籤
+    }
+  }, [initialFilters]);
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 

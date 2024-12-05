@@ -62,7 +62,7 @@ const News = () => {
           slidesPerView="auto"
           centeredSlides={true}
           navigation={true}
-          // autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Autoplay, Navigation]}
           loop={true}
         >
@@ -143,7 +143,7 @@ const HomeschoolList = ({ windowSize }) => {
     {
       name: 'ARC日本語學校-京都校',
       location: '京都市',
-      src: '/ARC日本語學校-京都校.png',
+      src: '/ARC日本語學校-京都校.webp',
       traffic: '地下鐵丸太町站直走6分鐘',
       highlight: '校外學習，與日語互動',
       href: '/studying-in-jp-school/utsunimiyanikken',

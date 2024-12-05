@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // 用來獲取 URL 中的 slug
 import { client, urlFor } from '../cms/sanityClient';
 import { PortableText } from '@portabletext/react'; // 用來顯示富文本
 import { Link } from 'react-router-dom';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import PostCategary from '../components/postCategory/postCategory';
 import ContactUs from '../components/contactUs/contactUs';
@@ -23,7 +25,6 @@ const customComponents = {
     image: ({ value }) => {
       // 直接确认 asset 是否存在，无需过多检查
       if (!value?.asset?._ref) {
-        console.warn('未找到图片资源，跳过渲染:', value);
         return null;
       }
 
@@ -34,7 +35,6 @@ const customComponents = {
       );
     },
     gallery: ({ value }) => {
-      console.log('Gallery Images:', value.images); // 確認圖片數據是否正確
       if (!value.images || value.images.length === 0) return null;
       return (
         <div className="gallery">
@@ -59,14 +59,11 @@ const customComponents = {
     },
 
     span: ({ value, children }) => {
-      console.log('覆蓋默認 span 處理:', value);
       return <span>{children}</span>;
     },
   },
   marks: {
     color: ({ children, value }) => {
-      console.log('Color Mark Value:', value);
-
       const color = value?.hex?.hex || '#FF0000';
 
       return (
@@ -82,19 +79,21 @@ const customComponents = {
   },
 };
 
+const cache = new Map();
+
 // 文章詳情頁
 export default function PostDetail({ handleSearch }) {
-  const categories = [
-    { label: '所有文章', value: null },
-    { label: '最新消息', value: '最新消息' },
-    { label: '日本SGU項目', value: '日本SGU項目' },
-    { label: '日本EJU', value: '日本EJU' },
-    { label: '日本介護・護理相關', value: '日本介護・護理相關' },
-    { label: '日本特定技能一號簽證', value: '日本特定技能一號簽證' },
-    { label: '日本相關', value: '日本相關' },
-    { label: '日本留學', value: '日本留學' },
-    { label: '打工度假', value: '打工度假' },
-  ];
+  // const categories = [
+  //   { label: '所有文章', value: null },
+  //   { label: '最新消息', value: '最新消息' },
+  //   { label: '日本SGU項目', value: '日本SGU項目' },
+  //   { label: '日本EJU', value: '日本EJU' },
+  //   { label: '日本介護・護理相關', value: '日本介護・護理相關' },
+  //   { label: '日本特定技能一號簽證', value: '日本特定技能一號簽證' },
+  //   { label: '日本相關', value: '日本相關' },
+  //   { label: '日本留學', value: '日本留學' },
+  //   { label: '打工度假', value: '打工度假' },
+  // ];
 
   const { slug } = useParams(); // 從 URL 獲取文章 slug
   const [post, setPost] = useState(null);
@@ -111,8 +110,39 @@ export default function PostDetail({ handleSearch }) {
     window.location.reload(); // 强制页面刷新
   };
 
+  const [categories, setCategories] = useState([
+    { label: '所有文章', value: null },
+  ]); // 儲存分類數據
+
+  // 取得分類數據
+  useEffect(() => {
+    async function fetchCategories() {
+      const categoriesData = await client.fetch(`
+        *[_type == "category"] {
+          title
+        }
+      `);
+      const fetchedCategories = categoriesData.map((cat) => ({
+        label: cat.title,
+        value: cat.title,
+      }));
+      setCategories([{ label: '所有文章', value: null }, ...fetchedCategories]);
+    }
+
+    fetchCategories();
+  }, []);
+
   useEffect(() => {
     async function fetchPost() {
+      const cacheKey = `post-${slug}`;
+
+      if (cache.has(cacheKey)) {
+        console.log('Using caches data');
+        setPost(cache.get(cacheKey));
+        setLoading(false);
+        return;
+      }
+
       const post = await client.fetch(
         `
         *[_type == "post" && slug.current == $slug][0] {
@@ -136,8 +166,12 @@ export default function PostDetail({ handleSearch }) {
       if (post) {
         console.log('Fetched post ID:', post._id);
         await updateViews(post._id, post.views || 0);
-        setPost({ ...post, views: (post.views || 0) + 1 });
+        const updatedPost = { ...post, views: (post.views || 0) + 1 };
+        // setPost({ ...post, views: (post.views || 0) + 1 });
 
+        cache.set(cacheKey, updatedPost);
+
+        setPost(updatedPost);
         fetchRelatedPosts(post.categories, slug);
       }
       setLoading(false);
@@ -223,12 +257,17 @@ export default function PostDetail({ handleSearch }) {
   }
 
   return (
-    <>
+    <HelmetProvider>
+      <Helmet>
+        <title>Go Yours文章分享：{post.title}</title>
+        <meta name="description" content={`Go Yours帶你看：${post.title}`} />
+      </Helmet>
       <div className="postDetailSection">
         <PostCategary
           categories={categories}
           handleCategoryClick={handleSortClick}
           handleSearch={handleSearch}
+          placeholder="搜尋文章⋯"
           title="文章分類"
         />
         <div className="postbody">
@@ -322,6 +361,6 @@ export default function PostDetail({ handleSearch }) {
       <div className="postDetialContactus">
         <ContactUs />
       </div>
-    </>
+    </HelmetProvider>
   );
 }
