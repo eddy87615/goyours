@@ -5,13 +5,13 @@
   height: fit-content;
 
   position: sticky;
-  top: 8%;
+  top: 4%;
 }
 
 .postCategoryList {
-  margin: 1rem 0 !important;
-
   font-weight: bold;
+
+  margin: 0.5rem 0;
 }
 .postcategoryh4 {
   position: relative;
@@ -98,7 +98,7 @@
 }
 @media (min-width: 481px) and (max-width: 1024px) {
   .postcategory {
-    padding-top: 0;
+    padding-top: 4rem;
     margin-bottom: 2rem;
   }
   .postcategoryh4 {
@@ -109,7 +109,7 @@
 }
 @media screen and (max-width: 480px) {
   .postcategory {
-    padding-top: 0;
+    padding: 0;
 
     position: static;
   }
@@ -146,7 +146,7 @@
 
     background-color: #fff8ef;
 
-    padding: 1rem 2rem;
+    padding: 2rem;
 
     box-sizing: border-box;
 
@@ -161,7 +161,7 @@
   }
   .close-window-btn {
     float: right;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 
     font-size: 1.5rem;
   }
@@ -181,5 +181,8 @@
     transition-delay: 0.2s;
 
     transition-duration: 0.2s;
+  }
+  .postCategoryList {
+    margin: 0.8rem 0;
   }
 }

@@ -92,7 +92,7 @@
 }
 
 .searchup select {
-  /* appearance: none; */
+  appearance: none;
   -webkit-appearance: none; /*For Safari */
   -moz-appearance: none; /* For Firefox */
 
@@ -125,7 +125,7 @@
     box-sizing: border-box;
   }
   .searchup select {
-    /* appearance: none; */
+    appearance: none;
     -webkit-appearance: none; /*For Safari */
     -moz-appearance: none; /* For Firefox */
 
@@ -304,6 +304,10 @@
     border-radius: 50rem;
 
     justify-content: space-between;
+  }
+  .searchup select {
+    background-size: 4%;
+    background-position: 96% 50%;
   }
   .searchdown label {
     width: 100%;

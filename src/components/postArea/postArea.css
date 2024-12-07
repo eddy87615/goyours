@@ -6,9 +6,17 @@
   border-bottom: 2px solid #d0d0d0;
 
   width: 100%;
+
+  transition-duration: 0.2s;
 }
-.postarea:hover img {
-  animation: shake 0.5s ease-out;
+.postarea img:hover {
+  transition-duration: 0.2s;
+  transform: scale(0.8);
+}
+.postarea .imgLink {
+  transition-duration: 0.2s;
+
+  background-color: var(--goyoursYellow);
 }
 .postarea .gallery {
   display: none;
@@ -44,6 +52,9 @@
   padding-top: 4rem;
 }
 .postRight img {
+  transition-duration: 0.2s;
+
+  display: block;
   width: 450px;
 }
 
@@ -84,7 +95,9 @@
 .textPart {
   display: -webkit-box;
   -webkit-box-orient: vertical;
+
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
 
   margin-top: 1rem;
@@ -133,6 +146,10 @@
     height: auto;
 
     border-radius: 0.5rem;
+  }
+  .postarea .imgLink {
+    width: 15rem;
+    height: fit-content;
   }
 
   .postListInfo h2:first-child {
@@ -215,23 +232,5 @@
     margin-top: 0.5rem;
 
     height: fit-content;
-  }
-}
-
-@keyframes shake {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(5deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
   }
 }

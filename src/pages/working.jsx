@@ -70,8 +70,12 @@ export default function Working() {
     const sortOptions = ['職缺由新到舊', '時薪由高到低'];
 
     // 分離出標籤條件和排序條件
-    const activeTags = selectedTags.filter((tag) => tagFilters.includes(tag));
-    const activeSort = selectedTags.find((tag) => sortOptions.includes(tag));
+    const activeTags = (selectedTags || []).filter((tag) =>
+      tagFilters.includes(tag)
+    );
+    const activeSort = (selectedTags || []).find((tag) =>
+      sortOptions.includes(tag)
+    );
 
     const isEmptySearch =
       !keyword &&
@@ -90,8 +94,15 @@ export default function Working() {
     }
 
     let filtered = jobList.filter((job) => {
+      const jobName = job.name || '';
+      const jobCompany = job.company || '';
+      const jobTags = job.tags || [];
+      const jobArea = job.area || '';
+      const jobJobType = job.jobtype || '';
+      const jobSalary = job.salary || '0~Infinity';
+
       const matchesKeyword = keyword
-        ? job.name.includes(keyword) || job.company.includes(keyword)
+        ? jobName.includes(keyword) || jobCompany.includes(keyword)
         : true;
 
       const matchesJapanese = selectedJapanese
@@ -99,15 +110,15 @@ export default function Working() {
         : true;
 
       const matchesLocation = selectedLocation
-        ? job.area === selectedLocation
+        ? jobArea === selectedLocation
         : true;
 
-      const matchesJob = selectedJob ? job.jobtype.includes(selectedJob) : true;
+      const matchesJob = selectedJob ? jobJobType.includes(selectedJob) : true;
 
       const salaryRange = selectedSalary
         ? parseSalaryRange(selectedSalary)
         : null;
-      const jobSalaryRange = parseSalaryRange(job.salary);
+      const jobSalaryRange = parseSalaryRange(jobSalary);
 
       const matchesSalary = salaryRange
         ? jobSalaryRange.min >= salaryRange.min &&
@@ -116,7 +127,7 @@ export default function Working() {
 
       const matchesTags =
         activeTags.length > 0
-          ? activeTags.some((tag) => job.tags.includes(tag))
+          ? activeTags.some((tag) => jobTags.includes(tag))
           : true;
 
       return (

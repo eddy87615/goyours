@@ -2,7 +2,7 @@
   width: 100%;
   height: 100vh;
 
-  border-radius: 0 0 100% 0;
+  border-radius: 0 0 90% 0;
 
   overflow: hidden;
 
@@ -10,10 +10,10 @@
 }
 .kvlogo {
   position: absolute;
-  right: 8%;
-  bottom: 0;
+  right: 10%;
+  bottom: 4%;
 
-  width: 32%;
+  width: 26%;
   height: auto;
 
   z-index: 9;
@@ -77,13 +77,13 @@
   height: 100%;
 }
 .homeintroImgDiv0 {
-  box-shadow: 2rem 1rem 0px #ffe2bc;
+  box-shadow: 0.8rem 1rem 0px #ffe2bc;
 }
 .homeintroImgDiv1 {
   box-shadow: -0.5rem -0.5rem 0px #ffe2bc;
 }
 .homeintroImgDiv2 {
-  box-shadow: -1rem 1rem 0px #ffe2bc;
+  box-shadow: -0.5rem 1rem 0px #ffe2bc;
 }
 
 .homeintroImgWrapper0,
@@ -215,6 +215,11 @@
 .homeNewsDiv {
   padding-top: 10rem;
 }
+.homeNewsDiv .swiper-button-prev,
+.homeNewsDiv .swiper-button-next {
+  display: none;
+}
+
 .homeNewsDiv h3,
 .homeNewsDiv p {
   margin: 0.5rem 0;
@@ -287,7 +292,7 @@
 .homeschoolWrapper {
   position: relative;
 
-  z-index: 2;
+  z-index: 5;
 }
 .homeschoolList {
   position: relative;
@@ -506,12 +511,12 @@
 }
 .schoolListPointer {
   position: absolute;
-  bottom: 3%;
-  right: 3%;
+  bottom: 4%;
+  right: 4%;
 
   color: #fff;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
 
   transform: rotate(-45deg);
 
@@ -1087,9 +1092,7 @@
     font-size: 0.825rem;
     padding: 0.5rem 3rem;
   }
-  .homebg-job-Wave {
-    top: -8%;
-  }
+
   .homeJobH1 h1 {
     font-size: 1rem;
   }
@@ -1110,9 +1113,6 @@
     margin-right: 1rem; /* 每个 slide 间隔 */
     flex-shrink: 0; /* 防止宽度被压缩 */
     box-sizing: border-box; /* 包括 padding 和 border */
-  }
-  .homebg-hot-Wave {
-    top: -10%;
   }
 }
 

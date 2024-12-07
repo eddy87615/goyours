@@ -10,7 +10,7 @@
   position: absolute;
   z-index: 0;
 
-  bottom: -36%;
+  bottom: -60%;
 }
 .homebg-school-Wave {
   position: absolute;
@@ -22,11 +22,21 @@
 .homebg-job-Wave {
   position: absolute;
   top: -16%;
-  z-index: -2;
+  z-index: -9999;
 }
 
 .homebg-hot-Wave {
   position: absolute;
   top: -20%;
   z-index: -3;
+}
+
+@media screen and (max-width: 480px) {
+  .homebg-job-Wave {
+    top: -14%;
+  }
+
+  .homebg-hot-Wave {
+    top: -14%;
+  }
 }

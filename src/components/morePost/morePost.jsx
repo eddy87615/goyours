@@ -50,7 +50,9 @@ export default function MorePost({ isSubmited }) {
             className="submitPostLink"
             to={`/goyours-post/${post.slug.current}`}
           >
-            <img src={urlFor(post.mainImage).url()} alt={post.title} />
+            <div className="more-post-img-frame">
+              <img src={urlFor(post.mainImage).url()} alt={post.title} />
+            </div>
             <h3>{post.title}</h3>
             <ul>
               {post.categories.map((category, index) => (

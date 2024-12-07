@@ -12,6 +12,7 @@
   margin-top: -5rem;
   margin-bottom: 8rem;
 }
+
 .contactusComponent h1 {
   font-size: 1350%;
   /* font-size: 12rem; */
@@ -59,6 +60,10 @@
 
   font-weight: bold;
   counter-reset: contactus;
+}
+
+.contactForm input::placeholder {
+  color: #d0d0d0;
 }
 
 .contactForm p {
@@ -314,6 +319,9 @@ input:-webkit-autofill {
   }
   .contactForm p::after {
     font-size: 8px;
+
+    writing-mode: vertical-lr;
+    height: 100%;
   }
   .contactimg {
     display: none;

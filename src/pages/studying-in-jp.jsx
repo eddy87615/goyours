@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './studying-in-jp.css';
 import './guide-page-animation.css';
 
-import { FaArrowRightLong } from 'react-icons/fa6';
+import { GoArrowRight } from 'react-icons/go';
 
 import GoyoursBearAboutStudying from '../components/goyoursBear/goyoursBear-aboutStudying';
 import MorePost from '../components/morePost/morePost';
@@ -138,7 +138,7 @@ export default function StudyingInJp() {
                 </span>
                 查看所有學校
               </h4>
-              <FaArrowRightLong className="button-arrow" />
+              <GoArrowRight className="button-arrow" />
             </Link>
             <Link className="to-QA-page" to="/Q&A-section#part1">
               <h4>
@@ -147,7 +147,7 @@ export default function StudyingInJp() {
                 </span>
                 留學Q&A
               </h4>
-              <FaArrowRightLong className="button-arrow" />
+              <GoArrowRight className="button-arrow" />
             </Link>
           </div>
           <div className="guide-morePost">

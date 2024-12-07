@@ -83,11 +83,10 @@ export default function PostCategary({
   handleCategoryClick,
   handleSearch,
   placeholder,
-  isSpSearchClicked,
-  setIsSpSearchClicked,
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [placeholdertxt, setPlaceholdertxt] = useState(placeholder);
+  const [isSpSearchClicked, setIsSpSearchClicked] = useState(false);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -136,6 +135,7 @@ export default function PostCategary({
             onClick={() => {
               if (windowSize < 480) setIsSpSearchClicked(true); // 小螢幕時啟用
             }}
+            {...console.log('isSpSearchClicked:', isSpSearchClicked)}
             readOnly={windowSize < 480} // 小螢幕時只讀
           />
           <span>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { client } from '../../cms/sanityClient';
 import { urlFor } from '../../cms/sanityClient';
@@ -34,7 +35,13 @@ const customComponents = {
       if (!value.images || value.images.length === 0) return null;
       return (
         <div className="gallery">
-          <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+          <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper"
+            // slidesPerView={5}
+            // slidesPerGroup={1}
+          >
             {value.images.map((image, index) => (
               <SwiperSlide key={index}>
                 <img
@@ -129,65 +136,73 @@ export default function Hotpost() {
         <HomeBg />
       </div>
       <div className="homehotpostDiv">
-        <Swiper
-          spaceBetween={50}
-          slidesPerView="auto"
-          centeredSlides={true}
-          navigation={true}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          modules={[Autoplay, Navigation]}
-          loop={true}
-        >
-          {NewsPosts.map((post, index) => (
-            <SwiperSlide key={index} className="homeperhotpost">
-              <a
-                href={`/goyours-post/${encodeURIComponent(post.slug.current)}`}
-                className="homeprehotpost"
-              >
-                {post.mainImage && (
-                  <div className="homeHotpostImg">
-                    <img src={urlFor(post.mainImage).url()} alt={post.title} />
-                  </div>
-                )}
-                <h3>{post.title}</h3>
-                <ul>
-                  {post.categories && post.categories.length > 0 ? (
-                    post.categories.map((category, index) => (
-                      <li key={index} className="category">
-                        #{category.title}
-                      </li>
-                    ))
-                  ) : (
-                    <li>無分類</li>
+        {NewsPosts.length >= 3 && (
+          <Swiper
+            spaceBetween={50}
+            slidesPerView="auto"
+            slidesPerGroup={1}
+            centeredSlides={true}
+            navigation={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            modules={[Autoplay, Navigation]}
+            loop={true}
+          >
+            {NewsPosts.map((post, index) => (
+              <SwiperSlide key={index} className="homeperhotpost">
+                <a
+                  href={`/goyours-post/${encodeURIComponent(
+                    post.slug.current
+                  )}`}
+                  className="homeprehotpost"
+                >
+                  {post.mainImage && (
+                    <div className="homeHotpostImg">
+                      <img
+                        src={urlFor(post.mainImage).url()}
+                        alt={post.title}
+                      />
+                    </div>
                   )}
-                </ul>
+                  <h3>{post.title}</h3>
+                  <ul>
+                    {post.categories && post.categories.length > 0 ? (
+                      post.categories.map((category, index) => (
+                        <li key={index} className="category">
+                          #{category.title}
+                        </li>
+                      ))
+                    ) : (
+                      <li>無分類</li>
+                    )}
+                  </ul>
 
-                <div className="homehotpostPreview">
-                  {post.body ? (
-                    <PortableText
-                      value={post.body}
-                      components={customComponents}
-                    />
-                  ) : (
-                    <p>本文無內容</p>
-                  )}
-                </div>
-                <div className="homehotpostDate">
-                  <img src="/圓形logo.png" alt="goyours logo" />
-                  <p>
-                    {new Date(post.publishedAt)
-                      .toLocaleDateString('zh-TW', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      })
-                      .replace(/\//g, '.')}
-                  </p>
-                </div>
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                  <div className="homehotpostPreview">
+                    {post.body ? (
+                      <PortableText
+                        value={post.body}
+                        components={customComponents}
+                      />
+                    ) : (
+                      <p>本文無內容</p>
+                    )}
+                  </div>
+                  <div className="homehotpostDate">
+                    <img src="/圓形logo.png" alt="goyours logo" />
+                    <p>
+                      {new Date(post.publishedAt)
+                        .toLocaleDateString('zh-TW', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                        })
+                        .replace(/\//g, '.')}
+                    </p>
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
       <AnimationSection className="more-school-button">
         <ul>

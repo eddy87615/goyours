@@ -38,7 +38,6 @@
   border-radius: 1rem;
 }
 .submitPostLink img {
-  grid-area: img;
   width: 6rem;
   height: 6rem;
 
@@ -47,6 +46,21 @@
   border-radius: 1rem;
 
   transition-duration: 0.2s;
+
+  display: block;
+
+  transition-duration: 0.2s;
+}
+
+.more-post-img-frame {
+  grid-area: img;
+
+  background-color: var(--goyoursYellow);
+
+  width: 6rem;
+  height: 6rem;
+
+  border-radius: 1rem;
 }
 .submitPostLink h3 {
   grid-area: title;
@@ -144,6 +158,11 @@
     height: 1rem;
   }
   .submitPostLink img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0.5rem;
+  }
+  .more-post-img-frame {
     width: 5rem;
     height: 5rem;
     border-radius: 0.5rem;

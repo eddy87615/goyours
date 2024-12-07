@@ -4,7 +4,6 @@ import { client } from '../cms/sanityClient';
 import PostArea from '../components/postArea/postArea';
 import PostCategary from '../components/postCategory/postCategory';
 import './goyours-post.css';
-import { filter } from 'framer-motion/client';
 
 export default function Post() {
   const [categories, setCategories] = useState([

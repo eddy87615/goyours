@@ -36,9 +36,21 @@
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .pagination a {
+    font-size: 0.75rem;
+
+    width: 2rem;
+    height: 2rem;
+  }
 }
 @media screen and (max-width: 480px) {
   .pagination {
     padding: 1rem 0 3rem 0;
+  }
+  .pagination a {
+    font-size: 0.75rem;
+
+    width: 1.8rem;
+    height: 1.8rem;
   }
 }

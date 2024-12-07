@@ -68,7 +68,7 @@ export default function Footer() {
         <h3>最新消息</h3>
         {latestNewPosts.map((post, index) => (
           <li key={index} className="footerNewsPosts">
-            <a href={`/post/${encodeURIComponent(post.slug.current)}`}>
+            <a href={`/goyours-post/${encodeURIComponent(post.slug.current)}`}>
               <p>
                 {new Date(post.publishedAt)
                   .toLocaleDateString('zh-TW', {

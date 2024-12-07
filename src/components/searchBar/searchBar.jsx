@@ -63,12 +63,12 @@ export default function SearchBar({ onSearch }) {
     },
   ];
   const handleTagClick = (optionValue) => {
-    // 檢查是否已選中：如果已選中，從陣列移除；否則，添加到陣列
-    setSelectedTags((prevTags) =>
-      prevTags.includes(optionValue)
+    setSelectedTags((prevTags) => {
+      if (!Array.isArray(prevTags)) return []; // 確保狀態為陣列
+      return prevTags.includes(optionValue)
         ? prevTags.filter((tag) => tag !== optionValue)
-        : [...prevTags, optionValue]
-    );
+        : [...prevTags, optionValue];
+    });
   };
 
   const handleSearch = () => {

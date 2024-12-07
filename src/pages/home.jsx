@@ -36,7 +36,7 @@ const News = () => {
       // 查詢 "最新消息" 標籤的文章
       //&& "最新消息" in categories[]->title
       const result = await client.fetch(`
-          *[_type == "post"] | order(publishedAt desc)[0...6] {
+          *[_type == "post"] | order(publishedAt desc)[0...10] {
             title,
             slug,
             publishedAt,
@@ -57,42 +57,50 @@ const News = () => {
         </h1>
       </div>
       <div className="homeNewsDiv">
-        <Swiper
-          spaceBetween={50}
-          slidesPerView="auto"
-          centeredSlides={true}
-          navigation={true}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          modules={[Autoplay, Navigation]}
-          loop={true}
-        >
-          {NewsPosts.map((post, index) => (
-            <SwiperSlide key={index} className="homeNewsprePost">
-              <a
-                href={`/goyours-post/${encodeURIComponent(post.slug.current)}`}
-              >
-                {post.mainImage && (
-                  <div className="homeNewspostImg">
-                    <img src={urlFor(post.mainImage).url()} alt={post.title} />
-                  </div>
-                )}
-                <h3>{post.title}</h3>
-                <p className="yellow">
-                  <span className="homeNewsBear">
-                    <img src="/圓形logo.png" alt="goyours logo" />
-                  </span>
-                  {new Date(post.publishedAt)
-                    .toLocaleDateString('zh-TW', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })
-                    .replace(/\//g, '.')}
-                </p>
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {NewsPosts.length >= 3 && (
+          <Swiper
+            spaceBetween={50}
+            slidesPerView="auto"
+            slidesPerGroup={1}
+            centeredSlides={true}
+            navigation={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            modules={[Autoplay, Navigation]}
+            loop={true}
+          >
+            {NewsPosts.map((post, index) => (
+              <SwiperSlide key={index} className="homeNewsprePost">
+                <a
+                  href={`/goyours-post/${encodeURIComponent(
+                    post.slug.current
+                  )}`}
+                >
+                  {post.mainImage && (
+                    <div className="homeNewspostImg">
+                      <img
+                        src={urlFor(post.mainImage).url()}
+                        alt={post.title}
+                      />
+                    </div>
+                  )}
+                  <h3>{post.title}</h3>
+                  <p className="yellow">
+                    <span className="homeNewsBear">
+                      <img src="/圓形logo.png" alt="goyours logo" />
+                    </span>
+                    {new Date(post.publishedAt)
+                      .toLocaleDateString('zh-TW', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })
+                      .replace(/\//g, '.')}
+                  </p>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
     </>
   );
@@ -292,6 +300,8 @@ export default function Home() {
             modules={[Autoplay, EffectFade]}
             simulateTouch={false} // 禁用滑鼠模拟触控
             allowTouchMove={false} // 禁用滑鼠拖动
+            slidesPerView={1}
+            slidesPerGroup={1}
           >
             {homeslider.map((slide, index) => (
               <SwiperSlide key={index}>

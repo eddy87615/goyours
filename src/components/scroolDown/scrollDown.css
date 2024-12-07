@@ -12,7 +12,7 @@
   writing-mode: vertical-lr;
 
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: thin;
 
   height: fit-content;
   margin: 0;
@@ -34,8 +34,8 @@
 .arrowDot {
   transform: translate(0, -205px);
 
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   background-color: #757575;
 
   border-radius: 50px;
@@ -57,7 +57,8 @@
   writing-mode: vertical-lr;
 
   font-size: 1.2rem;
-  font-weight: bold;
+
+  font-weight: 500;
 
   margin: 0;
   height: fit-content;
@@ -82,14 +83,14 @@
   content: '';
   position: absolute;
   background-color: #757575;
-  width: 2px;
+  width: 1px;
   animation: scrollDownArrowLine 2s infinite ease-in-out;
 }
 .scrollDown-side-Dot {
   transform: translate(0, -205px);
 
-  width: 10px;
-  height: 10px;
+  width: 5px;
+  height: 5px;
   background-color: #757575;
 
   border-radius: 50px;

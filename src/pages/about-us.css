@@ -22,8 +22,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 17rem;
-  height: 17rem;
+  width: 15rem;
+  height: 15rem;
 
   overflow: hidden;
 
@@ -41,9 +41,9 @@
 }
 .aboutusTopImg:nth-of-type(2) {
   position: absolute;
-  top: 34%;
+  top: 40%;
   left: 9%;
-  width: 18rem;
+  width: 17rem;
   height: 20rem;
 
   overflow: hidden;
@@ -65,7 +65,7 @@
 }
 .aboutusTopImg:nth-of-type(3) {
   position: absolute;
-  bottom: -15%;
+  bottom: -40%;
   left: 0;
   width: 21rem;
   height: 24rem;
@@ -91,8 +91,8 @@
   position: absolute;
   top: 14%;
   left: 28%;
-  width: 12rem;
-  height: 10rem;
+  width: 11rem;
+  height: 9rem;
 
   overflow: hidden;
 
@@ -162,10 +162,10 @@
 }
 .aboutusTopImg:nth-of-type(7) {
   position: absolute;
-  bottom: 22%;
+  bottom: 20%;
   right: 27%;
-  width: 10rem;
-  height: 13rem;
+  width: 8.5rem;
+  height: 11rem;
 
   overflow: hidden;
 
@@ -188,8 +188,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 14rem;
-  height: 18rem;
+  width: 11rem;
+  height: 16rem;
 
   overflow: hidden;
 
@@ -213,7 +213,7 @@
 }
 .aboutusTopImg:nth-of-type(9) {
   position: absolute;
-  bottom: 30%;
+  bottom: 26%;
   right: 0;
   width: 18rem;
   height: 14rem;
@@ -237,8 +237,8 @@
 }
 .aboutusTopImg:nth-of-type(10) {
   position: absolute;
-  bottom: 8%;
-  right: 4%;
+  bottom: -10%;
+  right: 2%;
   width: 8rem;
   height: 8rem;
 
@@ -316,6 +316,8 @@
   font-weight: bold;
   padding: 0.1rem;
   margin: 0.1rem;
+
+  border-radius: 0.2rem;
 }
 
 .goyoursservice {
@@ -325,6 +327,8 @@
   position: relative;
 
   z-index: 1;
+
+  padding-top: 12rem;
 }
 .goyoursserviceWrapper {
   position: relative;
@@ -332,7 +336,7 @@
 .goyoursserviceWrapper::before {
   content: '';
   position: absolute;
-  top: 10%;
+  top: 32%;
   left: 0;
   width: 100vw;
   height: 80vw;
@@ -342,7 +346,7 @@
 .goyoursserviceWrapper::after {
   content: url(/goyoursBear-bg-white.svg);
   position: absolute;
-  bottom: 50%;
+  bottom: 20%;
   left: 0;
   width: 40%;
 
@@ -482,6 +486,10 @@
   margin: 0 auto;
   padding-top: 8rem;
 }
+.ifYou h1 {
+  display: flex;
+  flex-direction: column;
+}
 .progress-section {
   display: flex;
   flex-direction: column;
@@ -554,14 +562,14 @@
   margin: 0 auto;
 }
 .Review {
-  padding-top: 4rem;
+  padding-top: 20rem;
 
   position: relative;
 }
 .Review::before {
   content: '';
   position: absolute;
-  top: -16%;
+  top: 10%;
   left: 0;
 
   width: 100vw;
@@ -691,8 +699,11 @@
 
 .aboutPage-scrollDown {
   position: absolute;
-  bottom: 20%;
+  bottom: 8%;
   left: 52%;
+}
+.scrollDown-side-Text {
+  font-size: 1rem;
 }
 @keyframes fade-in-out {
   0% {
@@ -760,7 +771,7 @@
     transform: scale(1) translateY(0) translateX(1rem);
   }
   100% {
-    transform: scale(1) translateY(0) translateX(9rem) rotate(10deg);
+    transform: scale(1) translateY(0) translateX(6rem) rotate(10deg);
   }
 }
 
@@ -857,6 +868,8 @@
 
     background-position: 90% 80%;
     background-size: 54%;
+
+    height: 66vh;
   }
   .goyoursIntro p {
     width: 60%;
@@ -867,7 +880,7 @@
     height: 60vh;
   }
   .goyoursserviceWrapper::after {
-    bottom: 70%;
+    bottom: 50%;
     width: 44%;
   }
   .serviceArea {
@@ -893,9 +906,11 @@
     width: 26rem;
     height: 26rem;
   }
-
+  .Review {
+    padding-top: 0;
+  }
   .Review::before {
-    top: -20%;
+    top: -16%;
   }
   .reviewTitle {
     width: 90vw;
@@ -1079,11 +1094,14 @@
   .serviceContent {
     gap: 0.2rem;
   }
+  .Review {
+    padding-top: 8rem;
+  }
   .Review h1 {
     font-size: 1rem;
   }
   .Review::before {
-    top: -4%;
+    top: 4%;
   }
   .feedBackArea {
     grid-template-columns: 1fr;
