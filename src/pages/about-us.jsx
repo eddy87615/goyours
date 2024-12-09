@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { client } from '../cms/sanityClient';
+import { useInView } from 'react-intersection-observer';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import ContactUs from '../components/contactUs/contactUs';
 import GoyoursBear from '../components/goyoursBear/goyoursBear';
@@ -104,7 +106,6 @@ export default function About() {
       feedback,
       }`
       );
-      console.log('Fetched feedback data:', feedbackData); // 调试输出
       const randomFeedBacks = getRandomSixFeedbacks(feedbackData);
       setFeedBacks(randomFeedBacks);
     }
@@ -180,8 +181,17 @@ export default function About() {
   //   return () => clearInterval(interval); // 清理 interval
   // }, [images]);
 
+  const { ref, inView } = useInView({
+    triggerOnce: true, // 進入視窗後只觸發一次
+    threshold: 1, // 元素出現在視窗 10% 時觸發
+  });
+
   return (
-    <>
+    <HelmetProvider>
+      <Helmet>
+        <title>關於Go Yours</title>
+        <meta name="description" content="Go Yours是一家什麼公司呢？" />
+      </Helmet>
       <div className="aboutTop">
         <img src="/LOGO-09.png" alt="goyours logo" className="centerLogo" />
         {topImg.map((img, index) => (
@@ -260,8 +270,13 @@ export default function About() {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="serviceCircle"
+                  className={
+                    inView
+                      ? 'serviceCircle serviceCircleAnimation'
+                      : 'serviceCircle'
+                  }
                   style={{ '--i': index }}
+                  ref={ref}
                 >
                   <div className="serviceContent">
                     <img
@@ -309,6 +324,6 @@ export default function About() {
       <AnimationSection className="aboutContactArea">
         <ContactUs />
       </AnimationSection>
-    </>
+    </HelmetProvider>
   );
 }

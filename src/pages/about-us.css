@@ -405,6 +405,8 @@
   justify-content: center;
 
   z-index: 1;
+
+  user-select: none;
 }
 .circleMenuLogo img {
   width: 60%;
@@ -431,7 +433,7 @@
   left: 50%;
   transform-origin: 0 0;
   transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
-    translate(175px) rotate(calc(-60deg * var(--i)));
+    translate(175px) rotate(calc(-60deg * var(--i))) scale(0);
 
   text-align: center;
   width: 8.75rem; /* 每個項目的大小 */
@@ -444,7 +446,15 @@
   z-index: 1;
 
   border: 2px solid #fff;
+
+  user-select: none;
 }
+.serviceCircleAnimation {
+  transform-origin: center;
+  animation: scaleService 1s ease forwards;
+  animation-delay: calc(0.5s * var(--i));
+}
+
 .serviceCircle:nth-child(even) {
   background-color: var(--goyoursBlack);
 }
@@ -731,6 +741,19 @@
   }
 }
 
+@keyframes scaleService {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+      translate(175px) rotate(calc(-60deg * var(--i))) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+      translate(175px) rotate(calc(-60deg * var(--i))) scale(1);
+  }
+}
+
 .goyoursbear {
   width: 5%;
   margin: 0 auto;
@@ -900,7 +923,19 @@
     height: 6rem;
 
     transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
-      translate(130px) rotate(calc(-60deg * var(--i)));
+      translate(130px) rotate(calc(-60deg * var(--i))) scale(0);
+  }
+  @keyframes scaleService {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+        translate(130px) rotate(calc(-60deg * var(--i))) scale(0);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+        translate(130px) rotate(calc(-60deg * var(--i))) scale(1);
+    }
   }
   .serviceBgCircle {
     width: 26rem;
@@ -1082,7 +1117,19 @@
     width: 5rem;
     height: 5rem;
     transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
-      translate(100px) rotate(calc(-60deg * var(--i)));
+      translate(100px) rotate(calc(-60deg * var(--i))) scale(0);
+  }
+  @keyframes scaleService {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+        translate(100px) rotate(calc(-60deg * var(--i))) scale(0);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(calc(60deg * var(--i)))
+        translate(100px) rotate(calc(-60deg * var(--i))) scale(1);
+    }
   }
   .serviceContent img {
     width: 1rem;

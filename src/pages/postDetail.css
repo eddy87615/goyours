@@ -392,14 +392,17 @@
   .postTxtarea h2 {
     font-size: 1rem;
   }
-  .postTxtarea ul,
-  .postTxtarea ol,
   .postTxtarea p {
+    font-size: 0.725rem;
+    line-height: 1.5rem;
+    padding-left: 0;
+  }
+  .postTxtarea ul,
+  .postTxtarea ol {
     font-size: 0.725rem;
 
     line-height: 1.5rem;
-
-    padding-left: 0;
+    padding-left: 1rem;
   }
   .postTxtarea h3 {
     font-size: 0.85rem;

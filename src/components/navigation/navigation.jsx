@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TbBoxMultiple } from 'react-icons/tb';
 import { motion } from 'framer-motion';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import './navigation.css';
 
@@ -118,7 +119,13 @@ export default function Navigation() {
   }, [prevScrollPos]);
 
   return (
-    <>
+    <HelmetProvider>
+      <Helmet>
+        <meta
+          name="theme-color"
+          content={ishamburgerClicked ? '#414042' : ''}
+        />
+      </Helmet>
       <nav
         className={`mainNav ${visible ? 'visible' : 'hidden'} ${
           ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
@@ -181,6 +188,6 @@ export default function Navigation() {
         ishamburgerClicked={ishamburgerClicked}
         setIsHamburgerClicked={setIsHamburgerClicked}
       />
-    </>
+    </HelmetProvider>
   );
 }

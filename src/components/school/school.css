@@ -170,6 +170,8 @@
     width: 70%;
 
     gap: 1rem;
+
+    padding-top: 6rem;
   }
   .schoolCard h2 {
     font-size: 0.725rem;

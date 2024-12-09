@@ -262,6 +262,9 @@
 }
 
 @media screen and (max-width: 480px) {
+  .jobListSection {
+    padding-top: 6rem;
+  }
   .searchResultArea h2 {
     font-size: 1.25rem;
   }

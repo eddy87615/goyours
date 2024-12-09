@@ -439,7 +439,6 @@ export default function SchoolSearch({ onSearchFilters, initialFilters }) {
           others,
           }
         `);
-        console.log('Fetched schools:', schoolinfo); // 檢查資料結構
       } catch (error) {
         console.error('Failed to fetch schools:', error);
       }
@@ -483,10 +482,10 @@ export default function SchoolSearch({ onSearchFilters, initialFilters }) {
       others: othersState.selected,
       selectedTags,
     };
+    window.scrollTo(0, 0);
     onSearchFilters(newFilters); // 傳遞篩選條件給父組件
     setIsSearchClicked(false);
     setActiveMenu(null);
-    window.scrollTo(0, 0);
   };
 
   useEffect(() => {

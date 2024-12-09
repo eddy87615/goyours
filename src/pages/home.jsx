@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { client } from '../cms/sanityClient';
 import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import { motion } from 'framer-motion';
 
@@ -27,7 +28,7 @@ import 'swiper/css/navigation';
 import './home.css';
 import './about-us.css';
 
-const News = () => {
+const News = ({ windowSize }) => {
   const [NewsPosts, setNewsPosts] = useState([]);
 
   // 從 Sanity 獲取最新消息標籤的文章
@@ -60,13 +61,13 @@ const News = () => {
         {NewsPosts.length >= 3 && (
           <Swiper
             spaceBetween={50}
-            slidesPerView="auto"
+            slidesPerView={4}
             slidesPerGroup={1}
             centeredSlides={true}
             navigation={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             modules={[Autoplay, Navigation]}
-            loop={true}
+            // loop={true}
           >
             {NewsPosts.map((post, index) => (
               <SwiperSlide key={index} className="homeNewsprePost">
@@ -283,7 +284,14 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <HelmetProvider>
+      <Helmet>
+        <title>Go Yours：去你的打工度假</title>
+        <meta
+          name="description"
+          content="讓Go Yours完成你的打工度假與留學的夢想"
+        />
+      </Helmet>
       <motion.div
         className="kv"
         initial={{ opacity: 0 }}
@@ -362,6 +370,6 @@ export default function Home() {
       <AnimationSection className="homeContactusSection">
         <ContactUs />
       </AnimationSection>
-    </>
+    </HelmetProvider>
   );
 }

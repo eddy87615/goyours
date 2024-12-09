@@ -3,14 +3,13 @@ import './loadingBear.css';
 import { useRef, useEffect } from 'react';
 
 export default function LoadingBear() {
-  console.log('LoadingBear 渲染中'); // 检查是否渲染
   // 創建一個引用來存儲 SVG 路徑
   const pathRef = useRef(null);
 
   useEffect(() => {
     if (pathRef.current) {
       const length = pathRef.current.getTotalLength();
-      console.log('路徑總長度:', length);
+      // console.log('路徑總長度:', length);
       pathRef.current.style.strokeDasharray = length;
       pathRef.current.style.strokeDashoffset = length;
     }

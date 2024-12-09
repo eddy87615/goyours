@@ -35,7 +35,6 @@ function AppContent() {
 
   // 每次路由變更時，重新觸發 loading 畫面，並設置兩秒延遲
   useEffect(() => {
-    console.log('路由发生变化:', location.pathname); // 打印当前路由
     setLoadingComplete(false);
     const timer = setTimeout(() => {
       setLoadingComplete(true);

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { client } from '../cms/sanityClient';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
+
 import School from '../components/school/school';
 import SchoolSearch from '../components/schoolSearch/schoolSearch';
 import './studying.css';
@@ -142,19 +144,25 @@ export default function Studying() {
   }
 
   return (
-    <div className="schoolPage">
-      <SchoolSearch
-        onSearchFilters={handleSearchFilters}
-        initialFilters={filters}
-      />
-      <School
-        schools={schools}
-        totalSchools={totalSchools}
-        schoolsPerPage={schoolsPerPage}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-        isSearchTriggered={isSearchTriggered}
-      />
-    </div>
+    <HelmetProvider>
+      <Helmet>
+        <title>Go Yours日本語言學校列表</title>
+        <meta name="description" content="高優熊介紹日本語言學校給你！" />
+      </Helmet>
+      <div className="schoolPage">
+        <SchoolSearch
+          onSearchFilters={handleSearchFilters}
+          initialFilters={filters}
+        />
+        <School
+          schools={schools}
+          totalSchools={totalSchools}
+          schoolsPerPage={schoolsPerPage}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+          isSearchTriggered={isSearchTriggered}
+        />
+      </div>
+    </HelmetProvider>
   );
 }

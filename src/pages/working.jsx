@@ -160,8 +160,6 @@ export default function Working() {
     setIsSearchTriggered(true);
   };
 
-  console.log('Current jobs displayed in JobList:', currentJobs);
-
   const [loading, setLoading] = useState(true);
 
   if (loading) {

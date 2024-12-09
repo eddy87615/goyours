@@ -760,15 +760,6 @@
   .homeNewsprePost {
     width: 50% !important;
   }
-  .homebg-Wave {
-    width: 200vw;
-  }
-  .homebg-intro-Wave {
-    bottom: -70%;
-  }
-  .homebg-school-Wave {
-    top: 0;
-  }
 
   .schoolListDiv {
     width: 90vw;
@@ -969,12 +960,6 @@
     font-size: 1rem;
   }
 
-  .homebg-intro-Wave {
-    bottom: -54%;
-  }
-  .homebg-Wave {
-    width: 200vw;
-  }
   .homeNewsDiv {
     padding-top: 4rem;
   }

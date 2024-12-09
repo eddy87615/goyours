@@ -19,7 +19,7 @@
   position: absolute;
   margin: 0 auto;
   right: -32%;
-  top: 30%;
+  top: 40%;
 
   fill: none;
   stroke: var(--goyoursYellow);
@@ -73,7 +73,7 @@
   }
   .goyoursbear-component {
     top: 32%;
-    right: -180%;
+    right: -210%;
   }
   .goyoursbear-line {
     stroke-width: 20 !important;
@@ -82,7 +82,7 @@
     height: 2.5rem;
   }
   .goyoursBearJob {
-    right: -40%;
+    right: -60%;
   }
   .goyoursbear-aboutstudying svg {
     height: 2.5rem;
@@ -103,7 +103,7 @@
   }
   .goyoursbear-relatedpost {
     top: 35%;
-    right: -95%;
+    right: -105%;
   }
 
   .goyoursbear-component-school svg {

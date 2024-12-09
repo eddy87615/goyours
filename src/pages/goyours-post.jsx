@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { client } from '../cms/sanityClient';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
+
 import PostArea from '../components/postArea/postArea';
 import PostCategary from '../components/postCategory/postCategory';
 import './goyours-post.css';
@@ -109,29 +111,35 @@ export default function Post() {
   }
 
   return (
-    <div className="postPage">
-      <PostCategary
-        categories={categories}
-        handleCategoryClick={handleCategoryClick}
-        handleSearch={handleSearch}
-        placeholder="搜尋文章⋯"
-        title="文章分類"
-        isSpSearchClicked={false}
-        setIsSpSearchClicked={() => {}}
-      />
-      {posts.length === 0 ? (
-        <div className="postLoading">
-          <p>沒有相關文章ಥ∀ಥ</p>
-        </div>
-      ) : (
-        <PostArea
-          posts={posts}
-          totalPages={Math.ceil(totalPosts / postPerPage)}
-          currentPage={currentPage}
-          onPageChange={(page) => setCurrentPage(page)}
+    <HelmetProvider>
+      <Helmet>
+        <title>Go Yours文章分享</title>
+        <meta name="description" content="Go Yours跟你分享關於日本的點點滴滴" />
+      </Helmet>
+      <div className="postPage">
+        <PostCategary
+          categories={categories}
           handleCategoryClick={handleCategoryClick}
+          handleSearch={handleSearch}
+          placeholder="搜尋文章⋯"
+          title="文章分類"
+          isSpSearchClicked={false}
+          setIsSpSearchClicked={() => {}}
         />
-      )}
-    </div>
+        {posts.length === 0 ? (
+          <div className="postLoading">
+            <p>沒有相關文章ಥ∀ಥ</p>
+          </div>
+        ) : (
+          <PostArea
+            posts={posts}
+            totalPages={Math.ceil(totalPosts / postPerPage)}
+            currentPage={currentPage}
+            onPageChange={(page) => setCurrentPage(page)}
+            handleCategoryClick={handleCategoryClick}
+          />
+        )}
+      </div>
+    </HelmetProvider>
   );
 }
