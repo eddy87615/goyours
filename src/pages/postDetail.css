@@ -88,6 +88,8 @@
 
   line-height: 2rem;
   padding: 4rem 0;
+  position: relative;
+  z-index: 1;
 }
 .postTxtarea ul,
 .postTxtarea ol,
@@ -99,6 +101,8 @@
 .postTxtarea h2 {
   display: flex;
   align-items: center;
+
+  position: relative;
 }
 
 .postTxtarea h2::before {
@@ -121,6 +125,30 @@
   margin: 0 auto; /* 居中對齊 */
 
   padding: 2rem 0;
+}
+
+.gallery .swiper-button-prev,
+.gallery .swiper-button-next {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.gallery .swiper-button-prev::after {
+  font-size: 0;
+
+  width: 5rem;
+  height: 5rem;
+  background-image: url(/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.gallery .swiper-button-next::after {
+  font-size: 0;
+
+  width: 5rem;
+  height: 5rem;
+  background-image: url(/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .mySwiper {
@@ -232,6 +260,24 @@
   color: var(--goyoursYellow);
 }
 
+table {
+  margin: 0 auto;
+
+  text-align: center;
+
+  border: 2px solid #d0d0d0;
+}
+
+.nopost {
+  width: 0.8rem;
+  height: fit-content;
+
+  margin-left: 0.5rem;
+}
+.nopost img {
+  display: block;
+}
+
 @media (min-width: 481px) and (max-width: 1024px) {
   .postDetailSection {
     padding-top: 4rem;
@@ -335,7 +381,7 @@
     flex-direction: column;
     gap: 0;
   }
-  .postcategory {
+  .postDetailSection .postcategory {
     display: none;
   }
   .postbody {
@@ -389,8 +435,15 @@
   .postCatalog ul {
     font-size: 0.8rem;
   }
+
   .postTxtarea h2 {
     font-size: 1rem;
+    padding: 2rem 0;
+  }
+  .postTxtarea h2::before {
+    position: absolute;
+
+    z-index: -1;
   }
   .postTxtarea p {
     font-size: 0.725rem;
@@ -473,5 +526,27 @@
   }
   .postDetialContactus {
     padding: 4rem 0;
+  }
+  table {
+    font-size: 0.75rem;
+  }
+
+  .gallery .swiper-button-prev::after {
+    font-size: 0;
+
+    width: 2rem;
+    height: 2rem;
+    background-image: url(/arrow-left.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .gallery .swiper-button-next::after {
+    font-size: 0;
+
+    width: 2rem;
+    height: 2rem;
+    background-image: url(/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 }

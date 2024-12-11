@@ -19,7 +19,7 @@
 
 @media (min-width: 481px) and (max-width: 1024px) {
   .jobListKv {
-    height: 60vh;
+    height: 50vh;
   }
 }
 
@@ -28,5 +28,7 @@
     background-image: url(/KV/KV_about_15.JPG);
     background-size: cover;
     background-position: 65%;
+
+    height: 50vh;
   }
 }

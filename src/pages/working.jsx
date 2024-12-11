@@ -5,6 +5,7 @@ import './working.css';
 import JobList from '../components/jobList/jobList';
 import Pagination from '../components/pagination/pagination';
 import SearchBar from '../components/searchBar/searchBar';
+import LoadingBear from '../components/loadingBear/loadingBear';
 
 export default function Working() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -164,8 +165,8 @@ export default function Working() {
 
   if (loading) {
     return (
-      <div className="postLoading loading">
-        <p>職缺加載中⋯⋯</p>
+      <div className="postLoading pageLoading">
+        <LoadingBear />
       </div>
     );
   }

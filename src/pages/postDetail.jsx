@@ -11,6 +11,7 @@ import PostCategary from '../components/postCategory/postCategory';
 import ContactUs from '../components/contactUs/contactUs';
 import PostCatalog from '../components/postCatalog/postCatalog';
 import GoyoursBearRelatedPost from '../components/goyoursBear/goyoursBear-relatedpost';
+import LoadingBear from '../components/loadingBear/loadingBear';
 
 import { LuEye } from 'react-icons/lu';
 
@@ -57,7 +58,85 @@ const customComponents = {
         </div>
       );
     },
+    table: ({ value }) => {
+      if (
+        !value?.rows ||
+        !Array.isArray(value.rows) ||
+        value.rows.length === 0
+      ) {
+        return <p>No table data available</p>;
+      }
 
+      // 提取 `cells` 以获得真正的数据
+      const sanitizedRows = value.rows.map((row) => {
+        if (row?.cells && Array.isArray(row.cells)) {
+          return row.cells;
+        }
+        return []; // 如果没有 cells，返回空数组
+      });
+
+      if (sanitizedRows.length === 0) {
+        return <p>Invalid table data</p>;
+      }
+
+      // 合并表头的逻辑
+      const mergeTableHeaders = (headers) => {
+        const mergedHeaders = [];
+        let currentHeader = null;
+        let spanCount = 0;
+
+        headers.forEach((header, index) => {
+          if (header === currentHeader) {
+            // 如果当前 header 和前一个相同，增加 colspan
+            spanCount++;
+          } else {
+            // 保存之前的 header
+            if (currentHeader !== null) {
+              mergedHeaders.push({
+                content: currentHeader,
+                colspan: spanCount,
+              });
+            }
+            // 更新当前 header
+            currentHeader = header;
+            spanCount = 1;
+          }
+        });
+
+        // 保存最后一个 header
+        if (currentHeader !== null) {
+          mergedHeaders.push({ content: currentHeader, colspan: spanCount });
+        }
+
+        return mergedHeaders;
+      };
+
+      const headers = sanitizedRows[0];
+      const mergedHeaders = mergeTableHeaders(headers);
+
+      return (
+        <table border="1" style={{ borderCollapse: 'collapse', width: '90%' }}>
+          <thead>
+            <tr>
+              {mergedHeaders.map((header, index) => (
+                <th key={index} colSpan={header.colspan}>
+                  {header.content || ''}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sanitizedRows.slice(1).map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell, cellIndex) => (
+                  <td key={cellIndex}>{cell || ''}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    },
     span: ({ value, children }) => {
       return <span>{children}</span>;
     },
@@ -242,8 +321,8 @@ export default function PostDetail({ handleSearch }) {
 
   if (loading) {
     return (
-      <div className="postLoading loading">
-        <p>文章加載中⋯⋯</p>
+      <div className="postLoading pageLoading">
+        <LoadingBear />
       </div>
     );
   }
@@ -251,7 +330,12 @@ export default function PostDetail({ handleSearch }) {
   if (!post) {
     return (
       <div>
-        <p className="postLoading">沒有文章</p>
+        <p className="postLoading">
+          沒有文章
+          <span className="nopost">
+            <img src="/goyoursbear-B.svg" alt="goyours bear gray" />
+          </span>
+        </p>
       </div>
     );
   }
@@ -307,6 +391,8 @@ export default function PostDetail({ handleSearch }) {
           <h1>{post.title}</h1>
           <PostCatalog />
           <div className="postTxtarea">
+            {console.log('Post body content:', post.body)}
+            {console.log('Rows content:', post.body[6].rows)}
             <PortableText value={post.body} components={customComponents} />
           </div>
 

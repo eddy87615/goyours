@@ -402,6 +402,16 @@
 .scrollDown-side-studyingPage {
   display: none;
 }
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .guidePage-studying-top::before,
+  .guidePage-studying-top::after {
+    width: 300px;
+    height: 500px;
+  }
+  .guidePage-studying-top::after {
+    right: 13%;
+  }
+}
 @media (min-width: 769px) and (max-width: 1024px) {
   .guidePage-studying-top {
     height: 80vh;
@@ -690,6 +700,8 @@
 
   .guidePage-studying-top {
     justify-content: flex-start;
+
+    height: 100dvh;
   }
   .goyoursbear {
     width: 10%;
@@ -811,6 +823,8 @@
 
   .guidePage-studying-top {
     justify-content: flex-start;
+
+    height: 100dvh;
   }
   .goyoursbear {
     width: 10%;

@@ -360,7 +360,16 @@
   width: 5%;
   margin: 0 auto;
 }
-
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .guidePage-working-holiday-top::before,
+  .guidePage-working-holiday-top::after {
+    width: 300px;
+    height: 500px;
+  }
+  .guidePage-working-holiday-top::after {
+    right: 10%;
+  }
+}
 @media (min-width: 769px) and (max-width: 1024px) {
   .guidePage-working-holiday-top {
     height: 80vh;
@@ -480,7 +489,7 @@
 }
 @media (min-width: 481px) and (max-width: 768px) {
   .guidePage-working-holiday-top {
-    height: 80vh;
+    height: 100dvh;
   }
   .guide-vertical-slide-left,
   .silde-text-wrapper-left01 {
@@ -643,6 +652,8 @@
 
   .guidePage-working-holiday-top {
     justify-content: flex-start;
+
+    height: 100dvh;
   }
   .goyoursbear {
     width: 10%;
@@ -762,6 +773,8 @@
 
   .guidePage-working-holiday-top {
     justify-content: flex-start;
+
+    height: 100dvh;
   }
   .goyoursbear {
     width: 10%;

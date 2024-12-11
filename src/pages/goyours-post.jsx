@@ -5,6 +5,7 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import PostArea from '../components/postArea/postArea';
 import PostCategary from '../components/postCategory/postCategory';
+import LoadingBear from '../components/loadingBear/loadingBear';
 import './goyours-post.css';
 
 export default function Post() {
@@ -104,8 +105,8 @@ export default function Post() {
 
   if (loading) {
     return (
-      <div className="postLoading loading">
-        <p>文章加載中⋯⋯</p>
+      <div className="postLoading pageLoading">
+        <LoadingBear />
       </div>
     );
   }

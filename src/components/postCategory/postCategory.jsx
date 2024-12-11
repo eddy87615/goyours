@@ -135,7 +135,7 @@ export default function PostCategary({
             onClick={() => {
               if (windowSize < 480) setIsSpSearchClicked(true); // 小螢幕時啟用
             }}
-            {...console.log('isSpSearchClicked:', isSpSearchClicked)}
+            // {...console.log('isSpSearchClicked:', isSpSearchClicked)}
             readOnly={windowSize < 480} // 小螢幕時只讀
           />
           <span>

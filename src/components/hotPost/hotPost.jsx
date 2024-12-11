@@ -20,7 +20,6 @@ const customComponents = {
     image: ({ value }) => {
       // 直接确认 asset 是否存在，无需过多检查
       if (!value?.asset?._ref) {
-        // console.warn('未找到图片资源，跳过渲染:', value);
         return null;
       }
 
@@ -31,16 +30,14 @@ const customComponents = {
       );
     },
     gallery: ({ value }) => {
-      // console.log('Gallery Images:', value.images); // 確認圖片數據是否正確
       if (!value.images || value.images.length === 0) return null;
       return (
         <div className="gallery">
           <Swiper
             navigation={true}
             modules={[Navigation]}
+            loop
             className="mySwiper"
-            // slidesPerView={5}
-            // slidesPerGroup={1}
           >
             {value.images.map((image, index) => (
               <SwiperSlide key={index}>
@@ -55,15 +52,91 @@ const customComponents = {
         </div>
       );
     },
+    table: ({ value }) => {
+      if (
+        !value?.rows ||
+        !Array.isArray(value.rows) ||
+        value.rows.length === 0
+      ) {
+        return <p>No table data available</p>;
+      }
+
+      // 提取 `cells` 以获得真正的数据
+      const sanitizedRows = value.rows.map((row) => {
+        if (row?.cells && Array.isArray(row.cells)) {
+          return row.cells;
+        }
+        return []; // 如果没有 cells，返回空数组
+      });
+
+      if (sanitizedRows.length === 0) {
+        return <p>Invalid table data</p>;
+      }
+
+      // 合并表头的逻辑
+      const mergeTableHeaders = (headers) => {
+        const mergedHeaders = [];
+        let currentHeader = null;
+        let spanCount = 0;
+
+        headers.forEach((header, index) => {
+          if (header === currentHeader) {
+            // 如果当前 header 和前一个相同，增加 colspan
+            spanCount++;
+          } else {
+            // 保存之前的 header
+            if (currentHeader !== null) {
+              mergedHeaders.push({
+                content: currentHeader,
+                colspan: spanCount,
+              });
+            }
+            // 更新当前 header
+            currentHeader = header;
+            spanCount = 1;
+          }
+        });
+
+        // 保存最后一个 header
+        if (currentHeader !== null) {
+          mergedHeaders.push({ content: currentHeader, colspan: spanCount });
+        }
+
+        return mergedHeaders;
+      };
+
+      const headers = sanitizedRows[0];
+      const mergedHeaders = mergeTableHeaders(headers);
+
+      return (
+        <table border="1" style={{ borderCollapse: 'collapse', width: '90%' }}>
+          <thead>
+            <tr>
+              {mergedHeaders.map((header, index) => (
+                <th key={index} colSpan={header.colspan}>
+                  {header.content || ''}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sanitizedRows.slice(1).map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell, cellIndex) => (
+                  <td key={cellIndex}>{cell || ''}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    },
     span: ({ value, children }) => {
-      // console.log('覆蓋默認 span 處理:', value);
       return <span>{children}</span>;
     },
   },
   marks: {
     color: ({ children, value }) => {
-      // console.log('Color Mark Value:', value);
-
       const color = value?.hex?.hex || '#FF0000';
 
       return (
@@ -77,8 +150,6 @@ const customComponents = {
       );
     },
     favoriteColor: ({ children, value }) => {
-      // console.log('Color Mark Value:', value);
-
       const color = value?.hex?.hex || '#FF0000';
 
       return (
@@ -91,9 +162,7 @@ const customComponents = {
         </span>
       );
     },
-    link: ({ children, value }) => {
-      return <span>{children}</span>; // 使用 <span> 替代
-    },
+    link: ({ children }) => <span>{children}</span>, // 不渲染內層 <a>
   },
 };
 

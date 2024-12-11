@@ -435,6 +435,8 @@
     background-image: url(/KV/KV_about_03.webp);
     background-repeat: no-repeat;
     background-position: 52% 50%;
+
+    height: 50vh;
   }
   .sp-school-search-bg {
     background-color: rgba(0, 0, 0, 0.7);

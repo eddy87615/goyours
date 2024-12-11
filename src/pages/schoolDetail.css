@@ -12,6 +12,36 @@
 
   padding: 15rem 0 10rem 0;
 }
+.schoolDetailPage .swiper-button-prev,
+.schoolDetailPage .swiper-button-next {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.schoolDetailPage .swiper-button-prev::after {
+  font-size: 0;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url(/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.schoolDetailPage .swiper-button-next::after {
+  font-size: 0;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url(/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.swiper-free-mode > .swiper-wrapper img {
+  filter: brightness(0.4);
+}
+.swiper-slide-thumb-active img {
+  filter: brightness(1) !important;
+}
 
 .schoolDetailH1 {
   width: 80vw;
@@ -191,8 +221,9 @@
   padding: 0.5rem;
   margin-right: 1rem;
 
-  width: 4rem;
-  height: 4rem;
+  width: 2.5rem;
+  height: 2.5rem;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -271,17 +302,6 @@
   padding-bottom: 8rem;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  /* background-color: #414042; */
-  width: 3rem !important;
-  height: 3rem !important;
-  border-radius: 100rem;
-  color: #fff !important;
-  font-weight: bold;
-  /* opacity: 0.5; */
-}
-
 .schoolConditions {
   width: 80vw;
   margin: 0 auto;
@@ -335,6 +355,21 @@
   margin-right: 1rem;
 }
 
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .schoolConditions-detail {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 4rem 0;
+  }
+  .featurestxt h2::before {
+    margin-right: 0;
+  }
+  .featurestxt p {
+    padding-left: 4rem;
+  }
+}
 @media (min-width: 481px) and (max-width: 1024px) {
   .schoolDetailPage {
     flex-direction: column-reverse;
@@ -536,19 +571,30 @@
     padding-bottom: 2rem;
   }
   .featurestxt h2 {
+    position: relative;
     font-size: 1rem;
+
+    padding-left: 3rem;
   }
   .featurestxt h2::before {
-    width: 2rem;
-    height: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
     clip-path: circle(40%);
+
+    font-size: 0.75rem;
     -webkit-clip-path: circle(40%); /* 增加兼容性 */
+
+    margin: 0;
   }
   .featurestxt p {
     font-size: 0.875rem;
     line-height: 1.5rem;
 
-    padding-left: 5rem;
+    padding-left: 3rem;
   }
 
   .videoH1 h1 {

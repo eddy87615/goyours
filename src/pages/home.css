@@ -254,7 +254,7 @@
 .homeperhotpost:hover img {
   animation: shake 0.5s ease-out;
 }
-.swiper-button-prev {
+/* .swiper-button-prev {
   background-color: var(--goyoursBlack);
 
   width: 3rem !important;
@@ -264,8 +264,8 @@
   color: #fff !important;
 
   opacity: 0.5;
-}
-.swiper-button-prev::after,
+} */
+/* .swiper-button-prev::after,
 .swiper-button-next::after {
   font-size: 1.5rem;
 }
@@ -280,7 +280,7 @@
   color: #fff !important;
 
   opacity: 0.5;
-}
+} */
 .centerSlide {
   transition-duration: 1s;
 }
@@ -701,6 +701,9 @@
 .sp-home-scrollDown {
   display: none;
 }
+.sp-br {
+  display: none;
+}
 
 @media screen and (min-width: 1201px) {
   .homeintroImgWrapper0 {
@@ -709,6 +712,12 @@
   }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
+  .homeintroImgWrapper0 {
+    width: 25rem;
+    height: 25rem;
+
+    top: 40%;
+  }
 }
 @media (min-width: 481px) and (max-width: 1024px) {
   .kvSlider {
@@ -875,10 +884,13 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .sp-br {
+    display: block;
+  }
   .sp-home-scrollDown {
     display: block;
     position: absolute;
-    bottom: -10%;
+    bottom: -4%;
     right: 0;
     transform: translate(-50%, 50%);
   }
@@ -1103,14 +1115,12 @@
 
 @media screen and (max-width: 375px) {
   .sp-home-scrollDown {
-    bottom: -28%;
+    bottom: -4%;
   }
   .homeintroImgWrapper1 {
     bottom: -24% !important;
   }
-  .homebg-intro-Wave {
-    bottom: -64%;
-  }
+
   .homebg-school-Wave {
     top: -4%;
     left: -60%;
@@ -1142,15 +1152,9 @@
     ) !important; /* 宽度设置为容器宽度的80%，具体可调整 */
     margin-right: 5% !important;
   }
-  .schoolListDiv {
-    width: 90vw;
-  }
   .schoolListPre {
     height: 12rem;
     border-radius: 1.5rem;
-  }
-  .workingholidayDiv {
-    width: 90vw;
   }
   .swiper-slide {
     width: calc(80% - 3rem); /* 宽度设置为容器宽度的80%，具体可调整 */

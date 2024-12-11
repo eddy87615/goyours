@@ -133,6 +133,11 @@
 .part2 h2 {
   position: relative;
 }
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .fqa-body {
+    margin-top: -16%;
+  }
+}
 
 @media (min-width: 481px) and (max-width: 1024px) {
   .fqa-body {
@@ -151,6 +156,11 @@
 }
 
 @media screen and (max-width: 480px) {
+  .Qmark,
+  .answerLogo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
   .fqa-KV {
     background: url(/KV/KV_about_17.JPG);
     background-size: cover;

@@ -27,6 +27,7 @@ import BreadCrumb from '../components/breadCrumb/breadCrumb';
 import ContactUs from '../components/contactUs/contactUs';
 import GoyoursBearsSchoolCondition from '../components/goyoursBear/goyoursBear-schoolConditions';
 import GoyoursBears from '../components/goyoursBear/goyoursBear';
+import LoadingBear from '../components/loadingBear/loadingBear';
 import './schoolDetail.css';
 
 const cache = new Map();
@@ -266,16 +267,21 @@ export default function SchoolDetail() {
 
   if (loading) {
     return (
-      <div className="postLoading loading">
-        <p>學校資訊加載中⋯⋯</p>
+      <div className="postLoading pageLoading">
+        <LoadingBear />
       </div>
     );
   }
 
   if (!school) {
     return (
-      <div className="postLoading">
-        <p>沒有文章</p>
+      <div>
+        <p className="postLoading">
+          沒有學校
+          <span className="nopost">
+            <img src="/goyoursbear-B.svg" alt="goyours bear gray" />
+          </span>
+        </p>
       </div>
     );
   }

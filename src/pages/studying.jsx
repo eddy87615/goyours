@@ -5,6 +5,7 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import School from '../components/school/school';
 import SchoolSearch from '../components/schoolSearch/schoolSearch';
+import LoadingBear from '../components/loadingBear/loadingBear';
 import './studying.css';
 
 export default function Studying() {
@@ -137,8 +138,8 @@ export default function Studying() {
 
   if (loading) {
     return (
-      <div className="postLoading loading">
-        <p>學校加載中⋯⋯</p>
+      <div className="postLoading pageLoading">
+        <LoadingBear />
       </div>
     );
   }

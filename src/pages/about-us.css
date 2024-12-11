@@ -801,6 +801,33 @@
 @media screen and (min-width: 1201px) {
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
+  .aboutusTopImg:nth-of-type(3) {
+    width: 16rem;
+    height: 19rem;
+    bottom: -30%;
+  }
+  .aboutusTopImg:nth-of-type(6) {
+    width: 7rem;
+    height: 6rem;
+  }
+  .goyoursservice {
+    width: 80vw;
+  }
+  .goyoursserviceWrapper::after {
+    bottom: 40%;
+  }
+  .Review {
+    padding-top: 16rem;
+  }
+  .reviewTitle {
+    width: 80vw;
+  }
+  .feedBackArea {
+    width: 90vw;
+  }
+  .feedbackList {
+    width: 18rem;
+  }
 }
 @media (min-width: 481px) and (max-width: 1024px) {
   .aboutPage-scrollDown {
@@ -998,6 +1025,9 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .scrollDown-side {
+    bottom: 10%;
+  }
   .aboutPage-scrollDown {
     position: unset;
   }
@@ -1094,6 +1124,8 @@
   }
   .goyoursservice {
     width: 80vw;
+
+    padding-top: 5rem;
   }
   .serviceArea {
     flex-direction: column;

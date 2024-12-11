@@ -67,7 +67,7 @@ const News = ({ windowSize }) => {
             navigation={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             modules={[Autoplay, Navigation]}
-            // loop={true}
+            loop={true}
           >
             {NewsPosts.map((post, index) => (
               <SwiperSlide key={index} className="homeNewsprePost">
@@ -271,8 +271,8 @@ export default function Home() {
     { src: '/KV/KV_about_13.webp' },
     { src: '/KV/KV_about_04.webp' },
     { src: '/KV/KV_about_02.webp' },
-    { src: '/KV/KV_01.webp' },
     { src: '/KV/KV_about_09.webp' },
+    { src: '/KV/KV_27.webp' },
   ];
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -331,9 +331,13 @@ export default function Home() {
         <div className="homeintrotxt">
           <h2>國外打工度假、遊留學的好夥伴</h2>
           <p>
-            世界這麼大 你不該只留在原地 何年何月何日何時 你會在哪裡？ <br />
+            世界這麼大 你不該只留在原地
+            <br />
+            何年何月何日何時 你會在哪裡？ <br className="sp-br" />
             去你自己的打工度假、留遊學吧！ <br />
-            Go Yours 團隊幫你找出適合的路 去各個國家打工度假、留遊學
+            Go Yours 團隊幫你找出適合的路
+            <br className="sp-br" />
+            去各個國家打工度假、留遊學
             <br />
             體驗各種生活感受世界各地 ～
           </p>

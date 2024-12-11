@@ -22,7 +22,7 @@
 }
 .arrowLine {
   width: 2px;
-  height: 195px;
+  height: 100px;
 }
 .arrowLine::after {
   content: '';
@@ -32,7 +32,7 @@
   animation: scrollDownArrowLine 2s infinite ease-in-out;
 }
 .arrowDot {
-  transform: translate(0, -205px);
+  transform: translate(0, -200px);
 
   width: 5px;
   height: 5px;
@@ -74,7 +74,7 @@
 
 .scrollDown-side-Line {
   width: 2px;
-  height: 195px;
+  height: 100px;
 
   display: inline-flex;
   justify-content: center;
@@ -187,7 +187,7 @@
   @keyframes scrollDownArrowDot {
     0% {
       opacity: 0;
-      transform: translateY(-200px);
+      transform: translateY(-100px);
     }
     99% {
       opacity: 1;
@@ -219,15 +219,15 @@
 @keyframes scrollDownArrowDot {
   0% {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-110px);
   }
   99% {
     opacity: 1;
-    transform: translate(0, -100px); /* 點移動至頂部 */
+    transform: translate(0, -5px); /* 點移動至頂部 */
   }
   100% {
     opacity: 0;
-    transform: translate(0, -100px); /* 保持在頂部，不閃爍 */
+    transform: translate(0, -5px); /* 保持在頂部，不閃爍 */
   }
 }
 
