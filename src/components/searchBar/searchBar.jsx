@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import './searchBar.css';
 import { RxCross2 } from 'react-icons/rx';
 
+import useWindowSize from '../../hook/useWindowSize';
+
 export default function SearchBar({ onSearch }) {
   const [keyword, setKeyword] = useState('');
   const [selectedJapanese, setSelectedJapanese] = useState('');
@@ -11,6 +13,7 @@ export default function SearchBar({ onSearch }) {
   const [selectedJob, setSelectedJob] = useState('');
   const [selectedSalary, setSelectedSalary] = useState('');
   const [selectedTags, setSelectedTags] = useState([]); // 用來追蹤被選擇的篩選選項
+  const windowSize = useWindowSize();
 
   const japaneseOption = [
     { title: '日文程度', value: '' },
@@ -82,14 +85,6 @@ export default function SearchBar({ onSearch }) {
     });
     setIsSearchClicked(false);
   };
-
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const [isSearchClicked, setIsSearchClicked] = useState(false);
 

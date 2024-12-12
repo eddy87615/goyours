@@ -3,15 +3,14 @@ import { useEffect, useState } from 'react';
 import { client } from '../cms/sanityClient';
 import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
 import { HelmetProvider, Helmet } from 'react-helmet-async';
-
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 
 import { FaLocationDot } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import ContactUs from '../components/contactUs/contactUs';
 import Hotpost from '../components/hotPost/hotPost';
 import HomeJobList from '../components/homeJobList/homeJobList';
@@ -20,6 +19,7 @@ import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import HomeBg from '../components/homeBg/homeBg';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 import AnimationSection from './AnimationSection';
+import useWindowSize from '../hook/useWindowSize';
 
 import 'swiper/css/effect-fade';
 import 'swiper/css';
@@ -28,7 +28,7 @@ import 'swiper/css/navigation';
 import './home.css';
 import './about-us.css';
 
-const News = ({ windowSize }) => {
+const News = () => {
   const [NewsPosts, setNewsPosts] = useState([]);
 
   // 從 Sanity 獲取最新消息標籤的文章
@@ -107,7 +107,7 @@ const News = ({ windowSize }) => {
   );
 };
 
-const HomeschoolList = ({ windowSize }) => {
+const HomeschoolList = () => {
   const schoolListContent = [
     {
       name: '東京亞細亞學友會',
@@ -171,6 +171,8 @@ const HomeschoolList = ({ windowSize }) => {
     },
   ];
 
+  const windowSize = useWindowSize();
+
   return (
     <div className="homeschoolWrapper">
       <div className="homeschoolH1">
@@ -192,7 +194,7 @@ const HomeschoolList = ({ windowSize }) => {
                   <img src={school.src} alt={school.name} />
                 </div>
                 <Link className="schoolListDetailBtn" to={school.href}>
-                  {windowSize < 1024 ? '學校詳情' : '了解學校詳情'}
+                  {windowSize < 1200 ? '學校詳情' : '了解學校詳情'}
                 </Link>
               </div>
               <div className="schoolListBack">
@@ -250,6 +252,8 @@ export default function Home() {
     { src: '/home-bubble03.JPG', alt: 'japanese jinjya' },
   ];
 
+  const windowSize = useWindowSize();
+
   //nav height get
   // eslint-disable-next-line no-unused-vars
   const [navHeight, setNavHeight] = useState(0);
@@ -274,14 +278,6 @@ export default function Home() {
     { src: '/KV/KV_about_09.webp' },
     { src: '/KV/KV_27.webp' },
   ];
-
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <HelmetProvider>

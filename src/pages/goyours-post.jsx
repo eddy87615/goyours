@@ -6,14 +6,17 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import PostArea from '../components/postArea/postArea';
 import PostCategary from '../components/postCategory/postCategory';
 import LoadingBear from '../components/loadingBear/loadingBear';
+import useSearchHandler from '../hook/useSearchHandler';
 import './goyours-post.css';
 
 export default function Post() {
+  const { searchQuery, setSearchQuery, handleSearch } = useSearchHandler(); // 從 Hook 中解構 setSearchQuery
+
   const [categories, setCategories] = useState([
     { label: '所有文章', value: null },
   ]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [posts, setPosts] = useState([]);
   const [totalPosts, setTotalPosts] = useState(0); // 總文章數
   const [loading, setLoading] = useState(true);
@@ -21,25 +24,31 @@ export default function Post() {
   const postPerPage = 10; // 每頁文章數
 
   const handleCategoryClick = (category) => {
-    if (selectedCategory === category) return;
+    if (selectedCategory === category && searchQuery === '') return;
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setSelectedCategory(category);
-    setSearchQuery('');
-    setCurrentPage(1); // 重置到第1頁
+
+    if (category === null) {
+      setSearchQuery(''); // 清空搜索關鍵字
+      setSelectedCategory(null); // 清空分類
+    } else {
+      setSelectedCategory(category); // 設置為選中的分類
+      setSearchQuery(''); // 清空搜索關鍵字
+    }
+
+    setCurrentPage(1);
   };
 
   const location = useLocation();
+
   useEffect(() => {
+    // 如果有來自路由狀態的 selectedCategory，更新選中分類
     if (location.state?.selectedCategory) {
       setSelectedCategory(location.state.selectedCategory);
+      setSearchQuery(''); // 清空搜索關鍵字
+      setCurrentPage(1); // 重置到第1頁
     }
   }, [location.state]);
-
-  const handleSearch = (query) => {
-    setSearchQuery(query || '');
-    setSelectedCategory(null);
-    setCurrentPage(1); // 重置到第1頁
-  };
 
   useEffect(() => {
     async function fetchCategories() {
@@ -61,7 +70,7 @@ export default function Post() {
       const start = (currentPage - 1) * postPerPage;
       const end = start + postPerPage;
 
-      // 根據分類或關鍵字動態生成查詢
+      // 動態生成查詢條件
       const categoryFilter = selectedCategory
         ? `&& "${selectedCategory}" in categories[]->title`
         : '';
@@ -88,7 +97,7 @@ export default function Post() {
         count(*[_type == "post" ${categoryFilter} ${searchFilter}])
       `;
 
-      // 查詢符合條件的文章總數和當前頁數據
+      // 查詢文章和總數
       const [fetchedPosts, total] = await Promise.all([
         client.fetch(query),
         client.fetch(totalQuery),
@@ -128,8 +137,9 @@ export default function Post() {
           setIsSpSearchClicked={() => {}}
         />
         {posts.length === 0 ? (
-          <div className="postLoading">
+          <div className="postLoading postSearchResult">
             <p>沒有相關文章ಥ∀ಥ</p>
+            {searchQuery ? <p>搜尋關鍵字：{searchQuery}</p> : ''}
           </div>
         ) : (
           <PostArea

@@ -95,6 +95,9 @@
 @media screen and (min-width: 1201px) {
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
+  .postcategory {
+    top: 10%;
+  }
 }
 @media (min-width: 481px) and (max-width: 1024px) {
   .postcategory {

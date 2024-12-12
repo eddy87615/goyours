@@ -8,6 +8,8 @@ import '../searchBar/searchBar.css';
 import { IoIosArrowDown } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
 
+import useWindowSize from '../../hook/useWindowSize';
+
 const useSelection = (initialState = {}) => {
   const [selected, setSelected] = useState(initialState);
 
@@ -224,6 +226,7 @@ const OtherCondition = ({ isActive, others, selected, toggleSelection }) => {
 
 export default function SchoolSearch({ onSearchFilters, initialFilters }) {
   const [selectedTags, setSelectedTags] = useState([]); // 用來追蹤被選擇的篩選選項
+  const windowSize = useWindowSize();
 
   const [filters, setFilters] = useState({
     keyword: '',
@@ -498,14 +501,6 @@ export default function SchoolSearch({ onSearchFilters, initialFilters }) {
       setSelectedTags(initialFilters.selectedTags || []); // 設置選中的標籤
     }
   }, [initialFilters]);
-
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const [isSearchClicked, setIsSearchClicked] = useState(false);
 

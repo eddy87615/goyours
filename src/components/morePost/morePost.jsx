@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
 import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor

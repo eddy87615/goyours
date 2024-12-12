@@ -12,6 +12,7 @@ import ContactUs from '../components/contactUs/contactUs';
 import PostCatalog from '../components/postCatalog/postCatalog';
 import GoyoursBearRelatedPost from '../components/goyoursBear/goyoursBear-relatedpost';
 import LoadingBear from '../components/loadingBear/loadingBear';
+import useSearchHandler from '../hook/useSearchHandler';
 
 import { LuEye } from 'react-icons/lu';
 
@@ -161,7 +162,7 @@ const customComponents = {
 const cache = new Map();
 
 // 文章詳情頁
-export default function PostDetail({ handleSearch }) {
+export default function PostDetail() {
   // const categories = [
   //   { label: '所有文章', value: null },
   //   { label: '最新消息', value: '最新消息' },
@@ -174,6 +175,7 @@ export default function PostDetail({ handleSearch }) {
   //   { label: '打工度假', value: '打工度假' },
   // ];
 
+  const { searchQuery, handleSearch } = useSearchHandler(); // 使用 Hook
   const { slug } = useParams(); // 從 URL 獲取文章 slug
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -181,7 +183,12 @@ export default function PostDetail({ handleSearch }) {
 
   const navigate = useNavigate();
   const handleSortClick = (selectedCategory) => {
-    navigate('/goyours-post', { state: { selectedCategory } });
+    navigate('/goyours-post', {
+      state: {
+        selectedCategory: selectedCategory,
+        searchQuery: '',
+      },
+    });
   };
 
   const handleRelatedPostClick = (slug) => {
@@ -246,7 +253,6 @@ export default function PostDetail({ handleSearch }) {
         console.log('Fetched post ID:', post._id);
         await updateViews(post._id, post.views || 0);
         const updatedPost = { ...post, views: (post.views || 0) + 1 };
-        // setPost({ ...post, views: (post.views || 0) + 1 });
 
         cache.set(cacheKey, updatedPost);
 
@@ -391,8 +397,6 @@ export default function PostDetail({ handleSearch }) {
           <h1>{post.title}</h1>
           <PostCatalog />
           <div className="postTxtarea">
-            {console.log('Post body content:', post.body)}
-            {console.log('Rows content:', post.body[6].rows)}
             <PortableText value={post.body} components={customComponents} />
           </div>
 

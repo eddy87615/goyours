@@ -78,15 +78,24 @@
 
   font-weight: bold;
   font-style: oblique;
+  color: #fff;
 
-  color: #ffeed9;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
 
-  padding: 1rem;
-  margin-right: 1rem;
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 200rem;
 
   background-color: var(--goyoursYellow);
 
   clip-path: circle(40%);
+  -webkit-clip-path: circle(40%);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .contactForm p::after {
   content: '＊必填';
@@ -215,9 +224,25 @@ input:-webkit-autofill {
     font-size: 1100%;
   }
   .contactForm p::after {
-    top: -100%;
+    top: -30%;
     left: 0;
     transform: translateX(-100%);
+  }
+  .contactForm label {
+    width: 70%;
+  }
+  .contactForm input {
+    border-radius: 0;
+  }
+  .contactForm label:nth-of-type(7),
+  .contactForm label:nth-of-type(8) {
+    width: 100%;
+  }
+  .caseOptions {
+    flex: 1;
+  }
+  .contactForm label {
+    width: fit-content;
   }
 }
 @media (min-width: 481px) and (max-width: 1024px) {

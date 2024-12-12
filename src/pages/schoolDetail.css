@@ -369,6 +369,9 @@
   .featurestxt p {
     padding-left: 4rem;
   }
+  .schoollogo {
+    width: 6rem;
+  }
 }
 @media (min-width: 481px) and (max-width: 1024px) {
   .schoolDetailPage {

@@ -718,6 +718,22 @@
 
     top: 40%;
   }
+
+  .schoolListBack ul li:nth-child(2) {
+    display: none;
+  }
+  .schoolListPre {
+    height: 16rem;
+  }
+  .schoolListBack h3 {
+    font-size: 1.2rem;
+  }
+  .schoolListBack h3::after {
+    width: 20rem;
+  }
+  .schoolListBack p {
+    font-size: 0.75rem;
+  }
 }
 @media (min-width: 481px) and (max-width: 1024px) {
   .kvSlider {

@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './working-holiday.css';
@@ -31,14 +31,6 @@ export default function StudyingInJp() {
   ];
 
   const currentYear = new Date().getFullYear();
-
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <div className="working-holiday-section">

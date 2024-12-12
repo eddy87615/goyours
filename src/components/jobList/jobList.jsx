@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { client, urlFor } from '../../cms/sanityClient';
 import { useNavigate } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
@@ -12,10 +12,13 @@ import { FaCirclePlus, FaCircleMinus } from 'react-icons/fa6';
 import { LuDownload } from 'react-icons/lu';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 
+import useWindowSize from '../../hook/useWindowSize';
+
 import './jobList.css';
 
 export default function JobList({ jobList, isSearchTriggered }) {
   const [isOpenList, setIsOpenList] = useState({});
+  const windowSize = useWindowSize();
 
   const toggleList = (slug) => {
     setIsOpenList((prevState) => ({
@@ -35,14 +38,6 @@ export default function JobList({ jobList, isSearchTriggered }) {
       state: { initialMessage: `${jobName}` },
     });
   };
-
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <HelmetProvider>

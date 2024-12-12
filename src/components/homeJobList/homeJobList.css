@@ -120,7 +120,14 @@
   background-color: var(--goyoursBgColor);
   color: var(--goyoursBlack);
 }
-
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .jobListPre {
+    height: 16rem;
+  }
+  .jobListcontent ul li:nth-child(2) {
+    display: none;
+  }
+}
 @media screen and (max-width: 480px) {
   .workingholidayDiv {
     grid-template-columns: 1fr;

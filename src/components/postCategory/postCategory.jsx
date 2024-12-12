@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
-import './postCategory.css';
+import { useState } from 'react';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { RxCross2 } from 'react-icons/rx';
+import useWindowSize from '../../hook/useWindowSize';
+
+import './postCategory.css';
 
 const SpSearch = ({
   placeholder,
@@ -99,13 +101,7 @@ export default function PostCategary({
     }
   };
 
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const windowSize = useWindowSize();
 
   return (
     <>
