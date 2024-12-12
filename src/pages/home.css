@@ -739,7 +739,7 @@
   .kvSlider {
     position: relative;
     z-index: 0;
-    border-radius: 0 0 100% 0;
+    border-radius: 0 0 50% 0;
     overflow: hidden;
   }
   .kvlogo {

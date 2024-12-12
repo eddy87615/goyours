@@ -15,7 +15,6 @@ export default function Faqs() {
         type,
         }`
       );
-      console.log('Fetched feedback data:', faqs); // 调试输出
       setFaqs(faqs);
     }
     fetchfeedback();

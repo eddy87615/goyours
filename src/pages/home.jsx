@@ -267,16 +267,17 @@ export default function Home() {
 
   const homeslider = [
     { src: '/KV/KV_about_05.webp' },
-    { src: '/KV/KV_03.webp' },
+    // { src: '/KV/KV_03.webp' },
     { src: '/KV/KV_about_08.webp' },
-    { src: '/KV/KV_09.webp' },
+    // { src: '/KV/KV_09.webp' },
     { src: '/KV/KV_about_07.webp' },
-    { src: '/KV/KV_25.webp' },
+    // { src: '/KV/KV_25.webp' },
     { src: '/KV/KV_about_13.webp' },
     { src: '/KV/KV_about_04.webp' },
     { src: '/KV/KV_about_02.webp' },
     { src: '/KV/KV_about_09.webp' },
     { src: '/KV/KV_27.webp' },
+    { src: '/KV/KV_28.webp' },
   ];
 
   return (

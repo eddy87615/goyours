@@ -24,16 +24,16 @@
   font-family: 'inter', system-ui;
 }
 .fqa-wrapper {
-  padding-top: 6rem;
+  /* padding-top: 6rem; */
   width: 70vw;
   margin: 0 auto;
 }
 .fqa-body {
-  clip-path: ellipse(200% 100% at 50% 100%);
+  /* clip-path: ellipse(200% 100% at 50% 100%); */
 
   background-color: var(--goyoursBgColor);
 
-  margin-top: -10%;
+  /* margin-top: -10%; */
 
   padding-bottom: 8rem;
 
@@ -44,6 +44,20 @@
 
   will-change: clip-path, transform;
   transform: translateZ(0); /* 确保硬件加速 */
+}
+.fqa-body::before {
+  position: absolute;
+  content: '';
+  background-image: url(/round-bg.svg);
+  display: block;
+  width: 100vw;
+  height: 20rem;
+  background-size: 100%;
+  background-position: bottom;
+
+  background-repeat: no-repeat;
+  top: 0;
+  transform: translateY(-100%);
 }
 
 .qaSection h1 {
@@ -152,6 +166,9 @@
   }
   .fqa-wrapper {
     width: 90vw;
+  }
+  .qaSection h1 {
+    padding-top: 6rem;
   }
 }
 

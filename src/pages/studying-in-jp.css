@@ -69,30 +69,13 @@
   background-size: contain;
 
   bottom: 0;
-  transform: translateY(10%);
+  /* transform: translateY(10%); */
   right: 16%;
 
   z-index: 1;
 
   animation: imgShake02 1s infinite;
 }
-/* .guide-text::before {
-  position: absolute;
-
-  content: '';
-  background-image: url(/guidePage/studying-G.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-
-  width: 20rem;
-  height: 210%;
-
-  background-size: contain;
-  bottom: -55%;
-  left: -100%;
-
-  z-index: 1;
-} */
 
 .guidePage-studying-top::before {
   position: absolute;
@@ -107,7 +90,7 @@
 
   background-size: contain;
   bottom: 0;
-  transform: translateY(10%);
+  /* transform: translateY(10%); */
   left: 16%;
 
   z-index: 1;
@@ -118,7 +101,7 @@
 .guide-title {
   width: 100%;
 
-  padding-top: 10vh;
+  /* padding-top: 10vh; */
 }
 .guide-title h1 {
   display: flex;
@@ -262,7 +245,21 @@
 
   z-index: 1;
 
-  clip-path: ellipse(150% 100% at 50% 100%);
+  /* clip-path: ellipse(150% 100% at 50% 100%); */
+}
+.guide-content::before {
+  position: absolute;
+  content: '';
+  background-image: url(/round-bg.svg);
+  display: block;
+  width: 100vw;
+  height: 20rem;
+  background-size: 100%;
+  background-position: bottom;
+
+  background-repeat: no-repeat;
+  top: 0;
+  transform: translateY(-90%);
 }
 
 .aboutstudyingH2 {
@@ -275,7 +272,7 @@
 .aboutstudyingH2 h2 {
   width: fit-content;
   position: relative;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
 }
 
 .studying-page-button {
@@ -414,7 +411,7 @@
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .guidePage-studying-top {
-    height: 80vh;
+    height: 90vh;
   }
   .guide-vertical-slide-left,
   .silde-text-wrapper-left01 {
@@ -424,7 +421,7 @@
     width: 100%;
     height: 2rem;
     transform: unset;
-    top: calc(55.69px + 21%);
+    top: calc(55.69px + 19%);
     right: 0;
   }
 
@@ -499,6 +496,8 @@
   }
   .aboutstudyingH2 {
     width: 90vw;
+
+    padding-top: 4rem;
   }
   .aboutstudyingH2 h2 {
     font-size: 1.5rem;
@@ -509,7 +508,7 @@
   }
 
   .guide-content {
-    clip-path: ellipse(230% 100% at 50% 100%);
+    /* clip-path: ellipse(230% 100% at 50% 100%); */
   }
 
   .studying-page-button a {
@@ -629,7 +628,7 @@
   }
 
   .guide-content {
-    clip-path: ellipse(230% 100% at 50% 100%);
+    /* clip-path: ellipse(230% 100% at 50% 100%); */
   }
 
   .studying-page-button a {
@@ -714,7 +713,7 @@
     padding-top: 20%;
   }
   .guide-content {
-    clip-path: ellipse(300% 100% at 50% 100%);
+    /* clip-path: ellipse(300% 100% at 50% 100%); */
   }
   .guide-title h1::after {
     width: 2rem;
@@ -837,7 +836,7 @@
     padding-top: 20%;
   }
   .guide-content {
-    clip-path: ellipse(300% 100% at 50% 100%);
+    /* clip-path: ellipse(300% 100% at 50% 100%); */
   }
   .guide-title h1::after {
     width: 2rem;
