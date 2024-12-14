@@ -22,6 +22,8 @@
   position: relative;
 
   z-index: 0;
+
+  padding-bottom: 4%;
 }
 
 .guide-text {
@@ -250,7 +252,7 @@
 .aboutworkingH2 h2 {
   width: fit-content;
   position: relative;
-  /* padding-top: 2rem; */
+  padding-top: 2rem;
 }
 
 .working-page-button {
@@ -515,7 +517,7 @@
     width: 100%;
     height: 2rem;
     transform: unset;
-    top: calc(55.69px + 23%);
+    top: calc(55.69px + 19%);
     right: 0;
   }
   .silde-text-wrapper-right01 p,

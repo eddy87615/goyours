@@ -291,15 +291,23 @@ export default function Home() {
       </Helmet>
       <motion.div
         className="kv"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, ease: 'easeOut' }}
+        style={
+          windowSize <= 480 && {
+            borderBottomLeftRadius: 'calc(300 * 1em / 16)',
+            borderBottomRightRadius: 'calc(300 * 1em / 16)',
+          }
+        }
       >
-        <div className="kvSlider">
+        <motion.div
+          className="kvSlider"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, ease: 'easeOut' }}
+        >
           <Swiper
             centeredSlides={true}
             loop={true}
-            autoplay={{ delay: 2000 }}
+            // autoplay={{ delay: 2000 }}
             effect="fade"
             fadeEffect={{ crossFade: true }}
             modules={[Autoplay, EffectFade]}
@@ -314,7 +322,7 @@ export default function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </motion.div>
         <img src="/LOGO-09.png" alt="goyours logo" className="kvlogo" />
         <ScrollDown />
         <div className="sp-home-scrollDown">

@@ -88,6 +88,7 @@
 
   line-height: 2rem;
   padding: 4rem 0;
+  padding-top: 2rem;
   position: relative;
   z-index: 1;
 }
@@ -125,6 +126,13 @@
   margin: 0 auto; /* 居中對齊 */
 
   padding: 2rem 0;
+}
+.gallery .swiper-slide {
+  object-fit: contain;
+
+  overflow: hidden;
+
+  border-radius: 1rem;
 }
 
 .gallery .swiper-button-prev,
@@ -372,6 +380,9 @@ table {
   }
   .submitPostDate p {
     padding-left: 2rem;
+  }
+  .gallery {
+    max-width: 500px;
   }
 }
 

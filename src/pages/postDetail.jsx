@@ -45,6 +45,7 @@ const customComponents = {
             modules={[Navigation]}
             loop
             className="mySwiper"
+            spaceBetween={50}
           >
             {value.images.map((image, index) => (
               <SwiperSlide key={index}>
@@ -163,25 +164,13 @@ const cache = new Map();
 
 // 文章詳情頁
 export default function PostDetail() {
-  // const categories = [
-  //   { label: '所有文章', value: null },
-  //   { label: '最新消息', value: '最新消息' },
-  //   { label: '日本SGU項目', value: '日本SGU項目' },
-  //   { label: '日本EJU', value: '日本EJU' },
-  //   { label: '日本介護・護理相關', value: '日本介護・護理相關' },
-  //   { label: '日本特定技能一號簽證', value: '日本特定技能一號簽證' },
-  //   { label: '日本相關', value: '日本相關' },
-  //   { label: '日本留學', value: '日本留學' },
-  //   { label: '打工度假', value: '打工度假' },
-  // ];
-
   const { searchQuery, handleSearch } = useSearchHandler(); // 使用 Hook
   const { slug } = useParams(); // 從 URL 獲取文章 slug
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [relatedPosts, setRelatedPosts] = useState([]);
-
   const navigate = useNavigate();
+
   const handleSortClick = (selectedCategory) => {
     navigate('/goyours-post', {
       state: {
@@ -220,6 +209,9 @@ export default function PostDetail() {
 
   useEffect(() => {
     async function fetchPost() {
+      setLoading(true);
+      setPost(null); // 清空舊數據
+
       const cacheKey = `post-${slug}`;
 
       if (cache.has(cacheKey)) {
@@ -257,13 +249,18 @@ export default function PostDetail() {
         cache.set(cacheKey, updatedPost);
 
         setPost(updatedPost);
-        fetchRelatedPosts(post.categories, slug);
       }
       setLoading(false);
     }
 
     fetchPost();
   }, [slug]);
+
+  useEffect(() => {
+    if (post && post.categories) {
+      fetchRelatedPosts(post.categories, slug);
+    }
+  }, [post, slug]);
 
   async function fetchRelatedPosts(categories, currentSlug) {
     if (!categories || categories.length === 0) return;

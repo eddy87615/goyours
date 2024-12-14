@@ -913,7 +913,7 @@
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
     border-bottom-right-radius: calc(300 * 1em / 16);
-    /* overflow: visible; */
+    overflow: hidden;
 
     box-sizing: border-box;
     border-bottom: 1rem solid #ffe2bc;
@@ -922,6 +922,7 @@
 
     margin-bottom: 15vh;
   }
+
   .kvSlider {
     height: 85vh;
   }
