@@ -3,7 +3,10 @@
   fill: #fff;
 
   position: relative;
-  z-index: -2;
+  z-index: -5;
+}
+.homebg-Wave svg {
+  z-index: -5;
 }
 
 .homebg-intro-Wave {
@@ -11,6 +14,8 @@
   z-index: 0;
 
   bottom: -70%;
+
+  z-index: -2;
 }
 .homebg-school-Wave {
   position: absolute;

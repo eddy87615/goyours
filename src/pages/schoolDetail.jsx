@@ -12,6 +12,9 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
+import './home.css';
+import './about-us.css';
+
 import Modal from 'react-modal'; // 引入 Modal 組件
 Modal.setAppElement('#root');
 
@@ -79,10 +82,32 @@ const Features = ({ school }) => {
           </div>
         )}
         <div className="backToschoolList">
-          <Link to="/studying-in-jp-school">
+          {/* <Link to="/studying-in-jp-school">
             <TiArrowBackOutline />
             看更多學校
-          </Link>
+          </Link> */}
+          <div className="more-school-button">
+            <ul>
+              <li>
+                <Link to="/studying-in-jp-school">
+                  <span className="button-wrapper">
+                    <span className="upperP-wrapper">
+                      <p>
+                        <TiArrowBackOutline />
+                        看更多學校
+                      </p>
+                    </span>
+                    <span className="downP-wrapper">
+                      <p>
+                        <TiArrowBackOutline />
+                        看更多學校
+                      </p>
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
@@ -130,29 +155,37 @@ const Conditions = ({ school }) => {
             {school.money ? (
               <>約 {renderTuition(school.money)} （依照課程而異）</>
             ) : (
-              <span className="conditionTitle">暫無資料</span>
+              <span className="noInfo-warn">學校費用資訊未提供ಥ∀ಥ</span>
             )}
           </li>
 
           <li>
             <span className="conditionTitle">學習目的</span>
             <div className="condition-wrapper">
-              {school.purpose.map((purpose, index) => (
-                <span key={index}>
-                  {purpose}
-                  {index < school.purpose.length - 1 && '／'}
-                </span>
-              ))}
+              {school.purpose ? (
+                school.purpose.map((purpose, index) => (
+                  <span key={index}>
+                    {purpose}
+                    {index < school.purpose.length - 1 && '／'}
+                  </span>
+                ))
+              ) : (
+                <span className="noInfo-warn">學習目的資訊未提供ಥ∀ಥ</span>
+              )}
             </div>
           </li>
           <li>
             <span className="conditionTitle">入學時間</span>
-            {school.enrollTime.map((time, index) => (
-              <span key={index}>
-                {time}
-                {index < school.enrollTime.length - 1 && '／'}
-              </span>
-            ))}
+            {school.enrollTime ? (
+              school.enrollTime.map((time, index) => (
+                <span key={index}>
+                  {time}
+                  {index < school.enrollTime.length - 1 && '／'}
+                </span>
+              ))
+            ) : (
+              <span className="noInfo-warn">入學時間資訊未提供ಥ∀ಥ</span>
+            )}
           </li>
           <li>
             <span className="conditionTitle">上課時段</span>

@@ -124,6 +124,8 @@
   right: 0;
 
   width: 8rem;
+
+  transform: translateX(100%);
 }
 
 .schoolDetailicon {
