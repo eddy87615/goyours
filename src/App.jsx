@@ -28,9 +28,6 @@ const Privacy = lazy(() => import('./pages/privacy'));
 const QAsection = lazy(() => import('./pages/QAsection'));
 const StudyingInJp = lazy(() => import('./pages/studying-in-jp'));
 const WorkingHoliday = lazy(() => import('./pages/working-holiday'));
-const GoyoursbearBot = lazy(() =>
-  import('./components/goyoursbearBot/goyoursbearBot')
-);
 
 function AppContent() {
   const location = useLocation();
@@ -57,7 +54,6 @@ function AppContent() {
     <>
       <ScrollToTop />
       <Navigation />
-      <GoyoursbearBot />
 
       {loadingComplete ? (
         <Suspense

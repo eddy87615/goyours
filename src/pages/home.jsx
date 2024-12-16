@@ -6,10 +6,10 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 import { FaLocationDot } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
-import { Link } from 'react-router-dom';
 
 import ContactUs from '../components/contactUs/contactUs';
 import Hotpost from '../components/hotPost/hotPost';
@@ -307,7 +307,7 @@ export default function Home() {
           <Swiper
             centeredSlides={true}
             loop={true}
-            // autoplay={{ delay: 2000 }}
+            autoplay={{ delay: 2000 }}
             effect="fade"
             fadeEffect={{ crossFade: true }}
             modules={[Autoplay, EffectFade]}
