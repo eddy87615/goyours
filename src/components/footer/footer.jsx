@@ -89,17 +89,26 @@ export default function Footer() {
           <a
             href="https://www.instagram.com/goyourswhst?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
+            alt="goyours instagram"
           >
             <FaInstagram className="icon" />
           </a>
         </li>
         <li>
-          <a href="https://www.facebook.com/GoYoursWhSt" target="_blank">
+          <a
+            href="https://www.facebook.com/GoYoursWhSt"
+            target="_blank"
+            alt="goyours facebook"
+          >
             <FaFacebook className="icon" />
           </a>
         </li>
         <li>
-          <a href="https://line.me/R/ti/p/%40749omkba" target="_blank">
+          <a
+            href="https://line.me/R/ti/p/%40749omkba"
+            target="_blank"
+            alt="goyours line"
+          >
             <FaLine className="icon" />
           </a>
         </li>

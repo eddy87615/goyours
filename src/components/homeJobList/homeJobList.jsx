@@ -137,7 +137,10 @@ export default function HomeJobList() {
                 </span>
               </span>
               <span className="more-school-icon">
-                <img src="/goyoursbear-icon-w.svg" />
+                <img
+                  src="/goyoursbear-icon-w.svg"
+                  alt="goyours bear white icon"
+                />
               </span>
             </Link>
           </li>

@@ -232,7 +232,10 @@ const HomeschoolList = () => {
                 </span>
               </span>
               <span className="more-school-icon">
-                <img src="/goyoursbear-icon-w.svg" />
+                <img
+                  src="/goyoursbear-icon-w.svg"
+                  alt="goyours bear white icon"
+                />
               </span>
             </Link>
           </li>
@@ -323,7 +326,12 @@ export default function Home() {
             ))}
           </Swiper>
         </motion.div>
-        <img src="/LOGO-09.png" alt="goyours logo" className="kvlogo" />
+        <img
+          src="/LOGO-09.webp"
+          alt="goyours logo"
+          className="kvlogo"
+          rel="preload"
+        />
         <ScrollDown />
         <div className="sp-home-scrollDown">
           <ScrollDownSide />
