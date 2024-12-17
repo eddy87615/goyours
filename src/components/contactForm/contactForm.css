@@ -169,6 +169,9 @@ input:-webkit-autofill {
 .caseOptions label {
   width: 100%;
 }
+.caseOptions label:nth-child(4) {
+  order: 5;
+}
 .contactForm p {
   width: fit-content;
 }

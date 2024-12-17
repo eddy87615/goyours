@@ -107,13 +107,15 @@ export default function PostCategary({
     <>
       <SpSearch
         categories={categories}
-        placeholdertxt="輸入文章關鍵字"
+        placeholder={placeholder}
+        placeholdertxt={placeholdertxt}
+        setPlaceholdertxt={setPlaceholdertxt} // 傳遞 setPlaceholdertxt
         isSpSearchClicked={isSpSearchClicked}
         setIsSpSearchClicked={setIsSpSearchClicked}
-        searchTerm={searchTerm} // 传递搜索关键字
-        handleSearchChange={handleSearchChange} // 传递搜索事件处理
-        handleKeyDown={handleKeyDown} // 传递键盘事件处理
-        handleCategoryClick={handleCategoryClick} // 確保傳遞父組件的函數
+        searchTerm={searchTerm}
+        handleSearchChange={handleSearchChange}
+        handleKeyDown={handleKeyDown}
+        handleCategoryClick={handleCategoryClick}
       />
 
       <div className="postcategory">

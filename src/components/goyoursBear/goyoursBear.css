@@ -66,14 +66,14 @@
   stroke-width: 15;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .goyoursbear-component svg {
     /* width: 8rem; */
     height: 2.5rem;
   }
   .goyoursbear-component {
     top: 32%;
-    right: -210%;
+    right: -196%;
   }
   .goyoursbear-line {
     stroke-width: 20 !important;
@@ -82,7 +82,7 @@
     height: 2.5rem;
   }
   .goyoursBearJob {
-    right: -60%;
+    right: -56%;
   }
   .goyoursbear-aboutstudying svg {
     height: 2.5rem;

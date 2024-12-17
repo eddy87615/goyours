@@ -383,7 +383,7 @@
     min-width: unset;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .schoolsearchSearchBar {
     display: none;
   }
@@ -581,6 +581,11 @@
     justify-content: flex-start;
 
     width: 100%;
+  }
+  .enrollTime-List,
+  .purpose-List {
+    gap: unset;
+    row-gap: 2rem;
   }
   /* .enrollTime h3,
   .purpose h3 {

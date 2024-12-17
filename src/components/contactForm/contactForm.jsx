@@ -344,7 +344,7 @@ export default function ContactForm() {
             </label>
             <div className="privicy">
               <label>
-                <input type="checkbox" id="privicy" name="privicy" />
+                <input type="checkbox" id="privicy" name="privicy" required />
                 <span>
                   我已閱讀
                   <Link

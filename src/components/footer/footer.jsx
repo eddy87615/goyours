@@ -118,7 +118,7 @@ export default function Footer() {
           </h3>
         </li>
       </ul>
-      <button className="backtotop">
+      <button className="backtotop" aria-label="back to top button">
         <FaArrowUpLong style={{ width: '1.2rem', height: '1.2rem' }} />
       </button>
     </div>

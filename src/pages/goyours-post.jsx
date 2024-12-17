@@ -42,13 +42,19 @@ export default function Post() {
   const location = useLocation();
 
   useEffect(() => {
-    // 如果有來自路由狀態的 selectedCategory，更新選中分類
-    if (location.state?.selectedCategory) {
-      setSelectedCategory(location.state.selectedCategory);
-      setSearchQuery(''); // 清空搜索關鍵字
+    // 如果有來自路由狀態的 searchQuery，更新搜索關鍵字
+    if (location.state?.searchQuery) {
+      setSearchQuery(location.state.searchQuery);
+      setSelectedCategory(null); // 清空分類篩選
       setCurrentPage(1); // 重置到第1頁
     }
   }, [location.state]);
+
+  // const handleSearch = (query) => {
+  //   setSearchQuery(query || '');
+  //   setSelectedCategory(null);
+  //   setCurrentPage(1); // 重置到第1頁
+  // };
 
   useEffect(() => {
     async function fetchCategories() {

@@ -439,11 +439,14 @@ export default function PostDetail() {
                     onClick={() =>
                       handleRelatedPostClick(relatedPost.slug.current)
                     }
+                    target="_blank"
                   >
-                    <img
-                      src={urlFor(relatedPost.mainImage).url()}
-                      alt={relatedPost.title}
-                    />
+                    <div className="more-post-img-frame">
+                      <img
+                        src={urlFor(relatedPost.mainImage).url()}
+                        alt={relatedPost.title}
+                      />
+                    </div>
                     <h3>{relatedPost.title}</h3>
                     <ul>
                       {relatedPost.categories.map((category, idx) => (

@@ -1,5 +1,6 @@
 import { FaLocationDot } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import GoyoursBearJob from '../goyoursBear/goyoursBearJob';
 import HomeBg from '../homeBg/homeBg';
@@ -74,6 +75,13 @@ export default function HomeJobList() {
   ];
   const windowSize = useWindowSize();
 
+  const navigate = useNavigate();
+  const handleInquiry = (jobName) => {
+    navigate('/contact-us', {
+      state: { initialMessage: `我對${jobName}職缺有興趣，想要諮詢` },
+    });
+  };
+
   return (
     <>
       <AnimationSection className="homeJobWrapper">
@@ -114,7 +122,10 @@ export default function HomeJobList() {
                       {job.salary}
                     </li>
                   </ul>
-                  <button className="schoolListDetailBtn">
+                  <button
+                    className="schoolListDetailBtn"
+                    onClick={() => handleInquiry(job.jobName)}
+                  >
                     {windowSize < 1200 ? '工作詳情' : '了解職缺詳情'}
                     {/* 了解職缺詳情 */}
                   </button>
