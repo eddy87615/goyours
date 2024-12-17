@@ -269,18 +269,60 @@ export default function Home() {
   //nav height get
 
   const homeslider = [
-    { src: '/KV/KV_about_05.webp' },
-    // { src: '/KV/KV_03.webp' },
-    { src: '/KV/KV_about_08.webp' },
-    // { src: '/KV/KV_09.webp' },
-    { src: '/KV/KV_about_07.webp' },
-    // { src: '/KV/KV_25.webp' },
-    { src: '/KV/KV_about_13.webp' },
-    { src: '/KV/KV_about_04.webp' },
-    { src: '/KV/KV_about_02.webp' },
-    { src: '/KV/KV_about_09.webp' },
-    { src: '/KV/KV_27.webp' },
-    { src: '/KV/KV_28.webp' },
+    {
+      large: '/KV/KV_about_05-large.webp',
+      medium: '/KV/KV_about_05-medium.webp',
+      small: '/KV/KV_about_05-small.webp',
+      src: '/KV/KV_about_05-large.webp',
+    },
+    {
+      large: '/KV/KV_about_08-large.webp',
+      medium: '/KV/KV_about_08-medium.webp',
+      small: '/KV/KV_about_08-small.webp',
+      src: '/KV/KV_about_08-large.webp',
+    },
+    {
+      large: '/KV/KV_about_07-large.webp',
+      medium: '/KV/KV_about_07-medium.webp',
+      small: '/KV/KV_about_07-small.webp',
+      src: '/KV/KV_about_07-large.webp',
+    },
+    {
+      large: '/KV/KV_about_13-large.webp',
+      medium: '/KV/KV_about_13-medium.webp',
+      small: '/KV/KV_about_13-small.webp',
+      src: '/KV/KV_about_13-large.webp',
+    },
+    {
+      large: '/KV/KV_about_04-large.webp',
+      medium: '/KV/KV_about_04-medium.webp',
+      small: '/KV/KV_about_04-small.webp',
+      src: '/KV/KV_about_04-large.webp',
+    },
+    {
+      large: '/KV/KV_about_02-large.webp',
+      medium: '/KV/KV_about_02-medium.webp',
+      small: '/KV/KV_about_02-small.webp',
+      src: '/KV/KV_about_02-large.webp',
+    },
+    {
+      large: '/KV/KV_about_09-large.webp',
+      medium: '/KV/KV_about_09-medium.webp',
+      small: '/KV/KV_about_09-small.webp',
+      src: '/KV/KV_about_09-large.webp',
+    },
+    {
+      large: '/KV/KV_27-large.webp',
+      medium: 'KV/KV_27-medium.webp',
+      small: 'KV/KV_27-small.webp',
+      src: '/KV/KV_27.webp',
+    },
+    {
+      large: '/KV/KV_28-large.webp',
+      medium: 'KV/KV_28-medium.webp',
+      small: 'KV/KV_28-small.webp',
+      src: '/KV/KV_28.webp',
+    },
   ];
 
   return (
@@ -321,7 +363,12 @@ export default function Home() {
           >
             {homeslider.map((slide, index) => (
               <SwiperSlide key={index}>
-                <img src={slide.src} alt={`{slider photo${index}`} />
+                <img
+                  src={slide.src}
+                  srcSet={`${slide.large} 1024w, ${slide.medium} 640w, ${slide.small} 320w`}
+                  sizes="(max-width: 768px) 600px, (max-width: 1200px) 1200px, 2000px"
+                  alt={`{slider photo${index}`}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -331,6 +378,8 @@ export default function Home() {
           alt="goyours logo"
           className="kvlogo"
           rel="preload"
+          width="400"
+          height="200"
         />
         <ScrollDown />
         <div className="sp-home-scrollDown">

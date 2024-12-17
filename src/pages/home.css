@@ -13,7 +13,7 @@
   right: 10%;
   bottom: 4%;
 
-  width: 26%;
+  max-width: 40%;
   height: auto;
 
   z-index: 9;
@@ -754,6 +754,7 @@
   }
   .kvlogo {
     width: 44%;
+    max-width: 44%;
   }
   .homeintroSection {
     height: 84vh;
@@ -938,6 +939,8 @@
   }
   .kvlogo {
     width: 65%;
+    max-width: 65%;
+
     bottom: 0;
     left: 0;
     z-index: 1;

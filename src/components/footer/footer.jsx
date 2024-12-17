@@ -89,7 +89,7 @@ export default function Footer() {
           <a
             href="https://www.instagram.com/goyourswhst?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
-            alt="goyours instagram"
+            aria-label="goyours instagram"
           >
             <FaInstagram className="icon" />
           </a>
@@ -98,7 +98,7 @@ export default function Footer() {
           <a
             href="https://www.facebook.com/GoYoursWhSt"
             target="_blank"
-            alt="goyours facebook"
+            aria-label="goyours facebook"
           >
             <FaFacebook className="icon" />
           </a>
@@ -107,7 +107,7 @@ export default function Footer() {
           <a
             href="https://line.me/R/ti/p/%40749omkba"
             target="_blank"
-            alt="goyours line"
+            aria-label="goyours line"
           >
             <FaLine className="icon" />
           </a>
