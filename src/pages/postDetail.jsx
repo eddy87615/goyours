@@ -161,6 +161,27 @@ const customComponents = {
 };
 
 const cache = new Map();
+const CACHE_LIFETIME = 5 * 60 * 1000;
+
+// 儲存快取時加入時間戳記
+function setCache(key, data) {
+  const expiryTime = Date.now() + CACHE_LIFETIME;
+  cache.set(key, { data, expiryTime });
+}
+
+// 取得快取時檢查是否過期
+function getCache(key) {
+  const cached = cache.get(key);
+  if (!cached) return null;
+
+  if (Date.now() > cached.expiryTime) {
+    // 如果過期，從快取中移除
+    cache.delete(key);
+    return null;
+  }
+
+  return cached.data;
+}
 
 // 文章詳情頁
 export default function PostDetail() {
@@ -214,9 +235,11 @@ export default function PostDetail() {
 
       const cacheKey = `post-${slug}`;
 
-      if (cache.has(cacheKey)) {
+      const cachedPost = getCache(cacheKey);
+
+      if (cachedPost) {
         console.log('Using caches data');
-        setPost(cache.get(cacheKey));
+        setPost(cachedPost);
         setLoading(false);
         return;
       }
@@ -236,6 +259,8 @@ export default function PostDetail() {
           author->{
             name
           },
+          description
+
         }
       `,
         { slug }
@@ -246,7 +271,7 @@ export default function PostDetail() {
         await updateViews(post._id, post.views || 0);
         const updatedPost = { ...post, views: (post.views || 0) + 1 };
 
-        cache.set(cacheKey, updatedPost);
+        setCache(cacheKey, updatedPost);
 
         setPost(updatedPost);
       }
@@ -278,7 +303,7 @@ export default function PostDetail() {
         slug,
         categories[]->{
           title
-        }
+        },
       }
       `,
       { currentSlug, categoryTitles }
@@ -347,7 +372,7 @@ export default function PostDetail() {
     <HelmetProvider>
       <Helmet>
         <title>Go Yours文章分享：{post.title}</title>
-        <meta name="description" content={`Go Yours帶你看：${post.title}`} />
+        <meta name="description" content={`${post.description}`} />
       </Helmet>
       <div className="postDetailSection">
         <PostCategary

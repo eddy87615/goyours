@@ -34,6 +34,27 @@ import LoadingBear from '../components/loadingBear/loadingBear';
 import './schoolDetail.css';
 
 const cache = new Map();
+const CACHE_LIFETIME = 5 * 60 * 1000;
+
+// 儲存快取時加入時間戳記
+function setCache(key, data) {
+  const expiryTime = Date.now() + CACHE_LIFETIME;
+  cache.set(key, { data, expiryTime });
+}
+
+// 取得快取時檢查是否過期
+function getCache(key) {
+  const cached = cache.get(key);
+  if (!cached) return null;
+
+  if (Date.now() > cached.expiryTime) {
+    // 如果過期，從快取中移除
+    cache.delete(key);
+    return null;
+  }
+
+  return cached.data;
+}
 
 const Features = ({ school }) => {
   return (
@@ -249,11 +270,14 @@ export default function SchoolDetail() {
   useEffect(() => {
     async function fetchPost() {
       const cacheKey = `school-${slug}`;
+
+      const cachedSchool = getCache(cacheKey);
+
       console.log('useEffect triggered with slug:', slug);
 
-      if (cache.has(cacheKey)) {
+      if (cachedSchool) {
         console.log('cache hit');
-        setSchool(cache.get(cacheKey));
+        setSchool(cachedSchool);
         setLoading(false);
         return;
       }
@@ -288,7 +312,7 @@ export default function SchoolDetail() {
         { slug }
       );
       if (school) {
-        cache.set(cacheKey, school);
+        setCache(cacheKey, school);
         setSchool(school);
       }
       // setSchool(school);
