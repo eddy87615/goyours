@@ -1,8 +1,8 @@
 .goyoursbear-component {
   position: absolute;
   margin: 0 auto;
-  right: -80%;
-  top: 30%;
+  right: -92%;
+  top: 38%;
 
   fill: none;
   stroke: var(--goyoursYellow);
@@ -18,7 +18,7 @@
 .goyoursBearJob {
   position: absolute;
   margin: 0 auto;
-  right: -32%;
+  right: -42%;
   top: 40%;
 
   fill: none;
@@ -28,7 +28,7 @@
 
 .goyoursbear-morepost {
   position: absolute;
-  right: -150%;
+  right: -156%;
   top: 10%;
 
   fill: none;
@@ -88,21 +88,21 @@
     height: 2.5rem;
   }
   .goyoursbear-aboutstudying {
-    top: 32%;
+    top: 38%;
     right: -200%;
   }
   .goyoursbear-morepost svg {
     height: 2.5rem;
   }
   .goyoursbear-morepost {
-    top: 32%;
+    top: 38%;
     right: -200%;
   }
   .goyoursbear-relatedpost svg {
     height: 2.5rem;
   }
   .goyoursbear-relatedpost {
-    top: 32%;
+    top: 38%;
     right: -100%;
   }
 
