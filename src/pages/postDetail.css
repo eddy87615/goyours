@@ -16,6 +16,14 @@
   overflow-wrap: break-word; /* 防止長字串超出 */
   white-space: normal; /* 允許自動換行 */
 }
+/* .postbody::after {
+  position: absolute;
+  content: url(/goyoursBear-bg-schooldetail.svg);
+  width: 30%;
+  height: 70%;
+  bottom: -10%;
+  right: 0;
+} */
 .postbody img {
   width: 100%;
 
@@ -280,6 +288,10 @@
   gap: 1rem;
 
   color: var(--goyoursYellow);
+}
+
+.submitPostLink {
+  width: 100%;
 }
 
 table {

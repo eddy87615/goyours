@@ -48,6 +48,7 @@ export default function ContactUs() {
           className="homecontactusBtn"
           href="/contact-us"
           alt="to Contact Us page"
+          target="_blank"
         >
           <ArcText text="填寫表單，我們將聯絡您！" />
           <span className="contact-button">

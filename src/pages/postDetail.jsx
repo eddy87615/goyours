@@ -13,6 +13,7 @@ import PostCatalog from '../components/postCatalog/postCatalog';
 import GoyoursBearRelatedPost from '../components/goyoursBear/goyoursBear-relatedpost';
 import LoadingBear from '../components/loadingBear/loadingBear';
 import useSearchHandler from '../hook/useSearchHandler';
+import MorePost from '../components/morePost/morePost';
 
 import { LuEye } from 'react-icons/lu';
 
@@ -281,61 +282,61 @@ export default function PostDetail() {
     fetchPost();
   }, [slug]);
 
-  useEffect(() => {
-    if (post && post.categories) {
-      fetchRelatedPosts(post.categories, slug);
-    }
-  }, [post, slug]);
+  // useEffect(() => {
+  //   if (post && post.categories) {
+  //     fetchRelatedPosts(post.categories, slug);
+  //   }
+  // }, [post, slug]);
 
-  async function fetchRelatedPosts(categories, currentSlug) {
-    if (!categories || categories.length === 0) return;
+  // async function fetchRelatedPosts(categories, currentSlug) {
+  //   if (!categories || categories.length === 0) return;
 
-    // 提取类别标题用于查询相关帖子
-    const categoryTitles = categories.map((cat) => cat.title);
+  //   // 提取类别标题用于查询相关帖子
+  //   const categoryTitles = categories.map((cat) => cat.title);
 
-    // 先获取相同标签的相关文章
-    let relatedPosts = await client.fetch(
-      `
-      *[_type == "post" && slug.current != $currentSlug && count(categories[]->title in $categoryTitles) > 0] | order(publishedAt desc)[0...3] {
-        title,
-        publishedAt,
-        mainImage,
-        slug,
-        categories[]->{
-          title
-        },
-      }
-      `,
-      { currentSlug, categoryTitles }
-    );
+  //   // 先获取相同标签的相关文章
+  //   let relatedPosts = await client.fetch(
+  //     `
+  //     *[_type == "post" && slug.current != $currentSlug && count(categories[]->title in $categoryTitles) > 0] | order(publishedAt desc)[0...3] {
+  //       title,
+  //       publishedAt,
+  //       mainImage,
+  //       slug,
+  //       categories[]->{
+  //         title
+  //       },
+  //     }
+  //     `,
+  //     { currentSlug, categoryTitles }
+  //   );
 
-    const fetchedSlugs = new Set(relatedPosts.map((post) => post.slug.current));
+  //   const fetchedSlugs = new Set(relatedPosts.map((post) => post.slug.current));
 
-    // 如果相关文章不足三篇，则从所有文章中补足
-    if (relatedPosts.length < 3) {
-      const additionalPosts = await client.fetch(
-        `
-        *[_type == "post" && slug.current != $currentSlug && !(slug.current in $fetchedSlugs)] | order(publishedAt desc)[0...${
-          3 - relatedPosts.length
-        }]  {
-          title,
-          publishedAt,
-          mainImage,
-          slug,
-          categories[]->{
-            title
-          }
-        }
-        `,
-        { currentSlug, fetchedSlugs: Array.from(fetchedSlugs) }
-      );
+  //   // 如果相关文章不足三篇，则从所有文章中补足
+  //   if (relatedPosts.length < 3) {
+  //     const additionalPosts = await client.fetch(
+  //       `
+  //       *[_type == "post" && slug.current != $currentSlug && !(slug.current in $fetchedSlugs)] | order(publishedAt desc)[0...${
+  //         3 - relatedPosts.length
+  //       }]  {
+  //         title,
+  //         publishedAt,
+  //         mainImage,
+  //         slug,
+  //         categories[]->{
+  //           title
+  //         }
+  //       }
+  //       `,
+  //       { currentSlug, fetchedSlugs: Array.from(fetchedSlugs) }
+  //     );
 
-      // 将其他文章加入到相关文章中
-      relatedPosts = [...relatedPosts, ...additionalPosts];
-    }
+  //     // 将其他文章加入到相关文章中
+  //     relatedPosts = [...relatedPosts, ...additionalPosts];
+  //   }
 
-    setRelatedPosts(relatedPosts);
-  }
+  //   setRelatedPosts(relatedPosts);
+  // }
 
   async function updateViews(postId, currentViews) {
     await client
@@ -422,7 +423,7 @@ export default function PostDetail() {
             <PortableText value={post.body} components={customComponents} />
           </div>
 
-          {relatedPosts.length > 0 && (
+          {/* {relatedPosts.length > 0 && (
             <div className="relatedPosts">
               <div className="relatedpostH2">
                 <h2 className="yellow">
@@ -468,7 +469,8 @@ export default function PostDetail() {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
+          <MorePost />
         </div>
         <div></div>
       </div>

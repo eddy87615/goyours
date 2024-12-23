@@ -19,7 +19,9 @@ export default function Working() {
   useEffect(() => {
     async function fetchJobList() {
       // 獲取所有職缺
-      const jobs = await client.fetch(`*[_type == "jobList"]`);
+      const jobs = await client.fetch(
+        `*[_type == "jobList"] | order(name asc)`
+      );
       setTotalItems(jobs.length); // 設置總項目數
       setJobList(jobs); // 設置完整職缺數據
       setFilteredJobList(jobs); // 設置過濾後的職缺數據
@@ -176,7 +178,11 @@ export default function Working() {
       <div className="jobListKv">
         <SearchBar onSearch={handleSearch} />
       </div>
-      <JobList jobList={currentJobs} isSearchTriggered={isSearchTriggered} />
+      <JobList
+        jobList={currentJobs}
+        isSearchTriggered={isSearchTriggered}
+        totalResults={filteredJobList.length}
+      />
 
       <Pagination
         totalPages={totalPages}

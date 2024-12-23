@@ -43,7 +43,7 @@
 
   object-fit: cover;
 
-  border-radius: 1rem;
+  border-radius: 1rem !important;
 
   transition-duration: 0.2s;
 
@@ -160,7 +160,7 @@
   .submitPostLink img {
     width: 5rem;
     height: 5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.5rem !important;
   }
   .more-post-img-frame {
     width: 5rem;

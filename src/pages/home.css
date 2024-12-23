@@ -337,7 +337,7 @@
 }
 .schoolListPre:hover .schoolListBg {
   transition-duration: 0.5s;
-  clip-path: circle(20% at 0 0);
+  clip-path: circle(16% at 0 0);
 }
 
 .schoolListPre:hover .schoolListCover h4,
@@ -741,7 +741,26 @@
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  .homeintroImgWrapper0 {
+    width: 20rem;
+    height: 20rem;
+  }
+  .homeintroImgWrapper1 {
+    display: none;
+  }
   .homeintroImgWrapper2 {
+    display: block;
+  }
+  .schoolListDiv {
+    gap: 2rem;
+  }
+  .schoolListBg {
+    clip-path: circle(84% at 40% 10%);
+  }
+  .schoolListPre {
+    height: 16rem;
+  }
+  .schoolListBack ul {
     display: none;
   }
 }

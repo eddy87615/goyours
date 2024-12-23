@@ -16,7 +16,7 @@ import useWindowSize from '../../hook/useWindowSize';
 
 import './jobList.css';
 
-export default function JobList({ jobList, isSearchTriggered }) {
+export default function JobList({ jobList, isSearchTriggered, totalResults }) {
   const [isOpenList, setIsOpenList] = useState({});
   const windowSize = useWindowSize();
 
@@ -57,7 +57,7 @@ export default function JobList({ jobList, isSearchTriggered }) {
             </h2>
             <span className="yellow searchResult">
               您所搜尋的資料符合條件共有
-              <span className="searchNumber">{jobList.length}</span>筆
+              <span className="searchNumber">{totalResults}</span>筆
             </span>
           </div>
         ) : (

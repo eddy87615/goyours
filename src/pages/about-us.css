@@ -604,7 +604,7 @@
   width: 80vw;
   margin: 0 auto;
 
-  row-gap: 4rem;
+  row-gap: 6rem;
 
   padding-top: 4rem;
 }
@@ -615,12 +615,14 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  width: 20rem;
-  height: 11rem;
+  width: 22rem;
+  height: 12rem;
 
   padding: 0.5rem 1rem 1rem 1rem;
 
   border-radius: 1rem;
+
+  box-sizing: border-box;
 }
 .feedbackList:nth-child(even) {
   background-color: var(--goyoursYellow);
@@ -830,6 +832,10 @@
   }
 }
 @media (min-width: 481px) and (max-width: 1024px) {
+  .feedbackList {
+    width: 24rem;
+    height: 12rem;
+  }
   .aboutPage-scrollDown {
     position: unset;
   }
@@ -1024,7 +1030,7 @@
     padding: 8rem 0 4rem 0;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .scrollDown-side {
     bottom: 10%;
   }
@@ -1106,7 +1112,7 @@
   .goyoursserviceWrapper {
     height: 100%;
 
-    padding-bottom: 6rem;
+    /* padding-bottom: 6rem; */
   }
   .goyoursserviceWrapper::before {
     top: 50%;
