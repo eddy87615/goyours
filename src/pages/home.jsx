@@ -363,12 +363,18 @@ export default function Home() {
           >
             {homeslider.map((slide, index) => (
               <SwiperSlide key={index}>
-                <img
+                {/* <img
                   src={slide.src}
                   srcSet={`${slide.large} 1024w, ${slide.medium} 640w, ${slide.small} 320w`}
                   sizes="(max-width: 768px) 600px, (max-width: 1200px) 1200px, 2000px"
                   alt={`{slider photo${index}`}
-                />
+                /> */}
+                <picture>
+                  <source media="(min-width: 1024px)" srcSet={slide.large} />
+                  <source media="(min-width: 640px)" srcSet={slide.medium} />
+                  <source media="(max-width: 500px)" srcSet={slide.medium} />
+                  <img src={slide.src} alt={`{slider photo${index}`} />
+                </picture>
               </SwiperSlide>
             ))}
           </Swiper>
