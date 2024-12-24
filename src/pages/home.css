@@ -983,7 +983,7 @@
   }
   .homeintroImgWrapper1 {
     top: unset;
-    bottom: -20% !important;
+    bottom: 0 !important;
   }
   .homeintroImgWrapper1::after {
     width: 30px;
