@@ -14,20 +14,23 @@ import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 
 export default function StudyingInJp() {
   const sliderRight = [
-    { src: '/guidePage/slide009.jpg', alt: '' },
-    { src: '/guidePage/slide020.jpg', alt: '' },
-    { src: '/guidePage/slide019.jpg', alt: '' },
-    { src: '/guidePage/slide012.jpeg', alt: '' },
-    { src: '/guidePage/slide003.jpg', alt: '' },
-    { src: '/guidePage/slide017.png', alt: '' },
+    { src: '/guidePage/slide009.jpg', alt: 'japanese school interior images' },
+    { src: '/guidePage/slide020.png', alt: 'japanese school images' },
+    { src: '/guidePage/slide019.jpg', alt: 'japanese school' },
+    { src: '/guidePage/slide012.png', alt: 'japanese boy' },
+    { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
+    { src: '/guidePage/slide017.png', alt: 'japanese girl' },
   ];
   const sliderLeft = [
-    { src: '/guidePage/slide013.jpg', alt: '' },
-    { src: '/guidePage/slide014.jpg', alt: '' },
-    { src: '/guidePage/slide016.JPG', alt: '' },
-    { src: '/guidePage/slide008.jpg', alt: '' },
-    { src: '/guidePage/slide010.png', alt: '' },
-    { src: '/guidePage/slide004.jpg', alt: '' },
+    { src: '/guidePage/slide013.png', alt: 'japanese school interior images' },
+    { src: '/guidePage/slide014.jpg', alt: 'japanese school classtime images' },
+    { src: '/guidePage/slide016.JPG', alt: 'japanese school public room' },
+    { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
+    { src: '/guidePage/slide010.jpg', alt: 'japanese boy' },
+    {
+      src: '/guidePage/slide004.webp',
+      alt: 'japanese school classtime images',
+    },
   ];
 
   const currentYear = new Date().getFullYear();
