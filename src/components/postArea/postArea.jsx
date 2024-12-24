@@ -20,15 +20,35 @@ const extractPlainText = (body) => {
 };
 //
 
+const highlightText = (text, query) => {
+  if (!query) return text;
+
+  const escapeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escapeQuery})`, 'gi');
+
+  const parts = text.split(regex);
+
+  return parts.map((part, index) =>
+    regex.test(part) ? <mark key={index}>{part}</mark> : part
+  );
+};
+
 export default function PostArea({
   posts,
   totalPages,
   currentPage,
   onPageChange,
   handleCategoryClick,
+  searchQuery,
 }) {
   return (
     <div className="postRight">
+      {searchQuery ? (
+        <p className="post-searchword">搜尋關鍵字：{searchQuery}</p>
+      ) : (
+        <></>
+      )}
+
       {posts.map((post, index) => (
         <div key={index} className="postarea">
           {post.mainImage && (
@@ -44,7 +64,7 @@ export default function PostArea({
           <div className="postListInfo">
             <h2>
               <Link to={`/goyours-post/${post.slug.current}`} target="_blank">
-                {post.title}
+                {highlightText(post.title, searchQuery)}
               </Link>
             </h2>
             <ul className="info">

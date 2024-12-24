@@ -65,6 +65,7 @@ export default function SearchBar({ onSearch }) {
       value: '時薪由高到低',
     },
   ];
+
   const handleTagClick = (optionValue) => {
     setSelectedTags((prevTags) => {
       if (!Array.isArray(prevTags)) return []; // 確保狀態為陣列

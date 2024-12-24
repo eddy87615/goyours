@@ -66,6 +66,41 @@
   object-fit: cover;
 
   border-radius: 1.5rem;
+
+  position: relative;
+}
+.job-tags {
+  position: absolute;
+  left: -1%;
+  top: 4%;
+  z-index: 1;
+
+  font-weight: bold;
+  font-size: 0.7rem;
+
+  color: var(--goyoursYellow);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: start;
+}
+.tag-recommend,
+.tag-popular {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--goyoursBlack);
+  padding: 0.3rem 0.8rem;
+
+  gap: 0.5rem;
+
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.tag-hidden {
+  display: none;
 }
 
 .listintro {
@@ -341,5 +376,8 @@
     background-color: transparent;
     color: var(--goyoursBlack);
     border: 1px solid var(--goyoursBlack);
+  }
+  .job-tags {
+    top: 24%;
   }
 }

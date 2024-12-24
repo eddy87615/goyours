@@ -11,6 +11,8 @@ import { RiMoneyCnyCircleFill } from 'react-icons/ri';
 import { FaCirclePlus, FaCircleMinus } from 'react-icons/fa6';
 import { LuDownload } from 'react-icons/lu';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { TbThumbUpFilled } from 'react-icons/tb';
+import { FaFireAlt } from 'react-icons/fa';
 
 import useWindowSize from '../../hook/useWindowSize';
 
@@ -82,6 +84,30 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
               <div className="listintro">
                 {windowSize < 480 ? <h2>{job.name}</h2> : <></>}
                 <div className="job-img-wrapper">
+                  {job.tags && (
+                    <div className="job-tags">
+                      <span
+                        className={
+                          job.tags.includes('我們的推薦')
+                            ? 'tag-recommend'
+                            : 'tag-hidden'
+                        }
+                      >
+                        <TbThumbUpFilled />
+                        推薦職缺
+                      </span>
+                      <span
+                        className={
+                          job.tags.includes('高人氣職缺')
+                            ? 'tag-popular'
+                            : 'tag-hidden'
+                        }
+                      >
+                        <FaFireAlt />
+                        高人氣
+                      </span>
+                    </div>
+                  )}
                   <img src={urlFor(job.mainImage).url()} alt={job.name} />
                 </div>
                 <ul>

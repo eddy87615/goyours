@@ -1,0 +1,27 @@
+.waitingAnimation {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: transparent;
+  z-index: 9999999;
+}
+
+.waitingAnimation img {
+  transform: translateY(-100%);
+
+  animation: falling 2s linear infinite;
+
+  position: absolute;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(calc(100vh - 100%));
+  }
+}

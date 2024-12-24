@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { urlFor } from '../../cms/sanityClient';
 import Pagination from '../../components/pagination/pagination';
 import { FaLocationDot, FaMagnifyingGlass } from 'react-icons/fa6';
+import { TbThumbUpFilled } from 'react-icons/tb';
+import { FaFireAlt } from 'react-icons/fa';
 import './school.css';
 
 export default function School({
@@ -44,6 +46,30 @@ export default function School({
                 <FaLocationDot />
                 {school.city}
               </h2>
+              {school.tags && (
+                <div className="school-tags">
+                  <span
+                    className={
+                      school.tags.includes('我們的推薦')
+                        ? 'tag-recommend'
+                        : 'tag-hidden'
+                    }
+                  >
+                    <TbThumbUpFilled />
+                    推薦學校
+                  </span>
+                  <span
+                    className={
+                      school.tags.includes('高人氣學校')
+                        ? 'tag-popular'
+                        : 'tag-hidden'
+                    }
+                  >
+                    <FaFireAlt />
+                    高人氣
+                  </span>
+                </div>
+              )}
               <div className="schoollinkimg">
                 <img
                   src={

@@ -39,7 +39,12 @@
 .imgLink img {
   border-radius: 1rem;
 }
-
+.post-searchword {
+  color: #ffc477;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
 .postRight {
   width: 100%;
   display: flex;
@@ -145,6 +150,9 @@
   .postRight {
     width: 100%;
   }
+  .post-searchword {
+    font-size: 1.5rem;
+  }
   .imgLink {
     width: fit-content;
 
@@ -200,6 +208,9 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+  .post-searchword {
+    font-size: 1rem;
   }
   .postarea {
     display: flex;

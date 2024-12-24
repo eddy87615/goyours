@@ -34,8 +34,8 @@
 .arrowDot {
   transform: translate(0, -200px);
 
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   background-color: #757575;
 
   border-radius: 50px;

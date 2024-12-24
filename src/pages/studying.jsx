@@ -6,6 +6,8 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import School from '../components/school/school';
 import SchoolSearch from '../components/schoolSearch/schoolSearch';
 import LoadingBear from '../components/loadingBear/loadingBear';
+
+import useWindowSize from '../hook/useWindowSize';
 import './studying.css';
 
 export default function Studying() {
@@ -13,6 +15,8 @@ export default function Studying() {
   const [totalSchools, setTotalSchools] = useState(0); // 符合條件的總學校數
   const [loading, setLoading] = useState(true); // 加載狀態
   const [isSearchTriggered, setIsSearchTriggered] = useState(false); // 是否觸發搜尋
+
+  const windowSize = useWindowSize();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,7 +30,7 @@ export default function Studying() {
     selectedTags: [],
   }); // 搜尋條件
   const [currentPage, setCurrentPage] = useState(1); // 當前頁碼
-  const schoolsPerPage = 24; // 每頁顯示學校數
+  const schoolsPerPage = windowSize <= 500 ? 12 : 24; // 每頁顯示學校數
 
   // 初始化篩選條件
   useEffect(() => {

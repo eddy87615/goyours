@@ -20,6 +20,10 @@ button {
   cursor: pointer;
 }
 
+mark {
+  background-color: var(--goyoursYellow);
+}
+
 .postLoading {
   width: 100%;
   height: 100%;
@@ -37,6 +41,12 @@ button {
 .nopost-warning {
   width: 100vw;
   height: 100vh;
+}
+.postSearchResult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .postSearchResult p:nth-child(2) {
   font-size: 1rem;

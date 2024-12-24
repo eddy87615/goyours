@@ -28,6 +28,7 @@ const Privacy = lazy(() => import('./pages/privacy'));
 const QAsection = lazy(() => import('./pages/QAsection'));
 const StudyingInJp = lazy(() => import('./pages/studying-in-jp'));
 const WorkingHoliday = lazy(() => import('./pages/working-holiday'));
+import WaitingAnimation from './components/waitingAnimation/waitingAnimation';
 
 function AppContent() {
   const location = useLocation();
@@ -54,6 +55,7 @@ function AppContent() {
     <>
       <ScrollToTop />
       <Navigation />
+      {/* <WaitingAnimation /> */}
 
       {loadingComplete ? (
         <Suspense

@@ -186,7 +186,6 @@ function getCache(key) {
 
 // 文章詳情頁
 export default function PostDetail() {
-  const { searchQuery, handleSearch } = useSearchHandler(); // 使用 Hook
   const { slug } = useParams(); // 從 URL 獲取文章 slug
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -198,6 +197,16 @@ export default function PostDetail() {
       state: {
         selectedCategory: selectedCategory,
         searchQuery: '',
+      },
+    });
+  };
+
+  const handleSearch = (searchQuery) => {
+    // 導向到文章列表頁面並帶上搜尋參數
+    navigate('/goyours-post', {
+      state: {
+        searchQuery: searchQuery,
+        selectedCategory: null, // 重置分類選擇
       },
     });
   };
@@ -379,7 +388,7 @@ export default function PostDetail() {
         <PostCategary
           categories={categories}
           handleCategoryClick={handleSortClick}
-          handleSearch={handleSearch}
+          handleSearch={handleSearch} // 使用新的 handleSearch
           placeholder="搜尋文章⋯"
           title="文章分類"
         />

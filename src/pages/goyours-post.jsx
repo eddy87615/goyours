@@ -148,6 +148,7 @@ export default function Post() {
             currentPage={currentPage}
             onPageChange={(page) => setCurrentPage(page)}
             handleCategoryClick={handleCategoryClick}
+            searchQuery={searchQuery}
           />
         )}
       </div>
