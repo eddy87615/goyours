@@ -5,7 +5,6 @@ import Pagination from '../pagination/pagination';
 import { Link } from 'react-router-dom';
 import { urlFor } from '../../cms/sanityClient';
 
-// 限制文本長度的函數
 const extractPlainText = (body) => {
   return body
     .map((block) => {

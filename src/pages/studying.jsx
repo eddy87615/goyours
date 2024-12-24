@@ -45,7 +45,6 @@ export default function Studying() {
     setCurrentPage(Number(params.get('page')) || 1);
   }, [location.search]);
 
-  // 更新頁碼後加載數據
   useEffect(() => {
     const fetchSchools = async () => {
       setLoading(true);
@@ -69,7 +68,7 @@ export default function Studying() {
       const query = `
         *[_type == "school" && !(_id in path("drafts.**")) 
           ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter}
-        ] | order(publishedAt desc) [${start}...${end}] {
+        ] | order(name desc) [${start}...${end}] {
           mainImage,
           name,
           slug,
@@ -107,7 +106,6 @@ export default function Studying() {
   }, [currentPage, filters]);
 
   const handleSearchFilters = (newFilters) => {
-    // 合併新條件並同步到 URL
     const params = new URLSearchParams();
 
     if (newFilters.keyword) params.set('keyword', newFilters.keyword);

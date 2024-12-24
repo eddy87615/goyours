@@ -50,12 +50,6 @@ export default function Post() {
     }
   }, [location.state]);
 
-  // const handleSearch = (query) => {
-  //   setSearchQuery(query || '');
-  //   setSelectedCategory(null);
-  //   setCurrentPage(1); // 重置到第1頁
-  // };
-
   useEffect(() => {
     async function fetchCategories() {
       const categoriesData = await client.fetch(`

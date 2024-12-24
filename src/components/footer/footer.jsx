@@ -10,9 +10,11 @@ import {
 
 import './footer.css';
 import { Link } from 'react-router-dom';
+import useWindowSize from '../../hook/useWindowSize';
 
 export default function Footer() {
   const [latestNewPosts, setLatestNewsPosts] = useState([]);
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     const backToTop = () => {
@@ -57,9 +59,22 @@ export default function Footer() {
         </li>
         <li>
           <FaPhone className="businessicon" />
-          02 7727 3780
+          <a
+            href={windowSize <= 500 ? 'tel:0277273780' : ''}
+            style={{
+              color: '#fff',
+              pointerEvents: windowSize <= 500 ? 'auto' : 'none',
+            }}
+          >
+            02 7727 3780
+          </a>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            navigator.clipboard.writeText('台北市中山區南京東路一段52號2樓');
+            alert('地址已複製'); // 或者用其他方式提示使用者
+          }}
+        >
           <FaLocationDot className="businessicon" />
           台北市中山區南京東路一段52號2樓
         </li>
