@@ -55,7 +55,13 @@ export default function Footer() {
         </li>
         <li>
           <FaBuildingUser className="businessicon" />
-          就業服務許可證號：3508
+          <a
+            href="https://agent.wda.gov.tw/agentext/agent/QryAgentBrief.jsp"
+            target="_blank"
+            style={{ color: '#fff' }}
+          >
+            就業服務許可證號：3508
+          </a>
         </li>
         <li>
           <FaPhone className="businessicon" />
@@ -74,6 +80,7 @@ export default function Footer() {
             navigator.clipboard.writeText('台北市中山區南京東路一段52號2樓');
             alert('地址已複製'); // 或者用其他方式提示使用者
           }}
+          style={{ cursor: 'pointer' }}
         >
           <FaLocationDot className="businessicon" />
           台北市中山區南京東路一段52號2樓

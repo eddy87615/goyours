@@ -2,13 +2,13 @@ import { createClient } from '@sanity/client';
 import CryptoJS from 'crypto-js';
 
 const sanityClient = createClient({
-  projectId: process.env.VITE_SANITY_API_SANITY_PROJECT_ID,
-  dataset: process.env.VITE_SANITY_API_SANITY_DATASET,
+  projectId: import.meta.env.VITE_SANITY_API_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_SANITY_API_SANITY_DATASET,
   useCdn: false,
-  token: process.env.VITE_SANITY_API_SANITY_TOKEN,
+  token: import.meta.env.VITE_SANITY_API_SANITY_TOKEN,
 });
 
-const SECRET_KEY = process.env.VITE_SECRET_KEY; // 與前端加密的密鑰相同
+const SECRET_KEY = import.meta.env.VITE_SECRET_KEY; // 與前端加密的密鑰相同
 
 const decryptData = (encryptedData) => {
   const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
@@ -17,13 +17,17 @@ const decryptData = (encryptedData) => {
 
 export default async function handler(req, res) {
   console.log('環境變數測試:');
-  console.log('PROJECT_ID:', process.env.VITE_SANITY_API_SANITY_PROJECT_ID);
-  console.log('DATASET:', process.env.VITE_SANITY_API_SANITY_DATASET);
+  console.log('PROJECT_ID:', import.meta.env.VITE_SANITY_API_SANITY_PROJECT_ID);
+  console.log('DATASET:', import.meta.env.VITE_SANITY_API_SANITY_DATASET);
   console.log(
     'TOKEN:',
-    process.env.VITE_SANITY_API_SANITY_TOKEN ? '存在' : '不存在'
+    import.meta.env.VITE_SANITY_API_SANITY_TOKEN ? '存在' : '不存在'
   );
-  console.log('SECRET_KEY:', process.env.VITE_SECRET_KEY ? '存在' : '不存在');
+  console.log(
+    'SECRET_KEY:',
+    import.meta.env.VITE_SECRET_KEY ? '存在' : '不存在'
+  );
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }

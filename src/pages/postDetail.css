@@ -470,7 +470,7 @@ table {
     font-size: 1rem;
   }
   .postCatalog ul {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
   }
 
   .postTxtarea h2 {
@@ -483,15 +483,15 @@ table {
     z-index: -1;
   }
   .postTxtarea p {
-    font-size: 0.725rem;
-    line-height: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 2rem;
     padding-left: 0;
   }
   .postTxtarea ul,
   .postTxtarea ol {
-    font-size: 0.725rem;
+    font-size: 0.875rem;
 
-    line-height: 1.5rem;
+    line-height: 2rem;
     padding-left: 1rem;
   }
   .postTxtarea h3 {

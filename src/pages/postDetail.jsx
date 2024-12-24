@@ -359,7 +359,7 @@ export default function PostDetail() {
   if (!post) {
     return (
       <div>
-        <p className="postLoading">
+        <p className="postLoading nopost-warning">
           沒有文章
           <span className="nopost">
             <img src="/goyoursbear-B.svg" alt="goyours bear gray" />

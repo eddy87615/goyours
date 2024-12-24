@@ -355,6 +355,8 @@
   border-radius: 0.3rem;
 
   margin-right: 1rem;
+
+  white-space: nowrap;
 }
 
 @media (min-width: 1025px) and (max-width: 1200px) {
@@ -519,7 +521,7 @@
   }
 
   .schoolInfo {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
 
     gap: 1rem;
   }
@@ -554,7 +556,7 @@
   }
 
   .conditionsList li {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
 
     display: flex;
     align-items: center;
@@ -597,7 +599,7 @@
   }
   .featurestxt p {
     font-size: 0.875rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
 
     padding-left: 3rem;
   }
