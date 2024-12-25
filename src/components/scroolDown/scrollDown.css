@@ -1,7 +1,7 @@
 /*scroll down arrow*/
 .scrollDownArrow {
   position: absolute;
-  bottom: 0;
+  bottom: 6%;
   right: 3%;
 
   display: flex;

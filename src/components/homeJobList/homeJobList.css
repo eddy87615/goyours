@@ -139,9 +139,27 @@
 @media (min-width: 501px) and (max-width: 1024px) {
   .workingholidayDiv {
     gap: 2rem;
+
+    width: 90vw;
+
+    padding: 4rem 0;
   }
   .jobListPre {
-    height: 16rem;
+    height: 14rem;
+
+    border-radius: 1.5rem;
+  }
+  .jobListimg img {
+    border-radius: 1.5rem 0 0 1.5rem;
+  }
+  .jobListPre h3 {
+    font-size: 1rem;
+  }
+  .jobListPre p {
+    font-size: 0.75rem;
+
+    background-color: #fff;
+    color: var(--goyoursYellow);
   }
   .jobListcontent ul {
     display: none;

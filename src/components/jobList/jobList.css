@@ -18,7 +18,7 @@
   align-items: center;
 
   height: 10rem;
-  /* margin-bottom: 6rem; */
+  margin-bottom: 3rem;
   /* padding-bottom: 4rem; */
 
   background: url(/goyoursBear-bg.svg) no-repeat;
@@ -85,6 +85,8 @@
   gap: 0.5rem;
   justify-content: center;
   align-items: start;
+
+  z-index: 0;
 }
 .tag-recommend,
 .tag-popular {
@@ -304,6 +306,9 @@
 @media screen and (max-width: 480px) {
   .jobListSection {
     padding-top: 6rem;
+  }
+  .searchResultArea {
+    margin-bottom: unset;
   }
   .searchResultArea h2 {
     font-size: 1.25rem;

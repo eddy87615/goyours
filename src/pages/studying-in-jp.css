@@ -408,6 +408,18 @@
   .guidePage-studying-top::after {
     right: 13%;
   }
+  .silde-text-wrapper-right01 {
+    transform: unset;
+  }
+  .right02 {
+    right: 16%;
+  }
+  .left02 {
+    left: 16%;
+  }
+  .guide-vertical-slide-left {
+    left: calc(2% + 15px);
+  }
 }
 @media (min-width: 769px) and (max-width: 820px) {
   .silde-text-wrapper-right01.right02 {

@@ -149,7 +149,7 @@
 
     background-color: #fff8ef;
 
-    padding: 1rem;
+    padding: 1rem 3rem;
 
     box-sizing: border-box;
 
@@ -163,6 +163,7 @@
     transition-duration: 0.2s;
   }
   .close-window-btn {
+    transform: translateX(100%);
     float: right;
     margin-bottom: 1rem;
 

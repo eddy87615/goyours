@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import ContactUs from '../components/contactUs/contactUs';
-import GoyoursBear from '../components/goyoursBear/goyoursBear';
+// import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 import AnimationSection from '../pages/AnimationSection';
 
@@ -245,9 +245,9 @@ export default function About() {
       </AnimationSection>
       <AnimationSection className="goyoursserviceWrapper">
         <div className="goyoursservice">
-          <h1>
+          <h1 className="underLine">
             <span className="yellow">Service</span>服務內容
-            <GoyoursBear />
+            {/* <GoyoursBear /> */}
           </h1>
           <div className="serviceArea">
             <p>
@@ -297,9 +297,9 @@ export default function About() {
 
       <AnimationSection className="Review">
         <div className="reviewTitle">
-          <h1>
+          <h1 className="underLine">
             <span className="yellow">Review</span>學員心得
-            <GoyoursBear />
+            {/* <GoyoursBear /> */}
           </h1>
         </div>
         <div className="feedBackArea">

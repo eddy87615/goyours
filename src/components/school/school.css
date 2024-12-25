@@ -30,7 +30,7 @@
   align-items: center;
 
   height: 10rem;
-  /* margin-bottom: 6rem; */
+  margin-bottom: 3rem;
   /* padding-bottom: 4rem; */
 
   background: url(/goyoursBear-bg-search.svg) no-repeat;
@@ -143,6 +143,8 @@
   gap: 0.5rem;
   justify-content: center;
   align-items: start;
+
+  z-index: 0;
 }
 .tag-recommend,
 .tag-popular {
@@ -217,7 +219,9 @@
   .schoolCard h4 {
     font-size: 1.125rem;
   }
-
+  .searchResultArea {
+    margin-bottom: unset;
+  }
   .searchResultArea h2 {
     font-size: 1.25rem;
   }

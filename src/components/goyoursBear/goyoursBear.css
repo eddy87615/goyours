@@ -58,14 +58,66 @@
 
 .goyoursbear-aboutstudying {
   position: absolute;
-  right: -150%;
+  right: -158%;
   top: 10%;
 
   fill: none;
   stroke: var(--goyoursYellow);
   stroke-width: 15;
 }
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .goyoursbear-morepost {
+    right: -178%;
+  }
+  .goyoursbear-aboutstudying {
+    right: -178%;
+  }
+  .goyoursbear-component {
+    right: -108%;
+  }
+  .goyoursBearJob {
+    right: -52%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .goyoursbear-component {
+    right: -147%;
+  }
+  .goyoursbear-component svg {
+    height: 3.5rem;
+  }
 
+  .goyoursBearJob svg {
+    height: 3.5rem;
+  }
+  .goyoursBearJob {
+    right: -56%;
+  }
+
+  .goyoursbear-morepost svg {
+    height: 3.5rem;
+  }
+  .goyoursbear-morepost {
+    top: 30%;
+    right: -147%;
+  }
+
+  .goyoursbear-aboutstudying svg {
+    height: 3.5rem;
+  }
+  .goyoursbear-aboutstudying {
+    top: 30%;
+    right: -147%;
+  }
+
+  .goyoursbear-relatedpost svg {
+    height: 3.5rem;
+  }
+  .goyoursbear-relatedpost {
+    top: 30%;
+    right: -64%;
+  }
+}
 @media screen and (max-width: 500px) {
   .goyoursbear-component svg {
     /* width: 8rem; */
@@ -73,7 +125,7 @@
   }
   .goyoursbear-component {
     top: 32%;
-    right: -196%;
+    right: -220%;
   }
   .goyoursbear-line {
     stroke-width: 20 !important;
@@ -82,28 +134,28 @@
     height: 2.5rem;
   }
   .goyoursBearJob {
-    right: -56%;
+    right: -66%;
   }
   .goyoursbear-aboutstudying svg {
     height: 2.5rem;
   }
   .goyoursbear-aboutstudying {
     top: 38%;
-    right: -200%;
+    right: -220%;
   }
   .goyoursbear-morepost svg {
     height: 2.5rem;
   }
   .goyoursbear-morepost {
     top: 38%;
-    right: -200%;
+    right: -220%;
   }
   .goyoursbear-relatedpost svg {
     height: 2.5rem;
   }
   .goyoursbear-relatedpost {
     top: 38%;
-    right: -100%;
+    right: -116%;
   }
 
   .goyoursbear-component-school svg {

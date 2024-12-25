@@ -4,6 +4,10 @@ import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
 import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
 import { Link } from 'react-router-dom';
 
+import MorePost from '../morePost/morePost';
+import ApplicationTitle from '../../../public/applicationTitle';
+import ThankYouTitle from '../../../public/thankYouTitle';
+
 import { FaCirclePlus } from 'react-icons/fa6';
 import { BsTrashFill } from 'react-icons/bs';
 
@@ -233,13 +237,19 @@ export default function ContactFormResume() {
       {isSubmited ? (
         <>
           <div className="contactusComponent-resume">
-            <h1>Thank you</h1>
-            <img src="/LOGO-02.png" alt="goyours logo" className="formlogo" />
+            <h1>
+              <ThankYouTitle />
+            </h1>
+            <img
+              src="/LOGO-02-text.png"
+              alt="goyours logo"
+              className="formlogo"
+            />
             <p className="subitedtxt">
               感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！
             </p>
           </div>
-          <div className="submitedPostArea">
+          {/* <div className="submitedPostArea">
             <div className="morepostH2">
               <h2 className="yellow">
                 延伸閱讀
@@ -274,12 +284,15 @@ export default function ContactFormResume() {
                 </Link>
               ))}
             </div>
-          </div>
+          </div> */}
+          <MorePost />
         </>
       ) : (
         <div className="contactusComponent-resume">
           <div className="contactusTitleforApply">
-            <h1>Application</h1>
+            <h1>
+              <ApplicationTitle />
+            </h1>
             <h2 className="jobapplyh1">{jobTitle}——打工度假申請</h2>
           </div>
           <div className="contactimg">

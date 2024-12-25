@@ -196,9 +196,9 @@ export default function Hotpost() {
   return (
     <AnimationSection>
       <div className="homeHotpostH1">
-        <h1>
+        <h1 className="underLine">
           <span className="yellow">Hot</span>熱門文章
-          <GoyoursBear />
+          {/* <GoyoursBear /> */}
         </h1>
       </div>
       <div className="homebg-hot-Wave">

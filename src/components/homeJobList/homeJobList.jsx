@@ -113,10 +113,10 @@ export default function HomeJobList() {
     <>
       <AnimationSection className="homeJobWrapper">
         <div className="homeJobH1">
-          <h1>
+          <h1 className="underLine">
             <span className="yellow">Working Holiday</span>
             打工度假職缺一覽
-            <GoyoursBearJob />
+            {/* <GoyoursBearJob /> */}
           </h1>
         </div>
         <div className="homebg-job-Wave">

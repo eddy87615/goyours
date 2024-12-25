@@ -52,9 +52,9 @@ const News = () => {
   return (
     <>
       <div className="homeNewsH1">
-        <h1>
+        <h1 className="underLine">
           <span className="yellow">News</span>最新消息
-          <GoyoursBear />
+          {/* <GoyoursBear /> */}
         </h1>
       </div>
       <div className="homeNewsDiv">
@@ -176,9 +176,9 @@ const HomeschoolList = () => {
   return (
     <div className="homeschoolWrapper">
       <div className="homeschoolH1">
-        <h1>
+        <h1 className="underLine">
           <span className="yellow">School</span>學校一覽
-          <GoyoursBear />
+          {/* <GoyoursBear /> */}
         </h1>
       </div>
       <div className="schoolListDiv">

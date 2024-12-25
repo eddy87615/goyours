@@ -39,9 +39,9 @@ export default function MorePost({ isSubmited }) {
     <>
       {' '}
       <div className="morepostH2">
-        <h2 className="yellow">
+        <h2 className="yellow underLine">
           延伸閱讀
-          <GoyoursBearMorePost />
+          {/* <GoyoursBearMorePost /> */}
         </h2>
       </div>
       <div className="submitPostList">

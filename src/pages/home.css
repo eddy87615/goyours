@@ -197,8 +197,8 @@
   background-color: transparent;
 }
 .homeNewsprePost {
-  width: 30% !important;
-  height: 30% !important;
+  width: 30%;
+  height: 30%;
 }
 .homeNewspostImg {
   background-color: var(--goyoursYellow);
@@ -378,6 +378,8 @@
 
   opacity: 1;
   transition-duration: 0.5s;
+
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 .schoolListCover p {
   display: flex;
@@ -397,6 +399,8 @@
 
   opacity: 1;
   transition-duration: 0.5s;
+
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 .schoolListCover img {
   position: absolute;
@@ -724,8 +728,15 @@
     top: 40%;
   }
 
+  .homeNewsprePost {
+    width: 30% !important;
+  }
+
   .schoolListBack ul li:nth-child(2) {
     display: none;
+  }
+  .jobListcontent ul li:nth-child(1) {
+    line-height: 1.5rem;
   }
   .schoolListPre {
     height: 16rem;
@@ -741,6 +752,18 @@
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  .homeNewsH1,
+  .homeschoolH1,
+  .homeJobH1,
+  .homeHotpostH1 {
+    width: 90vw;
+  }
+  .homeNewsH1 h1,
+  .homeschoolH1 h1,
+  .homeJobH1 h1,
+  .homeHotpostH1 h1 {
+    font-size: 1.5rem;
+  }
   .homeintroImgWrapper0 {
     width: 20rem;
     height: 20rem;
@@ -752,15 +775,65 @@
     display: block;
   }
   .schoolListDiv {
+    width: 90vw;
     gap: 2rem;
+    padding: 4rem 0;
   }
   .schoolListBg {
     clip-path: circle(84% at 40% 10%);
   }
   .schoolListPre {
-    height: 16rem;
+    height: 14rem;
+  }
+  .schoolListCover,
+  .schoolListBg,
+  .schoolListBack,
+  .schoolListCover img,
+  .schoolListPre {
+    border-radius: 1.5rem;
+  }
+  .schoolListCover h4 {
+    font-size: 1rem;
+  }
+  .schoolListCover p {
+    font-size: 0.75rem;
+  }
+  .schoolListBack h3,
+  .schoolListBack p {
+    font-size: 0.75rem;
   }
   .schoolListBack ul {
+    display: none;
+  }
+  .homeNewsprePost {
+    width: 50% !important;
+  }
+  .schoolListPointer {
+    width: 1.5rem;
+    right: 2%;
+    bottom: 2%;
+  }
+  .schoolListBack h3::after {
+    width: 20rem;
+  }
+  .more-school-button ul a {
+    font-size: 1rem;
+
+    padding: 1rem 4rem;
+  }
+
+  .schoolListDetailBtn {
+    font-size: 0.875rem;
+
+    right: 4%;
+  }
+
+  .jobListcontent ul {
+    display: block;
+  }
+
+  .jobListcontent ul li:nth-child(1),
+  .jobListcontent ul li:nth-child(2) {
     display: none;
   }
 }
@@ -813,7 +886,7 @@
     padding-top: 10rem;
   }
   .homeNewsprePost {
-    width: 50% !important;
+    width: 50%;
   }
 
   .schoolListDiv {
@@ -918,11 +991,6 @@
     padding: 4rem 0;
   }
 
-  .homeperhotpost {
-    width: 44%;
-
-    padding: 1.5rem;
-  }
   .homeContactusSection {
     padding: 4rem 0;
 

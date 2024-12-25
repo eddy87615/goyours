@@ -42,6 +42,8 @@
   }
   .homebg-intro-Wave {
     bottom: -50%;
+
+    z-index: unset;
   }
   .homebg-school-Wave {
     top: 0;

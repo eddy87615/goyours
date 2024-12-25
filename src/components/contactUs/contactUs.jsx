@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import './contactUs.css';
 
+import ContactUsTitle from '../../../public/contactUsTitle';
+
 export default function ContactUs() {
   const ArcText = ({ text }) => {
     return (
@@ -26,7 +28,9 @@ export default function ContactUs() {
   return (
     <>
       <div className="homeContactusDiv">
-        <h2>Contact us</h2>
+        <h2>
+          <ContactUsTitle />
+        </h2>
 
         <div className="contactTxt01">
           <h3>聯絡GoYours</h3>

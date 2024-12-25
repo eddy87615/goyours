@@ -12,14 +12,14 @@
   margin-bottom: 8rem;
 }
 .contactusComponent-resume h1 {
-  font-size: 1350%;
+  width: 100%;
+  height: fit-content;
+
+  padding: 6%;
+
+  box-sizing: border-box;
 
   margin: 0;
-
-  color: #ffe2bc;
-  text-align: center;
-
-  font-family: 'Lalezar', system-ui;
 }
 
 .contactusTitleforApply {
@@ -288,26 +288,15 @@ input:-webkit-autofill {
   margin-top: 2rem;
 }
 
-.submitPostList {
+/* .submitPostList {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 
   padding-top: 3rem;
-}
+} */
 
-.morepostH2 {
-  width: 50vw;
-
-  margin: 0 auto;
-}
-.morepostH2 h2 {
-  width: fit-content;
-
-  position: relative;
-}
-
-.submitPostLink {
+/* .submitPostLink {
   width: 50%;
   display: grid;
   grid-template-columns: 0.1fr 1fr;
@@ -328,8 +317,8 @@ input:-webkit-autofill {
   object-fit: cover;
 
   border-radius: 1rem;
-}
-.submitPostLink h3 {
+} */
+/* .submitPostLink h3 {
   grid-area: title;
 }
 .submitPostLink ul {
@@ -338,8 +327,8 @@ input:-webkit-autofill {
   gap: 1rem;
 
   color: var(--goyoursYellow);
-}
-.submitPostDate {
+} */
+/* .submitPostDate {
   position: relative;
   grid-area: date;
 
@@ -347,8 +336,8 @@ input:-webkit-autofill {
 }
 .submitPostDate p {
   padding-left: 3rem;
-}
-.submitPostDate::before {
+} */
+/* .submitPostDate::before {
   content: '';
   position: absolute;
   width: 2rem;
@@ -359,6 +348,10 @@ input:-webkit-autofill {
   background-image: url(/圓形logo.png);
   background-position: center;
   background-size: cover;
+} */
+
+.submitPostList {
+  padding-bottom: 4rem;
 }
 
 @media (min-width: 1025px) and (max-width: 1200px) {
@@ -380,7 +373,7 @@ input:-webkit-autofill {
     width: fit-content;
   }
 }
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 501px) and (max-width: 1024px) {
   .contactusComponent-resume {
     width: 100vw;
     box-sizing: border-box;
@@ -451,7 +444,7 @@ input:-webkit-autofill {
     font-size: 1rem;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .contactusComponent-resume {
     width: 100vw;
     box-sizing: border-box;
@@ -521,5 +514,20 @@ input:-webkit-autofill {
     width: 100%;
     box-sizing: border-box;
     font-size: 0.85rem;
+  }
+  .privicy label {
+    width: fit-content;
+  }
+  .contactusComponent-resume h1 {
+    font-size: 500%;
+  }
+  .morepostH2 {
+    width: 80vw;
+  }
+  .submitPostList {
+    padding-bottom: 4rem;
+  }
+  .contactimg {
+    display: none;
   }
 }

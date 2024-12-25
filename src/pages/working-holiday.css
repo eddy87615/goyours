@@ -385,6 +385,18 @@
   .guidePage-working-holiday-top::after {
     right: 10%;
   }
+  .silde-text-wrapper-right01 {
+    transform: unset;
+  }
+  .right02 {
+    right: 16%;
+  }
+  .left02 {
+    left: 16%;
+  }
+  .guide-vertical-slide-left {
+    left: calc(2% + 15px);
+  }
 }
 @media (min-width: 769px) and (max-width: 820px) {
   .silde-text-wrapper-right01.right02 {
@@ -603,6 +615,7 @@
   .aboutworkingH2 h2 {
     font-size: 1.5rem;
   }
+
   .working-page-button {
     width: 80vw;
     gap: 2rem;
@@ -704,6 +717,7 @@
   .aboutworkingH2 h2 {
     font-size: 1rem;
   }
+
   .aboutworkingH2 {
     width: 90vw;
     padding-top: 4rem;
