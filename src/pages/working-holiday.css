@@ -117,8 +117,8 @@
 
   position: absolute;
 
-  animation-name: scrollDown;
-  bottom: 140%;
+  animation-name: scrollUp;
+  top: 140%;
   animation-duration: 20s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
