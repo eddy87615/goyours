@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
-import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
+// import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
 import { Link } from 'react-router-dom';
 
 import MorePost from '../morePost/morePost';
@@ -13,7 +13,7 @@ import { BsTrashFill } from 'react-icons/bs';
 
 import CryptoJS from 'crypto-js';
 
-import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
+// import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
 
 import './contactFormResume.css';
 import '../contactForm/contactForm.css';
@@ -81,6 +81,20 @@ export default function ContactFormResume() {
       setFormData((prevData) => ({
         ...prevData,
         [name]: type === 'checked' ? checked : value,
+      }));
+    }
+    if (name === 'age' || name === 'phone') {
+      // 只保留數字
+      const numbersOnly = value.replace(/[^\d]/g, '');
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: numbersOnly,
+      }));
+    } else {
+      // 其他欄位保持原有的處理方式
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: type === 'checkbox' ? checked : value,
       }));
     }
   };
@@ -331,6 +345,7 @@ export default function ContactFormResume() {
                 value={formData.age}
                 onChange={handleChange}
                 required
+                inputMode="numeric"
               />
             </label>
 
@@ -347,6 +362,7 @@ export default function ContactFormResume() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
+                inputMode="numeric"
               />
             </label>
             <label htmlFor="lineId" className="lineId">

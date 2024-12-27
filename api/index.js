@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import dotenv from 'dotenv';
-import { createClient } from '@sanity/client';
+// import { createClient } from '@sanity/client';
 import nodemailer from 'nodemailer';
 
 dotenv.config();
@@ -63,13 +63,14 @@ export default async function handler(req, res) {
             subject: '新聯絡資料表單',
             text: `
 新聯絡資料表單:
-- Name: ${data.name || 'N/A'}
-- Age: ${data.age || 'N/A'}
-- Phone: ${data.phone || 'N/A'}
-- Email: ${data.email || 'N/A'}
-- Case: ${Array.isArray(data.case) ? data.case.join(', ') : 'N/A'}
-- Call Time: ${data.callTime || 'N/A'}
-- Line ID: ${data.lineId || 'N/A'}
+  - 真實姓名：${data.name || 'N/A'}
+  - 年齡：${data.age || 'N/A'}
+  - 行動電話：${data.phone || 'N/A'}
+  - 電子郵件：${data.email || 'N/A'}
+  - 想詢問的方案：${Array.isArray(data.case) ? data.case.join(', ') : 'N/A'}
+  - 方便聯絡的時段：${data.callTime || 'N/A'}
+  - Line ID：${data.lineId || 'N/A'}
+快到後台查看更多資訊！
       `,
           }
         : {
@@ -78,14 +79,14 @@ export default async function handler(req, res) {
             subject: '新聯絡資料表單',
             text: `
     新打工度假申請:
-      - Job Name: ${data?.jobname || 'N/A'}
-      - Name: ${data?.name || 'N/A'}
-      - Age: ${data?.age || 'N/A'}
-      - Phone: ${data?.phone || 'N/A'}
-      - Email: ${data?.email || 'N/A'}
-      - Resume: ${data?.resume || 'N/A'}
-      - Call Time: ${data?.callTime || 'N/A'}
-      - Remarks: ${data?.remarks || 'N/A'}
+      - 申請工作名稱：${data?.jobname || 'N/A'}
+      - 真實姓名：${data?.name || 'N/A'}
+      - 年齡：${data?.age || 'N/A'}
+      - 行動電話：${data?.phone || 'N/A'}
+      - 電子郵件：${data?.email || 'N/A'}
+      - 方便聯絡時段：${data?.callTime || 'N/A'}
+      - Line ID：${data.lineId || 'N/A'}
+    快到後台看看履歷吧！
     `,
           };
 

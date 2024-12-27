@@ -62,6 +62,21 @@ export default function ContactForm() {
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
     }));
+    // 特殊處理年齡欄位
+    if (name === 'age' || name === 'phone') {
+      // 只保留數字
+      const numbersOnly = value.replace(/[^\d]/g, '');
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: numbersOnly,
+      }));
+    } else {
+      // 其他欄位保持原有的處理方式
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: type === 'checkbox' ? checked : value,
+      }));
+    }
   };
 
   const handleCheckboxChange = (e) => {
@@ -244,6 +259,7 @@ export default function ContactForm() {
                 value={formData.age}
                 onChange={handleChange}
                 required
+                inputMode="numeric"
               />
             </label>
 
@@ -260,6 +276,7 @@ export default function ContactForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
+                inputMode="numeric"
               />
             </label>
             <label htmlFor="lineId">
