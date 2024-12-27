@@ -9,6 +9,7 @@ const createSanityClient = () => {
     return createClient({
       projectId: process.env.VITE_SANITY_API_SANITY_PROJECT_ID,
       dataset: process.env.VITE_SANITY_API_SANITY_DATASET,
+      apiVersion: '2023-09-01',
       useCdn: false,
       token: process.env.VITE_SANITY_API_SANITY_TOKEN,
     });
