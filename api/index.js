@@ -15,6 +15,19 @@ const client = createClient({
 });
 
 export default async function handler(req, res) {
+  // 添加這些日誌
+  console.log('Request received at:', new Date().toISOString());
+  console.log('Request method:', req.method);
+  console.log('Request headers:', req.headers);
+  console.log('Request body:', req.body);
+  console.log('Environment variables:', {
+    SANITY_PROJECT_ID: process.env.SANITY_API_SANITY_PROJECT_ID
+      ? 'Set'
+      : 'Not set',
+    EMAIL_USER: process.env.EMAIL_USER ? 'Set' : 'Not set',
+    EMAIL_PASS: process.env.EMAIL_PASS ? 'Set' : 'Not set',
+  });
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }

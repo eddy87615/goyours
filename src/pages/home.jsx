@@ -15,7 +15,7 @@ import ContactUs from '../components/contactUs/contactUs';
 import Hotpost from '../components/hotPost/hotPost';
 import HomeJobList from '../components/homeJobList/homeJobList';
 import ScrollDown from '../components/scroolDown/scrollDown';
-import GoyoursBear from '../components/goyoursBear/goyoursBear';
+// import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import HomeBg from '../components/homeBg/homeBg';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 import AnimationSection from './AnimationSection';
