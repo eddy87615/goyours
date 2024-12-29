@@ -197,7 +197,7 @@
   background-color: transparent;
 }
 .homeNewsprePost {
-  width: 30%;
+  width: 30% !important;
   height: 30%;
 }
 .homeNewspostImg {
