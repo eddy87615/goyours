@@ -59,7 +59,7 @@ export default async function handler(req, res) {
       type === 'contact'
         ? {
             from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
+            to: 'goyoursjp@gmail.com',
             subject: '新聯絡資料表單',
             text: `
 新聯絡資料表單:
