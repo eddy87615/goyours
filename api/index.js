@@ -75,7 +75,7 @@ export default async function handler(req, res) {
           }
         : {
             from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
+            to: 'goyoursjp@gmail.com',
             subject: '新聯絡資料表單',
             text: `
     新打工度假申請:

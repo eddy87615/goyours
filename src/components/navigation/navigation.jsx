@@ -53,7 +53,7 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
                       alt="hamburger menu goyours icon"
                     />
                   </span>
-                  {index === 6 ? (
+                  {index === 7 ? (
                     <span className="hamburger-contact-us-button">
                       <img
                         src="/goyoursbear-icon-w.svg"
@@ -85,6 +85,7 @@ export default function Navigation() {
     { to: '/studying-in-jp', title: '日本留學', target: '_self' },
     { to: '/working-holiday', title: '打工度假', target: '_self' },
     { to: '/Q&A-section', title: '常見Q&A', target: '_self' },
+    { to: '/Q&A-section', title: '下載專區', target: '_self' },
     { to: '/contact-us', title: '聯絡我們', target: '_blank' },
   ];
 
@@ -146,7 +147,7 @@ export default function Navigation() {
                       <p id={`navText${index}`}>
                         {nav.title}
                         <span className="nav-icon">
-                          {index === 6 ? <TbBoxMultiple /> : null}
+                          {index === 7 ? <TbBoxMultiple /> : null}
                         </span>
                       </p>
                     </span>
@@ -154,7 +155,7 @@ export default function Navigation() {
                       <p id={`navText${index}`}>
                         {nav.title}
                         <span className="nav-icon">
-                          {index === 6 ? <TbBoxMultiple /> : null}
+                          {index === 7 ? <TbBoxMultiple /> : null}
                         </span>
                       </p>
                     </span>
