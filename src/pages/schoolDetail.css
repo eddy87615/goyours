@@ -36,10 +36,13 @@
   background-size: contain;
 }
 
-.swiper-free-mode > .swiper-wrapper img {
+/* 修改選擇器，指向更具體的元素 */
+.downSlider .swiper-slide img {
   filter: brightness(0.4);
+  transition: filter 0.3s ease;
 }
-.swiper-slide-thumb-active img {
+
+.downSlider .swiper-slide.swiper-slide-thumb-active img {
   filter: brightness(1) !important;
 }
 
@@ -147,7 +150,7 @@
   justify-content: center;
   align-items: center;
 
-  z-index: 999;
+  z-index: 9999999999999;
 }
 
 .modalContent {
