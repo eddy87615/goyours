@@ -169,12 +169,22 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
                     isOpenList[job.slug.current || job.slug] ? '' : 'close'
                   }`}
                 >
-                  <li>工作期間：{job.jobperiod ? job.jobperiod : '未提供'}</li>
-                  <li>勤務時間：{job.jobtime ? job.jobtime : '未提供'}</li>
-                  <li>休息時間：{job.resttime ? job.resttime : '未提供'}</li>
-                  <li>每週工時：{job.workhour ? job.workhour : '未提供'}</li>
-                  <li>日文程度：{job.japanese ? job.japanese : '未提供'}</li>
-                  <li>福利厚生：{job.privilege ? job.privilege : '未提供'}</li>
+                  <li>
+                    工作期間：{job.jobperiod ? job.jobperiod : '依雇主規定'}
+                  </li>
+                  <li>勤務時間：{job.jobtime ? job.jobtime : '依雇主規定'}</li>
+                  <li>
+                    休息時間：{job.resttime ? job.resttime : '依雇主規定'}
+                  </li>
+                  <li>
+                    每週工時：{job.workhour ? job.workhour : '依雇主規定'}
+                  </li>
+                  <li>
+                    日文程度：{job.japanese ? job.japanese : '依雇主要求'}
+                  </li>
+                  <li>
+                    福利厚生：{job.privilege ? job.privilege : '依雇主規定'}
+                  </li>
                 </ul>
                 {job.detailedFile?.asset?._ref && (
                   <a

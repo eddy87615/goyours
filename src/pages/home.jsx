@@ -53,8 +53,7 @@ const News = () => {
     <>
       <div className="homeNewsH1">
         <h1 className="underLine">
-          <span className="yellow">News</span>最新消息
-          {/* <GoyoursBear /> */}
+          <span className="yellow">News</span>日本最新消息
         </h1>
       </div>
       <div className="homeNewsDiv">
@@ -177,7 +176,7 @@ const HomeschoolList = () => {
     <div className="homeschoolWrapper">
       <div className="homeschoolH1">
         <h1 className="underLine">
-          <span className="yellow">School</span>學校一覽
+          <span className="yellow">School</span>日本學校一覽
           {/* <GoyoursBear /> */}
         </h1>
       </div>

@@ -115,7 +115,7 @@ export default function HomeJobList() {
         <div className="homeJobH1">
           <h1 className="underLine">
             <span className="yellow">Working Holiday</span>
-            打工度假職缺一覽
+            日本打工度假職缺一覽
             {/* <GoyoursBearJob /> */}
           </h1>
         </div>
