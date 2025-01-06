@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import './App.css';
-import React, { useEffect, Suspense, lazy, useState } from 'react';
+import React, { useEffect, Suspense, lazy, useState, useRef } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -13,6 +13,7 @@ import Footer from './components/footer/footer';
 import ScrollToTop from './components/scrollToTop/scrollToTop';
 import { VisibilityProvider } from './visibilityProvider';
 import LoadingBear from './components/loadingBear/loadingBear';
+import { Toaster, toast } from 'react-hot-toast';
 
 // 使用 React.lazy 延遲加載每個頁面組件
 const Home = lazy(() => import('./pages/home'));
@@ -28,6 +29,7 @@ const Privacy = lazy(() => import('./pages/privacy'));
 const QAsection = lazy(() => import('./pages/QAsection'));
 const StudyingInJp = lazy(() => import('./pages/studying-in-jp'));
 const WorkingHoliday = lazy(() => import('./pages/working-holiday'));
+const InformBear = lazy(() => import('./components/informBear/informBear'));
 
 function AppContent() {
   const location = useLocation();
@@ -43,17 +45,19 @@ function AppContent() {
     return () => clearTimeout(timer); // 清理計時器
   }, [location.pathname]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoadingComplete(false);
-      setLoadingComplete(true); // 强制重渲染 LoadingBear
-    }, 0);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoadingComplete(false);
+  //     setLoadingComplete(true); // 强制重渲染 LoadingBear
+  //   }, 0);
+  // }, []);
 
   return (
     <>
       <ScrollToTop />
       <Navigation />
+      <InformBear />
+      {/* <Toaster /> */}
 
       {loadingComplete ? (
         <Suspense

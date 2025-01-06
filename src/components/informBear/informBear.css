@@ -1,0 +1,124 @@
+.go2072408551 {
+  background-color: var(--goyoursYellow);
+  color: var(--goyoursBlack);
+  padding: 0.5rem;
+  font-weight: bold;
+
+  width: 20rem;
+  height: 100%;
+
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+
+  position: relative;
+
+  background-image: url(/goyoursBear-bg-home.svg);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 30%;
+}
+.go3958317564 {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+
+  box-sizing: border-box;
+}
+
+.toast-content {
+  width: 100%;
+}
+.toast-content h4 {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-bottom: 0.5rem;
+}
+.toast-content p {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+
+  font-weight: normal;
+}
+.toast-content h4 svg {
+  font-size: 2rem;
+}
+.toast-content button {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  background-color: transparent;
+  border: none;
+}
+
+.inform-bear {
+  width: 4rem;
+  height: 4rem;
+  /* background-color: var(--goyoursYellow); */
+  position: fixed;
+  bottom: 4%;
+  left: 2%;
+  z-index: 999;
+
+  /* border-radius: 50%; */
+
+  background-image: url(/GOGOGOyourL.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  animation: inform 0.5s infinite alternate;
+
+  transform: scale(1);
+}
+.inform-bear::after {
+  content: '';
+  background-image: url(/NEWS.svg);
+  background-repeat: no-repeat;
+  width: 5rem;
+  height: 100%;
+  background-size: contain;
+  background-position: bottom;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translateX(100%);
+}
+
+@keyframes inform {
+  0% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-1px, -1px);
+  }
+  20% {
+    transform: translate(1px, -1px);
+  }
+  30% {
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    transform: translate(1px, 1px);
+  }
+  50% {
+    transform: translate(-1px, -1px);
+  }
+  60% {
+    transform: translate(1px, -1px);
+  }
+  70% {
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    transform: translate(1px, 1px);
+  }
+  90% {
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

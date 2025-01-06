@@ -185,7 +185,7 @@
   background-color: var(--goyoursBlack);
   /* background-color: rgb(65 64 66/ 90%); */
 
-  z-index: 99;
+  z-index: 99999999;
 
   transition-duration: 0.5s;
 

@@ -143,6 +143,9 @@ export default function Footer() {
       <button className="backtotop" aria-label="back to top button">
         <FaArrowUpLong style={{ width: '1.2rem', height: '1.2rem' }} />
       </button>
+      <small style={{ position: 'absolute', bottom: '2%', right: '1%' }}>
+        All rights reserved. &#169; Go Yours
+      </small>
     </div>
   );
 }
