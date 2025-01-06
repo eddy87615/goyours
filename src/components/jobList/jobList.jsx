@@ -183,7 +183,8 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
                     日文程度：{job.japanese ? job.japanese : '依雇主要求'}
                   </li>
                   <li>
-                    福利厚生：{job.privilege ? job.privilege : '依雇主規定'}
+                    福利厚生：
+                    {job.privilege ? job.privilege : '加保雇用年金以及社會保險'}
                   </li>
                 </ul>
                 {job.detailedFile?.asset?._ref && (
