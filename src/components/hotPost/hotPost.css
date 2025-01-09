@@ -29,6 +29,10 @@
 
   padding: 2rem;
 }
+.homeHotPost-postTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
 .homeperhotpost ul {
   display: flex;
   gap: 1rem;
@@ -146,7 +150,7 @@
   .homeprehotpost h2 {
     font-size: 1rem;
   }
-  .homeprehotpost h3 {
+  .homeHotPost-postTitle {
     font-size: 0.875rem;
   }
   .homeprehotpost ul {

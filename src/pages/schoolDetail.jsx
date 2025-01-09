@@ -378,7 +378,10 @@ export default function SchoolDetail() {
             loop={true}
             spaceBetween={10}
             navigation={true}
-            thumbs={{ swiper: thumbsSwiper }} // 直接使用這種方式
+            thumbs={{
+              swiper:
+                thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+            }} // 修改這裡
             modules={[FreeMode, Navigation, Thumbs]}
             className="upperSlider"
           >

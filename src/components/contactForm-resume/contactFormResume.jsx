@@ -8,8 +8,12 @@ import MorePost from '../morePost/morePost';
 import ApplicationTitle from '../../../public/applicationTitle';
 import ThankYouTitle from '../../../public/thankYouTitle';
 
+import useWindowSize from '../../hook/useWindowSize';
+
 import { FaCirclePlus } from 'react-icons/fa6';
 import { BsTrashFill } from 'react-icons/bs';
+import { FiDownload } from 'react-icons/fi';
+import { GoArrowRight } from 'react-icons/go';
 
 import CryptoJS from 'crypto-js';
 
@@ -42,33 +46,34 @@ export default function ContactFormResume() {
     resume: null,
   });
   const [isSubmited, setIsSubmited] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const [randomPosts, setRandomPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  // const [randomPosts, setRandomPosts] = useState([]);
+  const windowSize = useWindowSize();
 
-  useEffect(() => {
-    async function fetchPosts() {
-      const posts = await client.fetch(`
-        *[_type == "post"] | order(publishedAt desc) {
-          title,
-          publishedAt,
-          mainImage,
-          slug,
-          categories[]->{
-            title
-          },
-        }
-        `);
-      setPosts(posts);
-    }
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchPosts() {
+  //     const posts = await client.fetch(`
+  //       *[_type == "post"] | order(publishedAt desc) {
+  //         title,
+  //         publishedAt,
+  //         mainImage,
+  //         slug,
+  //         categories[]->{
+  //           title
+  //         },
+  //       }
+  //       `);
+  //     setPosts(posts);
+  //   }
+  //   fetchPosts();
+  // }, []);
 
-  useEffect(() => {
-    if (posts.length > 0) {
-      const shuffledPosts = [...posts].sort(() => 0.5 - Math.random());
-      setRandomPosts(shuffledPosts.slice(0, 3));
-    }
-  }, [posts, isSubmited]);
+  // useEffect(() => {
+  //   if (posts.length > 0) {
+  //     const shuffledPosts = [...posts].sort(() => 0.5 - Math.random());
+  //     setRandomPosts(shuffledPosts.slice(0, 3));
+  //   }
+  // }, [posts, isSubmited]);
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -246,6 +251,17 @@ export default function ContactFormResume() {
     });
   };
 
+  const [documents, setDocuments] = useState([]);
+  useEffect(() => {
+    async function fetchDocuments() {
+      const document = await client.fetch(`*[_type == 'download']`);
+
+      setDocuments(document);
+    }
+
+    fetchDocuments();
+  }, []);
+
   return (
     <>
       {isSubmited ? (
@@ -254,13 +270,19 @@ export default function ContactFormResume() {
             <h1>
               <ThankYouTitle />
             </h1>
-            <img
-              src="/LOGO-02-text.png"
-              alt="goyours logo"
-              className="formlogo"
-            />
+            {windowSize < 800 ? (
+              <a className="goyours-line-btn">GoYours Line@</a>
+            ) : (
+              <img
+                src="/goyoursline@.png"
+                alt="goyours line@ QR code"
+                className="formlogo"
+              />
+            )}
             <p className="subitedtxt">
-              感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！
+              {windowSize < 800
+                ? '感謝您的報名，也歡迎直接點擊連結加入我們的Line@，專員會更快服務您喔！'
+                : '感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！'}
             </p>
           </div>
           {/* <div className="submitedPostArea">
@@ -423,10 +445,11 @@ export default function ContactFormResume() {
                     onChange={handleFileChange}
                     ref={fileInputRef}
                     style={{ display: 'none' }} // 隱藏
+                    required
                   />
                   <span className="uploadNotice">
                     最大檔案大小為30MB。不支援 .bat、.exe
-                    等檔案類型；最多上傳四個檔案。
+                    等檔案類型；最多上傳四個檔案。請先下載提供的履歷書填寫。
                   </span>
                   <div className="fileList">
                     <ul>
@@ -441,15 +464,26 @@ export default function ContactFormResume() {
                       ))}
                     </ul>
                   </div>
-                  <div
-                    className="uploadBtn"
-                    onClick={(e) => {
-                      e.stopPropagation(); // 阻止事件冒泡
-                      fileInputRef.current.click();
-                    }}
-                  >
-                    <FaCirclePlus />
-                    點我上傳檔案
+                  <div className="upload-download-btnarea">
+                    <Link
+                      className="uploadBtn downloadBtn"
+                      to="/document-download"
+                      target="_blank"
+                    >
+                      <FiDownload />
+                      履歷書下載
+                    </Link>
+                    <GoArrowRight />
+                    <div
+                      className="uploadBtn"
+                      onClick={(e) => {
+                        e.stopPropagation(); // 阻止事件冒泡
+                        fileInputRef.current.click();
+                      }}
+                    >
+                      <FaCirclePlus />
+                      點我上傳檔案
+                    </div>
                   </div>
                 </div>
               </div>

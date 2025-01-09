@@ -15,7 +15,7 @@
   align-items: start;
 }
 
-.footer h3 {
+.footer-title {
   width: 100%;
 
   font-size: 1.2rem;
@@ -56,10 +56,10 @@
 
   display: flex;
 }
-.footerNewsPosts p {
+.footerPost-date {
   margin: 1rem 0 0 0;
 }
-.footerNewsPosts h4 {
+.footerPost-title {
   margin: 0.5rem 0 1rem 0;
 }
 
@@ -143,7 +143,7 @@
     column-gap: 2rem;
     row-gap: 1rem;
   }
-  .footer h3 {
+  .footer-title {
     color: var(--goyoursYellow);
   }
   .footerMedia li:last-child {

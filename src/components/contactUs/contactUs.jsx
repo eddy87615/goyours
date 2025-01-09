@@ -28,21 +28,23 @@ export default function ContactUs() {
   return (
     <>
       <div className="homeContactusDiv">
-        <h2>
+        <h1>
           <ContactUsTitle />
-        </h2>
+        </h1>
 
         <div className="contactTxt01">
-          <h3>聯絡GoYours</h3>
           <p>
+            聯絡GoYours
+            <br />
             無論是短期進修、語言學校，還是打工度假體驗不同人生，
             <br />
             背上背包，跟我們一起冒險，留下無悔的足跡！
           </p>
         </div>
         <div className="contactTxt01">
-          <h3>打工度假、留學免費諮詢</h3>
           <p>
+            打工度假、留學免費諮詢
+            <br />
             透過表單預約與我們一對一諮詢。
             <br />
             也歡迎Line或FB聯繫，GoYours將是您打工度假、留學的最佳夥伴！

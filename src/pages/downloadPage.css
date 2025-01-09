@@ -1,0 +1,173 @@
+.goyoursbearonfaqs {
+  position: absolute;
+
+  bottom: 100%;
+  width: 4rem;
+}
+
+.download-KV {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url(/KV/KV_27-large.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 90vh;
+}
+
+.download-title {
+  font-family: 'inter', system-ui;
+}
+
+.download-wrapper {
+  /* padding-top: 6rem; */
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.downloadSection h1 {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+}
+.downloadSection h1::after {
+  content: '';
+  width: 4rem;
+  margin: 0 auto;
+
+  padding-top: 3rem;
+  border-bottom: 0.6rem solid var(--goyoursYellow);
+}
+
+.download-body {
+  background-color: var(--goyoursBgColor);
+
+  /* margin-top: -10%; */
+
+  padding-bottom: 8rem;
+
+  width: 100vw;
+  height: 100%;
+
+  position: relative;
+
+  will-change: clip-path, transform;
+  transform: translateZ(0); /* 确保硬件加速 */
+}
+.download-body::before {
+  position: absolute;
+  content: '';
+  background-image: url(/round-bg.svg);
+  display: block;
+  width: 100vw;
+  height: 20rem;
+  background-size: 100%;
+  background-position: bottom;
+
+  background-repeat: no-repeat;
+  top: 0;
+  transform: translateY(-99%);
+}
+
+.goyoursbear-line {
+  fill: none;
+  stroke: var(--goyoursYellow);
+  stroke-width: 15;
+}
+
+.download-body h2 {
+  position: relative;
+}
+
+.downloadFiles-list {
+  display: flex;
+  gap: 2rem;
+
+  flex-wrap: wrap;
+
+  padding-top: 2rem;
+
+  width: 80%;
+}
+
+.download-section {
+  padding: 7rem 0 4rem 0;
+
+  border-bottom: 4px solid #ffeed9;
+
+  position: relative;
+
+  min-height: 300px;
+}
+.download-section::after {
+  position: absolute;
+  content: '';
+
+  background-image: url(/goyoursBear-bg-search.svg);
+  background-size: 100%;
+  width: 10rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+
+  bottom: 0;
+  right: 0;
+
+  z-index: -1;
+}
+
+.download-section a {
+  padding: 1rem 2rem;
+
+  background-color: var(--goyoursBlack);
+  color: #fff;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  font-weight: bold;
+  font-size: 0.875rem;
+
+  border-radius: 0.5rem;
+
+  border: 1px solid var(--goyoursBlack);
+
+  transition-duration: 0.2s;
+}
+
+.download-section a:hover {
+  color: var(--goyoursBlack);
+  background-color: transparent;
+  border: 1px solid var(--goyoursBlack);
+
+  transition-duration: 0.2s;
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .download-wrapper {
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .download-wrapper {
+    width: 90vw;
+  }
+  .downloadSection h1 {
+    font-size: 1rem;
+  }
+
+  .goyoursbearonfaqs {
+    width: 3rem;
+  }
+  .download-body h2 {
+    font-size: 1rem;
+  }
+
+  .downloadSection h1::after {
+    width: 3rem;
+    border-bottom: 0.3rem solid var(--goyoursYellow);
+    padding-top: 1rem;
+  }
+}

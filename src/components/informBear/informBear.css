@@ -4,7 +4,7 @@
   padding: 0.5rem;
   font-weight: bold;
 
-  width: 20rem;
+  width: 30rem;
   height: 100%;
 
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
@@ -42,6 +42,10 @@
   line-height: 1.5rem;
 
   font-weight: normal;
+
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 .toast-content h4 svg {
   font-size: 2rem;

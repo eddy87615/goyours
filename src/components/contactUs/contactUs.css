@@ -35,7 +35,7 @@
   background-color: #ffe2bc;
   transition-duration: 0.5s;
 }
-.homeContactusDiv:hover h2 > svg {
+.homeContactusDiv:hover h1 > svg {
   /* color: var(--goyoursBgColor); */
   fill: var(--goyoursBgColor);
   transition-duration: 0.5s;
@@ -49,7 +49,7 @@
   border-left: 0.5rem solid var(--goyoursBgColor);
 }
 
-.homeContactusDiv h2 {
+.homeContactusDiv h1 {
   width: 100%;
   height: fit-content;
 

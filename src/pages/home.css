@@ -59,9 +59,6 @@
 
   position: relative;
 }
-.homeintrotxt h2 {
-  margin: 0;
-}
 
 .homepicdecoBear {
   position: absolute;
@@ -222,14 +219,14 @@
   display: none;
 }
 
-.homeNewsDiv h3,
-.homeNewsDiv p {
+.homeNews-postTitle,
+.homeNews-postDate {
   margin: 0.5rem 0;
 }
-.homeNewsDiv h3 {
+.homeNews-postTitle {
   font-size: 1.2rem;
 }
-.homeNewsDiv p {
+.homeNews-postDate {
   font-size: 1.1rem;
   margin-top: 0;
 
@@ -340,8 +337,8 @@
   clip-path: circle(16% at 0 0);
 }
 
-.schoolListPre:hover .schoolListCover h4,
-.schoolListPre:hover .schoolListCover p {
+.schoolListPre:hover .homeSchool-schoolName,
+.schoolListPre:hover .homeSchool-schoolLocation {
   opacity: 0;
 
   transition-duration: 0.5s;
@@ -361,7 +358,7 @@
   /* display: none; */
 }
 
-.schoolListCover h4 {
+.homeSchool-schoolName {
   margin: 0;
   padding: 0.5rem 1rem;
 
@@ -373,6 +370,7 @@
   width: fit-content;
 
   font-size: 1.3rem;
+  font-weight: bold;
 
   transform: translate(-1rem, 1rem);
 
@@ -381,7 +379,7 @@
 
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
-.schoolListCover p {
+.homeSchool-schoolLocation {
   display: flex;
   align-items: center;
   gap: 0.2rem;
@@ -435,14 +433,14 @@
 
   line-height: 1.8rem;
 }
-.schoolListBack h3 {
+.homeSchool-back-schoolName {
   position: relative;
   text-align: center;
   color: #fff;
 
   font-size: 1.4rem;
 }
-.schoolListBack h3::after {
+.homeSchool-back-schoolName::after {
   content: '';
 
   position: absolute;
@@ -455,7 +453,7 @@
 
   background-color: #fff;
 }
-.schoolListBack p {
+.homeSchool-back-schoolIntro {
   text-align: center;
   width: 84%;
 
@@ -741,13 +739,13 @@
   .schoolListPre {
     height: 16rem;
   }
-  .schoolListBack h3 {
+  .homeSchool-back-schoolName {
     font-size: 1.2rem;
   }
-  .schoolListBack h3::after {
+  .homeSchool-back-schoolName::after {
     width: 20rem;
   }
-  .schoolListBack p {
+  .homeSchool-back-schoolIntro {
     font-size: 0.75rem;
   }
 }
@@ -792,14 +790,14 @@
   .schoolListPre {
     border-radius: 1.5rem;
   }
-  .schoolListCover h4 {
+  .homeSchool-schoolName {
     font-size: 1rem;
   }
-  .schoolListCover p {
+  .homeSchool-schoolLocation {
     font-size: 0.75rem;
   }
-  .schoolListBack h3,
-  .schoolListBack p {
+  .homeSchool-back-schoolName,
+  .homeSchool-back-schoolIntro {
     font-size: 0.75rem;
   }
   .schoolListBack ul {
@@ -813,7 +811,7 @@
     right: 2%;
     bottom: 2%;
   }
-  .schoolListBack h3::after {
+  .homeSchool-back-schoolName::after {
     width: 20rem;
   }
   .more-school-button ul a {
@@ -904,10 +902,10 @@
   .schoolListCover img {
     border-radius: 1rem;
   }
-  .schoolListCover h4 {
+  .homeSchool-schoolName {
     font-size: 1rem;
   }
-  .schoolListCover p {
+  .homeSchool-schoolLocation {
     font-size: 0.75rem;
 
     transform: translate(-1rem, 1.5rem);
@@ -920,13 +918,13 @@
   .schoolListBack {
     border-radius: 1rem;
   }
-  .schoolListBack h3 {
+  .homeSchool-back-schoolName {
     font-size: 1rem;
   }
-  .schoolListBack h3::after {
+  .homeSchool-back-schoolName::after {
     width: 20rem;
   }
-  .schoolListBack p {
+  .homeSchool-back-schoolIntro {
     font-size: 0.625rem;
     line-height: 1.3rem;
   }
@@ -1092,10 +1090,10 @@
   .homeNewsDiv {
     padding-top: 4rem;
   }
-  .homeNewsDiv h3 {
+  .homeNews-postTitle {
     font-size: 0.875rem;
   }
-  .homeNewsDiv p {
+  .homeNews-postDate {
     font-size: 0.75rem;
   }
   .homeNewsBear {
@@ -1120,8 +1118,8 @@
   .schoolListPre:hover .schoolListBg {
     clip-path: none;
   }
-  .schoolListPre:hover .schoolListCover h4,
-  .schoolListPre:hover .schoolListCover p {
+  .schoolListPre:hover .homeSchool-schoolName,
+  .schoolListPre:hover .homeSchool-schoolLocation {
     opacity: 1;
   }
   .homeschoolH1 h1 {
@@ -1166,8 +1164,8 @@
     border-radius: 1.5rem;
   }
   .schoolListDetailBtn,
-  .schoolListBack h3,
-  .schoolListBack p,
+  .homeSchool-back-schoolName,
+  .homeSchool-back-schoolIntro,
   .schoolListBack ul {
     display: none;
   }

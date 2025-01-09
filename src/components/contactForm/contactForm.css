@@ -14,16 +14,21 @@
 }
 
 .contactusComponent h1 {
-  font-size: 1350%;
-  /* font-size: 12rem; */
+  width: 100%;
+  height: fit-content;
+
+  padding: 6%;
+
+  box-sizing: border-box;
+
   margin: 0;
+}
 
-  color: #ffe2bc;
-  text-align: center;
+.goyours-line-btn {
+  display: block;
+  width: fit-content;
 
-  position: relative;
-
-  font-family: 'Lalezar', system-ui;
+  margin: 0 auto;
 }
 
 .contactusTitle {
@@ -70,6 +75,8 @@
   margin: 0;
 
   position: relative;
+
+  flex-shrink: 0;
 }
 
 .contactForm p::before {
@@ -154,7 +161,7 @@ input:-webkit-autofill {
   height: 12rem;
   width: auto;
 
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   background-color: transparent;
 
   font-size: 1.2rem;
@@ -188,6 +195,9 @@ input:-webkit-autofill {
 }
 .privicy p::before {
   display: none;
+}
+.privicy span {
+  display: flex;
 }
 
 .submitBtn {

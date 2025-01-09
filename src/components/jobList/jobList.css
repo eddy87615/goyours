@@ -58,6 +58,8 @@
   height: 20rem;
 
   border-radius: 1.5rem;
+
+  flex-shrink: 0;
 }
 
 .joblist img {
@@ -115,9 +117,12 @@
 .listintro ul {
   display: flex;
   flex-direction: column;
-  gap: 8%;
+  gap: 1rem;
 
   font-weight: bold;
+
+  height: 100%;
+  width: 100%;
 }
 .listintro ul > li {
   display: flex;
@@ -275,7 +280,11 @@
     font-size: 1.25rem;
   }
   .listintro ul h2 {
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
+
+    width: calc(100% - 90px);
+
+    line-height: 2.5rem;
   }
   .listintro ul > li:not(:first-child) {
     font-size: 0.875rem;

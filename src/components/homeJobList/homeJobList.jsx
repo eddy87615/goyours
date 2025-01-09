@@ -129,8 +129,8 @@ export default function HomeJobList() {
                 <img src={urlFor(job.mainImage).url()} alt={job.name} />
               </div>
               <div className="jobListcontent">
-                <h3>{job.company}</h3>
-                <p>
+                <p className="homeJobList-companyTitle">{job.company}</p>
+                <p className="homeJobList-companyLocation">
                   <FaLocationDot /> {job.location}
                 </p>
                 <ul>

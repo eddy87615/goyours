@@ -37,12 +37,13 @@
   box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
 }
 
-.jobListPre h3 {
+.homeJobList-companyTitle {
   font-size: 1.3rem;
+  font-weight: bold;
 
   color: #fff;
 }
-.jobListPre p {
+.homeJobList-companyLocation {
   display: flex;
   align-items: center;
   gap: 0.2rem;
@@ -152,10 +153,10 @@
   .jobListimg img {
     border-radius: 1.5rem 0 0 1.5rem;
   }
-  .jobListPre h3 {
+  .homeJobList-companyTitle {
     font-size: 1rem;
   }
-  .jobListPre p {
+  .homeJobList-companyLocation {
     font-size: 0.75rem;
 
     background-color: #fff;
@@ -186,7 +187,7 @@
   .jobListcontent h3 {
     font-size: 0.875rem;
   }
-  .jobListPre p {
+  .homeJobList-companyLocation {
     font-size: 0.75rem;
     background-color: var(--goyoursBgColor);
     color: var(--goyoursYellow);

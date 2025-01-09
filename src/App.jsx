@@ -29,6 +29,7 @@ const Privacy = lazy(() => import('./pages/privacy'));
 const QAsection = lazy(() => import('./pages/QAsection'));
 const StudyingInJp = lazy(() => import('./pages/studying-in-jp'));
 const WorkingHoliday = lazy(() => import('./pages/working-holiday'));
+const DownloadPage = lazy(() => import('./pages/downloadPage'));
 const InformBear = lazy(() => import('./components/informBear/informBear'));
 
 function AppContent() {
@@ -87,6 +88,7 @@ function AppContent() {
             />
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/Q&A-section" element={<QAsection />} />
+            <Route path="/document-download" element={<DownloadPage />} />
           </Routes>
         </Suspense>
       ) : (

@@ -232,7 +232,7 @@ export default function Hotpost() {
                       />
                     </div>
                   )}
-                  <h3>{post.title}</h3>
+                  <p className="homeHotPost-postTitle">{post.title}</p>
                   <ul>
                     {post.categories && post.categories.length > 0 ? (
                       post.categories.map((category, index) => (

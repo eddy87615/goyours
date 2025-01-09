@@ -87,11 +87,11 @@ export default function Footer() {
         </li>
       </ul>
       <ul className="footerNews">
-        <h3>最新消息</h3>
+        <p className="footer-title">最新消息</p>
         {latestNewPosts.map((post, index) => (
           <li key={index} className="footerNewsPosts">
             <a href={`/goyours-post/${encodeURIComponent(post.slug.current)}`}>
-              <p>
+              <p className="footerPost-date">
                 {new Date(post.publishedAt)
                   .toLocaleDateString('zh-TW', {
                     year: 'numeric',
@@ -100,13 +100,13 @@ export default function Footer() {
                   })
                   .replace(/\//g, '.')}
               </p>
-              <h4>{post.title}</h4>
+              <p className="footerPost-title">{post.title}</p>
             </a>
           </li>
         ))}
       </ul>
       <ul className="footerMedia">
-        <h3>社群連結</h3>
+        <p className="footer-title">社群連結</p>
         <li>
           <a
             href="https://www.instagram.com/goyourswhst?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -135,9 +135,9 @@ export default function Footer() {
           </a>
         </li>
         <li>
-          <h3>
+          <p className="footer-title">
             <Link to="/Q&A-section">常見Q&A</Link>
-          </h3>
+          </p>
         </li>
       </ul>
       <button className="backtotop" aria-label="back to top button">

@@ -22,6 +22,13 @@
   margin: 0;
 }
 
+.goyours-line-btn {
+  display: block;
+  width: fit-content;
+
+  margin: 0 auto;
+}
+
 .contactusTitleforApply {
   width: 100%;
   height: fit-content;
@@ -149,6 +156,11 @@ input:-webkit-autofill {
   display: flex;
   align-items: center;
 }
+.upload-download-btnarea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 .upload {
   display: flex;
   align-items: start;
@@ -167,6 +179,7 @@ input:-webkit-autofill {
   font-size: 0.8rem;
   font-weight: normal;
 }
+
 .uploadBtn {
   display: inline-flex;
   align-items: center;
@@ -184,10 +197,20 @@ input:-webkit-autofill {
   color: var(--goyoursBlack);
 
   gap: 0.5rem;
+
+  flex: 1;
+}
+.downloadBtn {
+  background-color: var(--goyoursBlack);
+  color: #fff;
 }
 .uploadBtn:hover {
   background-color: var(--goyoursBlack);
   color: #fff;
+}
+.downloadBtn:hover {
+  background-color: transparent;
+  color: var(--goyoursBlack);
 }
 
 .fileList {
@@ -232,7 +255,7 @@ input:-webkit-autofill {
   height: 12rem;
   width: auto;
 
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   background-color: transparent;
 
   font-size: 1.2rem;
@@ -241,6 +264,8 @@ input:-webkit-autofill {
 
 .contactFormResume p {
   width: fit-content;
+
+  flex-shrink: 0;
 }
 
 .privicy label {
@@ -257,6 +282,9 @@ input:-webkit-autofill {
 }
 .privicy p::before {
   display: none;
+}
+.privicy span {
+  display: flex;
 }
 
 .submitBtn {

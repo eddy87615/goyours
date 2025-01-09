@@ -15,7 +15,6 @@ import ContactUs from '../components/contactUs/contactUs';
 import Hotpost from '../components/hotPost/hotPost';
 import HomeJobList from '../components/homeJobList/homeJobList';
 import ScrollDown from '../components/scroolDown/scrollDown';
-// import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import HomeBg from '../components/homeBg/homeBg';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 import AnimationSection from './AnimationSection';
@@ -83,8 +82,8 @@ const News = () => {
                       />
                     </div>
                   )}
-                  <h3>{post.title}</h3>
-                  <p className="yellow">
+                  <p className="homeNews-postTitle">{post.title}</p>
+                  <p className="yellow homeNews-postDate">
                     <span className="homeNewsBear">
                       <img src="/圓形logo.png" alt="goyours logo" />
                     </span>
@@ -186,8 +185,8 @@ const HomeschoolList = () => {
             <AnimationSection key={index} className="schoolListPre">
               <div className="schoolListCover">
                 <div className="schoolListBg">
-                  <h4>{school.name}</h4>
-                  <p>
+                  <p className="homeSchool-schoolName">{school.name}</p>
+                  <p className="homeSchool-schoolLocation">
                     <FaLocationDot /> {school.location}
                   </p>
                   <img src={school.src} alt={school.name} />
@@ -197,8 +196,11 @@ const HomeschoolList = () => {
                 </Link>
               </div>
               <div className="schoolListBack">
-                <h3>{school.name}</h3>
-                <p dangerouslySetInnerHTML={{ __html: school.introtxt }}></p>
+                <p className="homeSchool-back-schoolName">{school.name}</p>
+                <p
+                  className="homeSchool-back-schoolIntro"
+                  dangerouslySetInnerHTML={{ __html: school.introtxt }}
+                ></p>
                 <ul>
                   <li>
                     <span>特色</span>
@@ -396,8 +398,9 @@ export default function Home() {
           <HomeBg />
         </div>
         <div className="homeintrotxt">
-          <h2>國外打工度假、遊留學的好夥伴</h2>
           <p>
+            國外打工度假、遊留學的好夥伴
+            <br />
             世界這麼大 你不該只留在原地
             <br />
             何年何月何日何時 你會在哪裡？ <br className="sp-br" />

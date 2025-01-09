@@ -3,8 +3,12 @@ import { useLocation } from 'react-router-dom';
 import { client } from '../../cms/sanityClient';
 import { Link } from 'react-router-dom';
 
+import ThankYouTitle from '../../../public/thankYouTitle';
+import ContactUsTitle from '../../../public/contactUsTitle';
+
 import './contactForm.css';
 import MorePost from '../morePost/morePost';
+import useWindowSize from '../../hook/useWindowSize';
 
 import CryptoJS from 'crypto-js';
 
@@ -41,6 +45,7 @@ export default function ContactForm() {
 
   const [caseOptions, setCaseOptions] = useState([]);
   const [isSubmited, setIsSubmited] = useState(false);
+  const windowSize = useWindowSize();
 
   // 從Sanity中獲取方案選項
   useEffect(() => {
@@ -197,10 +202,22 @@ export default function ContactForm() {
                 <br />
               </p>
             </div>
-            <h1>Thank you</h1>
-            <img src="/LOGO-02.png" alt="goyours logo" className="formlogo" />
+            <h1>
+              <ThankYouTitle />
+            </h1>
+            {windowSize < 800 ? (
+              <a className="goyours-line-btn">GoYours Line@</a>
+            ) : (
+              <img
+                src="/goyoursline@.png"
+                alt="goyours line@ QR code"
+                className="formlogo"
+              />
+            )}
             <p className="subitedtxt">
-              感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！
+              {windowSize < 800
+                ? '感謝您的報名，也歡迎直接點擊連結加入我們的Line@，專員會更快服務您喔！'
+                : '感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！'}
             </p>
           </div>
           <div className="submitedPostArea">
@@ -209,7 +226,9 @@ export default function ContactForm() {
         </>
       ) : (
         <div className="contactusComponent">
-          <h1>Contact us</h1>
+          <h1>
+            <ContactUsTitle />
+          </h1>
           <div className="contactusTitle">
             <h2>聯絡GoYours，打工度假、留學免費諮詢</h2>
             <p>
