@@ -337,8 +337,8 @@
   cursor: pointer;
 }
 
-.to-all-school h4,
-.to-QA-page h4 {
+.to-all-school h3,
+.to-QA-page h3 {
   color: var(--goyoursBgColor);
   font-size: 1.25rem;
 
@@ -668,6 +668,10 @@
     padding: 1.3rem;
   }
 
+  .guide-morePost {
+    width: 90vw;
+  }
+
   .guide-morePost > .morepostH2 {
     width: 90vw;
   }
@@ -766,8 +770,8 @@
 
     height: 16rem;
   }
-  .to-all-school h4,
-  .to-QA-page h4 {
+  .to-all-school h3,
+  .to-QA-page h3 {
     font-size: 0.875rem;
   }
   .white-icon img {
@@ -784,6 +788,8 @@
   }
   .guide-morePost {
     padding-top: 4rem;
+
+    width: 90vw;
   }
 }
 @media screen and (max-width: 375px) {
@@ -889,8 +895,8 @@
 
     height: 16rem;
   }
-  .to-all-school h4,
-  .to-QA-page h4 {
+  .to-all-school h3,
+  .to-QA-page h3 {
     font-size: 0.875rem;
   }
   .white-icon img {

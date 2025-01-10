@@ -6,7 +6,6 @@ import './studying-in-jp.css';
 import './guide-page-animation.css';
 
 import { GoArrowRight } from 'react-icons/go';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 // import GoyoursBearAboutStudying from '../components/goyoursBear/goyoursBear-aboutStudying';
 import MorePost from '../components/morePost/morePost';
@@ -37,11 +36,7 @@ export default function StudyingInJp() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>跟著Go Yours去日本留學</title>
-        <meta name="description" content="關於日本語言學校留學？" />
-      </Helmet>
+    <>
       <div className="studying-in-jp-section">
         <div className="guidePage-studying-top">
           <div className="scrollDown-side-studyingPage">
@@ -133,7 +128,7 @@ export default function StudyingInJp() {
             </div>
             <div className="studying-page-button">
               <Link className="to-all-school" to="/studying-in-jp-school">
-                <h4>
+                <h3>
                   <span className="white-icon">
                     <img
                       src="/goyoursbear-icon-w.svg"
@@ -141,7 +136,7 @@ export default function StudyingInJp() {
                     />
                   </span>
                   查看所有學校
-                </h4>
+                </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>
               <Link className="to-QA-page" to="/Q&A-section#part1">
@@ -166,6 +161,6 @@ export default function StudyingInJp() {
           </div>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 }

@@ -62,7 +62,7 @@ const SpSearch = ({
             </span>
           </div>
           <ul>
-            <h4 className="postcategoryh4">請點選下列文章分類</h4>
+            <p className="postcategoryTitle">請點選下列文章分類</p>
             {categories.map((category, index) => (
               <li
                 key={index}
@@ -141,7 +141,7 @@ export default function PostCategary({
           </span>
         </div>
         <ul>
-          <h4 className="postcategoryh4">文章分類</h4>
+          <p className="postcategoryTitle">文章分類</p>
           {categories.map((category, index) => (
             <li
               key={index}

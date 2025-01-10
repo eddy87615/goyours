@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { client, urlFor } from '../../cms/sanityClient';
 import { useNavigate } from 'react-router-dom';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import { MdHomeWork } from 'react-icons/md';
 import { LuClipboardList } from 'react-icons/lu';
@@ -42,15 +41,8 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
   };
 
   return (
-    <HelmetProvider>
+    <>
       <div className="jobListSection">
-        <Helmet>
-          <title>Go Yours打工度假職缺列表</title>
-          <meta
-            name="description"
-            content="高優熊介紹打工度假的工作機會給你！"
-          />
-        </Helmet>
         {isSearchTriggered && jobList.length > 0 ? (
           <div className="searchResultArea">
             <h2 className="yellow">
@@ -220,6 +212,6 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
           <div className="postLoading postLoadingP">無搜尋結果</div>
         )}
       </div>
-    </HelmetProvider>
+    </>
   );
 }

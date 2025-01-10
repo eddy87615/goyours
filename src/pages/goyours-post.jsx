@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { client } from '../cms/sanityClient';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import PostArea from '../components/postArea/postArea';
 import PostCategary from '../components/postCategory/postCategory';
@@ -121,11 +120,7 @@ export default function Post() {
   }
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>Go Yours文章分享</title>
-        <meta name="description" content="Go Yours跟你分享關於日本的點點滴滴" />
-      </Helmet>
+    <>
       <div className="postPage">
         <PostCategary
           categories={categories}
@@ -152,6 +147,6 @@ export default function Post() {
           />
         )}
       </div>
-    </HelmetProvider>
+    </>
   );
 }

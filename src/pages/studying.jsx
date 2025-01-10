@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { client } from '../cms/sanityClient';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import School from '../components/school/school';
 import SchoolSearch from '../components/schoolSearch/schoolSearch';
@@ -32,6 +31,9 @@ export default function Studying() {
   const [currentPage, setCurrentPage] = useState(1); // 當前頁碼
   const schoolsPerPage = windowSize <= 500 ? 12 : 24; // 每頁顯示學校數
 
+  // 特殊篩選標籤
+  const SPECIAL_FILTERS = ['我們的推薦', '高人氣學校'];
+
   // 初始化篩選條件
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -55,8 +57,9 @@ export default function Studying() {
       const start = (currentPage - 1) * schoolsPerPage;
       const end = start + schoolsPerPage;
 
-      const { keyword, regions, enrollTime, purpose } = filters;
+      const { keyword, regions, enrollTime, purpose, selectedTags } = filters;
 
+      // 基本篩選條件
       const regionFilter =
         Object.values(regions).flat().length > 0
           ? `&& city in ${JSON.stringify(Object.values(regions).flat())}`
@@ -69,9 +72,31 @@ export default function Studying() {
         purpose.length > 0 ? `&& purpose match ${JSON.stringify(purpose)}` : '';
       const keywordFilter = keyword ? `&& name match "${keyword}"` : '';
 
+      // 特殊標籤篩選條件
+      let specialTagFilter = '';
+      const specialTags = selectedTags.filter((tag) =>
+        SPECIAL_FILTERS.includes(tag)
+      );
+
+      if (specialTags.length > 0) {
+        // 如果選擇了特殊標籤，創建一個 OR 條件
+        const tagConditions = specialTags
+          .map((tag) => `"${tag}" in tags`)
+          .join(' || ');
+        specialTagFilter = `&& (${tagConditions})`;
+      } else {
+        // 處理非特殊標籤
+        const normalTags = selectedTags.filter(
+          (tag) => !SPECIAL_FILTERS.includes(tag)
+        );
+        if (normalTags.length > 0) {
+          specialTagFilter = `&& "${normalTags[0]}" in tags`;
+        }
+      }
+
       const query = `
         *[_type == "school" && !(_id in path("drafts.**")) 
-          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter}
+          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
         ] | order(name desc) [${start}...${end}] {
           mainImage,
           name,
@@ -88,7 +113,7 @@ export default function Studying() {
 
       const totalQuery = `
         count(*[_type == "school" && !(_id in path("drafts.**")) 
-          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter}
+          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
         ])
       `;
 
@@ -147,11 +172,7 @@ export default function Studying() {
   }
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>Go Yours日本語言學校列表</title>
-        <meta name="description" content="高優熊介紹日本語言學校給你！" />
-      </Helmet>
+    <>
       <div className="schoolPage">
         <SchoolSearch
           onSearchFilters={handleSearchFilters}
@@ -166,6 +187,6 @@ export default function Studying() {
           isSearchTriggered={isSearchTriggered}
         />
       </div>
-    </HelmetProvider>
+    </>
   );
 }

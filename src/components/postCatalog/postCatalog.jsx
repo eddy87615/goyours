@@ -52,7 +52,7 @@ export default function PostCatalog() {
 
   return (
     <div className="postCatalog">
-      <h2>內容目錄</h2>
+      <p className="postCatalog-title">內容目錄</p>
       <ul>
         {headings.map((heading, index) => (
           <li key={index} className="catalogH2">

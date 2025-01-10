@@ -11,8 +11,10 @@ import {
 import Navigation from './components/navigation/navigation';
 import Footer from './components/footer/footer';
 import ScrollToTop from './components/scrollToTop/scrollToTop';
+import useGetKeyWords from './hook/useGetKeyWords';
 import { VisibilityProvider } from './visibilityProvider';
 import LoadingBear from './components/loadingBear/loadingBear';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Toaster, toast } from 'react-hot-toast';
 
 // 使用 React.lazy 延遲加載每個頁面組件
@@ -32,6 +34,66 @@ const WorkingHoliday = lazy(() => import('./pages/working-holiday'));
 const DownloadPage = lazy(() => import('./pages/downloadPage'));
 const InformBear = lazy(() => import('./components/informBear/informBear'));
 
+// 路徑映射表
+const PATH_TO_PAGE = {
+  '/': '首頁',
+  '/about-us': '關於我們',
+  '/goyours-post': '文章專區',
+  '/studying-in-jp-school': '日本留學',
+  '/working-holiday-job': '打工度假',
+  '/Q&A-section': '常見Q&A',
+  '/document-download': '下載專區',
+  '/contact-us': '聯絡我們',
+};
+// Meta 管理組件 - 移到 AppContent 外面
+function MetaManager() {
+  const location = useLocation();
+  const { loading, getKeywordsByPage, getDescriptionByPage, getTitleByPage } =
+    useGetKeyWords();
+
+  // 根據當前路徑獲取頁面名稱
+  const pageName = PATH_TO_PAGE[location.pathname] || '首頁';
+
+  // debug用
+  useEffect(() => {
+    console.log('Current location:', location.pathname);
+    console.log('Current page name:', pageName);
+    console.log('Keywords:', getKeywordsByPage(pageName));
+    console.log('Description:', getDescriptionByPage(pageName));
+  }, [location.pathname, pageName, getKeywordsByPage, getDescriptionByPage]);
+
+  if (loading) {
+    return (
+      <Helmet>
+        <title>Go Yours：去你的打工度假</title>
+        <meta
+          name="description"
+          content="讓Go Yours完成你的打工度假與留學的夢想"
+        />
+      </Helmet>
+    );
+  }
+
+  const pageKeywords = getKeywordsByPage(pageName);
+  const pageDescription = getDescriptionByPage(pageName);
+  const pageTitle = getTitleByPage(pageName);
+
+  return (
+    <Helmet>
+      <title>{`Go Yours：${pageTitle}`}</title>
+      <meta name="keywords" content={pageKeywords} />
+      <meta
+        name="description"
+        content={
+          pageDescription
+            ? pageDescription
+            : '讓Go Yours完成你的打工度假與留學的夢想'
+        }
+      />
+    </Helmet>
+  );
+}
+
 function AppContent() {
   const location = useLocation();
   const [loadingComplete, setLoadingComplete] = useState(false);
@@ -41,7 +103,7 @@ function AppContent() {
     setLoadingComplete(false);
     const timer = setTimeout(() => {
       setLoadingComplete(true);
-    }, 3000);
+    }, 1500);
 
     return () => clearTimeout(timer); // 清理計時器
   }, [location.pathname]);
@@ -56,6 +118,7 @@ function AppContent() {
   return (
     <>
       <ScrollToTop />
+      <MetaManager />
       <Navigation />
       <InformBear />
       {/* <Toaster /> */}
@@ -107,11 +170,13 @@ function App() {
   }, []);
 
   return (
-    <VisibilityProvider>
-      <Router>
-        <AppContent />
-      </Router>
-    </VisibilityProvider>
+    <HelmetProvider>
+      <VisibilityProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </VisibilityProvider>
+    </HelmetProvider>
   );
 }
 

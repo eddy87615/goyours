@@ -1,7 +1,7 @@
 .go2072408551 {
   background-color: var(--goyoursYellow);
   color: var(--goyoursBlack);
-  padding: 0.5rem;
+  padding: 1rem;
   font-weight: bold;
 
   width: 30rem;
@@ -14,8 +14,8 @@
 
   background-image: url(/goyoursBear-bg-home.svg);
   background-repeat: no-repeat;
-  background-position: bottom right;
-  background-size: 30%;
+  background-position: 98% 100%;
+  background-size: 10%;
 }
 .go3958317564 {
   width: 100%;
@@ -24,6 +24,10 @@
   margin: 0;
 
   box-sizing: border-box;
+}
+
+.go4109123758 {
+  bottom: 80px !important;
 }
 
 .toast-content {
@@ -36,12 +40,14 @@
   gap: 0.5rem;
 
   margin-bottom: 0.5rem;
+
+  color: #fff;
 }
 .toast-content p {
   font-size: 0.875rem;
   line-height: 1.5rem;
 
-  font-weight: normal;
+  font-weight: bold;
 
   word-wrap: break-word;
   word-break: break-all;
@@ -53,9 +59,22 @@
 .toast-content button {
   position: absolute;
   top: 10%;
-  right: 2%;
+  right: 4%;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
   background-color: transparent;
   border: none;
+
+  color: #fff;
+  background-color: var(--goyoursBlack);
+
+  border-radius: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .inform-bear {
@@ -73,9 +92,7 @@
   background-repeat: no-repeat;
   background-size: contain;
 
-  animation: inform 0.5s infinite alternate;
-
-  transform: scale(1);
+  cursor: pointer;
 }
 .inform-bear::after {
   content: '';
@@ -89,40 +106,4 @@
   right: 0;
   bottom: 0;
   transform: translateX(100%);
-}
-
-@keyframes inform {
-  0% {
-    transform: translate(0);
-  }
-  10% {
-    transform: translate(-1px, -1px);
-  }
-  20% {
-    transform: translate(1px, -1px);
-  }
-  30% {
-    transform: translate(-1px, 1px);
-  }
-  40% {
-    transform: translate(1px, 1px);
-  }
-  50% {
-    transform: translate(-1px, -1px);
-  }
-  60% {
-    transform: translate(1px, -1px);
-  }
-  70% {
-    transform: translate(-1px, 1px);
-  }
-  80% {
-    transform: translate(1px, 1px);
-  }
-  90% {
-    transform: translate(-1px, -1px);
-  }
-  100% {
-    transform: translate(0);
-  }
 }

@@ -21,7 +21,7 @@
   display: none;
 }
 
-.postListInfo h2:first-child {
+.postListInfo h1:first-child {
   font-size: 1.25rem;
   margin-top: 0;
 }
@@ -169,7 +169,7 @@
     height: fit-content;
   }
 
-  .postListInfo h2:first-child {
+  .postListInfo h1:first-child {
     font-size: 1rem;
   }
   .info {
@@ -230,7 +230,7 @@
   .imgLink img {
     width: 100%;
   }
-  .postListInfo h2:nth-child(1) {
+  .postListInfo h1:nth-child(1) {
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }

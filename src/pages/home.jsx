@@ -328,13 +328,13 @@ export default function Home() {
 
   return (
     <HelmetProvider>
-      <Helmet>
+      {/* <Helmet>
         <title>Go Yours：去你的打工度假</title>
         <meta
           name="description"
           content="讓Go Yours完成你的打工度假與留學的夢想"
         />
-      </Helmet>
+      </Helmet> */}
       <motion.div
         className="kv"
         style={

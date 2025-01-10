@@ -205,20 +205,32 @@ export default function ContactForm() {
             <h1>
               <ThankYouTitle />
             </h1>
-            {windowSize < 800 ? (
-              <a className="goyours-line-btn">GoYours Line@</a>
-            ) : (
+            {windowSize > 800 && (
               <img
                 src="/goyoursline@.png"
                 alt="goyours line@ QR code"
                 className="formlogo"
               />
             )}
+            {windowSize > 800 ? (
+              <></>
+            ) : (
+              <img
+                src="/LOGO-02.png"
+                alt="goyours line@ QR code"
+                className="formlogo"
+              />
+            )}
+
             <p className="subitedtxt">
-              {windowSize < 800
-                ? '感謝您的報名，也歡迎直接點擊連結加入我們的Line@，專員會更快服務您喔！'
-                : '感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！'}
+              感謝您的報名，也歡迎加我們的LINE，專員會更快服務您喔！
             </p>
+            {windowSize < 800 && (
+              <a className="goyours-line-btn">
+                <img src="/goyoursbear-line-W.svg" />
+                點我加入Line好友
+              </a>
+            )}
           </div>
           <div className="submitedPostArea">
             <MorePost isSubmited={isSubmited} />

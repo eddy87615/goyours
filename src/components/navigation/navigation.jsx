@@ -5,6 +5,8 @@ import { TbBoxMultiple } from 'react-icons/tb';
 import { motion } from 'framer-motion';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 
+import useWindowSize from '../../hook/useWindowSize';
+
 import './navigation.css';
 
 const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
@@ -77,6 +79,7 @@ export default function Navigation() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
   const [ishamburgerClicked, setIsHamburgerClicked] = useState(false);
+  const windowSize = useWindowSize();
 
   const navigation = [
     { to: '/', title: 'Home', target: '_self' },
@@ -127,63 +130,74 @@ export default function Navigation() {
           content={ishamburgerClicked ? '#414042' : ''}
         />
       </Helmet>
-      <nav
-        className={`mainNav ${visible ? 'visible' : 'hidden'} ${
-          ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
-        }`}
-      >
-        <div className="navLogo">
-          <Link to="/">
-            <img src="/LOGO-03.png" alt="goyours logo" width={250} />
-          </Link>
-        </div>
-        <div className="navMenu">
-          <ul>
-            {navigation.map((nav, index) => (
-              <li key={index}>
-                <Link to={nav.to} target={nav.target}>
-                  <span className="nav-wrapper">
-                    <span className="upperP-wrapper">
-                      <p id={`navText${index}`}>
-                        {nav.title}
-                        <span className="nav-icon">
-                          {index === 7 ? <TbBoxMultiple /> : null}
-                        </span>
-                      </p>
-                    </span>
-                    <span className="downP-wrapper">
-                      <p id={`navText${index}`}>
-                        {nav.title}
-                        <span className="nav-icon">
-                          {index === 7 ? <TbBoxMultiple /> : null}
-                        </span>
-                      </p>
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div
-          className="hamburger-line-wrapper"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setIsHamburgerClicked(!ishamburgerClicked);
-          }}
+      <nav className="nav-wrapper">
+        <nav
+          className={`${windowSize > 1024 ? 'mainNav-pc' : 'mainNav'}  ${
+            ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
+          } `}
         >
-          <span
-            className={ishamburgerClicked ? 'hamburger-active-line' : ''}
-          ></span>
-          <span
-            className={ishamburgerClicked ? 'hamburger-active-line' : ''}
-          ></span>
-          <span
-            className={ishamburgerClicked ? 'hamburger-active-line' : ''}
-          ></span>
-        </div>
+          <div
+            className={`${windowSize > 1024 ? 'nav-logo-pc' : 'nav-logo-sp'} ${
+              visible ? 'visible' : 'hidden'
+            }`}
+          >
+            <Link to="/">
+              <img src="/LOGO-03.png" alt="goyours logo" width={250} />
+            </Link>
+          </div>
+          <div
+            className={`navMenu ${windowSize > 1024 ? 'nav-list' : ''} ${
+              visible ? 'visible' : 'hidden'
+            }`}
+          >
+            <ul>
+              {navigation.map((nav, index) => (
+                <li key={index}>
+                  <Link to={nav.to} target={nav.target}>
+                    <span className="nav-wrapper">
+                      <span className="upperP-wrapper">
+                        <p id={`navText${index}`}>
+                          {nav.title}
+                          <span className="nav-icon">
+                            {index === 7 ? <TbBoxMultiple /> : null}
+                          </span>
+                        </p>
+                      </span>
+                      <span className="downP-wrapper">
+                        <p id={`navText${index}`}>
+                          {nav.title}
+                          <span className="nav-icon">
+                            {index === 7 ? <TbBoxMultiple /> : null}
+                          </span>
+                        </p>
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            className="hamburger-line-wrapper"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsHamburgerClicked(!ishamburgerClicked);
+            }}
+          >
+            <span
+              className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+            ></span>
+            <span
+              className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+            ></span>
+            <span
+              className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+            ></span>
+          </div>
+        </nav>
       </nav>
+
       <SpMenu
         navigation={navigation}
         ishamburgerClicked={ishamburgerClicked}

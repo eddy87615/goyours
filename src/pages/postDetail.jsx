@@ -432,56 +432,8 @@ export default function PostDetail() {
             <PortableText value={post.body} components={customComponents} />
           </div>
 
-          {/* {relatedPosts.length > 0 && (
-            <div className="relatedPosts">
-              <div className="relatedpostH2">
-                <h2 className="yellow">
-                  更多相關文章
-                  <GoyoursBearRelatedPost />
-                </h2>
-              </div>
-              <div className="relatedpostsList">
-                {relatedPosts.map((relatedPost, index) => (
-                  <Link
-                    key={index}
-                    className="relatedpostsLink"
-                    to={`/goyours-post/${relatedPost.slug.current}`}
-                    onClick={() =>
-                      handleRelatedPostClick(relatedPost.slug.current)
-                    }
-                    target="_blank"
-                  >
-                    <div className="more-post-img-frame">
-                      <img
-                        src={urlFor(relatedPost.mainImage).url()}
-                        alt={relatedPost.title}
-                      />
-                    </div>
-                    <h3>{relatedPost.title}</h3>
-                    <ul>
-                      {relatedPost.categories.map((category, idx) => (
-                        <li key={idx}>#{category.title}</li>
-                      ))}
-                    </ul>
-                    <div className="submitPostDate">
-                      <p>
-                        {new Date(relatedPost.publishedAt)
-                          .toLocaleDateString('zh-TW', {
-                            year: 'numeric',
-                            month: '2-digit',
-                            day: '2-digit',
-                          })
-                          .replace(/\//g, '.')}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )} */}
           <MorePost />
         </div>
-        <div></div>
       </div>
 
       <div className="postDetialContactus">

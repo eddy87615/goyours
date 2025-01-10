@@ -10,10 +10,13 @@
   counter-reset: section;
 }
 
-.postCatalog h2 {
+.postCatalog-title {
   margin-top: 0;
 
   color: var(--goyoursYellow);
+
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .postCatalog li {

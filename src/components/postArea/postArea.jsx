@@ -62,11 +62,11 @@ export default function PostArea({
             </Link>
           )}
           <div className="postListInfo">
-            <h2>
+            <h1>
               <Link to={`/goyours-post/${post.slug.current}`} target="_blank">
                 {highlightText(post.title, searchQuery)}
               </Link>
-            </h2>
+            </h1>
             <ul className="info">
               {post.categories && post.categories.length > 0 ? (
                 <>

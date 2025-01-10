@@ -41,12 +41,13 @@ export default function DownloadPage() {
   return (
     <>
       <div className="downloadSection">
-        <div className="download-KV"></div>
+        <div className="download-KV">
+          <h1>
+            <span className="yellow download-title">Download</span>下載專區
+          </h1>
+        </div>
         <div className="download-body">
           <div className="download-wrapper">
-            <h1>
-              <span className="yellow download-title">Download</span>下載專區
-            </h1>
             {Object.keys(documentsByType).map((type) => (
               <div key={type} className="download-section">
                 <h2 className="yellow download-title">

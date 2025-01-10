@@ -27,7 +27,7 @@
 }
 
 .submitPostLink {
-  width: 60%;
+  width: 100%;
   display: grid;
   grid-template-columns: 0.1fr 1fr;
   grid-template-rows: auto auto auto;
@@ -69,7 +69,7 @@
 
   border-radius: 1rem;
 }
-.submitPostLink h3 {
+.morepost-title {
   grid-area: title;
 
   margin: 0;
@@ -89,6 +89,10 @@
 .submitPostDate {
   position: relative;
   grid-area: date;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
 
   color: var(--goyoursYellow);
 }
@@ -144,7 +148,7 @@
 
     column-gap: 1rem;
   }
-  .submitPostLink h3 {
+  .morepost-title {
     font-size: 0.875rem;
   }
   .submitPostLink ul {

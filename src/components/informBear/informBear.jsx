@@ -54,30 +54,6 @@ export default function InformBear() {
     });
   };
 
-  //   useEffect(() => {
-  //     if (inform.length > 0) {
-  //       toast.dismiss();
-
-  //       inform.forEach((item) => {
-  //         const toastId = toast(
-  //           <div className="toast-content">
-  //             <button onClick={() => toast.dismiss(toastId)}>
-  //               <RxCross2 />
-  //             </button>
-  //             <h4>{item.title}</h4>
-  //             <PortableText value={item.content} />
-  //           </div>,
-  //           {
-  //             duration: 5000000,
-  //             position: 'bottom-left',
-  //             id: item._id,
-  //             dismissible: true,
-  //           }
-  //         );
-  //       });
-  //     }
-  //   }, [inform, location.pathname]);
-
   useEffect(() => {
     if (inform.length > 0 && !isHidden) {
       toast.dismiss();
@@ -86,13 +62,7 @@ export default function InformBear() {
   }, [inform, location.pathname]);
   return (
     <>
-      {isHidden && (
-        <div
-          className="inform-bear"
-          onClick={showInform}
-          title="顯示通知"
-        ></div>
-      )}
+      <div className="inform-bear" onClick={showInform} title="顯示通知"></div>
       <Toaster />
     </>
   );

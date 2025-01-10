@@ -5,7 +5,6 @@ import { urlFor } from '../../cms/sanityClient'; // 导入 urlFor
 import { Link } from 'react-router-dom';
 
 import './morePost.css';
-import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
 
 export default function MorePost({ isSubmited }) {
   const [posts, setPosts] = useState([]);
@@ -54,7 +53,7 @@ export default function MorePost({ isSubmited }) {
             <div className="more-post-img-frame">
               <img src={urlFor(post.mainImage).url()} alt={post.title} />
             </div>
-            <h3>{post.title}</h3>
+            <p className="morepost-title">{post.title}</p>
             <ul>
               {post.categories.map((category, index) => (
                 <li key={index}>#{category.title}</li>

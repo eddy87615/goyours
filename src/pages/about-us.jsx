@@ -2,10 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import { client } from '../cms/sanityClient';
 import { useInView } from 'react-intersection-observer';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 import ContactUs from '../components/contactUs/contactUs';
-// import GoyoursBear from '../components/goyoursBear/goyoursBear';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 import AnimationSection from '../pages/AnimationSection';
 
@@ -187,11 +185,7 @@ export default function About() {
   });
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>關於Go Yours</title>
-        <meta name="description" content="Go Yours是一家什麼公司呢？" />
-      </Helmet>
+    <>
       <div className="aboutTop">
         <img src="/LOGO-09.png" alt="goyours logo" className="centerLogo" />
         {topImg.map((img, index) => (
@@ -324,6 +318,6 @@ export default function About() {
       <AnimationSection className="aboutContactArea">
         <ContactUs />
       </AnimationSection>
-    </HelmetProvider>
+    </>
   );
 }

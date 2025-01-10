@@ -29,6 +29,20 @@
   width: fit-content;
 
   margin: 0 auto;
+
+  background-color: var(--goyoursBlack);
+  color: #fff;
+  padding: 0.8rem 1rem;
+
+  border-radius: 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.goyours-line-btn img {
+  width: 1rem;
 }
 
 .contactusTitle {
@@ -172,6 +186,8 @@ input:-webkit-autofill {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  margin-top: 1.1%;
 }
 .caseOptions label {
   width: 100%;
@@ -392,7 +408,9 @@ input:-webkit-autofill {
   .caseOptions {
     font-size: 0.725rem;
 
-    margin: 0 auto;
+    /* margin: 0 auto; */
+
+    margin-left: 10%;
   }
   .contactForm label:nth-of-type(8) textarea {
     width: 100%;

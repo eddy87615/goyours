@@ -317,8 +317,8 @@
   cursor: pointer;
 }
 
-.to-all-job h4,
-.to-QA-page h4 {
+.to-all-job h3,
+.to-QA-page h3 {
   color: var(--goyoursBgColor);
   font-size: 1.25rem;
 
@@ -739,8 +739,8 @@
 
     height: 16rem;
   }
-  .to-all-job h4,
-  .to-QA-page h4 {
+  .to-all-job h3,
+  .to-QA-page h3 {
     font-size: 0.875rem;
   }
 
@@ -860,8 +860,8 @@
 
     height: 16rem;
   }
-  .to-all-job h4,
-  .to-QA-page h4 {
+  .to-all-job h3,
+  .to-QA-page h3 {
     font-size: 0.875rem;
   }
 

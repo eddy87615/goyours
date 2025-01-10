@@ -6,10 +6,7 @@ import './working-holiday.css';
 import './guide-page-animation.css';
 
 import { GoArrowRight } from 'react-icons/go';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 
-import GoyoursBearRelatedPost from '../components/goyoursBear/goyoursBear-relatedpost';
-import GoyoursBearLine from '../../public/goyoursBearLine';
 import MorePost from '../components/morePost/morePost';
 import ContactUs from '../components/contactUs/contactUs';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
@@ -38,11 +35,7 @@ export default function StudyingInJp() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>跟著Go Yours去日本打工度假</title>
-        <meta name="description" content="關於日本打工度假？" />
-      </Helmet>
+    <>
       <div className="working-holiday-section">
         <div className="guidePage-working-holiday-top">
           <div className="scrollDown-side-workingPage">
@@ -134,7 +127,7 @@ export default function StudyingInJp() {
             </div>
             <div className="working-page-button">
               <Link className="to-all-job" to="/working-holiday-job">
-                <h4>
+                <h3>
                   <span className="white-icon">
                     <img
                       src="/goyoursbear-icon-w.svg"
@@ -142,11 +135,11 @@ export default function StudyingInJp() {
                     />
                   </span>
                   查看所有職缺
-                </h4>
+                </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>
               <Link className="to-QA-page" to="/Q&A-section#part2">
-                <h4>
+                <h3>
                   <span className="white-icon">
                     <img
                       src="/goyoursbear-icon-w.svg"
@@ -154,7 +147,7 @@ export default function StudyingInJp() {
                     />
                   </span>
                   打工度假Q&A
-                </h4>
+                </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>
             </div>
@@ -167,6 +160,6 @@ export default function StudyingInJp() {
           </div>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 }
