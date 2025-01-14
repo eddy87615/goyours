@@ -134,7 +134,7 @@ export default function Navigation() {
         <nav
           className={`${windowSize > 1024 ? 'mainNav-pc' : 'mainNav'}  ${
             ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
-          } `}
+          } ${visible && windowSize < 1024 ? 'visible-sp' : 'hidden'}`}
         >
           <div
             className={`${windowSize > 1024 ? 'nav-logo-pc' : 'nav-logo-sp'} ${

@@ -77,6 +77,25 @@
   justify-content: center;
 }
 
+.toast-content button::before {
+  position: absolute;
+  content: '';
+  width: 50%;
+  height: 6%;
+  border-radius: 10rem;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+.toast-content button::after {
+  position: absolute;
+  content: '';
+  width: 50%;
+  height: 6%;
+  border-radius: 10rem;
+  background-color: #fff;
+  transform: rotate(-45deg);
+}
+
 .inform-bear {
   width: 4rem;
   height: 4rem;

@@ -93,6 +93,19 @@
   flex-shrink: 0;
 }
 
+.email {
+  position: relative;
+}
+.error-message {
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+
+  color: #ef0000;
+
+  font-size: 0.8rem;
+}
+
 .contactForm p::before {
   counter-increment: contactus;
   content: counter(contactus);
@@ -374,6 +387,14 @@ input:-webkit-autofill {
   }
   .contactForm label {
     width: 100%;
+  }
+  .error-message {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translateY(100%);
+
+    font-size: 0.8rem;
   }
   .contactForm p::after {
     font-size: 8px;

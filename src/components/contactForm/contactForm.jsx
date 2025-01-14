@@ -67,6 +67,10 @@ export default function ContactForm() {
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
     }));
+    // 特殊處理電子郵件欄位
+    if (name === 'email') {
+      setEmailError(''); // 清除錯誤訊息當使用者開始輸入
+    }
     // 特殊處理年齡欄位
     if (name === 'age' || name === 'phone') {
       // 只保留數字
@@ -106,6 +110,19 @@ export default function ContactForm() {
 
     // 防止重複提交
     if (loading) return;
+
+    // 驗證電子郵件
+    const error = validateEmail(formData.email);
+    if (error) {
+      setEmailError(error);
+      // 滾動到電子郵件欄位
+      document
+        .getElementById('email')
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    setLoading(true); // 只需要設置一次 loading 狀態
 
     setLoading(true); // 開始 loading 狀態
 
@@ -182,6 +199,17 @@ export default function ContactForm() {
       updatedPlaceholders[index] = defaultText;
       return updatedPlaceholders;
     });
+  };
+  // 只需要一個 emailError state
+  const [emailError, setEmailError] = useState('');
+
+  // 驗證電子郵件格式
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return '請輸入有效的電子郵件地址';
+    }
+    return '';
   };
 
   return (
@@ -325,20 +353,21 @@ export default function ContactForm() {
                 required
               />
             </label>
-            <label htmlFor="email">
+            <label htmlFor="email" className="email">
               <p>電子郵件：</p>
               <br />
               <input
                 placeholder={placeholdertxt[4]}
                 onFocus={() => handleFocus(4)}
                 onBlur={() => handleBlur(4, 'example12345@gmail.com')}
-                className="placeholder"
+                className={`placeholder ${emailError ? 'error-input' : ''}`}
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
+              {emailError && <div className="error-message">{emailError}</div>}
             </label>
             <label>
               <p>方便聯絡時段：</p>

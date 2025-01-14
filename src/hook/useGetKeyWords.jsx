@@ -21,7 +21,7 @@ export default function useGetKeyWords() {
         setKeywords(result);
       } catch (err) {
         setError(err);
-        console.error('Failed to fetch keywords:', err);
+        // console.error('Failed to fetch keywords:', err);
       } finally {
         setLoading(false);
       }
@@ -46,12 +46,12 @@ export default function useGetKeyWords() {
   };
 
   const getDescriptionByPage = (pageName) => {
-    console.log('Finding description for page:', pageName);
-    console.log('All keywords data:', keywords);
+    // console.log('Finding description for page:', pageName);
+    // console.log('All keywords data:', keywords);
     const page = keywords.find((item) => item.page === pageName);
-    console.log('Found page:', page);
+    // console.log('Found page:', page);
     const description = page?.description;
-    console.log('Description:', description);
+    // console.log('Description:', description);
     return description || '';
   };
 

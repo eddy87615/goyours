@@ -38,7 +38,7 @@ export default function InformBear() {
               setIsHidden(true);
             }}
           >
-            <RxCross2 />
+            {/* <RxCross2 /> */}
           </button>
           <h4>{item.title}</h4>
           {/* <PortableText value={item.content} /> */}

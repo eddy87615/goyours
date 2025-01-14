@@ -7,7 +7,6 @@ import './guide-page-animation.css';
 
 import { GoArrowRight } from 'react-icons/go';
 
-// import GoyoursBearAboutStudying from '../components/goyoursBear/goyoursBear-aboutStudying';
 import MorePost from '../components/morePost/morePost';
 import ContactUs from '../components/contactUs/contactUs';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
@@ -140,7 +139,7 @@ export default function StudyingInJp() {
                 <GoArrowRight className="button-arrow" />
               </Link>
               <Link className="to-QA-page" to="/Q&A-section#part1">
-                <h4>
+                <h3>
                   <span className="white-icon">
                     <img
                       src="/goyoursbear-icon-w.svg"
@@ -148,7 +147,7 @@ export default function StudyingInJp() {
                     />
                   </span>
                   留學Q&A
-                </h4>
+                </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>
             </div>

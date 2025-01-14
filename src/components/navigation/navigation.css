@@ -45,6 +45,10 @@
   transition-duration: 0.5s;
   top: 3rem;
 }
+.visible-sp {
+  transition-duration: 0.5s;
+  top: 0;
+}
 .hidden {
   transition-duration: 0.5s;
   top: -10rem;

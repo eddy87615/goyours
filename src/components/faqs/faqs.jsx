@@ -2,10 +2,14 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { client } from '../../cms/sanityClient';
 
+import LoadingBear from '../loadingBear/loadingBear';
+
 import './faqs.css';
 
 export default function Faqs() {
   const [faqs, setFaqs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function fetchfeedback() {
       const faqs = await client.fetch(
@@ -16,20 +20,34 @@ export default function Faqs() {
         }`
       );
       setFaqs(faqs);
+      setLoading(false);
     }
     fetchfeedback();
   }, []);
 
-  const { hash } = useLocation();
-
   useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    // 等待内容加载完成后再执行滚动
+    if (!loading && location.hash) {
+      // 添加一个小延迟确保DOM已经完全渲染
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+      }, 100);
     }
-  }, [hash]);
+  }, [location.hash, loading]); // 添加 loading 作为依赖项
+
+  if (loading) {
+    return (
+      <div className="postLoading pageLoading">
+        <LoadingBear />
+      </div>
+    );
+  }
 
   return (
     <div className="qaSection" id="faqsSection">

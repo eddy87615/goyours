@@ -129,6 +129,8 @@
   color: #ffeed9;
 
   padding: 1rem;
+
+  width: 4rem;
 }
 .gallery {
   width: 100%; /* 父容器寬度 */
