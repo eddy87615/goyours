@@ -70,7 +70,7 @@
 
   text-align: center;
 
-  font-size: 1.25rem;
+  font-size: 2rem;
 
   color: var(--goyoursBgColor);
 }
@@ -218,7 +218,7 @@
     transform: translateZ(0); /* 确保触发 GPU 加速 */
   }
   .qaSection h1 {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   .qaSection h1::after {
     width: 3rem;
