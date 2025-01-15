@@ -41,11 +41,11 @@
   right: 3rem;
 }
 
-.visible {
+.nav-visible {
   transition-duration: 0.5s;
   top: 3rem;
 }
-.visible-sp {
+.nav-visible-sp {
   transition-duration: 0.5s;
   top: 0;
 }

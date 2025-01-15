@@ -4,6 +4,7 @@ import { client } from '../../cms/sanityClient';
 import { urlFor } from '../../cms/sanityClient';
 import { PortableText } from '@portabletext/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel } from 'swiper/modules';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
@@ -213,8 +214,12 @@ export default function Hotpost() {
             centeredSlides={true}
             navigation={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            modules={[Autoplay, Navigation]}
+            modules={[Autoplay, Navigation, Mousewheel]}
             loop={true}
+            simulateTouch={true} // 支持觸控板模擬觸控
+            touchStartPreventDefault={false} // 確保滑動事件可以正常觸發
+            longSwipes={true} // 支持長滑動
+            mousewheel={true} // 支持滾輪操作
           >
             {NewsPosts.map((post, index) => (
               <SwiperSlide key={index} className="homeperhotpost">

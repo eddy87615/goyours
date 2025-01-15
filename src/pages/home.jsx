@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { client } from '../cms/sanityClient';
 import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel } from 'swiper/modules';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
@@ -64,8 +64,12 @@ const News = () => {
             centeredSlides={true}
             navigation={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            modules={[Autoplay, Navigation]}
+            modules={[Autoplay, Navigation, Mousewheel]}
             loop={true}
+            simulateTouch={true} // 支持觸控板模擬觸控
+            touchStartPreventDefault={false} // 確保滑動事件可以正常觸發
+            longSwipes={true} // 支持長滑動
+            mousewheel={true} // 支持滾輪操作
           >
             {NewsPosts.map((post, index) => (
               <SwiperSlide key={index} className="homeNewsprePost">
@@ -250,6 +254,9 @@ const HomeschoolList = () => {
 };
 
 export default function Home() {
+  const swiperRef = useRef(null);
+  const [isAutoplayStarted, setIsAutoplayStarted] = useState(false);
+
   const HomeIntroimgList = [
     { src: '/home-bubble01.jpg', alt: 'maple leaves' },
     { src: '/home-bubble02.JPG', alt: 'japanese temple and couple' },
@@ -257,6 +264,26 @@ export default function Home() {
   ];
 
   const windowSize = useWindowSize();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (swiperRef.current && swiperRef.current.swiper) {
+        swiperRef.current.swiper.autoplay.stop();
+        swiperRef.current.swiper.autoplay.start();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Initial autoplay setup
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper && !isAutoplayStarted) {
+      swiperRef.current.swiper.autoplay.start();
+      setIsAutoplayStarted(true);
+    }
+  }, [swiperRef, isAutoplayStarted]);
 
   //nav height get
   // eslint-disable-next-line no-unused-vars
@@ -327,14 +354,7 @@ export default function Home() {
   ];
 
   return (
-    <HelmetProvider>
-      {/* <Helmet>
-        <title>Go Yours：去你的打工度假</title>
-        <meta
-          name="description"
-          content="讓Go Yours完成你的打工度假與留學的夢想"
-        />
-      </Helmet> */}
+    <>
       <motion.div
         className="kv"
         style={
@@ -351,16 +371,24 @@ export default function Home() {
           transition={{ duration: 2, ease: 'easeOut' }}
         >
           <Swiper
+            ref={swiperRef}
+            key="fixed-key"
             centeredSlides={true}
             loop={true}
-            autoplay={{ delay: 2000 }}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
             effect="fade"
             fadeEffect={{ crossFade: true }}
             modules={[Autoplay, EffectFade]}
-            simulateTouch={false} // 禁用滑鼠模拟触控
-            allowTouchMove={false} // 禁用滑鼠拖动
+            simulateTouch={false}
+            allowTouchMove={false}
             slidesPerView={1}
             slidesPerGroup={1}
+            observer={true}
+            observeParents={true}
           >
             {homeslider.map((slide, index) => (
               <SwiperSlide key={index}>
@@ -444,6 +472,6 @@ export default function Home() {
       <AnimationSection className="homeContactusSection">
         <ContactUs />
       </AnimationSection>
-    </HelmetProvider>
+    </>
   );
 }

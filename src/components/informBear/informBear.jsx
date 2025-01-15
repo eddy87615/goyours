@@ -2,10 +2,25 @@ import { useEffect, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { client } from '../../cms/sanityClient';
 import { PortableText } from '@portabletext/react';
-import { RxCross2 } from 'react-icons/rx';
 import { useLocation } from 'react-router-dom';
 
 import './informBear.css';
+
+// 定義 PortableText 的渲染組件
+const components = {
+  marks: {
+    link: ({ value, children }) => {
+      const { blank, href } = value;
+      return blank ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      ) : (
+        <a href={href}>{children}</a>
+      );
+    },
+  },
+};
 
 export default function InformBear() {
   const location = useLocation();
@@ -41,8 +56,8 @@ export default function InformBear() {
             {/* <RxCross2 /> */}
           </button>
           <h4>{item.title}</h4>
-          {/* <PortableText value={item.content} /> */}
-          <p>{item.content}</p>
+          <PortableText value={item.content} components={components} />
+          {/* <p>{item.content}</p> */}
         </div>,
         {
           duration: 5000000,

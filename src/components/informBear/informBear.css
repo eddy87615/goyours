@@ -53,6 +53,9 @@
   word-break: break-all;
   overflow-wrap: break-word;
 }
+.toast-content a {
+  text-decoration: underline;
+}
 .toast-content h4 svg {
   font-size: 2rem;
 }

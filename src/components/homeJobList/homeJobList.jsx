@@ -151,7 +151,7 @@ export default function HomeJobList() {
                   className="schoolListDetailBtn"
                   onClick={() => handleInquiry(job.name)}
                 >
-                  {windowSize < 1200 ? '工作詳情' : '了解職缺詳情'}
+                  {windowSize < 1200 ? '詳情' : '了解職缺詳情'}
                 </button>
               </div>
             </AnimationSection>

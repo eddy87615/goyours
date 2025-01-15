@@ -6,6 +6,7 @@ a {
   color: #414042;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
 }
 
 p {
