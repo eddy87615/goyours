@@ -47,8 +47,10 @@
   border-radius: 1rem;
 }
 
-.homeprehotpost a {
+.homeprehotpost {
   width: 100%;
+
+  text-decoration: none;
 }
 .homehotpostPreview {
   display: -webkit-box;

@@ -197,6 +197,10 @@
   width: 30% !important;
   height: 30%;
 }
+.homeNewsprePost a {
+  text-decoration: none;
+}
+
 .homeNewspostImg {
   background-color: var(--goyoursYellow);
 
@@ -504,6 +508,8 @@
   opacity: 0;
 
   cursor: pointer;
+
+  text-decoration: none;
 }
 .schoolListDetailBtn:hover {
   background-color: var(--goyoursBgColor);
@@ -647,6 +653,8 @@
 
   font-weight: bold;
   font-size: 1.3rem;
+
+  text-decoration: none;
 }
 .more-school-button span {
   overflow: hidden;

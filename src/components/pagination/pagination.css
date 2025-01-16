@@ -17,6 +17,8 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
+
+  text-decoration: none;
 }
 .pagination a:hover {
   color: #fff;

@@ -3,10 +3,10 @@
 }
 
 a {
-  color: #414042;
+  color: #404042;
   font-weight: bold;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 p {

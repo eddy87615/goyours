@@ -25,6 +25,9 @@
   font-size: 1.25rem;
   margin-top: 0;
 }
+.postListInfo h1:first-child a {
+  text-decoration: none;
+}
 
 .imgLink {
   transition-duration: 0.2s;
@@ -76,6 +79,8 @@
   font-weight: bold;
 
   color: var(--goyoursYellow);
+
+  text-decoration: none;
 }
 
 .date {

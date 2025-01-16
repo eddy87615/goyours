@@ -37,24 +37,6 @@
   margin-top: 0;
 }
 
-/* .guide-text::after {
-  position: absolute;
-  content: '';
-
-  background-image: url(/guidePage/studying-B.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-
-  width: 20rem;
-  height: 220%;
-
-  background-size: contain;
-  bottom: -60%;
-  right: -110%;
-
-  z-index: 1;
-} */
-
 .guidePage-studying-top::after {
   position: absolute;
   content: '';
@@ -307,6 +289,8 @@
   transition-duration: 0.2s;
 
   cursor: pointer;
+
+  text-decoration: none;
 }
 
 .to-QA-page {
@@ -335,6 +319,8 @@
   transition-duration: 0.2s;
 
   cursor: pointer;
+
+  text-decoration: none;
 }
 
 .to-all-school h3,

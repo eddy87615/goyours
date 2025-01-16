@@ -35,7 +35,7 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
         <motion.ul
           className="hamburger-list"
           initial="hidden"
-          animate={ishamburgerClicked ? 'nav-visible' : 'hidden'}
+          animate={ishamburgerClicked ? 'visible' : 'hidden'}
         >
           {navigation.map((nav, index) => {
             return (
@@ -138,7 +138,7 @@ export default function Navigation() {
         >
           <div
             className={`${windowSize > 1024 ? 'nav-logo-pc' : 'nav-logo-sp'} ${
-              visible ? 'visible' : 'hidden'
+              visible ? 'nav-visible' : 'hidden'
             }`}
           >
             <Link to="/">

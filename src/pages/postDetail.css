@@ -16,18 +16,11 @@
   overflow-wrap: break-word; /* 防止長字串超出 */
   white-space: normal; /* 允許自動換行 */
 }
-/* .postbody::after {
-  position: absolute;
-  content: url(/goyoursBear-bg-schooldetail.svg);
-  width: 30%;
-  height: 70%;
-  bottom: -10%;
-  right: 0;
-} */
+
 .postbody img {
   width: 100%;
 
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
 .postbody h1 {
   font-size: 2.5rem;
@@ -192,12 +185,11 @@
 }
 
 .post-image {
-  width: 50%;
+  box-sizing: border-box;
+
+  width: 80%;
 
   padding-left: 6rem;
-}
-.post-image img {
-  border-radius: 0%;
 }
 
 .relatedPosts {

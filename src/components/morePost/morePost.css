@@ -43,6 +43,8 @@
   padding: 1rem;
 
   border-radius: 1rem;
+
+  text-decoration: none;
 }
 .submitPostLink img {
   width: 6rem;

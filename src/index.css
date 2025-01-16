@@ -43,3 +43,7 @@ li {
 button {
   cursor: pointer;
 }
+
+small {
+  font-weight: normal;
+}

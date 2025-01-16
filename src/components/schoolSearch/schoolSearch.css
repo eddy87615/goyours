@@ -178,7 +178,7 @@
 .enrollTime-button,
 .purpose-button,
 .others-button {
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .schoolsearch label {

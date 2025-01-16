@@ -142,6 +142,8 @@
   border: 1px solid var(--goyoursBlack);
 
   transition-duration: 0.2s;
+
+  text-decoration: none;
 }
 
 .download-section a:hover {

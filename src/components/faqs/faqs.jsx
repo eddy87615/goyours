@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { PortableText } from '@portabletext/react';
 import { client } from '../../cms/sanityClient';
 
 import LoadingBear from '../loadingBear/loadingBear';
@@ -7,6 +7,21 @@ import LoadingBear from '../loadingBear/loadingBear';
 import './faqs.css';
 
 export default function Faqs() {
+  // 定義 PortableText 的渲染組件
+  const components = {
+    marks: {
+      link: ({ value, children }) => {
+        const { blank, href } = value;
+        return blank ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {children}
+          </a>
+        ) : (
+          <a href={href}>{children}</a>
+        );
+      },
+    },
+  };
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -91,7 +106,11 @@ export default function Faqs() {
                       <div className="answerLogo">
                         <img src="/LOGO-07.png" alt="goyours logo" />
                       </div>
-                      <p>{faq.answer}</p>
+                      {/* <p>{faq.answer}</p> */}
+                      <PortableText
+                        value={faq.answer}
+                        components={components}
+                      />
                     </div>
                   </div>
                 ))}
@@ -128,7 +147,11 @@ export default function Faqs() {
                       <div className="answerLogo">
                         <img src="/LOGO-07.png" alt="goyours logo" />
                       </div>
-                      <p>{faq.answer}</p>
+                      {/* <p>{faq.answer}</p> */}
+                      <PortableText
+                        value={faq.answer}
+                        components={components}
+                      />
                     </div>
                   </div>
                 ))}

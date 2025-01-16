@@ -98,6 +98,8 @@
   flex-direction: column;
 
   font-weight: normal;
+
+  text-decoration: none;
 }
 
 .nav-wrapper {
@@ -256,6 +258,8 @@
   margin: 0 auto;
   margin-top: 6%;
   border-radius: 1rem;
+
+  text-decoration: none;
 }
 .hamburger-list li:nth-child(8) p {
   width: fit-content;

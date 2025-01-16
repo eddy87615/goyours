@@ -13,6 +13,10 @@
 
   margin: 0.5rem 0;
 }
+.postCategoryList a {
+  text-decoration: none;
+}
+
 .postcategoryTitle {
   position: relative;
   display: flex;
