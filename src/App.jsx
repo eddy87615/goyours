@@ -69,6 +69,7 @@ function MetaManager() {
   const pageDescription = getDescriptionByPage(pageName);
   const pageTitle = getTitleByPage(pageName);
   const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
 
   return (
     <Helmet>
@@ -87,10 +88,8 @@ function MetaManager() {
         property="og:description"
         content={`Go Yours：${pageDescription}`}
       />
-      <meta
-        property="og:image"
-        content="https://drive.google.com/file/d/1ANuhzbXQWHEeEstt9zGt-r2nwSyWlaon/view?usp=drive_link"
-      />
+      <meta property="og:url" content={currentURL} />
+      <meta property="og:image" content={imageURL} />
       <meta property="og:type" content="website" />
 
       <meta name="twitter:card" content="summary_large_image" />
@@ -99,10 +98,7 @@ function MetaManager() {
         name="twitter:description"
         content={`Go Yours：${pageDescription}`}
       />
-      <meta
-        name="twitter:image"
-        content="https://drive.google.com/file/d/1ANuhzbXQWHEeEstt9zGt-r2nwSyWlaon/view?usp=drive_link"
-      />
+      <meta name="twitter:image" content={imageURL} />
     </Helmet>
   );
 }
