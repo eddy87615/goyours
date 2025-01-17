@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { client } from '../../cms/sanityClient';

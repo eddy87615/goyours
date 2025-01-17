@@ -94,6 +94,14 @@ function MetaManager() {
       <meta property="og:type" content="website" />
 
       <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        property="og:image:secure_url"
+        content="https://www.goyours.tw/LOGO-02-text.png"
+      />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Go Yours Logo" />
       <meta name="twitter:title" content={`Go Yours：${pageTitle}`} />
       <meta
         name="twitter:description"

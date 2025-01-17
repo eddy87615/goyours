@@ -508,9 +508,6 @@
     width: 80vw;
     gap: 2rem;
   }
-  .guide-content {
-    /* clip-path: ellipse(230% 100% at 50% 100%); */
-  }
 
   .working-page-button a {
     width: 100%;
@@ -628,9 +625,6 @@
     width: 80vw;
     gap: 2rem;
   }
-  .guide-content {
-    /* clip-path: ellipse(230% 100% at 50% 100%); */
-  }
 
   .working-page-button a {
     width: 100%;
@@ -712,9 +706,6 @@
     padding-top: 20%;
   }
 
-  .guide-content {
-    /* clip-path: ellipse(300% 100% at 50% 100%); */
-  }
   .guide-title h1::after {
     width: 2rem;
     border-bottom: 0.2rem solid var(--goyoursYellow);
@@ -834,9 +825,6 @@
     padding-top: 20%;
   }
 
-  .guide-content {
-    /* clip-path: ellipse(300% 100% at 50% 100%); */
-  }
   .guide-title h1::after {
     width: 2rem;
     border-bottom: 0.2rem solid var(--goyoursYellow);
