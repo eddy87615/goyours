@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { sitemap } from 'vite-plugin-sitemap';
+import ViteSitemap from 'vite-plugin-sitemap';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
   plugins: [
     react(),
-    sitemap({
+    ViteSitemap({
       hostname: 'https://www.goyours.tw',
       dynamicRoutes: [
         '/',
