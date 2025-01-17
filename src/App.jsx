@@ -87,7 +87,10 @@ function MetaManager() {
         property="og:description"
         content={`Go Yours：${pageDescription}`}
       />
-      <meta property="og:image" content="/LOGO-02-text.png" />
+      <meta
+        property="og:image"
+        content="https://drive.google.com/file/d/1ANuhzbXQWHEeEstt9zGt-r2nwSyWlaon/view?usp=drive_link"
+      />
       <meta property="og:type" content="website" />
 
       <meta name="twitter:card" content="summary_large_image" />
@@ -96,7 +99,10 @@ function MetaManager() {
         name="twitter:description"
         content={`Go Yours：${pageDescription}`}
       />
-      <meta name="twitter:image" content="/LOGO-02-text.png" />
+      <meta
+        name="twitter:image"
+        content="https://drive.google.com/file/d/1ANuhzbXQWHEeEstt9zGt-r2nwSyWlaon/view?usp=drive_link"
+      />
     </Helmet>
   );
 }
