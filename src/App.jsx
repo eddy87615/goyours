@@ -45,7 +45,6 @@ const PATH_TO_PAGE = {
   '/document-download': '下載專區',
   '/contact-us': '聯絡我們',
 };
-// Meta 管理組件 - 移到 AppContent 外面
 function MetaManager() {
   const location = useLocation();
   const { loading, getKeywordsByPage, getDescriptionByPage, getTitleByPage } =
@@ -53,14 +52,6 @@ function MetaManager() {
 
   // 根據當前路徑獲取頁面名稱
   const pageName = PATH_TO_PAGE[location.pathname] || '首頁';
-
-  // debug用
-  useEffect(() => {
-    console.log('Current location:', location.pathname);
-    console.log('Current page name:', pageName);
-    console.log('Keywords:', getKeywordsByPage(pageName));
-    console.log('Description:', getDescriptionByPage(pageName));
-  }, [location.pathname, pageName, getKeywordsByPage, getDescriptionByPage]);
 
   if (loading) {
     return (
@@ -77,6 +68,7 @@ function MetaManager() {
   const pageKeywords = getKeywordsByPage(pageName);
   const pageDescription = getDescriptionByPage(pageName);
   const pageTitle = getTitleByPage(pageName);
+  const currentURL = `${window.location.origin}${location.pathname}`;
 
   return (
     <Helmet>
@@ -90,6 +82,21 @@ function MetaManager() {
             : '讓Go Yours完成你的打工度假與留學的夢想'
         }
       />
+      <meta property="og:title" content={`Go Yours：${pageTitle}`} />
+      <meta
+        property="og:description"
+        content={`Go Yours：${pageDescription}`}
+      />
+      <meta property="og:image" content="/LOGO-02-text.png" />
+      <meta property="og:type" content="website" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={`Go Yours：${pageTitle}`} />
+      <meta
+        name="twitter:description"
+        content={`Go Yours：${pageDescription}`}
+      />
+      <meta name="twitter:image" content="/LOGO-02-text.png" />
     </Helmet>
   );
 }
