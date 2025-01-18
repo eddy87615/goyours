@@ -40,7 +40,9 @@ const PATH_TO_PAGE = {
   '/about-us': '關於我們',
   '/goyours-post': '文章專區',
   '/studying-in-jp': '日本留學',
+  '/studying-in-jp-school': '日本留學學校',
   '/working-holiday': '打工度假',
+  '/working-holiday-job': '打工度假職缺',
   '/Q&A-section': '常見Q&A',
   '/document-download': '下載專區',
   '/contact-us': '聯絡我們',
@@ -125,13 +127,6 @@ function AppContent() {
 
     return () => clearTimeout(timer); // 清理計時器
   }, [location.pathname]);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoadingComplete(false);
-  //     setLoadingComplete(true); // 强制重渲染 LoadingBear
-  //   }, 0);
-  // }, []);
 
   return (
     <>

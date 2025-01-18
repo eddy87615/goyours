@@ -333,7 +333,7 @@ export default function SchoolDetail() {
   if (!school) {
     return (
       <div>
-        <p className="postLoading">
+        <p className="postLoading nopost-warning">
           沒有學校
           <span className="nopost">
             <img src="/goyoursbear-B.svg" alt="goyours bear gray" />

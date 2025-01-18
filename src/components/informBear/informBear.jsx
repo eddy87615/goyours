@@ -27,6 +27,7 @@ export default function InformBear() {
   const location = useLocation();
   const [inform, setInform] = useState([]);
   const [isHidden, setIsHidden] = useState(false);
+  const [activeToasts, setActiveToasts] = useState([]);
 
   useEffect(() => {
     async function fetchInform() {
@@ -43,22 +44,19 @@ export default function InformBear() {
   }, []);
 
   const showInform = () => {
-    setIsHidden(false);
-    inform.forEach((item) => {
+    const newToasts = inform.map((item) => {
       const toastId = toast(
         <div className="toast-content">
           <button
             onClick={() => {
               toast.dismiss(toastId);
-              toast.dismiss(item._id);
-              setIsHidden(true);
+              setActiveToasts((prev) => prev.filter((id) => id !== toastId));
             }}
           >
             {/* <RxCross2 /> */}
           </button>
           <h4>{item.title}</h4>
           <PortableText value={item.content} components={components} />
-          {/* <p>{item.content}</p> */}
         </div>,
         {
           duration: 5000000,
@@ -67,18 +65,41 @@ export default function InformBear() {
           dismissible: true,
         }
       );
+      return toastId;
     });
+    setActiveToasts(newToasts);
+    setIsHidden(false);
+  };
+
+  const hideInform = () => {
+    activeToasts.forEach((toastId) => {
+      toast.dismiss(toastId);
+    });
+    setActiveToasts([]);
+    setIsHidden(true);
+  };
+
+  const toggleInform = () => {
+    if (isHidden || activeToasts.length === 0) {
+      showInform();
+    } else {
+      hideInform();
+    }
   };
 
   useEffect(() => {
     if (inform.length > 0 && !isHidden) {
-      toast.dismiss();
       showInform();
     }
   }, [inform, location.pathname]);
+
   return (
     <>
-      <div className="inform-bear" onClick={showInform} title="顯示通知"></div>
+      <div
+        className="inform-bear"
+        title="顯示通知"
+        onClick={toggleInform}
+      ></div>
       <Toaster />
     </>
   );
