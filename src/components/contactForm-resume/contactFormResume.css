@@ -278,9 +278,6 @@ input:-webkit-autofill {
   gap: 0.5rem;
   margin: 0 auto;
 }
-.privicy a {
-  border-bottom: 1px solid #999;
-}
 .privicy p::before {
   display: none;
 }

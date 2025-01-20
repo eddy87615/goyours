@@ -159,7 +159,7 @@ export default function Studying() {
   const handlePageChange = (page) => {
     const params = new URLSearchParams(location.search);
     params.set('page', page);
-    navigate(`?${params.toString()}`);
+    // navigate(`?${params.toString()}`);
     setCurrentPage(page);
   };
 

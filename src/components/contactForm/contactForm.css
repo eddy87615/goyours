@@ -220,9 +220,6 @@ input:-webkit-autofill {
   justify-content: center;
   margin: 0 auto;
 }
-.privicy a {
-  border-bottom: 1px solid #999;
-}
 .privicy p::before {
   display: none;
 }
@@ -442,7 +439,7 @@ input:-webkit-autofill {
     font-size: 0.85rem;
   }
   .privicy {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
   .privicy label {
     width: fit-content;
