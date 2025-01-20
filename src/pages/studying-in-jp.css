@@ -768,6 +768,10 @@
 
     width: 90vw;
   }
+
+  .guide-morePost {
+    width: 90vw;
+  }
 }
 @media screen and (max-width: 375px) {
   .scrollDown-side-studyingPage {
@@ -836,8 +840,8 @@
     width: 10%;
   }
   .guide-text {
-    font-size: 0.625rem;
-    line-height: 1.5rem;
+    /* font-size: 0.625rem; */
+    line-height: 1.8rem;
   }
   .guide-title {
     padding-top: 20%;

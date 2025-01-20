@@ -8,9 +8,9 @@ import { Mousewheel } from 'swiper/modules';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
-import GoyoursBear from '../goyoursBear/goyoursBear';
 import HomeBg from '../homeBg/homeBg';
 import AnimationSection from '../../pages/AnimationSection';
+import useWindowSize from '../../hook/useWindowSize';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -169,6 +169,7 @@ const customComponents = {
 
 export default function Hotpost() {
   const [NewsPosts, setNewsPosts] = useState([]);
+  const windowSize = useWindowSize();
 
   // 從 Sanity 獲取最新消息標籤的文章
   useEffect(() => {
@@ -208,13 +209,17 @@ export default function Hotpost() {
       <div className="homehotpostDiv">
         {NewsPosts.length >= 3 && (
           <Swiper
-            spaceBetween={50}
-            slidesPerView="auto"
+            spaceBetween={30}
+            slidesPerView={windowSize < 500 ? '1.5' : 'auto'}
             slidesPerGroup={1}
             centeredSlides={true}
-            navigation={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            modules={[Autoplay, Navigation, Mousewheel]}
+            freeMode={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            modules={[Autoplay, Mousewheel]}
             loop={true}
             simulateTouch={true} // 支持觸控板模擬觸控
             touchStartPreventDefault={false} // 確保滑動事件可以正常觸發

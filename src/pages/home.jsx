@@ -5,7 +5,7 @@ import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel } from 'swiper/modules';
-import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
+import { Autoplay, EffectFade } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
 import { FaLocationDot } from 'react-icons/fa6';
@@ -29,6 +29,7 @@ import './about-us.css';
 
 const News = () => {
   const [NewsPosts, setNewsPosts] = useState([]);
+  const windowSize = useWindowSize();
 
   // 從 Sanity 獲取最新消息標籤的文章
   useEffect(() => {
@@ -55,16 +56,20 @@ const News = () => {
           <span className="yellow">News</span>日本最新消息
         </h1>
       </div>
-      <div className="homeNewsDiv">
-        {NewsPosts.length >= 3 && (
+      <div className="homeNewsDiv sp-scollNews">
+        {NewsPosts.length >= 3 && windowSize > 768 ? (
           <Swiper
-            spaceBetween={50}
-            slidesPerView={4}
+            spaceBetween={30}
+            slidesPerView={windowSize < 500 ? '4' : 'auto'}
             slidesPerGroup={1}
             centeredSlides={true}
-            navigation={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            modules={[Autoplay, Navigation, Mousewheel]}
+            freeMode={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            modules={[Autoplay, Mousewheel]}
             loop={true}
             simulateTouch={true} // 支持觸控板模擬觸控
             touchStartPreventDefault={false} // 確保滑動事件可以正常觸發
@@ -103,6 +108,40 @@ const News = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        ) : (
+          <>
+            {NewsPosts.map((post, index) => (
+              <div key={index} className="homeNewsprePost ">
+                <a
+                  href={`/goyours-post/${encodeURIComponent(
+                    post.slug.current
+                  )}`}
+                >
+                  {post.mainImage && (
+                    <div className="homeNewspostImg">
+                      <img
+                        src={urlFor(post.mainImage).url()}
+                        alt={post.title}
+                      />
+                    </div>
+                  )}
+                  <p className="homeNews-postTitle">{post.title}</p>
+                  <p className="yellow homeNews-postDate">
+                    <span className="homeNewsBear">
+                      <img src="/圓形logo.png" alt="goyours logo" />
+                    </span>
+                    {new Date(post.publishedAt)
+                      .toLocaleDateString('zh-TW', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })
+                      .replace(/\//g, '.')}
+                  </p>
+                </a>
+              </div>
+            ))}
+          </>
         )}
       </div>
     </>
@@ -250,7 +289,10 @@ const HomeschoolList = () => {
                 </ul>
               </div>
               <LiaHandPointer className="schoolListPointer" />
-              <Link className="home-schoolList-arrow" to={school.href}>
+              <Link
+                className="home-schoolList-arrow"
+                to={`/studying-in-jp-school/${school.slug.current}`}
+              >
                 <img src="/submit-arrow.svg" alt="submit button arrow" />
               </Link>
             </AnimationSection>
@@ -408,29 +450,23 @@ export default function Home() {
             key="fixed-key"
             centeredSlides={true}
             loop={true}
+            slidesPerView={1}
+            slidesPerGroup={1}
             autoplay={{
-              delay: 2000,
+              delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: false,
             }}
             effect="fade"
-            fadeEffect={{ crossFade: true }}
+            fadeEffect={{ crossFade: true }} // 啟用交叉淡入淡出
             modules={[Autoplay, EffectFade]}
             simulateTouch={false}
             allowTouchMove={false}
-            slidesPerView={1}
-            slidesPerGroup={1}
             observer={true}
             observeParents={true}
           >
             {homeslider.map((slide, index) => (
               <SwiperSlide key={index}>
-                {/* <img
-                  src={slide.src}
-                  srcSet={`${slide.large} 1024w, ${slide.medium} 640w, ${slide.small} 320w`}
-                  sizes="(max-width: 768px) 600px, (max-width: 1200px) 1200px, 2000px"
-                  alt={`{slider photo${index}`}
-                /> */}
                 <picture>
                   <source media="(min-width: 1024px)" srcSet={slide.large} />
                   <source media="(min-width: 640px)" srcSet={slide.medium} />

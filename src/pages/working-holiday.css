@@ -752,6 +752,10 @@
   .guide-morePost {
     padding-top: 4rem;
   }
+
+  .guide-morePost {
+    width: 90vw;
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -820,8 +824,8 @@
     width: 10%;
   }
   .guide-text {
-    font-size: 0.625rem;
-    line-height: 1.5rem;
+    /* font-size: 0.625rem; */
+    line-height: 1.8rem;
   }
   .guide-title {
     padding-top: 20%;

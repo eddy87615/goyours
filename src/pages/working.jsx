@@ -16,6 +16,40 @@ export default function Working() {
   const [filteredJobList, setFilteredJobList] = useState([]);
   const [isSearchTriggered, setIsSearchTriggered] = useState(false);
 
+  // 處理目標職缺的 useEffect
+  useEffect(() => {
+    const handleTargetJob = () => {
+      const targetSlug = location.hash.replace('#', '');
+
+      if (targetSlug && jobList.length > 0) {
+        // 找到目標職缺的索引
+        const targetIndex = jobList.findIndex(
+          (job) => job.slug.current === targetSlug
+        );
+
+        if (targetIndex !== -1) {
+          // 計算目標職缺在第幾頁
+          const targetPage = Math.floor(targetIndex / itemsPerPage) + 1;
+
+          // 設置到對應的頁面
+          setCurrentPage(targetPage);
+          setFilteredJobList(jobList); // 確保顯示完整列表
+          setIsSearchTriggered(false); // 重置搜尋狀態
+
+          // 等待頁面更新後滾動到目標位置
+          setTimeout(() => {
+            const element = document.getElementById(targetSlug);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 500);
+        }
+      }
+    };
+
+    handleTargetJob();
+  }, [location.hash, jobList]); // 當 hash 或 jobList 改變時重新執行
+
   useEffect(() => {
     async function fetchJobList() {
       // 獲取所有職缺

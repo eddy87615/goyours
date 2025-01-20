@@ -25,6 +25,15 @@
   object-fit: cover;
 }
 
+.swiper-fade .swiper-slide {
+  opacity: 0 !important;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.swiper-fade .swiper-slide-active {
+  opacity: 1 !important;
+}
+
 /*homrintroSection*/
 
 .homeintroSection {
@@ -195,7 +204,6 @@
 }
 .homeNewsprePost {
   width: 30% !important;
-  height: 30%;
 }
 .homeNewsprePost a {
   text-decoration: none;
@@ -218,6 +226,31 @@
 .homeNewsDiv {
   padding-top: 10rem;
 }
+.sp-scollNews {
+  display: flex;
+  overflow-x: scroll;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Webkit 瀏覽器 */
+.sp-scollNews::-webkit-scrollbar {
+  width: 0; /* 滾動條寬度 */
+  height: 0;
+}
+/* 針對 Webkit 瀏覽器 (Chrome, Safari) */
+.sp-scollNews::-webkit-scrollbar {
+  display: none;
+}
+
+.sp-scollNews::-webkit-scrollbar-track {
+  background: transparent; /* 軌道背景透明 */
+}
+
 .homeNewsDiv .swiper-button-prev,
 .homeNewsDiv .swiper-button-next {
   display: none;
@@ -254,36 +287,7 @@
 
   transition-duration: 0.5s;
 }
-.homeperhotpost:hover img {
-  animation: shake 0.5s ease-out;
-}
-/* .swiper-button-prev {
-  background-color: var(--goyoursBlack);
 
-  width: 3rem !important;
-  height: 3rem !important;
-  border-radius: 100rem;
-
-  color: #fff !important;
-
-  opacity: 0.5;
-} */
-/* .swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 1.5rem;
-}
-
-.swiper-button-next {
-  background-color: var(--goyoursBlack);
-
-  width: 3rem !important;
-  height: 3rem !important;
-  border-radius: 100rem;
-
-  color: #fff !important;
-
-  opacity: 0.5;
-} */
 .centerSlide {
   transition-duration: 1s;
 }
@@ -842,8 +846,15 @@
   .jobListcontent ul li:nth-child(2) {
     display: none;
   }
+
+  .homeNewsprePost a:hover .homeNewspostImg > img {
+    transform: unset;
+  }
 }
 @media (min-width: 481px) and (max-width: 768px) {
+  .homeNewsprePost a:hover .homeNewspostImg > img {
+    transform: unset;
+  }
   .kvSlider {
     position: relative;
     z-index: 0;
@@ -1035,7 +1046,7 @@
     max-width: 65%;
 
     bottom: 0;
-    left: 0;
+    right: 0;
     z-index: 1;
   }
 
@@ -1111,6 +1122,8 @@
   .homeNewsprePost {
     width: 60% !important;
     margin-right: 4% !important;
+
+    flex-shrink: 0;
   }
   .swiper-button-prev,
   .swiper-button-next {
@@ -1121,6 +1134,10 @@
     padding-top: 4rem;
     padding-bottom: 4rem;
     /* pointer-events: none; */
+  }
+
+  .homeNewsprePost a:hover .homeNewspostImg > img {
+    transform: unset;
   }
 
   .schoolListPre:hover .schoolListBg {

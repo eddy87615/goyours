@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { client, urlFor } from '../../cms/sanityClient';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +20,27 @@ import './jobList.css';
 export default function JobList({ jobList, isSearchTriggered, totalResults }) {
   const [isOpenList, setIsOpenList] = useState({});
   const windowSize = useWindowSize();
+
+  // 添加處理 hash 的 useEffect
+  useEffect(() => {
+    // 獲取 URL 中的 hash（去掉 # 符號）
+    const hash = window.location.hash.replace('#', '');
+
+    if (hash) {
+      // 等待一下確保資料已載入
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          // 自動展開對應的職缺詳情
+          setIsOpenList((prev) => ({
+            ...prev,
+            [hash]: true,
+          }));
+        }
+      }, 500);
+    }
+  }, [jobList]); // 當 jobList 更新時重新檢查
 
   const toggleList = (slug) => {
     setIsOpenList((prevState) => ({
@@ -60,7 +81,11 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
 
         {jobList.length > 0 ? (
           jobList.map((job) => (
-            <div key={job.slug.current || job.slug} className="joblist">
+            <div
+              key={job.slug.current || job.slug}
+              className="joblist"
+              id={job.slug.current || job.slug}
+            >
               {windowSize < 480 ? (
                 <div className="joblistBtn">
                   <button onClick={() => handleInquiry(job.name)}>

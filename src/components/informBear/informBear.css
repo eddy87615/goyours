@@ -28,6 +28,7 @@
 
 .go4109123758 {
   bottom: 100px !important;
+  left: calc(3rem - 16px) !important;
 }
 
 .toast-content {
@@ -105,7 +106,7 @@
   /* background-color: var(--goyoursYellow); */
   position: fixed;
   bottom: 4%;
-  left: 2%;
+  left: 3rem;
   z-index: 999;
 
   /* border-radius: 50%; */
@@ -130,3 +131,13 @@
   bottom: 0;
   transform: translateX(100%);
 } */
+
+@media screen and (max-width: 768px) {
+  .go4109123758 {
+    bottom: 100px !important;
+    left: 0 !important;
+  }
+  .inform-bear {
+    left: 16px;
+  }
+}

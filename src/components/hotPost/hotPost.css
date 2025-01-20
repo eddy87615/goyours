@@ -22,8 +22,6 @@
 
 .homeperhotpost {
   width: 30%;
-  /* height: 30% !important; */
-
   border: 2px solid var(--goyoursBlack);
   border-radius: 2rem;
 
@@ -93,6 +91,10 @@
   color: #fff;
 }
 
+.homeperhotpost:hover img {
+  animation: shake 0.5s ease-out;
+}
+
 /*homeHotpostSection*/
 
 @media (min-width: 481px) and (max-width: 1024px) {
@@ -121,6 +123,10 @@
   }
   .homeperhotpost {
     width: 50%;
+  }
+
+  .homeHotPost-postTitle {
+    font-size: 1rem;
   }
 }
 
@@ -162,14 +168,14 @@
     flex-wrap: wrap;
     gap: 0.2rem;
   }
-  .homeprehotpost p {
-    font-size: 0.75rem;
-  }
   .homehotpostDate {
     gap: 0.5rem;
   }
   .homehotpostDate img {
     width: 1rem;
     height: 1rem;
+  }
+  .homeperhotpost:hover img {
+    animation: unset;
   }
 }

@@ -98,7 +98,7 @@ function MetaManager() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         property="og:image:secure_url"
-        content="https://www.goyours.tw/LOGO-02-text.png"
+        content="https://www.goyours.tw/open_graph.png"
       />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
