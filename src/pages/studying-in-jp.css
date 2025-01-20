@@ -42,17 +42,33 @@
 }
 
 .studying-rightboy {
+  --imgBase: calc(100vw / 144);
   position: absolute;
   bottom: 0;
   right: 10%;
+  width: calc(34 * var(--imgBase));
 }
-.studying-rightgirl {
+.studying-rightboy img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  vertical-align: top;
+}
+.studying-leftgirl {
+  --imgBase: calc(100vw / 144);
   position: absolute;
   bottom: 0;
   left: 10%;
+  width: calc(34 * var(--imgBase));
+}
+.studying-leftgirl img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  vertical-align: top;
 }
 
-.guidePage-studying-top::after {
+/* .guidePage-studying-top::after {
   position: absolute;
   content: '';
 
@@ -91,7 +107,7 @@
   z-index: 1;
 
   animation: imgShake01 1s infinite;
-}
+} */
 
 .guide-title {
   width: 100%;
@@ -908,31 +924,11 @@
   }
 }
 
-@media screen and (max-width: 701px) and (min-width: 600px) {
-  .guidePage-studying-top::before {
-    width: 200px;
-    left: 0;
-    bottom: -4%;
-    background-position: bottom;
-  }
-  .guidePage-studying-top::after {
-    width: 200px;
-    right: 0;
-    bottom: -4%;
-    background-position: bottom;
-  }
-}
 @media screen and (max-width: 599px) and (min-width: 500px) {
-  .guidePage-studying-top::before {
-    width: 150px;
-    left: 0;
-    bottom: -4%;
-    background-position: bottom;
+  .studying-rightboy {
+    right: 2%;
   }
-  .guidePage-studying-top::after {
-    width: 150px;
-    right: 0;
-    bottom: -4%;
-    background-position: bottom;
+  .studying-leftgirl {
+    left: 0;
   }
 }

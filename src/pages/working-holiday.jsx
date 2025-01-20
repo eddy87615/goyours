@@ -118,6 +118,12 @@ export default function StudyingInJp() {
               <p key={index}>Go Yours ●　</p>
             ))}
           </div>
+          <div className="working-rightgirl">
+            <img src="/guidePage/working-G.png" />
+          </div>
+          <div className="working-leftboy">
+            <img src="/guidePage/working-B.png" />
+          </div>
         </div>
         <div className="guide-content">
           <div>

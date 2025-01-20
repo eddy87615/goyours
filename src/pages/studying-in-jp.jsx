@@ -116,12 +116,12 @@ export default function StudyingInJp() {
               <p key={index}>Go Yours ●　</p>
             ))}
           </div>
-          {/* <div className="studying-rightboy">
+          <div className="studying-rightboy">
             <img src="/guidePage/studying-B.png" />
           </div>
-          <div className="studying-rightgirl">
+          <div className="studying-leftgirl">
             <img src="/guidePage/studying-G.png" />
-          </div> */}
+          </div>
         </div>
         <div className="guide-content">
           <div>

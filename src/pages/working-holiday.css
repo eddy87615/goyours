@@ -45,7 +45,34 @@
   position: relative;
 }
 
-.guidePage-working-holiday-top::after {
+.working-rightgirl {
+  --imgBase: calc(100vw / 144);
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  width: calc(34 * var(--imgBase));
+}
+.working-rightgirl img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  vertical-align: top;
+}
+.working-leftboy {
+  --imgBase: calc(100vw / 144);
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: calc(34 * var(--imgBase));
+}
+.working-leftboy img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  vertical-align: top;
+}
+
+/* .guidePage-working-holiday-top::after {
   position: absolute;
   content: '';
 
@@ -82,7 +109,7 @@
   left: 10%;
 
   z-index: 1;
-}
+} */
 
 .guide-title {
   width: 100%;
@@ -878,31 +905,11 @@
   }
 }
 
-@media screen and (max-width: 701px) and (min-width: 600px) {
-  .guidePage-working-holiday-top::before {
-    width: 200px;
-    left: 0;
-    bottom: -4%;
-    background-position: bottom;
-  }
-  .guidePage-working-holiday-top::after {
-    width: 200px;
-    right: 0;
-    bottom: -4%;
-    background-position: bottom;
-  }
-}
 @media screen and (max-width: 599px) and (min-width: 500px) {
-  .guidePage-working-holiday-top::before {
-    width: 150px;
-    left: 0;
-    bottom: -4%;
-    background-position: bottom;
+  .working-rightgirl {
+    right: 2%;
   }
-  .guidePage-working-holiday-top::after {
-    width: 150px;
-    right: 0;
-    bottom: -4%;
-    background-position: bottom;
+  .working-leftboy {
+    left: 0;
   }
 }
