@@ -62,8 +62,8 @@
 }
 .toast-content button {
   position: absolute;
-  top: 10%;
-  right: 4%;
+  top: 4%;
+  right: 2%;
 
   width: 1.5rem;
   height: 1.5rem;

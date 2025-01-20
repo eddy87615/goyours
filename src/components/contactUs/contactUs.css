@@ -68,7 +68,8 @@
   width: fit-content;
 
   padding-left: 1rem;
-  margin-left: 10rem;
+  /* margin-left: 10rem; */
+  margin-left: calc(6% + 1rem);
 
   font-weight: 600;
 

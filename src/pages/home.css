@@ -226,16 +226,6 @@
 .homeNewsDiv {
   padding-top: 10rem;
 }
-.sp-scollNews {
-  display: flex;
-  overflow-x: scroll;
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 
 /* Webkit 瀏覽器 */
 .sp-scollNews::-webkit-scrollbar {
@@ -724,6 +714,12 @@
   display: none;
 }
 
+@media screen and (min-width: 1440px) {
+  .homeintroImgWrapper0 {
+    left: 0;
+  }
+}
+
 @media screen and (min-width: 1201px) {
   .homeintroImgWrapper0 {
     width: 30rem;
@@ -1108,6 +1104,16 @@
 
   .homeNewsDiv {
     padding-top: 4rem;
+  }
+  .sp-scollNews {
+    display: flex;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   .homeNews-postTitle {
     font-size: 0.875rem;

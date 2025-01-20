@@ -28,8 +28,6 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 
 import BreadCrumb from '../components/breadCrumb/breadCrumb';
 import ContactUs from '../components/contactUs/contactUs';
-import GoyoursBearsSchoolCondition from '../components/goyoursBear/goyoursBear-schoolConditions';
-import GoyoursBears from '../components/goyoursBear/goyoursBear';
 import LoadingBear from '../components/loadingBear/loadingBear';
 import './schoolDetail.css';
 
@@ -61,9 +59,8 @@ const Features = ({ school }) => {
     <>
       <div className="schoolDetailInfo">
         <div className="schoolDetailH1">
-          <h1 className="features">
+          <h1 className="features underLine">
             <span className="yellow">Feature</span>學校特色
-            <GoyoursBears />
           </h1>
         </div>
         <div className="featurestxt">
@@ -80,9 +77,8 @@ const Features = ({ school }) => {
         {school.video && (
           <div className="video">
             <div className="videoH1">
-              <h1 className="features">
+              <h1 className="features underLine">
                 <span className="yellow">Video</span>學校影片
-                <GoyoursBears />
               </h1>
             </div>
             <div className="videoItself">
@@ -157,12 +153,11 @@ const Conditions = ({ school }) => {
   return (
     <div className="schoolConditions">
       <div className="schoolDetailH1">
-        <h1 className="features">
+        <h1 className="features underLine">
           <span className="yellow" lang="en">
             Conditions
           </span>
           學校性質
-          <GoyoursBearsSchoolCondition />
         </h1>
       </div>
       <div className="schoolConditions-detail">
@@ -435,7 +430,7 @@ export default function SchoolDetail() {
             <li>
               <FaEarthAmericas className="schoolDetailicon" />
               <a href={school.officialSite} target="_blank">
-                {school.officialSite}
+                學校官方網站
               </a>
             </li>
             <li>
