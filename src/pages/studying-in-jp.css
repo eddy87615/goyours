@@ -37,6 +37,8 @@
   margin-top: 0;
 
   z-index: 2;
+
+  text-shadow: 1px 1px 1px #000;
 }
 
 .guidePage-studying-top::after {
