@@ -48,7 +48,7 @@
 .working-rightgirl {
   --imgBase: calc(100vw / 144);
   position: absolute;
-  bottom: 0;
+  bottom: calc(-4% - 8rem);
   right: 10%;
   width: calc(34 * var(--imgBase));
 }
@@ -61,7 +61,7 @@
 .working-leftboy {
   --imgBase: calc(100vw / 144);
   position: absolute;
-  bottom: 0;
+  bottom: calc(0% - 8rem);
   left: 10%;
   width: calc(34 * var(--imgBase));
 }
@@ -114,7 +114,7 @@
 .guide-title {
   width: 100%;
 
-  /* padding-top: 10vh; */
+  padding-top: 10vh;
 }
 .guide-title h1 {
   display: flex;
@@ -256,7 +256,7 @@
 
   z-index: 1;
 
-  /* clip-path: ellipse(150% 100% at 50% 100%); */
+  margin-top: 8rem;
 }
 .guide-content::before {
   position: absolute;
@@ -444,7 +444,7 @@
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .guidePage-working-holiday-top {
-    height: 90vh;
+    height: 100vh;
   }
   .guide-vertical-slide-left,
   .silde-text-wrapper-left01 {
@@ -554,9 +554,12 @@
   .guide-morePost > .morepostH2 {
     width: 90vw;
   }
-  .guide-morePost .submitPostList > .submitPostLink {
-    width: 80%;
+  .guide-morePost {
+    width: 90vw;
   }
+  /* .guide-morePost .submitPostList > .submitPostLink {
+    width: 80%;
+  } */
 }
 @media (min-width: 481px) and (max-width: 768px) {
   .guidePage-working-holiday-top {
@@ -567,12 +570,6 @@
     display: none;
   }
   .silde-text-wrapper-right01.right02 {
-    width: 100%;
-    height: 2rem;
-    transform: unset;
-    top: calc(55.69px + 19%);
-    right: 0;
-
     display: none;
   }
   .silde-text-wrapper-right01 p,
@@ -671,9 +668,9 @@
   .guide-morePost > .morepostH2 {
     width: 90vw;
   }
-  .guide-morePost .submitPostList > .submitPostLink {
+  /* .guide-morePost .submitPostList > .submitPostLink {
     width: 80%;
-  }
+  } */
 }
 
 @media (min-width: 376px) and (max-width: 499px) {
