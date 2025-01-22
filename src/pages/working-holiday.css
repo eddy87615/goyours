@@ -308,7 +308,7 @@
 
   background-repeat: no-repeat;
   top: 0;
-  transform: translateY(-100%);
+  transform: translateY(-98%);
 }
 
 .aboutworkingH2 {
@@ -569,7 +569,7 @@
 }
 @media (min-width: 501px) and (max-width: 768px) {
   .guidePage-working-holiday-top {
-    height: 90dvh;
+    height: 90vh;
   }
   .guide-animation-wrapper {
     padding: unset;
@@ -668,7 +668,7 @@
   .guidePage-working-holiday-top {
     justify-content: flex-start;
 
-    height: 90dvh;
+    height: 80vh;
   }
   .goyoursbear {
     width: 10%;
