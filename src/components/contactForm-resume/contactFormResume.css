@@ -110,6 +110,7 @@
   justify-content: center;
 }
 .contactFormResume p::after {
+  display: none !important;
   content: '＊必填';
   color: #ef0000;
 

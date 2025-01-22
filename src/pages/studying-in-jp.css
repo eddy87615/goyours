@@ -48,7 +48,7 @@
   position: absolute;
   bottom: calc(-4% - 8rem);
   right: 10%;
-  width: calc(34 * var(--imgBase));
+  width: calc(36 * var(--imgBase));
 }
 .studying-rightboy img {
   width: 100%;
@@ -61,7 +61,7 @@
   position: absolute;
   bottom: calc(-4% - 8rem);
   left: 10%;
-  width: calc(34 * var(--imgBase));
+  width: calc(36 * var(--imgBase));
 }
 .studying-leftgirl img {
   width: 100%;
@@ -412,8 +412,35 @@
     font-size: 0.85rem;
   }
 
+  .studying-rightboy {
+    --imgBase: calc(100vw / 144);
+    position: absolute;
+    bottom: calc(0% - 8rem);
+    right: 0;
+    width: calc(50 * var(--imgBase));
+  }
+  .studying-rightboy img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    vertical-align: top;
+  }
+  .studying-leftgirl {
+    --imgBase: calc(100vw / 144);
+    position: absolute;
+    bottom: calc(0% - 8rem);
+    left: 0;
+    width: calc(50 * var(--imgBase));
+  }
+  .studying-leftgirl img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    vertical-align: top;
+  }
+
   .guide-title {
-    padding-top: 28%;
+    padding-top: 0;
   }
   .guide-title h1 {
     font-size: 1.5rem;
