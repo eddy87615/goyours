@@ -15,6 +15,7 @@ import useWindowSize from '../hook/useWindowSize';
 
 export default function StudyingInJp() {
   const windowSize = useWindowSize();
+
   const sliderRight = [
     { src: '/guidePage/slide009.jpg', alt: 'japanese school interior images' },
     { src: '/guidePage/slide020.png', alt: 'japanese school images' },

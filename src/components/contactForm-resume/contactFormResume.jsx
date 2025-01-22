@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
@@ -106,6 +107,20 @@ export default function ContactFormResume() {
 
   const [loading, setLoading] = useState(false);
 
+  const scrollToTop = () => {
+    // 嘗試多種滾動方法
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      // 如果 smooth 失敗，使用即時滾動
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTo(0, 0);
+      document.body.scrollTo(0, 0);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('檔案內容:', formData.resume); // 檢查 `resume` 是否包含檔案物件
@@ -176,17 +191,20 @@ export default function ContactFormResume() {
         throw new Error('提交失敗');
       }
 
-      setIsSubmited(true);
-      setFormData({
-        name: '',
-        age: '',
-        phone: '',
-        lineId: '',
-        email: '',
-        callTime: '',
-        resume: null,
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // 返回到頁面的最頂端
+      if (response.ok) {
+        setIsSubmited(true);
+        setFormData({
+          name: '',
+          age: '',
+          phone: '',
+          lineId: '',
+          email: '',
+          callTime: '',
+          resume: null,
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToTop();
+      }
     } catch (error) {
       console.error('提交失敗:', error);
       alert('提交失敗，請稍後再試');
@@ -270,58 +288,40 @@ export default function ContactFormResume() {
             <h1>
               <ThankYouTitle />
             </h1>
-            {windowSize < 800 ? (
-              <a className="goyours-line-btn">GoYours Line@</a>
-            ) : (
+            {windowSize > 800 && (
               <img
                 src="/goyoursline@.png"
                 alt="goyours line@ QR code"
                 className="formlogo"
               />
             )}
+            {windowSize > 800 ? (
+              <></>
+            ) : (
+              <img
+                src="/LOGO-02.png"
+                alt="goyours line@ QR code"
+                className="formlogo"
+              />
+            )}
+
             <p className="subitedtxt">
-              {windowSize < 800
-                ? '感謝您的報名，也歡迎直接點擊連結加入我們的Line@，專員會更快服務您喔！'
-                : '感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！'}
+              感謝您的報名，也歡迎加我們的LINE，專員會更快服務您喔！
             </p>
+            {windowSize < 800 && (
+              <a
+                className="goyours-line-btn"
+                href="https://page.line.me/749omkba?openQrModal=true"
+                target="_blank"
+              >
+                <img src="/goyoursbear-line-W.svg" />
+                點我加入Line好友
+              </a>
+            )}
           </div>
-          {/* <div className="submitedPostArea">
-            <div className="morepostH2">
-              <h2 className="yellow">
-                延伸閱讀
-                <GoyoursBearMorePost />
-              </h2>
-            </div>
-            <div className="submitPostList">
-              {randomPosts.map((post, index) => (
-                <Link
-                  key={index}
-                  className="submitPostLink"
-                  to={`/post/${post.slug.current}`}
-                >
-                  <img src={urlFor(post.mainImage).url()} alt={post.title} />
-                  <h3>{post.title}</h3>
-                  <ul>
-                    {post.categories.map((category, index) => (
-                      <li key={index}>#{category.title}</li>
-                    ))}
-                  </ul>
-                  <div className="submitPostDate">
-                    <p>
-                      {new Date(post.publishedAt)
-                        .toLocaleDateString('zh-TW', {
-                          year: 'numeric',
-                          month: '2-digit',
-                          day: '2-digit',
-                        })
-                        .replace(/\//g, '.')}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div> */}
-          <MorePost />
+          <div className="submitedPostArea">
+            <MorePost isSubmited={isSubmited} />
+          </div>
         </>
       ) : (
         <div className="contactusComponent-resume">
