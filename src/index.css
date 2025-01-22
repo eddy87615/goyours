@@ -14,7 +14,7 @@
   --goyoursBgColor: #fff8ef;
   --goyoursBlack: #414042;
 
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 body,

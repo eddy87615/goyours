@@ -1193,13 +1193,13 @@
     gap: 0.2rem;
   }
   .Review {
-    padding-top: 8rem;
+    padding-top: 20rem;
   }
   .Review h1 {
     font-size: 1rem;
   }
   .Review::before {
-    top: 4%;
+    top: 10%;
   }
   .feedBackArea {
     grid-template-columns: 1fr;
@@ -1295,25 +1295,3 @@
     }
   }
 }
-
-/* @media screen and (min-width: 1920px) {
-  .aboutusTopImg,
-  .aboutusTopImg img {
-    transform: scale(1.2);
-  }
-
-  .circleMenu {
-    transform: rotate(-45deg) scale(1.2) translateX(-14%);
-  }
-
-  .feedbackList {
-    width: 28rem;
-    height: 19rem;
-  }
-  .feedbackList:nth-child(even)::after {
-    top: -13%;
-  }
-  .feedbackList:nth-child(odd)::after {
-    top: -13%;
-  }
-} */

@@ -857,6 +857,20 @@
     border-radius: 0 0 50% 0;
     overflow: hidden;
   }
+  .homeNewsprePost {
+    flex-shrink: 0;
+  }
+  .sp-scollNews {
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   .kvlogo {
     width: 44%;
     max-width: 44%;
@@ -1021,6 +1035,20 @@
     right: 0;
     transform: translate(-50%, 50%);
   }
+  .homeNewsprePost {
+    flex-shrink: 0;
+  }
+  .sp-scollNews {
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
     border-bottom-right-radius: calc(300 * 1em / 16);
@@ -1105,16 +1133,7 @@
   .homeNewsDiv {
     padding-top: 4rem;
   }
-  .sp-scollNews {
-    display: flex;
-    overflow-x: scroll;
 
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
   .homeNews-postTitle {
     font-size: 0.875rem;
   }

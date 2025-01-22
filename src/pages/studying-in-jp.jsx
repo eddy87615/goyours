@@ -1,6 +1,7 @@
 /* eslint-disable no-irregular-whitespace */
 // import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Marquee } from '../components/ui/marquee';
 
 import './studying-in-jp.css';
 import './guide-page-animation.css';
@@ -10,8 +11,10 @@ import { GoArrowRight } from 'react-icons/go';
 import MorePost from '../components/morePost/morePost';
 import ContactUs from '../components/contactUs/contactUs';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
+import useWindowSize from '../hook/useWindowSize';
 
 export default function StudyingInJp() {
+  const windowSize = useWindowSize();
   const sliderRight = [
     { src: '/guidePage/slide009.jpg', alt: 'japanese school interior images' },
     { src: '/guidePage/slide020.png', alt: 'japanese school images' },
@@ -19,10 +22,18 @@ export default function StudyingInJp() {
     { src: '/guidePage/slide012.png', alt: 'japanese boy' },
     { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
     { src: '/guidePage/slide017.png', alt: 'japanese girl' },
+    { src: '/guidePage/slide012.png', alt: 'japanese boy' },
+    { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
+    { src: '/guidePage/slide017.png', alt: 'japanese girl' },
   ];
   const sliderLeft = [
+    { src: '/guidePage/slide010.jpg', alt: 'japanese boy' },
     { src: '/guidePage/slide013.png', alt: 'japanese school interior images' },
     { src: '/guidePage/slide014.jpg', alt: 'japanese school classtime images' },
+    {
+      src: '/guidePage/slide004.webp',
+      alt: 'japanese school classtime images',
+    },
     { src: '/guidePage/slide016.JPG', alt: 'japanese school public room' },
     { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
     { src: '/guidePage/slide010.jpg', alt: 'japanese boy' },
@@ -30,6 +41,7 @@ export default function StudyingInJp() {
       src: '/guidePage/slide004.webp',
       alt: 'japanese school classtime images',
     },
+    { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
   ];
 
   const currentYear = new Date().getFullYear();
@@ -80,42 +92,139 @@ export default function StudyingInJp() {
             <br />
             歡迎向我們索取簡章或報名說明會了解更多！
           </p>
-          <div className="guide-vertical-slide-left">
-            {sliderLeft.map((img, index) => (
-              <div className="guideImgFrame-left" key={index}>
-                <img src={img.src} alt={img.alt} />
+          <div className="guide-animation-wrapper">
+            <div className="guide-animation-left">
+              <div className="guide-text-animation-wrapper">
+                {windowSize > 1024 ? (
+                  <Marquee vertical repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                ) : windowSize > 500 ? (
+                  <Marquee repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                ) : (
+                  <Marquee vertical repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                )}
               </div>
-            ))}
-          </div>
-          <div className="silde-text-wrapper-right01">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
+              <div className="left-picWrapper">
+                <div className="guide-pic-animation-left left-1">
+                  {windowSize > 1024 ? (
+                    <Marquee vertical repeat={4} reverse>
+                      {sliderLeft.map((img, index) => (
+                        <div
+                          className="guide-pic-animation-wrapper"
+                          key={index}
+                        >
+                          <img src={img.src} alt={img.alt} />
+                        </div>
+                      ))}
+                    </Marquee>
+                  ) : windowSize > 500 ? (
+                    <Marquee repeat={4} reverse>
+                      {sliderLeft.map((img, index) => (
+                        <div
+                          className="guide-pic-animation-wrapper"
+                          key={index}
+                        >
+                          <img src={img.src} alt={img.alt} />
+                        </div>
+                      ))}
+                    </Marquee>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+              <div className="guide-text-animation-wrapper">
+                {windowSize > 1024 ? (
+                  <Marquee vertical repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                ) : windowSize > 500 ? (
+                  <Marquee repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
+            <div
+              className="guide-animation-right"
+              style={
+                windowSize > 1024
+                  ? {}
+                  : windowSize > 500
+                  ? { display: 'none' }
+                  : {}
+              }
+            >
+              <div className="guide-text-animation-wrapper">
+                {windowSize > 1024 ? (
+                  <Marquee vertical repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                ) : windowSize > 500 ? (
+                  <Marquee repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className="right-picWrapper">
+                {windowSize > 1024 ? (
+                  <Marquee vertical repeat={4} reverse>
+                    <div className="guide-pic-animation-right right-1">
+                      {sliderRight.map((img, index) => (
+                        <div
+                          className="guide-pic-animation-wrapper"
+                          key={index}
+                        >
+                          <img src={img.src} alt={img.alt} />
+                        </div>
+                      ))}
+                    </div>
+                  </Marquee>
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className="guide-text-animation-wrapper">
+                {windowSize > 1024 ? (
+                  <Marquee vertical horizental repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                ) : (
+                  <Marquee vertical repeat={4}>
+                    {Array.from({ length: 13 }).map((_, index) => (
+                      <p key={index}>Go Yours ●</p>
+                    ))}
+                  </Marquee>
+                )}
+              </div>
+            </div>
           </div>
 
-          <div className="silde-text-wrapper-right01 right02">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
-          </div>
-
-          <div className="guide-vertical-slide-right">
-            {sliderRight.map((img, index) => (
-              <div className="guideImgFrame-right" key={index}>
-                <img src={img.src} alt={img.alt} />
-              </div>
-            ))}
-          </div>
-          <div className="silde-text-wrapper-left01">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
-          </div>
-          <div className="silde-text-wrapper-left01 left02">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
-          </div>
           <div className="studying-rightboy">
             <img src="/guidePage/studying-B.png" />
           </div>

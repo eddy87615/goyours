@@ -38,8 +38,6 @@
   margin-top: 0;
 
   z-index: 2;
-
-  text-shadow: 1px 1px 1px #000;
 }
 .guidePage-working-holiday-top {
   position: relative;
@@ -72,44 +70,84 @@
   vertical-align: top;
 }
 
-/* .guidePage-working-holiday-top::after {
+.guide-animation-wrapper {
   position: absolute;
-  content: '';
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
 
-  background-image: url(/guidePage/working-G.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  padding-right: 30px;
+  padding-left: 10px;
 
-  width: 320px;
-  height: 633px;
-
-  background-size: contain;
-
-  bottom: 0;
-  transform: translateY(12%);
-  right: 10%;
-
-  z-index: 1;
+  width: 100vw;
+  height: 120vh;
+  display: flex;
+  justify-content: space-between;
 }
-.guidePage-working-holiday-top::before {
-  position: absolute;
 
-  content: '';
-  background-image: url(/guidePage/working-B.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+.guide-animation-right,
+.guide-animation-left {
+  display: flex;
 
-  width: 320px;
-  height: 633px;
+  gap: 0.3rem;
+}
 
-  background-size: contain;
+.guide-pic-animation-wrapper {
+  /* position: absolute; */
+  overflow: hidden;
 
-  bottom: 0;
-  transform: translateY(10%);
-  left: 10%;
+  border-radius: 1rem;
 
-  z-index: 1;
-} */
+  margin: 0.5rem 0;
+
+  --wrapperWidth: calc(100vw / 144);
+
+  width: calc(16 * var(--wrapperWidth));
+  height: calc(24 * var(--wrapperWidth));
+}
+
+.left-picWrapper,
+.right-picWrapper {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-pic-animation-left,
+.guide-pic-animation-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-pic-animation-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.guide-text-animation-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+.guide-text-animation-wrapper p {
+  --fontSize: calc(100vw / 130);
+  font-size: calc(1 * var(--fontSize));
+
+  width: 0.8rem;
+  margin: 0;
+
+  writing-mode: vertical-lr;
+  width: 100%;
+
+  color: var(--goyoursYellow);
+  font-weight: bold;
+  opacity: 0.5;
+}
+.guide-text-animation-wrapper p img {
+  width: 100%;
+}
 
 .guide-title {
   width: 100%;
@@ -446,76 +484,28 @@
   .guidePage-working-holiday-top {
     height: 100vh;
   }
-  .guide-vertical-slide-left,
-  .silde-text-wrapper-left01 {
-    display: none;
+
+  .guide-animation-wrapper {
+    padding: unset;
+    padding-top: 4rem;
   }
-  .silde-text-wrapper-right01.right02 {
-    width: 100%;
-    height: 2rem;
-    transform: unset;
-    /* top: calc(55.69px + 19%); */
-    right: 0;
+  .guide-pic-animation-wrapper {
+    margin: 0 0.5rem;
+
+    width: calc(32 * var(--wrapperWidth));
+    height: calc(24 * var(--wrapperWidth));
   }
-  .silde-text-wrapper-right01 p,
-  .silde-text-wrapper-left01 p {
+  .guide-animation-left {
+    flex-direction: column;
+  }
+  .guide-text-animation-wrapper {
+    height: fit-content;
+  }
+  .guide-text-animation-wrapper p {
     writing-mode: horizontal-tb;
     width: fit-content;
-    height: 2rem;
 
-    padding-right: 2rem;
-
-    transform: translateX(100%);
-
-    max-width: unset;
-    min-width: unset;
-
-    animation: scrollLeft;
-    animation-duration: 20s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-  .silde-text-wrapper-right01 {
-    width: 100%;
-    height: 2rem;
-    transform: unset;
-
-    top: 55.69px;
-  }
-  .guide-vertical-slide-right {
-    top: calc(55.69px + 2rem);
-    right: unset;
-    width: 100%;
-    height: 10rem;
-  }
-  .guideImgFrame-right {
-    width: 14rem;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    animation-name: scrollRight;
-    left: 0;
-    top: 0;
-
-    animation-duration: 12s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    border-radius: 1rem;
-  }
-  .guidePage-working-holiday-top::before {
-    width: 300px;
-    height: 500px;
-    left: -6%;
-    bottom: -4%;
-  }
-  .guidePage-working-holiday-top::after {
-    width: 300px;
-    height: 500px;
-    right: -8%;
-    bottom: -4%;
-  }
-  .scrollDown-side-workingPage {
-    display: none;
+    font-size: 0.85rem;
   }
 
   .guide-title {
@@ -561,76 +551,33 @@
     width: 80%;
   } */
 }
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 501px) and (max-width: 768px) {
   .guidePage-working-holiday-top {
-    height: 100dvh;
+    height: 90dvh;
   }
-  .guide-vertical-slide-left,
-  .silde-text-wrapper-left01 {
-    display: none;
+  .guide-animation-wrapper {
+    padding: unset;
+    padding: 0 0.5rem;
+    padding-top: 4rem;
   }
-  .silde-text-wrapper-right01.right02 {
-    display: none;
+  .guide-pic-animation-wrapper {
+    margin: 0 0.5rem;
+
+    width: calc(32 * var(--wrapperWidth));
+    height: calc(24 * var(--wrapperWidth));
   }
-  .silde-text-wrapper-right01 p,
-  .silde-text-wrapper-left01 p {
-    writing-mode: horizontal-tb;
+  .guide-animation-left {
+    flex-direction: column;
+  }
+  .guide-text-animation-wrapper {
+    height: fit-content;
+  }
+  .guide-text-animation-wrapper p {
+    writing-mode: unset;
+
     width: fit-content;
-    height: 2rem;
 
-    padding-right: 2rem;
-
-    transform: translateX(100%);
-
-    max-width: unset;
-    min-width: unset;
-
-    animation: scrollLeft;
-    animation-duration: 20s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-  .silde-text-wrapper-right01 {
-    width: 100%;
-    height: 2rem;
-    transform: unset;
-
-    top: 55.69px;
-  }
-  .guide-vertical-slide-right {
-    top: calc(55.69px + 2rem);
-    right: unset;
-    width: 100%;
-    height: 10rem;
-  }
-  .guideImgFrame-right {
-    width: 14rem;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    animation-name: scrollRight;
-    left: 0;
-    top: 0;
-
-    animation-duration: 12s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    border-radius: 1rem;
-  }
-  .guidePage-working-holiday-top::before {
-    width: 250px;
-    height: 450px;
-    left: -6%;
-    bottom: -4%;
-  }
-  .guidePage-working-holiday-top::after {
-    width: 250px;
-    height: 450px;
-    right: -8%;
-    bottom: -4%;
-  }
-  .scrollDown-side-workingPage {
-    display: none;
+    font-size: 0.85rem;
   }
 
   .guide-title {
@@ -673,13 +620,20 @@
   } */
 }
 
-@media (min-width: 376px) and (max-width: 499px) {
+@media (min-width: 376px) and (max-width: 500px) {
   .scrollDown-side-workingPage {
     position: absolute;
     display: block;
     bottom: 5%;
     left: 52%;
     transform: translateX(-44%) scale(0.7);
+  }
+  .guide-animation-wrapper {
+    padding: unset;
+    padding: 0 0.5rem;
+  }
+  .guide-text-animation-wrapper p {
+    font-size: 0.8rem;
   }
   .scrollDown-side-workingPage p {
     color: #ffcd8d;
@@ -695,33 +649,10 @@
     transform: translate(20%);
   }
 
-  .guide-vertical-slide-right,
-  .guide-vertical-slide-left,
-  .right02,
-  .left02 {
-    display: none;
-  }
-  .silde-text-wrapper-right01 {
-    transform: translate(0);
-  }
-  .guidePage-working-holiday-top::after,
-  .guidePage-working-holiday-top::before {
-    width: 40%;
-    height: 40%;
-    bottom: 0;
-    transform: translateY(30%);
-  }
-  .guidePage-working-holiday-top::after {
-    right: 0;
-  }
-  .guidePage-working-holiday-top::before {
-    left: 0;
-  }
-
   .guidePage-working-holiday-top {
     justify-content: flex-start;
 
-    height: 100dvh;
+    height: 90dvh;
   }
   .goyoursbear {
     width: 10%;
@@ -806,45 +737,13 @@
     transform: translate(20%);
   }
 
-  .silde-text-wrapper-right01,
-  .silde-text-wrapper-left01 {
-    top: -10%;
-  }
-  .silde-text-wrapper-right01 p,
-  .silde-text-wrapper-left01 p {
-    animation: scrollDownText;
-    animation-duration: 13s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-
-  .guide-vertical-slide-right,
-  .guide-vertical-slide-left,
-  .right02,
-  .left02 {
-    display: none;
-  }
-  .silde-text-wrapper-right01 {
-    transform: translate(0);
-  }
-  .guidePage-working-holiday-top::after,
-  .guidePage-working-holiday-top::before {
-    width: 40%;
-    height: 40%;
-    bottom: 0;
-    transform: translateY(30%);
-  }
-  .guidePage-working-holiday-top::after {
-    right: 0;
-  }
-  .guidePage-working-holiday-top::before {
-    left: 0;
-  }
-
   .guidePage-working-holiday-top {
     justify-content: flex-start;
 
     height: 100dvh;
+  }
+  .guide-animation-wrapper {
+    padding: 0 0.5rem;
   }
   .goyoursbear {
     width: 10%;
@@ -899,6 +798,8 @@
   }
   .guide-morePost {
     padding-top: 4rem;
+
+    width: 90vw;
   }
 }
 

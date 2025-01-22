@@ -135,11 +135,11 @@ export default function Navigation() {
         <nav
           className={`${windowSize > 1024 ? 'mainNav-pc' : 'mainNav'}  ${
             ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
-          } ${visible && windowSize <= 1024 ? 'nav-visible-sp' : 'hidden'}`}
+          } ${visible && windowSize <= 1024 ? 'nav-visible-sp' : 'nav-hidden'}`}
         >
           <div
             className={`${windowSize > 1024 ? 'nav-logo-pc' : 'nav-logo-sp'} ${
-              visible ? 'nav-visible' : 'hidden'
+              visible ? 'nav-visible' : 'nav-hidden'
             }`}
           >
             <Link to="/">
@@ -148,7 +148,7 @@ export default function Navigation() {
           </div>
           <div
             className={`navMenu ${windowSize > 1024 ? 'nav-list' : ''} ${
-              visible ? 'nav-visible' : 'hidden'
+              visible ? 'nav-visible' : 'nav-hidden'
             }`}
           >
             <ul>

@@ -192,16 +192,18 @@ const Conditions = ({ school }) => {
           </li>
           <li>
             <span className="conditionTitle">入學時間</span>
-            {school.enrollTime ? (
-              school.enrollTime.map((time, index) => (
-                <span key={index}>
-                  {time}
-                  {index < school.enrollTime.length - 1 && '／'}
-                </span>
-              ))
-            ) : (
-              <span className="noInfo-warn">入學時間資訊未提供ಥ∀ಥ</span>
-            )}
+            <div className="condition-wrapper">
+              {school.enrollTime ? (
+                school.enrollTime.map((time, index) => (
+                  <span key={index}>
+                    {time}
+                    {index < school.enrollTime.length - 1 && '／'}
+                  </span>
+                ))
+              ) : (
+                <span className="noInfo-warn">入學時間資訊未提供ಥ∀ಥ</span>
+              )}
+            </div>
           </li>
           <li>
             <span className="conditionTitle">上課時段</span>
