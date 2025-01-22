@@ -680,14 +680,14 @@
     position: absolute;
     bottom: calc(-4% - 8rem);
     right: 0;
-    width: calc(60 * var(--imgBase));
+    width: calc(50 * var(--imgBase));
   }
   .working-leftboy {
     --imgBase: calc(100vw / 144);
     position: absolute;
     bottom: calc(0% - 8rem);
     left: 0;
-    width: calc(60 * var(--imgBase));
+    width: calc(50 * var(--imgBase));
   }
 
   .scrollDown-side-workingPage p {

@@ -577,14 +577,14 @@
     position: absolute;
     bottom: calc(0% - 8rem);
     right: 0;
-    width: calc(60 * var(--imgBase));
+    width: calc(50 * var(--imgBase));
   }
   .studying-leftgirl {
     --imgBase: calc(100vw / 144);
     position: absolute;
     bottom: calc(0% - 8rem);
     left: 0;
-    width: calc(60 * var(--imgBase));
+    width: calc(50 * var(--imgBase));
   }
 
   .scrollDown-side-studyingPage p {

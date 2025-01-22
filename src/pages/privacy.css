@@ -56,7 +56,7 @@
 
   background-repeat: no-repeat;
   top: 0;
-  transform: translateY(-100%);
+  transform: translateY(-98%);
 }
 .privacy h3,
 .privacy h4 {
@@ -125,6 +125,12 @@
   stroke-width: 15;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .privacy-KV {
+    height: 60vh;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .privacyTitle h2 {
     font-size: 1rem;
@@ -142,7 +148,7 @@
     padding: 4rem 0.5rem;
   }
   .privacy-wrapper {
-    clip-path: ellipse(500% 100% at 50% 100%);
+    /* clip-path: ellipse(500% 100% at 50% 100%); */
   }
   .privacy-content {
     padding: 2rem 2rem 4rem 2rem;
