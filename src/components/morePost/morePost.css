@@ -92,10 +92,6 @@
   flex-shrink: 0;
 }
 
-.submitedPostArea {
-  padding-bottom: 8rem;
-}
-
 .submitPostDate {
   position: relative;
   grid-area: date;
@@ -190,8 +186,5 @@
     width: 5rem;
     height: 5rem;
     border-radius: 0.5rem;
-  }
-  .submitedPostArea {
-    padding-bottom: 4rem;
   }
 }

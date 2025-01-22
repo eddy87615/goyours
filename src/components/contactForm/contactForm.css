@@ -260,6 +260,13 @@ input:-webkit-autofill {
   margin-top: 2rem;
 }
 
+.submitedPostArea {
+  width: 60vw;
+
+  margin: 0 auto;
+  padding-bottom: 8rem;
+}
+
 @media (min-width: 1025px) and (max-width: 1200px) {
   .contactusComponent h1 {
     font-size: 1100%;
@@ -447,5 +454,9 @@ input:-webkit-autofill {
   }
   .submitBtn {
     font-size: 1rem;
+  }
+  .submitedPostArea {
+    width: 90vw;
+    padding-bottom: 4rem;
   }
 }

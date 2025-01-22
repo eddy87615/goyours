@@ -105,6 +105,20 @@ export default function ContactForm() {
 
   const [loading, setLoading] = useState(false);
 
+  const scrollToTop = () => {
+    // 嘗試多種滾動方法
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      // 如果 smooth 失敗，使用即時滾動
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTo(0, 0);
+      document.body.scrollTo(0, 0);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -164,19 +178,21 @@ export default function ContactForm() {
       if (!response.ok) {
         throw new Error('提交失敗');
       }
-
-      setIsSubmited(true);
-      setFormData({
-        name: '',
-        age: '',
-        phone: '',
-        lineId: '',
-        email: '',
-        selectedCases: [],
-        callTime: '',
-        tellus: '',
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (response.ok) {
+        setIsSubmited(true);
+        setFormData({
+          name: '',
+          age: '',
+          phone: '',
+          lineId: '',
+          email: '',
+          selectedCases: [],
+          callTime: '',
+          tellus: '',
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToTop();
+      }
     } catch (error) {
       console.error('提交失敗:', error);
       alert('提交失敗，請稍後再試');
@@ -254,7 +270,11 @@ export default function ContactForm() {
               感謝您的報名，也歡迎加我們的LINE，專員會更快服務您喔！
             </p>
             {windowSize < 800 && (
-              <a className="goyours-line-btn">
+              <a
+                className="goyours-line-btn"
+                href="https://page.line.me/749omkba?openQrModal=true"
+                target="_blank"
+              >
                 <img src="/goyoursbear-line-W.svg" />
                 點我加入Line好友
               </a>
