@@ -308,7 +308,7 @@
 
   background-repeat: no-repeat;
   top: 0;
-  transform: translateY(-90%);
+  transform: translateY(-100%);
 }
 
 .aboutworkingH2 {
@@ -440,6 +440,22 @@
   margin: 0 auto;
 
   padding: 8rem 0;
+}
+.scrollDown-side-workingPage .scrollDown-side {
+  right: 47%;
+  left: unset;
+
+  bottom: 0;
+  top: unset;
+}
+.scrollDown-side-workingPage p {
+  color: #ffcd8d;
+}
+.scrollDown-side-workingPage .scrollDown-side-Line::after {
+  background-color: #ffcd8d;
+}
+.scrollDown-side-workingPage .scrollDown-side-Dot {
+  background-color: #ffcd8d;
 }
 
 /****/
@@ -719,7 +735,7 @@
   .scrollDown-side-workingPage {
     position: absolute;
     display: block;
-    bottom: 5%;
+    bottom: 0%;
     left: 52%;
     transform: translateX(-44%) scale(0.7);
   }
@@ -740,7 +756,7 @@
   .guidePage-working-holiday-top {
     justify-content: flex-start;
 
-    height: 100dvh;
+    height: 75vh;
   }
   .guide-animation-wrapper {
     padding: 0 0.5rem;
@@ -768,7 +784,7 @@
   }
   .aboutworkingH2 {
     width: 90vw;
-    padding-top: 4rem;
+    padding-top: 2rem;
   }
   .working-page-button {
     width: 80vw;

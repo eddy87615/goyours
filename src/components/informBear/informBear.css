@@ -132,6 +132,16 @@
   transform: translateX(100%);
 } */
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .inform-bear {
+    left: 1rem;
+    bottom: 2rem;
+  }
+  .go4109123758 {
+    left: calc(1rem - 16px) !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .go4109123758 {
     bottom: 100px !important;

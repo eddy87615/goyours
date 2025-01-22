@@ -193,7 +193,7 @@
 
   background-repeat: no-repeat;
   top: 0;
-  transform: translateY(-90%);
+  transform: translateY(-100%);
 }
 
 .aboutstudyingH2 {
@@ -338,8 +338,24 @@
   width: 5%;
   margin: 0 auto;
 }
-.scrollDown-side-studyingPage {
+/* .scrollDown-side-studyingPage {
   display: none;
+} */
+.scrollDown-side-studyingPage .scrollDown-side {
+  right: 47%;
+  left: unset;
+  bottom: 0;
+  top: unset;
+}
+
+.scrollDown-side-studyingPage p {
+  color: #ffcd8d;
+}
+.scrollDown-side-studyingPage .scrollDown-side-Line::after {
+  background-color: #ffcd8d;
+}
+.scrollDown-side-studyingPage .scrollDown-side-Dot {
+  background-color: #ffcd8d;
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
   .guidePage-studying-top::before,
@@ -618,7 +634,7 @@
   .scrollDown-side-studyingPage {
     position: absolute;
     display: block;
-    bottom: 5%;
+    bottom: 0%;
     left: 52%;
     transform: translateX(-44%) scale(0.7);
   }
@@ -639,7 +655,7 @@
   .guidePage-studying-top {
     justify-content: flex-start;
 
-    height: 90dvh;
+    height: 75vh;
   }
   .guide-animation-wrapper {
     padding: 0 0.5rem;
@@ -667,7 +683,7 @@
   }
   .aboutstudyingH2 {
     width: 90vw;
-    padding-top: 4rem;
+    padding-top: 2rem;
   }
   .studying-page-button {
     width: 80vw;

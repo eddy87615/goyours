@@ -95,7 +95,7 @@
 
   padding-top: 2rem;
 
-  width: 80%;
+  width: 90%;
 }
 
 .download-section {
@@ -155,6 +155,9 @@
 }
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .download-KV {
+    height: 60vh;
+  }
   .download-wrapper {
     width: 90vw;
   }
