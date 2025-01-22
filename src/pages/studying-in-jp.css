@@ -417,7 +417,7 @@
     position: absolute;
     bottom: calc(0% - 8rem);
     right: 0;
-    width: calc(50 * var(--imgBase));
+    width: calc(55 * var(--imgBase));
   }
   .studying-rightboy img {
     width: 100%;
@@ -430,7 +430,7 @@
     position: absolute;
     bottom: calc(0% - 8rem);
     left: 0;
-    width: calc(50 * var(--imgBase));
+    width: calc(55 * var(--imgBase));
   }
   .studying-leftgirl img {
     width: 100%;
@@ -441,6 +441,7 @@
 
   .guide-title {
     padding-top: 0;
+    margin-top: -10%;
   }
   .guide-title h1 {
     font-size: 1.5rem;
@@ -480,9 +481,13 @@
   .guide-morePost {
     width: 90vw;
   }
-  /* .guide-morePost .submitPostList > .submitPostLink {
-    width: 80%;
-  } */
+  .scrollDown-side-studyingPage .scrollDown-side {
+    right: 47%;
+    left: unset;
+
+    bottom: 20%;
+    top: unset;
+  }
 }
 
 @media (min-width: 501px) and (max-width: 768px) {
