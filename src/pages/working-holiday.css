@@ -672,7 +672,17 @@
     padding: 0 0.5rem;
   }
   .guide-text-animation-wrapper p {
-    font-size: 0.8rem;
+    --fontSize: calc(100vw / 130);
+    font-size: calc(3 * var(--fontSize));
+
+    margin: 0;
+
+    writing-mode: vertical-lr;
+    width: fit-content;
+
+    color: var(--goyoursYellow);
+    font-weight: bold;
+    opacity: 0.5;
   }
 
   .working-rightgirl {
@@ -778,6 +788,20 @@
     left: 52%;
     transform: translateX(-44%) scale(0.7);
   }
+  .working-rightgirl {
+    --imgBase: calc(100vw / 144);
+    position: absolute;
+    bottom: calc(-4% - 8rem);
+    right: 0;
+    width: calc(42 * var(--imgBase));
+  }
+  .working-leftboy {
+    --imgBase: calc(100vw / 144);
+    position: absolute;
+    bottom: calc(0% - 8rem);
+    left: 0;
+    width: calc(42 * var(--imgBase));
+  }
   .scrollDown-side-workingPage p {
     color: #ffcd8d;
   }
@@ -789,7 +813,11 @@
   }
   .scrollDown-side-workingPage .scrollDown-side {
     right: 0;
+    bottom: -10%;
     transform: translate(20%);
+  }
+  .scrollDown-side-workingPage {
+    bottom: -10%;
   }
 
   .guidePage-working-holiday-top {
