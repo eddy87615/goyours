@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .studying-in-jp-section {
   height: 100%;
 
@@ -37,8 +41,6 @@
   margin-top: 0;
 
   z-index: 2;
-
-  text-shadow: 1px 1px 1px #000;
 }
 
 .studying-rightboy {
@@ -68,46 +70,86 @@
   vertical-align: top;
 }
 
-/* .guidePage-studying-top::after {
+.guide-animation-wrapper {
   position: absolute;
-  content: '';
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
 
-  background-image: url(/guidePage/studying-B.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  padding-right: 30px;
+  padding-left: 10px;
 
-  width: 320px;
-  height: 633px;
-
-  background-size: contain;
-
-  bottom: 0;
-  right: 10%;
-
-  z-index: 1;
-
-  animation: imgShake02 1s infinite;
+  width: 100vw;
+  height: 120vh;
+  display: flex;
+  justify-content: space-between;
 }
 
-.guidePage-studying-top::before {
-  position: absolute;
+.guide-animation-right,
+.guide-animation-left {
+  display: flex;
 
-  content: '';
-  background-image: url(/guidePage/studying-G.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  gap: 0.3rem;
+}
 
-  width: 320px;
-  height: 633px;
+.guide-pic-animation-wrapper {
+  /* position: absolute; */
+  overflow: hidden;
 
-  background-size: contain;
-  bottom: 0;
-  left: 10%;
+  border-radius: 1rem;
 
-  z-index: 1;
+  margin: 0.5rem 0;
 
-  animation: imgShake01 1s infinite;
-} */
+  --wrapperWidth: calc(100vw / 144);
+
+  width: calc(16 * var(--wrapperWidth));
+  height: calc(24 * var(--wrapperWidth));
+}
+
+.left-picWrapper,
+.right-picWrapper {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-pic-animation-left,
+.guide-pic-animation-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-pic-animation-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+  display: block;
+}
+.guide-text-animation-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+.guide-text-animation-wrapper p {
+  --fontSize: calc(100vw / 130);
+  font-size: calc(1 * var(--fontSize));
+
+  width: 0.8rem;
+  margin: 0;
+
+  writing-mode: vertical-lr;
+  width: 100%;
+
+  color: var(--goyoursYellow);
+  font-weight: bold;
+  opacity: 0.5;
+}
+.guide-text-animation-wrapper p img {
+  width: 100%;
+}
 
 .guide-title {
   width: 100%;
@@ -125,125 +167,6 @@
   margin: 0 auto;
   padding-top: 1rem;
   border-bottom: 0.6rem solid var(--goyoursYellow);
-}
-
-.guide-vertical-slide-left {
-  position: absolute;
-  top: 0;
-  left: 2%;
-  width: 12%;
-  height: 100%;
-
-  display: flex;
-  flex: content;
-  flex-direction: column;
-}
-.guideImgFrame-left {
-  width: 100%;
-  height: 28%;
-
-  overflow: hidden;
-
-  position: absolute;
-
-  animation-name: scrollUp;
-  top: 140%;
-  animation-duration: 20s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-
-  border-radius: 1rem;
-}
-
-.silde-text-wrapper-right01 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(-50%);
-
-  height: 150%;
-  width: 2rem;
-}
-.silde-text-wrapper-left01 {
-  position: absolute;
-  top: 0;
-  left: 0%;
-
-  height: 200%;
-  width: 2rem;
-}
-.silde-text-wrapper-right01 p,
-.silde-text-wrapper-left01 p {
-  width: 100%;
-  min-width: 100%;
-  max-width: 100%;
-
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-
-  height: fit-content;
-  font-size: 0.875rem;
-  color: var(--goyoursYellow);
-  font-weight: bold;
-
-  position: absolute;
-  right: 0;
-  margin: 0;
-
-  opacity: 0.5;
-
-  animation: scrollDownText;
-  animation-duration: 15s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.right02 {
-  right: 14.2%;
-}
-.left02 {
-  left: 14.2%;
-}
-
-.guide-vertical-slide-right {
-  position: absolute;
-  top: 0;
-  right: calc(2% + 15px);
-  width: 12%;
-  height: 100%;
-
-  display: flex;
-  flex: content;
-  flex-direction: column;
-}
-.guideImgFrame-right {
-  width: 100%;
-  height: 28%;
-
-  overflow: hidden;
-
-  position: absolute;
-
-  animation-name: scrollUp;
-
-  top: 140%;
-
-  animation-duration: 20s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-
-  border-radius: 1rem;
-}
-
-.guideImgFrame-right img,
-.guideImgFrame-left img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .guide-content {
@@ -449,72 +372,28 @@
   .guidePage-studying-top {
     height: 100vh;
   }
-  .guide-vertical-slide-left,
-  .silde-text-wrapper-left01 {
-    display: none;
-  }
-  .silde-text-wrapper-right01.right02 {
-    display: none;
-  }
 
-  .silde-text-wrapper-right01 p,
-  .silde-text-wrapper-left01 p {
+  .guide-animation-wrapper {
+    padding: unset;
+    padding-top: 4rem;
+  }
+  .guide-pic-animation-wrapper {
+    margin: 0 0.5rem;
+
+    width: calc(32 * var(--wrapperWidth));
+    height: calc(24 * var(--wrapperWidth));
+  }
+  .guide-animation-left {
+    flex-direction: column;
+  }
+  .guide-text-animation-wrapper {
+    height: fit-content;
+  }
+  .guide-text-animation-wrapper p {
     writing-mode: horizontal-tb;
     width: fit-content;
-    height: 2rem;
 
-    padding-right: 2rem;
-
-    transform: translateX(100%);
-
-    max-width: unset;
-    min-width: unset;
-
-    animation: scrollLeft;
-    animation-duration: 20s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-  .silde-text-wrapper-right01 {
-    width: 100%;
-    height: 2rem;
-    transform: unset;
-
-    top: 55.69px;
-  }
-
-  .guide-vertical-slide-right {
-    top: calc(55.69px + 2rem);
-    right: unset;
-    width: 100%;
-    height: 10rem;
-  }
-  .guideImgFrame-right {
-    width: 14rem;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    animation-name: scrollRight;
-    left: 0;
-    top: 0;
-
-    animation-duration: 12s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    border-radius: 1rem;
-  }
-
-  .guidePage-studying-top::before {
-    width: 300px;
-    height: 500px;
-    left: 0;
-    bottom: -4%;
-  }
-  .guidePage-studying-top::after {
-    width: 300px;
-    height: 500px;
-    right: -6%;
-    bottom: -4%;
+    font-size: 0.85rem;
   }
 
   .guide-title {
@@ -563,84 +442,34 @@
   } */
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 501px) and (max-width: 768px) {
   .guidePage-studying-top {
     height: 80vh;
   }
-  .guide-vertical-slide-left,
-  .silde-text-wrapper-left01 {
-    display: none;
-  }
-  .silde-text-wrapper-right01.right02 {
-    width: 100%;
-    height: 2rem;
-    transform: unset;
-    top: calc(55.69px + 19%);
-    right: 0;
 
-    display: none;
+  .guide-animation-wrapper {
+    padding: unset;
+    padding: 0 0.5rem;
+    padding-top: 4rem;
   }
+  .guide-pic-animation-wrapper {
+    margin: 0 0.5rem;
 
-  .silde-text-wrapper-right01 p,
-  .silde-text-wrapper-left01 p {
-    writing-mode: horizontal-tb;
+    width: calc(32 * var(--wrapperWidth));
+    height: calc(24 * var(--wrapperWidth));
+  }
+  .guide-animation-left {
+    flex-direction: column;
+  }
+  .guide-text-animation-wrapper {
+    height: fit-content;
+  }
+  .guide-text-animation-wrapper p {
+    writing-mode: unset;
+
     width: fit-content;
-    height: 2rem;
 
-    padding-right: 2rem;
-
-    transform: translateX(100%);
-
-    max-width: unset;
-    min-width: unset;
-
-    animation: scrollLeft;
-    animation-duration: 20s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-  .silde-text-wrapper-right01 {
-    width: 100%;
-    height: 2rem;
-    transform: unset;
-
-    top: 55.69px;
-  }
-
-  .guide-vertical-slide-right {
-    top: calc(55.69px + 2rem);
-    right: unset;
-    width: 100%;
-    height: 10rem;
-  }
-  .guideImgFrame-right {
-    width: 14rem;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    animation-name: scrollRight;
-    left: 0;
-    top: 0;
-
-    animation-duration: 12s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    border-radius: 1rem;
-  }
-
-  .guidePage-studying-top::before {
-    width: 250px;
-    height: 450px;
-    left: 0;
-    bottom: -4%;
-    background-position: bottom;
-  }
-  .guidePage-studying-top::after {
-    width: 250px;
-    height: 450px;
-    right: -6%;
-    bottom: -4%;
-    background-position: bottom;
+    font-size: 0.85rem;
   }
 
   .guide-title {
@@ -688,13 +517,20 @@
   } */
 }
 
-@media (min-width: 376px) and (max-width: 499px) {
+@media (min-width: 376px) and (max-width: 500px) {
   .scrollDown-side-studyingPage {
     position: absolute;
     display: block;
     bottom: 5%;
     left: 52%;
     transform: translateX(-44%) scale(0.7);
+  }
+  .guide-animation-wrapper {
+    padding: unset;
+    padding: 0 0.5rem;
+  }
+  .guide-text-animation-wrapper p {
+    font-size: 0.8rem;
   }
   .scrollDown-side-studyingPage p {
     color: #ffcd8d;
@@ -710,33 +546,10 @@
     transform: translate(20%);
   }
 
-  .guide-vertical-slide-right,
-  .guide-vertical-slide-left,
-  .right02,
-  .left02 {
-    display: none;
-  }
-  .silde-text-wrapper-right01 {
-    transform: translate(0);
-  }
-  .guidePage-studying-top::after,
-  .guidePage-studying-top::before {
-    width: 40%;
-    height: 40%;
-    bottom: 0;
-    transform: translateY(30%);
-  }
-  .guidePage-studying-top::after {
-    right: 0;
-  }
-  .guidePage-studying-top::before {
-    left: 0;
-  }
-
   .guidePage-studying-top {
     justify-content: flex-start;
 
-    height: 100dvh;
+    height: 90dvh;
   }
   .goyoursbear {
     width: 10%;
@@ -823,46 +636,13 @@
     transform: translate(20%);
   }
 
-  .silde-text-wrapper-right01,
-  .silde-text-wrapper-left01 {
-    top: -10%;
-  }
-
-  .silde-text-wrapper-right01 p,
-  .silde-text-wrapper-left01 p {
-    animation: scrollDownText;
-    animation-duration: 13s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-
-  .guide-vertical-slide-right,
-  .guide-vertical-slide-left,
-  .right02,
-  .left02 {
-    display: none;
-  }
-  .silde-text-wrapper-right01 {
-    transform: translate(0);
-  }
-  .guidePage-studying-top::after,
-  .guidePage-studying-top::before {
-    width: 40%;
-    height: 40%;
-    bottom: 0;
-    transform: translateY(30%);
-  }
-  .guidePage-studying-top::after {
-    right: 0;
-  }
-  .guidePage-studying-top::before {
-    left: 0;
-  }
-
   .guidePage-studying-top {
     justify-content: flex-start;
 
-    height: 100dvh;
+    height: 90dvh;
+  }
+  .guide-animation-wrapper {
+    padding: 0 0.5rem;
   }
   .goyoursbear {
     width: 10%;
@@ -920,6 +700,8 @@
   }
   .guide-morePost {
     padding-top: 4rem;
+
+    width: 90vw;
   }
 }
 
