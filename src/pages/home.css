@@ -780,10 +780,17 @@
   .homeintroImgWrapper2 {
     display: block;
   }
+  .homeintroImgWrapper0::after {
+    top: -10%;
+    width: 5rem;
+  }
   .schoolListDiv {
     width: 90vw;
     gap: 2rem;
-    padding: 4rem 0;
+    padding: 10rem 0;
+  }
+  .workingholidayDiv {
+    padding: 10rem 0;
   }
   .schoolListBg {
     clip-path: circle(84% at 40% 10%);

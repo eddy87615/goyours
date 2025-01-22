@@ -48,9 +48,13 @@ export default function StudyingInJp() {
     <>
       <div className="working-holiday-section">
         <div className="guidePage-working-holiday-top">
-          <div className="scrollDown-side-workingPage">
-            <ScrollDownSide />
-          </div>
+          {windowSize < 1024 ? (
+            <div className="scrollDown-side-workingPage">
+              <ScrollDownSide />
+            </div>
+          ) : (
+            <></>
+          )}
           <div className="guide-title">
             <h1>
               <span className="goyoursbear">

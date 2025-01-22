@@ -177,10 +177,14 @@
   .fqa-body {
     box-sizing: border-box;
 
-    margin-top: -20%;
+    /* margin-top: -20%; */
   }
   .fqa-wrapper {
     width: 90vw;
+  }
+
+  .fqa-KV {
+    height: 60vh;
   }
 }
 
