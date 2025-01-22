@@ -193,7 +193,7 @@
 
   background-repeat: no-repeat;
   top: 0;
-  transform: translateY(-100%);
+  transform: translateY(-98%);
 }
 
 .aboutstudyingH2 {
@@ -565,7 +565,7 @@
   .guidePage-studying-top {
     justify-content: flex-start;
 
-    height: 90dvh;
+    height: 80vh;
   }
   .goyoursbear {
     width: 10%;
