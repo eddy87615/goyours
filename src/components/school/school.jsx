@@ -87,7 +87,7 @@ export default function School({
           ))
         ) : (
           <div className="postLoading postLoadingP schoolResultText">
-            無搜尋結果
+            無搜尋結果ಥ∀ಥ
           </div>
         )}
       </div>
