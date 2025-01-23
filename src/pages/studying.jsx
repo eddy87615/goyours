@@ -59,7 +59,6 @@ export default function Studying() {
 
       const { keyword, regions, enrollTime, purpose, selectedTags } = filters;
 
-      // 基本篩選條件
       const regionFilter =
         Object.values(regions).flat().length > 0
           ? `&& city in ${JSON.stringify(Object.values(regions).flat())}`
@@ -72,69 +71,43 @@ export default function Studying() {
         purpose.length > 0 ? `&& purpose match ${JSON.stringify(purpose)}` : '';
       const keywordFilter = keyword ? `&& name match "${keyword}"` : '';
 
-      // 特殊標籤篩選條件
-      let specialTagFilter = '';
-      const specialTags = selectedTags.filter((tag) =>
-        SPECIAL_FILTERS.includes(tag)
-      );
-
-      if (specialTags.length > 0) {
-        // 如果選擇了特殊標籤，創建一個 OR 條件
-        const tagConditions = specialTags
-          .map((tag) => `"${tag}" in tags`)
-          .join(' || ');
-        specialTagFilter = `&& (${tagConditions})`;
-      } else {
-        // 處理非特殊標籤
-        const normalTags = selectedTags.filter(
-          (tag) => !SPECIAL_FILTERS.includes(tag)
-        );
-        if (normalTags.length > 0) {
-          specialTagFilter = `&& "${normalTags[0]}" in tags`;
-        }
-      }
-
       const query = `
-      *[_type == "school" && !(_id in path("drafts.**")) 
-        ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
-      ] | order(${
-        selectedTags.includes('學校更新時間')
-          ? 'publishedAt desc'
-          : selectedTags.includes('學費由低到高')
-          ? 'money asc'
-          : 'name desc'
-      }) [${start}...${end}] {
-        mainImage,
-        name,
-        slug,
-        city,
-        enrollTime,
-        purpose,
-        others,
-        money,
-        publishedAt,
-        tags
-      }
-    `;
-
-      const totalQuery = `
-        count(*[_type == "school" && !(_id in path("drafts.**")) 
-          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
-        ])
+        *[_type == "school" && !(_id in path("drafts.**")) 
+          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter}
+        ] {
+          mainImage,
+          name,
+          slug,
+          city,
+          enrollTime,
+          purpose,
+          others,
+          money,
+          publishedAt,
+          tags
+        }
       `;
 
-      try {
-        const [fetchedSchools, total] = await Promise.all([
-          client.fetch(query),
-          client.fetch(totalQuery),
-        ]);
-        setSchools(fetchedSchools);
-        setTotalSchools(total);
-      } catch (error) {
-        console.error('Failed to fetch schools:', error);
-      } finally {
-        setLoading(false);
+      const fetchedSchools = await client.fetch(query);
+
+      // 處理排序
+      if (selectedTags.includes('學費由低到高')) {
+        fetchedSchools.sort((a, b) => {
+          const parseTuition = (money) => {
+            if (!money) return 0; // 處理空值
+            const [min] = money.split('~').map(Number);
+            return min;
+          };
+          return parseTuition(a.money) - parseTuition(b.money);
+        });
+      } else if (selectedTags.includes('學校更新時間')) {
+        fetchedSchools.sort(
+          (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+        );
       }
+
+      setSchools(fetchedSchools);
+      setLoading(false);
     };
 
     fetchSchools();
