@@ -1199,7 +1199,7 @@
     font-size: 1rem;
   }
   .Review::before {
-    top: 10%;
+    top: 30%;
   }
   .feedBackArea {
     grid-template-columns: 1fr;

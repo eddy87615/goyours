@@ -132,6 +132,9 @@
 }
 
 @media screen and (max-width: 480px) {
+  .privacy-KV {
+    height: 60vh;
+  }
   .privacyTitle h2 {
     font-size: 1rem;
   }
@@ -142,10 +145,12 @@
     width: 90vw;
 
     margin: 0;
+    margin-bottom: 4rem;
+    margin-left: 1rem;
 
     line-height: 1.5rem;
 
-    padding: 4rem 0.5rem;
+    padding: 0 0.5rem;
   }
   .privacy-wrapper {
     /* clip-path: ellipse(500% 100% at 50% 100%); */

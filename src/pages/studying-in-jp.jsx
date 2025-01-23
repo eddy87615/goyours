@@ -178,11 +178,7 @@ export default function StudyingInJp() {
                     ))}
                   </Marquee>
                 ) : (
-                  <Marquee key={key} vertical repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
+                  <></>
                 )}
               </div>
             </div>
