@@ -229,7 +229,7 @@ export default function StudyingInJp() {
               </div>
               <div className="guide-text-animation-wrapper">
                 {windowSize > 1024 ? (
-                  <Marquee key={key} vertical horizental repeat={4}>
+                  <Marquee key={key} vertical repeat={4}>
                     {Array.from({ length: 13 }).map((_, index) => (
                       <p key={index}>Go Yours ●</p>
                     ))}
