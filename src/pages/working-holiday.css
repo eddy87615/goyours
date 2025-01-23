@@ -141,7 +141,7 @@
   margin: 0;
 
   writing-mode: vertical-lr;
-  width: 100%;
+  width: fit-content;
 
   color: var(--goyoursYellow);
   font-weight: bold;
@@ -787,6 +787,20 @@
     left: 52%;
     transform: translateX(-44%) scale(0.7);
   }
+  .guide-text-animation-wrapper p {
+    --fontSize: calc(100vw / 130);
+    font-size: calc(3 * var(--fontSize));
+
+    margin: 0;
+
+    writing-mode: vertical-lr;
+    width: fit-content;
+
+    color: var(--goyoursYellow);
+    font-weight: bold;
+    opacity: 0.5;
+  }
+
   .working-rightgirl {
     --imgBase: calc(100vw / 144);
     position: absolute;
