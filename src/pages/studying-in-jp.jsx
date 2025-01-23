@@ -1,4 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Marquee } from '../components/ui/marquee';
@@ -31,6 +30,7 @@ export default function StudyingInJp() {
       window.removeEventListener('orientationchange', handleResize);
     };
   }, []);
+
   const sliderRight = [
     { src: '/guidePage/slide009.jpg', alt: 'japanese school interior images' },
     { src: '/guidePage/slide020.png', alt: 'japanese school images' },

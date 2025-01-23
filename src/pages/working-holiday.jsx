@@ -1,4 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Marquee } from '../components/ui/marquee';
@@ -13,7 +12,7 @@ import ContactUs from '../components/contactUs/contactUs';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
 import useWindowSize from '../hook/useWindowSize';
 
-export default function StudyingInJp() {
+export default function WorkingHoliday() {
   const windowSize = useWindowSize();
   const [key, setKey] = useState(0);
 
