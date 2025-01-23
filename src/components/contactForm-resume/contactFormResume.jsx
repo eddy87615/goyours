@@ -508,7 +508,7 @@ export default function ContactFormResume() {
                 <input type="checkbox" id="privicy" name="privicy" required />
                 <span>
                   我已閱讀
-                  <Link to="privacy-policy" target="blank" required>
+                  <Link to="/privacy-policy" target="blank" required>
                     隱私政策*
                   </Link>
                 </span>
