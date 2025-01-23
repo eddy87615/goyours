@@ -195,9 +195,14 @@
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
 }
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 651px) and (max-width: 1024px) {
   .schoolPageschoolSection {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (min-width: 481px) and (max-width: 650px) {
+  .schoolPageschoolSection {
+    grid-template-columns: 1fr 1fr;
   }
   .schoollinkimg {
     height: 12rem;

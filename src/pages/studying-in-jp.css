@@ -347,7 +347,7 @@
 .scrollDown-side-studyingPage .scrollDown-side {
   right: 47%;
   left: unset;
-  bottom: 0;
+  bottom: -10%;
   top: unset;
 }
 
@@ -476,7 +476,7 @@
     right: 47%;
     left: unset;
 
-    bottom: 20%;
+    bottom: 10%;
     top: unset;
   }
 }
@@ -703,21 +703,6 @@
     opacity: 0.5;
   }
 
-  .studying-rightboy {
-    --imgBase: calc(100vw / 144);
-    position: absolute;
-    bottom: calc(-10% - 8rem);
-    right: 8%;
-    width: calc(50 * var(--imgBase));
-  }
-  .studying-leftgirl {
-    --imgBase: calc(100vw / 144);
-    position: absolute;
-    bottom: calc(-10% - 8rem);
-    left: 8%;
-    width: calc(50 * var(--imgBase));
-  }
-
   .scrollDown-side-studyingPage p {
     color: #ffcd8d;
   }
@@ -819,14 +804,14 @@
     --imgBase: calc(100vh / 144); /* 使用視窗高度來計算 */
     position: absolute;
     bottom: calc(-20% - 8rem);
-    right: 8%;
+    right: 0;
     width: calc(30 * var(--imgBase));
   }
   .studying-leftgirl {
     --imgBase: calc(100vh / 144); /* 使用視窗高度來計算 */
     position: absolute;
     bottom: calc(-20% - 8rem);
-    left: 8%;
+    left: 0;
     width: calc(30 * var(--imgBase));
   }
 }

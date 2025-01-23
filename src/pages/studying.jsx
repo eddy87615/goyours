@@ -32,7 +32,7 @@ export default function Studying() {
   const schoolsPerPage = windowSize <= 500 ? 12 : 24; // 每頁顯示學校數
 
   // 特殊篩選標籤
-  const SPECIAL_FILTERS = ['我們的推薦', '高人氣學校'];
+  // const SPECIAL_FILTERS = ['我們的推薦', '高人氣學校'];
 
   // 初始化篩選條件
   useEffect(() => {
@@ -54,8 +54,8 @@ export default function Studying() {
   useEffect(() => {
     const fetchSchools = async () => {
       setLoading(true);
-      const start = (currentPage - 1) * schoolsPerPage;
-      const end = start + schoolsPerPage;
+      // const start = (currentPage - 1) * schoolsPerPage;
+      // const end = start + schoolsPerPage;
 
       const { keyword, regions, enrollTime, purpose, selectedTags } = filters;
 
