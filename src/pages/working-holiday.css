@@ -591,7 +591,7 @@
 }
 @media (min-width: 501px) and (max-width: 768px) {
   .guidePage-working-holiday-top {
-    height: 90vh;
+    height: 80vh;
   }
   .guide-animation-wrapper {
     padding: unset;
