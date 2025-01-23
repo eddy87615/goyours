@@ -95,21 +95,27 @@ export default function Studying() {
       }
 
       const query = `
-        *[_type == "school" && !(_id in path("drafts.**")) 
-          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
-        ] | order(name desc) [${start}...${end}] {
-          mainImage,
-          name,
-          slug,
-          city,
-          enrollTime,
-          purpose,
-          others,
-          money,
-          publishedAt,
-          tags
-        }
-      `;
+      *[_type == "school" && !(_id in path("drafts.**")) 
+        ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
+      ] | order(${
+        selectedTags.includes('學校更新時間')
+          ? 'publishedAt desc'
+          : selectedTags.includes('學費由低到高')
+          ? 'money asc'
+          : 'name desc'
+      }) [${start}...${end}] {
+        mainImage,
+        name,
+        slug,
+        city,
+        enrollTime,
+        purpose,
+        others,
+        money,
+        publishedAt,
+        tags
+      }
+    `;
 
       const totalQuery = `
         count(*[_type == "school" && !(_id in path("drafts.**")) 

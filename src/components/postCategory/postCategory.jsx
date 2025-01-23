@@ -89,6 +89,7 @@ export default function PostCategary({
   const [searchTerm, setSearchTerm] = useState('');
   const [placeholdertxt, setPlaceholdertxt] = useState(placeholder);
   const [isSpSearchClicked, setIsSpSearchClicked] = useState(false);
+  const [isFirstEnter, setIsFirstEnter] = useState(true);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -96,8 +97,15 @@ export default function PostCategary({
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      handleSearch(searchTerm); // 按下 Enter 鍵後觸發搜尋功能
-      setIsSpSearchClicked(!isSpSearchClicked); // 關閉搜尋視窗
+      if (isFirstEnter) {
+        // 第一次按 Enter，只是確定輸入
+        setIsFirstEnter(false);
+      } else {
+        // 第二次按 Enter，執行搜尋
+        handleSearch(searchTerm);
+        setIsSpSearchClicked(!isSpSearchClicked);
+        setIsFirstEnter(true); // 重置狀態
+      }
     }
   };
 

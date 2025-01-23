@@ -40,6 +40,7 @@ export default function PostArea({
   onPageChange,
   handleCategoryClick,
   searchQuery,
+  selectedCategory,
 }) {
   return (
     <div className="postRight">
@@ -48,6 +49,9 @@ export default function PostArea({
       ) : (
         <></>
       )}
+      {selectedCategory ? (
+        <p className="post-searchword">目前分類：{selectedCategory}</p>
+      ) : null}
 
       {posts.map((post, index) => (
         <div key={index} className="postarea">

@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Marquee } from '../components/ui/marquee';
 
 import './working-holiday.css';
 import './guide-page-animation.css';
@@ -14,24 +13,8 @@ import useWindowSize from '../hook/useWindowSize';
 
 export default function WorkingHoliday() {
   const windowSize = useWindowSize();
-  const [key, setKey] = useState(0);
 
-  useEffect(() => {
-    const handleResize = () => {
-      // 重新渲染所有 Marquee
-      setKey((prev) => prev + 1);
-    };
-
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('orientationchange', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('orientationchange', handleResize);
-    };
-  }, []);
-
-  const sliderRight = [
+  const sliderLeft = [
     { src: '/guidePage/slide009.jpg', alt: 'japanese school interior images' },
     { src: '/guidePage/slide020.png', alt: 'japanese school images' },
     { src: '/guidePage/slide019.jpg', alt: 'japanese school' },
@@ -42,7 +25,7 @@ export default function WorkingHoliday() {
     { src: '/guidePage/slide016.JPG', alt: 'japanese school public room' },
     { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
   ];
-  const sliderLeft = [
+  const sliderRight = [
     { src: '/guidePage/slide012.png', alt: 'japanese boy' },
     { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
     { src: '/guidePage/slide017.png', alt: 'japanese girl' },
@@ -115,71 +98,23 @@ export default function WorkingHoliday() {
           <div className="guide-animation-wrapper">
             <div className="guide-animation-left">
               <div className="guide-text-animation-wrapper">
-                {windowSize > 1024 ? (
-                  <Marquee key={key} vertical repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                ) : windowSize > 500 ? (
-                  <Marquee key={key} repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                ) : (
-                  <Marquee key={key} vertical repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                )}
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
               </div>
               <div className="left-picWrapper">
                 <div className="guide-pic-animation-left left-1">
-                  {windowSize > 1024 ? (
-                    <Marquee key={key} vertical repeat={4} reverse>
-                      {sliderLeft.map((img, index) => (
-                        <div
-                          className="guide-pic-animation-wrapper"
-                          key={index}
-                        >
-                          <img src={img.src} alt={img.alt} />
-                        </div>
-                      ))}
-                    </Marquee>
-                  ) : windowSize > 500 ? (
-                    <Marquee key={key} repeat={4} reverse>
-                      {sliderLeft.map((img, index) => (
-                        <div
-                          className="guide-pic-animation-wrapper"
-                          key={index}
-                        >
-                          <img src={img.src} alt={img.alt} />
-                        </div>
-                      ))}
-                    </Marquee>
-                  ) : (
-                    <></>
-                  )}
+                  {sliderLeft.map((img, index) => (
+                    <div className="guide-pic-animation-wrapper" key={index}>
+                      <img src={img.src} alt={img.alt} />
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="guide-text-animation-wrapper">
-                {windowSize > 1024 ? (
-                  <Marquee key={key} vertical repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                ) : windowSize > 500 ? (
-                  <Marquee key={key} repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                ) : (
-                  <></>
-                )}
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
               </div>
             </div>
             <div
@@ -193,54 +128,23 @@ export default function WorkingHoliday() {
               }
             >
               <div className="guide-text-animation-wrapper">
-                {windowSize > 1024 ? (
-                  <Marquee key={key} vertical repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                ) : windowSize > 500 ? (
-                  <Marquee key={key} repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                ) : (
-                  <></>
-                )}
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
               </div>
               <div className="right-picWrapper">
-                {windowSize > 1024 ? (
-                  <Marquee key={key} vertical repeat={4} reverse>
-                    <div className="guide-pic-animation-right right-1">
-                      {sliderRight.map((img, index) => (
-                        <div
-                          className="guide-pic-animation-wrapper"
-                          key={index}
-                        >
-                          <img src={img.src} alt={img.alt} />
-                        </div>
-                      ))}
+                <div className="guide-pic-animation-right right-1">
+                  {sliderRight.map((img, index) => (
+                    <div className="guide-pic-animation-wrapper" key={index}>
+                      <img src={img.src} alt={img.alt} />
                     </div>
-                  </Marquee>
-                ) : (
-                  <></>
-                )}
+                  ))}
+                </div>
               </div>
               <div className="guide-text-animation-wrapper">
-                {windowSize > 1024 ? (
-                  <Marquee key={key} vertical repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                ) : (
-                  <Marquee key={key} vertical repeat={4}>
-                    {Array.from({ length: 13 }).map((_, index) => (
-                      <p key={index}>Go Yours ●</p>
-                    ))}
-                  </Marquee>
-                )}
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
               </div>
             </div>
           </div>

@@ -144,6 +144,7 @@ export default function Post() {
             onPageChange={(page) => setCurrentPage(page)}
             handleCategoryClick={handleCategoryClick}
             searchQuery={searchQuery}
+            selectedCategory={selectedCategory}
           />
         )}
       </div>
