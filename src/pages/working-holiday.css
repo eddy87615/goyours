@@ -76,8 +76,7 @@
   left: 0;
   box-sizing: border-box;
 
-  padding-right: 30px;
-  padding-left: 10px;
+  padding: 0 1rem;
 
   width: 100vw;
   height: 120vh;
@@ -892,5 +891,22 @@
   }
   .working-leftboy {
     left: 0;
+  }
+}
+
+@media (max-height: 667px) and (max-width: 375px) {
+  .working-rightgirl {
+    --imgBase: calc(100vh / 144); /* 使用視窗高度來計算 */
+    position: absolute;
+    bottom: calc(-20% - 8rem);
+    right: 0;
+    width: calc(30 * var(--imgBase));
+  }
+  .working-leftboy {
+    --imgBase: calc(100vh / 144); /* 使用視窗高度來計算 */
+    position: absolute;
+    bottom: calc(-20% - 8rem);
+    left: 0;
+    width: calc(30 * var(--imgBase));
   }
 }
