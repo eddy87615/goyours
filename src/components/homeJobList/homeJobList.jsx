@@ -50,12 +50,12 @@ export default function HomeJobList() {
   return (
     <>
       <AnimationSection className="homeJobWrapper">
-        <div className="homeJobH1">
-          <h1 className="underLine">
+        <div className="homeJobH2">
+          <h2 className="underLine">
             <span className="yellow">Working Holiday</span>
             日本打工度假職缺一覽
             {/* <GoyoursBearJob /> */}
-          </h1>
+          </h2>
         </div>
         <div className="homebg-job-Wave">
           <HomeBg />
@@ -70,10 +70,10 @@ export default function HomeJobList() {
                   <img src={urlFor(job.mainImage).url()} alt={job.name} />
                 </div>
                 <div className="jobListcontent">
-                  <p className="homeJobList-companyTitle">{job.company}</p>
-                  <p className="homeJobList-companyLocation">
+                  <h3 className="homeJobList-companyTitle">{job.company}</h3>
+                  <h3 className="homeJobList-companyLocation">
                     <FaLocationDot /> {job.location}
-                  </p>
+                  </h3>
                   <ul>
                     <li>
                       <span>職稱</span>

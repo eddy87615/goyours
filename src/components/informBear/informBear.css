@@ -34,13 +34,17 @@
 .toast-content {
   width: 100%;
 }
-.toast-content h4 {
+.inform-title {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
 
-  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+
+  margin: 0.5rem;
+  margin-top: 1rem;
 
   color: #fff;
 }
@@ -62,8 +66,8 @@
 }
 .toast-content button {
   position: absolute;
-  top: 4%;
-  right: 2%;
+  top: 6%;
+  right: 4%;
 
   width: 1.5rem;
   height: 1.5rem;

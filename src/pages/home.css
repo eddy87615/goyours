@@ -8,6 +8,7 @@
 
   border-bottom: 4rem solid #ffe2bc;
 }
+
 .kvlogo {
   position: absolute;
   right: 10%;
@@ -178,20 +179,20 @@
   padding-top: 4rem;
 }
 
-.homeNewsH1,
-.homeschoolH1,
-.homeJobH1,
-.homeHotpostH1 {
+.homeNewsH2,
+.homeschoolH2,
+.homeJobH2,
+.homeHotpostH2 {
   width: 80vw;
   margin: 0 auto;
 
   position: relative;
   z-index: 1;
 }
-.homeNewsH1 h1,
-.homeschoolH1 h1,
-.homeJobH1 h1,
-.homeHotpostH1 h1 {
+.homeNewsH2 h2,
+.homeschoolH2 h2,
+.homeJobH2 h2,
+.homeHotpostH2 h2 {
   position: relative;
 
   display: flex;
@@ -437,6 +438,8 @@
   color: #fff;
 
   font-size: 1.4rem;
+
+  margin: 1.5rem 0;
 }
 .homeSchool-back-schoolName::after {
   content: '';
@@ -762,16 +765,16 @@
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  .homeNewsH1,
-  .homeschoolH1,
-  .homeJobH1,
-  .homeHotpostH1 {
+  .homeNewsH2,
+  .homeschoolH2,
+  .homeJobH2,
+  .homeHotpostH2 {
     width: 90vw;
   }
-  .homeNewsH1 h1,
-  .homeschoolH1 h1,
-  .homeJobH1 h1,
-  .homeHotpostH1 h1 {
+  .homeNewsH2 h2,
+  .homeschoolH2 h2,
+  .homeJobH2 h2,
+  .homeHotpostH2 h2 {
     font-size: 1.5rem;
   }
   .homeintroImgWrapper0 {
@@ -1137,7 +1140,7 @@
     z-index: -1;
   }
 
-  .homeNewsH1 h1 {
+  .homeNewsH2 h2 {
     font-size: 1rem;
   }
 
@@ -1183,7 +1186,7 @@
   .schoolListPre:hover .homeSchool-schoolLocation {
     opacity: 1;
   }
-  .homeschoolH1 h1 {
+  .homeschoolH2 h2 {
     font-size: 1rem;
   }
   .schoolListDiv {
@@ -1271,11 +1274,11 @@
     padding: 0.5rem 3rem;
   }
 
-  .homeJobH1 h1 {
+  .homeJobH2 h2 {
     font-size: 1rem;
   }
 
-  .homeHotpostH1 h1 {
+  .homeHotpostH2 h2 {
     font-size: 1rem;
   }
   .homehotpostDiv {
