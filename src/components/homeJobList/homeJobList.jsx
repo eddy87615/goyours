@@ -71,9 +71,9 @@ export default function HomeJobList() {
                 </div>
                 <div className="jobListcontent">
                   <h3 className="homeJobList-companyTitle">{job.company}</h3>
-                  <h3 className="homeJobList-companyLocation">
+                  <p className="homeJobList-companyLocation">
                     <FaLocationDot /> {job.location}
-                  </h3>
+                  </p>
                   <ul>
                     <li>
                       <span>職稱</span>
