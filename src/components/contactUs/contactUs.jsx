@@ -28,9 +28,9 @@ export default function ContactUs() {
   return (
     <>
       <div className="homeContactusDiv">
-        <h1>
+        <h2>
           <ContactUsTitle />
-        </h1>
+        </h2>
 
         <div className="contactTxt01">
           <p>

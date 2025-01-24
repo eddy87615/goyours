@@ -17,154 +17,21 @@ import 'swiper/css/navigation';
 import './hotPost.css';
 
 const customComponents = {
-  types: {
-    image: ({ value }) => {
-      // 直接确认 asset 是否存在，无需过多检查
-      if (!value?.asset?._ref) {
-        return null;
-      }
-
-      return (
-        <div className="post-image">
-          <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
-        </div>
-      );
-    },
-    gallery: ({ value }) => {
-      if (!value.images || value.images.length === 0) return null;
-      return (
-        <div className="gallery">
-          <Swiper
-            navigation={true}
-            modules={[Navigation]}
-            loop
-            className="mySwiper"
-          >
-            {value.images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={urlFor(image).url()}
-                  alt={`Gallery Image ${index + 1}`}
-                  className="gallery-image"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      );
-    },
-    table: ({ value }) => {
-      if (
-        !value?.rows ||
-        !Array.isArray(value.rows) ||
-        value.rows.length === 0
-      ) {
-        return <p>No table data available</p>;
-      }
-
-      // 提取 `cells` 以获得真正的数据
-      const sanitizedRows = value.rows.map((row) => {
-        if (row?.cells && Array.isArray(row.cells)) {
-          return row.cells;
-        }
-        return []; // 如果没有 cells，返回空数组
-      });
-
-      if (sanitizedRows.length === 0) {
-        return <p>Invalid table data</p>;
-      }
-
-      // 合并表头的逻辑
-      const mergeTableHeaders = (headers) => {
-        const mergedHeaders = [];
-        let currentHeader = null;
-        let spanCount = 0;
-
-        headers.forEach((header, index) => {
-          if (header === currentHeader) {
-            // 如果当前 header 和前一个相同，增加 colspan
-            spanCount++;
-          } else {
-            // 保存之前的 header
-            if (currentHeader !== null) {
-              mergedHeaders.push({
-                content: currentHeader,
-                colspan: spanCount,
-              });
-            }
-            // 更新当前 header
-            currentHeader = header;
-            spanCount = 1;
-          }
-        });
-
-        // 保存最后一个 header
-        if (currentHeader !== null) {
-          mergedHeaders.push({ content: currentHeader, colspan: spanCount });
-        }
-
-        return mergedHeaders;
-      };
-
-      const headers = sanitizedRows[0];
-      const mergedHeaders = mergeTableHeaders(headers);
-
-      return (
-        <table border="1" style={{ borderCollapse: 'collapse', width: '90%' }}>
-          <thead>
-            <tr>
-              {mergedHeaders.map((header, index) => (
-                <th key={index} colSpan={header.colspan}>
-                  {header.content || ''}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {sanitizedRows.slice(1).map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex}>{cell || ''}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    },
-    span: ({ value, children }) => {
-      return <span>{children}</span>;
-    },
+  types: {},
+  block: {
+    normal: ({ children }) => <p>{children}</p>, // 普通文本渲染為 <p>
+    h1: ({ children }) => <p>{children}</p>, // 將 h1 渲染為 <p>
+    h2: ({ children }) => <p>{children}</p>, // 將 h2 渲染為 <p>
+    h3: ({ children }) => <p>{children}</p>, // 將 h3 渲染為 <p>
+    h4: ({ children }) => <p>{children}</p>, // 同理處理其他標題
+    h5: ({ children }) => <p>{children}</p>,
+    h6: ({ children }) => <p>{children}</p>,
   },
   marks: {
-    color: ({ children, value }) => {
-      const color = value?.hex?.hex || '#FF0000';
-
-      return (
-        <span
-          style={{
-            color,
-          }}
-        >
-          {children}
-        </span>
-      );
-    },
-    favoriteColor: ({ children, value }) => {
-      const color = value?.hex?.hex || '#FF0000';
-
-      return (
-        <span
-          style={{
-            color,
-          }}
-        >
-          {children}
-        </span>
-      );
-    },
-    link: ({ children }) => <span>{children}</span>, // 不渲染內層 <a>
+    link: ({ children }) => <p>{children}</p>, // 避免渲染內層 <a>
   },
+  // 默認對於未定義的類型不進行渲染
+  default: () => null,
 };
 
 export default function Hotpost() {
@@ -186,7 +53,7 @@ export default function Hotpost() {
               categories[]->{
               title,
               },
-              body,
+              body[0...3],
             }
           `);
 
@@ -197,11 +64,11 @@ export default function Hotpost() {
 
   return (
     <AnimationSection>
-      <div className="homeHotpostH1">
-        <h1 className="underLine">
+      <div className="homeHotpostH2">
+        <h2 className="underLine">
           <span className="yellow">Hot</span>熱門文章
           {/* <GoyoursBear /> */}
-        </h1>
+        </h2>
       </div>
       <div className="homebg-hot-Wave">
         <HomeBg />
@@ -242,7 +109,7 @@ export default function Hotpost() {
                       />
                     </div>
                   )}
-                  <p className="homeHotPost-postTitle">{post.title}</p>
+                  <h3 className="homeHotPost-postTitle">{post.title}</h3>
                   <ul>
                     {post.categories && post.categories.length > 0 ? (
                       post.categories.map((category, index) => (

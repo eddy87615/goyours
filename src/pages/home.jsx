@@ -51,10 +51,10 @@ const News = () => {
   }, []);
   return (
     <>
-      <div className="homeNewsH1">
-        <h1 className="underLine">
+      <div className="homeNewsH2">
+        <h2 className="underLine">
           <span className="yellow">News</span>日本最新消息
-        </h1>
+        </h2>
       </div>
       <div className="homeNewsDiv sp-scollNews">
         {NewsPosts.length >= 3 && windowSize > 768 ? (
@@ -182,10 +182,10 @@ const HomeschoolList = () => {
 
   return (
     <div className="homeschoolWrapper">
-      <div className="homeschoolH1">
-        <h1 className="underLine">
+      <div className="homeschoolH2">
+        <h2 className="underLine">
           <span className="yellow">School</span>日本學校一覽
-        </h1>
+        </h2>
       </div>
       <div className="schoolListDiv">
         {schools.map((school, index) => {
@@ -193,10 +193,10 @@ const HomeschoolList = () => {
             <AnimationSection key={index} className="schoolListPre">
               <div className="schoolListCover">
                 <div className="schoolListBg">
-                  <p className="homeSchool-schoolName">{school.name}</p>
-                  <p className="homeSchool-schoolLocation">
+                  <h3 className="homeSchool-schoolName">{school.name}</h3>
+                  <h3 className="homeSchool-schoolLocation">
                     <FaLocationDot /> {school.city}
-                  </p>
+                  </h3>
                   <img
                     src={urlFor(school.mainImage).url()}
                     alt={school.mainImage.alt || school.name}
@@ -210,7 +210,7 @@ const HomeschoolList = () => {
                 </Link>
               </div>
               <div className="schoolListBack">
-                <p className="homeSchool-back-schoolName">{school.name}</p>
+                <h4 className="homeSchool-back-schoolName">{school.name}</h4>
                 <p className="homeSchool-back-schoolIntro">
                   {school.description}
                 </p>
@@ -270,9 +270,12 @@ export default function Home() {
   const [isAutoplayStarted, setIsAutoplayStarted] = useState(false);
 
   const HomeIntroimgList = [
-    { src: '/home-bubble01.jpg', alt: 'maple leaves' },
-    { src: '/home-bubble02.JPG', alt: 'japanese temple and couple' },
-    { src: '/home-bubble03.JPG', alt: 'japanese jinjya' },
+    { src: '/home-bubble01.jpg', alt: 'japanese temple picture,日本神社照片' },
+    {
+      src: '/home-bubble02.JPG',
+      alt: 'japanese shops street in sunny day,日本晴天的商店街景',
+    },
+    { src: '/home-bubble03.JPG', alt: 'japanese moutain view,日本翠綠山景' },
   ];
 
   const windowSize = useWindowSize();
@@ -414,14 +417,17 @@ export default function Home() {
             ))}
           </Swiper>
         </motion.div>
-        <img
-          src="/LOGO-09.webp"
-          alt="goyours logo"
-          className="kvlogo"
-          rel="preload"
-          width="400"
-          height="200"
-        />
+        <h1>
+          <img
+            src="/LOGO-09.webp"
+            alt="GoYours LOGO, 高優國際留學公司商標"
+            className="kvlogo"
+            rel="preload"
+            width="400"
+            height="200"
+          />
+        </h1>
+
         <ScrollDown />
         <div className="sp-home-scrollDown">
           <ScrollDownSide />

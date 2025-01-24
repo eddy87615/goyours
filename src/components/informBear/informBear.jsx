@@ -42,7 +42,7 @@ export default function InformBear() {
           <button onClick={() => dismissSingleToast(toastId)}>
             {/* <RxCross2 /> */}
           </button>
-          <h4>{item.title}</h4>
+          <span className="inform-title">{item.title}</span>
           <PortableText value={item.content} components={components} />
         </div>,
         {

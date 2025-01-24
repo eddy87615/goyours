@@ -143,7 +143,11 @@ export default function Navigation() {
             }`}
           >
             <Link to="/">
-              <img src="/LOGO-03.png" alt="goyours logo" width={250} />
+              <img
+                src="/LOGO-03.png"
+                alt="GoYours LOGO,高優國際留學商標"
+                width={250}
+              />
             </Link>
           </div>
           <div
