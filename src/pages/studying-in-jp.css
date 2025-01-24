@@ -141,7 +141,7 @@
 .guide-text-animation-wrapper p {
   --fontSize: calc(100vw / 130);
   /* font-size: calc(1 * var(--fontSize)); */
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   margin: 0;
 
@@ -360,7 +360,10 @@
 .scrollDown-side-studyingPage .scrollDown-side-Dot {
   background-color: #ffcd8d;
 }
-@media (min-width: 1025px) and (max-width: 1200px) {
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .guide-pic-animation-wrapper {
+    height: 16rem;
+  }
   .guidePage-studying-top::before,
   .guidePage-studying-top::after {
     width: 300px;
