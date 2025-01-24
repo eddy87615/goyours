@@ -139,7 +139,7 @@
 .guide-text-animation-wrapper p {
   --fontSize: calc(100vw / 130);
   /* font-size: calc(1 * var(--fontSize)); */
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   margin: 0;
 
@@ -473,6 +473,9 @@
   margin: 0 auto;
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
+  .guide-pic-animation-wrapper {
+    height: 16rem;
+  }
   .guidePage-working-holiday-top::before,
   .guidePage-working-holiday-top::after {
     width: 300px;

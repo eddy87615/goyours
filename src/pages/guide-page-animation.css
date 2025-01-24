@@ -13,9 +13,6 @@
   animation: scrollUp 30s linear infinite;
 }
 
-.left-picWrapper {
-}
-
 @keyframes scrollUp {
   from {
     top: 110%;
@@ -136,6 +133,8 @@
     height: 1rem;
   }
   .guide-text-animation-wrapper p {
+    --fontSize: calc(100vw / 60);
+    font-size: calc(1 * var(--fontSize));
     animation: scrollRight 30s linear infinite;
   }
 }
@@ -157,6 +156,8 @@
   }
   .guide-text-animation-wrapper p {
     animation: scrollRight 30s linear infinite;
+    --fontSize: calc(100vw / 50);
+    font-size: calc(1 * var(--fontSize));
   }
 }
 
