@@ -31,8 +31,29 @@ export default function Studying() {
   const [currentPage, setCurrentPage] = useState(1); // 當前頁碼
   const schoolsPerPage = windowSize <= 500 ? 12 : 24; // 每頁顯示學校數
 
+  const { selectedTags } = filters;
   // 特殊篩選標籤
-  // const SPECIAL_FILTERS = ['我們的推薦', '高人氣學校'];
+  const SPECIAL_FILTERS = ['我們的推薦', '高人氣學校'];
+  // 特殊標籤篩選條件
+  let specialTagFilter = '';
+  const specialTags = selectedTags.filter((tag) =>
+    SPECIAL_FILTERS.includes(tag)
+  );
+  if (specialTags.length > 0) {
+    // 如果選擇了特殊標籤，創建一個 OR 條件
+    const tagConditions = specialTags
+      .map((tag) => `"${tag}" in tags`)
+      .join(' || ');
+    specialTagFilter = `&& (${tagConditions})`;
+  } else {
+    // 處理非特殊標籤
+    const normalTags = selectedTags.filter(
+      (tag) => !SPECIAL_FILTERS.includes(tag)
+    );
+    if (normalTags.length > 0) {
+      specialTagFilter = `&& "${normalTags[0]}" in tags`;
+    }
+  }
 
   // 初始化篩選條件
   useEffect(() => {
@@ -73,7 +94,7 @@ export default function Studying() {
 
       const query = `
         *[_type == "school" && !(_id in path("drafts.**")) 
-          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter}
+          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
         ] {
           mainImage,
           name,
