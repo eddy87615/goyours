@@ -194,9 +194,9 @@ const HomeschoolList = () => {
               <div className="schoolListCover">
                 <div className="schoolListBg">
                   <h3 className="homeSchool-schoolName">{school.name}</h3>
-                  <h3 className="homeSchool-schoolLocation">
+                  <p className="homeSchool-schoolLocation">
                     <FaLocationDot /> {school.city}
-                  </h3>
+                  </p>
                   <img
                     src={urlFor(school.mainImage).url()}
                     alt={school.mainImage.alt || school.name}
