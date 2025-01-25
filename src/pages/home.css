@@ -439,6 +439,8 @@
 
   font-size: 1.4rem;
 
+  width: 100%;
+
   margin: 1.5rem 0;
 }
 .homeSchool-back-schoolName::after {
@@ -449,7 +451,7 @@
   left: 50%;
   transform: translate(-50%);
 
-  width: 30rem;
+  width: 90%;
   height: 2px;
 
   background-color: #fff;
@@ -757,9 +759,7 @@
   .homeSchool-back-schoolName {
     font-size: 1.2rem;
   }
-  .homeSchool-back-schoolName::after {
-    width: 20rem;
-  }
+
   .homeSchool-back-schoolIntro {
     font-size: 0.75rem;
   }
@@ -833,9 +833,7 @@
     right: 2%;
     bottom: 2%;
   }
-  .homeSchool-back-schoolName::after {
-    width: 20rem;
-  }
+
   .more-school-button ul a {
     font-size: 1rem;
 
@@ -963,9 +961,6 @@
   }
   .homeSchool-back-schoolName {
     font-size: 1rem;
-  }
-  .homeSchool-back-schoolName::after {
-    width: 20rem;
   }
   .homeSchool-back-schoolIntro {
     font-size: 0.625rem;
