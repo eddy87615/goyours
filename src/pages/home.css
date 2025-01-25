@@ -818,7 +818,12 @@
   .homeSchool-schoolLocation {
     font-size: 0.75rem;
   }
-  .homeSchool-back-schoolName,
+  .homeSchool-back-schoolName {
+    font-size: 1rem;
+
+    margin: 0.3rem 0;
+  }
+
   .homeSchool-back-schoolIntro {
     font-size: 0.75rem;
   }
