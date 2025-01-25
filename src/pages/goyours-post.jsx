@@ -15,7 +15,6 @@ export default function Post() {
     { label: '所有文章', value: null },
   ]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  // const [searchQuery, setSearchQuery] = useState('');
   const [posts, setPosts] = useState([]);
   const [totalPosts, setTotalPosts] = useState(0); // 總文章數
   const [loading, setLoading] = useState(true);
@@ -78,7 +77,7 @@ export default function Post() {
       const query = `
         *[_type == "post" && !(_id in path("drafts.**")) ${categoryFilter} ${searchFilter}] | order(publishedAt desc) [${start}...${end}] {
           title,
-          body,
+          body[0...3],
           publishedAt,
           mainImage,
           slug,
@@ -110,6 +109,14 @@ export default function Post() {
     fetchCategories();
     fetchPosts();
   }, [currentPage, selectedCategory, searchQuery]);
+
+  useEffect(() => {
+    if (location.state?.selectedCategory) {
+      setSelectedCategory(location.state.selectedCategory);
+      setSearchQuery(''); // Clear search query
+      setCurrentPage(1); // Reset to first page
+    }
+  }, [location.state]);
 
   if (loading) {
     return (

@@ -1,24 +1,27 @@
 /* eslint-disable react/prop-types */
 import './postArea.css';
 import Pagination from '../pagination/pagination';
-// import { PortableText } from '@portabletext/react';
+import { PortableText } from '@portabletext/react';
 import { Link } from 'react-router-dom';
 import { urlFor } from '../../cms/sanityClient';
 
-const extractPlainText = (body) => {
-  return body
-    .map((block) => {
-      if (block._type === 'block' && block.children) {
-        return block.children
-          .filter((child) => child._type === 'span')
-          .map((span) => span.text)
-          .join('');
-      }
-      return ''; // Ignore non-text content
-    })
-    .join(' ');
+const customComponents = {
+  types: {},
+  block: {
+    normal: ({ children }) => <p>{children}</p>, // 普通文本渲染為 <p>
+    h1: ({ children }) => <p>{children}</p>, // 將 h1 渲染為 <p>
+    h2: ({ children }) => <p>{children}</p>, // 將 h2 渲染為 <p>
+    h3: ({ children }) => <p>{children}</p>, // 將 h3 渲染為 <p>
+    h4: ({ children }) => <p>{children}</p>, // 同理處理其他標題
+    h5: ({ children }) => <p>{children}</p>,
+    h6: ({ children }) => <p>{children}</p>,
+  },
+  marks: {
+    link: ({ children }) => <span>{children}</span>, // 避免渲染內層 <a>
+  },
+  // 默認對於未定義的類型不進行渲染
+  default: () => null,
 };
-//
 
 const highlightText = (text, query) => {
   if (!query) return text;
@@ -66,11 +69,11 @@ export default function PostArea({
             </Link>
           )}
           <div className="postListInfo">
-            <h1>
+            <h2>
               <Link to={`/goyours-post/${post.slug.current}`} target="_blank">
                 {highlightText(post.title, searchQuery)}
               </Link>
-            </h1>
+            </h2>
             <ul className="info">
               {post.categories && post.categories.length > 0 ? (
                 <>
@@ -100,7 +103,7 @@ export default function PostArea({
                 .replace(/\//g, '.')}
             </p>
             <div className="textPart">
-              <p>{extractPlainText(post.body)}</p>
+              <PortableText value={post.body} components={customComponents} />
             </div>
           </div>
         </div>
