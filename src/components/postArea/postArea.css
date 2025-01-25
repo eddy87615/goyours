@@ -14,18 +14,11 @@
   transform: scale(0.8);
 }
 
-.postarea .gallery {
-  display: none;
-}
-.textPart img {
-  display: none;
-}
-
-.postListInfo h1:first-child {
+.postListInfo h2 {
   font-size: 1.25rem;
   margin-top: 0;
 }
-.postListInfo h1:first-child a {
+.postListInfo h2 a {
   text-decoration: none;
 }
 
@@ -106,8 +99,8 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
 
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   overflow: hidden;
 
   margin-top: 1rem;
@@ -123,7 +116,7 @@
   font-size: 1rem !important;
   line-height: 2rem;
   margin: 0;
-  font-weight: normal !important;
+  font-weight: normal;
 }
 
 .gallery {
@@ -174,7 +167,7 @@
     height: fit-content;
   }
 
-  .postListInfo h1:first-child {
+  .postListInfo h2:first-child {
     font-size: 1rem;
   }
   .info {
@@ -235,7 +228,7 @@
   .imgLink img {
     width: 100%;
   }
-  .postListInfo h1:nth-child(1) {
+  .postListInfo h2:nth-child(1) {
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
