@@ -68,7 +68,7 @@ const Features = ({ school }) => {
             {school.character.map((character, index) => (
               <li key={index}>
                 {/* <div>{index + 1}</div> */}
-                <h2>{character.title}</h2>
+                <h3>{character.title}</h3>
                 <p>{character.description}</p>
               </li>
             ))}

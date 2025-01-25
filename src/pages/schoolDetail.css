@@ -214,11 +214,15 @@
 .featurestxt p {
   padding-left: 4.5rem;
 }
-.featurestxt h2::before {
+.featurestxt h3 {
+  font-size: 1.8rem;
+}
+.featurestxt h3::before {
   counter-increment: section;
   content: counter(section, decimal-leading-zero);
 
   font-weight: bold;
+  font-size: 70%;
 
   background-color: var(--goyoursYellow);
   color: #fff;
@@ -370,7 +374,7 @@
 
     padding: 4rem 0;
   }
-  .featurestxt h2::before {
+  .featurestxt h3::before {
     margin-right: 0;
   }
   .featurestxt p {
@@ -469,7 +473,7 @@
 
     margin-top: 0;
   }
-  .featurestxt h2 {
+  .featurestxt h3 {
     font-size: 1.5rem;
 
     margin-bottom: 0.5rem;
@@ -582,13 +586,13 @@
 
     padding-bottom: 2rem;
   }
-  .featurestxt h2 {
+  .featurestxt h3 {
     position: relative;
     font-size: 1rem;
 
     padding-left: 3rem;
   }
-  .featurestxt h2::before {
+  .featurestxt h3::before {
     position: absolute;
     top: 50%;
     left: 0;
