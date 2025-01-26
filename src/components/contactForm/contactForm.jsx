@@ -303,8 +303,8 @@ export default function ContactForm() {
             </p>
           </div>
           <div className="contactimg">
-            <img src="/LOGO-09.png" alt="goyours logo only words" />
             <img src="/LOGO-02.png" alt="goyours logo" />
+            <img src="/LOGO-09.png" alt="goyours logo only words" />
           </div>
           <form className="contactForm" onSubmit={handleSubmit}>
             <label htmlFor="name">

@@ -46,11 +46,11 @@
   filter: brightness(1) !important;
 }
 
-.schoolDetailH1 {
+.schoolDetailH2 {
   width: 80vw;
   margin: 0 auto;
 }
-.schoolDetailH1 h1 {
+.schoolDetailH2 h2 {
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -247,11 +247,11 @@
   z-index: 1;
 }
 
-.videoH1 {
+.videoH2 {
   width: 80vw;
   margin: 0 auto;
 }
-.video h1 {
+.video h2 {
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -446,7 +446,7 @@
   .schoolConditions {
     width: 90vw;
   }
-  .schoolDetailH1 {
+  .schoolDetailH2 {
     width: 100%;
   }
   .schoolConditions-detail {
@@ -462,7 +462,7 @@
     padding: 2rem 3rem;
   }
 
-  .schoolDetailH1 {
+  .schoolDetailH2 {
     width: 90vw;
   }
   .featurestxt ul {
@@ -478,7 +478,7 @@
 
     margin-bottom: 0.5rem;
   }
-  .videoH1 {
+  .videoH2 {
     width: 90vw;
   }
   iframe {
@@ -541,7 +541,7 @@
     flex-shrink: 0;
   }
 
-  .schoolDetailH1 h1 {
+  .schoolDetailH2 h2 {
     font-size: 1rem;
   }
 
@@ -613,7 +613,7 @@
     padding-left: 3rem;
   }
 
-  .videoH1 h1 {
+  .videoH2 h1 {
     font-size: 1rem;
   }
 

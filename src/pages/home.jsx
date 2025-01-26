@@ -57,10 +57,10 @@ const News = () => {
         </h2>
       </div>
       <div className="homeNewsDiv sp-scollNews">
-        {NewsPosts.length >= 3 && windowSize > 768 ? (
+        {NewsPosts.length >= 3 && (
           <Swiper
             spaceBetween={30}
-            slidesPerView={windowSize < 500 ? '4' : 'auto'}
+            slidesPerView={windowSize < 500 ? '1.5' : 'auto'}
             slidesPerGroup={1}
             centeredSlides={true}
             freeMode={true}
@@ -108,40 +108,6 @@ const News = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        ) : (
-          <>
-            {NewsPosts.map((post, index) => (
-              <div key={index} className="homeNewsprePost ">
-                <a
-                  href={`/goyours-post/${encodeURIComponent(
-                    post.slug.current
-                  )}`}
-                >
-                  {post.mainImage && (
-                    <div className="homeNewspostImg">
-                      <img
-                        src={urlFor(post.mainImage).url()}
-                        alt={post.title}
-                      />
-                    </div>
-                  )}
-                  <p className="homeNews-postTitle">{post.title}</p>
-                  <p className="yellow homeNews-postDate">
-                    <span className="homeNewsBear">
-                      <img src="/圓形logo.png" alt="goyours logo" />
-                    </span>
-                    {new Date(post.publishedAt)
-                      .toLocaleDateString('zh-TW', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      })
-                      .replace(/\//g, '.')}
-                  </p>
-                </a>
-              </div>
-            ))}
-          </>
         )}
       </div>
     </>
