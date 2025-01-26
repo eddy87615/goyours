@@ -204,7 +204,7 @@
   background-color: transparent;
 }
 .homeNewsprePost {
-  width: 30% !important;
+  /* width: 30% !important; */
 }
 .homeNewsprePost a {
   text-decoration: none;
@@ -744,7 +744,7 @@
   }
 
   .homeNewsprePost {
-    width: 30% !important;
+    /* width: 30% !important; */
   }
 
   .schoolListBack ul li:nth-child(2) {
@@ -831,7 +831,7 @@
     display: none;
   }
   .homeNewsprePost {
-    width: 50% !important;
+    /* width: 50% !important; */
   }
   .schoolListPointer {
     width: 1.5rem;
@@ -930,7 +930,7 @@
     padding-top: 10rem;
   }
   .homeNewsprePost {
-    width: 50%;
+    /* width: 50%; */
   }
 
   .schoolListDiv {
@@ -1159,7 +1159,7 @@
     height: 1rem;
   }
   .homeNewsprePost {
-    width: 60% !important;
+    /* width: 60% !important; */
     /* margin-right: 4% !important; */
 
     flex-shrink: 0;
@@ -1330,9 +1330,6 @@
   }
   .homeNewsprePost {
     /* width: 70% !important; */
-    width: calc(
-      80% - 2rem
-    ) !important; /* 宽度设置为容器宽度的80%，具体可调整 */
     /* margin-right: 5% !important; */
   }
   .schoolListPre {
