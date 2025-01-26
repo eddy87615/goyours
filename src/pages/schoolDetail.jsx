@@ -58,10 +58,10 @@ const Features = ({ school }) => {
   return (
     <>
       <div className="schoolDetailInfo">
-        <div className="schoolDetailH1">
-          <h1 className="features underLine">
+        <div className="schoolDetailH2">
+          <h2 className="features underLine">
             <span className="yellow">Feature</span>學校特色
-          </h1>
+          </h2>
         </div>
         <div className="featurestxt">
           <ul>
@@ -76,10 +76,10 @@ const Features = ({ school }) => {
         </div>
         {school.video && (
           <div className="video">
-            <div className="videoH1">
-              <h1 className="features underLine">
+            <div className="videoH2">
+              <h2 className="features underLine">
                 <span className="yellow">Video</span>學校影片
-              </h1>
+              </h2>
             </div>
             <div className="videoItself">
               <iframe
@@ -152,13 +152,13 @@ const Conditions = ({ school }) => {
 
   return (
     <div className="schoolConditions">
-      <div className="schoolDetailH1">
-        <h1 className="features underLine">
+      <div className="schoolDetailH2">
+        <h2 className="features underLine">
           <span className="yellow" lang="en">
             Conditions
           </span>
           學校性質
-        </h1>
+        </h2>
       </div>
       <div className="schoolConditions-detail">
         <ul className="conditionsList">
