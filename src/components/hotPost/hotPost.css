@@ -13,11 +13,6 @@
 .homehotpostDiv .swiper-button-next {
   display: none;
 }
-.swiper-slide {
-  width: calc(80% - 5rem); /* 宽度设置为容器宽度的80%，具体可调整 */
-  flex-shrink: 0; /* 防止宽度被压缩 */
-  box-sizing: border-box; /* 包括 padding 和 border */
-}
 
 .homeperhotpost {
   width: 30%;
@@ -93,6 +88,9 @@
 .homeperhotpost:hover img {
   animation: shake 0.5s ease-out;
 }
+.swiper-slide {
+  width: 26%;
+}
 
 /*homeHotpostSection*/
 
@@ -127,12 +125,18 @@
   .homeHotPost-postTitle {
     font-size: 1rem;
   }
+  .swiper-slide {
+    width: 60%;
+  }
 }
 
 @media screen and (max-width: 480px) {
+  .swiper-slide {
+    width: 80%;
+  }
   .homeperhotpost {
     padding: 1rem;
-    margin-right: 4% !important;
+    /* margin-right: 4% !important; */
     border-radius: 1.5rem;
     border: 1.5px solid var(--goyoursBlack);
   }

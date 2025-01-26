@@ -77,7 +77,7 @@ export default function Hotpost() {
         {NewsPosts.length >= 3 && (
           <Swiper
             spaceBetween={30}
-            slidesPerView={windowSize < 500 ? '4' : 'auto'}
+            slidesPerView="auto"
             slidesPerGroup={1}
             centeredSlides={true}
             freeMode={true}
