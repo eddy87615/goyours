@@ -57,6 +57,8 @@
 
   display: block;
   width: 450px;
+
+  pointer-events: painted;
 }
 
 .info {

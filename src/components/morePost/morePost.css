@@ -61,6 +61,8 @@
   display: block;
 
   transition-duration: 0.2s;
+
+  pointer-events: none;
 }
 
 .more-post-img-frame {

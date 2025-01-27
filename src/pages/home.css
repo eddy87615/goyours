@@ -24,6 +24,8 @@
   height: 100vh;
 
   object-fit: cover;
+
+  pointer-events: none;
 }
 
 .swiper-fade .swiper-slide {
@@ -99,6 +101,8 @@
 .homeintroImgWrapper1,
 .homeintroImgWrapper2 {
   position: absolute;
+
+  pointer-events: none;
 }
 .homeintroImgWrapper0 {
   top: 10%;
@@ -223,6 +227,8 @@
   border-radius: 1rem;
 
   transition-duration: 0.5s;
+
+  pointer-events: none;
 }
 .homeNewsDiv {
   padding-top: 10rem;
@@ -412,6 +418,8 @@
 
   transform-origin: top left;
   transition-duration: 0.5s;
+
+  pointer-events: none;
 }
 .schoolListBack {
   position: absolute;
@@ -1289,11 +1297,6 @@
     width: 100%; /* 确保容器宽度为全屏 */
     overflow: hidden; /* 避免溢出 */
   }
-  .swiper-slide {
-    width: calc(80% - 3rem); /* 宽度设置为容器宽度的80%，具体可调整 */
-    flex-shrink: 0; /* 防止宽度被压缩 */
-    box-sizing: border-box; /* 包括 padding 和 border */
-  }
 }
 
 @media screen and (max-width: 375px) {
@@ -1335,9 +1338,5 @@
   .schoolListPre {
     height: 12rem;
     border-radius: 1.5rem;
-  }
-  .swiper-slide {
-    flex-shrink: 0; /* 防止宽度被压缩 */
-    box-sizing: border-box; /* 包括 padding 和 border */
   }
 }
