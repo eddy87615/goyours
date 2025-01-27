@@ -79,6 +79,8 @@
 
   transform-origin: top left;
   transition-duration: 0.5s;
+
+  pointer-events: none;
 }
 
 .jobListcontent {

@@ -382,18 +382,25 @@ export default function SchoolDetail() {
             modules={[FreeMode, Navigation, Thumbs]}
             className="upperSlider"
           >
-            {school.gallery.map((img, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <img
-                    src={urlFor(img.asset).url()}
-                    alt={school.name}
-                    onClick={() => openModal(urlFor(img.asset).url())}
-                    style={{ cursor: 'pointer' }}
-                  />
-                </SwiperSlide>
-              );
-            })}
+            {school.gallery.length > 0 ? (
+              school.gallery.map((img, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={urlFor(img.asset).url()}
+                      alt={school.name}
+                      onClick={() => openModal(urlFor(img.asset).url())}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  </SwiperSlide>
+                );
+              })
+            ) : (
+              // <SwiperSlide>
+              //   <p className="no-photo-note">未提供照片ＱＱ</p>
+              // </SwiperSlide>
+              <></>
+            )}
           </Swiper>
           <Swiper
             onSwiper={setThumbsSwiper}

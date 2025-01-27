@@ -56,6 +56,16 @@ export default function Faqs() {
     }
   }, [location.hash, loading]); // 添加 loading 作为依赖项
 
+  function scrollToSection(event) {
+    event.preventDefault(); // 阻止默認的頁面跳轉
+    const targetId = event.target.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    targetElement.scrollIntoView({
+      behavior: 'smooth', // 設置平滑滾動效果
+      block: 'start', // 滾動到目標元素頂部
+    });
+  }
+
   if (loading) {
     return (
       <div className="postLoading pageLoading">
@@ -73,6 +83,14 @@ export default function Faqs() {
       </div>
       <div className="fqa-body">
         <div className="fqa-wrapper">
+          {/* <div className="qa-sectionBtn">
+            <a href="#part1" onClick={scrollToSection}>
+              關於日本留學
+            </a>
+            <a href="#part2" onClick={scrollToSection}>
+              關於日本打工度假
+            </a>
+          </div> */}
           <div>
             <div className="part1">
               <h2 className="yellow faq-title" id="part1">

@@ -204,6 +204,8 @@ input:-webkit-autofill {
 .downloadBtn {
   background-color: var(--goyoursBlack);
   color: #fff;
+
+  text-decoration: none;
 }
 .uploadBtn:hover {
   background-color: var(--goyoursBlack);

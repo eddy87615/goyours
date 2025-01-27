@@ -240,6 +240,8 @@
 
   transition-delay: 0.2s;
   opacity: 1;
+
+  text-decoration: none;
 }
 
 .listdetail button {

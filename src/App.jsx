@@ -63,6 +63,10 @@ function MetaManager() {
           name="description"
           content="讓Go Yours完成你的打工度假與留學的夢想"
         />
+        <link
+          rel="canonical"
+          href={`${window.location.origin}${location.pathname}`}
+        />
       </Helmet>
     );
   }
@@ -85,6 +89,7 @@ function MetaManager() {
             : '讓Go Yours完成你的打工度假與留學的夢想'
         }
       />
+      <link rel="canonical" href={currentURL} />
       <meta property="og:site_name" content="Go Yours：高優國際" />
       <meta property="og:title" content={`Go Yours：${pageTitle}`} />
       <meta

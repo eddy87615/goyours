@@ -17,10 +17,6 @@ p {
   font-size: 20px;
 }
 
-button {
-  cursor: pointer;
-}
-
 mark {
   background-color: var(--goyoursYellow);
 }

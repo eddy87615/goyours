@@ -2,6 +2,20 @@
   /* width: 90vw; */
   margin: 0 auto;
 }
+/* .no-photo-note {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--goyoursBlack);
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+} */
 .schoolDetailPage {
   width: 90vw;
   margin: 0 auto;
