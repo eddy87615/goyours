@@ -32,8 +32,6 @@ export default function Footer() {
   // 從 Sanity 獲取最新消息標籤的文章
   useEffect(() => {
     async function fetchLatestNewsPosts() {
-      // 查詢 "最新消息" 標籤的文章
-      //&& "最新消息" in categories[]->title
       const result = await client.fetch(`
         *[_type == "post"] | order(publishedAt desc)[0...3] {
           title,
