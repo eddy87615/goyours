@@ -140,13 +140,14 @@ export default function About() {
   return (
     <>
       <div className="aboutTop">
-        <h1>
-          <img
-            src="/LOGO-09.png"
-            alt="GoYours LOGO with handwriting words, 手寫字高優國際公司商標"
-            className="centerLogo"
-          />
+        <h1 style={{ width: 0, height: 0, color: 'transparent' }}>
+          Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！
         </h1>
+        <img
+          src="/LOGO-09.png"
+          alt="GoYours LOGO with handwriting words, 手寫字高優國際公司商標"
+          className="centerLogo"
+        />
         {topImg.map((img, index) => (
           <div key={index} className="aboutusTopImg">
             <img src={img.src} alt={`about us top img ${index}`} />

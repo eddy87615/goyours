@@ -383,16 +383,14 @@ export default function Home() {
             ))}
           </Swiper>
         </motion.div>
-        <h1>
-          <img
-            src="/LOGO-09.webp"
-            alt="GoYours LOGO, 高優國際留學公司商標"
-            className="kvlogo"
-            rel="preload"
-            width="400"
-            height="200"
-          />
-        </h1>
+        <img
+          src="/LOGO-09.webp"
+          alt="GoYours LOGO, 高優國際留學公司商標"
+          className="kvlogo"
+          rel="preload"
+          width="400"
+          height="200"
+        />
 
         <ScrollDown />
         <div className="sp-home-scrollDown">
@@ -404,6 +402,9 @@ export default function Home() {
           <HomeBg />
         </div>
         <div className="homeintrotxt">
+          <h1 style={{ width: 0, height: 0, color: 'transparent' }}>
+            Go Yours：專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！
+          </h1>
           <p>
             國外打工度假、遊留學的好夥伴
             <br />
