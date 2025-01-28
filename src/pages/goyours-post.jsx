@@ -113,8 +113,8 @@ export default function Post() {
   useEffect(() => {
     if (location.state?.selectedCategory) {
       setSelectedCategory(location.state.selectedCategory);
-      setSearchQuery(''); // Clear search query
-      setCurrentPage(1); // Reset to first page
+      setSearchQuery('');
+      setCurrentPage(1);
     }
   }, [location.state]);
 

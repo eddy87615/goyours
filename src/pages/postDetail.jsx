@@ -313,7 +313,7 @@ export default function PostDetail() {
     return (
       <div>
         <p className="postLoading nopost-warning">
-          沒有文章
+          沒有這篇文章
           <span className="nopost">
             <img src="/goyoursbear-B.svg" alt="goyours bear gray" />
           </span>

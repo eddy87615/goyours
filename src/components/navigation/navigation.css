@@ -148,6 +148,9 @@
 
   transition-duration: 0.2s;
 }
+.navMenu li:nth-child(8) a::after {
+  background-position: -10px;
+}
 .navMenu li a:hover::after {
   transform: scale(1);
   transition-duration: 0.2s;
@@ -377,7 +380,7 @@
   }
 
   .nav-logo-sp img {
-    width: 100px;
+    width: 150px;
   }
   .navMenu {
     display: none;
@@ -446,7 +449,7 @@
   }
 
   .nav-logo-sp img {
-    width: 100px;
+    width: 150px;
   }
   .navMenu {
     display: none;
