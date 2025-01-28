@@ -403,7 +403,8 @@ export default function Home() {
         </div>
         <div className="homeintrotxt">
           <h1 style={{ width: 0, height: 0, color: 'transparent' }}>
-            Go Yours：專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！
+            Go Yours首頁｜Go
+            Yours專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！
           </h1>
           <p>
             國外打工度假、遊留學的好夥伴

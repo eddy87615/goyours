@@ -14,7 +14,16 @@
   margin: 0.5rem 0;
 }
 .postCategoryList a {
+  transition-duration: 0.5s;
+
   text-decoration: none;
+}
+
+.postCategoryList:hover a,
+.postCategoryList:hover::before {
+  transition-duration: 0.5s;
+
+  color: var(--goyoursYellow);
 }
 
 .postcategoryTitle {
@@ -129,6 +138,12 @@
     padding: 0;
 
     position: static;
+  }
+  .postCategoryList:hover a,
+  .postCategoryList:hover::before {
+    transition-duration: 0.5s;
+
+    color: var(--goyoursBlack);
   }
   .postcategory ul {
     display: none;

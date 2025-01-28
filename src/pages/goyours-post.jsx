@@ -77,7 +77,7 @@ export default function Post() {
       const query = `
         *[_type == "post" && !(_id in path("drafts.**")) ${categoryFilter} ${searchFilter}] | order(publishedAt desc) [${start}...${end}] {
           title,
-          body[0...3],
+          body[0...1],
           publishedAt,
           mainImage,
           slug,
