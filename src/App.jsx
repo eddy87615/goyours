@@ -58,10 +58,10 @@ function MetaManager() {
   if (loading) {
     return (
       <Helmet>
-        <title>Go Yours：去你的打工度假</title>
+        <title>Go Yours首頁｜專業留學代辦｜高優國際留學</title>
         <meta
           name="description"
-          content="讓Go Yours完成你的打工度假與留學的夢想"
+          content="一群熱血的年輕人，用盡一生的愛告訴大家出國打工度假/遊學的小撇步。讓Go Yours完成你的打工度假與留學的夢想！"
         />
         <link
           rel="canonical"
