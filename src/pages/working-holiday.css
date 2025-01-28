@@ -106,11 +106,12 @@
   /* margin: 0.5rem 0; */
 
   --wrapperWidth: calc(100vw / 144);
+  --wrapperHeight: calc(100vh / 144);
 
-  /* width: calc(16 * var(--wrapperWidth)); */
-  /* height: calc(24 * var(--wrapperWidth)); */
-  width: 12rem;
-  height: 18rem;
+  width: calc(20 * var(--wrapperWidth));
+  height: calc(45 * var(--wrapperHeight));
+  /* width: 12rem;
+  height: 18rem; */
 }
 
 .left-picWrapper,
@@ -143,9 +144,9 @@
   height: 120vh;
 }
 .guide-text-animation-wrapper p {
-  --fontSize: calc(100vw / 130);
-  /* font-size: calc(1 * var(--fontSize)); */
-  font-size: 0.9rem;
+  --fontSize: calc(100vw / 120);
+  font-size: calc(1 * var(--fontSize));
+  /* font-size: 0.9rem; */
 
   margin: 0;
 
@@ -502,6 +503,9 @@
   .guide-vertical-slide-left {
     left: calc(2% + 15px);
   }
+  .guide-text-animation-wrapper p {
+    font-size: calc(1.3 * var(--fontSize));
+  }
 }
 @media (min-width: 769px) and (max-width: 820px) {
   .silde-text-wrapper-right01.right02 {
@@ -533,7 +537,7 @@
     writing-mode: horizontal-tb;
     width: fit-content;
 
-    font-size: 1rem;
+    font-size: calc(1 * var(--fontSize));
   }
 
   .working-rightgirl {

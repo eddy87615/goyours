@@ -18,21 +18,19 @@ import { GoArrowRight } from 'react-icons/go';
 
 import CryptoJS from 'crypto-js';
 
-// import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
-
 import './contactFormResume.css';
 import '../contactForm/contactForm.css';
 
 export default function ContactFormResume() {
-  const [placeholdertxt, setPlaceholdertxt] = useState([
-    '王小明',
-    '25',
-    '0912345678',
-    'example12345',
-    'example12345@gmail.com',
-    '早上10:00-12:00/下午14:00-17:00',
-    '我對這份工作有興趣',
-  ]);
+  // const [placeholdertxt, setPlaceholdertxt] = useState([
+  //   '王小明',
+  //   '25',
+  //   '0912345678',
+  //   'example12345',
+  //   'example12345@gmail.com',
+  //   '早上10:00-12:00/下午14:00-17:00',
+  //   '我對這份工作有興趣',
+  // ]);
   const location = useLocation();
   const jobTitle =
     location.state?.initialMessage || '聯絡GoYours，打工度假、留學免費諮詢';
@@ -253,21 +251,21 @@ export default function ContactFormResume() {
 
   const fileInputRef = useRef(null);
 
-  const handleFocus = (index) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = '';
-      return updatedPlaceholders;
-    });
-  };
+  // const handleFocus = (index) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = '';
+  //     return updatedPlaceholders;
+  //   });
+  // };
 
-  const handleBlur = (index, defaultText) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = defaultText;
-      return updatedPlaceholders;
-    });
-  };
+  // const handleBlur = (index, defaultText) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = defaultText;
+  //     return updatedPlaceholders;
+  //   });
+  // };
 
   const [documents, setDocuments] = useState([]);
   useEffect(() => {
@@ -337,12 +335,12 @@ export default function ContactFormResume() {
           </div>
           <form className="contactFormResume" onSubmit={handleSubmit}>
             <label htmlFor="name" className="realName">
-              <p>真實姓名：</p>
+              <p>真實姓名（例：王小明）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[0]}
-                onFocus={() => handleFocus(0)}
-                onBlur={() => handleBlur(0, '王小明')}
+                // placeholder={placeholdertxt[0]}
+                // onFocus={() => handleFocus(0)}
+                // onBlur={() => handleBlur(0, '王小明')}
                 className="placeholder"
                 type="text"
                 id="name"
@@ -354,12 +352,12 @@ export default function ContactFormResume() {
             </label>
 
             <label htmlFor="age" className="age">
-              <p>年齡：</p>
+              <p>年齡（例：25）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[1]}
-                onFocus={() => handleFocus(1)}
-                onBlur={() => handleBlur(1, '25')}
+                // placeholder={placeholdertxt[1]}
+                // onFocus={() => handleFocus(1)}
+                // onBlur={() => handleBlur(1, '25')}
                 className="placeholder"
                 type="text"
                 id="age"
@@ -372,12 +370,12 @@ export default function ContactFormResume() {
             </label>
 
             <label htmlFor="phone" className="phone">
-              <p>行動電話：</p>
+              <p>行動電話（例：0912345678）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[2]}
-                onFocus={() => handleFocus(2)}
-                onBlur={() => handleBlur(2, '0912345678')}
+                // placeholder={placeholdertxt[2]}
+                // onFocus={() => handleFocus(2)}
+                // onBlur={() => handleBlur(2, '0912345678')}
                 className="placeholder"
                 id="phone"
                 name="phone"
@@ -388,12 +386,12 @@ export default function ContactFormResume() {
               />
             </label>
             <label htmlFor="lineId" className="lineId">
-              <p>LINE ID：</p>
+              <p>LINE ID（例：example12345）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[3]}
-                onFocus={() => handleFocus(3)}
-                onBlur={() => handleBlur(3, 'example12345')}
+                // placeholder={placeholdertxt[3]}
+                // onFocus={() => handleFocus(3)}
+                // onBlur={() => handleBlur(3, 'example12345')}
                 className="placeholder"
                 id="lineId"
                 name="lineId"
@@ -403,12 +401,12 @@ export default function ContactFormResume() {
               />
             </label>
             <label htmlFor="email" className="email">
-              <p>電子郵件：</p>
+              <p>電子郵件（例：aaa@gmail.com）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[4]}
-                onFocus={() => handleFocus(4)}
-                onBlur={() => handleBlur(4, 'example12345@gmail.com')}
+                // placeholder={placeholdertxt[4]}
+                // onFocus={() => handleFocus(4)}
+                // onBlur={() => handleBlur(4, 'example12345@gmail.com')}
                 className="placeholder"
                 id="email"
                 name="email"
@@ -419,12 +417,12 @@ export default function ContactFormResume() {
             </label>
 
             <label className="contactTime">
-              <p>方便聯絡時段：</p>
+              <p>方便聯絡時段（例：早上10:00-12:00）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[5]}
-                onFocus={() => handleFocus(5)}
-                onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
+                // placeholder={placeholdertxt[5]}
+                // onFocus={() => handleFocus(5)}
+                // onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
                 className="placeholder"
                 type="text"
                 id="callTime"
@@ -492,9 +490,9 @@ export default function ContactFormResume() {
               <p>想對我們說的話：</p>
               <br />
               <textarea
-                placeholder={placeholdertxt[6]}
-                onFocus={() => handleFocus(6)}
-                onBlur={() => handleBlur(6, '我對這份工作有興趣')}
+                // placeholder={placeholdertxt[6]}
+                // onFocus={() => handleFocus(6)}
+                // onBlur={() => handleBlur(6, '我對這份工作有興趣')}
                 className="placeholder"
                 type="textarea"
                 id="tellus"

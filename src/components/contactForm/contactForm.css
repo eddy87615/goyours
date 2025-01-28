@@ -169,7 +169,7 @@ input:-webkit-autofill {
 }
 
 .contactForm label {
-  width: 50%;
+  width: 65%;
   display: flex;
   align-items: center;
 }
@@ -393,6 +393,8 @@ input:-webkit-autofill {
   }
   .contactForm label {
     width: 100%;
+
+    flex-wrap: wrap;
   }
   .error-message {
     position: absolute;
@@ -431,6 +433,10 @@ input:-webkit-autofill {
   .contactForm label:nth-of-type(7),
   .contactForm label:nth-of-type(8) {
     flex-direction: column;
+  }
+  #name,
+  #age {
+    width: 100%;
   }
   .caseOptions {
     font-size: 0.725rem;

@@ -30,6 +30,11 @@
   color: #fff;
 
   border-radius: 5px;
+  border: none;
+
+  width: 100%;
+
+  margin: 1rem 0;
 }
 
 .postCategoryList::before {

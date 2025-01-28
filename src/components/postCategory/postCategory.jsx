@@ -11,12 +11,15 @@ const SpSearch = ({
   placeholdertxt,
   searchTerm,
   handleSearchChange,
-  handleKeyDown,
   setPlaceholdertxt,
   categories,
   handleCategoryClick,
   isSpSearchClicked,
   setIsSpSearchClicked,
+  handleSearch,
+  isComposing,
+  setIsComposing,
+  setSearchTerm,
 }) => {
   return (
     <div
@@ -52,7 +55,14 @@ const SpSearch = ({
               placeholder={placeholdertxt}
               value={searchTerm}
               onChange={handleSearchChange}
-              onKeyDown={handleKeyDown} // 監聽鍵盤事件
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !isComposing) {
+                  handleSearch(searchTerm); // 確保非選字狀態才觸發搜尋
+                  setIsSpSearchClicked(false);
+                }
+              }}
+              onCompositionStart={() => setIsComposing(true)} // 開始選字
+              onCompositionEnd={() => setIsComposing(false)} // 結束選字
               onFocus={() => setPlaceholdertxt('')}
               onBlur={() => setPlaceholdertxt(placeholder)}
               className="placeholder"
@@ -62,7 +72,15 @@ const SpSearch = ({
             </span>
           </div>
           <ul>
-            <p className="postcategoryTitle">請點選下列文章分類</p>
+            <button
+              className="postcategoryTitle"
+              onClick={() => {
+                handleSearch(searchTerm); // 執行搜尋功能
+                setSearchTerm(''); // 清空輸入框
+              }}
+            >
+              搜尋
+            </button>
             {categories.map((category, index) => (
               <li
                 key={index}
@@ -89,24 +107,10 @@ export default function PostCategary({
   const [searchTerm, setSearchTerm] = useState('');
   const [placeholdertxt, setPlaceholdertxt] = useState(placeholder);
   const [isSpSearchClicked, setIsSpSearchClicked] = useState(false);
-  const [isFirstEnter, setIsFirstEnter] = useState(true);
+  const [isComposing, setIsComposing] = useState(false); // 用於判斷是否在輸入法選字中
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      if (isFirstEnter) {
-        // 第一次按 Enter，只是確定輸入
-        setIsFirstEnter(false);
-      } else {
-        // 第二次按 Enter，執行搜尋
-        handleSearch(searchTerm);
-        setIsSpSearchClicked(!isSpSearchClicked);
-        setIsFirstEnter(true); // 重置狀態
-      }
-    }
   };
 
   const windowSize = useWindowSize();
@@ -122,8 +126,10 @@ export default function PostCategary({
         setIsSpSearchClicked={setIsSpSearchClicked}
         searchTerm={searchTerm}
         handleSearchChange={handleSearchChange}
-        handleKeyDown={handleKeyDown}
+        handleSearch={handleSearch}
         handleCategoryClick={handleCategoryClick}
+        isComposing={isComposing}
+        setIsComposing={setIsComposing}
       />
 
       <div className="postcategory">
@@ -134,22 +140,36 @@ export default function PostCategary({
             placeholder={placeholdertxt}
             value={searchTerm}
             onChange={handleSearchChange}
-            onKeyDown={handleKeyDown} // 監聽鍵盤事件
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !isComposing) {
+                handleSearch(searchTerm);
+                setIsSpSearchClicked(false);
+              }
+            }}
+            onCompositionStart={() => setIsComposing(true)}
+            onCompositionEnd={() => setIsComposing(false)}
             onFocus={() => setPlaceholdertxt('')}
             onBlur={() => setPlaceholdertxt(placeholder)}
             className="placeholder"
             onClick={() => {
-              if (windowSize < 480) setIsSpSearchClicked(true); // 小螢幕時啟用
+              if (windowSize < 480) setIsSpSearchClicked(true);
             }}
-            // {...console.log('isSpSearchClicked:', isSpSearchClicked)}
-            readOnly={windowSize < 480} // 小螢幕時只讀
+            readOnly={windowSize < 480}
           />
           <span>
             <img src="/goyoursbear-line-G.svg" />
           </span>
         </div>
         <ul>
-          <p className="postcategoryTitle">文章分類</p>
+          <button
+            className="postcategoryTitle"
+            onClick={() => {
+              handleSearch(searchTerm);
+              setSearchTerm('');
+            }}
+          >
+            搜尋
+          </button>
           {categories.map((category, index) => (
             <li
               key={index}

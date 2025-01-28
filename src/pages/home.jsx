@@ -375,7 +375,7 @@ export default function Home() {
               <SwiperSlide key={index}>
                 <picture>
                   <source media="(min-width: 1024px)" srcSet={slide.large} />
-                  <source media="(min-width: 640px)" srcSet={slide.medium} />
+                  <source media="(min-width: 640px)" srcSet={slide.large} />
                   <source media="(max-width: 500px)" srcSet={slide.medium} />
                   <img src={slide.src} alt={`{slider photo${index}`} />
                 </picture>

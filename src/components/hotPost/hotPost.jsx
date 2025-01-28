@@ -28,7 +28,7 @@ const customComponents = {
     h6: ({ children }) => <p>{children}</p>,
   },
   marks: {
-    link: ({ children }) => <p>{children}</p>, // 避免渲染內層 <a>
+    link: ({ children }) => <span>{children}</span>, // 避免渲染內層 <a>
   },
   // 默認對於未定義的類型不進行渲染
   default: () => null,

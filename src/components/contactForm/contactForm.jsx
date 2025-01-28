@@ -15,15 +15,15 @@ import CryptoJS from 'crypto-js';
 export default function ContactForm() {
   const location = useLocation();
   const initialMessage = location.state?.initialMessage || '';
-  const [placeholdertxt, setPlaceholdertxt] = useState([
-    '王小明',
-    '25',
-    '0912345678',
-    'example12345',
-    'example12345@gmail.com',
-    '早上10:00-12:00/下午14:00-17:00',
-    '我想詢問關於日本留學的資訊',
-  ]);
+  // const [placeholdertxt, setPlaceholdertxt] = useState([
+  //   '王小明',
+  //   '25',
+  //   '0912345678',
+  //   'example12345',
+  //   'example12345@gmail.com',
+  //   '早上10:00-12:00/下午14:00-17:00',
+  //   '我想詢問關於日本留學的資訊',
+  // ]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -201,21 +201,21 @@ export default function ContactForm() {
     }
   };
 
-  const handleFocus = (index) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = '';
-      return updatedPlaceholders;
-    });
-  };
+  // const handleFocus = (index) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = '';
+  //     return updatedPlaceholders;
+  //   });
+  // };
 
-  const handleBlur = (index, defaultText) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = defaultText;
-      return updatedPlaceholders;
-    });
-  };
+  // const handleBlur = (index, defaultText) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = defaultText;
+  //     return updatedPlaceholders;
+  //   });
+  // };
   // 只需要一個 emailError state
   const [emailError, setEmailError] = useState('');
 
@@ -303,18 +303,18 @@ export default function ContactForm() {
             </p>
           </div>
           <div className="contactimg">
-            <img src="/LOGO-02.png" alt="goyours logo" />
             <img src="/LOGO-09.png" alt="goyours logo only words" />
+            <img src="/LOGO-02.png" alt="goyours logo" />
           </div>
           <form className="contactForm" onSubmit={handleSubmit}>
             <label htmlFor="name">
-              <p>真實姓名：</p>
+              <p>真實姓名（例：王小明）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[0]}
-                onFocus={() => handleFocus(0)}
-                onBlur={() => handleBlur(0, '王小明')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[0]}
+                // onFocus={() => handleFocus(0)}
+                // onBlur={() => handleBlur(0, '王小明')}
+                // className="placeholder"
                 type="text"
                 id="name"
                 name="name"
@@ -325,13 +325,13 @@ export default function ContactForm() {
             </label>
 
             <label htmlFor="age">
-              <p>年齡：</p>
+              <p>年齡（例：25）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[1]}
-                onFocus={() => handleFocus(1)}
-                onBlur={() => handleBlur(1, '25')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[1]}
+                // onFocus={() => handleFocus(1)}
+                // onBlur={() => handleBlur(1, '25')}
+                // className="placeholder"
                 type="text"
                 id="age"
                 name="age"
@@ -343,13 +343,13 @@ export default function ContactForm() {
             </label>
 
             <label htmlFor="phone">
-              <p>行動電話：</p>
+              <p>行動電話（例：0912345678）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[2]}
-                onFocus={() => handleFocus(2)}
-                onBlur={() => handleBlur(2, '0912345678')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[2]}
+                // onFocus={() => handleFocus(2)}
+                // onBlur={() => handleBlur(2, '0912345678')}
+                // className="placeholder"
                 id="phone"
                 name="phone"
                 value={formData.phone}
@@ -359,13 +359,13 @@ export default function ContactForm() {
               />
             </label>
             <label htmlFor="lineId">
-              <p>LINE ID：</p>
+              <p>LINE ID（例：example12345）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[3]}
-                onFocus={() => handleFocus(3)}
-                onBlur={() => handleBlur(3, 'example12345')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[3]}
+                // onFocus={() => handleFocus(3)}
+                // onBlur={() => handleBlur(3, 'example12345')}
+                // className="placeholder"
                 id="lineId"
                 name="lineId"
                 value={formData.lineId}
@@ -374,13 +374,13 @@ export default function ContactForm() {
               />
             </label>
             <label htmlFor="email" className="email">
-              <p>電子郵件：</p>
+              <p>電子郵件（例：aaa@gmail.com）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[4]}
-                onFocus={() => handleFocus(4)}
-                onBlur={() => handleBlur(4, 'example12345@gmail.com')}
-                className={`placeholder ${emailError ? 'error-input' : ''}`}
+                // // placeholder={placeholdertxt[4]}
+                // onFocus={() => handleFocus(4)}
+                // onBlur={() => handleBlur(4, 'example12345@gmail.com')}
+                // className={`placeholder ${emailError ? 'error-input' : ''}`}
                 id="email"
                 name="email"
                 value={formData.email}
@@ -390,13 +390,13 @@ export default function ContactForm() {
               {emailError && <div className="error-message">{emailError}</div>}
             </label>
             <label>
-              <p>方便聯絡時段：</p>
+              <p>方便聯絡時段（例：早上10:00-12:00）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[5]}
-                onFocus={() => handleFocus(5)}
-                onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[5]}
+                // onFocus={() => handleFocus(5)}
+                // onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
+                // className="placeholder"
                 type="text"
                 id="callTime"
                 name="callTime"
@@ -429,10 +429,10 @@ export default function ContactForm() {
               <p>想對我們說的話：</p>
               <br />
               <textarea
-                placeholder={placeholdertxt[6]}
-                onFocus={() => handleFocus(6)}
-                onBlur={() => handleBlur(6, '我想詢問關於日本留學的資訊')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[6]}
+                // onFocus={() => handleFocus(6)}
+                // onBlur={() => handleBlur(6, '我想詢問關於日本留學的資訊')}
+                // className="placeholder"
                 value={formData.tellus}
                 id="tellus"
                 name="tellus"
