@@ -294,6 +294,8 @@
   margin: 0;
 
   text-align: center;
+
+  padding-top: 1rem;
 }
 
 .goyoursIntro h2::after {
@@ -301,7 +303,7 @@
   width: 4rem;
   margin: 0 auto;
 
-  padding-top: 1rem;
+  padding-top: 2rem;
   border-bottom: 0.6rem solid var(--goyoursYellow);
 }
 
@@ -1126,6 +1128,9 @@
     width: 92%;
     line-height: 2.5rem;
     letter-spacing: normal;
+  }
+  .goyoursIntro h1 {
+    font-size: 0.75rem;
   }
 
   .goyoursserviceWrapper {

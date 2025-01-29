@@ -1143,9 +1143,7 @@
     width: 60%;
     line-height: 2rem;
   }
-  .homeintrotxt h2 {
-    font-size: 1rem;
-  }
+  .homeintrotxt h1,
   .homeintrotxt p {
     font-size: 0.875rem;
   }
