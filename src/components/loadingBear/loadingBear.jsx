@@ -9,7 +9,6 @@ export default function LoadingBear() {
   useEffect(() => {
     if (pathRef.current) {
       const length = pathRef.current.getTotalLength();
-      // console.log('路徑總長度:', length);
       pathRef.current.style.strokeDasharray = length;
       pathRef.current.style.strokeDashoffset = length;
     }

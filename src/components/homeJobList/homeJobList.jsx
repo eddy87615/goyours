@@ -34,7 +34,7 @@ export default function HomeJobList() {
         const shuffledJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 6);
         setRecommenedJobs(shuffledJobs);
       } catch (error) {
-        console.error('Error fetching recommened jobs:', error);
+        return;
       }
     }
     fetchRecommenedJobs();
@@ -62,8 +62,6 @@ export default function HomeJobList() {
         </div>
         <div className="workingholidayDiv">
           {recommenedJobs.map((job, index) => {
-            console.log('Job object:', job);
-            console.log('Slug value:', job.slug);
             return (
               <AnimationSection key={index} className="jobListPre">
                 <div className="jobListimg">

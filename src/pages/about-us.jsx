@@ -140,9 +140,6 @@ export default function About() {
   return (
     <>
       <div className="aboutTop">
-        <h1 style={{ width: 0, height: 0, color: 'transparent' }}>
-          Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！
-        </h1>
         <img
           src="/LOGO-09.png"
           alt="GoYours LOGO with handwriting words, 手寫字高優國際公司商標"
@@ -177,9 +174,8 @@ export default function About() {
           </span>
           <span className="yellow">About Us</span>關於我們
         </h2>
+        <h1>打工度假、留學好夥伴 相信GoYours</h1>
         <p>
-          打工度假、留學好夥伴 相信GoYours
-          <br />
           你是否也曾在某一年， 或某個時刻觸動了想出去看看的念頭？
           <br />
           出國留學或打工，是每一個年輕人都能實現的夢想

@@ -248,7 +248,6 @@ export default function PostDetail() {
       const cachedPost = getCache(cacheKey);
 
       if (cachedPost) {
-        console.log('Using caches data');
         setPost(cachedPost);
         setLoading(false);
         return;
@@ -277,7 +276,6 @@ export default function PostDetail() {
       );
 
       if (post) {
-        console.log('Fetched post ID:', post._id);
         await updateViews(post._id, post.views || 0);
         const updatedPost = { ...post, views: (post.views || 0) + 1 };
 
@@ -296,9 +294,7 @@ export default function PostDetail() {
       .patch(postId)
       .set({ views: currentViews + 1 })
       .commit()
-      .catch((err) => {
-        console.error('更新 views 失敗', err);
-      });
+      .catch((err) => {});
   }
 
   if (loading) {

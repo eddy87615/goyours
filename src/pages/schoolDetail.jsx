@@ -270,10 +270,7 @@ export default function SchoolDetail() {
 
       const cachedSchool = getCache(cacheKey);
 
-      console.log('useEffect triggered with slug:', slug);
-
       if (cachedSchool) {
-        console.log('cache hit');
         setSchool(cachedSchool);
         setLoading(false);
         return;

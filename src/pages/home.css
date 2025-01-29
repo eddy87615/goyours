@@ -71,6 +71,15 @@
 
   position: relative;
 }
+.homeintrotxt p {
+  margin-top: 0;
+}
+
+.homeintrotxt h1 {
+  font-size: 1rem;
+
+  margin: 0;
+}
 
 .homepicdecoBear {
   position: absolute;

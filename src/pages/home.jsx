@@ -402,13 +402,8 @@ export default function Home() {
           <HomeBg />
         </div>
         <div className="homeintrotxt">
-          <h1 style={{ width: 0, height: 0, color: 'transparent' }}>
-            Go Yours首頁｜Go
-            Yours專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！
-          </h1>
+          <h1>國外打工度假、遊留學的好夥伴</h1>
           <p>
-            國外打工度假、遊留學的好夥伴
-            <br />
             世界這麼大 你不該只留在原地
             <br />
             何年何月何日何時 你會在哪裡？ <br className="sp-br" />

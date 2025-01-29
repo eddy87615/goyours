@@ -49,28 +49,11 @@ const PATH_TO_PAGE = {
 };
 function MetaManager() {
   const location = useLocation();
-  const { loading, getKeywordsByPage, getDescriptionByPage, getTitleByPage } =
+  const { getKeywordsByPage, getDescriptionByPage, getTitleByPage } =
     useGetKeyWords();
 
   // 根據當前路徑獲取頁面名稱
   const pageName = PATH_TO_PAGE[location.pathname] || '首頁';
-
-  if (loading) {
-    return (
-      <Helmet>
-        <title>Go Yours首頁｜專業留學代辦｜高優國際留學</title>
-        <meta
-          name="description"
-          content="一群熱血的年輕人，用盡一生的愛告訴大家出國打工度假/遊學的小撇步。讓Go Yours完成你的打工度假與留學的夢想！"
-        />
-        <link
-          rel="canonical"
-          href={`${window.location.origin}${location.pathname}`}
-        />
-      </Helmet>
-    );
-  }
-
   const pageKeywords = getKeywordsByPage(pageName);
   const pageDescription = getDescriptionByPage(pageName);
   const pageTitle = getTitleByPage(pageName);
@@ -84,12 +67,12 @@ function MetaManager() {
       <meta
         name="description"
         content={
-          pageDescription
-            ? pageDescription
-            : '讓Go Yours完成你的打工度假與留學的夢想'
+          pageDescription ||
+          '一群熱血的年輕人，用盡一生的愛告訴大家出國打工度假/遊學的小撇步。讓Go Yours完成你的打工度假與留學的夢想！'
         }
       />
       <link rel="canonical" href={currentURL} />
+
       <meta property="og:site_name" content="Go Yours：高優國際" />
       <meta property="og:title" content={`Go Yours：${pageTitle}`} />
       <meta

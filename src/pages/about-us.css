@@ -289,13 +289,19 @@
 
   text-align: center;
 }
+.goyoursIntro h1 {
+  font-size: 1rem;
+  margin: 0;
+
+  text-align: center;
+}
 
 .goyoursIntro h2::after {
   content: '';
   width: 4rem;
   margin: 0 auto;
 
-  padding-top: 3rem;
+  padding-top: 1rem;
   border-bottom: 0.6rem solid var(--goyoursYellow);
 }
 
