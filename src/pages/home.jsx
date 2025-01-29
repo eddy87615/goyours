@@ -385,7 +385,7 @@ export default function Home() {
         </motion.div>
         <img
           src="/LOGO-09.webp"
-          alt="GoYours LOGO, 高優國際留學公司商標"
+          alt="GoYours LOGO"
           className="kvlogo"
           rel="preload"
           width="400"
