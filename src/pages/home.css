@@ -71,6 +71,15 @@
 
   position: relative;
 }
+.homeintrotxt p {
+  margin-top: 0;
+}
+
+.homeintrotxt h1 {
+  font-size: 1rem;
+
+  margin: 0;
+}
 
 .homepicdecoBear {
   position: absolute;
@@ -1134,9 +1143,7 @@
     width: 60%;
     line-height: 2rem;
   }
-  .homeintrotxt h2 {
-    font-size: 1rem;
-  }
+  .homeintrotxt h1,
   .homeintrotxt p {
     font-size: 0.875rem;
   }

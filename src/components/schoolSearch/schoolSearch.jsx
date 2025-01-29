@@ -443,7 +443,7 @@ export default function SchoolSearch({ onSearchFilters, initialFilters }) {
           }
         `);
       } catch (error) {
-        console.error('Failed to fetch schools:', error);
+        return;
       }
     }
 
