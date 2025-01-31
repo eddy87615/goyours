@@ -116,6 +116,14 @@ function AppContent() {
     return () => clearTimeout(timer); // 清理計時器
   }, [location.pathname]);
 
+  useEffect(() => {
+    console.log(
+      `%c不要亂看啦！！！
+見ちゃダメだろう！？`,
+      'color: red; font-size: 24px; font-weight: bold;'
+    );
+  }, []);
+
   return (
     <>
       <ScrollToTop />

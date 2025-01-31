@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { client } from '../cms/sanityClient';
 
 import PostArea from '../components/postArea/postArea';
@@ -10,6 +10,7 @@ import './goyours-post.css';
 
 export default function Post() {
   const { searchQuery, setSearchQuery, handleSearch } = useSearchHandler(); // 從 Hook 中解構 setSearchQuery
+  const navigate = useNavigate(); // 用於導航
 
   const [categories, setCategories] = useState([
     { label: '所有文章', value: null },
@@ -33,6 +34,15 @@ export default function Post() {
       setSelectedCategory(category); // 設置為選中的分類
       setSearchQuery(''); // 清空搜索關鍵字
     }
+
+    // 使用 replace 更新路由狀態
+    navigate('/goyours-post', {
+      state: {
+        selectedCategory: category,
+        searchQuery: '', // 確保清除搜尋
+      },
+      replace: true,
+    });
 
     setCurrentPage(1);
   };
