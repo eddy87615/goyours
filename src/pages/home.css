@@ -736,20 +736,27 @@
   display: none;
 }
 
-@media screen and (min-width: 1440px) {
-  .homeintroImgWrapper0 {
-    left: 0;
-  }
-}
-
 @media screen and (min-width: 1201px) {
   .homeintroImgWrapper0 {
     width: 27rem;
     height: 27rem;
+
+    left: -8%;
   }
   .homeintroImgWrapper0::after {
     top: -10%;
     width: 6rem;
+  }
+  .homeintroImgWrapper2 {
+    right: -4%;
+  }
+}
+@media screen and (min-width: 1441px) {
+  .homeintroImgWrapper0 {
+    left: 0;
+  }
+  .homeintroImgWrapper2 {
+    right: 0;
   }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
