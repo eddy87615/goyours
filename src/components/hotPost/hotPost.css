@@ -134,7 +134,7 @@
 
 @media screen and (max-width: 480px) {
   .swiper-slide {
-    width: 80%;
+    width: 60%;
   }
   .homeperhotpost {
     padding: 1rem;

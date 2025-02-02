@@ -29,6 +29,7 @@
 
   width: 450px;
   height: auto;
+  max-height: 250px;
 
   border-radius: 1rem;
 }
