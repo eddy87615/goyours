@@ -52,7 +52,6 @@
   content: '#';
 }
 
-/* 移除第一個li的before */
 .postCategoryList:nth-child(2)::before {
   content: none;
 }
