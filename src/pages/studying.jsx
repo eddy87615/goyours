@@ -10,13 +10,12 @@ import useWindowSize from '../hook/useWindowSize';
 import './studying.css';
 
 export default function Studying() {
-  const [schools, setSchools] = useState([]); // 當前頁學校數據
-  const [totalSchools, setTotalSchools] = useState(0); // 符合條件的總學校數
-  const [loading, setLoading] = useState(true); // 加載狀態
-  const [isSearchTriggered, setIsSearchTriggered] = useState(false); // 是否觸發搜尋
+  const [schools, setSchools] = useState([]);
+  const [totalSchools, setTotalSchools] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [isSearchTriggered, setIsSearchTriggered] = useState(false);
 
   const windowSize = useWindowSize();
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -27,38 +26,72 @@ export default function Studying() {
     purpose: [],
     others: {},
     selectedTags: [],
-  }); // 搜尋條件
-  const [currentPage, setCurrentPage] = useState(1); // 當前頁碼
-  const schoolsPerPage = windowSize <= 500 ? 12 : 24; // 每頁顯示學校數
+  });
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const schoolsPerPage = windowSize <= 500 ? 12 : 24;
+
+  // 獲取當前頁的學校數據
+  const getPaginatedSchools = () => {
+    const startIndex = (currentPage - 1) * schoolsPerPage;
+    const endIndex = startIndex + schoolsPerPage;
+    return schools.slice(startIndex, endIndex);
+  };
 
   const { selectedTags } = filters;
-  // 特殊篩選標籤
   const SPECIAL_FILTERS = ['我們的推薦', '高人氣學校'];
-  // 特殊標籤篩選條件
-  let specialTagFilter = '';
-  const specialTags = selectedTags.filter((tag) =>
-    SPECIAL_FILTERS.includes(tag)
-  );
-  if (specialTags.length > 0) {
-    // 如果選擇了特殊標籤，創建一個 OR 條件
-    const tagConditions = specialTags
-      .map((tag) => `"${tag}" in tags`)
-      .join(' || ');
-    specialTagFilter = `&& (${tagConditions})`;
-  } else {
-    // 處理非特殊標籤
-    const normalTags = selectedTags.filter(
-      (tag) => !SPECIAL_FILTERS.includes(tag)
+
+  // 取得特殊標籤的查詢條件
+  const getSpecialTagFilter = () => {
+    const specialTags = selectedTags.filter((tag) =>
+      SPECIAL_FILTERS.includes(tag)
     );
-    if (normalTags.length > 0) {
-      specialTagFilter = `&& "${normalTags[0]}" in tags`;
+    if (specialTags.length > 0) {
+      const tagConditions = specialTags
+        .map((tag) => `"${tag}" in tags`)
+        .join(' || ');
+      return `&& (${tagConditions})`;
     }
-  }
+
+    const normalTags = selectedTags.filter(
+      (tag) =>
+        !SPECIAL_FILTERS.includes(tag) &&
+        tag !== '學費由低到高' &&
+        tag !== '學校更新時間'
+    );
+
+    return normalTags.length > 0 ? `&& "${normalTags[0]}" in tags` : '';
+  };
+
+  // 排序學校數據
+  const sortSchools = (schools) => {
+    let sortedSchools = [...schools];
+
+    if (selectedTags.includes('學費由低到高')) {
+      sortedSchools.sort((a, b) => {
+        const parseTuition = (money) => {
+          if (!money) return Infinity;
+          const [min] = money
+            .split('~')
+            .map((num) => parseInt(num.replace(/[^0-9]/g, '')));
+          return isNaN(min) ? Infinity : min;
+        };
+        return parseTuition(a.money) - parseTuition(b.money);
+      });
+    } else if (selectedTags.includes('學校更新時間')) {
+      sortedSchools.sort((a, b) => {
+        const dateA = new Date(a.publishedAt || 0);
+        const dateB = new Date(b.publishedAt || 0);
+        return dateB - dateA;
+      });
+    }
+
+    return sortedSchools;
+  };
 
   // 初始化篩選條件
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-
     setFilters({
       keyword: params.get('keyword') || '',
       regions: params.get('regions') ? JSON.parse(params.get('regions')) : {},
@@ -72,67 +105,59 @@ export default function Studying() {
     setCurrentPage(Number(params.get('page')) || 1);
   }, [location.search]);
 
+  // 獲取和處理學校數據
   useEffect(() => {
     const fetchSchools = async () => {
       setLoading(true);
-      // const start = (currentPage - 1) * schoolsPerPage;
-      // const end = start + schoolsPerPage;
+      try {
+        const { keyword, regions, enrollTime, purpose } = filters;
 
-      const { keyword, regions, enrollTime, purpose, selectedTags } = filters;
+        const regionFilter =
+          Object.values(regions).flat().length > 0
+            ? `&& city in ${JSON.stringify(Object.values(regions).flat())}`
+            : '';
+        const enrollTimeFilter =
+          enrollTime.length > 0
+            ? `&& enrollTime match ${JSON.stringify(enrollTime)}`
+            : '';
+        const purposeFilter =
+          purpose.length > 0
+            ? `&& purpose match ${JSON.stringify(purpose)}`
+            : '';
+        const keywordFilter = keyword ? `&& name match "${keyword}"` : '';
+        const specialTagFilter = getSpecialTagFilter();
 
-      const regionFilter =
-        Object.values(regions).flat().length > 0
-          ? `&& city in ${JSON.stringify(Object.values(regions).flat())}`
-          : '';
-      const enrollTimeFilter =
-        enrollTime.length > 0
-          ? `&& enrollTime match ${JSON.stringify(enrollTime)}`
-          : '';
-      const purposeFilter =
-        purpose.length > 0 ? `&& purpose match ${JSON.stringify(purpose)}` : '';
-      const keywordFilter = keyword ? `&& name match "${keyword}"` : '';
+        const query = `
+          *[_type == "school" && !(_id in path("drafts.**")) 
+            ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
+          ] {
+            mainImage,
+            name,
+            slug,
+            city,
+            enrollTime,
+            purpose,
+            others,
+            money,
+            publishedAt,
+            tags
+          }
+        `;
 
-      const query = `
-        *[_type == "school" && !(_id in path("drafts.**")) 
-          ${regionFilter} ${enrollTimeFilter} ${purposeFilter} ${keywordFilter} ${specialTagFilter}
-        ] {
-          mainImage,
-          name,
-          slug,
-          city,
-          enrollTime,
-          purpose,
-          others,
-          money,
-          publishedAt,
-          tags
-        }
-      `;
+        const fetchedSchools = await client.fetch(query);
+        const sortedSchools = sortSchools(fetchedSchools);
 
-      const fetchedSchools = await client.fetch(query);
-
-      // 處理排序
-      if (selectedTags.includes('學費由低到高')) {
-        fetchedSchools.sort((a, b) => {
-          const parseTuition = (money) => {
-            if (!money) return 0; // 處理空值
-            const [min] = money.split('~').map(Number);
-            return min;
-          };
-          return parseTuition(a.money) - parseTuition(b.money);
-        });
-      } else if (selectedTags.includes('學校更新時間')) {
-        fetchedSchools.sort(
-          (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
-        );
+        setSchools(sortedSchools);
+        setTotalSchools(sortedSchools.length);
+      } catch (error) {
+        console.error('Error fetching schools:', error);
+      } finally {
+        setLoading(false);
       }
-
-      setSchools(fetchedSchools);
-      setLoading(false);
     };
 
     fetchSchools();
-  }, [currentPage, filters]);
+  }, [filters]); // 移除 currentPage 依賴，因為它只影響顯示，不影響數據獲取
 
   const handleSearchFilters = (newFilters) => {
     const params = new URLSearchParams();
@@ -150,16 +175,16 @@ export default function Studying() {
       params.set('tags', JSON.stringify(newFilters.selectedTags));
     params.set('page', '1');
 
-    navigate(`?${params.toString()}`); // 更新 URL
-    setFilters(newFilters); // 更新篩選條件
-    setCurrentPage(1); // 重置頁碼
+    navigate(`?${params.toString()}`);
+    setFilters(newFilters);
+    setCurrentPage(1);
     setIsSearchTriggered(true);
   };
 
   const handlePageChange = (page) => {
     const params = new URLSearchParams(location.search);
     params.set('page', page);
-    // navigate(`?${params.toString()}`);
+    navigate(`?${params.toString()}`);
     setCurrentPage(page);
   };
 
@@ -171,6 +196,9 @@ export default function Studying() {
     );
   }
 
+  // 獲取當前頁的學校數據
+  const paginatedSchools = getPaginatedSchools();
+
   return (
     <>
       <div className="schoolPage">
@@ -179,8 +207,8 @@ export default function Studying() {
           initialFilters={filters}
         />
         <School
-          schools={schools}
-          totalSchools={totalSchools}
+          schools={paginatedSchools}
+          totalSchools={schools.length}
           schoolsPerPage={schoolsPerPage}
           currentPage={currentPage}
           onPageChange={handlePageChange}
