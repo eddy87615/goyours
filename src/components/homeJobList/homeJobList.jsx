@@ -40,13 +40,6 @@ export default function HomeJobList() {
     fetchRecommenedJobs();
   }, []);
 
-  // const navigate = useNavigate();
-  // const handleInquiry = (jobName) => {
-  //   navigate('/contact-us', {
-  //     state: { initialMessage: `我對${jobName}職缺有興趣，想要諮詢` },
-  //   });
-  // };
-
   return (
     <>
       <AnimationSection className="homeJobWrapper">
