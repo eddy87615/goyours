@@ -220,17 +220,18 @@ const Conditions = ({ school }) => {
           </li>
           <li>
             <span className="conditionTitle">修業時間</span>
-
-            {school.others?.period?.length > 0 ? (
-              school.others.period.map((period, index) => (
-                <span key={index}>
-                  {period}
-                  {index < school.others.period.length - 1 && '／'}
-                </span>
-              ))
-            ) : (
-              <span className="noInfo-warn">修業時間資訊未提供ಥ∀ಥ</span>
-            )}
+            <div className="condition-wrapper">
+              {school.others?.period?.length > 0 ? (
+                school.others.period.map((period, index) => (
+                  <span key={index}>
+                    {period}
+                    {index < school.others.period.length - 1 && '／'}
+                  </span>
+                ))
+              ) : (
+                <span className="noInfo-warn">修業時間資訊未提供ಥ∀ಥ</span>
+              )}
+            </div>
           </li>
           <li>
             <span className="conditionTitle">支援服務</span>
