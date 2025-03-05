@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { client } from '../cms/sanityClient';
 import { useInView } from 'react-intersection-observer';
+import { Helmet } from 'react-helmet-async';
 
 import ContactUs from '../components/contactUs/contactUs';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
@@ -137,8 +138,57 @@ export default function About() {
     threshold: 1, // 元素出現在視窗 10% 時觸發
   });
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <>
+      <Helmet>
+        <title>
+          Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！
+        </title>
+        <meta
+          name="keywords"
+          content="高優國際留學、公司介紹、服務項目、專業團隊、聯絡資訊"
+        />
+        <meta
+          name="description"
+          content="關於高優國際留學公司背景，高優國際服務範圍的介紹。高優國際專業顧問團隊有許多的成功案例，幫所有想要去日本發展的朋友們實現夢想。"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！"
+        />
+        <meta
+          property="og:description"
+          content="關於高優國際留學公司背景，高優國際服務範圍的介紹。高優國際專業顧問團隊有許多的成功案例，幫所有想要去日本發展的朋友們實現夢想。"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！"
+        />
+        <meta
+          name="twitter:description"
+          content="關於高優國際留學公司背景，高優國際服務範圍的介紹。高優國際專業顧問團隊有許多的成功案例，幫所有想要去日本發展的朋友們實現夢想。"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
       <div className="aboutTop">
         <img
           src="/LOGO-09.png"

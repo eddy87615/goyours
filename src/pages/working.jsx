@@ -1,5 +1,6 @@
 import { client } from '../cms/sanityClient';
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 import './working.css';
 import JobList from '../components/jobList/jobList';
@@ -207,22 +208,74 @@ export default function Working() {
     );
   }
 
-  return (
-    <div className="workingholiday">
-      <div className="jobListKv">
-        <SearchBar onSearch={handleSearch} />
-      </div>
-      <JobList
-        jobList={currentJobs}
-        isSearchTriggered={isSearchTriggered}
-        totalResults={filteredJobList.length}
-      />
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
 
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
-    </div>
+  return (
+    <>
+      <Helmet>
+        <title>
+          Go
+          Yours：日本打工度假職缺列表｜日本打工度假簽證申請步驟｜高優幫你實現日本打工度假的夢想！
+        </title>
+        <meta
+          name="keywords"
+          content="日本打工度假、打工度假簽證、工作機會、生活指南、申請流程"
+        />
+        <meta
+          name="description"
+          content="高優所有的日本打工度假工作推薦，讓我們幫你找到最適合你的工作，一步一步帶著你到去你的日本打工度假！"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：日本打工度假工作推薦｜日本打工度假簽證申請步驟｜高優幫你實現日本打工度假的夢想！"
+        />
+        <meta
+          property="og:description"
+          content="高優所有的日本打工度假工作推薦，讓我們幫你找到最適合你的工作，一步一步帶著你到去你的日本打工度假！"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：日本打工度假工作推薦｜日本打工度假簽證申請步驟｜高優幫你實現日本打工度假的夢想！"
+        />
+        <meta
+          name="twitter:description"
+          content="高優所有的日本打工度假工作推薦，讓我們幫你找到最適合你的工作，一步一步帶著你到去你的日本打工度假！"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
+      <div className="workingholiday">
+        <div className="jobListKv">
+          <SearchBar onSearch={handleSearch} />
+        </div>
+        <JobList
+          jobList={currentJobs}
+          isSearchTriggered={isSearchTriggered}
+          totalResults={filteredJobList.length}
+        />
+
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
+    </>
   );
 }

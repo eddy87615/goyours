@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { Marquee } from '../components/ui/marquee';
+import { Helmet } from 'react-helmet-async';
 
 import './studying-in-jp.css';
 import './guide-page-animation.css';
@@ -46,8 +46,58 @@ export default function StudyingInJp() {
 
   const currentYear = new Date().getFullYear();
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <>
+      <Helmet>
+        <title>
+          Go
+          Yours：日本語言學校推薦｜日本大學申請流程｜日本留學獎學金資訊｜日本留學生活費用預估
+        </title>
+        <meta
+          name="keywords"
+          content="日本留學、留學申請、語言學校、大學申請、獎學金"
+        />
+        <meta
+          name="description"
+          content="讓高優告訴你關於台灣學生日本留學申請條件，帶你一關一關完成漫長的申請，還有很多的日本語言學校推薦給你，讓你選擇學校不迷茫！"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：日本語言學校推薦｜日本大學申請流程｜日本留學獎學金資訊｜日本留學生活費用預估"
+        />
+        <meta
+          property="og:description"
+          content="讓高優告訴你關於台灣學生日本留學申請條件，帶你一關一關完成漫長的申請，還有很多的日本語言學校推薦給你，讓你選擇學校不迷茫！"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：日本語言學校推薦｜日本大學申請流程｜日本留學獎學金資訊｜日本留學生活費用預估"
+        />
+        <meta
+          name="twitter:description"
+          content="讓高優告訴你關於台灣學生日本留學申請條件，帶你一關一關完成漫長的申請，還有很多的日本語言學校推薦給你，讓你選擇學校不迷茫！"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
       <div className="studying-in-jp-section">
         <div className="guidePage-studying-top">
           {windowSize < 1024 ? (

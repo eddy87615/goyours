@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel } from 'swiper/modules';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import { FaLocationDot } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
@@ -334,8 +335,57 @@ export default function Home() {
     },
   ];
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <>
+      <Helmet>
+        <title>
+          Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！
+        </title>
+        <meta
+          name="keywords"
+          content="goyours、高優國際、日本留學、日本打工度假、留學代辦、海外工作、語言學校"
+        />
+        <meta
+          name="description"
+          content="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！"
+        />
+        <meta
+          property="og:description"
+          content="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！"
+        />
+        <meta
+          name="twitter:description"
+          content="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
       <motion.div
         className="kv"
         style={

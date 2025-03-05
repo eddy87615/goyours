@@ -351,11 +351,51 @@ export default function SchoolDetail() {
     setIsModalOpen(false); // 關閉模態框
   };
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <HelmetProvider className="schoolDetailwrapper">
       <Helmet>
         <title>Go Yours語言學校介紹：{school.name}</title>
         <meta name="description" content={`Go Yours介紹給你：${school.name}`} />
+        <meta
+          name="keywords"
+          content="日本留學、留學申請、語言學校、大學申請、獎學金"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content={`Go Yours語言學校介紹：${school.name}`}
+        />
+        <meta
+          property="og:description"
+          content={`Go Yours介紹給你：${school.name}`}
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content={`Go Yours語言學校介紹：${school.name}`}
+        />
+        <meta
+          name="twitter:description"
+          content={`Go Yours介紹給你：${school.name}`}
+        />
+        <meta name="twitter:image" content={imageURL} />
       </Helmet>
       <div className="schoolDetailPage">
         <div className="picSlider">
