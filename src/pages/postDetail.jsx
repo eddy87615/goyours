@@ -318,11 +318,51 @@ export default function PostDetail() {
     );
   }
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <HelmetProvider>
       <Helmet>
         <title>Go Yours文章分享：{post.title}</title>
         <meta name="description" content={`${post.description}`} />
+        <meta
+          name="keywords"
+          content="日本留學資訊、日本打工度假經驗、留學生活、日本文化、最新消息"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：高優跟你分享關於日本的種種｜日本留學申請流程詳解｜日本打工度假心得分享｜留學生在日生活指南"
+        />
+        <meta
+          property="og:description"
+          content="所有高優要告訴你的，關於日本留學申請流程詳解、日本打工度假心得分享、留學生在日生活指南等等，全都毫無保留的分享給你！"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：高優跟你分享關於日本的種種｜日本留學申請流程詳解｜日本打工度假心得分享｜留學生在日生活指南"
+        />
+        <meta
+          name="twitter:description"
+          content="所有高優要告訴你的，關於日本留學申請流程詳解、日本打工度假心得分享、留學生在日生活指南等等，全都毫無保留的分享給你！"
+        />
+        <meta name="twitter:image" content={imageURL} />
       </Helmet>
       <div className="postDetailSection">
         <PostCategary
