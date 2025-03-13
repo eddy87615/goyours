@@ -333,14 +333,8 @@ export default function PostDetail() {
         <link rel="canonical" href={currentURL} />
 
         <meta property="og:site_name" content="Go Yours：高優國際" />
-        <meta
-          property="og:title"
-          content="Go Yours：高優跟你分享關於日本的種種｜日本留學申請流程詳解｜日本打工度假心得分享｜留學生在日生活指南"
-        />
-        <meta
-          property="og:description"
-          content="所有高優要告訴你的，關於日本留學申請流程詳解、日本打工度假心得分享、留學生在日生活指南等等，全都毫無保留的分享給你！"
-        />
+        <meta property="og:title" content={`Go Yours文章分享：${post.title}`} />
+        <meta property="og:description" content={`${post.description}`} />
         <meta property="og:url" content={currentURL} />
         <meta property="og:image" content={imageURL} />
         <meta property="og:type" content="website" />
@@ -356,12 +350,9 @@ export default function PostDetail() {
         <meta property="og:image:alt" content="Go Yours Logo" />
         <meta
           name="twitter:title"
-          content="Go Yours：高優跟你分享關於日本的種種｜日本留學申請流程詳解｜日本打工度假心得分享｜留學生在日生活指南"
+          content={`Go Yours文章分享：${post.title}`}
         />
-        <meta
-          name="twitter:description"
-          content="所有高優要告訴你的，關於日本留學申請流程詳解、日本打工度假心得分享、留學生在日生活指南等等，全都毫無保留的分享給你！"
-        />
+        <meta name="twitter:description" content={`${post.description}`} />
         <meta name="twitter:image" content={imageURL} />
       </Helmet>
       <div className="postDetailSection">
