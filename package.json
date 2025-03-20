@@ -61,8 +61,8 @@
     "vite-plugin-sitemap": "^0.7.1"
   },
   "reactSnap": {
-    "source": "dist", 
-    "destination": "dist", 
+    "source": "dist",
+    "destination": "dist",
     "include": [
       "/",
       "/about-us",
@@ -77,7 +77,10 @@
       "/privacy-policy",
       "/working-holiday-application"
     ],
-    "inlineCss": true, 
-    "puppeteerArgs": ["--no-sandbox"] 
+    "inlineCss": true,
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   }
 }
