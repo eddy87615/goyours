@@ -70,7 +70,7 @@ export default function Footer() {
               pointerEvents: windowSize <= 500 ? 'auto' : 'none',
             }}
           >
-            02 7727 3780
+            02 7701 5618
           </a>
         </li>
         <li
@@ -81,7 +81,7 @@ export default function Footer() {
           style={{ cursor: 'pointer' }}
         >
           <FaLocationDot className="businessicon" />
-          台北市中山區南京東路一段52號2樓
+          103617 台北市大同區承德路二段83-2號
         </li>
       </ul>
       <ul className="footerNews">
