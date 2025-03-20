@@ -336,7 +336,7 @@ export default function PostDetail() {
         <meta property="og:title" content={`Go Yours文章分享：${post.title}`} />
         <meta property="og:description" content={`${post.description}`} />
         <meta property="og:url" content={currentURL} />
-        <meta property="og:image" content={imageURL} />
+        <meta property="og:image" content={urlFor(post.mainImage).url()} />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -353,7 +353,7 @@ export default function PostDetail() {
           content={`Go Yours文章分享：${post.title}`}
         />
         <meta name="twitter:description" content={`${post.description}`} />
-        <meta name="twitter:image" content={imageURL} />
+        <meta name="twitter:image" content={urlFor(post.mainImage).url()} />
       </Helmet>
       <div className="postDetailSection">
         <PostCategary
