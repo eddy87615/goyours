@@ -342,7 +342,7 @@ export default function PostDetail() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image:secure_url"
-          content="https://www.goyours.tw/open_graph.png"
+          content={urlFor(post.mainImage).url()}
         />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
