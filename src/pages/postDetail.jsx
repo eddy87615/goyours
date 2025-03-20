@@ -342,7 +342,7 @@ export default function PostDetail() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image:secure_url"
-          content={urlFor(post.mainImage).url()}
+          content="https://www.goyours.tw/open_graph.png"
         />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
@@ -353,7 +353,10 @@ export default function PostDetail() {
           content={`Go Yours文章分享：${post.title}`}
         />
         <meta name="twitter:description" content={`${post.description}`} />
-        <meta name="twitter:image" content={urlFor(post.mainImage).url()} />
+        <meta
+          name="twitter:image"
+          content="https://www.goyours.tw/open_graph.png"
+        />
       </Helmet>
       <div className="postDetailSection">
         <PostCategary
