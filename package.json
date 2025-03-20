@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "vite --host",
-    "generate-sitemap": "node generate-sitemap.js",
-    "postbuild": "react-snap"
+    "generate-sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
