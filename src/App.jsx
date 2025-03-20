@@ -47,60 +47,6 @@ const PATH_TO_PAGE = {
   '/document-download': '下載專區',
   '/contact-us': '聯絡我們',
 };
-// function MetaManager() {
-//   const location = useLocation();
-//   const { getKeywordsByPage, getDescriptionByPage, getTitleByPage } =
-//     useGetKeyWords();
-
-//   // 根據當前路徑獲取頁面名稱
-//   const pageName = PATH_TO_PAGE[location.pathname] || '首頁';
-//   const pageKeywords = getKeywordsByPage(pageName);
-//   const pageDescription = getDescriptionByPage(pageName);
-//   const pageTitle = getTitleByPage(pageName);
-//   const currentURL = `${window.location.origin}${location.pathname}`;
-//   const imageURL = `${window.location.origin}/LOGO-02-text.png`;
-
-//   return (
-//     <Helmet>
-//       <title>{`Go Yours：${pageTitle}`}</title>
-//       <meta name="keywords" content={pageKeywords} />
-//       <meta
-//         name="description"
-//         content={
-//           pageDescription ||
-//           '一群熱血的年輕人，用盡一生的愛告訴大家出國打工度假/遊學的小撇步。讓Go Yours完成你的打工度假與留學的夢想！'
-//         }
-//       />
-//       <link rel="canonical" href={currentURL} />
-
-//       <meta property="og:site_name" content="Go Yours：高優國際" />
-//       <meta property="og:title" content={`Go Yours：${pageTitle}`} />
-//       <meta
-//         property="og:description"
-//         content={`Go Yours：${pageDescription}`}
-//       />
-//       <meta property="og:url" content={currentURL} />
-//       <meta property="og:image" content={imageURL} />
-//       <meta property="og:type" content="website" />
-
-//       <meta name="twitter:card" content="summary_large_image" />
-//       <meta
-//         property="og:image:secure_url"
-//         content="https://www.goyours.tw/open_graph.png"
-//       />
-//       <meta property="og:image:type" content="image/png" />
-//       <meta property="og:image:width" content="1200" />
-//       <meta property="og:image:height" content="630" />
-//       <meta property="og:image:alt" content="Go Yours Logo" />
-//       <meta name="twitter:title" content={`Go Yours：${pageTitle}`} />
-//       <meta
-//         name="twitter:description"
-//         content={`Go Yours：${pageDescription}`}
-//       />
-//       <meta name="twitter:image" content={imageURL} />
-//     </Helmet>
-//   );
-// }
 
 function AppContent() {
   const location = useLocation();
@@ -127,10 +73,8 @@ function AppContent() {
   return (
     <>
       <ScrollToTop />
-      {/* <MetaManager /> */}
       <Navigation />
       <InformBear />
-      {/* <Toaster /> */}
 
       {loadingComplete ? (
         <Suspense
