@@ -198,9 +198,9 @@
   display: flex;
   flex-direction: column;
 
-  height: 24rem;
+  height: 100%;
 
-  transition-duration: 0.5s;
+  /* transition-duration: 0.5s; */
   font-weight: bold;
 }
 
@@ -216,7 +216,7 @@
 
   overflow: hidden;
 
-  transition-duration: 0.5s;
+  /* transition-duration: 0.5s; */
 }
 .listdetail ul > li {
   list-style-type: disc;
@@ -238,7 +238,7 @@
 
   border-radius: 0.8rem;
 
-  transition-delay: 0.2s;
+  /* transition-delay: 0.2s; */
   opacity: 1;
 
   text-decoration: none;
@@ -260,13 +260,13 @@
 
   height: 0;
 
-  transition-duration: 0.5s;
+  /* transition-duration: 0.5s; */
 }
 
 .btnClose {
   opacity: 0 !important;
 
-  transition-duration: 0.2s;
+  /* transition-duration: 0.2s; */
 
   pointer-events: none;
 }
@@ -379,6 +379,8 @@
     padding-top: 2rem;
     font-size: 0.85rem;
 
+    gap: 1%;
+
     font-weight: normal;
 
     height: fit-content;
@@ -400,6 +402,7 @@
     color: var(--goyoursBlack);
     border: 1px solid var(--goyoursBlack);
   }
+
   .job-tags {
     top: 24%;
   }
