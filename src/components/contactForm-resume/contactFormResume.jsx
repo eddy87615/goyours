@@ -148,6 +148,7 @@ export default function ContactFormResume() {
       jobname: jobTitle,
       name: formData.name,
       age: formData.age,
+      major: formData.major,
       phone: formData.phone,
       lineId: formData.lineId,
       email: formData.email,
@@ -366,6 +367,23 @@ export default function ContactFormResume() {
                 onChange={handleChange}
                 required
                 inputMode="numeric"
+              />
+            </label>
+
+            <label htmlFor="major" className="major">
+              <p>科系（例：日文系）：</p>
+              <br />
+              <input
+                // // placeholder={placeholdertxt[1]}
+                // onFocus={() => handleFocus(1)}
+                // onBlur={() => handleBlur(1, '25')}
+                // className="placeholder"
+                type="text"
+                id="major"
+                name="major"
+                value={formData.major}
+                onChange={handleChange}
+                // inputMode="numeric"
               />
             </label>
 
