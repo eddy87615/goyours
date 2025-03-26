@@ -207,7 +207,7 @@
 .listdetaillist {
   display: flex;
   flex-direction: column;
-  gap: 8%;
+  gap: 1rem;
 
   padding-left: 34.3%;
   padding-top: 2rem;
@@ -234,7 +234,7 @@
   background-color: var(--goyoursBlack);
   padding: 1rem 2rem;
 
-  margin: 1% 0 0 33%;
+  margin: 2% 0 0 33%;
 
   border-radius: 0.8rem;
 
