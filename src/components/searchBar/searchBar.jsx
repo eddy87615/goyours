@@ -34,11 +34,15 @@ export default function SearchBar({ onSearch }) {
     { title: '沖繩', value: '沖繩' },
   ];
   const jobOption = [
-    { title: '工作類型', value: '' },
+    { title: '工廠', value: '工廠' },
+    { title: '飯店', value: '飯店' },
+    { title: '餐飲', value: '餐飲' },
+    { title: '機場地勤', value: '機場地勤' },
+    { title: '機場銷售', value: '機場銷售' },
+    { title: 'IT', value: 'IT' },
     { title: '服務業', value: '服務業' },
-    { title: '製造業', value: '製造業' },
-    { title: '農業', value: '農業' },
-    { title: '觀光業', value: '觀光業' },
+    { title: '事務職', value: '事務職' },
+    { title: '其他', value: '其他' },
   ];
   const salaryOption = [
     { title: '工作時薪', value: '' },
