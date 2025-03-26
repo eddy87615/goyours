@@ -34,6 +34,7 @@ export default function SearchBar({ onSearch }) {
     { title: '沖繩', value: '沖繩' },
   ];
   const jobOption = [
+    { title: '工作類型', value: '' },
     { title: '工廠', value: '工廠' },
     { title: '飯店', value: '飯店' },
     { title: '餐飲', value: '餐飲' },
