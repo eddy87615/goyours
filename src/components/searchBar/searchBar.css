@@ -237,12 +237,12 @@
   .sp-job-search-window {
     background-color: var(--goyoursBgColor);
 
-    padding: 2rem;
+    padding: 1.5rem 2rem;
 
     box-sizing: border-box;
 
     position: fixed;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 

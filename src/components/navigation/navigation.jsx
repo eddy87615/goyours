@@ -87,7 +87,7 @@ export default function Navigation() {
     { to: '/about-us', title: 'About', target: '_self' },
     { to: '/goyours-post', title: '文章專區', target: '_self' },
     { to: '/studying-in-jp', title: '日本留學', target: '_self' },
-    { to: '/working-holiday', title: '打工度假', target: '_self' },
+    { to: '/working-holiday', title: '日本職缺', target: '_self' },
     { to: '/Q&A-section', title: '常見Q&A', target: '_self' },
     { to: '/document-download', title: '下載專區', target: '_self' },
     { to: '/contact-us', title: '聯絡我們', target: '_blank' },
