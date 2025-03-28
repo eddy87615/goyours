@@ -55,7 +55,7 @@ export default function Working() {
     async function fetchJobList() {
       // 獲取所有職缺
       const jobs = await client.fetch(
-        `*[_type == "jobList" && !(_id in path("drafts.**"))] | order(name asc)`
+        `*[_type == "jobList" && !(_id in path("drafts.**"))] | order(publishedAt desc)`
       );
       setTotalItems(jobs.length); // 設置總項目數
       setJobList(jobs); // 設置完整職缺數據
