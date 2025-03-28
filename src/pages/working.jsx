@@ -57,9 +57,9 @@ export default function Working() {
       const jobs = await client.fetch(
         `*[_type == "jobList" && !(_id in path("drafts.**"))] | order(publishedAt desc)`
       );
-      setTotalItems(jobs.length); // 設置總項目數
-      setJobList(jobs); // 設置完整職缺數據
-      setFilteredJobList(jobs); // 設置過濾後的職缺數據
+      setTotalItems(jobs.length);
+      setJobList(jobs);
+      setFilteredJobList(jobs);
       setLoading(false);
     }
     fetchJobList();
