@@ -39,6 +39,7 @@ const customComponents = {
             modules={[Navigation]}
             loop
             className="mySwiper"
+            spaceBetween={50}
           >
             {value.images.map((image, index) => (
               <SwiperSlide key={index}>
@@ -136,6 +137,15 @@ const customComponents = {
       return <span>{children}</span>;
     },
   },
+  block: {
+    normal: ({ children }) => <p>{children}</p>, // 普通文本渲染為 <p>
+    h1: ({ children }) => <p>{children}</p>, // 將 h1 渲染為 <p>
+    h2: ({ children }) => <p>{children}</p>, // 將 h2 渲染為 <p>
+    h3: ({ children }) => <p>{children}</p>, // 將 h3 渲染為 <p>
+    h4: ({ children }) => <p>{children}</p>, // 同理處理其他標題
+    h5: ({ children }) => <p>{children}</p>,
+    h6: ({ children }) => <p>{children}</p>,
+  },
   marks: {
     color: ({ children, value }) => {
       const color = value?.hex?.hex || '#FF0000';
@@ -163,8 +173,10 @@ const customComponents = {
         </span>
       );
     },
-    link: ({ children }) => <span>{children}</span>, // 不渲染內層 <a>
+    link: ({ children }) => <span>{children}</span>,
   },
+  // 默認對於未定義的類型不進行渲染
+  default: () => null,
 };
 
 export default function Hotpost() {
@@ -186,7 +198,7 @@ export default function Hotpost() {
               categories[]->{
               title,
               },
-              body,
+              body[0...3],
             }
           `);
 
@@ -197,11 +209,11 @@ export default function Hotpost() {
 
   return (
     <AnimationSection>
-      <div className="homeHotpostH1">
-        <h1 className="underLine">
+      <div className="homeHotpostH2">
+        <h2 className="underLine">
           <span className="yellow">Hot</span>熱門文章
           {/* <GoyoursBear /> */}
-        </h1>
+        </h2>
       </div>
       <div className="homebg-hot-Wave">
         <HomeBg />
@@ -210,7 +222,7 @@ export default function Hotpost() {
         {NewsPosts.length >= 3 && (
           <Swiper
             spaceBetween={30}
-            slidesPerView={windowSize < 500 ? '1.5' : 'auto'}
+            slidesPerView="auto"
             slidesPerGroup={1}
             centeredSlides={true}
             freeMode={true}
@@ -242,7 +254,7 @@ export default function Hotpost() {
                       />
                     </div>
                   )}
-                  <p className="homeHotPost-postTitle">{post.title}</p>
+                  <h3 className="homeHotPost-postTitle">{post.title}</h3>
                   <ul>
                     {post.categories && post.categories.length > 0 ? (
                       post.categories.map((category, index) => (

@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel } from 'swiper/modules';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import { FaLocationDot } from 'react-icons/fa6';
 import { LiaHandPointer } from 'react-icons/lia';
@@ -51,16 +52,16 @@ const News = () => {
   }, []);
   return (
     <>
-      <div className="homeNewsH1">
-        <h1 className="underLine">
+      <div className="homeNewsH2">
+        <h2 className="underLine">
           <span className="yellow">News</span>日本最新消息
-        </h1>
+        </h2>
       </div>
       <div className="homeNewsDiv sp-scollNews">
-        {NewsPosts.length >= 3 && windowSize > 768 ? (
+        {NewsPosts.length >= 3 && (
           <Swiper
             spaceBetween={30}
-            slidesPerView={windowSize < 500 ? '4' : 'auto'}
+            slidesPerView={windowSize < 500 ? '1.5' : 'auto'}
             slidesPerGroup={1}
             centeredSlides={true}
             freeMode={true}
@@ -108,40 +109,6 @@ const News = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        ) : (
-          <>
-            {NewsPosts.map((post, index) => (
-              <div key={index} className="homeNewsprePost ">
-                <a
-                  href={`/goyours-post/${encodeURIComponent(
-                    post.slug.current
-                  )}`}
-                >
-                  {post.mainImage && (
-                    <div className="homeNewspostImg">
-                      <img
-                        src={urlFor(post.mainImage).url()}
-                        alt={post.title}
-                      />
-                    </div>
-                  )}
-                  <p className="homeNews-postTitle">{post.title}</p>
-                  <p className="yellow homeNews-postDate">
-                    <span className="homeNewsBear">
-                      <img src="/圓形logo.png" alt="goyours logo" />
-                    </span>
-                    {new Date(post.publishedAt)
-                      .toLocaleDateString('zh-TW', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      })
-                      .replace(/\//g, '.')}
-                  </p>
-                </a>
-              </div>
-            ))}
-          </>
         )}
       </div>
     </>
@@ -180,75 +147,12 @@ const HomeschoolList = () => {
     fetchSchools();
   }, []);
 
-  // const schoolListContent = [
-  //   {
-  //     name: '東京亞細亞學友會',
-  //     location: '東京都',
-  //     src: '/東京亞細亞學友會教室.jpg',
-  //     traffic: '東武伊勢崎線蒲生駅徒歩約3分',
-  //     highlight: '獨創高水準的先進教學模式。',
-  //     href: '/studying-in-jp-school/tokyoasia',
-  //     introtxt:
-  //       '東京亞細亞學友會是日本語教育振興協會認定校，東京入管局指定百分之3優良校，駐日本中國大使館認定自費出國留學提攜校。日本為數不多只招收來自世界各地大學以上學歷留學生的一流日本語學校。',
-  //   },
-  //   {
-  //     name: '宇都宮日建工科専門学校ー日本語学科',
-  //     location: '栃木県',
-  //     src: '/日建宇都宮校舎外観.jpg',
-  //     traffic: '宇都宮站徒歩約10分鐘',
-  //     highlight: '在學期間住宿免費',
-  //     href: '/studying-in-jp-school/utsunimiyanikken',
-  //     introtxt:
-  //       '面向來日本學習日本語的留學生設立的日本語學科。日本語學科以外的日本學生也在同一校園內共同學習及互相交流，給留學生提供良好的學習日語的環境。僅是語言，同時還可以學習日本的文化習俗和禮儀，培養立足世界的能力。',
-  //   },
-  //   {
-  //     name: '雙葉外語學校',
-  //     location: '千葉県',
-  //     src: '/雙葉外語學校校舍.png',
-  //     traffic: '千葉站徒步10分鐘・京成千葉中央站徒步1分鐘',
-  //     highlight: '細緻的升學・就職指導',
-  //     href: '/studying-in-jp-school/utsunimiyanikken',
-  //     introtxt:
-  //       '雙葉外語學校的活動不僅僅限於語言教育，還為能夠真正建立日本與其他各國之間的交流的紐帶，不同國籍的人之間能得以真心地相互理解對方的文化，人與人直接交流提供寶貴的機會。',
-  //   },
-  //   {
-  //     name: '關西外語專門學校日本語學科',
-  //     location: '大阪府',
-  //     src: '/関西外語専門学校日本語學科.jpg',
-  //     traffic: '天王寺站步行10分鐘',
-  //     highlight: '校內奬學金：①理事長特別獎學金 ②優秀成績者獎學金 ③升學獎金',
-  //     href: '/studying-in-jp-school/utsunimiyanikken',
-  //     introtxt:
-  //       '關西外語專門學校是1967年所創立的商業語言專門學校。日本的外語教育普遍被認為偏重文法教育，本校以培育能擁有在世界各地運用自如之高水準外語能力的人才為目標。',
-  //   },
-  //   {
-  //     name: 'ARC日本語學校-京都校',
-  //     location: '京都市',
-  //     src: '/ARC日本語學校-京都校.webp',
-  //     traffic: '地下鐵丸太町站直走6分鐘',
-  //     highlight: '校外學習，與日語互動',
-  //     href: '/studying-in-jp-school/utsunimiyanikken',
-  //     introtxt:
-  //       'ARC有通往世界橋梁的意思，京都校創立於2003年，並於2019年４月遷移到全新校舍。校區位於京都市區丸太町站，徒步６分鐘即可抵達，交通便利。',
-  //   },
-  //   {
-  //     name: '赤門會日本語言學校',
-  //     location: '東京都',
-  //     src: '/赤門會日本語言學校.jpg',
-  //     traffic: '日暮里站步行10分・西日暮里站步行11分・三河島站步行5分',
-  //     highlight: '職務體驗・就職支援班',
-  //     href: '/studying-in-jp-school/akamonkai',
-  //     introtxt:
-  //       '赤門會日本語學校，於1985年創校于東京大學的赤門前，成功培養了超過80個國家，2萬多名的畢業生，教學成績有目共睹。<br />在 2005 年，學校被認證為學校法人。',
-  //   },
-  // ];
-
   return (
     <div className="homeschoolWrapper">
-      <div className="homeschoolH1">
-        <h1 className="underLine">
+      <div className="homeschoolH2">
+        <h2 className="underLine">
           <span className="yellow">School</span>日本學校一覽
-        </h1>
+        </h2>
       </div>
       <div className="schoolListDiv">
         {schools.map((school, index) => {
@@ -256,7 +160,7 @@ const HomeschoolList = () => {
             <AnimationSection key={index} className="schoolListPre">
               <div className="schoolListCover">
                 <div className="schoolListBg">
-                  <p className="homeSchool-schoolName">{school.name}</p>
+                  <h3 className="homeSchool-schoolName">{school.name}</h3>
                   <p className="homeSchool-schoolLocation">
                     <FaLocationDot /> {school.city}
                   </p>
@@ -273,7 +177,7 @@ const HomeschoolList = () => {
                 </Link>
               </div>
               <div className="schoolListBack">
-                <p className="homeSchool-back-schoolName">{school.name}</p>
+                <h4 className="homeSchool-back-schoolName">{school.name}</h4>
                 <p className="homeSchool-back-schoolIntro">
                   {school.description}
                 </p>
@@ -333,9 +237,12 @@ export default function Home() {
   const [isAutoplayStarted, setIsAutoplayStarted] = useState(false);
 
   const HomeIntroimgList = [
-    { src: '/home-bubble01.jpg', alt: 'maple leaves' },
-    { src: '/home-bubble02.JPG', alt: 'japanese temple and couple' },
-    { src: '/home-bubble03.JPG', alt: 'japanese jinjya' },
+    { src: '/home-bubble01.jpg', alt: 'japanese temple picture,日本神社照片' },
+    {
+      src: '/home-bubble02.JPG',
+      alt: 'japanese shops street in sunny day,日本晴天的商店街景',
+    },
+    { src: '/home-bubble03.JPG', alt: 'japanese moutain view,日本翠綠山景' },
   ];
 
   const windowSize = useWindowSize();
@@ -428,8 +335,57 @@ export default function Home() {
     },
   ];
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <>
+      <Helmet>
+        <title>
+          Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！
+        </title>
+        <meta
+          name="keywords"
+          content="goyours、高優國際、日本留學、日本打工度假、留學代辦、海外工作、語言學校"
+        />
+        <meta
+          name="description"
+          content="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！"
+        />
+        <meta
+          property="og:description"
+          content="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！"
+        />
+        <meta
+          name="twitter:description"
+          content="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
       <motion.div
         className="kv"
         style={
@@ -469,7 +425,7 @@ export default function Home() {
               <SwiperSlide key={index}>
                 <picture>
                   <source media="(min-width: 1024px)" srcSet={slide.large} />
-                  <source media="(min-width: 640px)" srcSet={slide.medium} />
+                  <source media="(min-width: 640px)" srcSet={slide.large} />
                   <source media="(max-width: 500px)" srcSet={slide.medium} />
                   <img src={slide.src} alt={`{slider photo${index}`} />
                 </picture>
@@ -479,12 +435,13 @@ export default function Home() {
         </motion.div>
         <img
           src="/LOGO-09.webp"
-          alt="goyours logo"
+          alt="GoYours LOGO"
           className="kvlogo"
           rel="preload"
           width="400"
           height="200"
         />
+
         <ScrollDown />
         <div className="sp-home-scrollDown">
           <ScrollDownSide />
@@ -495,9 +452,8 @@ export default function Home() {
           <HomeBg />
         </div>
         <div className="homeintrotxt">
+          <h1>國外打工度假、遊留學的好夥伴</h1>
           <p>
-            國外打工度假、遊留學的好夥伴
-            <br />
             世界這麼大 你不該只留在原地
             <br />
             何年何月何日何時 你會在哪裡？ <br className="sp-br" />

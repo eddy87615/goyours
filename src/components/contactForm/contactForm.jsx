@@ -15,15 +15,15 @@ import CryptoJS from 'crypto-js';
 export default function ContactForm() {
   const location = useLocation();
   const initialMessage = location.state?.initialMessage || '';
-  const [placeholdertxt, setPlaceholdertxt] = useState([
-    '王小明',
-    '25',
-    '0912345678',
-    'example12345',
-    'example12345@gmail.com',
-    '早上10:00-12:00/下午14:00-17:00',
-    '我想詢問關於日本留學的資訊',
-  ]);
+  // const [placeholdertxt, setPlaceholdertxt] = useState([
+  //   '王小明',
+  //   '25',
+  //   '0912345678',
+  //   'example12345',
+  //   'example12345@gmail.com',
+  //   '早上10:00-12:00/下午14:00-17:00',
+  //   '我想詢問關於日本留學的資訊',
+  // ]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -105,6 +105,20 @@ export default function ContactForm() {
 
   const [loading, setLoading] = useState(false);
 
+  const scrollToTop = () => {
+    // 嘗試多種滾動方法
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      // 如果 smooth 失敗，使用即時滾動
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTo(0, 0);
+      document.body.scrollTo(0, 0);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -133,6 +147,7 @@ export default function ContactForm() {
       _type: 'contact',
       name: formData.name,
       age: formData.age,
+      major: formData.major,
       phone: formData.phone,
       lineId: formData.lineId,
       email: formData.email,
@@ -164,19 +179,21 @@ export default function ContactForm() {
       if (!response.ok) {
         throw new Error('提交失敗');
       }
-
-      setIsSubmited(true);
-      setFormData({
-        name: '',
-        age: '',
-        phone: '',
-        lineId: '',
-        email: '',
-        selectedCases: [],
-        callTime: '',
-        tellus: '',
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (response.ok) {
+        setIsSubmited(true);
+        setFormData({
+          name: '',
+          age: '',
+          phone: '',
+          lineId: '',
+          email: '',
+          selectedCases: [],
+          callTime: '',
+          tellus: '',
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToTop();
+      }
     } catch (error) {
       console.error('提交失敗:', error);
       alert('提交失敗，請稍後再試');
@@ -185,21 +202,21 @@ export default function ContactForm() {
     }
   };
 
-  const handleFocus = (index) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = '';
-      return updatedPlaceholders;
-    });
-  };
+  // const handleFocus = (index) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = '';
+  //     return updatedPlaceholders;
+  //   });
+  // };
 
-  const handleBlur = (index, defaultText) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = defaultText;
-      return updatedPlaceholders;
-    });
-  };
+  // const handleBlur = (index, defaultText) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = defaultText;
+  //     return updatedPlaceholders;
+  //   });
+  // };
   // 只需要一個 emailError state
   const [emailError, setEmailError] = useState('');
 
@@ -254,7 +271,11 @@ export default function ContactForm() {
               感謝您的報名，也歡迎加我們的LINE，專員會更快服務您喔！
             </p>
             {windowSize < 800 && (
-              <a className="goyours-line-btn">
+              <a
+                className="goyours-line-btn"
+                href="https://page.line.me/749omkba?openQrModal=true"
+                target="_blank"
+              >
                 <img src="/goyoursbear-line-W.svg" />
                 點我加入Line好友
               </a>
@@ -288,13 +309,13 @@ export default function ContactForm() {
           </div>
           <form className="contactForm" onSubmit={handleSubmit}>
             <label htmlFor="name">
-              <p>真實姓名：</p>
+              <p>真實姓名（例：王小明）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[0]}
-                onFocus={() => handleFocus(0)}
-                onBlur={() => handleBlur(0, '王小明')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[0]}
+                // onFocus={() => handleFocus(0)}
+                // onBlur={() => handleBlur(0, '王小明')}
+                // className="placeholder"
                 type="text"
                 id="name"
                 name="name"
@@ -305,13 +326,13 @@ export default function ContactForm() {
             </label>
 
             <label htmlFor="age">
-              <p>年齡：</p>
+              <p>年齡（例：25）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[1]}
-                onFocus={() => handleFocus(1)}
-                onBlur={() => handleBlur(1, '25')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[1]}
+                // onFocus={() => handleFocus(1)}
+                // onBlur={() => handleBlur(1, '25')}
+                // className="placeholder"
                 type="text"
                 id="age"
                 name="age"
@@ -322,14 +343,31 @@ export default function ContactForm() {
               />
             </label>
 
-            <label htmlFor="phone">
-              <p>行動電話：</p>
+            <label htmlFor="major">
+              <p>科系（例：日文系）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[2]}
-                onFocus={() => handleFocus(2)}
-                onBlur={() => handleBlur(2, '0912345678')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[1]}
+                // onFocus={() => handleFocus(1)}
+                // onBlur={() => handleBlur(1, '25')}
+                // className="placeholder"
+                type="text"
+                id="major"
+                name="major"
+                value={formData.major}
+                onChange={handleChange}
+                // inputMode="numeric"
+              />
+            </label>
+
+            <label htmlFor="phone">
+              <p>行動電話（例：0912345678）：</p>
+              <br />
+              <input
+                // // placeholder={placeholdertxt[2]}
+                // onFocus={() => handleFocus(2)}
+                // onBlur={() => handleBlur(2, '0912345678')}
+                // className="placeholder"
                 id="phone"
                 name="phone"
                 value={formData.phone}
@@ -339,13 +377,13 @@ export default function ContactForm() {
               />
             </label>
             <label htmlFor="lineId">
-              <p>LINE ID：</p>
+              <p>LINE ID（例：example12345）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[3]}
-                onFocus={() => handleFocus(3)}
-                onBlur={() => handleBlur(3, 'example12345')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[3]}
+                // onFocus={() => handleFocus(3)}
+                // onBlur={() => handleBlur(3, 'example12345')}
+                // className="placeholder"
                 id="lineId"
                 name="lineId"
                 value={formData.lineId}
@@ -354,13 +392,13 @@ export default function ContactForm() {
               />
             </label>
             <label htmlFor="email" className="email">
-              <p>電子郵件：</p>
+              <p>電子郵件（例：aaa@gmail.com）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[4]}
-                onFocus={() => handleFocus(4)}
-                onBlur={() => handleBlur(4, 'example12345@gmail.com')}
-                className={`placeholder ${emailError ? 'error-input' : ''}`}
+                // // placeholder={placeholdertxt[4]}
+                // onFocus={() => handleFocus(4)}
+                // onBlur={() => handleBlur(4, 'example12345@gmail.com')}
+                // className={`placeholder ${emailError ? 'error-input' : ''}`}
                 id="email"
                 name="email"
                 value={formData.email}
@@ -370,13 +408,13 @@ export default function ContactForm() {
               {emailError && <div className="error-message">{emailError}</div>}
             </label>
             <label>
-              <p>方便聯絡時段：</p>
+              <p>方便聯絡時段（例：早上10:00-12:00）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[5]}
-                onFocus={() => handleFocus(5)}
-                onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[5]}
+                // onFocus={() => handleFocus(5)}
+                // onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
+                // className="placeholder"
                 type="text"
                 id="callTime"
                 name="callTime"
@@ -409,10 +447,10 @@ export default function ContactForm() {
               <p>想對我們說的話：</p>
               <br />
               <textarea
-                placeholder={placeholdertxt[6]}
-                onFocus={() => handleFocus(6)}
-                onBlur={() => handleBlur(6, '我想詢問關於日本留學的資訊')}
-                className="placeholder"
+                // // placeholder={placeholdertxt[6]}
+                // onFocus={() => handleFocus(6)}
+                // onBlur={() => handleBlur(6, '我想詢問關於日本留學的資訊')}
+                // className="placeholder"
                 value={formData.tellus}
                 id="tellus"
                 name="tellus"

@@ -49,7 +49,7 @@
   transition-duration: 0.5s;
   top: 0;
 }
-.hidden {
+.nav-hidden {
   transition-duration: 0.5s;
   top: -10rem;
 }
@@ -147,6 +147,9 @@
   transform-origin: center; /* 從中心放大 */
 
   transition-duration: 0.2s;
+}
+.navMenu li:nth-child(8) a::after {
+  background-position: -10px;
 }
 .navMenu li a:hover::after {
   transform: scale(1);
@@ -377,7 +380,7 @@
   }
 
   .nav-logo-sp img {
-    width: 100px;
+    width: 150px;
   }
   .navMenu {
     display: none;
@@ -446,7 +449,7 @@
   }
 
   .nav-logo-sp img {
-    width: 100px;
+    width: 150px;
   }
   .navMenu {
     display: none;

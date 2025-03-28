@@ -161,7 +161,7 @@
     gap: 2rem;
     width: unset;
 
-    /* padding-bottom: 12rem; */
+    padding-bottom: 6rem;
   }
   .footerInfo {
     width: 80%;
@@ -216,6 +216,8 @@
 @media screen and (max-width: 375px) {
   .footer {
     padding: 3rem 2rem;
+
+    padding-bottom: 6rem;
   }
   .footerInfo,
   .footerNews {
@@ -224,6 +226,6 @@
   .footer button {
     width: 4rem;
     height: 4rem;
-    bottom: 3%;
+    bottom: 6%;
   }
 }

@@ -1,6 +1,6 @@
-/* eslint-disable no-irregular-whitespace */
 // import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import './working-holiday.css';
 import './guide-page-animation.css';
@@ -10,22 +10,32 @@ import { GoArrowRight } from 'react-icons/go';
 import MorePost from '../components/morePost/morePost';
 import ContactUs from '../components/contactUs/contactUs';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
+import useWindowSize from '../hook/useWindowSize';
 
-export default function StudyingInJp() {
-  const sliderRight = [
+export default function WorkingHoliday() {
+  const windowSize = useWindowSize();
+
+  const sliderLeft = [
     { src: '/guidePage/slide009.jpg', alt: 'japanese school interior images' },
     { src: '/guidePage/slide020.png', alt: 'japanese school images' },
     { src: '/guidePage/slide019.jpg', alt: 'japanese school' },
     { src: '/guidePage/slide012.png', alt: 'japanese boy' },
     { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
     { src: '/guidePage/slide017.png', alt: 'japanese girl' },
+    { src: '/guidePage/slide014.jpg', alt: 'japanese school classtime images' },
+    { src: '/guidePage/slide016.JPG', alt: 'japanese school public room' },
+    { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
   ];
-  const sliderLeft = [
+  const sliderRight = [
+    { src: '/guidePage/slide012.png', alt: 'japanese boy' },
+    { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
+    { src: '/guidePage/slide017.png', alt: 'japanese girl' },
     { src: '/guidePage/slide013.png', alt: 'japanese school interior images' },
     { src: '/guidePage/slide014.jpg', alt: 'japanese school classtime images' },
     { src: '/guidePage/slide016.JPG', alt: 'japanese school public room' },
     { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
     { src: '/guidePage/slide010.jpg', alt: 'japanese boy' },
+
     {
       src: '/guidePage/slide004.webp',
       alt: 'japanese school classtime images',
@@ -33,14 +43,67 @@ export default function StudyingInJp() {
   ];
 
   const currentYear = new Date().getFullYear();
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
 
   return (
     <>
+      <Helmet>
+        <title>
+          Go
+          Yours：日本打工度假工作推薦｜日本打工度假簽證申請步驟｜高優幫你實現日本打工度假的夢想！
+        </title>
+        <meta
+          name="keywords"
+          content="日本打工度假、打工度假簽證、工作機會、生活指南、申請流程"
+        />
+        <meta
+          name="description"
+          content="高優所有的日本打工度假工作推薦，讓我們幫你找到最適合你的工作，一步一步帶著你到去你的日本打工度假！"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：日本打工度假工作推薦｜日本打工度假簽證申請步驟｜高優幫你實現日本打工度假的夢想！"
+        />
+        <meta
+          property="og:description"
+          content="高優所有的日本打工度假工作推薦，讓我們幫你找到最適合你的工作，一步一步帶著你到去你的日本打工度假！"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：日本打工度假工作推薦｜日本打工度假簽證申請步驟｜高優幫你實現日本打工度假的夢想！"
+        />
+        <meta
+          name="twitter:description"
+          content="高優所有的日本打工度假工作推薦，讓我們幫你找到最適合你的工作，一步一步帶著你到去你的日本打工度假！"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
       <div className="working-holiday-section">
         <div className="guidePage-working-holiday-top">
-          <div className="scrollDown-side-workingPage">
-            <ScrollDownSide />
-          </div>
+          {windowSize < 1024 ? (
+            <div className="scrollDown-side-workingPage">
+              <ScrollDownSide />
+            </div>
+          ) : (
+            <></>
+          )}
           <div className="guide-title">
             <h1>
               <span className="goyoursbear">
@@ -82,41 +145,58 @@ export default function StudyingInJp() {
             <br />
             我們將會協助您在日本的生活大小事！
           </p>
-          <div className="guide-vertical-slide-left">
-            {sliderLeft.map((img, index) => (
-              <div className="guideImgFrame-left" key={index}>
-                <img src={img.src} alt={img.alt} />
+          <div className="guide-animation-wrapper">
+            <div className="guide-animation-left">
+              <div className="guide-text-animation-wrapper">
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="silde-text-wrapper-right01">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
-          </div>
-
-          <div className="silde-text-wrapper-right01 right02">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
-          </div>
-          <div className="guide-vertical-slide-right">
-            {sliderRight.map((img, index) => (
-              <div className="guideImgFrame-right" key={index}>
-                <img src={img.src} alt={img.alt} />
+              <div className="left-picWrapper">
+                <div className="guide-pic-animation-left left-1">
+                  {sliderLeft.map((img, index) => (
+                    <div className="guide-pic-animation-wrapper" key={index}>
+                      <img src={img.src} alt={img.alt} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="silde-text-wrapper-left01">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
-          </div>
-          <div className="silde-text-wrapper-left01 left02">
-            {Array.from({ length: 13 }).map((_, index) => (
-              <p key={index}>Go Yours ●　</p>
-            ))}
+              <div className="guide-text-animation-wrapper">
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
+              </div>
+            </div>
+            <div
+              className="guide-animation-right"
+              style={
+                windowSize > 1024
+                  ? {}
+                  : windowSize > 500
+                  ? { display: 'none' }
+                  : {}
+              }
+            >
+              <div className="guide-text-animation-wrapper">
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
+              </div>
+              <div className="right-picWrapper">
+                <div className="guide-pic-animation-right right-1">
+                  {sliderRight.map((img, index) => (
+                    <div className="guide-pic-animation-wrapper" key={index}>
+                      <img src={img.src} alt={img.alt} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="guide-text-animation-wrapper">
+                {Array.from({ length: 13 }).map((_, index) => (
+                  <p key={index}>Go Yours ●</p>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="working-rightgirl">
             <img src="/guidePage/working-G.png" />

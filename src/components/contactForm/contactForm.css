@@ -132,6 +132,7 @@
   justify-content: center;
 }
 .contactForm p::after {
+  display: none !important;
   content: '＊必填';
   color: #ef0000;
 
@@ -141,7 +142,7 @@
 
   font-size: 10px;
 }
-.contactForm label:nth-child(8) p::after {
+.contactForm label:nth-child(9) p::after {
   display: none;
 }
 
@@ -168,21 +169,21 @@ input:-webkit-autofill {
 }
 
 .contactForm label {
-  width: 50%;
+  width: 65%;
   display: flex;
   align-items: center;
 }
-.contactForm label:nth-of-type(7),
-.contactForm label:nth-of-type(8) {
+.contactForm label:nth-of-type(8),
+.contactForm label:nth-of-type(9) {
   width: 100%;
   align-items: start;
 }
-.contactForm label:nth-of-type(7) input {
+.contactForm label:nth-of-type(8) input {
   flex-grow: 0;
   height: 1rem;
   background-color: transparent;
 }
-.contactForm label:nth-of-type(8) textarea {
+.contactForm label:nth-of-type(9) textarea {
   flex-grow: 1;
 
   height: 12rem;
@@ -259,6 +260,13 @@ input:-webkit-autofill {
   margin-top: 2rem;
 }
 
+.submitedPostArea {
+  width: 60vw;
+
+  margin: 0 auto;
+  padding-bottom: 8rem;
+}
+
 @media (min-width: 1025px) and (max-width: 1200px) {
   .contactusComponent h1 {
     font-size: 1100%;
@@ -274,8 +282,8 @@ input:-webkit-autofill {
   .contactForm input {
     border-radius: 0;
   }
-  .contactForm label:nth-of-type(7),
-  .contactForm label:nth-of-type(8) {
+  .contactForm label:nth-of-type(8),
+  .contactForm label:nth-of-type(9) {
     width: 100%;
   }
   .caseOptions {
@@ -337,8 +345,8 @@ input:-webkit-autofill {
   .submitBtn {
     font-size: 1rem;
   }
-  .contactForm label:nth-of-type(7),
-  .contactForm label:nth-of-type(8) {
+  .contactForm label:nth-of-type(8),
+  .contactForm label:nth-of-type(9) {
     flex-direction: column;
   }
   .caseOptions {
@@ -348,7 +356,7 @@ input:-webkit-autofill {
 
     margin-left: 4rem;
   }
-  .contactForm label:nth-of-type(8) textarea {
+  .contactForm label:nth-of-type(9) textarea {
     width: 100%;
 
     box-sizing: border-box;
@@ -385,6 +393,8 @@ input:-webkit-autofill {
   }
   .contactForm label {
     width: 100%;
+
+    flex-wrap: wrap;
   }
   .error-message {
     position: absolute;
@@ -420,9 +430,14 @@ input:-webkit-autofill {
 
     border-radius: 0;
   }
-  .contactForm label:nth-of-type(7),
-  .contactForm label:nth-of-type(8) {
+  .contactForm label:nth-of-type(8),
+  .contactForm label:nth-of-type(9) {
     flex-direction: column;
+  }
+  #name,
+  #age,
+  #major {
+    width: 100%;
   }
   .caseOptions {
     font-size: 0.725rem;
@@ -431,7 +446,7 @@ input:-webkit-autofill {
 
     margin-left: 10%;
   }
-  .contactForm label:nth-of-type(8) textarea {
+  .contactForm label:nth-of-type(9) textarea {
     width: 100%;
 
     box-sizing: border-box;
@@ -446,5 +461,9 @@ input:-webkit-autofill {
   }
   .submitBtn {
     font-size: 1rem;
+  }
+  .submitedPostArea {
+    width: 90vw;
+    padding-bottom: 4rem;
   }
 }

@@ -443,7 +443,7 @@ export default function SchoolSearch({ onSearchFilters, initialFilters }) {
           }
         `);
       } catch (error) {
-        console.error('Failed to fetch schools:', error);
+        return;
       }
     }
 
@@ -484,6 +484,11 @@ export default function SchoolSearch({ onSearchFilters, initialFilters }) {
       purpose: purposeState.selected,
       others: othersState.selected,
       selectedTags,
+      sortBy: selectedTags.includes('學校更新時間')
+        ? 'updatedAt'
+        : selectedTags.includes('學費由低到高')
+        ? 'tuitionAsc'
+        : null,
     };
     window.scrollTo(0, 0);
     onSearchFilters(newFilters); // 傳遞篩選條件給父組件
@@ -529,7 +534,7 @@ export default function SchoolSearch({ onSearchFilters, initialFilters }) {
 
   return (
     <div className="schoolsearchWrapper" ref={wrapperRef}>
-      {windowSize < 481 && (
+      {windowSize < 501 && (
         <>
           <div
             className={

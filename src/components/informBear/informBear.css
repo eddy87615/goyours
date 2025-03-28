@@ -34,19 +34,24 @@
 .toast-content {
   width: 100%;
 }
-.toast-content h4 {
+.inform-title {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
 
-  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+
+  margin: 0.5rem;
+  margin-top: 1rem;
 
   color: #fff;
 }
 .toast-content p {
   font-size: 0.875rem;
-  line-height: 1.5rem;
+  line-height: 1.2rem;
 
   font-weight: bold;
 
@@ -57,13 +62,10 @@
 .toast-content a {
   text-decoration: underline;
 }
-.toast-content h4 svg {
-  font-size: 2rem;
-}
 .toast-content button {
   position: absolute;
-  top: 4%;
-  right: 2%;
+  top: 6%;
+  right: 4%;
 
   width: 1.5rem;
   height: 1.5rem;
@@ -118,19 +120,16 @@
 
   cursor: pointer;
 }
-/* .inform-bear::after {
-  content: '';
-  background-image: url(/NEWS.svg);
-  background-repeat: no-repeat;
-  width: 5rem;
-  height: 100%;
-  background-size: contain;
-  background-position: bottom;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  transform: translateX(100%);
-} */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .inform-bear {
+    left: 1rem;
+    bottom: 2rem;
+  }
+  .go4109123758 {
+    left: calc(1rem - 16px) !important;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .go4109123758 {

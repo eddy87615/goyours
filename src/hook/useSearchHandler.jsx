@@ -2,13 +2,21 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function useSearchHandler() {
-  const [searchQuery, setSearchQuery] = useState(''); // 搜索關鍵字狀態
-  const navigate = useNavigate(); // 用於導航
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
-  // 處理搜索功能
   const handleSearch = (query) => {
-    setSearchQuery(query || ''); // 更新本地狀態
-    navigate('/goyours-post', { state: { searchQuery: query || '' } }); // 導航到目標頁面，並傳遞搜索查詢
+    const trimmedQuery = query?.trim() || '';
+    setSearchQuery(trimmedQuery);
+
+    // 當執行新搜尋時，確保清除所有其他狀態
+    navigate('/goyours-post', {
+      state: {
+        searchQuery: trimmedQuery,
+        selectedCategory: null, // 確保清除分類
+      },
+      replace: true, // 使用 replace 而不是 push，這樣能避免在瀏覽器歷史中建立多餘的記錄
+    });
   };
 
   return { searchQuery, setSearchQuery, handleSearch };

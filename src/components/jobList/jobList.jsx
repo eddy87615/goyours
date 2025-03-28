@@ -12,6 +12,7 @@ import { LuDownload } from 'react-icons/lu';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { TbThumbUpFilled } from 'react-icons/tb';
 import { FaFireAlt } from 'react-icons/fa';
+import { TbLanguageHiragana } from 'react-icons/tb';
 
 import useWindowSize from '../../hook/useWindowSize';
 
@@ -136,10 +137,6 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
                     </li>
                   )}
                   <li>
-                    <MdHomeWork className="yellow jobisticon" />
-                    {job.company}
-                  </li>
-                  <li>
                     <LuClipboardList className="yellow jobisticon" />
                     {job.jobcontent}
                   </li>
@@ -148,8 +145,12 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
                     {job.transportation ? job.transportation : '未提供'}
                   </li>
                   <li>
+                    <TbLanguageHiragana className="yellow jobisticon" />
+                    日文程度：{job.japanese ? job.japanese : '依雇主要求'}
+                  </li>
+                  <li>
                     <RiMoneyCnyCircleFill className="yellow jobisticon" />
-                    時薪{job.salary}日幣
+                    薪資：{job.salary}日幣
                   </li>
                 </ul>
                 {windowSize < 480 ? (
@@ -186,6 +187,7 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
                     isOpenList[job.slug.current || job.slug] ? '' : 'close'
                   }`}
                 >
+                  <li>工作地點：{job.company ? job.company : '依雇主規定'}</li>
                   <li>
                     工作期間：{job.jobperiod ? job.jobperiod : '依雇主規定'}
                   </li>
@@ -197,11 +199,12 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
                     每週工時：{job.workhour ? job.workhour : '依雇主規定'}
                   </li>
                   <li>
-                    日文程度：{job.japanese ? job.japanese : '依雇主要求'}
-                  </li>
-                  <li>
                     福利厚生：
                     {job.privilege ? job.privilege : '加保雇用年金以及社會保險'}
+                  </li>
+                  <li>
+                    簽證需求：
+                    {job.visa ? job.visa : '依雇主規定'}
                   </li>
                 </ul>
                 {job.detailedFile?.asset?._ref && (

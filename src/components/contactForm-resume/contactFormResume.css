@@ -110,6 +110,7 @@
   justify-content: center;
 }
 .contactFormResume p::after {
+  display: none !important;
   content: '＊必填';
   color: #ef0000;
 
@@ -147,12 +148,13 @@ input:-webkit-autofill {
 
 .realName,
 .age,
+.major,
 .phone,
 .lineId,
 .email,
 .contactTime,
 .tellus {
-  width: 50%;
+  width: 65%;
   display: flex;
   align-items: center;
 }
@@ -203,6 +205,8 @@ input:-webkit-autofill {
 .downloadBtn {
   background-color: var(--goyoursBlack);
   color: #fff;
+
+  text-decoration: none;
 }
 .uploadBtn:hover {
   background-color: var(--goyoursBlack);
@@ -240,16 +244,16 @@ input:-webkit-autofill {
   cursor: pointer;
 }
 
-.contactFormResume label:nth-of-type(6) input {
+.contactFormResume label:nth-of-type(7) input {
   flex-grow: 1;
   height: 2rem;
   background-color: transparent;
 }
-.contactFormResume label:nth-of-type(7) {
+.contactFormResume label:nth-of-type(8) {
   width: 100%;
   align-items: start;
 }
-.contactFormResume label:nth-of-type(7) textarea {
+.contactFormResume label:nth-of-type(8) textarea {
   flex-grow: 1;
 
   height: 12rem;
@@ -450,10 +454,10 @@ input:-webkit-autofill {
   .contactFormResume label {
     width: 100%;
   }
-  .contactFormResume label:nth-of-type(7) {
+  .contactFormResume label:nth-of-type(8) {
     flex-direction: column;
   }
-  .contactFormResume label:nth-of-type(7) textarea {
+  .contactFormResume label:nth-of-type(8) textarea {
     width: 100%;
 
     box-sizing: border-box;
@@ -496,6 +500,8 @@ input:-webkit-autofill {
   }
   .contactFormResume label {
     width: 100%;
+
+    flex-wrap: wrap;
   }
 
   .contactFormResume p::before {
@@ -536,11 +542,16 @@ input:-webkit-autofill {
   .tellus {
     flex-direction: column;
   }
-  .contactFormResume label:nth-of-type(7) textarea {
+  .contactFormResume label:nth-of-type(8) textarea {
     width: 100%;
     box-sizing: border-box;
     font-size: 0.85rem;
   }
+  #name,
+  #age {
+    width: 100%;
+  }
+
   .privicy label {
     width: fit-content;
   }

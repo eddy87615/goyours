@@ -79,6 +79,8 @@
 
   transform-origin: top left;
   transition-duration: 0.5s;
+
+  pointer-events: none;
 }
 
 .jobListcontent {
@@ -118,6 +120,7 @@
   box-sizing: border-box;
 }
 
+.jobListcontent ul li:nth-child(1),
 .jobListcontent ul li:nth-child(2) {
   line-height: 1.5rem;
 }
@@ -173,6 +176,9 @@
     grid-template-columns: 1fr;
     padding: 4rem 0;
     gap: 2rem;
+  }
+  .homeJobList-companyTitle {
+    font-size: 0.85rem;
   }
   .jobListPre {
     height: 12rem;

@@ -32,8 +32,6 @@ export default function Footer() {
   // 從 Sanity 獲取最新消息標籤的文章
   useEffect(() => {
     async function fetchLatestNewsPosts() {
-      // 查詢 "最新消息" 標籤的文章
-      //&& "最新消息" in categories[]->title
       const result = await client.fetch(`
         *[_type == "post"] | order(publishedAt desc)[0...3] {
           title,
@@ -72,18 +70,20 @@ export default function Footer() {
               pointerEvents: windowSize <= 500 ? 'auto' : 'none',
             }}
           >
-            02 7727 3780
+            02 7701 5618
           </a>
         </li>
         <li
           onClick={() => {
-            navigator.clipboard.writeText('台北市中山區南京東路一段52號2樓');
+            navigator.clipboard.writeText(
+              '103617 台北市大同區承德路二段83-2號'
+            );
             alert('地址已複製'); // 或者用其他方式提示使用者
           }}
           style={{ cursor: 'pointer' }}
         >
           <FaLocationDot className="businessicon" />
-          台北市中山區南京東路一段52號2樓
+          103617 台北市大同區承德路二段83-2號
         </li>
       </ul>
       <ul className="footerNews">

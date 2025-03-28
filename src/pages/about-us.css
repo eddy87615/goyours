@@ -283,19 +283,27 @@
   background-repeat: no-repeat;
   background-position: 90% 80%;
 }
-.goyoursIntro h1 {
+.goyoursIntro h2 {
   display: flex;
   flex-direction: column;
 
   text-align: center;
 }
+.goyoursIntro h1 {
+  font-size: 1rem;
+  margin: 0;
 
-.goyoursIntro h1::after {
+  text-align: center;
+
+  padding-top: 1rem;
+}
+
+.goyoursIntro h2::after {
   content: '';
   width: 4rem;
   margin: 0 auto;
 
-  padding-top: 3rem;
+  padding-top: 2rem;
   border-bottom: 0.6rem solid var(--goyoursYellow);
 }
 
@@ -352,7 +360,7 @@
 
   z-index: 0;
 }
-.goyoursservice h1 {
+.goyoursservice h2 {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -496,7 +504,7 @@
   margin: 0 auto;
   padding-top: 8rem;
 }
-.ifYou h1 {
+.ifYou h2 {
   display: flex;
   flex-direction: column;
 }
@@ -587,7 +595,7 @@
   background-color: var(--goyoursBgColor);
   clip-path: ellipse(90% 100% at 50% 100%);
 }
-.Review h1 {
+.Review h2 {
   position: relative;
 
   width: fit-content;
@@ -834,13 +842,13 @@
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  .goyoursservice h1 {
+  .goyoursservice h2 {
     font-size: 1.5rem;
   }
-  .Review h1 {
+  .Review h2 {
     font-size: 1.5rem;
   }
-  .ifYou h1 {
+  .ifYou h2 {
     font-size: 1.5rem;
   }
 }
@@ -1107,10 +1115,10 @@
     height: 100%;
     padding-bottom: 4rem;
   }
-  .goyoursIntro h1 {
+  .goyoursIntro h2 {
     font-size: 1rem;
   }
-  .goyoursIntro h1::after {
+  .goyoursIntro h2::after {
     width: 2rem;
     border-bottom: 0.3rem solid var(--goyoursYellow);
     padding-top: 1rem;
@@ -1120,6 +1128,9 @@
     width: 92%;
     line-height: 2.5rem;
     letter-spacing: normal;
+  }
+  .goyoursIntro h1 {
+    font-size: 0.75rem;
   }
 
   .goyoursserviceWrapper {
@@ -1138,7 +1149,7 @@
     right: -48%;
     width: 100%;
   }
-  .goyoursservice h1 {
+  .goyoursservice h2 {
     font-size: 1rem;
   }
   .goyoursservice {
@@ -1193,13 +1204,13 @@
     gap: 0.2rem;
   }
   .Review {
-    padding-top: 8rem;
+    padding-top: 20rem;
   }
-  .Review h1 {
+  .Review h2 {
     font-size: 1rem;
   }
   .Review::before {
-    top: 4%;
+    top: 30%;
   }
   .feedBackArea {
     grid-template-columns: 1fr;
@@ -1252,7 +1263,7 @@
     background-size: contain;
   }
 
-  .ifYou h1 {
+  .ifYou h2 {
     font-size: 1rem;
   }
   .ifYou {
@@ -1295,25 +1306,3 @@
     }
   }
 }
-
-/* @media screen and (min-width: 1920px) {
-  .aboutusTopImg,
-  .aboutusTopImg img {
-    transform: scale(1.2);
-  }
-
-  .circleMenu {
-    transform: rotate(-45deg) scale(1.2) translateX(-14%);
-  }
-
-  .feedbackList {
-    width: 28rem;
-    height: 19rem;
-  }
-  .feedbackList:nth-child(even)::after {
-    top: -13%;
-  }
-  .feedbackList:nth-child(odd)::after {
-    top: -13%;
-  }
-} */

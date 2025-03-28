@@ -34,43 +34,34 @@ export default function HomeJobList() {
         const shuffledJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 6);
         setRecommenedJobs(shuffledJobs);
       } catch (error) {
-        console.error('Error fetching recommened jobs:', error);
+        return;
       }
     }
     fetchRecommenedJobs();
   }, []);
 
-  // const navigate = useNavigate();
-  // const handleInquiry = (jobName) => {
-  //   navigate('/contact-us', {
-  //     state: { initialMessage: `我對${jobName}職缺有興趣，想要諮詢` },
-  //   });
-  // };
-
   return (
     <>
       <AnimationSection className="homeJobWrapper">
-        <div className="homeJobH1">
-          <h1 className="underLine">
+        <div className="homeJobH2">
+          <h2 className="underLine">
             <span className="yellow">Working Holiday</span>
             日本打工度假職缺一覽
             {/* <GoyoursBearJob /> */}
-          </h1>
+          </h2>
         </div>
         <div className="homebg-job-Wave">
           <HomeBg />
         </div>
         <div className="workingholidayDiv">
           {recommenedJobs.map((job, index) => {
-            console.log('Job object:', job);
-            console.log('Slug value:', job.slug);
             return (
               <AnimationSection key={index} className="jobListPre">
                 <div className="jobListimg">
                   <img src={urlFor(job.mainImage).url()} alt={job.name} />
                 </div>
                 <div className="jobListcontent">
-                  <p className="homeJobList-companyTitle">{job.company}</p>
+                  <h3 className="homeJobList-companyTitle">{job.company}</h3>
                   <p className="homeJobList-companyLocation">
                     <FaLocationDot /> {job.location}
                   </p>

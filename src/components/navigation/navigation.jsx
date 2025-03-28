@@ -87,7 +87,7 @@ export default function Navigation() {
     { to: '/about-us', title: 'About', target: '_self' },
     { to: '/goyours-post', title: '文章專區', target: '_self' },
     { to: '/studying-in-jp', title: '日本留學', target: '_self' },
-    { to: '/working-holiday', title: '打工度假', target: '_self' },
+    { to: '/working-holiday', title: '日本職缺', target: '_self' },
     { to: '/Q&A-section', title: '常見Q&A', target: '_self' },
     { to: '/document-download', title: '下載專區', target: '_self' },
     { to: '/contact-us', title: '聯絡我們', target: '_blank' },
@@ -135,20 +135,24 @@ export default function Navigation() {
         <nav
           className={`${windowSize > 1024 ? 'mainNav-pc' : 'mainNav'}  ${
             ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
-          } ${visible && windowSize <= 1024 ? 'nav-visible-sp' : 'hidden'}`}
+          } ${visible && windowSize <= 1024 ? 'nav-visible-sp' : 'nav-hidden'}`}
         >
           <div
             className={`${windowSize > 1024 ? 'nav-logo-pc' : 'nav-logo-sp'} ${
-              visible ? 'nav-visible' : 'hidden'
+              visible ? 'nav-visible' : 'nav-hidden'
             }`}
           >
             <Link to="/">
-              <img src="/LOGO-03.png" alt="goyours logo" width={250} />
+              <img
+                src="/LOGO-03.png"
+                alt="GoYours LOGO,高優國際留學商標"
+                width={250}
+              />
             </Link>
           </div>
           <div
             className={`navMenu ${windowSize > 1024 ? 'nav-list' : ''} ${
-              visible ? 'nav-visible' : 'hidden'
+              visible ? 'nav-visible' : 'nav-hidden'
             }`}
           >
             <ul>

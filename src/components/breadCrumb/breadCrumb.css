@@ -21,6 +21,13 @@
   text-decoration: none;
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .breadCrumb {
+    top: 5rem;
+    left: -8%;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .breadCrumb {
     top: 7%;

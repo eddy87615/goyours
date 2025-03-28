@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { client } from '../../cms/sanityClient'; // 引入Sanity客戶端
@@ -17,21 +18,19 @@ import { GoArrowRight } from 'react-icons/go';
 
 import CryptoJS from 'crypto-js';
 
-// import GoyoursBearMorePost from '../goyoursBear/goyoursBear-morepost';
-
 import './contactFormResume.css';
 import '../contactForm/contactForm.css';
 
 export default function ContactFormResume() {
-  const [placeholdertxt, setPlaceholdertxt] = useState([
-    '王小明',
-    '25',
-    '0912345678',
-    'example12345',
-    'example12345@gmail.com',
-    '早上10:00-12:00/下午14:00-17:00',
-    '我對這份工作有興趣',
-  ]);
+  // const [placeholdertxt, setPlaceholdertxt] = useState([
+  //   '王小明',
+  //   '25',
+  //   '0912345678',
+  //   'example12345',
+  //   'example12345@gmail.com',
+  //   '早上10:00-12:00/下午14:00-17:00',
+  //   '我對這份工作有興趣',
+  // ]);
   const location = useLocation();
   const jobTitle =
     location.state?.initialMessage || '聯絡GoYours，打工度假、留學免費諮詢';
@@ -106,6 +105,20 @@ export default function ContactFormResume() {
 
   const [loading, setLoading] = useState(false);
 
+  const scrollToTop = () => {
+    // 嘗試多種滾動方法
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      // 如果 smooth 失敗，使用即時滾動
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTo(0, 0);
+      document.body.scrollTo(0, 0);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('檔案內容:', formData.resume); // 檢查 `resume` 是否包含檔案物件
@@ -135,6 +148,7 @@ export default function ContactFormResume() {
       jobname: jobTitle,
       name: formData.name,
       age: formData.age,
+      major: formData.major,
       phone: formData.phone,
       lineId: formData.lineId,
       email: formData.email,
@@ -176,17 +190,20 @@ export default function ContactFormResume() {
         throw new Error('提交失敗');
       }
 
-      setIsSubmited(true);
-      setFormData({
-        name: '',
-        age: '',
-        phone: '',
-        lineId: '',
-        email: '',
-        callTime: '',
-        resume: null,
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // 返回到頁面的最頂端
+      if (response.ok) {
+        setIsSubmited(true);
+        setFormData({
+          name: '',
+          age: '',
+          phone: '',
+          lineId: '',
+          email: '',
+          callTime: '',
+          resume: null,
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToTop();
+      }
     } catch (error) {
       console.error('提交失敗:', error);
       alert('提交失敗，請稍後再試');
@@ -235,21 +252,21 @@ export default function ContactFormResume() {
 
   const fileInputRef = useRef(null);
 
-  const handleFocus = (index) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = '';
-      return updatedPlaceholders;
-    });
-  };
+  // const handleFocus = (index) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = '';
+  //     return updatedPlaceholders;
+  //   });
+  // };
 
-  const handleBlur = (index, defaultText) => {
-    setPlaceholdertxt((prev) => {
-      const updatedPlaceholders = [...prev];
-      updatedPlaceholders[index] = defaultText;
-      return updatedPlaceholders;
-    });
-  };
+  // const handleBlur = (index, defaultText) => {
+  //   setPlaceholdertxt((prev) => {
+  //     const updatedPlaceholders = [...prev];
+  //     updatedPlaceholders[index] = defaultText;
+  //     return updatedPlaceholders;
+  //   });
+  // };
 
   const [documents, setDocuments] = useState([]);
   useEffect(() => {
@@ -270,58 +287,40 @@ export default function ContactFormResume() {
             <h1>
               <ThankYouTitle />
             </h1>
-            {windowSize < 800 ? (
-              <a className="goyours-line-btn">GoYours Line@</a>
-            ) : (
+            {windowSize > 800 && (
               <img
                 src="/goyoursline@.png"
                 alt="goyours line@ QR code"
                 className="formlogo"
               />
             )}
+            {windowSize > 800 ? (
+              <></>
+            ) : (
+              <img
+                src="/LOGO-02.png"
+                alt="goyours line@ QR code"
+                className="formlogo"
+              />
+            )}
+
             <p className="subitedtxt">
-              {windowSize < 800
-                ? '感謝您的報名，也歡迎直接點擊連結加入我們的Line@，專員會更快服務您喔！'
-                : '感謝您的報名，也歡迎直接在LINE上搜尋：@goyours加入我們，專員會更快服務您喔！'}
+              感謝您的報名，也歡迎加我們的LINE，專員會更快服務您喔！
             </p>
+            {windowSize < 800 && (
+              <a
+                className="goyours-line-btn"
+                href="https://page.line.me/749omkba?openQrModal=true"
+                target="_blank"
+              >
+                <img src="/goyoursbear-line-W.svg" />
+                點我加入Line好友
+              </a>
+            )}
           </div>
-          {/* <div className="submitedPostArea">
-            <div className="morepostH2">
-              <h2 className="yellow">
-                延伸閱讀
-                <GoyoursBearMorePost />
-              </h2>
-            </div>
-            <div className="submitPostList">
-              {randomPosts.map((post, index) => (
-                <Link
-                  key={index}
-                  className="submitPostLink"
-                  to={`/post/${post.slug.current}`}
-                >
-                  <img src={urlFor(post.mainImage).url()} alt={post.title} />
-                  <h3>{post.title}</h3>
-                  <ul>
-                    {post.categories.map((category, index) => (
-                      <li key={index}>#{category.title}</li>
-                    ))}
-                  </ul>
-                  <div className="submitPostDate">
-                    <p>
-                      {new Date(post.publishedAt)
-                        .toLocaleDateString('zh-TW', {
-                          year: 'numeric',
-                          month: '2-digit',
-                          day: '2-digit',
-                        })
-                        .replace(/\//g, '.')}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div> */}
-          <MorePost />
+          <div className="submitedPostArea">
+            <MorePost isSubmited={isSubmited} />
+          </div>
         </>
       ) : (
         <div className="contactusComponent-resume">
@@ -337,12 +336,12 @@ export default function ContactFormResume() {
           </div>
           <form className="contactFormResume" onSubmit={handleSubmit}>
             <label htmlFor="name" className="realName">
-              <p>真實姓名：</p>
+              <p>真實姓名（例：王小明）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[0]}
-                onFocus={() => handleFocus(0)}
-                onBlur={() => handleBlur(0, '王小明')}
+                // placeholder={placeholdertxt[0]}
+                // onFocus={() => handleFocus(0)}
+                // onBlur={() => handleBlur(0, '王小明')}
                 className="placeholder"
                 type="text"
                 id="name"
@@ -354,12 +353,12 @@ export default function ContactFormResume() {
             </label>
 
             <label htmlFor="age" className="age">
-              <p>年齡：</p>
+              <p>年齡（例：25）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[1]}
-                onFocus={() => handleFocus(1)}
-                onBlur={() => handleBlur(1, '25')}
+                // placeholder={placeholdertxt[1]}
+                // onFocus={() => handleFocus(1)}
+                // onBlur={() => handleBlur(1, '25')}
                 className="placeholder"
                 type="text"
                 id="age"
@@ -371,13 +370,30 @@ export default function ContactFormResume() {
               />
             </label>
 
-            <label htmlFor="phone" className="phone">
-              <p>行動電話：</p>
+            <label htmlFor="major" className="major">
+              <p>科系（例：日文系）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[2]}
-                onFocus={() => handleFocus(2)}
-                onBlur={() => handleBlur(2, '0912345678')}
+                // // placeholder={placeholdertxt[1]}
+                // onFocus={() => handleFocus(1)}
+                // onBlur={() => handleBlur(1, '25')}
+                // className="placeholder"
+                type="text"
+                id="major"
+                name="major"
+                value={formData.major}
+                onChange={handleChange}
+                // inputMode="numeric"
+              />
+            </label>
+
+            <label htmlFor="phone" className="phone">
+              <p>行動電話（例：0912345678）：</p>
+              <br />
+              <input
+                // placeholder={placeholdertxt[2]}
+                // onFocus={() => handleFocus(2)}
+                // onBlur={() => handleBlur(2, '0912345678')}
                 className="placeholder"
                 id="phone"
                 name="phone"
@@ -388,12 +404,12 @@ export default function ContactFormResume() {
               />
             </label>
             <label htmlFor="lineId" className="lineId">
-              <p>LINE ID：</p>
+              <p>LINE ID（例：example12345）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[3]}
-                onFocus={() => handleFocus(3)}
-                onBlur={() => handleBlur(3, 'example12345')}
+                // placeholder={placeholdertxt[3]}
+                // onFocus={() => handleFocus(3)}
+                // onBlur={() => handleBlur(3, 'example12345')}
                 className="placeholder"
                 id="lineId"
                 name="lineId"
@@ -403,12 +419,12 @@ export default function ContactFormResume() {
               />
             </label>
             <label htmlFor="email" className="email">
-              <p>電子郵件：</p>
+              <p>電子郵件（例：aaa@gmail.com）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[4]}
-                onFocus={() => handleFocus(4)}
-                onBlur={() => handleBlur(4, 'example12345@gmail.com')}
+                // placeholder={placeholdertxt[4]}
+                // onFocus={() => handleFocus(4)}
+                // onBlur={() => handleBlur(4, 'example12345@gmail.com')}
                 className="placeholder"
                 id="email"
                 name="email"
@@ -419,12 +435,12 @@ export default function ContactFormResume() {
             </label>
 
             <label className="contactTime">
-              <p>方便聯絡時段：</p>
+              <p>方便聯絡時段（例：早上10:00-12:00）：</p>
               <br />
               <input
-                placeholder={placeholdertxt[5]}
-                onFocus={() => handleFocus(5)}
-                onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
+                // placeholder={placeholdertxt[5]}
+                // onFocus={() => handleFocus(5)}
+                // onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
                 className="placeholder"
                 type="text"
                 id="callTime"
@@ -492,9 +508,9 @@ export default function ContactFormResume() {
               <p>想對我們說的話：</p>
               <br />
               <textarea
-                placeholder={placeholdertxt[6]}
-                onFocus={() => handleFocus(6)}
-                onBlur={() => handleBlur(6, '我對這份工作有興趣')}
+                // placeholder={placeholdertxt[6]}
+                // onFocus={() => handleFocus(6)}
+                // onBlur={() => handleBlur(6, '我對這份工作有興趣')}
                 className="placeholder"
                 type="textarea"
                 id="tellus"
@@ -508,7 +524,7 @@ export default function ContactFormResume() {
                 <input type="checkbox" id="privicy" name="privicy" required />
                 <span>
                   我已閱讀
-                  <Link to="privacy-policy" target="blank" required>
+                  <Link to="/privacy-policy" target="blank" required>
                     隱私政策*
                   </Link>
                 </span>

@@ -8,6 +8,7 @@
 
   border-bottom: 4rem solid #ffe2bc;
 }
+
 .kvlogo {
   position: absolute;
   right: 10%;
@@ -19,10 +20,12 @@
   z-index: 9;
 }
 .kvSlider img {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 
   object-fit: cover;
+
+  pointer-events: none;
 }
 
 .swiper-fade .swiper-slide {
@@ -64,9 +67,18 @@
   line-height: 3rem;
   text-align: center;
 
-  width: 50%;
+  width: 60%;
 
   position: relative;
+}
+.homeintrotxt p {
+  margin-top: 0;
+}
+
+.homeintrotxt h1 {
+  font-size: 1rem;
+
+  margin: 0;
 }
 
 .homepicdecoBear {
@@ -98,6 +110,8 @@
 .homeintroImgWrapper1,
 .homeintroImgWrapper2 {
   position: absolute;
+
+  pointer-events: none;
 }
 .homeintroImgWrapper0 {
   top: 10%;
@@ -178,20 +192,20 @@
   padding-top: 4rem;
 }
 
-.homeNewsH1,
-.homeschoolH1,
-.homeJobH1,
-.homeHotpostH1 {
+.homeNewsH2,
+.homeschoolH2,
+.homeJobH2,
+.homeHotpostH2 {
   width: 80vw;
   margin: 0 auto;
 
   position: relative;
   z-index: 1;
 }
-.homeNewsH1 h1,
-.homeschoolH1 h1,
-.homeJobH1 h1,
-.homeHotpostH1 h1 {
+.homeNewsH2 h2,
+.homeschoolH2 h2,
+.homeJobH2 h2,
+.homeHotpostH2 h2 {
   position: relative;
 
   display: flex;
@@ -203,7 +217,7 @@
   background-color: transparent;
 }
 .homeNewsprePost {
-  width: 30% !important;
+  /* width: 30% !important; */
 }
 .homeNewsprePost a {
   text-decoration: none;
@@ -222,6 +236,8 @@
   border-radius: 1rem;
 
   transition-duration: 0.5s;
+
+  pointer-events: none;
 }
 .homeNewsDiv {
   padding-top: 10rem;
@@ -411,6 +427,8 @@
 
   transform-origin: top left;
   transition-duration: 0.5s;
+
+  pointer-events: none;
 }
 .schoolListBack {
   position: absolute;
@@ -437,6 +455,10 @@
   color: #fff;
 
   font-size: 1.4rem;
+
+  width: 100%;
+
+  margin: 1.5rem 0;
 }
 .homeSchool-back-schoolName::after {
   content: '';
@@ -446,7 +468,7 @@
   left: 50%;
   transform: translate(-50%);
 
-  width: 30rem;
+  width: 90%;
   height: 2px;
 
   background-color: #fff;
@@ -714,16 +736,27 @@
   display: none;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1201px) {
+  .homeintroImgWrapper0 {
+    width: 27rem;
+    height: 27rem;
+
+    left: -8%;
+  }
+  .homeintroImgWrapper0::after {
+    top: -10%;
+    width: 6rem;
+  }
+  .homeintroImgWrapper2 {
+    right: -4%;
+  }
+}
+@media screen and (min-width: 1441px) {
   .homeintroImgWrapper0 {
     left: 0;
   }
-}
-
-@media screen and (min-width: 1201px) {
-  .homeintroImgWrapper0 {
-    width: 30rem;
-    height: 30rem;
+  .homeintroImgWrapper2 {
+    right: 0;
   }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
@@ -735,7 +768,7 @@
   }
 
   .homeNewsprePost {
-    width: 30% !important;
+    /* width: 30% !important; */
   }
 
   .schoolListBack ul li:nth-child(2) {
@@ -750,24 +783,22 @@
   .homeSchool-back-schoolName {
     font-size: 1.2rem;
   }
-  .homeSchool-back-schoolName::after {
-    width: 20rem;
-  }
+
   .homeSchool-back-schoolIntro {
     font-size: 0.75rem;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  .homeNewsH1,
-  .homeschoolH1,
-  .homeJobH1,
-  .homeHotpostH1 {
+  .homeNewsH2,
+  .homeschoolH2,
+  .homeJobH2,
+  .homeHotpostH2 {
     width: 90vw;
   }
-  .homeNewsH1 h1,
-  .homeschoolH1 h1,
-  .homeJobH1 h1,
-  .homeHotpostH1 h1 {
+  .homeNewsH2 h2,
+  .homeschoolH2 h2,
+  .homeJobH2 h2,
+  .homeHotpostH2 h2 {
     font-size: 1.5rem;
   }
   .homeintroImgWrapper0 {
@@ -780,10 +811,17 @@
   .homeintroImgWrapper2 {
     display: block;
   }
+  .homeintroImgWrapper0::after {
+    top: -10%;
+    width: 5rem;
+  }
   .schoolListDiv {
     width: 90vw;
     gap: 2rem;
-    padding: 4rem 0;
+    padding: 10rem 0;
+  }
+  .workingholidayDiv {
+    padding: 10rem 0;
   }
   .schoolListBg {
     clip-path: circle(84% at 40% 10%);
@@ -804,7 +842,12 @@
   .homeSchool-schoolLocation {
     font-size: 0.75rem;
   }
-  .homeSchool-back-schoolName,
+  .homeSchool-back-schoolName {
+    font-size: 1rem;
+
+    margin: 1rem 0;
+  }
+
   .homeSchool-back-schoolIntro {
     font-size: 0.75rem;
   }
@@ -812,16 +855,14 @@
     display: none;
   }
   .homeNewsprePost {
-    width: 50% !important;
+    /* width: 50% !important; */
   }
   .schoolListPointer {
     width: 1.5rem;
     right: 2%;
     bottom: 2%;
   }
-  .homeSchool-back-schoolName::after {
-    width: 20rem;
-  }
+
   .more-school-button ul a {
     font-size: 1rem;
 
@@ -856,6 +897,20 @@
     z-index: 0;
     border-radius: 0 0 50% 0;
     overflow: hidden;
+  }
+  .homeNewsprePost {
+    flex-shrink: 0;
+  }
+  .sp-scollNews {
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
   }
   .kvlogo {
     width: 44%;
@@ -899,7 +954,7 @@
     padding-top: 10rem;
   }
   .homeNewsprePost {
-    width: 50%;
+    /* width: 50%; */
   }
 
   .schoolListDiv {
@@ -935,9 +990,6 @@
   }
   .homeSchool-back-schoolName {
     font-size: 1rem;
-  }
-  .homeSchool-back-schoolName::after {
-    width: 20rem;
   }
   .homeSchool-back-schoolIntro {
     font-size: 0.625rem;
@@ -1021,6 +1073,20 @@
     right: 0;
     transform: translate(-50%, 50%);
   }
+  .homeNewsprePost {
+    flex-shrink: 0;
+  }
+  .sp-scollNews {
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+  }
   .kv {
     border-bottom-left-radius: calc(300 * 1em / 16);
     border-bottom-right-radius: calc(300 * 1em / 16);
@@ -1084,9 +1150,7 @@
     width: 60%;
     line-height: 2rem;
   }
-  .homeintrotxt h2 {
-    font-size: 1rem;
-  }
+  .homeintrotxt h1,
   .homeintrotxt p {
     font-size: 0.875rem;
   }
@@ -1098,23 +1162,14 @@
     z-index: -1;
   }
 
-  .homeNewsH1 h1 {
+  .homeNewsH2 h2 {
     font-size: 1rem;
   }
 
   .homeNewsDiv {
     padding-top: 4rem;
   }
-  .sp-scollNews {
-    display: flex;
-    overflow-x: scroll;
 
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
   .homeNews-postTitle {
     font-size: 0.875rem;
   }
@@ -1126,8 +1181,8 @@
     height: 1rem;
   }
   .homeNewsprePost {
-    width: 60% !important;
-    margin-right: 4% !important;
+    /* width: 60% !important; */
+    /* margin-right: 4% !important; */
 
     flex-shrink: 0;
   }
@@ -1153,7 +1208,7 @@
   .schoolListPre:hover .homeSchool-schoolLocation {
     opacity: 1;
   }
-  .homeschoolH1 h1 {
+  .homeschoolH2 h2 {
     font-size: 1rem;
   }
   .schoolListDiv {
@@ -1241,11 +1296,11 @@
     padding: 0.5rem 3rem;
   }
 
-  .homeJobH1 h1 {
+  .homeJobH2 h2 {
     font-size: 1rem;
   }
 
-  .homeHotpostH1 h1 {
+  .homeHotpostH2 h2 {
     font-size: 1rem;
   }
   .homehotpostDiv {
@@ -1255,12 +1310,6 @@
     align-items: center; /* 垂直居中 */
     width: 100%; /* 确保容器宽度为全屏 */
     overflow: hidden; /* 避免溢出 */
-  }
-  .swiper-slide {
-    width: calc(80% - 3rem); /* 宽度设置为容器宽度的80%，具体可调整 */
-    margin-right: 1rem; /* 每个 slide 间隔 */
-    flex-shrink: 0; /* 防止宽度被压缩 */
-    box-sizing: border-box; /* 包括 padding 和 border */
   }
 }
 
@@ -1298,19 +1347,10 @@
   }
   .homeNewsprePost {
     /* width: 70% !important; */
-    width: calc(
-      80% - 2rem
-    ) !important; /* 宽度设置为容器宽度的80%，具体可调整 */
-    margin-right: 5% !important;
+    /* margin-right: 5% !important; */
   }
   .schoolListPre {
     height: 12rem;
     border-radius: 1.5rem;
-  }
-  .swiper-slide {
-    width: calc(80% - 3rem); /* 宽度设置为容器宽度的80%，具体可调整 */
-    margin-right: 1rem; /* 每个 slide 间隔 */
-    flex-shrink: 0; /* 防止宽度被压缩 */
-    box-sizing: border-box; /* 包括 padding 和 border */
   }
 }

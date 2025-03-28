@@ -58,17 +58,17 @@ const Features = ({ school }) => {
   return (
     <>
       <div className="schoolDetailInfo">
-        <div className="schoolDetailH1">
-          <h1 className="features underLine">
+        <div className="schoolDetailH2">
+          <h2 className="features underLine">
             <span className="yellow">Feature</span>學校特色
-          </h1>
+          </h2>
         </div>
         <div className="featurestxt">
           <ul>
             {school.character.map((character, index) => (
               <li key={index}>
                 {/* <div>{index + 1}</div> */}
-                <h2>{character.title}</h2>
+                <h3>{character.title}</h3>
                 <p>{character.description}</p>
               </li>
             ))}
@@ -76,10 +76,10 @@ const Features = ({ school }) => {
         </div>
         {school.video && (
           <div className="video">
-            <div className="videoH1">
-              <h1 className="features underLine">
+            <div className="videoH2">
+              <h2 className="features underLine">
                 <span className="yellow">Video</span>學校影片
-              </h1>
+              </h2>
             </div>
             <div className="videoItself">
               <iframe
@@ -152,13 +152,13 @@ const Conditions = ({ school }) => {
 
   return (
     <div className="schoolConditions">
-      <div className="schoolDetailH1">
-        <h1 className="features underLine">
+      <div className="schoolDetailH2">
+        <h2 className="features underLine">
           <span className="yellow" lang="en">
             Conditions
           </span>
           學校性質
-        </h1>
+        </h2>
       </div>
       <div className="schoolConditions-detail">
         <ul className="conditionsList">
@@ -192,16 +192,18 @@ const Conditions = ({ school }) => {
           </li>
           <li>
             <span className="conditionTitle">入學時間</span>
-            {school.enrollTime ? (
-              school.enrollTime.map((time, index) => (
-                <span key={index}>
-                  {time}
-                  {index < school.enrollTime.length - 1 && '／'}
-                </span>
-              ))
-            ) : (
-              <span className="noInfo-warn">入學時間資訊未提供ಥ∀ಥ</span>
-            )}
+            <div className="condition-wrapper">
+              {school.enrollTime ? (
+                school.enrollTime.map((time, index) => (
+                  <span key={index}>
+                    {time}
+                    {index < school.enrollTime.length - 1 && '／'}
+                  </span>
+                ))
+              ) : (
+                <span className="noInfo-warn">入學時間資訊未提供ಥ∀ಥ</span>
+              )}
+            </div>
           </li>
           <li>
             <span className="conditionTitle">上課時段</span>
@@ -218,17 +220,18 @@ const Conditions = ({ school }) => {
           </li>
           <li>
             <span className="conditionTitle">修業時間</span>
-
-            {school.others?.period?.length > 0 ? (
-              school.others.period.map((period, index) => (
-                <span key={index}>
-                  {period}
-                  {index < school.others.period.length - 1 && '／'}
-                </span>
-              ))
-            ) : (
-              <span className="noInfo-warn">修業時間資訊未提供ಥ∀ಥ</span>
-            )}
+            <div className="condition-wrapper">
+              {school.others?.period?.length > 0 ? (
+                school.others.period.map((period, index) => (
+                  <span key={index}>
+                    {period}
+                    {index < school.others.period.length - 1 && '／'}
+                  </span>
+                ))
+              ) : (
+                <span className="noInfo-warn">修業時間資訊未提供ಥ∀ಥ</span>
+              )}
+            </div>
           </li>
           <li>
             <span className="conditionTitle">支援服務</span>
@@ -268,10 +271,7 @@ export default function SchoolDetail() {
 
       const cachedSchool = getCache(cacheKey);
 
-      console.log('useEffect triggered with slug:', slug);
-
       if (cachedSchool) {
-        console.log('cache hit');
         setSchool(cachedSchool);
         setLoading(false);
         return;
@@ -351,11 +351,51 @@ export default function SchoolDetail() {
     setIsModalOpen(false); // 關閉模態框
   };
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <HelmetProvider className="schoolDetailwrapper">
       <Helmet>
         <title>Go Yours語言學校介紹：{school.name}</title>
         <meta name="description" content={`Go Yours介紹給你：${school.name}`} />
+        <meta
+          name="keywords"
+          content="日本留學、留學申請、語言學校、大學申請、獎學金"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content={`Go Yours語言學校介紹：${school.name}`}
+        />
+        <meta
+          property="og:description"
+          content={`Go Yours介紹給你：${school.name}`}
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content={`Go Yours語言學校介紹：${school.name}`}
+        />
+        <meta
+          name="twitter:description"
+          content={`Go Yours介紹給你：${school.name}`}
+        />
+        <meta name="twitter:image" content={imageURL} />
       </Helmet>
       <div className="schoolDetailPage">
         <div className="picSlider">
@@ -380,18 +420,25 @@ export default function SchoolDetail() {
             modules={[FreeMode, Navigation, Thumbs]}
             className="upperSlider"
           >
-            {school.gallery.map((img, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <img
-                    src={urlFor(img.asset).url()}
-                    alt={school.name}
-                    onClick={() => openModal(urlFor(img.asset).url())}
-                    style={{ cursor: 'pointer' }}
-                  />
-                </SwiperSlide>
-              );
-            })}
+            {school.gallery.length > 0 ? (
+              school.gallery.map((img, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={urlFor(img.asset).url()}
+                      alt={school.name}
+                      onClick={() => openModal(urlFor(img.asset).url())}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  </SwiperSlide>
+                );
+              })
+            ) : (
+              // <SwiperSlide>
+              //   <p className="no-photo-note">未提供照片ＱＱ</p>
+              // </SwiperSlide>
+              <></>
+            )}
           </Swiper>
           <Swiper
             onSwiper={setThumbsSwiper}

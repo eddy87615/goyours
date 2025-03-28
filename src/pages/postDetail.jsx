@@ -248,7 +248,6 @@ export default function PostDetail() {
       const cachedPost = getCache(cacheKey);
 
       if (cachedPost) {
-        console.log('Using caches data');
         setPost(cachedPost);
         setLoading(false);
         return;
@@ -277,7 +276,6 @@ export default function PostDetail() {
       );
 
       if (post) {
-        console.log('Fetched post ID:', post._id);
         await updateViews(post._id, post.views || 0);
         const updatedPost = { ...post, views: (post.views || 0) + 1 };
 
@@ -291,70 +289,12 @@ export default function PostDetail() {
     fetchPost();
   }, [slug]);
 
-  // useEffect(() => {
-  //   if (post && post.categories) {
-  //     fetchRelatedPosts(post.categories, slug);
-  //   }
-  // }, [post, slug]);
-
-  // async function fetchRelatedPosts(categories, currentSlug) {
-  //   if (!categories || categories.length === 0) return;
-
-  //   // 提取类别标题用于查询相关帖子
-  //   const categoryTitles = categories.map((cat) => cat.title);
-
-  //   // 先获取相同标签的相关文章
-  //   let relatedPosts = await client.fetch(
-  //     `
-  //     *[_type == "post" && slug.current != $currentSlug && count(categories[]->title in $categoryTitles) > 0] | order(publishedAt desc)[0...3] {
-  //       title,
-  //       publishedAt,
-  //       mainImage,
-  //       slug,
-  //       categories[]->{
-  //         title
-  //       },
-  //     }
-  //     `,
-  //     { currentSlug, categoryTitles }
-  //   );
-
-  //   const fetchedSlugs = new Set(relatedPosts.map((post) => post.slug.current));
-
-  //   // 如果相关文章不足三篇，则从所有文章中补足
-  //   if (relatedPosts.length < 3) {
-  //     const additionalPosts = await client.fetch(
-  //       `
-  //       *[_type == "post" && slug.current != $currentSlug && !(slug.current in $fetchedSlugs)] | order(publishedAt desc)[0...${
-  //         3 - relatedPosts.length
-  //       }]  {
-  //         title,
-  //         publishedAt,
-  //         mainImage,
-  //         slug,
-  //         categories[]->{
-  //           title
-  //         }
-  //       }
-  //       `,
-  //       { currentSlug, fetchedSlugs: Array.from(fetchedSlugs) }
-  //     );
-
-  //     // 将其他文章加入到相关文章中
-  //     relatedPosts = [...relatedPosts, ...additionalPosts];
-  //   }
-
-  //   setRelatedPosts(relatedPosts);
-  // }
-
   async function updateViews(postId, currentViews) {
     await client
       .patch(postId)
       .set({ views: currentViews + 1 })
       .commit()
-      .catch((err) => {
-        console.error('更新 views 失敗', err);
-      });
+      .catch((err) => {});
   }
 
   if (loading) {
@@ -369,7 +309,7 @@ export default function PostDetail() {
     return (
       <div>
         <p className="postLoading nopost-warning">
-          沒有文章
+          沒有這篇文章
           <span className="nopost">
             <img src="/goyoursbear-B.svg" alt="goyours bear gray" />
           </span>
@@ -378,17 +318,51 @@ export default function PostDetail() {
     );
   }
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <HelmetProvider>
       <Helmet>
         <title>Go Yours文章分享：{post.title}</title>
         <meta name="description" content={`${post.description}`} />
+        <meta
+          name="keywords"
+          content="日本留學資訊、日本打工度假經驗、留學生活、日本文化、最新消息"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta property="og:title" content={`Go Yours文章分享：${post.title}`} />
+        <meta property="og:description" content={`${post.description}`} />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content={`Go Yours文章分享：${post.title}`}
+        />
+        <meta name="twitter:description" content={`${post.description}`} />
+        <meta
+          name="twitter:image"
+          content="https://www.goyours.tw/open_graph.png"
+        />
       </Helmet>
       <div className="postDetailSection">
         <PostCategary
           categories={categories}
           handleCategoryClick={handleSortClick}
-          handleSearch={handleSearch} // 使用新的 handleSearch
+          handleSearch={handleSearch}
           placeholder="搜尋文章⋯"
           title="文章分類"
         />

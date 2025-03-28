@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { client } from '../cms/sanityClient';
 import { useInView } from 'react-intersection-observer';
+import { Helmet } from 'react-helmet-async';
 
 import ContactUs from '../components/contactUs/contactUs';
 import ScrollDownSide from '../components/scroolDown/scrollDownSide';
@@ -132,62 +133,68 @@ export default function About() {
     { label: '資料下載', icon: '/service-icon_download.svg' },
   ];
 
-  // useEffect(() => {
-  //   const aboutTop = document.querySelector('.aboutTop');
-
-  //   function showRandomImage() {
-  //     // 隨機選擇一張圖片
-  //     const img = document.createElement('img');
-  //     img.src = images[Math.floor(Math.random() * images.length)];
-  //     img.className = 'random-image';
-
-  //     // 隨機生成圖片位置，避免生成在中央區域
-  //     const maxTop = aboutTop.clientHeight - 400; // 減去圖片高度，避免溢出
-  //     const maxLeft = aboutTop.clientWidth - 100; // 減去圖片寬度，避免溢出
-
-  //     let top, left;
-  //     do {
-  //       top = Math.random() * maxTop;
-  //       left = Math.random() * maxLeft;
-  //     } while (
-  //       top > aboutTop.clientHeight / 2 - 200 &&
-  //       top < aboutTop.clientHeight / 2 + 200 &&
-  //       left > aboutTop.clientWidth / 2 - 200 &&
-  //       left < aboutTop.clientWidth / 2 + 200
-  //     );
-
-  //     img.style.top = `${top}px`;
-  //     img.style.left = `${left}px`;
-
-  //     const randomSize = Math.floor(Math.random() * 100) + 100;
-  //     img.style.width = `${randomSize}px`;
-  //     img.style.height = 'auto';
-
-  //     // 把圖片加到 aboutTop 中
-  //     aboutTop.appendChild(img);
-
-  //     setTimeout(() => {
-  //       aboutTop.removeChild(img);
-  //     }, 5000);
-  //   }
-
-  //   // 畫面載入時立即顯示第一張圖片
-  //   showRandomImage();
-
-  //   const interval = setInterval(showRandomImage, 2000); // 每 2 秒顯示一張新圖片
-
-  //   return () => clearInterval(interval); // 清理 interval
-  // }, [images]);
-
   const { ref, inView } = useInView({
     triggerOnce: true, // 進入視窗後只觸發一次
     threshold: 1, // 元素出現在視窗 10% 時觸發
   });
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <>
+      <Helmet>
+        <title>
+          Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！
+        </title>
+        <meta
+          name="keywords"
+          content="高優國際留學、公司介紹、服務項目、專業團隊、聯絡資訊"
+        />
+        <meta
+          name="description"
+          content="關於高優國際留學公司背景，高優國際服務範圍的介紹。高優國際專業顧問團隊有許多的成功案例，幫所有想要去日本發展的朋友們實現夢想。"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！"
+        />
+        <meta
+          property="og:description"
+          content="關於高優國際留學公司背景，高優國際服務範圍的介紹。高優國際專業顧問團隊有許多的成功案例，幫所有想要去日本發展的朋友們實現夢想。"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：關於高優｜高優國際專業顧問團隊｜幫你實現你的留學夢想！"
+        />
+        <meta
+          name="twitter:description"
+          content="關於高優國際留學公司背景，高優國際服務範圍的介紹。高優國際專業顧問團隊有許多的成功案例，幫所有想要去日本發展的朋友們實現夢想。"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
       <div className="aboutTop">
-        <img src="/LOGO-09.png" alt="goyours logo" className="centerLogo" />
+        <img
+          src="/LOGO-09.png"
+          alt="GoYours LOGO with handwriting words, 手寫字高優國際公司商標"
+          className="centerLogo"
+        />
         {topImg.map((img, index) => (
           <div key={index} className="aboutusTopImg">
             <img src={img.src} alt={`about us top img ${index}`} />
@@ -198,7 +205,7 @@ export default function About() {
         </div>
       </div>
       <AnimationSection className="goyoursIntro">
-        <h1>
+        <h2>
           <span className="goyoursbear">
             <svg
               version="1.1"
@@ -216,10 +223,9 @@ export default function About() {
             </svg>
           </span>
           <span className="yellow">About Us</span>關於我們
-        </h1>
+        </h2>
+        <h1>打工度假、留學好夥伴 相信GoYours</h1>
         <p>
-          打工度假、留學好夥伴 相信GoYours
-          <br />
           你是否也曾在某一年， 或某個時刻觸動了想出去看看的念頭？
           <br />
           出國留學或打工，是每一個年輕人都能實現的夢想
@@ -239,10 +245,10 @@ export default function About() {
       </AnimationSection>
       <AnimationSection className="goyoursserviceWrapper">
         <div className="goyoursservice">
-          <h1 className="underLine">
+          <h2 className="underLine">
             <span className="yellow">Service</span>服務內容
             {/* <GoyoursBear /> */}
-          </h1>
+          </h2>
           <div className="serviceArea">
             <p>
               GoYours團隊集合了數位有著業界多年經驗的顧問
@@ -291,10 +297,10 @@ export default function About() {
 
       <AnimationSection className="Review">
         <div className="reviewTitle">
-          <h1 className="underLine">
+          <h2 className="underLine">
             <span className="yellow">Review</span>學員心得
             {/* <GoyoursBear /> */}
-          </h1>
+          </h2>
         </div>
         <div className="feedBackArea">
           {feedbacks.map((feedback, index) => (
@@ -310,9 +316,9 @@ export default function About() {
         </div>
       </AnimationSection>
       <div className="ifYou">
-        <h1>
+        <h2>
           <span className="yellow">If You...</span>如果你
-        </h1>
+        </h2>
         <ProgressBar />
       </div>
       <AnimationSection className="aboutContactArea">

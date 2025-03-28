@@ -168,19 +168,23 @@
   position: relative;
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
-  .fqa-body {
+  /* .fqa-body {
     margin-top: -16%;
-  }
+  } */
 }
 
 @media (min-width: 481px) and (max-width: 1024px) {
   .fqa-body {
     box-sizing: border-box;
 
-    margin-top: -20%;
+    /* margin-top: -20%; */
   }
   .fqa-wrapper {
     width: 90vw;
+  }
+
+  .fqa-KV {
+    height: 60vh;
   }
 }
 

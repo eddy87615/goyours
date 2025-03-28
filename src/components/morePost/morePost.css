@@ -27,6 +27,8 @@
 }
 
 .submitPostLink {
+  box-sizing: border-box;
+
   width: 100%;
   display: grid;
   grid-template-columns: 0.1fr 1fr;
@@ -59,6 +61,8 @@
   display: block;
 
   transition-duration: 0.2s;
+
+  pointer-events: none;
 }
 
 .more-post-img-frame {
@@ -88,10 +92,6 @@
 
 .submitPostLink ul li {
   flex-shrink: 0;
-}
-
-.submitedPostArea {
-  padding-bottom: 8rem;
 }
 
 .submitPostDate {
@@ -188,8 +188,5 @@
     width: 5rem;
     height: 5rem;
     border-radius: 0.5rem;
-  }
-  .submitedPostArea {
-    padding-bottom: 4rem;
   }
 }

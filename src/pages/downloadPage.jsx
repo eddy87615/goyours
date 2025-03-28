@@ -1,5 +1,6 @@
 import { client } from '../cms/sanityClient';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 import { FiDownload } from 'react-icons/fi';
 
@@ -38,8 +39,58 @@ export default function DownloadPage() {
     fetchDocuments();
   }, []);
 
+  const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+
   return (
     <>
+      <Helmet>
+        <title>
+          Go
+          Yours：高優資料下載專區｜日本留學申請表下載｜日本打工度假申請資料｜高優國際服務手冊下載｜日本簽證申請文件範本
+        </title>
+        <meta
+          name="keywords"
+          content="申請表格、資料下載、指南手冊、文件範本"
+        />
+        <meta
+          name="description"
+          content="高優整理的各種申請資料，包括了日本留學申請表、日本打工度假申請資料、高優國際服務手冊、日本簽證申請文件範本等等，讓你不會準備的手忙腳亂！"
+        />
+        <link rel="canonical" href={currentURL} />
+
+        <meta property="og:site_name" content="Go Yours：高優國際" />
+        <meta
+          property="og:title"
+          content="Go Yours：高優資料下載專區｜日本留學申請表下載｜日本打工度假申請資料｜高優國際服務手冊下載｜日本簽證申請文件範本"
+        />
+        <meta
+          property="og:description"
+          content="高優整理的各種申請資料，包括了日本留學申請表、日本打工度假申請資料、高優國際服務手冊、日本簽證申請文件範本等等，讓你不會準備的手忙腳亂！"
+        />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image:secure_url"
+          content="https://www.goyours.tw/open_graph.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Go Yours Logo" />
+        <meta
+          name="twitter:title"
+          content="Go Yours：高優資料下載專區｜日本留學申請表下載｜日本打工度假申請資料｜高優國際服務手冊下載｜日本簽證申請文件範本"
+        />
+        <meta
+          name="twitter:description"
+          content="高優整理的各種申請資料，包括了日本留學申請表、日本打工度假申請資料、高優國際服務手冊、日本簽證申請文件範本等等，讓你不會準備的手忙腳亂！"
+        />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
       <div className="downloadSection">
         <div className="download-KV">
           <h1>

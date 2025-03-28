@@ -2,6 +2,7 @@
   /* width: 90vw; */
   margin: 0 auto;
 }
+
 .schoolDetailPage {
   width: 90vw;
   margin: 0 auto;
@@ -46,11 +47,11 @@
   filter: brightness(1) !important;
 }
 
-.schoolDetailH1 {
+.schoolDetailH2 {
   width: 80vw;
   margin: 0 auto;
 }
-.schoolDetailH1 h1 {
+.schoolDetailH2 h2 {
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -154,22 +155,40 @@
 }
 
 .modalContent {
-  border-radius: 10px;
   position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
+
   object-fit: cover;
   overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
 }
 
 .modalimgWrapper {
   position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
 }
 
 .modalImage {
-  max-width: 100%;
-  max-height: 100%;
+  height: 100%;
+  max-height: 90vh;
+  width: auto;
+  max-width: 90vw;
+
   object-fit: contain;
+
+  border-radius: 1rem;
 }
 
 .closeModalBtn {
@@ -214,11 +233,15 @@
 .featurestxt p {
   padding-left: 4.5rem;
 }
-.featurestxt h2::before {
+.featurestxt h3 {
+  font-size: 1.8rem;
+}
+.featurestxt h3::before {
   counter-increment: section;
   content: counter(section, decimal-leading-zero);
 
   font-weight: bold;
+  font-size: 70%;
 
   background-color: var(--goyoursYellow);
   color: #fff;
@@ -243,11 +266,11 @@
   z-index: 1;
 }
 
-.videoH1 {
+.videoH2 {
   width: 80vw;
   margin: 0 auto;
 }
-.video h1 {
+.video h2 {
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -370,7 +393,7 @@
 
     padding: 4rem 0;
   }
-  .featurestxt h2::before {
+  .featurestxt h3::before {
     margin-right: 0;
   }
   .featurestxt p {
@@ -387,10 +410,6 @@
     width: 80vw;
 
     padding-top: 10rem;
-  }
-  .breadCrumb {
-    top: 4rem;
-    left: -8%;
   }
 
   .schoolUnfoSection h1 {
@@ -446,7 +465,7 @@
   .schoolConditions {
     width: 90vw;
   }
-  .schoolDetailH1 {
+  .schoolDetailH2 {
     width: 100%;
   }
   .schoolConditions-detail {
@@ -462,7 +481,7 @@
     padding: 2rem 3rem;
   }
 
-  .schoolDetailH1 {
+  .schoolDetailH2 {
     width: 90vw;
   }
   .featurestxt ul {
@@ -473,12 +492,12 @@
 
     margin-top: 0;
   }
-  .featurestxt h2 {
+  .featurestxt h3 {
     font-size: 1.5rem;
 
     margin-bottom: 0.5rem;
   }
-  .videoH1 {
+  .videoH2 {
     width: 90vw;
   }
   iframe {
@@ -503,6 +522,10 @@
   }
   .picSlider {
     width: 100%;
+  }
+  .picSlider .swiper-button-prev,
+  .picSlider .swiper-button-next {
+    display: flex;
   }
   .swiper-free-mode {
     display: none;
@@ -533,9 +556,11 @@
   }
   .schoolInfo li svg {
     font-size: 1.3rem;
+
+    flex-shrink: 0;
   }
 
-  .schoolDetailH1 h1 {
+  .schoolDetailH2 h2 {
     font-size: 1rem;
   }
 
@@ -580,13 +605,13 @@
 
     padding-bottom: 2rem;
   }
-  .featurestxt h2 {
+  .featurestxt h3 {
     position: relative;
     font-size: 1rem;
 
     padding-left: 3rem;
   }
-  .featurestxt h2::before {
+  .featurestxt h3::before {
     position: absolute;
     top: 50%;
     left: 0;
@@ -607,7 +632,7 @@
     padding-left: 3rem;
   }
 
-  .videoH1 h1 {
+  .videoH2 h1 {
     font-size: 1rem;
   }
 
