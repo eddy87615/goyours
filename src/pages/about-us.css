@@ -321,7 +321,8 @@
   margin: 0 auto;
   padding-top: 1rem;
 }
-.goyoursIntro p > span {
+.goyoursIntro p > span,
+.goyoursIntro h1 > span {
   background-color: var(--goyoursYellow);
   color: #fff;
   font-weight: bold;

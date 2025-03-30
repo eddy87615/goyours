@@ -224,7 +224,9 @@ export default function About() {
           </span>
           <span className="yellow">About Us</span>關於我們
         </h2>
-        <h1>打工度假、留學好夥伴 相信GoYours</h1>
+        <h1>
+          打工度假、留學好夥伴 相信<span>GoYours</span>
+        </h1>
         <p>
           <span>GOYOURS</span>高優國際留學有限公司台灣勞動部立案
           評鑑A級私立就業服務機構證號3508
