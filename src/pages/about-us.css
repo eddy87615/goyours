@@ -282,6 +282,9 @@
   background-image: url(/Japan.png);
   background-repeat: no-repeat;
   background-position: 90% 80%;
+
+  position: relative;
+  z-index: 1;
 }
 .goyoursIntro h2 {
   display: flex;
