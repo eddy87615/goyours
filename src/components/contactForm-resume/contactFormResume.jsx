@@ -464,8 +464,9 @@ export default function ContactFormResume() {
                     required
                   />
                   <span className="uploadNotice">
-                    最大檔案大小為30MB。不支援 .bat、.exe
-                    等檔案類型；最多上傳四個檔案。請先下載提供的履歷書填寫。
+                    請上傳pdf或doc、docx檔，最多上傳四份檔案。
+                    <br />
+                    並請先點擊『履歷書下載』使用提供的履歷書樣式填寫。
                   </span>
                   <div className="fileList">
                     <ul>
