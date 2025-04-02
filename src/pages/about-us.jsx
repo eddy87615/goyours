@@ -252,17 +252,17 @@ export default function About() {
           </h2>
           <div className="serviceArea">
             <p>
-              GoYours團隊集合了數位有著業界多年經驗的顧問
+              日本就職工作介紹
               <br />
-              無論您是想要短期進修、語言學校、打工度假
+              打工度假簽證指導，工作介紹
               <br />
-              我們都將給你最完善的服務與協助
+              特定技能一號工作介紹
               <br />
-              約時間與我們一對一諮詢
+              日本語言學校長短期留學申請
               <br />
-              也歡迎用Line、FB讓我們了解大家的需求
+              SGU大學及大學院申請
               <br />
-              讓高優成為你們打工度假、留學圓夢的好夥伴！
+              EJU試驗，線上課程及輔導
             </p>
             <div className="circleMenu">
               <div className="circleMenuLogo">
