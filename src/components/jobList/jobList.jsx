@@ -126,7 +126,12 @@ export default function JobList({ jobList, isSearchTriggered, totalResults }) {
                       </span>
                     </div>
                   )}
-                  <img src={urlFor(job.mainImage).url()} alt={job.name} />
+                 {job.mainImage?.asset ? (
+  <img src={urlFor(job.mainImage).url()} alt={job.name} />
+) : (
+  <p className='noimg-notice'>未提供圖片</p>
+)}
+
                 </div>
                 <ul>
                   {windowSize < 480 ? (
