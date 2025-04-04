@@ -1,16 +1,16 @@
-import { FaLocationDot } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { FaLocationDot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 // import { useNavigate } from 'react-router-dom';
 
-import { client, urlFor } from '../../cms/sanityClient';
+import { client, urlFor } from "../../cms/sanityClient";
 
-import HomeBg from '../homeBg/homeBg';
-import AnimationSection from '../../pages/AnimationSection';
-import useWindowSize from '../../hook/useWindowSize';
+import HomeBg from "../homeBg/homeBg";
+import AnimationSection from "../../pages/AnimationSection";
+import useWindowSize from "../../hook/useWindowSize";
 
-import './homeJobList.css';
-import '../../pages/home.css';
-import { useEffect, useState } from 'react';
+import "./homeJobList.css";
+import "../../pages/home.css";
+import { useEffect, useState } from "react";
 
 export default function HomeJobList() {
   const windowSize = useWindowSize();
@@ -68,15 +68,15 @@ export default function HomeJobList() {
                   <ul>
                     <li>
                       <span>職稱</span>
-                      {job.name}
+                      <p>{job.name}</p>
                     </li>
                     <li>
                       <span>內容</span>
-                      {job.jobcontent}
+                      <p>{job.jobcontent}</p>
                     </li>
                     <li>
                       <span>時薪</span>
-                      {job.salary}円
+                      <p>{job.salary}円</p>
                     </li>
                   </ul>
                   {/* <button
@@ -87,11 +87,11 @@ export default function HomeJobList() {
                     to={`/working-holiday-job#${job.slug.current}`}
                     onClick={(e) => {
                       // 如果需要，可以在這裡添加其他處理邏輯
-                      localStorage.setItem('targetJobSlug', job.slug.current);
+                      localStorage.setItem("targetJobSlug", job.slug.current);
                     }}
                     className="schoolListDetailBtn"
                   >
-                    {windowSize < 1200 ? '詳情' : '了解職缺詳情'}
+                    {windowSize < 1200 ? "詳情" : "了解職缺詳情"}
                   </Link>
                   {/* </button> */}
                 </div>

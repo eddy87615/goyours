@@ -64,6 +64,7 @@
   transition-duration: 0.5s;
   position: relative;
   width: 50%;
+  max-width: 255px;
   height: 100%;
   z-index: 1;
   transform-origin: top left;
@@ -84,7 +85,9 @@
 }
 
 .jobListcontent {
+  box-sizing: content-box;
   width: 50%;
+  max-width: 228px;
 
   padding: 1rem;
 }
@@ -94,18 +97,22 @@
   flex-direction: column;
   align-content: center;
   width: 100%;
+  max-width: 228px;
 
   font-size: 0.875rem;
 
   gap: 1rem;
 
-  padding: 2rem 0;
+  padding: 1rem 0rem 2rem 0;
 
   color: #fff;
   font-weight: bold;
 
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .jobListcontent ul span {
   background-color: #fff;
 
@@ -118,12 +125,35 @@
   border-radius: 0.5rem;
 
   box-sizing: border-box;
+
+  position: relative;
 }
 
-.jobListcontent ul li:nth-child(1),
-.jobListcontent ul li:nth-child(2) {
-  line-height: 1.5rem;
+.jobListcontent ul li {
+  display: flex;
+  align-items: center;
 }
+
+.jobListcontent ul li p {
+  max-width: 228px;
+  margin: 0;
+  display: inline-block;
+  max-width: 228px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* .jobListcontent ul li > span::before {
+  position: absolute;
+  content: "";
+  width: 120%;
+  height: 120%;
+  background-color: #fff;
+
+  left: 0;
+  top: 0;
+  z-index: -1;
+} */
 
 .workingholidaySection .schoolListDetailBtn {
   bottom: 6%;
