@@ -1,20 +1,20 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from 'react';
-import { client } from '../../cms/sanityClient';
-import { urlFor } from '../../cms/sanityClient';
-import { PortableText } from '@portabletext/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel } from 'swiper/modules';
-import { Autoplay, Navigation } from 'swiper/modules';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { client } from "../../cms/sanityClient";
+import { urlFor } from "../../cms/sanityClient";
+import { PortableText } from "@portabletext/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
-import HomeBg from '../homeBg/homeBg';
-import AnimationSection from '../../pages/AnimationSection';
-import useWindowSize from '../../hook/useWindowSize';
+import HomeBg from "../homeBg/homeBg";
+import AnimationSection from "../../pages/AnimationSection";
+import useWindowSize from "../../hook/useWindowSize";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import './hotPost.css';
+import "swiper/css";
+import "swiper/css/navigation";
+import "./hotPost.css";
 
 const customComponents = {
   types: {
@@ -26,7 +26,7 @@ const customComponents = {
 
       return (
         <div className="post-image">
-          <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
+          <img src={urlFor(value).url()} alt={value.alt || "Image"} />
         </div>
       );
     },
@@ -111,12 +111,12 @@ const customComponents = {
       const mergedHeaders = mergeTableHeaders(headers);
 
       return (
-        <table border="1" style={{ borderCollapse: 'collapse', width: '90%' }}>
+        <table border="1" style={{ borderCollapse: "collapse", width: "90%" }}>
           <thead>
             <tr>
               {mergedHeaders.map((header, index) => (
                 <th key={index} colSpan={header.colspan}>
-                  {header.content || ''}
+                  {header.content || ""}
                 </th>
               ))}
             </tr>
@@ -125,7 +125,7 @@ const customComponents = {
             {sanitizedRows.slice(1).map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {row.map((cell, cellIndex) => (
-                  <td key={cellIndex}>{cell || ''}</td>
+                  <td key={cellIndex}>{cell || ""}</td>
                 ))}
               </tr>
             ))}
@@ -148,7 +148,7 @@ const customComponents = {
   },
   marks: {
     color: ({ children, value }) => {
-      const color = value?.hex?.hex || '#FF0000';
+      const color = value?.hex?.hex || "#FF0000";
 
       return (
         <span
@@ -161,7 +161,7 @@ const customComponents = {
       );
     },
     favoriteColor: ({ children, value }) => {
-      const color = value?.hex?.hex || '#FF0000';
+      const color = value?.hex?.hex || "#FF0000";
 
       return (
         <span
@@ -189,7 +189,7 @@ export default function Hotpost() {
       // 查詢 "最新消息" 標籤的文章
       //&& "最新消息" in categories[]->title
       const result = await client.fetch(`
-            *[_type == "post"] | order(views desc)[0...6] {
+            *[_type == "post" && !(_id in path("drafts.**"))] | order(views desc)[0...6] {
               title,
               slug,
               publishedAt,
@@ -248,10 +248,14 @@ export default function Hotpost() {
                 >
                   {post.mainImage && (
                     <div className="homeHotpostImg">
-                      <img
-                        src={urlFor(post.mainImage).url()}
-                        alt={post.title}
-                      />
+                      {post.mainImage?.asset ? (
+                        <img
+                          src={urlFor(post.mainImage).url()}
+                          alt={post.title}
+                        />
+                      ) : (
+                        <p></p>
+                      )}
                     </div>
                   )}
                   <h3 className="homeHotPost-postTitle">{post.title}</h3>
@@ -281,12 +285,12 @@ export default function Hotpost() {
                     <img src="/圓形logo.png" alt="goyours logo" />
                     <p>
                       {new Date(post.publishedAt)
-                        .toLocaleDateString('zh-TW', {
-                          year: 'numeric',
-                          month: '2-digit',
-                          day: '2-digit',
+                        .toLocaleDateString("zh-TW", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
                         })
-                        .replace(/\//g, '.')}
+                        .replace(/\//g, ".")}
                     </p>
                   </div>
                 </a>

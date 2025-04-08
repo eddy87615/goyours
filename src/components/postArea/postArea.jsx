@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import './postArea.css';
-import Pagination from '../pagination/pagination';
-import { PortableText } from '@portabletext/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
-import { urlFor } from '../../cms/sanityClient';
+import "./postArea.css";
+import Pagination from "../pagination/pagination";
+import { PortableText } from "@portabletext/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
+import { urlFor } from "../../cms/sanityClient";
 
 const customComponents = {
   types: {
@@ -16,7 +16,7 @@ const customComponents = {
 
       return (
         <div className="post-image">
-          <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
+          <img src={urlFor(value).url()} alt={value.alt || "Image"} />
         </div>
       );
     },
@@ -101,12 +101,12 @@ const customComponents = {
       const mergedHeaders = mergeTableHeaders(headers);
 
       return (
-        <table border="1" style={{ borderCollapse: 'collapse', width: '90%' }}>
+        <table border="1" style={{ borderCollapse: "collapse", width: "90%" }}>
           <thead>
             <tr>
               {mergedHeaders.map((header, index) => (
                 <th key={index} colSpan={header.colspan}>
-                  {header.content || ''}
+                  {header.content || ""}
                 </th>
               ))}
             </tr>
@@ -115,7 +115,7 @@ const customComponents = {
             {sanitizedRows.slice(1).map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {row.map((cell, cellIndex) => (
-                  <td key={cellIndex}>{cell || ''}</td>
+                  <td key={cellIndex}>{cell || ""}</td>
                 ))}
               </tr>
             ))}
@@ -138,7 +138,7 @@ const customComponents = {
   },
   marks: {
     color: ({ children, value }) => {
-      const color = value?.hex?.hex || '#FF0000';
+      const color = value?.hex?.hex || "#FF0000";
 
       return (
         <span
@@ -151,7 +151,7 @@ const customComponents = {
       );
     },
     favoriteColor: ({ children, value }) => {
-      const color = value?.hex?.hex || '#FF0000';
+      const color = value?.hex?.hex || "#FF0000";
 
       return (
         <span
@@ -172,8 +172,8 @@ const customComponents = {
 const highlightText = (text, query) => {
   if (!query) return text;
 
-  const escapeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(`(${escapeQuery})`, 'gi');
+  const escapeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp(`(${escapeQuery})`, "gi");
 
   const parts = text.split(regex);
 
@@ -211,7 +211,11 @@ export default function PostArea({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={urlFor(post.mainImage).url()} alt={post.title} />
+              {post.mainImage?.asset ? (
+                <img src={urlFor(post.mainImage).url()} alt={post.title} />
+              ) : (
+                <p className="noimg-notice">未提供圖片</p>
+              )}
             </Link>
           )}
           <div className="postListInfo">
@@ -241,12 +245,12 @@ export default function PostArea({
                 <img src="/圓形logo.png" alt="goyours logo" />
               </span>
               {new Date(post.publishedAt)
-                .toLocaleDateString('zh-TW', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
+                .toLocaleDateString("zh-TW", {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit",
                 })
-                .replace(/\//g, '.')}
+                .replace(/\//g, ".")}
             </p>
             <div className="textPart">
               <PortableText value={post.body} components={customComponents} />

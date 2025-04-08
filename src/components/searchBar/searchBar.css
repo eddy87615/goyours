@@ -92,6 +92,8 @@
 }
 
 .searchup select {
+  height: 100%;
+
   appearance: none;
   -webkit-appearance: none; /*For Safari */
   -moz-appearance: none; /* For Firefox */

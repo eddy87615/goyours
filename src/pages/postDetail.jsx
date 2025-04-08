@@ -1,27 +1,27 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // 用來獲取 URL 中的 slug
-import { client, urlFor } from '../cms/sanityClient';
-import { PortableText } from '@portabletext/react'; // 用來顯示富文本
-import { Link } from 'react-router-dom';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom"; // 用來獲取 URL 中的 slug
+import { client, urlFor } from "../cms/sanityClient";
+import { PortableText } from "@portabletext/react"; // 用來顯示富文本
+import { Link } from "react-router-dom";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 
-import PostCategary from '../components/postCategory/postCategory';
-import ContactUs from '../components/contactUs/contactUs';
-import PostCatalog from '../components/postCatalog/postCatalog';
-import GoyoursBearRelatedPost from '../components/goyoursBear/goyoursBear-relatedpost';
-import LoadingBear from '../components/loadingBear/loadingBear';
-import useSearchHandler from '../hook/useSearchHandler';
-import MorePost from '../components/morePost/morePost';
+import PostCategary from "../components/postCategory/postCategory";
+import ContactUs from "../components/contactUs/contactUs";
+import PostCatalog from "../components/postCatalog/postCatalog";
+import GoyoursBearRelatedPost from "../components/goyoursBear/goyoursBear-relatedpost";
+import LoadingBear from "../components/loadingBear/loadingBear";
+import useSearchHandler from "../hook/useSearchHandler";
+import MorePost from "../components/morePost/morePost";
 
-import { LuEye } from 'react-icons/lu';
+import { LuEye } from "react-icons/lu";
 
-import './postDetail.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import 'swiper/css'; // 引入核心樣式
-import 'swiper/css/navigation'; // 引入導航按鈕樣式
+import "./postDetail.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css"; // 引入核心樣式
+import "swiper/css/navigation"; // 引入導航按鈕樣式
 
 const customComponents = {
   types: {
@@ -33,7 +33,7 @@ const customComponents = {
 
       return (
         <div className="post-image">
-          <img src={urlFor(value).url()} alt={value.alt || 'Image'} />
+          <img src={urlFor(value).url()} alt={value.alt || "Image"} />
         </div>
       );
     },
@@ -118,12 +118,12 @@ const customComponents = {
       const mergedHeaders = mergeTableHeaders(headers);
 
       return (
-        <table border="1" style={{ borderCollapse: 'collapse', width: '90%' }}>
+        <table border="1" style={{ borderCollapse: "collapse", width: "90%" }}>
           <thead>
             <tr>
               {mergedHeaders.map((header, index) => (
                 <th key={index} colSpan={header.colspan}>
-                  {header.content || ''}
+                  {header.content || ""}
                 </th>
               ))}
             </tr>
@@ -132,7 +132,7 @@ const customComponents = {
             {sanitizedRows.slice(1).map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {row.map((cell, cellIndex) => (
-                  <td key={cellIndex}>{cell || ''}</td>
+                  <td key={cellIndex}>{cell || ""}</td>
                 ))}
               </tr>
             ))}
@@ -146,7 +146,7 @@ const customComponents = {
   },
   marks: {
     color: ({ children, value }) => {
-      const color = value?.hex?.hex || '#FF0000';
+      const color = value?.hex?.hex || "#FF0000";
 
       return (
         <span
@@ -193,17 +193,17 @@ export default function PostDetail() {
   const navigate = useNavigate();
 
   const handleSortClick = (selectedCategory) => {
-    navigate('/goyours-post', {
+    navigate("/goyours-post", {
       state: {
         selectedCategory: selectedCategory,
-        searchQuery: '',
+        searchQuery: "",
       },
     });
   };
 
   const handleSearch = (searchQuery) => {
     // 導向到文章列表頁面並帶上搜尋參數
-    navigate('/goyours-post', {
+    navigate("/goyours-post", {
       state: {
         searchQuery: searchQuery,
         selectedCategory: null, // 重置分類選擇
@@ -217,7 +217,7 @@ export default function PostDetail() {
   };
 
   const [categories, setCategories] = useState([
-    { label: '所有文章', value: null },
+    { label: "所有文章", value: null },
   ]); // 儲存分類數據
 
   // 取得分類數據
@@ -232,7 +232,7 @@ export default function PostDetail() {
         label: cat.title,
         value: cat.title,
       }));
-      setCategories([{ label: '所有文章', value: null }, ...fetchedCategories]);
+      setCategories([{ label: "所有文章", value: null }, ...fetchedCategories]);
     }
 
     fetchCategories();
@@ -367,24 +367,29 @@ export default function PostDetail() {
           title="文章分類"
         />
         <div className="postbody">
-          {post.mainImage && (
+          {/* {post.mainImage && (
             <img
               src={urlFor(post.mainImage).url()}
               alt={post.title}
               width={500}
             />
+          )} */}
+          {post.mainImage?.asset ? (
+            <img src={urlFor(post.mainImage).url()} />
+          ) : (
+            <p>沒有圖片</p>
           )}
           <div className="postinfolist">
             <ul>
               <li className="postDetaildate">
                 <p>
                   {new Date(post.publishedAt)
-                    .toLocaleDateString('zh-TW', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
+                    .toLocaleDateString("zh-TW", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
                     })
-                    .replace(/\//g, '.')}
+                    .replace(/\//g, ".")}
                 </p>
               </li>
               <li className="postDetailviews">
