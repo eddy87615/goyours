@@ -13,7 +13,7 @@ export default function MorePost({ isSubmited }) {
   useEffect(() => {
     async function fetchPosts() {
       const posts = await client.fetch(`
-            *[_type == "post"] | order(publishedAt desc) {
+            *[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
               title,
               publishedAt,
               mainImage,

@@ -33,7 +33,7 @@ export default function Footer() {
   useEffect(() => {
     async function fetchLatestNewsPosts() {
       const result = await client.fetch(`
-        *[_type == "post"] | order(publishedAt desc)[0...3] {
+        *[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0...3] {
           title,
           slug,
           publishedAt,
