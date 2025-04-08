@@ -1,32 +1,32 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState, useRef } from 'react';
-import { client } from '../cms/sanityClient';
-import { urlFor } from '../cms/sanityClient'; // 导入 urlFor
-import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel } from 'swiper/modules';
-import { Autoplay, EffectFade } from 'swiper/modules';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { useEffect, useState, useRef } from "react";
+import { client } from "../cms/sanityClient";
+import { urlFor } from "../cms/sanityClient"; // 导入 urlFor
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
+import { Autoplay, EffectFade } from "swiper/modules";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
-import { FaLocationDot } from 'react-icons/fa6';
-import { LiaHandPointer } from 'react-icons/lia';
+import { FaLocationDot } from "react-icons/fa6";
+import { LiaHandPointer } from "react-icons/lia";
 
-import ContactUs from '../components/contactUs/contactUs';
-import Hotpost from '../components/hotPost/hotPost';
-import HomeJobList from '../components/homeJobList/homeJobList';
-import ScrollDown from '../components/scroolDown/scrollDown';
-import HomeBg from '../components/homeBg/homeBg';
-import ScrollDownSide from '../components/scroolDown/scrollDownSide';
-import AnimationSection from './AnimationSection';
-import useWindowSize from '../hook/useWindowSize';
+import ContactUs from "../components/contactUs/contactUs";
+import Hotpost from "../components/hotPost/hotPost";
+import HomeJobList from "../components/homeJobList/homeJobList";
+import ScrollDown from "../components/scroolDown/scrollDown";
+import HomeBg from "../components/homeBg/homeBg";
+import ScrollDownSide from "../components/scroolDown/scrollDownSide";
+import AnimationSection from "./AnimationSection";
+import useWindowSize from "../hook/useWindowSize";
 
-import 'swiper/css/effect-fade';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css/effect-fade";
+import "swiper/css";
+import "swiper/css/navigation";
 
-import './home.css';
-import './about-us.css';
+import "./home.css";
+import "./about-us.css";
 
 const News = () => {
   const [NewsPosts, setNewsPosts] = useState([]);
@@ -38,7 +38,7 @@ const News = () => {
       // 查詢 "最新消息" 標籤的文章
       //&& "最新消息" in categories[]->title
       const result = await client.fetch(`
-          *[_type == "post"] | order(publishedAt desc)[0...10] {
+          *[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0...10] {
             title,
             slug,
             publishedAt,
@@ -61,7 +61,7 @@ const News = () => {
         {NewsPosts.length >= 3 && (
           <Swiper
             spaceBetween={30}
-            slidesPerView={windowSize < 500 ? '1.5' : 'auto'}
+            slidesPerView={windowSize < 500 ? "1.5" : "auto"}
             slidesPerGroup={1}
             centeredSlides={true}
             freeMode={true}
@@ -86,10 +86,14 @@ const News = () => {
                 >
                   {post.mainImage && (
                     <div className="homeNewspostImg">
-                      <img
-                        src={urlFor(post.mainImage).url()}
-                        alt={post.title}
-                      />
+                      {post.mainImage?.asset ? (
+                        <img
+                          src={urlFor(post.mainImage).url()}
+                          alt={post.title}
+                        />
+                      ) : (
+                        <p></p>
+                      )}
                     </div>
                   )}
                   <p className="homeNews-postTitle">{post.title}</p>
@@ -98,12 +102,12 @@ const News = () => {
                       <img src="/圓形logo.png" alt="goyours logo" />
                     </span>
                     {new Date(post.publishedAt)
-                      .toLocaleDateString('zh-TW', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
+                      .toLocaleDateString("zh-TW", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
                       })
-                      .replace(/\//g, '.')}
+                      .replace(/\//g, ".")}
                   </p>
                 </a>
               </SwiperSlide>
@@ -140,7 +144,7 @@ const HomeschoolList = () => {
         const result = await client.fetch(query);
         setSchools(result);
       } catch (error) {
-        console.error('Error fetching schools:', error);
+        console.error("Error fetching schools:", error);
       }
     };
 
@@ -173,7 +177,7 @@ const HomeschoolList = () => {
                   className="schoolListDetailBtn"
                   to={`/studying-in-jp-school/${school.slug.current}`}
                 >
-                  {windowSize < 1200 ? '學校詳情' : '了解學校詳情'}
+                  {windowSize < 1200 ? "學校詳情" : "了解學校詳情"}
                 </Link>
               </div>
               <div className="schoolListBack">
@@ -237,12 +241,12 @@ export default function Home() {
   const [isAutoplayStarted, setIsAutoplayStarted] = useState(false);
 
   const HomeIntroimgList = [
-    { src: '/home-bubble01.jpg', alt: 'japanese temple picture,日本神社照片' },
+    { src: "/home-bubble01.jpg", alt: "japanese temple picture,日本神社照片" },
     {
-      src: '/home-bubble02.JPG',
-      alt: 'japanese shops street in sunny day,日本晴天的商店街景',
+      src: "/home-bubble02.JPG",
+      alt: "japanese shops street in sunny day,日本晴天的商店街景",
     },
-    { src: '/home-bubble03.JPG', alt: 'japanese moutain view,日本翠綠山景' },
+    { src: "/home-bubble03.JPG", alt: "japanese moutain view,日本翠綠山景" },
   ];
 
   const windowSize = useWindowSize();
@@ -255,8 +259,8 @@ export default function Home() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Initial autoplay setup
@@ -271,7 +275,7 @@ export default function Home() {
   // eslint-disable-next-line no-unused-vars
   const [navHeight, setNavHeight] = useState(0);
   useEffect(() => {
-    const nav = document.querySelector('nav');
+    const nav = document.querySelector("nav");
     if (nav) {
       setNavHeight(nav.offsetHeight);
     }
@@ -280,58 +284,58 @@ export default function Home() {
 
   const homeslider = [
     {
-      large: '/KV/KV_about_05-large.webp',
-      medium: '/KV/KV_about_05-medium.webp',
-      small: '/KV/KV_about_05-small.webp',
-      src: '/KV/KV_about_05-large.webp',
+      large: "/KV/KV_about_05-large.webp",
+      medium: "/KV/KV_about_05-medium.webp",
+      small: "/KV/KV_about_05-small.webp",
+      src: "/KV/KV_about_05-large.webp",
     },
     {
-      large: '/KV/KV_about_08-large.webp',
-      medium: '/KV/KV_about_08-medium.webp',
-      small: '/KV/KV_about_08-small.webp',
-      src: '/KV/KV_about_08-large.webp',
+      large: "/KV/KV_about_08-large.webp",
+      medium: "/KV/KV_about_08-medium.webp",
+      small: "/KV/KV_about_08-small.webp",
+      src: "/KV/KV_about_08-large.webp",
     },
     {
-      large: '/KV/KV_about_07-large.webp',
-      medium: '/KV/KV_about_07-medium.webp',
-      small: '/KV/KV_about_07-small.webp',
-      src: '/KV/KV_about_07-large.webp',
+      large: "/KV/KV_about_07-large.webp",
+      medium: "/KV/KV_about_07-medium.webp",
+      small: "/KV/KV_about_07-small.webp",
+      src: "/KV/KV_about_07-large.webp",
     },
     {
-      large: '/KV/KV_about_13-large.webp',
-      medium: '/KV/KV_about_13-medium.webp',
-      small: '/KV/KV_about_13-small.webp',
-      src: '/KV/KV_about_13-large.webp',
+      large: "/KV/KV_about_13-large.webp",
+      medium: "/KV/KV_about_13-medium.webp",
+      small: "/KV/KV_about_13-small.webp",
+      src: "/KV/KV_about_13-large.webp",
     },
     {
-      large: '/KV/KV_about_04-large.webp',
-      medium: '/KV/KV_about_04-medium.webp',
-      small: '/KV/KV_about_04-small.webp',
-      src: '/KV/KV_about_04-large.webp',
+      large: "/KV/KV_about_04-large.webp",
+      medium: "/KV/KV_about_04-medium.webp",
+      small: "/KV/KV_about_04-small.webp",
+      src: "/KV/KV_about_04-large.webp",
     },
     {
-      large: '/KV/KV_about_02-large.webp',
-      medium: '/KV/KV_about_02-medium.webp',
-      small: '/KV/KV_about_02-small.webp',
-      src: '/KV/KV_about_02-large.webp',
+      large: "/KV/KV_about_02-large.webp",
+      medium: "/KV/KV_about_02-medium.webp",
+      small: "/KV/KV_about_02-small.webp",
+      src: "/KV/KV_about_02-large.webp",
     },
     {
-      large: '/KV/KV_about_09-large.webp',
-      medium: '/KV/KV_about_09-medium.webp',
-      small: '/KV/KV_about_09-small.webp',
-      src: '/KV/KV_about_09-large.webp',
+      large: "/KV/KV_about_09-large.webp",
+      medium: "/KV/KV_about_09-medium.webp",
+      small: "/KV/KV_about_09-small.webp",
+      src: "/KV/KV_about_09-large.webp",
     },
     {
-      large: '/KV/KV_27-large.webp',
-      medium: 'KV/KV_27-medium.webp',
-      small: 'KV/KV_27-small.webp',
-      src: '/KV/KV_27.webp',
+      large: "/KV/KV_27-large.webp",
+      medium: "KV/KV_27-medium.webp",
+      small: "KV/KV_27-small.webp",
+      src: "/KV/KV_27.webp",
     },
     {
-      large: '/KV/KV_28-large.webp',
-      medium: 'KV/KV_28-medium.webp',
-      small: 'KV/KV_28-small.webp',
-      src: '/KV/KV_28.webp',
+      large: "/KV/KV_28-large.webp",
+      medium: "KV/KV_28-medium.webp",
+      small: "KV/KV_28-small.webp",
+      src: "/KV/KV_28.webp",
     },
   ];
 
@@ -390,8 +394,8 @@ export default function Home() {
         className="kv"
         style={
           windowSize <= 480 && {
-            borderBottomLeftRadius: 'calc(300 * 1em / 16)',
-            borderBottomRightRadius: 'calc(300 * 1em / 16)',
+            borderBottomLeftRadius: "calc(300 * 1em / 16)",
+            borderBottomRightRadius: "calc(300 * 1em / 16)",
           }
         }
       >
@@ -399,7 +403,7 @@ export default function Home() {
           className="kvSlider"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2, ease: 'easeOut' }}
+          transition={{ duration: 2, ease: "easeOut" }}
         >
           <Swiper
             ref={swiperRef}
