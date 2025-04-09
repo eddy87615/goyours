@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { TbBoxMultiple } from 'react-icons/tb';
-import { motion } from 'framer-motion';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { TbBoxMultiple } from "react-icons/tb";
+import { motion } from "framer-motion";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 
-import useWindowSize from '../../hook/useWindowSize';
+import useWindowSize from "../../hook/useWindowSize";
 
-import './navigation.css';
+import "./navigation.css";
 
 const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
   const itemVariants = {
@@ -18,7 +18,7 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
       opacity: 1,
       transition: {
         delay: i * 0.1, // 每個項目的延遲時間
-        type: 'spring',
+        type: "spring",
         stiffness: 70,
       },
     }),
@@ -29,14 +29,14 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
       <div
         className={
           ishamburgerClicked
-            ? 'hamburger-body hamburger-body-clicked '
-            : 'hamburger-body'
+            ? "hamburger-body hamburger-body-clicked "
+            : "hamburger-body"
         }
       >
         <motion.ul
           className="hamburger-list"
           initial="hidden"
-          animate={ishamburgerClicked ? 'visible' : 'hidden'}
+          animate={ishamburgerClicked ? "visible" : "hidden"}
         >
           {navigation.map((nav, index) => {
             return (
@@ -64,7 +64,7 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
                       />
                     </span>
                   ) : (
-                    ''
+                    ""
                   )}
                   <p id={`navText${index}`}>{nav.title}</p>
                 </Link>
@@ -83,14 +83,14 @@ export default function Navigation() {
   const windowSize = useWindowSize();
 
   const navigation = [
-    { to: '/', title: 'Home', target: '_self' },
-    { to: '/about-us', title: 'About', target: '_self' },
-    { to: '/goyours-post', title: '文章專區', target: '_self' },
-    { to: '/studying-in-jp', title: '日本留學', target: '_self' },
-    { to: '/working-holiday', title: '日本職缺', target: '_self' },
-    { to: '/Q&A-section', title: '常見Q&A', target: '_self' },
-    { to: '/document-download', title: '下載專區', target: '_self' },
-    { to: '/contact-us', title: '聯絡我們', target: '_blank' },
+    { to: "/", title: "Home", target: "_self" },
+    { to: "/about-us", title: "About", target: "_self" },
+    { to: "/goyours-post", title: "文章專區", target: "_self" },
+    { to: "/studying-in-jp", title: "日本留學", target: "_self" },
+    { to: "/working-holiday", title: "日本職缺", target: "_self" },
+    { to: "/Q&A-section", title: "常見Q&A", target: "_self" },
+    { to: "/document-download", title: "下載專區", target: "_self" },
+    { to: "/contact-us", title: "聯絡我們", target: "_blank" },
   ];
 
   const handleScroll = () => {
@@ -107,19 +107,19 @@ export default function Navigation() {
         e.preventDefault();
       };
 
-      window.addEventListener('touchmove', preventScroll, { passive: false });
-      window.addEventListener('wheel', preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+      window.addEventListener("wheel", preventScroll, { passive: false });
       return () => {
-        window.removeEventListener('touchmove', preventScroll);
-        window.removeEventListener('wheel', preventScroll);
+        window.removeEventListener("touchmove", preventScroll);
+        window.removeEventListener("wheel", preventScroll);
       };
     }
   }, [ishamburgerClicked]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
 
@@ -128,31 +128,31 @@ export default function Navigation() {
       <Helmet>
         <meta
           name="theme-color"
-          content={ishamburgerClicked ? '#414042' : ''}
+          content={ishamburgerClicked ? "#414042" : ""}
         />
       </Helmet>
       <nav className="nav-wrapper">
         <nav
-          className={`${windowSize > 1024 ? 'mainNav-pc' : 'mainNav'}  ${
-            ishamburgerClicked ? 'mainNav-hamburger-clicked' : ''
-          } ${visible && windowSize <= 1024 ? 'nav-visible-sp' : 'nav-hidden'}`}
+          className={`${windowSize > 1024 ? "mainNav-pc" : "mainNav"}  ${
+            ishamburgerClicked ? "mainNav-hamburger-clicked" : ""
+          } ${visible && windowSize <= 1024 ? "nav-visible-sp" : "nav-hidden"}`}
         >
           <div
-            className={`${windowSize > 1024 ? 'nav-logo-pc' : 'nav-logo-sp'} ${
-              visible ? 'nav-visible' : 'nav-hidden'
+            className={`${windowSize > 1024 ? "nav-logo-pc" : "nav-logo-sp"} ${
+              visible ? "nav-visible" : "nav-hidden"
             }`}
           >
             <Link to="/">
               <img
-                src="/LOGO-03.png"
+                src="/LOGO-12.png"
                 alt="GoYours LOGO,高優國際留學商標"
                 width={250}
               />
             </Link>
           </div>
           <div
-            className={`navMenu ${windowSize > 1024 ? 'nav-list' : ''} ${
-              visible ? 'nav-visible' : 'nav-hidden'
+            className={`navMenu ${windowSize > 1024 ? "nav-list" : ""} ${
+              visible ? "nav-visible" : "nav-hidden"
             }`}
           >
             <ul>
@@ -191,13 +191,13 @@ export default function Navigation() {
             }}
           >
             <span
-              className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+              className={ishamburgerClicked ? "hamburger-active-line" : ""}
             ></span>
             <span
-              className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+              className={ishamburgerClicked ? "hamburger-active-line" : ""}
             ></span>
             <span
-              className={ishamburgerClicked ? 'hamburger-active-line' : ''}
+              className={ishamburgerClicked ? "hamburger-active-line" : ""}
             ></span>
           </div>
         </nav>
