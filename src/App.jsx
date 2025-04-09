@@ -16,6 +16,7 @@ import { VisibilityProvider } from "./visibilityProvider";
 import LoadingBear from "./components/loadingBear/loadingBear";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import { Toaster, toast } from "react-hot-toast";
+import CheckCodeComponent from "./utils/CheckCodeComponent";
 
 // 使用 React.lazy 延遲加載每個頁面組件
 const Home = lazy(() => import("./pages/home"));
@@ -126,6 +127,7 @@ function App() {
     <HelmetProvider>
       <VisibilityProvider>
         <Router>
+          {/* <CheckCodeComponent /> */}
           <AppContent />
         </Router>
       </VisibilityProvider>

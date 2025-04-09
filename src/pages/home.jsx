@@ -438,7 +438,7 @@ export default function Home() {
           </Swiper>
         </motion.div>
         <img
-          src="/LOGO-09.webp"
+          src="/LOGO-13.png"
           alt="GoYours LOGO"
           className="kvlogo"
           rel="preload"
