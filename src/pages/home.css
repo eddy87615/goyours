@@ -12,9 +12,10 @@
 .kvlogo {
   position: absolute;
   right: 10%;
-  bottom: 4%;
+  bottom: 0;
 
-  max-width: 40%;
+  min-width: 200px;
+  width: 30%;
   height: auto;
 
   z-index: 9;
@@ -50,7 +51,7 @@
 }
 .homeintrotxt::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 30rem;
   height: 30rem;
   background-image: url(/Japan.png);
@@ -123,7 +124,7 @@
 }
 .homeintroImgWrapper0::after {
   position: absolute;
-  content: '';
+  content: "";
   background-image: url(/homepic-3-bear.svg);
   background-repeat: no-repeat;
   background-size: 100%;
@@ -148,7 +149,7 @@
 }
 .homeintroImgWrapper1::after {
   position: absolute;
-  content: '';
+  content: "";
   background-image: url(/goyoursBear-bg-home.svg);
   background-repeat: no-repeat;
   background-size: 100%;
@@ -461,7 +462,7 @@
   margin: 1.5rem 0;
 }
 .homeSchool-back-schoolName::after {
-  content: '';
+  content: "";
 
   position: absolute;
   bottom: -1rem;
