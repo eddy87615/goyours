@@ -8,7 +8,6 @@ export default defineConfig({
   plugins: [
     react(),
     ViteSitemap({
-      robotsTxt: false,
       hostname: "https://www.goyours.tw",
       dynamicRoutes: [
         "/",
@@ -22,5 +21,9 @@ export default defineConfig({
       ],
     }),
   ],
+  robots: {
+    content: `User-agent: *
+    Allow: /`,
+  },
   cors: true,
 });
