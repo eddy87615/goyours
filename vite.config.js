@@ -19,11 +19,8 @@ export default defineConfig({
         "/document-download",
         "/contact-us",
       ],
+      // 完全省略 robots 配置
     }),
   ],
-  robots: {
-    content: `User-agent: *
-    Allow: /`,
-  },
   cors: true,
 });
