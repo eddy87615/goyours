@@ -118,7 +118,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            href="https://www.facebook.com/GoYoursWhSt"
+            href="https://www.facebook.com/share/1BqHKZqUhZ/?mibextid=wwXIfr"
             target="_blank"
             aria-label="goyours facebook"
           >
