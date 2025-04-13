@@ -191,7 +191,7 @@ export default function About() {
       </Helmet>
       <div className="aboutTop">
         <img
-          src="/LOGO-09.png"
+          src="/LOGO-13.png"
           alt="GoYours LOGO with handwriting words, 手寫字高優國際公司商標"
           className="centerLogo"
         />

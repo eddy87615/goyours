@@ -109,7 +109,7 @@ export default function Footer() {
         <p className="footer-title">社群連結</p>
         <li>
           <a
-            href="https://www.instagram.com/goyourswhst?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            href="https://www.instagram.com/goyoursjp/"
             target="_blank"
             aria-label="goyours instagram"
           >
