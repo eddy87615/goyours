@@ -1,6 +1,6 @@
-import ContactForm from '../components/contactForm/contactForm';
-import './contact-us.css';
-import { Helmet } from 'react-helmet-async';
+import ContactForm from "../components/contactForm/contactForm";
+import "./contact-us.css";
+import { Helmet } from "react-helmet-async";
 
 export default function Contact() {
   const currentURL = `${window.location.origin}${location.pathname}`;
