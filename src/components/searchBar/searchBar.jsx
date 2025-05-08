@@ -27,11 +27,13 @@ export default function SearchBar({ onSearch }) {
   ];
   const locationOption = [
     { title: '工作地點', value: '' },
-    { title: '關東地區', value: '關東地區' },
-    { title: '關西地區', value: '關西地區' },
-    { title: '九州地區', value: '九州地區' },
-    { title: '北海道', value: '北海道' },
-    { title: '沖繩', value: '沖繩' },
+    {title: '關東地區', value: '關東地區'},
+          {title: '關西地區', value: '關西地區'},
+          {title: '中部地區', value: '中部地區'},
+          {title: '九州地區', value: '九州地區'},
+          {title: '北海道', value: '北海道'},
+          {title: '東北地區', value: '東北地區'},
+          {title: '沖繩', value: '沖繩'},
   ];
   const jobOption = [
     { title: '工作類型', value: '' },
