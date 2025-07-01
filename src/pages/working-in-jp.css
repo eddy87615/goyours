@@ -829,9 +829,9 @@
     opacity: 0.5;
   }
 
-  .careerTopBtn {
+  /* .careerTopBtn {
     display: none;
-  }
+  } */
   .working-rightgirl {
     --imgBase: calc(100vw / 144);
     position: absolute;
