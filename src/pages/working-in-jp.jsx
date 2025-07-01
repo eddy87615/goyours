@@ -123,25 +123,22 @@ export default function WorkingInJp() {
                 </svg>
               </span>
               <span className="yellow">Career in Japan</span>
-              {currentYear}日本就職
+              {/* {currentYear}日本就職 */}
+              あなたの未来は、日本で始まる。
             </h1>
           </div>
           <p className="guide-text">
-            日本是離台灣最近且有打工度假簽證的國家
+            GOYOURS 高優國際攜手日本在地企業，
             <br />
-            2019年開放名額至10000人，使得機會更大
+            安排正式面談、協助取得就職簽證。
             <br />
-            這一次，你可以有一年的時間
+            日本正面臨人力短缺，正是外國人才前進的最佳時機
             <br />
-            不再是走馬看花，而是深度旅遊、了解日本文化
+            超過500間日企正社員、1800間飯店職缺持續招募中。
             <br />
-            即便日文還不熟練，只要敢開口就有機會！
+            面談安排 × 簽證支援 × 海外內定
             <br />
-            在天氣正好、陽光正好、年紀正好的時候走吧！
-            <br />
-            想知道更多詳情，歡迎填表諮詢
-            <br />
-            我們將會協助您在日本的生活大小事！
+            GOYOURS × 日本就職，一起找到未來的方向。
           </p>
           <Link to="/contact-us" className="careerTopBtn">
             聯絡我們

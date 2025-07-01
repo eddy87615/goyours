@@ -214,7 +214,7 @@ export default function WorkingHolidayInJp() {
               </h2>
             </div>
             <div className="working-page-button">
-              <Link className="to-all-job" to="/jp-part-time-jobs">
+              <Link className="to-all-job" to="/jp-working-holiday-jobs">
                 <h3>
                   <span className="white-icon">
                     <img
