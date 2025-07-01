@@ -88,7 +88,7 @@ export default function HomeJobList() {
                   onClick={() => handleInquiry(job.name)}
                 > */}
                   <Link
-                    to={`/working-holiday-job#${job.slug.current}`}
+                    to={`/jp-working-holiday-jobs#${job.slug.current}`}
                     onClick={(e) => {
                       // 如果需要，可以在這裡添加其他處理邏輯
                       localStorage.setItem("targetJobSlug", job.slug.current);
@@ -107,7 +107,7 @@ export default function HomeJobList() {
       <AnimationSection className="more-school-button">
         <ul>
           <li>
-            <Link to="/working-holiday-job">
+            <Link to="/jp-working-holiday-jobs">
               <span className="button-wrapper">
                 <span className="upperP-wrapper">
                   <p>看更多職缺</p>
@@ -126,7 +126,7 @@ export default function HomeJobList() {
           </li>
         </ul>
       </AnimationSection>
-      <a className="formoreBtntoPage" href="./working-holiday-job">
+      <a className="formoreBtntoPage" href="./jp-working-holiday-jobs">
         看更多職缺
       </a>
     </>

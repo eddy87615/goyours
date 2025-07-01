@@ -1,44 +1,44 @@
 // import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
-import './working-holiday.css';
-import './guide-page-animation.css';
+import "./working-in-jp.css";
+import "./guide-page-animation.css";
 
-import { GoArrowRight } from 'react-icons/go';
+import { GoArrowRight } from "react-icons/go";
 
-import MorePost from '../components/morePost/morePost';
-import ContactUs from '../components/contactUs/contactUs';
-import ScrollDownSide from '../components/scroolDown/scrollDownSide';
-import useWindowSize from '../hook/useWindowSize';
+import MorePost from "../components/morePost/morePost";
+import ContactUs from "../components/contactUs/contactUs";
+import ScrollDownSide from "../components/scroolDown/scrollDownSide";
+import useWindowSize from "../hook/useWindowSize";
 
-export default function WorkingHoliday() {
+export default function WorkingInJp() {
   const windowSize = useWindowSize();
 
   const sliderLeft = [
-    { src: '/guidePage/slide009.jpg', alt: 'japanese school interior images' },
-    { src: '/guidePage/slide020.png', alt: 'japanese school images' },
-    { src: '/guidePage/slide019.jpg', alt: 'japanese school' },
-    { src: '/guidePage/slide012.png', alt: 'japanese boy' },
-    { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
-    { src: '/guidePage/slide017.png', alt: 'japanese girl' },
-    { src: '/guidePage/slide014.jpg', alt: 'japanese school classtime images' },
-    { src: '/guidePage/slide016.JPG', alt: 'japanese school public room' },
-    { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
+    { src: "/guidePage/slide009.jpg", alt: "japanese school interior images" },
+    { src: "/guidePage/slide020.png", alt: "japanese school images" },
+    { src: "/guidePage/slide019.jpg", alt: "japanese school" },
+    { src: "/guidePage/slide012.png", alt: "japanese boy" },
+    { src: "/guidePage/slide003.png", alt: "japanese school interior images" },
+    { src: "/guidePage/slide017.png", alt: "japanese girl" },
+    { src: "/guidePage/slide014.jpg", alt: "japanese school classtime images" },
+    { src: "/guidePage/slide016.JPG", alt: "japanese school public room" },
+    { src: "/guidePage/slide008.jpg", alt: "japanese school interior images" },
   ];
   const sliderRight = [
-    { src: '/guidePage/slide012.png', alt: 'japanese boy' },
-    { src: '/guidePage/slide003.png', alt: 'japanese school interior images' },
-    { src: '/guidePage/slide017.png', alt: 'japanese girl' },
-    { src: '/guidePage/slide013.png', alt: 'japanese school interior images' },
-    { src: '/guidePage/slide014.jpg', alt: 'japanese school classtime images' },
-    { src: '/guidePage/slide016.JPG', alt: 'japanese school public room' },
-    { src: '/guidePage/slide008.jpg', alt: 'japanese school interior images' },
-    { src: '/guidePage/slide010.jpg', alt: 'japanese boy' },
+    { src: "/guidePage/slide012.png", alt: "japanese boy" },
+    { src: "/guidePage/slide003.png", alt: "japanese school interior images" },
+    { src: "/guidePage/slide017.png", alt: "japanese girl" },
+    { src: "/guidePage/slide013.png", alt: "japanese school interior images" },
+    { src: "/guidePage/slide014.jpg", alt: "japanese school classtime images" },
+    { src: "/guidePage/slide016.JPG", alt: "japanese school public room" },
+    { src: "/guidePage/slide008.jpg", alt: "japanese school interior images" },
+    { src: "/guidePage/slide010.jpg", alt: "japanese boy" },
 
     {
-      src: '/guidePage/slide004.webp',
-      alt: 'japanese school classtime images',
+      src: "/guidePage/slide004.webp",
+      alt: "japanese school classtime images",
     },
   ];
 
@@ -122,8 +122,8 @@ export default function WorkingHoliday() {
                   />
                 </svg>
               </span>
-              <span className="yellow">Working Holiday</span>
-              {currentYear}日本打工度假
+              <span className="yellow">Career in Japan</span>
+              {currentYear}日本就職
             </h1>
           </div>
           <p className="guide-text">
@@ -137,14 +137,15 @@ export default function WorkingHoliday() {
             <br />
             即便日文還不熟練，只要敢開口就有機會！
             <br />
-            感受他們的認真與細心
-            <br />
             在天氣正好、陽光正好、年紀正好的時候走吧！
             <br />
             想知道更多詳情，歡迎填表諮詢
             <br />
             我們將會協助您在日本的生活大小事！
           </p>
+          <Link to="/contact-us" className="careerTopBtn">
+            聯絡我們
+          </Link>
           <div className="guide-animation-wrapper">
             <div className="guide-animation-left">
               <div className="guide-text-animation-wrapper">
@@ -173,7 +174,7 @@ export default function WorkingHoliday() {
                 windowSize > 1024
                   ? {}
                   : windowSize > 500
-                  ? { display: 'none' }
+                  ? { display: "none" }
                   : {}
               }
             >
@@ -209,12 +210,12 @@ export default function WorkingHoliday() {
           <div>
             <div className="aboutworkingH2">
               <h2 className="yellow underLine">
-                關於打工度假
+                關於日本就職
                 {/* <GoyoursBearRelatedPost /> */}
               </h2>
             </div>
             <div className="working-page-button">
-              <Link className="to-all-job" to="/working-holiday-job">
+              <Link className="to-all-job" to="/jp-jobs">
                 <h3>
                   <span className="white-icon">
                     <img
@@ -222,11 +223,11 @@ export default function WorkingHoliday() {
                       alt="goyours white icon"
                     />
                   </span>
-                  查看所有職缺
+                  查看正職職缺
                 </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>
-              <Link className="to-QA-page" to="/Q&A-section#part2">
+              <Link className="to-QA-page" to="/Q&A-section#part1">
                 <h3>
                   <span className="white-icon">
                     <img
@@ -234,7 +235,7 @@ export default function WorkingHoliday() {
                       alt="goyours white icon"
                     />
                   </span>
-                  打工度假Q&A
+                  日本就職Q&A
                 </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>

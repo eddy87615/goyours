@@ -1,14 +1,14 @@
-import { client } from '../cms/sanityClient';
-import { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { client } from "../cms/sanityClient";
+import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
-import './working.css';
-import JobList from '../components/jobList/jobList';
-import Pagination from '../components/pagination/pagination';
-import SearchBar from '../components/searchBar/searchBar';
-import LoadingBear from '../components/loadingBear/loadingBear';
+import "./PTjob.css";
+import JobList from "../components/jobList/jobList";
+import Pagination from "../components/pagination/pagination";
+import SearchBar from "../components/searchBar/searchBar";
+import LoadingBear from "../components/loadingBear/loadingBear";
 
-export default function Working() {
+export default function PTjob() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   // eslint-disable-next-line no-unused-vars
@@ -20,7 +20,7 @@ export default function Working() {
   // 處理目標職缺的 useEffect
   useEffect(() => {
     const handleTargetJob = () => {
-      const targetSlug = location.hash.replace('#', '');
+      const targetSlug = location.hash.replace("#", "");
 
       if (targetSlug && jobList.length > 0) {
         // 找到目標職缺的索引
@@ -41,7 +41,7 @@ export default function Working() {
           setTimeout(() => {
             const element = document.getElementById(targetSlug);
             if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
+              element.scrollIntoView({ behavior: "smooth" });
             }
           }, 500);
         }
@@ -81,7 +81,7 @@ export default function Working() {
   const parseSalaryRange = (salaryString) => {
     if (!salaryString) return { min: 0, max: Infinity };
 
-    const salaryParts = salaryString.split('~').map((val) => parseInt(val, 10));
+    const salaryParts = salaryString.split("~").map((val) => parseInt(val, 10));
 
     if (salaryParts.length === 1) {
       // 單一數值
@@ -104,8 +104,8 @@ export default function Working() {
       selectedTags,
     } = searchParams;
 
-    const tagFilters = ['我們的推薦', '高人氣職缺'];
-    const sortOptions = ['職缺由新到舊', '時薪由高到低'];
+    const tagFilters = ["我們的推薦", "高人氣職缺"];
+    const sortOptions = ["職缺由新到舊", "時薪由高到低"];
 
     // 分離出標籤條件和排序條件
     const activeTags = (selectedTags || []).filter((tag) =>
@@ -132,12 +132,12 @@ export default function Working() {
     }
 
     let filtered = jobList.filter((job) => {
-      const jobName = job.name || '';
-      const jobCompany = job.company || '';
+      const jobName = job.name || "";
+      const jobCompany = job.company || "";
       const jobTags = job.tags || [];
-      const jobArea = job.area || '';
-      const jobJobType = job.jobtype || '';
-      const jobSalary = job.salary || '0~Infinity';
+      const jobArea = job.area || "";
+      const jobJobType = job.jobtype || "";
+      const jobSalary = job.salary || "0~Infinity";
 
       const matchesKeyword = keyword
         ? jobName.includes(keyword) || jobCompany.includes(keyword)
@@ -179,14 +179,14 @@ export default function Working() {
     });
 
     // 應用排序
-    if (activeSort === '職缺由新到舊') {
+    if (activeSort === "職缺由新到舊") {
       filtered = filtered.sort(
         (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
       );
-    } else if (activeSort === '時薪由高到低') {
+    } else if (activeSort === "時薪由高到低") {
       filtered = filtered.sort((a, b) => {
-        const salaryA = parseFloat(a.salary.split('~')[0]) || 0;
-        const salaryB = parseFloat(b.salary.split('~')[0]) || 0;
+        const salaryA = parseFloat(a.salary.split("~")[0]) || 0;
+        const salaryB = parseFloat(b.salary.split("~")[0]) || 0;
         return salaryB - salaryA;
       });
     }

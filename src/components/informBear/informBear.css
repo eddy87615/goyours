@@ -64,8 +64,8 @@
 }
 .toast-content button {
   position: absolute;
-  top: 6%;
-  right: 4%;
+  top: 3%;
+  right: 3%;
 
   width: 1.5rem;
   height: 1.5rem;
@@ -85,7 +85,7 @@
 
 .toast-content button::before {
   position: absolute;
-  content: '';
+  content: "";
   width: 50%;
   height: 6%;
   border-radius: 10rem;
@@ -94,7 +94,7 @@
 }
 .toast-content button::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 50%;
   height: 6%;
   border-radius: 10rem;

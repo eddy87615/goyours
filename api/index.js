@@ -55,13 +55,14 @@ export default async function handler(req, res) {
 
     console.log("Preparing to send email with data:", data);
 
-    const mailOptions =
-      type === "contact"
-        ? {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER_RECEIVE,
-            subject: "新聯絡資料表單",
-            text: `
+    let mailOptions;
+
+    if (type === "contact") {
+      mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER_RECEIVE,
+        subject: "新聯絡資料表單",
+        text: `
 新聯絡資料表單:
   - 真實姓名：${data.name || "N/A"}
   - 年齡：${data.age || "N/A"}
@@ -71,24 +72,46 @@ export default async function handler(req, res) {
   - 方便聯絡的時段：${data.callTime || "N/A"}
   - Line ID：${data.lineId || "N/A"}
 快到後台查看更多資訊！
-      `,
-          }
-        : {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER_RECEIVE,
-            subject: "新打工度假申請表單",
-            text: `
-    新打工度假申請:
-      - 申請工作名稱：${data?.jobname || "N/A"}
-      - 真實姓名：${data?.name || "N/A"}
-      - 年齡：${data?.age || "N/A"}
-      - 行動電話：${data?.phone || "N/A"}
-      - 電子郵件：${data?.email || "N/A"}
-      - 方便聯絡時段：${data?.callTime || "N/A"}
-      - Line ID：${data.lineId || "N/A"}
-    快到後台看看履歷吧！
-    `,
-          };
+        `,
+      };
+    } else if (type === "JPjobapply") {
+      mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER_RECEIVE,
+        subject: "新正職職缺申請表單",
+        text: `
+新正職職缺申請:
+  - 申請工作名稱：${data?.jobname || "N/A"}
+  - 真實姓名：${data?.name || "N/A"}
+  - 年齡：${data?.age || "N/A"}
+  - 科系：${data?.major || "N/A"}
+  - 行動電話：${data?.phone || "N/A"}
+  - 電子郵件：${data?.email || "N/A"}
+  - 方便聯絡時段：${data?.callTime || "N/A"}
+  - Line ID：${data?.lineId || "N/A"}
+  - 履歷表：${data?.resume ? "已上傳" : "未上傳"}
+快到後台查看詳細資訊和履歷！
+        `,
+      };
+    } else {
+      mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER_RECEIVE,
+        subject: "新打工度假申請表單",
+        text: `
+新打工度假申請:
+  - 申請工作名稱：${data?.jobname || "N/A"}
+  - 真實姓名：${data?.name || "N/A"}
+  - 年齡：${data?.age || "N/A"}
+  - 行動電話：${data?.phone || "N/A"}
+  - 電子郵件：${data?.email || "N/A"}
+  - 方便聯絡時段：${data?.callTime || "N/A"}
+  - Line ID：${data.lineId || "N/A"}
+  - 履歷表：${data?.resume ? "已上傳" : "未上傳"}
+快到後台看看履歷吧！
+        `,
+      };
+    }
 
     console.log("Attempting to send email...");
     await transporter.sendMail(mailOptions);

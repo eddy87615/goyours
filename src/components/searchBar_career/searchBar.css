@@ -1,74 +1,99 @@
+/* =================================
+   Variables
+   ================================= */
+:root {
+  --searchbar-radius: 1.5rem;
+  --searchbar-padding: 2rem;
+  --searchbar-gap: 1rem;
+  --input-padding: 0.5rem 1rem;
+  --input-radius: 0.5rem;
+  --button-radius: 50rem;
+  --button-padding: 0.8rem 4rem;
+  --select-arrow-size: 8%;
+  --checkbox-size: 1.2rem;
+  --transition-fast: 0.2s;
+}
+
+/* =================================
+   Base Styles
+   ================================= */
 .searchbar {
   background-color: var(--goyoursYellow);
-  border-radius: 1.5rem;
-
+  border-radius: var(--searchbar-radius);
   margin: 0 auto;
   transform: translate(0, 50%);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  gap: 1rem;
-
-  padding: 2rem 2rem;
+  gap: var(--searchbar-gap);
+  padding: var(--searchbar-padding);
 }
 
 .searchup,
 .searchdown {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
 }
 
+/* =================================
+   Input & Select Styles
+   ================================= */
 .searchup input,
 .searchup select {
-  padding: 0.5rem 1rem;
-
+  padding: var(--input-padding);
   font-size: 1rem;
   font-weight: bold;
-
   border: none;
-  border-radius: 0.5rem;
-
+  border-radius: var(--input-radius);
   color: #656466;
+  background-color: #fff;
 }
 
-.searchup input {
-  color: #656466;
+.searchup select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  min-width: 100px;
+  width: 100%;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  background-image: url(/select-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: 92% 50%;
+  background-size: var(--select-arrow-size);
 }
 
+/* =================================
+   Checkbox Styles
+   ================================= */
 .searchdown label {
   font-size: 1rem;
-
   display: flex;
   align-items: center;
-
   gap: 0.5rem;
-
   color: #fff;
   font-weight: bold;
-
-  position: relative;
-
   cursor: pointer;
 }
+
 .searchdown input {
   display: none;
 }
+
 .searchdown label .custom-checkbox {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
   border: 2px solid #f1a33b;
   background-color: #fff;
   border-radius: 50%;
   box-sizing: border-box;
   margin-right: 0.5rem;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .searchdown label.customCheckBox-active .custom-checkbox {
@@ -76,108 +101,89 @@
   border-color: #fff;
 }
 
+/* =================================
+   Button Styles
+   ================================= */
 .searchdown button {
   border: none;
-  border-radius: 50rem;
-
+  border-radius: var(--button-radius);
   background-color: var(--goyoursBlack);
   color: #fff;
   font-weight: bold;
+  padding: var(--button-padding);
 
-  padding: 0.8rem 4rem;
+  flex-shrink: 0;
 }
 
+.searchdown .clear-all-btn {
+  background-color: #fff;
+  color: var(--goyoursBlack);
+  border: 2px solid var(--goyoursBlack);
+  transition: background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.searchdown .clear-all-btn:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.search-btn-section {
+  display: flex;
+
+  gap: 1rem;
+}
+
+/* =================================
+   Mobile Specific (Hidden by default)
+   ================================= */
 .sp-job-searchBar {
   display: none;
 }
 
-.searchup select {
-  height: 100%;
-
-  appearance: none;
-  -webkit-appearance: none; /*For Safari */
-  -moz-appearance: none; /* For Firefox */
-
-  background-color: #fff;
-
-  padding: 0.5rem 0.5rem;
-
-  min-width: 100px;
-
-  font-size: 0.75rem;
-
-  white-space: nowrap;
-
-  position: relative;
-
-  background-image: url(/select-arrow.svg);
-  background-repeat: no-repeat;
-  background-position: 92% 50%;
-  background-size: 8%;
-}
-
-@media screen and (min-width: 1201px) {
-}
-@media (min-width: 1025px) and (max-width: 1200px) {
-}
+/* =================================
+   Tablet Media Query
+   ================================= */
 @media (min-width: 768px) and (max-width: 1024px) {
   .searchbar {
     width: 90vw;
     padding: 1.5rem;
     box-sizing: border-box;
   }
+
   .searchup select {
-    appearance: none;
-    -webkit-appearance: none; /*For Safari */
-    -moz-appearance: none; /* For Firefox */
-
-    background-color: #fff;
-
-    padding: 0.5rem 0.5rem;
-
-    min-width: 100px;
-
-    font-size: 0.75rem;
-
-    white-space: nowrap;
-
-    position: relative;
-
-    background-image: url(/select-arrow.svg);
-    background-repeat: no-repeat;
-    background-position: 92% 50%;
     background-size: 12%;
   }
 
   .searchup input {
     width: 100%;
-
     box-sizing: border-box;
-
     font-size: 0.75rem;
   }
+
   .searchdown button {
     font-size: 0.75rem;
-
     padding: 0.5rem 3rem;
   }
+
   .searchdown label {
     font-size: 0.75rem;
   }
 }
+
+/* =================================
+   Mobile Media Query
+   ================================= */
 @media screen and (max-width: 767px) {
   .searchbar {
     display: none;
   }
+
   .sp-job-searchBar {
     display: block;
-
     margin-left: 0;
-
     border-radius: 0 1rem 1rem 0;
-
     width: 95vw;
-
     box-sizing: border-box;
   }
 
@@ -188,98 +194,81 @@
     justify-content: center;
     align-items: center;
   }
+
   .sp-job-search-filter-btn p {
     font-size: 1.25rem;
     font-weight: bold;
-
     color: #fff;
-
     margin: 0;
   }
+
   .sp-job-search-filter-btn button {
     font-size: 0.825rem;
     font-weight: bold;
     padding: 0.5rem 3rem;
-
     background-color: var(--goyoursBlack);
     color: #fff;
-
     border: none;
-    border-radius: 50rem;
-
+    border-radius: var(--button-radius);
     display: flex;
     gap: 0.5rem;
   }
+
   .sp-job-search-filter-btn span {
     width: 1rem;
     height: 100%;
   }
 
+  /* Mobile Modal Styles */
   .sp-job-search-bg {
     background-color: rgba(0, 0, 0, 0.7);
-
     width: 100vw;
     height: 100vh;
-
     position: fixed;
     top: 0;
     left: 0;
-
     padding: 2rem;
-
     box-sizing: border-box;
-
     opacity: 0;
     visibility: hidden;
     z-index: 998;
-
+    transition: opacity var(--transition-fast),
+      visibility var(--transition-fast);
     transition-delay: 0.2s;
-    transition-duration: 0.2s;
   }
+
   .sp-job-search-window {
     background-color: var(--goyoursBgColor);
-
     padding: 1.5rem 2rem;
-
     box-sizing: border-box;
-
     position: fixed;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     width: 90%;
-
     border-radius: 1rem;
-
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
     opacity: 0;
     visibility: hidden;
-
-    transition-duration: 0.1s;
+    transition: opacity 0.1s, visibility 0.1s;
     transition-delay: 0.1s;
   }
 
+  /* Visible states */
   .search-job-bg-visible {
     opacity: 1;
     visibility: visible;
-
     z-index: 999;
-
     transition-delay: 0.1s;
-    transition-duration: 0.2s;
   }
+
   .search-job-window-visible {
     opacity: 1;
     visibility: visible;
-
     z-index: 9999;
-
     transition-delay: 0.2s;
-    transition-duration: 0.2s;
   }
 
   .search-job-close-btn {
@@ -288,39 +277,37 @@
     height: 2rem;
   }
 
+  /* Mobile layout adjustments */
   .searchup,
   .searchdown {
     flex-direction: column;
-
     width: unset;
-    height: unset;
     gap: 1rem;
   }
+
   .searchup input,
   .searchup select {
     width: 100%;
     box-sizing: border-box;
-
     border: 1px solid var(--goyoursYellow);
-
-    border-radius: 50rem;
-
-    justify-content: space-between;
+    border-radius: var(--button-radius);
   }
+
   .searchup select {
-    background-size: 4%;
+    background-size: 3%;
     background-position: 96% 50%;
   }
+
   .searchdown label {
     width: 100%;
-
     color: var(--goyoursBlack);
-
     font-size: 0.85rem;
   }
 
   .searchdown button {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     font-size: 1rem;
+
+    padding: 0.5rem 1rem;
   }
 }

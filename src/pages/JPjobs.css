@@ -1,0 +1,34 @@
+.jobListKv {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url(/KV/KV_about_19.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .jobListKv {
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .jobListKv {
+    background-image: url(/KV/KV_about_15.JPG);
+    background-size: cover;
+    background-position: 65%;
+
+    height: 50vh;
+  }
+}
