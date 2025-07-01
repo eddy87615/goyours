@@ -37,6 +37,7 @@ const WorkingHolidayInJp = lazy(() => import("./pages/workingholiday-in-jp"));
 const DownloadPage = lazy(() => import("./pages/downloadPage"));
 const InformBear = lazy(() => import("./components/informBear/informBear"));
 const JPjobsDetail = lazy(() => import("./pages/JPjobsDetail"));
+const ActivityPage = lazy(() => import("./pages/activityPage"));
 
 // 路徑映射表
 const PATH_TO_PAGE = {
@@ -119,6 +120,7 @@ function AppContent() {
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/Q&A-section" element={<QAsection />} />
             <Route path="/document-download" element={<DownloadPage />} />
+            <Route path="/goyours-activity" element={<ActivityPage />} />
           </Routes>
         </Suspense>
       ) : (
