@@ -24,15 +24,19 @@ const Post = lazy(() => import("./pages/goyours-post"));
 const PostDetail = lazy(() => import("./pages/postDetail"));
 const Studying = lazy(() => import("./pages/studying"));
 const SchoolDetail = lazy(() => import("./pages/schoolDetail"));
-const Working = lazy(() => import("./pages/working"));
+const PTjob = lazy(() => import("./pages/PTjob"));
+const JPjobs = lazy(() => import("./pages/JPjobs"));
 const Contact = lazy(() => import("./pages/contact-us"));
 const ContactResume = lazy(() => import("./pages/contactResume"));
+const ContactResumeJob = lazy(() => import("./pages/contactResume-job"));
 const Privacy = lazy(() => import("./pages/privacy"));
 const QAsection = lazy(() => import("./pages/QAsection"));
 const StudyingInJp = lazy(() => import("./pages/studying-in-jp"));
-const WorkingHoliday = lazy(() => import("./pages/working-holiday"));
+const WorkingInJp = lazy(() => import("./pages/working-in-jp"));
+const WorkingHolidayInJp = lazy(() => import("./pages/workingholiday-in-jp"));
 const DownloadPage = lazy(() => import("./pages/downloadPage"));
 const InformBear = lazy(() => import("./components/informBear/informBear"));
+const JPjobsDetail = lazy(() => import("./pages/JPjobsDetail"));
 const ActivityPage = lazy(() => import("./pages/activityPage"));
 
 // 路徑映射表
@@ -42,8 +46,8 @@ const PATH_TO_PAGE = {
   "/goyours-post": "文章專區",
   "/studying-in-jp": "日本留學",
   "/studying-in-jp-school": "日本留學學校",
-  "/working-holiday": "打工度假",
-  "/working-holiday-job": "打工度假職缺",
+  "/jp-jobs": "日本正職職缺",
+  "/jp-working-holiday-jobs": "日本打工職缺",
   "/Q&A-section": "常見Q&A",
   "/document-download": "下載專區",
   "/contact-us": "聯絡我們",
@@ -95,13 +99,23 @@ function AppContent() {
               path="/studying-in-jp-school/:slug"
               element={<SchoolDetail />}
             />
-            <Route path="/working-holiday-job" element={<Working />} />
+            <Route path="/jp-working-holiday-jobs" element={<PTjob />} />
+            <Route path="/jp-jobs" element={<JPjobs />} />
+            <Route path="/jp-jobs/:slug" element={<JPjobsDetail />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/studying-in-jp" element={<StudyingInJp />} />
-            <Route path="/working-holiday" element={<WorkingHoliday />} />
+            <Route path="/working-in-jp" element={<WorkingInJp />} />
+            <Route
+              path="/workingholiday-in-jp"
+              element={<WorkingHolidayInJp />}
+            />
             <Route
               path="/working-holiday-application"
               element={<ContactResume />}
+            />
+            <Route
+              path="/japan-job-application"
+              element={<ContactResumeJob />}
             />
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/Q&A-section" element={<QAsection />} />

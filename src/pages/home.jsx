@@ -9,6 +9,8 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
+import MessgaeNotification from "../components/messgaeNotification/messgaeNotification";
+
 import { FaLocationDot } from "react-icons/fa6";
 import { LiaHandPointer } from "react-icons/lia";
 
@@ -390,6 +392,7 @@ export default function Home() {
         />
         <meta name="twitter:image" content={imageURL} />
       </Helmet>
+      {/* <MessgaeNotification /> */}
       <motion.div
         className="kv"
         style={

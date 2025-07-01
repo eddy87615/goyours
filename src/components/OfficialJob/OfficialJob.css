@@ -1,0 +1,358 @@
+/* =================================
+   Variables
+   ================================= */
+:root {
+  --job-section-padding: 10rem;
+  --job-section-padding-mobile: 6rem;
+  --job-gap: 2rem;
+  --job-max-width: 1240px;
+  --job-border-radius: 1.5rem;
+  --job-border-radius-small: 1rem;
+  --job-button-radius: 50rem;
+  --job-tag-padding: 0.3rem 0.8rem;
+  --job-button-padding: 1rem 2rem;
+  --job-button-padding-tablet: 1rem 1.2rem;
+  --job-button-padding-mobile: 0.8rem 1.3rem;
+  --job-transition: 0.2s;
+}
+
+/* =================================
+   Job List Section
+   ================================= */
+.jobListSection {
+  padding-top: var(--job-section-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--job-gap);
+  width: 80vw;
+  max-width: var(--job-max-width);
+  margin: 0 auto;
+}
+
+/* =================================
+   Search Results
+   ================================= */
+.searchResultArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  margin-bottom: 3rem;
+  background: url(/goyoursBear-bg.svg) no-repeat center/contain;
+}
+
+.searchResultArea h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.searchResultArea svg {
+  padding-right: 1rem;
+}
+
+.searchResult {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.searchNumber {
+  color: var(--goyoursBlack);
+}
+
+/* =================================
+   Job List Item
+   ================================= */
+.joblist {
+  width: 100%;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.listintro {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+
+.listintro h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  width: 100%;
+}
+
+.listintro ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+}
+
+.listintro ul > li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.5rem;
+}
+
+.listintro ul > li svg {
+  flex-shrink: 0;
+}
+
+/* =================================
+   Job Image
+   ================================= */
+.job-img-wrapper {
+  width: 30%;
+  height: 15rem;
+  border-radius: var(--job-border-radius);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.job-img-wrapper p {
+  margin: 0;
+}
+
+.joblist img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--job-border-radius);
+}
+
+/* =================================
+   Job Tags
+   ================================= */
+.job-tags {
+  position: absolute;
+  left: -1%;
+  top: 4%;
+  z-index: 1;
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: start;
+}
+
+.tag-recommend,
+.tag-popular {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--goyoursBlack);
+  padding: var(--job-tag-padding);
+  gap: 0.5rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* =================================
+   Buttons
+   ================================= */
+.joblistBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.joblistBtn > button {
+  padding: var(--job-button-padding);
+  border-radius: var(--job-button-radius);
+  border: none;
+  font-weight: bold;
+}
+
+.joblistBtn > button:nth-child(1) {
+  background-color: var(--goyoursYellow);
+  color: #fff;
+}
+
+.joblistBtn > button:nth-child(2) {
+  background-color: var(--goyoursBlack);
+  color: #fff;
+}
+
+.listintro .openDetail {
+  text-decoration: none;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  border: none;
+  background-color: transparent;
+  opacity: 1;
+  transition: opacity var(--job-transition);
+  color: var(--goyoursBlack);
+  font-weight: bold;
+}
+
+.moreBtn {
+  margin-left: 0.6rem;
+  font-size: 1.2rem;
+}
+
+/* =================================
+   Detail Section
+   ================================= */
+.listdetail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-weight: bold;
+}
+
+.listdetail button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: none;
+  background-color: transparent;
+}
+
+/* =================================
+   State Classes
+   ================================= */
+.close {
+  overflow: hidden;
+  opacity: 0;
+  height: 0;
+}
+
+.btnClose {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.noimg-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #999;
+  font-style: italic;
+}
+
+/* =================================
+   Tablet Media Query
+   ================================= */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .jobListSection {
+    width: 90vw;
+  }
+
+  .listintro ul h2 {
+    margin: 0.5rem 0;
+    line-height: 2.5rem;
+  }
+
+  .listintro ul > li:first-child {
+    font-size: 1.25rem;
+  }
+
+  .listintro ul > li:not(:first-child) {
+    font-size: 0.875rem;
+    font-weight: normal;
+  }
+
+  .joblistBtn > button {
+    font-size: 0.75rem;
+    padding: var(--job-button-padding-tablet);
+  }
+}
+
+.work-content-item {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 添加省略號 */
+  white-space: normal; /* 確保正常換行 */
+}
+
+/* =================================
+   Mobile Media Query
+   ================================= */
+@media screen and (max-width: 480px) {
+  .jobListSection {
+    padding-top: var(--job-section-padding-mobile);
+  }
+
+  .searchResultArea {
+    margin-bottom: unset;
+  }
+
+  .searchResultArea h2 {
+    font-size: 1.25rem;
+  }
+
+  .searchResult {
+    font-size: 0.875rem;
+  }
+
+  .listintro {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .listintro h2 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .job-img-wrapper {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .job-img-wrapper p {
+    margin: 0;
+  }
+
+  .joblist {
+    position: relative;
+    padding-bottom: 7rem;
+  }
+
+  .joblist img {
+    border-radius: var(--job-border-radius-small);
+  }
+
+  .joblistBtn {
+    position: absolute;
+    top: unset;
+    bottom: 4%;
+    left: 0;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .joblistBtn > button {
+    font-size: 0.875rem;
+    padding: var(--job-button-padding-mobile);
+  }
+
+  .listintro ul {
+    font-size: 0.85rem;
+    font-weight: normal;
+    gap: 0.8rem;
+  }
+
+  .listintro .openDetail {
+    bottom: -40px;
+  }
+
+  .job-tags {
+    top: 24%;
+  }
+}
