@@ -165,7 +165,6 @@ export default function ContactForm() {
         JSON.stringify(rawData),
         SECRET_KEY
       ).toString();
-      console.log("開始提交數據");
       // 發送加密資料到 Serverless Function
       const response = await fetch("/api/saveContact", {
         method: "POST",
@@ -174,7 +173,6 @@ export default function ContactForm() {
         },
         body: JSON.stringify({ encryptedData }),
       });
-      console.log("提交完成，回應:", response);
 
       if (!response.ok) {
         throw new Error("提交失敗");

@@ -43,7 +43,7 @@
     "react-router-dom": "^6.26.2",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.2.1",
+    "swiper": "^11.2.10",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -58,6 +58,7 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "sitemap": "^8.0.0",
+    "vercel": "^44.2.11",
     "vite": "^5.4.1",
     "vite-plugin-sitemap": "^0.7.1"
   }

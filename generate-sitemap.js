@@ -21,7 +21,6 @@ function generateRobotsTxt() {
   Sitemap: https://www.goyours.tw/sitemap.xml`;
 
   createWriteStream("./public/robots.txt").write(robotsTxt);
-  console.log("Robots.txt generated successfully!");
 }
 
 async function generateSitemap() {
@@ -79,7 +78,6 @@ async function generateSitemap() {
 
     generateRobotsTxt();
 
-    console.log("Sitemap generated successfully!");
   } catch (error) {
     console.error("Error generating sitemap:", error);
   }

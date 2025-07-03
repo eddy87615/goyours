@@ -1,8 +1,8 @@
+// vite.config.js
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import ViteSitemap from "vite-plugin-sitemap";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   base: "/",
   plugins: [
@@ -19,8 +19,17 @@ export default defineConfig({
         "/document-download",
         "/contact-us",
       ],
-      // 完全省略 robots 配置
     }),
   ],
   cors: true,
+  // 暫時註解掉代理設定
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://open-api.omnichat.ai',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, '')
+  //     }
+  //   }
+  // }
 });
