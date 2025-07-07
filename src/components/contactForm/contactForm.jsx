@@ -159,13 +159,23 @@ export default function ContactForm() {
     };
 
     try {
+      console.log("🚀 開始表單提交流程");
+      console.log("📝 原始表單資料:", rawData);
+      
       // 加密資料
       const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
+      console.log("🔐 SECRET_KEY 狀態:", SECRET_KEY ? "已設置" : "未設置");
+      
       const encryptedData = CryptoJS.AES.encrypt(
         JSON.stringify(rawData),
         SECRET_KEY
       ).toString();
+      
+      console.log("✅ 資料加密完成");
+      
       // 發送加密資料到 Serverless Function
+      console.log("📡 發送請求到 /api/saveContact");
+      
       const response = await fetch("/api/saveContact", {
         method: "POST",
         headers: {
@@ -174,10 +184,28 @@ export default function ContactForm() {
         body: JSON.stringify({ encryptedData }),
       });
 
+      console.log("📥 收到回應:", {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      });
+
+      const responseData = await response.json();
+      console.log("📄 回應資料:", responseData);
+
       if (!response.ok) {
+        console.error("❌ API 回應錯誤:", responseData);
         throw new Error("提交失敗");
       }
+      
       if (response.ok) {
+        console.log("✅ 表單提交成功!");
+        console.log("📊 通知狀態:", {
+          sanity: responseData.result ? "已儲存" : "狀態未知",
+          omnichat: responseData.omniChatNotificationSent ? "已發送" : "未發送",
+          email: responseData.emailNotificationSent ? "已發送" : "未發送"
+        });
+        
         setIsSubmited(true);
         setFormData({
           name: "",
@@ -193,7 +221,11 @@ export default function ContactForm() {
         scrollToTop();
       }
     } catch (error) {
-      console.error("提交失敗:", error);
+      console.error("❌ 表單提交失敗:", error);
+      console.error("🔍 錯誤詳情:", {
+        message: error.message,
+        stack: error.stack
+      });
       alert("提交失敗，請稍後再試");
     } finally {
       setLoading(false);
