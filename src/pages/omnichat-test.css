@@ -158,6 +158,16 @@
   margin-bottom: 0.5rem;
 }
 
+.warning-box {
+  background: #fef3cd;
+  border: 1px solid #f9c74f;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #856404;
+  font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
   .omnichat-test-container {
     padding: 1rem;

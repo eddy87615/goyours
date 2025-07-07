@@ -72,7 +72,7 @@ export default async function handler(req, res) {
 
     // 發送到 OmniChat API
     const response = await axios.post(
-      "https://api.omnichat.ai/restapi/v1/line/webhook/2007407348",
+      "https://open-api.omnichat.ai/v1/notification-messages",
       notificationData,
       {
         headers: {

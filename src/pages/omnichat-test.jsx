@@ -53,43 +53,35 @@ export default function OmniChatTest() {
       console.log('🚀 發送到 OmniChat API');
       console.log('📡 請求資料:', notificationData);
 
-      // 注意：這裡直接呼叫 OmniChat API，Token 需要在前端設置（僅用於測試）
-      const response = await fetch('https://open-api.omnichat.ai/v1/notification-messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4U8mCf50jkTAt3iGegYD9wtOG6WUTcYpnbbg8igVkbRsoh5RPrKMJm3uRiwSfxEE', // 臨時測試用
-        },
-        body: JSON.stringify(notificationData),
-      });
-
-      console.log('📥 收到回應:', response.status, response.statusText);
-
-      const data = await response.json();
-      console.log('📄 回應資料:', data);
-
-      const result = {
-        success: response.ok,
-        message: response.ok ? "測試通知已發送!" : "測試失敗",
-        data: response.ok ? {
-          triggerId: data?.triggerId || data?.content?.triggerId,
+      // 在開發環境直接模擬 API 呼叫結果
+      console.log('⚠️ 注意：開發環境模擬測試');
+      
+      // 模擬成功的回應
+      const mockResponse = {
+        success: true,
+        message: "測試通知模擬發送成功",
+        data: {
+          triggerId: "mock_trigger_" + Date.now(),
           originalPhone: phone,
           formattedPhone: formattedPhone,
           lineId: lineId,
           channelId: "2007407348",
           settingId: "68527dfb060eab724d2c4d9a",
-          apiResponse: data
-        } : null,
-        error: response.ok ? null : data?.error || `HTTP ${response.status}`,
-        details: response.ok ? null : data
+          note: "這是開發環境的模擬結果，實際 OmniChat API 呼叫需要在生產環境測試"
+        }
       };
 
-      setResult(result);
+      console.log('📄 模擬回應:', mockResponse);
+      
+      // 模擬 API 延遲
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      if (result.success) {
-        alert('✅ 測試通知已發送！請檢查您的 LINE');
+      setResult(mockResponse);
+
+      if (mockResponse.success) {
+        alert('✅ 模擬測試成功！\n注意：這是開發環境模擬，實際 API 呼叫需要部署到生產環境測試');
       } else {
-        alert('❌ 測試失敗：' + result.error);
+        alert('❌ 測試失敗：' + (mockResponse.error || '未知錯誤'));
       }
 
     } catch (error) {
@@ -188,6 +180,10 @@ export default function OmniChatTest() {
 
         <div className="info-section">
           <h3>📋 測試說明</h3>
+          <div className="warning-box">
+            ⚠️ <strong>開發環境注意</strong>：目前在 localhost 環境中，這是模擬測試。
+            要進行真實的 OmniChat API 測試，請部署到生產環境！
+          </div>
           <ul>
             <li>確保您的電話號碼已在 OmniChat 系統中綁定 LINE</li>
             <li>電話號碼會自動轉換為國際格式（+886）</li>
