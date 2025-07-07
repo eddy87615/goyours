@@ -15,11 +15,24 @@ dotenv.config();
 // });
 
 export default async function handler(req, res) {
+  // 添加這些日誌
+  console.log("Request received at:", new Date().toISOString());
+  console.log("Request method:", req.method);
+  console.log("Request headers:", req.headers);
+  console.log("Request body:", req.body);
+  console.log("Environment variables:", {
+    SANITY_PROJECT_ID: process.env.SANITY_API_SANITY_PROJECT_ID
+      ? "Set"
+      : "Not set",
+    EMAIL_USER: process.env.EMAIL_USER ? "Set" : "Not set",
+    EMAIL_PASS: process.env.EMAIL_PASS ? "Set" : "Not set",
+  });
 
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
+  console.log("Webhook triggered:", req.body);
 
   const type = req.body._type; // 注意這裡改成 _type
   if (!type) {
@@ -100,7 +113,9 @@ export default async function handler(req, res) {
       };
     }
 
+    console.log("Attempting to send email...");
     await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully!");
 
     return res.status(200).json({
       message: `Webhook processed successfully for type "${type}".`,

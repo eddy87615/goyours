@@ -1,30 +1,16 @@
-/* eslint-disable no-undef */
+import express from "express";
 import axios from "axios";
+import cors from "cors";
 
-export default async function handler(req, res) {
-  // Only allow POST method
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-  // Enable CORS
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-  );
-
-  // Handle OPTIONS request
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
-  }
-
+app.post("/api/messageNotification", async (req, res) => {
   const { notifications } = req.body;
 
   try {
+    console.log("收到請求數據:", req.body);
 
     // 檢查必要參數
     if (!notifications || !Array.isArray(notifications)) {
@@ -34,28 +20,13 @@ export default async function handler(req, res) {
       });
     }
 
-    // 使用環境變數中的 token
-    const token = process.env.OMNICHAT_TOKEN;
-    const channelId = process.env.LINE_CHANNEL_ID;
-    const settingId = process.env.OMNICHAT_SETTING_ID;
+    // 確保這裡使用了實際的令牌
+    const token = "YOUR-REAL-ACCESS-TOKEN";
 
-    if (!token) {
-      return res.status(500).json({
-        success: false,
-        error: "Server configuration error",
-      });
-    }
-
-    
-    // 根據提供的 webhook URL 格式，使用正確的端點
-    const webhookUrl = `https://api.omnichat.ai/restapi/v1/line/webhook/${channelId}`;
-    
+    console.log("發送請求到 OmniChat API...");
     const response = await axios.post(
-      webhookUrl,
-      { 
-        notifications,
-        settingId: settingId 
-      },
+      "https://open-api.omnichat.ai/v1/notification-messages",
+      { notifications },
       {
         headers: {
           "Content-Type": "application/json",
@@ -64,22 +35,25 @@ export default async function handler(req, res) {
       }
     );
 
-    res.json({ success: true, data: response.data });
+    console.log("OmniChat API 響應:", response.data);
+    res.json({ success: true, triggerId: response.data.triggerId });
   } catch (error) {
+    console.error("錯誤詳情:", error);
 
     // 捕獲並顯示 axios 錯誤的詳細信息
     if (error.response) {
       // 服務器返回了錯誤響應
-      
-      return res.status(error.response.status).json({
-        success: false,
-        error: error.response.data,
+      console.error("API 錯誤響應:", {
+        status: error.response.status,
+        data: error.response.data,
       });
     }
 
     res.status(500).json({
       success: false,
-      error: error.message,
+      error: error.response
+        ? JSON.stringify(error.response.data)
+        : error.message,
     });
   }
-}
+});
