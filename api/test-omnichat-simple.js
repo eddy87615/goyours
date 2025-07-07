@@ -85,17 +85,23 @@ export default async function handler(req, res) {
 
     console.log("OmniChat 回應:", response.data);
 
+    // 檢查正確的回應格式
+    const triggerId = response.data?.triggerId;
+    if (!triggerId) {
+      console.warn("⚠️ 沒有收到 triggerId，回應格式:", response.data);
+    }
+
     return res.status(200).json({
       success: true,
       message: "測試通知已發送!",
       data: {
-        triggerId:
-          response.data?.triggerId || response.data?.content?.triggerId,
+        triggerId: triggerId || "未知",
         originalPhone: phone,
         formattedPhone: formattedPhone,
         lineId: lineId,
         channelId: channelId,
         settingId: settingId,
+        rawResponse: response.data, // 包含原始回應供診斷
       },
     });
   } catch (error) {

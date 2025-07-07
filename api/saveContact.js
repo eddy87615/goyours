@@ -136,7 +136,14 @@ const sendOmniChatNotification = async (formData) => {
       data: response.data
     });
 
-    return true;
+    // 檢查回應格式
+    if (response.data && response.data.triggerId) {
+      console.log('✅ OmniChat 通知發送成功, Trigger ID:', response.data.triggerId);
+      return response.data.triggerId;
+    } else {
+      console.warn('⚠️ OmniChat API 回應格式異常:', response.data);
+      return true; // 仍然回傳成功，但沒有 triggerId
+    }
   } catch (error) {
     console.error('OmniChat 通知發送失敗:', {
       message: error.message,
