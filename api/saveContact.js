@@ -2,6 +2,8 @@
 
 import { createClient } from '@sanity/client';
 import CryptoJS from 'crypto-js';
+import axios from 'axios';
+import nodemailer from 'nodemailer';
 
 // 初始化 Sanity 客戶端
 const createSanityClient = () => {
@@ -58,6 +60,192 @@ const validateEnvVariables = () => {
     throw new Error(
       `Missing required environment variables: ${missingVars.join(', ')}`
     );
+  }
+};
+
+// 發送 OmniChat 通知
+const sendOmniChatNotification = async (formData) => {
+  try {
+    const token = process.env.OMNICHAT_TOKEN;
+    const channelId = process.env.LINE_CHANNEL_ID;
+    const settingId = process.env.OMNICHAT_SETTING_ID;
+
+    console.log('OmniChat 環境變數檢查:', {
+      hasToken: !!token,
+      channelId: channelId || 'NOT SET',
+      settingId: settingId || 'NOT SET'
+    });
+
+    if (!token || !channelId || !settingId) {
+      console.error('缺少 OmniChat 環境變數');
+      return false;
+    }
+
+    // 格式化電話號碼
+    let formattedPhone = formData.phone;
+    if (formattedPhone && formattedPhone.startsWith('0')) {
+      formattedPhone = '886' + formattedPhone.substring(1);
+    }
+
+    console.log('電話號碼格式化:', {
+      原始: formData.phone,
+      格式化: formattedPhone
+    });
+
+    // 準備通知資料
+    const notificationData = {
+      notifications: [
+        {
+          platform: 'line',
+          channelId: channelId,
+          to: formattedPhone,
+          settingId: settingId,
+          valueMap: {
+            name: formData.name || '',
+            age: formData.age || '',
+            phone: formData.phone || '',
+            lineId: formData.lineId || '',
+            email: formData.email || '',
+            message: formData.tellus || '',
+            submittedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+          }
+        }
+      ]
+    };
+
+    console.log('發送 OmniChat 通知:', {
+      to: formattedPhone,
+      settingId: settingId,
+      channelId: channelId
+    });
+
+    const response = await axios.post(
+      'https://open-api.omnichat.ai/v1/notification-messages',
+      notificationData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        timeout: 10000
+      }
+    );
+
+    console.log('OmniChat API 成功回應:', {
+      status: response.status,
+      data: response.data
+    });
+
+    return true;
+  } catch (error) {
+    console.error('OmniChat 通知發送失敗:', {
+      message: error.message,
+      status: error.response?.status,
+      data: error.response?.data
+    });
+    return false;
+  }
+};
+
+// 發送電子郵件通知
+const sendEmailNotification = async (formData) => {
+  try {
+    console.log('檢查電子郵件環境變數:', {
+      EMAIL_USER: process.env.EMAIL_USER || 'NOT SET',
+      EMAIL_PASS: !!process.env.EMAIL_PASS,
+      EMAIL_USER_RECEIVE: process.env.EMAIL_USER_RECEIVE || 'NOT SET'
+    });
+
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('缺少電子郵件環境變數');
+      return false;
+    }
+
+    const transporter = nodemailer.createTransporter({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const emailTo = process.env.EMAIL_USER_RECEIVE || process.env.EMAIL_USER;
+    let mailOptions;
+
+    if (formData._type === 'contact') {
+      mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: emailTo,
+        subject: '新聯絡資料表單',
+        text: `
+新聯絡資料表單:
+  - 真實姓名：${formData.name || 'N/A'}
+  - 年齡：${formData.age || 'N/A'}
+  - 科系：${formData.major || 'N/A'}
+  - 行動電話：${formData.phone || 'N/A'}
+  - 電子郵件：${formData.email || 'N/A'}
+  - 想詢問的方案：${Array.isArray(formData.case) ? formData.case.join(', ') : 'N/A'}
+  - 方便聯絡的時段：${formData.callTime || 'N/A'}
+  - Line ID：${formData.lineId || 'N/A'}
+  - 想對我們說的話：${formData.tellus || 'N/A'}
+  - 提交時間：${formData.upTime || 'N/A'}
+快到後台查看更多資訊！
+        `,
+      };
+    } else if (formData._type === 'JPjobapply') {
+      mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: emailTo,
+        subject: '新正職職缺申請表單',
+        text: `
+新正職職缺申請:
+  - 申請工作名稱：${formData.jobname || 'N/A'}
+  - 真實姓名：${formData.name || 'N/A'}
+  - 年齡：${formData.age || 'N/A'}
+  - 科系：${formData.major || 'N/A'}
+  - 行動電話：${formData.phone || 'N/A'}
+  - 電子郵件：${formData.email || 'N/A'}
+  - 方便聯絡時段：${formData.callTime || 'N/A'}
+  - Line ID：${formData.lineId || 'N/A'}
+  - 履歷表：${formData.resume ? '已上傳' : '未上傳'}
+快到後台查看詳細資訊和履歷！
+        `,
+      };
+    } else if (formData._type === 'jobapply') {
+      mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: emailTo,
+        subject: '新打工度假申請表單',
+        text: `
+新打工度假申請:
+  - 申請工作名稱：${formData.jobname || 'N/A'}
+  - 真實姓名：${formData.name || 'N/A'}
+  - 年齡：${formData.age || 'N/A'}
+  - 科系：${formData.major || 'N/A'}
+  - 行動電話：${formData.phone || 'N/A'}
+  - 電子郵件：${formData.email || 'N/A'}
+  - 方便聯絡時段：${formData.callTime || 'N/A'}
+  - Line ID：${formData.lineId || 'N/A'}
+  - 履歷表：${formData.resume ? '已上傳' : '未上傳'}
+快到後台看看履歷吧！
+        `,
+      };
+    }
+
+    if (mailOptions) {
+      console.log('準備發送郵件給:', emailTo);
+      await transporter.sendMail(mailOptions);
+      console.log('電子郵件發送成功!');
+      return true;
+    }
+
+    return false;
+  } catch (error) {
+    console.error('電子郵件發送失敗:', {
+      message: error.message,
+      code: error.code
+    });
+    return false;
   }
 };
 
@@ -123,6 +311,13 @@ export default async function handler(req, res) {
 
     // 保存到 Sanity
     const result = await sanityClient.create(dataToSave);
+    console.log('Sanity 儲存成功:', result._id);
+
+    // 發送 OmniChat 通知
+    const omniChatResult = await sendOmniChatNotification(decryptedData);
+
+    // 發送電子郵件通知
+    const emailResult = await sendEmailNotification(decryptedData);
 
     // 返回成功響應
     return res.status(200).json({
@@ -130,6 +325,8 @@ export default async function handler(req, res) {
       message: '資料成功存儲',
       result:
         process.env.NODE_ENV === 'development' ? result : { _id: result._id },
+      omniChatNotificationSent: omniChatResult,
+      emailNotificationSent: emailResult
     });
   } catch (error) {
     // 錯誤處理
