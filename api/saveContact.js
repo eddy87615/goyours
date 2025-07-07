@@ -75,18 +75,41 @@ const sendOmniChatNotification = async (formData) => {
       return null;
     }
 
-    // 準備通知內容
-    const message = `新的表單提交\n姓名: ${formData.name}\n電話: ${formData.phone}\nEmail: ${formData.email}\nLINE ID: ${formData.lineId || "未提供"}\n留言: ${formData.tellus || "無"}`;
+    // 格式化電話號碼為國際格式 (台灣 +886)
+    let formattedPhone = formData.phone;
+    if (formattedPhone.startsWith('0')) {
+      formattedPhone = '886' + formattedPhone.substring(1);
+    }
 
-    // 使用您提供的正確 webhook URL
-    const webhookUrl = `https://api.omnichat.ai/restapi/v1/line/webhook/${channelId}`;
+    // 準備通知請求
+    const notificationData = {
+      notifications: [
+        {
+          platform: "line",
+          channelId: channelId,
+          to: formattedPhone,
+          settingId: settingId,
+          valueMap: {
+            name: formData.name,
+            age: formData.age,
+            phone: formData.phone,
+            lineId: formData.lineId || "未提供",
+            email: formData.email,
+            selectedCases: formData.case ? formData.case.join(", ") : "未選擇",
+            callTime: formData.callTime,
+            message: formData.tellus || "無留言",
+            submittedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+          }
+        }
+      ]
+    };
+
+    // 使用正確的 notification-messages API endpoint
+    const apiUrl = "https://open-api.omnichat.ai/v1/notification-messages";
     
     const response = await axios.post(
-      webhookUrl,
-      {
-        message: message,
-        settingId: settingId
-      },
+      apiUrl,
+      notificationData,
       {
         headers: {
           "Content-Type": "application/json",
@@ -95,9 +118,10 @@ const sendOmniChatNotification = async (formData) => {
       }
     );
 
+    console.log("OmniChat notification sent successfully:", response.data);
     return response.data;
   } catch (error) {
-    console.error("Failed to send OmniChat notification:", error.message);
+    console.error("Failed to send OmniChat notification:", error.response?.data || error.message);
     // 不讓通知失敗影響主要流程
     return null;
   }
