@@ -19,6 +19,8 @@ export default defineConfig({
         "/document-download",
         "/contact-us",
       ],
+      outDir: "dist",
+      generateRobotsTxt: false, // 不讓插件自動生成 robots.txt
     }),
   ],
   cors: true,
