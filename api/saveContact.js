@@ -2,7 +2,6 @@
 
 import { createClient } from '@sanity/client';
 import CryptoJS from 'crypto-js';
-import axios from 'axios';
 import nodemailer from 'nodemailer';
 
 // 初始化 Sanity 客戶端
@@ -63,7 +62,7 @@ const validateEnvVariables = () => {
   }
 };
 
-// 發送 OmniChat 通知
+// 發送 OmniChat 通知 (基於成功的 Python 實現)
 const sendOmniChatNotification = async (formData) => {
   try {
     const token = process.env.OMNICHAT_TOKEN;
@@ -77,7 +76,7 @@ const sendOmniChatNotification = async (formData) => {
     });
 
     if (!token || !channelId || !settingId) {
-      console.error('缺少 OmniChat 環境變數');
+      console.log('缺少 OmniChat 環境變數，跳過 LINE 通知');
       return false;
     }
 
@@ -92,7 +91,7 @@ const sendOmniChatNotification = async (formData) => {
       格式化: formattedPhone
     });
 
-    // 準備通知資料
+    // 準備通知資料 (根據成功的 Python 實現格式)
     const notificationData = {
       notifications: [
         {
@@ -101,13 +100,13 @@ const sendOmniChatNotification = async (formData) => {
           to: formattedPhone,
           settingId: settingId,
           valueMap: {
-            name: formData.name || '',
-            age: formData.age || '',
-            phone: formData.phone || '',
-            lineId: formData.lineId || '',
-            email: formData.email || '',
-            message: formData.tellus || '',
-            submittedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+            appointmentContent: formData.tellus || formData.message || '新表單提交',
+            appointmentDate: new Date().toLocaleDateString('zh-TW'),
+            appointmentTime: new Date().toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' }),
+            appointmentLocation: '線上',
+            note: `姓名: ${formData.name || 'N/A'}\n年齡: ${formData.age || 'N/A'}\n電話: ${formData.phone || 'N/A'}\nEmail: ${formData.email || 'N/A'}\nLine ID: ${formData.lineId || 'N/A'}`,
+            contactInfo: formData.phone || 'N/A',
+            appointmentDetailLink: 'https://www.goyours.com.tw'
           }
         }
       ]
@@ -116,43 +115,51 @@ const sendOmniChatNotification = async (formData) => {
     console.log('發送 OmniChat 通知:', {
       to: formattedPhone,
       settingId: settingId,
-      channelId: channelId
+      channelId: channelId,
+      valueMap: notificationData.notifications[0].valueMap
     });
 
-    const response = await axios.post(
-      'https://open-api.omnichat.ai/v1/notification-messages',
-      notificationData,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        timeout: 10000
+    const response = await fetch('https://open-api.omnichat.ai/v1/notification-messages', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(notificationData)
+    });
+
+    console.log('OmniChat API 回應狀態:', response.status);
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('OmniChat API 成功回應:', responseData);
+      
+      // 檢查回應格式
+      if (responseData && responseData.content && responseData.content.triggerId) {
+        console.log('✅ OmniChat 通知發送成功, Trigger ID:', responseData.content.triggerId);
+        return responseData.content.triggerId;
+      } else {
+        console.log('✅ OmniChat 通知發送成功，但回應格式可能不同:', responseData);
+        return true;
       }
-    );
-
-    console.log('OmniChat API 成功回應:', {
-      status: response.status,
-      data: response.data
-    });
-
-    // 檢查回應格式
-    if (response.data && response.data.triggerId) {
-      console.log('✅ OmniChat 通知發送成功, Trigger ID:', response.data.triggerId);
-      return response.data.triggerId;
     } else {
-      console.warn('⚠️ OmniChat API 回應格式異常:', response.data);
-      return true; // 仍然回傳成功，但沒有 triggerId
+      const errorData = await response.json();
+      console.error('OmniChat API 錯誤:', {
+        status: response.status,
+        statusText: response.statusText,
+        data: errorData
+      });
+      return false;
     }
   } catch (error) {
     console.error('OmniChat 通知發送失敗:', {
       message: error.message,
-      status: error.response?.status,
-      data: error.response?.data
+      stack: error.stack
     });
     return false;
   }
 };
+
 
 // 發送電子郵件通知
 const sendEmailNotification = async (formData) => {
