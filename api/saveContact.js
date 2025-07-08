@@ -100,19 +100,15 @@ const sendOmniChatNotification = async (formData) => {
           to: formattedPhone,
           settingId: settingId,
           valueMap: {
-            appointmentContent:
-              formData.tellus || formData.message || "新表單提交",
+            appointmentContent: Array.isArray(formData.case) ? formData.case.join(", ") : formData.case || "未指定",
             appointmentDate: new Date().toLocaleDateString("zh-TW"),
-            appointmentTime: new Date().toLocaleTimeString("zh-TW", {
-              hour: "2-digit",
-              minute: "2-digit",
-            }),
-            appointmentLocation: "線上",
+            appointmentTime: formData.callTime || "未指定",
+            appointmentLocation: "",
             note: `姓名: ${formData.name || "N/A"}\n年齡: ${
               formData.age || "N/A"
             }\n電話: ${formData.phone || "N/A"}\nEmail: ${
               formData.email || "N/A"
-            }\nLine ID: ${formData.lineId || "N/A"}`,
+            }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${formData.tellus || "無"}`,
             contactInfo: formData.phone || "N/A",
             appointmentDetailLink: "https://www.goyours.com.tw",
           },
@@ -202,10 +198,10 @@ const sendEmailNotification = async (formData) => {
         pass: process.env.EMAIL_PASS,
       },
       tls: {
-        rejectUnauthorized: false
-      }
+        rejectUnauthorized: false,
+      },
     });
-    
+
     // 驗證 transporter 設定
     try {
       await transporter.verify();
@@ -283,7 +279,7 @@ const sendEmailNotification = async (formData) => {
     if (mailOptions) {
       console.log("準備發送郵件給:", emailTo);
       console.log("郵件主題:", mailOptions.subject);
-      
+
       try {
         const info = await transporter.sendMail(mailOptions);
         console.log("電子郵件發送成功! Message ID:", info.messageId);
@@ -295,22 +291,22 @@ const sendEmailNotification = async (formData) => {
           code: sendError.code,
           command: sendError.command,
           response: sendError.response,
-          responseCode: sendError.responseCode
+          responseCode: sendError.responseCode,
         });
-        
+
         // 如果是認證錯誤，提供更多資訊
-        if (sendError.code === 'EAUTH') {
+        if (sendError.code === "EAUTH") {
           console.error("Gmail 認證失敗，請檢查:");
           console.error("1. EMAIL_USER 是否正確");
           console.error("2. EMAIL_PASS 是否為應用程式專用密碼");
           console.error("3. Gmail 帳戶是否啟用了兩步驟驗證");
         }
-        
+
         // 如果是頻率限制錯誤
-        if (sendError.responseCode === 550 || sendError.code === 'EDNS') {
+        if (sendError.responseCode === 550 || sendError.code === "EDNS") {
           console.error("可能遇到 Gmail 發送限制，請稍後再試");
         }
-        
+
         return false;
       }
     }
