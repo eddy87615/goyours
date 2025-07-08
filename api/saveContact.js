@@ -100,7 +100,9 @@ const sendOmniChatNotification = async (formData) => {
           to: formattedPhone,
           settingId: settingId,
           valueMap: {
-            appointmentContent: Array.isArray(formData.case) ? formData.case.join(", ") : formData.case || "未指定",
+            appointmentContent: Array.isArray(formData.case)
+              ? formData.case.join(", ")
+              : formData.case || "未指定",
             appointmentDate: new Date().toLocaleDateString("zh-TW"),
             appointmentTime: formData.callTime || "未指定",
             appointmentLocation: "",
@@ -108,7 +110,9 @@ const sendOmniChatNotification = async (formData) => {
               formData.age || "N/A"
             }\n電話: ${formData.phone || "N/A"}\nEmail: ${
               formData.email || "N/A"
-            }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${formData.tellus || "無"}`,
+            }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${
+              formData.tellus || "無"
+            }`,
             contactInfo: formData.phone || "N/A",
             appointmentDetailLink: "https://www.goyours.com.tw",
           },
