@@ -77,6 +77,11 @@ const sendOmniChatNotification = async (formData) => {
 
     if (!token || !channelId || !settingId) {
       console.log("缺少 OmniChat 環境變數，跳過 LINE 通知");
+      console.log("缺少的變數:", {
+        token: !token ? "OMNICHAT_TOKEN 未設定" : "已設定",
+        channelId: !channelId ? "LINE_CHANNEL_ID 未設定" : "已設定",
+        settingId: !settingId ? "OMNICHAT_SETTING_ID 未設定" : "已設定",
+      });
       return false;
     }
 
@@ -313,11 +318,14 @@ const sendEmailNotification = async (formData) => {
     });
 
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error("缺少電子郵件環境變數");
+      console.error("缺少電子郵件環境變數:", {
+        EMAIL_USER: !process.env.EMAIL_USER ? "未設定" : "已設定",
+        EMAIL_PASS: !process.env.EMAIL_PASS ? "未設定" : "已設定",
+      });
       return false;
     }
 
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
@@ -523,8 +531,9 @@ export default async function handler(req, res) {
       message: "資料成功存儲",
       result:
         process.env.NODE_ENV === "development" ? result : { _id: result._id },
-      omniChatNotificationSent: omniChatResult,
-      emailNotificationSent: emailResult,
+      sanity: "已儲存",
+      omnichat: omniChatResult ? "已發送" : "未發送",
+      email: emailResult ? "已發送" : "未發送",
     });
   } catch (error) {
     // 錯誤處理
