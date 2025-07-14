@@ -68,7 +68,9 @@ const sendOmniChatNotification = async (formData) => {
     const token = process.env.OMNICHAT_TOKEN;
     const channelId = process.env.LINE_CHANNEL_ID;
     // 優先使用 OMNICHAT_SETTING_ID_BASIC_NO_BUTTON，如果沒有則使用 OMNICHAT_SETTING_ID
-    const settingId = process.env.OMNICHAT_SETTING_ID_BASIC_NO_BUTTON || process.env.OMNICHAT_SETTING_ID;
+    const settingId =
+      process.env.OMNICHAT_SETTING_ID_BASIC_NO_BUTTON ||
+      process.env.OMNICHAT_SETTING_ID;
 
     console.log("OmniChat 環境變數檢查:", {
       hasToken: !!token,
@@ -99,7 +101,7 @@ const sendOmniChatNotification = async (formData) => {
 
     // 根據不同的 settingId 準備不同的通知資料
     let notificationData;
-    
+
     // 只使用完成表單預約-基本(無按鈕)
     notificationData = {
       notifications: [
@@ -114,12 +116,12 @@ const sendOmniChatNotification = async (formData) => {
               : formData.case || "未指定",
             appointmentDate: new Date().toLocaleDateString("zh-TW"),
             appointmentTime: formData.callTime || "未指定",
-            appointmentLocation: "",
-            note: `姓名: ${formData.name || "N/A"}\n年齡: ${
+            appointmentLocation: "線上",
+            note: `姓名: ${formData.name || "N/A"}\\n年齡: ${
               formData.age || "N/A"
-            }\n電話: ${formData.phone || "N/A"}\nEmail: ${
+            }\\n電話: ${formData.phone || "N/A"}\\nEmail: ${
               formData.email || "N/A"
-            }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${
+            }\\nLine ID: ${formData.lineId || "N/A"}\\n留言: ${
               formData.tellus || "無"
             }`,
             contactInfo: formData.phone || "N/A",
@@ -127,7 +129,7 @@ const sendOmniChatNotification = async (formData) => {
         },
       ],
     };
-    
+
     /* 其他模板暫時註解
     switch (settingId) {
       // 完成表單預約-基本(無按鈕)
@@ -145,12 +147,12 @@ const sendOmniChatNotification = async (formData) => {
                   : formData.case || "未指定",
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
                 appointmentTime: formData.callTime || "未指定",
-                appointmentLocation: "",
-                note: `姓名: ${formData.name || "N/A"}\n年齡: ${
+                appointmentLocation: "線上",
+                note: `姓名: ${formData.name || "N/A"}\\n年齡: ${
                   formData.age || "N/A"
-                }\n電話: ${formData.phone || "N/A"}\nEmail: ${
+                }\\n電話: ${formData.phone || "N/A"}\\nEmail: ${
                   formData.email || "N/A"
-                }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${
+                }\\nLine ID: ${formData.lineId || "N/A"}\\n留言: ${
                   formData.tellus || "無"
                 }`,
                 contactInfo: formData.phone || "N/A",
@@ -175,12 +177,12 @@ const sendOmniChatNotification = async (formData) => {
                   : formData.case || "未指定",
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
                 appointmentTime: formData.callTime || "未指定",
-                appointmentLocation: "",
-                note: `姓名: ${formData.name || "N/A"}\n年齡: ${
+                appointmentLocation: "線上",
+                note: `姓名: ${formData.name || "N/A"}\\n年齡: ${
                   formData.age || "N/A"
-                }\n電話: ${formData.phone || "N/A"}\nEmail: ${
+                }\\n電話: ${formData.phone || "N/A"}\\nEmail: ${
                   formData.email || "N/A"
-                }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${
+                }\\nLine ID: ${formData.lineId || "N/A"}\\n留言: ${
                   formData.tellus || "無"
                 }`,
                 contactInfo: formData.phone || "N/A",
@@ -255,12 +257,12 @@ const sendOmniChatNotification = async (formData) => {
                   : formData.case || "未指定",
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
                 appointmentTime: formData.callTime || "未指定",
-                appointmentLocation: "",
-                note: `姓名: ${formData.name || "N/A"}\n年齡: ${
+                appointmentLocation: "線上",
+                note: `姓名: ${formData.name || "N/A"}\\n年齡: ${
                   formData.age || "N/A"
-                }\n電話: ${formData.phone || "N/A"}\nEmail: ${
+                }\\n電話: ${formData.phone || "N/A"}\\nEmail: ${
                   formData.email || "N/A"
-                }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${
+                }\\nLine ID: ${formData.lineId || "N/A"}\\n留言: ${
                   formData.tellus || "無"
                 }`,
                 contactInfo: formData.phone || "N/A",
@@ -278,7 +280,7 @@ const sendOmniChatNotification = async (formData) => {
       channelId: channelId,
       valueMap: notificationData.notifications[0].valueMap,
     });
-    
+
     console.log("完整的通知資料:", JSON.stringify(notificationData, null, 2));
 
     const response = await fetch(
