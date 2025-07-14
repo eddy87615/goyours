@@ -101,10 +101,39 @@ const sendOmniChatNotification = async (formData) => {
     
     // 從環境變數讀取不同的 settingIds
     const SETTING_ID_BASIC_NO_BUTTON = process.env.OMNICHAT_SETTING_ID_BASIC_NO_BUTTON; // 完成表單預約-基本(無按鈕)
-    const SETTING_ID_BASIC_WITH_BUTTON = process.env.OMNICHAT_SETTING_ID_BASIC_WITH_BUTTON; // 完成表單預約-基本(有按鈕)
-    const SETTING_ID_SPECIFIED_NO_BUTTON = process.env.OMNICHAT_SETTING_ID_SPECIFIED_NO_BUTTON; // 完成表單預約-指定(無按鈕)
-    const SETTING_ID_SPECIFIED_WITH_BUTTON = process.env.OMNICHAT_SETTING_ID_SPECIFIED_WITH_BUTTON; // 完成表單預約-指定(有按鈕)
+    // const SETTING_ID_BASIC_WITH_BUTTON = process.env.OMNICHAT_SETTING_ID_BASIC_WITH_BUTTON; // 完成表單預約-基本(有按鈕)
+    // const SETTING_ID_SPECIFIED_NO_BUTTON = process.env.OMNICHAT_SETTING_ID_SPECIFIED_NO_BUTTON; // 完成表單預約-指定(無按鈕)
+    // const SETTING_ID_SPECIFIED_WITH_BUTTON = process.env.OMNICHAT_SETTING_ID_SPECIFIED_WITH_BUTTON; // 完成表單預約-指定(有按鈕)
     
+    // 只使用完成表單預約-基本(無按鈕)
+    notificationData = {
+      notifications: [
+        {
+          platform: "line",
+          channelId: channelId,
+          to: formattedPhone,
+          settingId: settingId || SETTING_ID_BASIC_NO_BUTTON,
+          valueMap: {
+            appointmentContent: Array.isArray(formData.case)
+              ? formData.case.join(", ")
+              : formData.case || "未指定",
+            appointmentDate: new Date().toLocaleDateString("zh-TW"),
+            appointmentTime: formData.callTime || "未指定",
+            appointmentLocation: "",
+            note: `姓名: ${formData.name || "N/A"}\n年齡: ${
+              formData.age || "N/A"
+            }\n電話: ${formData.phone || "N/A"}\nEmail: ${
+              formData.email || "N/A"
+            }\nLine ID: ${formData.lineId || "N/A"}\n留言: ${
+              formData.tellus || "無"
+            }`,
+            contactInfo: formData.phone || "N/A",
+          },
+        },
+      ],
+    };
+    
+    /* 其他模板暫時註解
     switch (settingId) {
       // 完成表單預約-基本(無按鈕)
       case SETTING_ID_BASIC_NO_BUTTON:
@@ -246,6 +275,7 @@ const sendOmniChatNotification = async (formData) => {
           ],
         };
     }
+    */
 
     console.log("發送 OmniChat 通知:", {
       to: formattedPhone,
