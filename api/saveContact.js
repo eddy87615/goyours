@@ -67,7 +67,8 @@ const sendOmniChatNotification = async (formData) => {
   try {
     const token = process.env.OMNICHAT_TOKEN;
     const channelId = process.env.LINE_CHANNEL_ID;
-    const settingId = process.env.OMNICHAT_SETTING_ID;
+    // 優先使用 OMNICHAT_SETTING_ID_BASIC_NO_BUTTON，如果沒有則使用 OMNICHAT_SETTING_ID
+    const settingId = process.env.OMNICHAT_SETTING_ID_BASIC_NO_BUTTON || process.env.OMNICHAT_SETTING_ID;
 
     console.log("OmniChat 環境變數檢查:", {
       hasToken: !!token,
@@ -99,12 +100,6 @@ const sendOmniChatNotification = async (formData) => {
     // 根據不同的 settingId 準備不同的通知資料
     let notificationData;
     
-    // 從環境變數讀取不同的 settingIds
-    const SETTING_ID_BASIC_NO_BUTTON = process.env.OMNICHAT_SETTING_ID_BASIC_NO_BUTTON; // 完成表單預約-基本(無按鈕)
-    // const SETTING_ID_BASIC_WITH_BUTTON = process.env.OMNICHAT_SETTING_ID_BASIC_WITH_BUTTON; // 完成表單預約-基本(有按鈕)
-    // const SETTING_ID_SPECIFIED_NO_BUTTON = process.env.OMNICHAT_SETTING_ID_SPECIFIED_NO_BUTTON; // 完成表單預約-指定(無按鈕)
-    // const SETTING_ID_SPECIFIED_WITH_BUTTON = process.env.OMNICHAT_SETTING_ID_SPECIFIED_WITH_BUTTON; // 完成表單預約-指定(有按鈕)
-    
     // 只使用完成表單預約-基本(無按鈕)
     notificationData = {
       notifications: [
@@ -112,7 +107,7 @@ const sendOmniChatNotification = async (formData) => {
           platform: "line",
           channelId: channelId,
           to: formattedPhone,
-          settingId: settingId || SETTING_ID_BASIC_NO_BUTTON,
+          settingId: settingId,
           valueMap: {
             appointmentContent: Array.isArray(formData.case)
               ? formData.case.join(", ")
@@ -283,6 +278,8 @@ const sendOmniChatNotification = async (formData) => {
       channelId: channelId,
       valueMap: notificationData.notifications[0].valueMap,
     });
+    
+    console.log("完整的通知資料:", JSON.stringify(notificationData, null, 2));
 
     const response = await fetch(
       "https://open-api.omnichat.ai/v1/notification-messages",
