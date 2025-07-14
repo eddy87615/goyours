@@ -93,10 +93,17 @@ const sendOmniChatNotification = async (formData) => {
     if (formattedPhone && formattedPhone.startsWith("0")) {
       formattedPhone = "886" + formattedPhone.substring(1);
     }
+    
+    // 驗證電話號碼格式
+    if (!formattedPhone || formattedPhone.length < 10) {
+      console.error("電話號碼格式不正確:", formattedPhone);
+      return false;
+    }
 
     console.log("電話號碼格式化:", {
       原始: formData.phone,
       格式化: formattedPhone,
+      長度: formattedPhone.length,
     });
 
     // 根據不同的 settingId 準備不同的通知資料
@@ -296,9 +303,19 @@ const sendOmniChatNotification = async (formData) => {
     );
 
     console.log("OmniChat API 回應狀態:", response.status);
+    
+    // 先讀取回應內容
+    const responseText = await response.text();
+    console.log("OmniChat API 原始回應:", responseText);
 
     if (response.ok) {
-      const responseData = await response.json();
+      let responseData;
+      try {
+        responseData = JSON.parse(responseText);
+      } catch (e) {
+        console.error("無法解析 OmniChat 回應:", e);
+        return false;
+      }
       console.log("OmniChat API 成功回應:", responseData);
 
       // 檢查回應格式
@@ -320,10 +337,16 @@ const sendOmniChatNotification = async (formData) => {
         return true;
       }
     } else {
-      const errorData = await response.json();
+      let errorData;
+      try {
+        errorData = JSON.parse(responseText);
+      } catch (e) {
+        errorData = responseText;
+      }
       console.error("OmniChat API 錯誤:", {
         status: response.status,
         statusText: response.statusText,
+        headers: Object.fromEntries(response.headers.entries()),
         data: errorData,
       });
       return false;
