@@ -105,7 +105,7 @@
 .inform-bear {
   width: 5rem;
   height: 5rem;
-  background-color: var(--goyoursYellow);
+  /* background-color: var(--goyoursYellow); */
   position: fixed;
   bottom: 4%;
   left: 3rem;

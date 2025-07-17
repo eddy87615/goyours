@@ -5,7 +5,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
-import { useLoading, useSanityData, SEOHelmet, useResponsive } from "../../contexts";
+import {
+  useLoading,
+  useSanityData,
+  SEOHelmet,
+  useResponsive,
+} from "../../contexts";
 
 import { FaLocationDot } from "react-icons/fa6";
 import { LiaHandPointer } from "react-icons/lia";
@@ -34,7 +39,7 @@ const News = () => {
   // 從 Sanity 獲取最新消息標籤的文章
   useEffect(() => {
     const fetchNewsPosts = async () => {
-      await withLoading('news', async () => {
+      await withLoading("news", async () => {
         try {
           const result = await fetchData(`
             *[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0...10] {
@@ -46,7 +51,7 @@ const News = () => {
           `);
           setNewsPosts(result);
         } catch (error) {
-          console.error('Error fetching news:', error);
+          console.error("Error fetching news:", error);
         }
       });
     };
@@ -129,7 +134,7 @@ const HomeschoolList = () => {
 
   useEffect(() => {
     const fetchSchools = async () => {
-      await withLoading('homeSchools', async () => {
+      await withLoading("homeSchools", async () => {
         try {
           const query = `*[_type == "homeSchool"] {
             name,
@@ -149,7 +154,7 @@ const HomeschoolList = () => {
           const result = await fetchData(query);
           setSchools(result);
         } catch (error) {
-          console.error('Error fetching home schools:', error);
+          console.error("Error fetching home schools:", error);
         }
       });
     };
@@ -246,7 +251,10 @@ export default function Home() {
   const swiperRef = useRef(null);
   const [isAutoplayStarted, setIsAutoplayStarted] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const location = typeof window !== 'undefined' ? window.location : { pathname: '', origin: '' };
+  const location =
+    typeof window !== "undefined"
+      ? window.location
+      : { pathname: "", origin: "" };
 
   useEffect(() => {
     setMounted(true);
@@ -264,8 +272,8 @@ export default function Home() {
   const { windowSize } = useResponsive();
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
+
     const handleResize = () => {
       if (swiperRef.current && swiperRef.current.swiper) {
         swiperRef.current.swiper.autoplay.stop();
@@ -284,7 +292,6 @@ export default function Home() {
       setIsAutoplayStarted(true);
     }
   }, [swiperRef, isAutoplayStarted]);
-
 
   const homeslider = [
     {
@@ -349,14 +356,24 @@ export default function Home() {
         title="Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！"
         description="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
         keywords="goyours、高優國際、日本留學、日本打工度假、留學代辦、海外工作、語言學校"
-        url={typeof window !== 'undefined' ? `${window.location.origin}${location.pathname}` : ''}
-        image={typeof window !== 'undefined' ? `${window.location.origin}/LOGO-02-text.png` : ''}
+        url={
+          typeof window !== "undefined"
+            ? `${window.location.origin}${location.pathname}`
+            : ""
+        }
+        image={
+          typeof window !== "undefined"
+            ? `${window.location.origin}/LOGO-02-text.png`
+            : ""
+        }
       />
       <motion.div
         className="kv"
         style={{
-          borderBottomLeftRadius: windowSize <= 480 ? "calc(300 * 1em / 16)" : undefined,
-          borderBottomRightRadius: windowSize <= 480 ? "calc(300 * 1em / 16)" : undefined,
+          borderBottomLeftRadius:
+            windowSize <= 480 ? "calc(300 * 1em / 16)" : undefined,
+          borderBottomRightRadius:
+            windowSize <= 480 ? "calc(300 * 1em / 16)" : undefined,
         }}
         suppressHydrationWarning
       >
@@ -419,17 +436,29 @@ export default function Home() {
           <HomeBg />
         </div>
         <div className="homeintrotxt">
-          <h1>國外打工度假、遊留學的好夥伴</h1>
+          <h1>GOYOURS 高優國際留學有限公司</h1>
           <p>
-            世界這麼大 你不該只留在原地
+            台灣勞動部立案｜私立就業服務證號3508｜評鑑A級
             <br />
-            何年何月何日何時 你會在哪裡？ <br className="sp-br" />
-            去你自己的打工度假、留遊學吧！ <br />
-            Go Yours 團隊幫你找出適合的路
+            【日本就職・打工・留學】
+            <br />
+            無料介紹・合法專業・安心保障
+            <br />
+            擁有超過10年日本市場經驗，
+            <br />
+            GOYOURS提供免費就職・打工媒合服務，
+            <br />
+            協助辦理合法就職簽證，讓您無憂赴日發展。
+            <br />
+            與全日本1800家飯店、500家以上企業合作，
+            <br />
+            定期釋出正社員與打工職缺，
+            <br />
+            涵蓋飯店、製造、服務、IT 等多元領域。
+            <br />
+            專業顧問全程協助履歷、面試與簽證流程，
             <br className="sp-br" />
-            去各個國家打工度假、留遊學
-            <br />
-            體驗各種生活感受世界各地 ～
+            成就您邁向日本職涯的關鍵起點。
           </p>
         </div>
         {HomeIntroimgList.map((img, index) => {
