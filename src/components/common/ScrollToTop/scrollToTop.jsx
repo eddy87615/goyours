@@ -5,8 +5,11 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.history.scrollRestoration = 'manual'; // 禁用瀏覽器的自動滾動還原功能
-    window.scrollTo(0, 0); // 強制滾動到頂端
+    // 確保在瀏覽器環境中執行
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual'; // 禁用瀏覽器的自動滾動還原功能
+      window.scrollTo(0, 0); // 強制滾動到頂端
+    }
   }, [pathname]); // 每次路徑變更時觸發
 
   return null;

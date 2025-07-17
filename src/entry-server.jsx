@@ -8,6 +8,7 @@ import './styles/index.css'
 export function render(url, context = {}) {
   const helmetContext = {}
   
+  // 服務端渲染需要與客戶端完全一致的結構
   const html = renderToString(
     <HelmetProvider context={helmetContext}>
       <StaticRouter location={url} context={context}>

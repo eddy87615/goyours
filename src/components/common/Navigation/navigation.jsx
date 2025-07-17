@@ -77,7 +77,9 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
   );
 };
 export default function Navigation() {
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [prevScrollPos, setPrevScrollPos] = useState(
+    typeof window !== 'undefined' ? window.pageYOffset : 0
+  );
   const [visible, setVisible] = useState(true);
   const [ishamburgerClicked, setIsHamburgerClicked] = useState(false);
   const windowSize = useWindowSize();
