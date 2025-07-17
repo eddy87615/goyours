@@ -1,4 +1,5 @@
 // pages/api/saveContact.js
+/* eslint-env node */
 
 import { createClient } from "@sanity/client";
 import CryptoJS from "crypto-js";

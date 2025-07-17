@@ -24,6 +24,18 @@ export default defineConfig({
     }),
   ],
   cors: true,
+  // SSR 配置
+  ssr: {
+    noExternal: ['@sanity/client', '@sanity/image-url', '@portabletext/react', 'react-helmet-async']
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        ssr: './src/entry-server.jsx'
+      }
+    }
+  },
   // 暫時註解掉代理設定
   // server: {
   //   proxy: {

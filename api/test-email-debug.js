@@ -1,4 +1,5 @@
 // 專門診斷電子郵件問題的 API
+/* eslint-env node */
 export default async function handler(req, res) {
   // CORS 設置
   res.setHeader("Access-Control-Allow-Origin", "*");

@@ -1,3 +1,4 @@
+/* eslint-env node */
 import express from "express";
 import axios from "axios";
 import cors from "cors";
@@ -10,7 +11,6 @@ app.post("/api/messageNotification", async (req, res) => {
   const { notifications } = req.body;
 
   try {
-    console.log("收到請求數據:", req.body);
 
     // 檢查必要參數
     if (!notifications || !Array.isArray(notifications)) {
@@ -20,10 +20,8 @@ app.post("/api/messageNotification", async (req, res) => {
       });
     }
 
-    // 確保這裡使用了實際的令牌
-    const token = "YOUR-REAL-ACCESS-TOKEN";
+    const token = process.env.OMNICHAT_TOKEN;
 
-    console.log("發送請求到 OmniChat API...");
     const response = await axios.post(
       "https://open-api.omnichat.ai/v1/notification-messages",
       { notifications },
@@ -35,7 +33,6 @@ app.post("/api/messageNotification", async (req, res) => {
       }
     );
 
-    console.log("OmniChat API 響應:", response.data);
     res.json({ success: true, triggerId: response.data.triggerId });
   } catch (error) {
     console.error("錯誤詳情:", error);

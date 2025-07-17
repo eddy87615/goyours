@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
-import { client } from "../../cms/sanityClient";
+import { client } from "../../services/sanity/client";
 
-import LoadingBear from "../loadingBear/loadingBear";
+import { LoadingBear } from "../common";
 
 import "./faqs.css";
 
