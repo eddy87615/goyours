@@ -5,59 +5,92 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { Navigation, Footer, ScrollToTop, LoadingBear } from "../components/common";
+import { Footer, ScrollToTop } from "../components/common";
+import { createCSRComponent } from "../components/common/LazyWrapper/LazyWrapper";
 import VisibilityProvider from "../contexts/VisibilityProvider";
 import AppContextProvider from "../contexts/AppContextProvider";
 
-// 直接導入組件避免 SSR 問題
+// ✅ SSR 組件 - 直接導入
 import HomePage from "../features/home/HomePage";
 import AboutPage from "../features/about/AboutPage";
 import PostsPage from "../features/posts/PostsPage";
 import PostDetailPage from "../features/posts/PostDetailPage";
 import StudyingPage from "../features/schools/StudyingPage";
 import SchoolDetailPage from "../features/schools/SchoolDetailPage";
-import PTJobPage from "../features/jobs/PTJobPage";
 import JobsPage from "../features/jobs/JobsPage";
-import ContactPage from "../features/contact/ContactPage";
-import ContactResume from "../features/contact/contactResume";
-import ContactResumeJob from "../features/contact/contactResume-job";
-import PrivacyPage from "../features/misc/PrivacyPage";
-import QAPage from "../features/misc/QAPage";
+import JobDetailPage from "../features/jobs/JobDetailPage";
 import StudyingInJpPage from "../features/schools/StudyingInJpPage";
 import WorkingInJp from "../features/misc/working-in-jp";
 import WorkingHolidayInJp from "../features/misc/workingholiday-in-jp";
-import DownloadPage from "../features/misc/DownloadPage";
-import InformBear from "../components/goyours-bear/InformBear/informBear";
-import JobDetailPage from "../features/jobs/JobDetailPage";
-import ActivityPage from "../features/misc/ActivityPage";
+
+// ❌ CSR 組件 - 懶載入（複雜互動組件）
+const LazyNavigation = createCSRComponent(
+  () => import("../components/common/Navigation/navigation"),
+  "Navigation"
+);
+const LazyInformBear = createCSRComponent(
+  () => import("../components/goyours-bear/InformBear/informBear"),
+  "InformBear"
+);
+const LazyContactPage = createCSRComponent(
+  () => import("../features/contact/ContactPage"),
+  "ContactPage"
+);
+const LazyContactResume = createCSRComponent(
+  () => import("../features/contact/contactResume"),
+  "ContactResume"
+);
+const LazyContactResumeJob = createCSRComponent(
+  () => import("../features/contact/contactResume-job"),
+  "ContactResumeJob"
+);
+const LazyPTJobPage = createCSRComponent(
+  () => import("../features/jobs/PTJobPage"),
+  "PTJobPage"
+);
+const LazyPrivacyPage = createCSRComponent(
+  () => import("../features/misc/PrivacyPage"),
+  "PrivacyPage"
+);
+const LazyQAPage = createCSRComponent(
+  () => import("../features/misc/QAPage"),
+  "QAPage"
+);
+const LazyDownloadPage = createCSRComponent(
+  () => import("../features/misc/DownloadPage"),
+  "DownloadPage"
+);
+const LazyActivityPage = createCSRComponent(
+  () => import("../features/misc/ActivityPage"),
+  "ActivityPage"
+);
 
 function AppContent() {
   const location = useLocation();
-  const [loadingComplete, setLoadingComplete] = useState(true); // SSR 時需要立即顯示內容
+  const [loadingComplete, setLoadingComplete] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
-  // 檢測是否在客戶端
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // 每次路由變更時，重新觸發 loading 畫面，並設置兩秒延遲
   useEffect(() => {
-    if (!isClient) return; // 只在客戶端執行載入動畫
+    if (!isClient || typeof window === 'undefined') return;
     
     setLoadingComplete(false);
     const timer = setTimeout(() => {
       setLoadingComplete(true);
     }, 1500);
 
-    return () => clearTimeout(timer); // 清理計時器
+    return () => clearTimeout(timer);
   }, [location.pathname, isClient]);
 
+  
   return (
     <>
       <ScrollToTop />
-      <Navigation />
-      <InformBear />
+      <LazyNavigation />
+      <LazyInformBear />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -69,10 +102,10 @@ function AppContent() {
           path="/studying-in-jp-school/:slug"
           element={<SchoolDetailPage />}
         />
-        <Route path="/jp-working-holiday-jobs" element={<PTJobPage />} />
+        <Route path="/jp-working-holiday-jobs" element={<LazyPTJobPage />} />
         <Route path="/jp-jobs" element={<JobsPage />} />
         <Route path="/jp-jobs/:slug" element={<JobDetailPage />} />
-        <Route path="/contact-us" element={<ContactPage />} />
+        <Route path="/contact-us" element={<LazyContactPage />} />
         <Route path="/studying-in-jp" element={<StudyingInJpPage />} />
         <Route path="/working-in-jp" element={<WorkingInJp />} />
         <Route
@@ -81,16 +114,16 @@ function AppContent() {
         />
         <Route
           path="/working-holiday-application"
-          element={<ContactResume />}
+          element={<LazyContactResume />}
         />
         <Route
           path="/japan-job-application"
-          element={<ContactResumeJob />}
+          element={<LazyContactResumeJob />}
         />
-        <Route path="/privacy-policy" element={<PrivacyPage />} />
-        <Route path="/Q&A-section" element={<QAPage />} />
-        <Route path="/document-download" element={<DownloadPage />} />
-        <Route path="/goyours-activity" element={<ActivityPage />} />
+        <Route path="/privacy-policy" element={<LazyPrivacyPage />} />
+        <Route path="/Q&A-section" element={<LazyQAPage />} />
+        <Route path="/document-download" element={<LazyDownloadPage />} />
+        <Route path="/goyours-activity" element={<LazyActivityPage />} />
       </Routes>
       <Footer />
     </>

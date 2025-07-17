@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TbBoxMultiple } from "react-icons/tb";
 import { motion } from "framer-motion";
-import { HelmetProvider, Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 
 import { useWindowSize } from "../../../hooks";
 
@@ -77,11 +77,10 @@ const SpMenu = ({ navigation, ishamburgerClicked, setIsHamburgerClicked }) => {
   );
 };
 export default function Navigation() {
-  const [prevScrollPos, setPrevScrollPos] = useState(
-    typeof window !== 'undefined' ? window.pageYOffset : 0
-  );
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   const [ishamburgerClicked, setIsHamburgerClicked] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const windowSize = useWindowSize();
 
   const navigation = [
@@ -96,7 +95,7 @@ export default function Navigation() {
   ];
 
   const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
+    const currentScrollPos = typeof window !== 'undefined' ? window.pageYOffset : 0;
     const isVisible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
 
     setVisible(isVisible);
@@ -104,7 +103,14 @@ export default function Navigation() {
   };
 
   useEffect(() => {
-    if (ishamburgerClicked) {
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      setPrevScrollPos(window.pageYOffset);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (ishamburgerClicked && typeof window !== 'undefined') {
       const preventScroll = (e) => {
         e.preventDefault();
       };
@@ -119,14 +125,21 @@ export default function Navigation() {
   }, [ishamburgerClicked]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [prevScrollPos]);
 
+  // 禁用 SSR，只在客戶端渲染
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <HelmetProvider>
+    <>
       <Helmet>
         <meta
           name="theme-color"
@@ -135,7 +148,7 @@ export default function Navigation() {
       </Helmet>
       <nav className="nav-wrapper">
         <nav
-          className={`${windowSize > 1024 ? "mainNav-pc" : "mainNav"}  ${
+          className={`${windowSize > 1024 ? "mainNav-pc" : "mainNav"} ${
             ishamburgerClicked ? "mainNav-hamburger-clicked" : ""
           } ${visible && windowSize <= 1024 ? "nav-visible-sp" : "nav-hidden"}`}
         >
@@ -210,6 +223,6 @@ export default function Navigation() {
         ishamburgerClicked={ishamburgerClicked}
         setIsHamburgerClicked={setIsHamburgerClicked}
       />
-    </HelmetProvider>
+    </>
   );
 }

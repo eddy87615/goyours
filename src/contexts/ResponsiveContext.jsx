@@ -24,8 +24,15 @@ const ResponsiveProvider = ({ children }) => {
   });
 
   const [device, setDevice] = useState('desktop');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient || typeof window === 'undefined') return;
+    
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
@@ -37,7 +44,7 @@ const ResponsiveProvider = ({ children }) => {
     handleResize();
 
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [isClient]);
 
   useEffect(() => {
     const { width } = windowSize;

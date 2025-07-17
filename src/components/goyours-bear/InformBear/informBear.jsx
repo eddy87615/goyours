@@ -25,6 +25,7 @@ export default function InformBear() {
   const [activeToasts, setActiveToasts] = useState([]);
   const [isBearVisible, setIsBearVisible] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true); // 新增狀態追踪是否為首次載入
+  const [mounted, setMounted] = useState(false);
 
   const showInform = (informData = inform) => {
     // 只在首次載入時隱藏 bear
@@ -68,7 +69,9 @@ export default function InformBear() {
 
   const handleAllToastsDismissed = () => {
     setIsBearVisible(true);
-    localStorage.setItem("informDismissed", "true");
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("informDismissed", "true");
+    }
   };
 
   const hideAllToasts = () => {
@@ -81,7 +84,9 @@ export default function InformBear() {
 
   const toggleInform = () => {
     if (activeToasts.length === 0) {
-      localStorage.removeItem("informDismissed");
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem("informDismissed");
+      }
       showInform();
     } else {
       hideAllToasts();
@@ -89,6 +94,8 @@ export default function InformBear() {
   };
 
   useEffect(() => {
+    setMounted(true);
+    
     async function fetchInform() {
       try {
         const result = await client.fetch(`
@@ -110,10 +117,17 @@ export default function InformBear() {
     }
 
     // 清除 localStorage，確保每次進入都顯示通知
-    localStorage.removeItem("informDismissed");
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem("informDismissed");
+    }
 
     fetchInform();
   }, []); // 只在組件掛載時執行一次
+
+  // 禁用 SSR，只在客戶端渲染
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>

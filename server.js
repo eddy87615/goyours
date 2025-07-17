@@ -52,21 +52,35 @@ async function createServer() {
         render = (await import('./dist/server/entry-server.js')).render
       }
 
-      // 預取路由數據
-      let preloadedData = null
+      // 渲染應用
+      const { html, helmet, shouldCSR, preloadedData } = await render(url, {})
+      
+      // 獲取注入函數
       let injectPreloadedData = null
       try {
         const dataFetching = await import('./src/lib/data-fetching.js')
-        preloadedData = await dataFetching.prefetchRouteData(url)
         injectPreloadedData = dataFetching.injectPreloadedData
       } catch (error) {
-        console.warn('Data prefetching failed:', error)
+        console.warn('Data fetching module import failed:', error)
       }
-
-      // 渲染應用
-      const { html, helmet } = render(url, {})
       
-      // 插入渲染結果到模板
+      // 如果是 CSR 路由，直接返回基本 HTML
+      if (shouldCSR) {
+        const csrHtml = template
+          .replace('<!--app-html-->', '<div id="root"></div>')
+          .replace('<!--app-head-->', '')
+        
+        // 注入標記告訴客戶端這是 CSR 頁面
+        const finalCSRHtml = csrHtml.replace(
+          '</head>', 
+          '<script>window.__IS_CSR_ROUTE__ = true;</script></head>'
+        )
+        
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(finalCSRHtml)
+        return
+      }
+      
+      // SSR 路由的正常處理
       let finalHtml = template
         .replace('<!--app-html-->', html)
         .replace('<!--app-head-->', 
@@ -79,6 +93,10 @@ async function createServer() {
       // 注入預取數據
       if (preloadedData && injectPreloadedData) {
         finalHtml = injectPreloadedData(finalHtml, preloadedData)
+      } else if (preloadedData) {
+        // 如果沒有 injectPreloadedData 函數，直接注入數據
+        const script = `<script>window.__PRELOADED_DATA__ = ${JSON.stringify(preloadedData).replace(/</g, '\\u003c')}</script>`
+        finalHtml = finalHtml.replace('</head>', `${script}</head>`)
       }
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(finalHtml)

@@ -39,8 +39,12 @@ export default function DownloadPage() {
     fetchDocuments();
   }, []);
 
-  const currentURL = `${window.location.origin}${location.pathname}`;
-  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
+  const currentURL = typeof window !== 'undefined' 
+    ? `${window.location.origin}${location.pathname}` 
+    : '';
+  const imageURL = typeof window !== 'undefined' 
+    ? `${window.location.origin}/LOGO-02-text.png` 
+    : '';
 
   return (
     <>

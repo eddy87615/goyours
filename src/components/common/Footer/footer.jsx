@@ -17,16 +17,18 @@ export default function Footer() {
   const windowSize = useWindowSize();
 
   useEffect(() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    
     const backToTop = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     const img = document.querySelector('.backtotop');
     if (img) {
       img.addEventListener('click', backToTop);
+      return () => {
+        img.removeEventListener('click', backToTop);
+      };
     }
-    return () => {
-      img.removeEventListener('click', backToTop);
-    };
   }, []);
 
   // 從 Sanity 獲取最新消息標籤的文章

@@ -245,7 +245,12 @@ const HomeschoolList = () => {
 export default function Home() {
   const swiperRef = useRef(null);
   const [isAutoplayStarted, setIsAutoplayStarted] = useState(false);
-  const location = window.location;
+  const [mounted, setMounted] = useState(false);
+  const location = typeof window !== 'undefined' ? window.location : { pathname: '', origin: '' };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const HomeIntroimgList = [
     { src: "/home-bubble01.jpg", alt: "japanese temple picture,日本神社照片" },
@@ -259,6 +264,8 @@ export default function Home() {
   const { windowSize } = useResponsive();
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleResize = () => {
       if (swiperRef.current && swiperRef.current.swiper) {
         swiperRef.current.swiper.autoplay.stop();
@@ -342,17 +349,16 @@ export default function Home() {
         title="Go Yours：首頁｜專業留學代辦｜高優國際留學｜幫你實現你的留學夢想！"
         description="GoYours專業代辦，關於台灣人日本留學申請，最懂你煩惱的高優國際，幫助你一步一步跟著你實現留日夢想！"
         keywords="goyours、高優國際、日本留學、日本打工度假、留學代辦、海外工作、語言學校"
-        url={`${window.location.origin}${location.pathname}`}
-        image={`${window.location.origin}/LOGO-02-text.png`}
+        url={typeof window !== 'undefined' ? `${window.location.origin}${location.pathname}` : ''}
+        image={typeof window !== 'undefined' ? `${window.location.origin}/LOGO-02-text.png` : ''}
       />
       <motion.div
         className="kv"
-        style={
-          windowSize <= 480 && {
-            borderBottomLeftRadius: "calc(300 * 1em / 16)",
-            borderBottomRightRadius: "calc(300 * 1em / 16)",
-          }
-        }
+        style={{
+          borderBottomLeftRadius: windowSize <= 480 ? "calc(300 * 1em / 16)" : undefined,
+          borderBottomRightRadius: windowSize <= 480 ? "calc(300 * 1em / 16)" : undefined,
+        }}
+        suppressHydrationWarning
       >
         <motion.div
           className="kvSlider"
@@ -360,37 +366,39 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2, ease: "easeOut" }}
         >
-          <Swiper
-            ref={swiperRef}
-            key="fixed-key"
-            centeredSlides={true}
-            loop={true}
-            slidesPerView={1}
-            slidesPerGroup={1}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            effect="fade"
-            fadeEffect={{ crossFade: true }} // 啟用交叉淡入淡出
-            modules={[Autoplay, EffectFade]}
-            simulateTouch={false}
-            allowTouchMove={false}
-            observer={true}
-            observeParents={true}
-          >
-            {homeslider.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <picture>
-                  <source media="(min-width: 1024px)" srcSet={slide.large} />
-                  <source media="(min-width: 640px)" srcSet={slide.large} />
-                  <source media="(max-width: 500px)" srcSet={slide.medium} />
-                  <img src={slide.src} alt={`{slider photo${index}`} />
-                </picture>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {mounted ? (
+            <Swiper
+              ref={swiperRef}
+              key="fixed-key"
+              centeredSlides={true}
+              loop={true}
+              slidesPerView={1}
+              slidesPerGroup={1}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+              }}
+              effect="fade"
+              fadeEffect={{ crossFade: true }} // 啟用交叉淡入淡出
+              modules={[Autoplay, EffectFade]}
+              simulateTouch={false}
+              allowTouchMove={false}
+              observer={true}
+              observeParents={true}
+            >
+              {homeslider.map((slide, index) => (
+                <SwiperSlide key={index}>
+                  <picture>
+                    <source media="(min-width: 1024px)" srcSet={slide.large} />
+                    <source media="(min-width: 640px)" srcSet={slide.large} />
+                    <source media="(max-width: 500px)" srcSet={slide.medium} />
+                    <img src={slide.src} alt={`{slider photo${index}`} />
+                  </picture>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : null}
         </motion.div>
         <img
           src="/LOGO-13.png"
