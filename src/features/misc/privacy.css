@@ -1,3 +1,10 @@
+body {
+  user-select: none; /* 禁止選取文字 */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+}
+
 .privacy {
   height: 100%;
 }
@@ -24,8 +31,6 @@
 .privacyTitle h2,
 .privacyTitle p {
   margin: 0;
-
-  padding-left: 1rem;
 }
 
 .privacy-content {
@@ -37,6 +42,13 @@
   margin-top: 4%;
 }
 
+.privacy-content ul li {
+  list-style: disc;
+}
+.privacy-content ol li {
+  list-style: decimal;
+}
+
 .privacy-wrapper {
   /* clip-path: ellipse(200% 100% at 50% 100%); */
 
@@ -46,7 +58,7 @@
 
 .privacy-wrapper::before {
   position: absolute;
-  content: '';
+  content: "";
   background-image: url(/round-bg.svg);
   display: block;
   width: 100vw;
@@ -79,7 +91,7 @@
   margin-left: 1rem;
 }
 .privacy h4::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 0.5rem;
   height: 0.5rem;
@@ -90,11 +102,7 @@
   background-color: var(--goyoursYellow);
 }
 
-.privacy-content p {
-  padding: 0 2rem;
-}
-
-.privacy-content p:last-child {
+.updateTime {
   text-align: center;
 
   font-size: 1.25rem;
@@ -108,10 +116,10 @@
   justify-content: center;
   gap: 1rem;
 
-  padding-top: 4rem;
+  margin: 4rem 0;
 }
 
-.privacy-content p:last-child::before {
+.updateTime::before {
   content: url(/goyoursbear-Y.svg);
   width: 1.5rem;
 }
@@ -176,7 +184,7 @@
   .privacy h4 {
     padding-left: 1rem;
   }
-  .privacy-content p:last-child {
+  .updateTime {
     font-size: 0.85rem;
 
     padding-top: 2rem;
