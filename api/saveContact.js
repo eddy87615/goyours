@@ -183,28 +183,28 @@ const sendOmniChatNotification = async (formData) => {
       //   break;
 
       // 完成表單預約-指定(無按鈕)
-      case SETTING_ID_SPECIFIED_NO_BUTTON:
-        notificationData = {
-          notifications: [
-            {
-              platform: "line",
-              channelId: channelId,
-              to: formattedPhone,
-              settingId: SETTING_ID_SPECIFIED_NO_BUTTON,
-              valueMap: {
-                appointmentContent: Array.isArray(formData.case)
-                  ? formData.case.join(", ")
-                  : formData.case || "未指定",
-                appointmentDate: new Date().toLocaleDateString("zh-TW"),
-                appointmentTime: formData.callTime || "未指定",
-                appointmentLocation: "線上",
-                appointmentAssignee: "無",
-                contactInfo: "0277015618",
-              },
-            },
-          ],
-        };
-        break;
+      // case SETTING_ID_SPECIFIED_NO_BUTTON:
+      //   notificationData = {
+      //     notifications: [
+      //       {
+      //         platform: "line",
+      //         channelId: channelId,
+      //         to: formattedPhone,
+      //         settingId: SETTING_ID_SPECIFIED_NO_BUTTON,
+      //         valueMap: {
+      //           appointmentContent: Array.isArray(formData.case)
+      //             ? formData.case.join(", ")
+      //             : formData.case || "未指定",
+      //           appointmentDate: new Date().toLocaleDateString("zh-TW"),
+      //           appointmentTime: formData.callTime || "未指定",
+      //           appointmentLocation: "線上",
+      //           appointmentAssignee: "無",
+      //           contactInfo: "0277015618",
+      //         },
+      //       },
+      //     ],
+      //   };
+      //   break;
 
       // 完成表單預約-指定(有按鈕)
       case SETTING_ID_SPECIFIED_WITH_BUTTON:
@@ -239,7 +239,7 @@ const sendOmniChatNotification = async (formData) => {
               platform: "line",
               channelId: channelId,
               to: formattedPhone,
-              settingId: SETTING_ID_SPECIFIED_NO_BUTTON,
+              settingId: SETTING_ID_SPECIFIED_WITH_BUTTON,
               valueMap: {
                 appointmentContent: Array.isArray(formData.case)
                   ? formData.case.join(", ")
@@ -249,6 +249,7 @@ const sendOmniChatNotification = async (formData) => {
                 appointmentLocation: "線上",
                 appointmentAssignee: "無",
                 contactInfo: "0277015618",
+                appointmentDetailLink: "https://www.goyours.tw/",
               },
             },
           ],
