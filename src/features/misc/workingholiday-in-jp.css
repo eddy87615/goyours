@@ -345,7 +345,7 @@
   padding-top: 6rem;
 }
 
-.to-all-job {
+.to-all-workingHoliday-job {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
     url(/guidePage/slide001.jpg);
   background-repeat: no-repeat;
@@ -370,7 +370,7 @@
   text-decoration: none;
 }
 
-.to-QA-page {
+.to-workingHoliday-QA-page {
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.3),
@@ -400,8 +400,8 @@
   text-decoration: none;
 }
 
-.to-all-job h3,
-.to-QA-page h3 {
+.to-all-workingHoliday-job h3,
+.to-workingHoliday-QA-page h3 {
   color: var(--goyoursBgColor);
   font-size: 1.25rem;
 
@@ -429,7 +429,7 @@
   padding: 2rem;
 }
 
-.to-all-job:hover,
+.to-all-workingHoliday-job:hover,
 .to-QA-page:hover {
   transform: translate(-5px, -5px);
   box-shadow: 5px 5px 1px 1px #3a340f;
@@ -772,8 +772,8 @@
 
     height: 16rem;
   }
-  .to-all-job h3,
-  .to-QA-page h3 {
+  .to-all-workingHoliday-job h3,
+  .to-workingHoliday-QA-page h3 {
     font-size: 0.875rem;
   }
 
@@ -894,8 +894,8 @@
 
     height: 16rem;
   }
-  .to-all-job h3,
-  .to-QA-page h3 {
+  .to-all-workingHoliday-job h3,
+  .to-workingHoliday-QA-page h3 {
     font-size: 0.875rem;
   }
 

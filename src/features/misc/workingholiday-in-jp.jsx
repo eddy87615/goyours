@@ -214,7 +214,10 @@ export default function WorkingHolidayInJp() {
               </h2>
             </div>
             <div className="working-page-button">
-              <Link className="to-all-job" to="/jp-working-holiday-jobs">
+              <Link
+                className="to-all-workingHoliday-job"
+                to="/jp-working-holiday-jobs"
+              >
                 <h3>
                   <span className="white-icon">
                     <img
@@ -226,7 +229,10 @@ export default function WorkingHolidayInJp() {
                 </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>
-              <Link className="to-QA-page" to="/Q&A-section#part2">
+              <Link
+                className="to-workingHoliday-QA-page"
+                to="/Q&A-section#part2"
+              >
                 <h3>
                   <span className="white-icon">
                     <img

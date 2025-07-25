@@ -212,7 +212,7 @@ export default function WorkingInJp() {
               </h2>
             </div>
             <div className="working-page-button">
-              <Link className="to-all-job" to="/jp-jobs">
+              <Link className="to-all-official-job" to="/jp-jobs">
                 <h3>
                   <span className="white-icon">
                     <img
@@ -224,7 +224,7 @@ export default function WorkingInJp() {
                 </h3>
                 <GoArrowRight className="button-arrow" />
               </Link>
-              <Link className="to-QA-page" to="/Q&A-section#part1">
+              <Link className="to-official-job-QA-page" to="/Q&A-section#part1">
                 <h3>
                   <span className="white-icon">
                     <img
