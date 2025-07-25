@@ -246,7 +246,7 @@ const sendOmniChatNotification = async (formData) => {
                   : formData.case || "未指定",
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
                 appointmentTime: formData.callTime || "未指定",
-                appointmentLocation: formData.appointmentLocation || "",
+                appointmentLocation: "線上",
                 appointmentAssignee: "無",
                 contactInfo: "0277015618",
               },
