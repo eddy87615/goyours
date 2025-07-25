@@ -175,7 +175,7 @@ const sendOmniChatNotification = async (formData) => {
                   formData.tellus || "無"
                 }`,
                 contactInfo: "0277015618",
-                appointmentDetailLink: "https://www.goyours.com.tw",
+                appointmentDetailLink: "https://www.goyours.tw/",
               },
             },
           ],
@@ -224,7 +224,7 @@ const sendOmniChatNotification = async (formData) => {
                 appointmentLocation: formData.appointmentLocation || "",
                 appointmentAssignee: formData.appointmentAssignee || "",
                 contactInfo: "0277015618",
-                appointmentDetailLink: "https://www.goyours.com.tw",
+                appointmentDetailLink: "https://www.goyours.tw/",
               },
             },
           ],
@@ -255,7 +255,7 @@ const sendOmniChatNotification = async (formData) => {
                   formData.tellus || "無"
                 }`,
                 contactInfo: "0277015618",
-                appointmentDetailLink: "https://www.goyours.com.tw",
+                appointmentDetailLink: "https://www.goyours.tw/",
               },
             },
           ],
