@@ -144,7 +144,7 @@ const sendOmniChatNotification = async (formData) => {
                 }\\nLine ID: ${formData.lineId || "N/A"}\\n留言: ${
                   formData.tellus || "無"
                 }`,
-                contactInfo: formData.phone || "N/A",
+                contactInfo: "0277015618",
               },
             },
           ],
