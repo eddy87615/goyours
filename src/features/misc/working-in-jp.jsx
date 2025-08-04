@@ -197,10 +197,10 @@ export default function WorkingInJp() {
             </div>
           </div>
           <div className="working-rightgirl">
-            <img src="/guidePage/working-G.png" />
+            <img src="/guidePage/businesswoman.png" />
           </div>
-          <div className="working-leftboy">
-            <img src="/guidePage/working-B.png" />
+          <div className="officialworking-leftboy">
+            <img src="/guidePage/businessman.png" />
           </div>
         </div>
         <div className="guide-content">

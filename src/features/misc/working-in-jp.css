@@ -68,14 +68,14 @@
 
   pointer-events: none;
 }
-.working-leftboy {
+.officialworking-leftboy {
   --imgBase: calc(100vw / 144);
   position: absolute;
-  bottom: calc(0% - 8rem);
+  bottom: calc(0% - 4rem);
   left: 4%;
   width: calc(36 * var(--imgBase));
 }
-.working-leftboy img {
+.officialworking-leftboy img {
   width: 100%;
   max-width: none;
   height: auto;
@@ -556,7 +556,7 @@
     right: 0;
     width: calc(55 * var(--imgBase));
   }
-  .working-leftboy {
+  .officialworking-leftboy {
     --imgBase: calc(100vw / 144);
     position: absolute;
     bottom: calc(0% - 8rem);
@@ -715,7 +715,7 @@
     right: 0;
     width: calc(50 * var(--imgBase));
   }
-  .working-leftboy {
+  .officialworking-leftboy {
     --imgBase: calc(100vw / 144);
     position: absolute;
     bottom: calc(0% - 8rem);
@@ -839,7 +839,7 @@
     right: 0;
     width: calc(42 * var(--imgBase));
   }
-  .working-leftboy {
+  .officialworking-leftboy {
     --imgBase: calc(100vw / 144);
     position: absolute;
     bottom: calc(0% - 8rem);
@@ -934,7 +934,7 @@
   .working-rightgirl {
     right: 2%;
   }
-  .working-leftboy {
+  .officialworking-leftboy {
     left: 0;
   }
 }
@@ -947,7 +947,7 @@
     right: 0;
     width: calc(30 * var(--imgBase));
   }
-  .working-leftboy {
+  .officialworking-leftboy {
     --imgBase: calc(100vh / 144); /* 使用視窗高度來計算 */
     position: absolute;
     bottom: calc(-20% - 8rem);

@@ -122,34 +122,30 @@ const sendOmniChatNotification = async (formData) => {
 
     switch (settingId) {
       // 完成表單預約-基本(無按鈕)
-      // case SETTING_ID_BASIC_NO_BUTTON:
-      //   notificationData = {
-      //     notifications: [
-      //       {
-      //         platform: "line",
-      //         channelId: channelId,
-      //         to: formattedPhone,
-      //         settingId: SETTING_ID_BASIC_NO_BUTTON,
-      //         valueMap: {
-      //           appointmentContent: Array.isArray(formData.case)
-      //             ? formData.case.join(", ")
-      //             : formData.case || "未指定",
-      //           appointmentDate: new Date().toLocaleDateString("zh-TW"),
-      //           appointmentTime: formData.callTime || "未指定",
-      //           appointmentLocation: "線上",
-      //           note: `姓名: ${formData.name || "N/A"}\\n年齡: ${
-      //             formData.age || "N/A"
-      //           }\\n電話: ${formData.phone || "N/A"}\\nEmail: ${
-      //             formData.email || "N/A"
-      //           }\\nLine ID: ${formData.lineId || "N/A"}\\n留言: ${
-      //             formData.tellus || "無"
-      //           }`,
-      //           contactInfo: "0277015618",
-      //         },
-      //       },
-      //     ],
-      //   };
-      //   break;
+      case SETTING_ID_BASIC_NO_BUTTON:
+        notificationData = {
+          notifications: [
+            {
+              platform: "line",
+              channelId: channelId,
+              to: formattedPhone,
+              settingId: SETTING_ID_BASIC_NO_BUTTON,
+              valueMap: {
+                appointmentContent: Array.isArray(formData.case)
+                  ? formData.case.join(", ")
+                  : formData.case || "未指定",
+                appointmentDate: new Date().toLocaleDateString("zh-TW"),
+                appointmentTime: formData.callTime || "未指定",
+                appointmentLocation: "線上",
+                note: `姓名: ${formData.name || "N/A"}\\n電話: ${
+                  formData.phone || "N/A"
+                }`,
+                contactInfo: "0277015618",
+              },
+            },
+          ],
+        };
+        break;
 
       // 完成表單預約-基本(有按鈕)
       // case SETTING_ID_BASIC_WITH_BUTTON:
@@ -207,29 +203,29 @@ const sendOmniChatNotification = async (formData) => {
       //   break;
 
       // 完成表單預約-指定(有按鈕)
-      case SETTING_ID_SPECIFIED_WITH_BUTTON:
-        notificationData = {
-          notifications: [
-            {
-              platform: "line",
-              channelId: channelId,
-              to: formattedPhone,
-              settingId: SETTING_ID_SPECIFIED_WITH_BUTTON,
-              valueMap: {
-                appointmentContent: Array.isArray(formData.case)
-                  ? formData.case.join(", ")
-                  : formData.case || "未指定",
-                appointmentDate: new Date().toLocaleDateString("zh-TW"),
-                appointmentTime: formData.callTime || "未指定",
-                appointmentLocation: "線上",
-                appointmentAssignee: "無",
-                contactInfo: "0277015618",
-                appointmentDetailLink: "https://www.goyours.tw/",
-              },
-            },
-          ],
-        };
-        break;
+      // case SETTING_ID_SPECIFIED_WITH_BUTTON:
+      //   notificationData = {
+      //     notifications: [
+      //       {
+      //         platform: "line",
+      //         channelId: channelId,
+      //         to: formattedPhone,
+      //         settingId: SETTING_ID_SPECIFIED_WITH_BUTTON,
+      //         valueMap: {
+      //           appointmentContent: Array.isArray(formData.case)
+      //             ? formData.case.join(", ")
+      //             : formData.case || "未指定",
+      //           appointmentDate: new Date().toLocaleDateString("zh-TW"),
+      //           appointmentTime: formData.callTime || "未指定",
+      //           appointmentLocation: "線上",
+      //           appointmentAssignee: "無",
+      //           contactInfo: "0277015618",
+      //           appointmentDetailLink: "https://www.goyours.tw/",
+      //         },
+      //       },
+      //     ],
+      //   };
+      //   break;
 
       // 預設情況（使用原本的格式）
       default:
@@ -239,7 +235,7 @@ const sendOmniChatNotification = async (formData) => {
               platform: "line",
               channelId: channelId,
               to: formattedPhone,
-              settingId: SETTING_ID_SPECIFIED_WITH_BUTTON,
+              settingId: SETTING_ID_BASIC_NO_BUTTON,
               valueMap: {
                 appointmentContent: Array.isArray(formData.case)
                   ? formData.case.join(", ")
@@ -247,9 +243,10 @@ const sendOmniChatNotification = async (formData) => {
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
                 appointmentTime: formData.callTime || "未指定",
                 appointmentLocation: "線上",
-                appointmentAssignee: "無",
+                note: `姓名: ${formData.name || "N/A"}\\n電話: ${
+                  formData.phone || "N/A"
+                }`,
                 contactInfo: "0277015618",
-                appointmentDetailLink: "https://www.goyours.tw/",
               },
             },
           ],
