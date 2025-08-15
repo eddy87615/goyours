@@ -149,10 +149,19 @@ const ContentRenderer = ({ title, content, emptyMessage = "暫無資訊" }) => {
 
   return (
     <div style={isPlainText ? { display: "flex", gap: "1rem" } : {}}>
-      <h3>
-        {/* <IoMdInformationCircle /> */}
-        {title}
-      </h3>
+      {content && Array.isArray(content) ? (
+        content.length > 0 ? (
+          <h3>
+            {/* <IoMdInformationCircle /> */}
+            {title}
+          </h3>
+        ) : (
+          <></>
+        )
+      ) : (
+        <></>
+      )}
+
       {content && Array.isArray(content) ? (
         content.length > 0 ? (
           content[0]._type === "block" ? (
@@ -169,14 +178,16 @@ const ContentRenderer = ({ title, content, emptyMessage = "暫無資訊" }) => {
             </ul>
           )
         ) : (
-          <p style={{ display: "inline-flex", alignItems: "center" }}>
-            {emptyMessage}
-          </p>
+          // <p style={{ display: "inline-flex", alignItems: "center" }}>
+          //   {emptyMessage}
+          // </p>
+          <></>
         )
       ) : (
-        <p style={{ display: "inline-flex", alignItems: "center" }}>
-          {content || emptyMessage}
-        </p>
+        // <p style={{ display: "inline-flex", alignItems: "center" }}>
+        //   {content || emptyMessage}
+        // </p>
+        <></>
       )}
     </div>
   );
