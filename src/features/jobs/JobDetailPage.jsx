@@ -140,65 +140,50 @@ const RecommendedJobs = ({ currentJob, allJobs }) => {
   );
 };
 
-const ContentRenderer = ({ title, content, emptyMessage = "暫無資訊" }) => {
+const ContentRenderer = ({ title, content }) => {
+  // 檢查是否有有效內容
+  const hasContent =
+    content && (Array.isArray(content) ? content.length > 0 : true);
+
+  // 如果沒有內容，不渲染任何東西
+  if (!hasContent) {
+    return null;
+  }
+
   const isPlainText =
-    !content ||
     !Array.isArray(content) ||
-    (Array.isArray(content) && content.length === 0) ||
     (Array.isArray(content) && content[0]?._type !== "block");
 
   return (
     <div style={isPlainText ? { display: "flex", gap: "1rem" } : {}}>
-      {content && Array.isArray(content) ? (
-        content.length > 0 ? (
-          <h3>
-            {/* <IoMdInformationCircle /> */}
-            {title}
-          </h3>
+      <h3>
+        {/* <IoMdInformationCircle /> */}
+        {title}
+      </h3>
+      {Array.isArray(content) ? (
+        content[0]._type === "block" ? (
+          <PortableText value={content} />
         ) : (
-          <></>
+          <ul>
+            {content.map((item, index) => (
+              <li key={index}>
+                {typeof item === "string"
+                  ? item
+                  : item.text || item.content || ""}
+              </li>
+            ))}
+          </ul>
         )
       ) : (
-        <></>
-      )}
-
-      {content && Array.isArray(content) ? (
-        content.length > 0 ? (
-          content[0]._type === "block" ? (
-            <PortableText value={content} />
-          ) : (
-            <ul>
-              {content.map((item, index) => (
-                <li key={index}>
-                  {typeof item === "string"
-                    ? item
-                    : item.text || item.content || ""}
-                </li>
-              ))}
-            </ul>
-          )
-        ) : (
-          // <p style={{ display: "inline-flex", alignItems: "center" }}>
-          //   {emptyMessage}
-          // </p>
-          <></>
-        )
-      ) : (
-        // <p style={{ display: "inline-flex", alignItems: "center" }}>
-        //   {content || emptyMessage}
-        // </p>
-        <></>
+        <p style={{ display: "inline-flex", alignItems: "center" }}>
+          {content}
+        </p>
       )}
     </div>
   );
 };
 
-const ContentWithSupplement = ({
-  title,
-  mainContent,
-  supplementContent,
-  emptyMessage = "暫無資訊",
-}) => {
+const ContentWithSupplement = ({ title, mainContent, supplementContent }) => {
   const hasMainContent =
     mainContent &&
     (Array.isArray(mainContent) ? mainContent.length > 0 : mainContent);
@@ -216,17 +201,7 @@ const ContentWithSupplement = ({
       mainContent[0]?._type !== "block");
 
   if (!hasMainContent && !hasSupplementContent) {
-    return (
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <h3>
-          {/* <IoMdInformationCircle /> */}
-          {title}
-        </h3>
-        <p style={{ display: "inline-flex", alignItems: "center" }}>
-          {emptyMessage}
-        </p>
-      </div>
-    );
+    return null;
   }
 
   const renderContent = (content) => {
@@ -273,6 +248,18 @@ const ContentWithSupplement = ({
       )}
     </div>
   );
+};
+
+// 檢查內容是否存在的幫助函數
+const hasContent = (content) => {
+  if (!content) return false;
+  if (Array.isArray(content)) return content.length > 0;
+  return true;
+};
+
+// 檢查區塊是否有任何內容
+const hasSectionContent = (contents) => {
+  return contents.some((content) => hasContent(content));
 };
 
 const JobActionButtons = ({ jobTitle }) => {
@@ -359,8 +346,7 @@ export default function JPjobsDetail() {
 
         // Debug: 檢查 parentCompany 資料結構
         if (job) {
-          console.log("Job found:", job);
-          console.log("Parent Company:", job.parentCompany);
+          return;
         }
 
         setCurrentJob(job);
@@ -502,175 +488,179 @@ export default function JPjobsDetail() {
               </div>
             </div>
             <div className="job-detail" id="job-detail">
-              <div className="wanted-info" id="wanted-info">
-                <h2 className="yellow underLine">招募內容</h2>
-                <ContentRenderer
-                  title="工作內容"
-                  content={currentJob.workContent}
-                  emptyMessage="暫無工作內容資訊"
-                />
-                <ContentRenderer
-                  title="要求技能"
-                  content={currentJob.skill}
-                  emptyMessage="暫無技能要求資訊"
-                />
-                <ContentWithSupplement
-                  title="就業時間"
-                  mainContent={currentJob.workingTime}
-                  supplementContent={currentJob.workingTimeAdd}
-                  emptyMessage="暫無就業時間資訊"
-                />
-                <ContentRenderer
-                  title="入職時間"
-                  content={currentJob.workingFrom}
-                  emptyMessage="暫無入職時間資訊"
-                />
-                <ContentRenderer
-                  title="雇用期間"
-                  content={currentJob.hiringPeriod}
-                  emptyMessage="暫無雇用期間資訊"
-                />
-                <ContentRenderer
-                  title="招募人數"
-                  content={currentJob.hiringPopularity}
-                  emptyMessage="暫無招募人數資訊"
-                />
-                <ContentWithSupplement
-                  title="彈性工時制"
-                  mainContent={currentJob.flexWorkingTime}
-                  supplementContent={currentJob.flexWorkingTimeAdd}
-                  emptyMessage="暫無彈性工時制資訊"
-                />
-                <ContentWithSupplement
-                  title="試用期間"
-                  mainContent={currentJob.tryPeriod}
-                  supplementContent={currentJob.tryPeriodAdd}
-                  emptyMessage="暫無試用期間資訊"
-                />
-              </div>
+              {hasSectionContent([
+                currentJob.workContent,
+                currentJob.skill,
+                currentJob.workingTime,
+                currentJob.workingTimeAdd,
+                currentJob.workingFrom,
+                currentJob.hiringPeriod,
+                currentJob.hiringPopularity,
+                currentJob.flexWorkingTime,
+                currentJob.flexWorkingTimeAdd,
+                currentJob.tryPeriod,
+                currentJob.tryPeriodAdd,
+              ]) && (
+                <div className="wanted-info" id="wanted-info">
+                  <h2 className="yellow underLine">招募內容</h2>
+                  <ContentRenderer
+                    title="工作內容"
+                    content={currentJob.workContent}
+                  />
+                  <ContentRenderer
+                    title="要求技能"
+                    content={currentJob.skill}
+                  />
+                  <ContentWithSupplement
+                    title="就業時間"
+                    mainContent={currentJob.workingTime}
+                    supplementContent={currentJob.workingTimeAdd}
+                  />
+                  <ContentRenderer
+                    title="入職時間"
+                    content={currentJob.workingFrom}
+                  />
+                  <ContentRenderer
+                    title="雇用期間"
+                    content={currentJob.hiringPeriod}
+                  />
+                  <ContentRenderer
+                    title="招募人數"
+                    content={currentJob.hiringPopularity}
+                  />
+                  <ContentWithSupplement
+                    title="彈性工時制"
+                    mainContent={currentJob.flexWorkingTime}
+                    supplementContent={currentJob.flexWorkingTimeAdd}
+                  />
+                  <ContentWithSupplement
+                    title="試用期間"
+                    mainContent={currentJob.tryPeriod}
+                    supplementContent={currentJob.tryPeriodAdd}
+                  />
+                </div>
+              )}
 
-              <div className="treatment" id="treatment">
-                <h2 className="yellow underLine">薪資與福利</h2>
-                <ContentRenderer
-                  title="支薪方式"
-                  content={currentJob.salaryType}
-                  emptyMessage="暫無支薪方式資訊"
-                />
-                <ContentRenderer
-                  title="月薪"
-                  content={currentJob.salary}
-                  emptyMessage="暫無月薪資訊"
-                />
-                <ContentRenderer
-                  title="固定加班費"
-                  content={currentJob.workingLateSalary}
-                  emptyMessage="暫無固定加班費資訊"
-                />
-                <ContentRenderer
-                  title="調薪制度"
-                  content={currentJob.promotion}
-                  emptyMessage="暫無調薪制度資訊"
-                />
-                <ContentRenderer
-                  title="獎金"
-                  content={currentJob.price}
-                  emptyMessage="暫無獎金資訊"
-                />
-                <ContentRenderer
-                  title="年薪"
-                  content={currentJob.yearIncome}
-                  emptyMessage="暫無年薪資訊"
-                />
-                <ContentWithSupplement
-                  title="參考年薪"
-                  mainContent={currentJob.modelYearIncome}
-                  supplementContent={currentJob.modelYearIncomeAdd}
-                  emptyMessage="暫無參考年薪資訊"
-                />
-                <ContentRenderer
-                  title="交通補助"
-                  content={currentJob.trafficPay}
-                  emptyMessage="暫無交通補助資訊"
-                />
-                <ContentRenderer
-                  title="加班費"
-                  content={currentJob.workingLatePay}
-                  emptyMessage="暫無加班費資訊"
-                />
-                <ContentRenderer
-                  title="其他津貼"
-                  content={currentJob.otherPay}
-                  emptyMessage="暫無其他津貼資訊"
-                />
-                <ContentRenderer
-                  title="保險與福利"
-                  content={currentJob.insurance}
-                  emptyMessage="暫無保險與福利資訊"
-                />
-                <ContentRenderer
-                  title="各項津貼"
-                  content={currentJob.otherSupport}
-                  emptyMessage="暫無各項津貼資訊"
-                />
-                <ContentRenderer
-                  title="休假制度"
-                  content={currentJob.vacation}
-                  emptyMessage="暫無休假制度資訊"
-                />
-                <ContentRenderer
-                  title="年假天數"
-                  content={currentJob.yearHoliday}
-                  emptyMessage="暫無年假天數資訊"
-                />
-                <ContentRenderer
-                  title="調職可能性"
-                  content={currentJob.workingOtherPlace}
-                  emptyMessage="暫無調職可能性資訊"
-                />
-                <ContentRenderer
-                  title="工作地點詳細"
-                  content={currentJob.workingPlaceDetail}
-                  emptyMessage="暫無工作地點詳細資訊"
-                />
-                <ContentRenderer
-                  title="禁菸政策"
-                  content={currentJob.smokingRule}
-                  emptyMessage="暫無禁菸政策資訊"
-                />
-              </div>
-              <div className="interview" id="interview">
-                <h2 className="yellow underLine">選考內容</h2>
-                <ContentRenderer
-                  title="年齡要求"
-                  content={currentJob.old}
-                  emptyMessage="暫無年齡要求資訊"
-                />
-                <ContentRenderer
-                  title="面試次數"
-                  content={currentJob.interviewTimes}
-                  emptyMessage="暫無面試次數資訊"
-                />
-                <ContentRenderer
-                  title="學歷要求"
-                  content={currentJob.education}
-                  emptyMessage="暫無學歷要求資訊"
-                />
-                <ContentRenderer
-                  title="年齡限制原因"
-                  content={currentJob.oldRuleReason}
-                  emptyMessage="暫無年齡限制原因資訊"
-                />
-                <ContentRenderer
-                  title="必要資格"
-                  content={currentJob.requiredSkill}
-                  emptyMessage="暫無必要資格資訊"
-                />
-                <ContentRenderer
-                  title="選考內容"
-                  content={currentJob.testContent}
-                  emptyMessage="暫無選考內容資訊"
-                />
-              </div>
+              {hasSectionContent([
+                currentJob.salaryType,
+                currentJob.salary,
+                currentJob.workingLateSalary,
+                currentJob.promotion,
+                currentJob.price,
+                currentJob.yearIncome,
+                currentJob.modelYearIncome,
+                currentJob.modelYearIncomeAdd,
+                currentJob.trafficPay,
+                currentJob.workingLatePay,
+                currentJob.otherPay,
+                currentJob.insurance,
+                currentJob.otherSupport,
+                currentJob.vacation,
+                currentJob.yearHoliday,
+                currentJob.workingOtherPlace,
+                currentJob.workingPlaceDetail,
+                currentJob.smokingRule,
+              ]) && (
+                <div className="treatment" id="treatment">
+                  <h2 className="yellow underLine">薪資與福利</h2>
+                  <ContentRenderer
+                    title="支薪方式"
+                    content={currentJob.salaryType}
+                  />
+                  <ContentRenderer title="月薪" content={currentJob.salary} />
+                  <ContentRenderer
+                    title="固定加班費"
+                    content={currentJob.workingLateSalary}
+                  />
+                  <ContentRenderer
+                    title="調薪制度"
+                    content={currentJob.promotion}
+                  />
+                  <ContentRenderer title="獎金" content={currentJob.price} />
+                  <ContentRenderer
+                    title="年薪"
+                    content={currentJob.yearIncome}
+                  />
+                  <ContentWithSupplement
+                    title="參考年薪"
+                    mainContent={currentJob.modelYearIncome}
+                    supplementContent={currentJob.modelYearIncomeAdd}
+                  />
+                  <ContentRenderer
+                    title="交通補助"
+                    content={currentJob.trafficPay}
+                  />
+                  <ContentRenderer
+                    title="加班費"
+                    content={currentJob.workingLatePay}
+                  />
+                  <ContentRenderer
+                    title="其他津貼"
+                    content={currentJob.otherPay}
+                  />
+                  <ContentRenderer
+                    title="保險與福利"
+                    content={currentJob.insurance}
+                  />
+                  <ContentRenderer
+                    title="各項津貼"
+                    content={currentJob.otherSupport}
+                  />
+                  <ContentRenderer
+                    title="休假制度"
+                    content={currentJob.vacation}
+                  />
+                  <ContentRenderer
+                    title="年假天數"
+                    content={currentJob.yearHoliday}
+                  />
+                  <ContentRenderer
+                    title="調職可能性"
+                    content={currentJob.workingOtherPlace}
+                  />
+                  <ContentRenderer
+                    title="工作地點詳細"
+                    content={currentJob.workingPlaceDetail}
+                  />
+                  <ContentRenderer
+                    title="禁菸政策"
+                    content={currentJob.smokingRule}
+                  />
+                </div>
+              )}
+              {hasSectionContent([
+                currentJob.old,
+                currentJob.interviewTimes,
+                currentJob.education,
+                currentJob.oldRuleReason,
+                currentJob.requiredSkill,
+                currentJob.testContent,
+              ]) && (
+                <div className="interview" id="interview">
+                  <h2 className="yellow underLine">選考內容</h2>
+                  <ContentRenderer title="年齡要求" content={currentJob.old} />
+                  <ContentRenderer
+                    title="面試次數"
+                    content={currentJob.interviewTimes}
+                  />
+                  <ContentRenderer
+                    title="學歷要求"
+                    content={currentJob.education}
+                  />
+                  <ContentRenderer
+                    title="年齡限制原因"
+                    content={currentJob.oldRuleReason}
+                  />
+                  <ContentRenderer
+                    title="必要資格"
+                    content={currentJob.requiredSkill}
+                  />
+                  <ContentRenderer
+                    title="選考內容"
+                    content={currentJob.testContent}
+                  />
+                </div>
+              )}
             </div>
             <div className="other-job">
               <RecommendedJobs currentJob={currentJob} allJobs={allJobs} />
