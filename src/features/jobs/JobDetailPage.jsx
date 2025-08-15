@@ -345,9 +345,10 @@ export default function JPjobsDetail() {
         const job = flatJobList.find((job) => job.slug?.current === slug);
 
         // Debug: 檢查 parentCompany 資料結構
-        if (job) {
-          return;
-        }
+        // if (job) {
+        //   console.log("Job found:", job);
+        //   console.log("Parent Company:", job.parentCompany);
+        // }
 
         setCurrentJob(job);
       } catch (error) {
@@ -507,10 +508,7 @@ export default function JPjobsDetail() {
                     title="工作內容"
                     content={currentJob.workContent}
                   />
-                  <ContentRenderer
-                    title="要求技能"
-                    content={currentJob.skill}
-                  />
+                  <ContentRenderer title="要求技能" content={currentJob.skill} />
                   <ContentWithSupplement
                     title="就業時間"
                     mainContent={currentJob.workingTime}
@@ -577,10 +575,7 @@ export default function JPjobsDetail() {
                     content={currentJob.promotion}
                   />
                   <ContentRenderer title="獎金" content={currentJob.price} />
-                  <ContentRenderer
-                    title="年薪"
-                    content={currentJob.yearIncome}
-                  />
+                  <ContentRenderer title="年薪" content={currentJob.yearIncome} />
                   <ContentWithSupplement
                     title="參考年薪"
                     mainContent={currentJob.modelYearIncome}
