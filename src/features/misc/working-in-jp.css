@@ -7,7 +7,7 @@
   background-color: #3a270f;
 }
 
-.guidePage-working-holiday-top {
+.guidePage-official-working-top {
   width: 100vw;
   height: 100vh;
 
@@ -21,7 +21,7 @@
 
   position: relative;
 
-  z-index: 0;
+  z-index: 5;
 
   padding-bottom: 4%;
 }
@@ -39,9 +39,6 @@
 
   z-index: 2;
 }
-.guidePage-working-holiday-top {
-  position: relative;
-}
 
 .careerTopBtn {
   text-decoration: none;
@@ -51,6 +48,15 @@
   font-weight: bold;
   background-color: var(--goyoursYellow);
   color: #fff;
+
+  transition-duration: 0.2s;
+}
+
+.careerTopBtn:hover {
+  background-color: #fff;
+  color: var(--goyoursBlack);
+
+  transition-duration: 0.2s;
 }
 
 .working-rightgirl {
@@ -492,12 +498,12 @@
   .guide-pic-animation-wrapper {
     height: 16rem;
   }
-  .guidePage-working-holiday-top::before,
-  .guidePage-working-holiday-top::after {
+  .guidePage-official-working-top::before,
+  .guidePage-official-working-top::after {
     width: 300px;
     height: 500px;
   }
-  .guidePage-working-holiday-top::after {
+  .guidePage-official-working-top::after {
     right: 10%;
   }
   .silde-text-wrapper-right01 {
@@ -522,7 +528,7 @@
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .guidePage-working-holiday-top {
+  .guidePage-official-working-top {
     height: 100vh;
   }
 
@@ -613,7 +619,7 @@
   }
 }
 @media (min-width: 501px) and (max-width: 768px) {
-  .guidePage-working-holiday-top {
+  .guidePage-official-working-top {
     height: 80vh;
   }
   .guide-animation-wrapper {
@@ -737,7 +743,7 @@
     transform: translate(20%);
   }
 
-  .guidePage-working-holiday-top {
+  .guidePage-official-working-top {
     justify-content: flex-start;
 
     height: 80vh;
@@ -864,7 +870,7 @@
     bottom: -10%;
   }
 
-  .guidePage-working-holiday-top {
+  .guidePage-official-working-top {
     justify-content: flex-start;
 
     height: 75vh;
