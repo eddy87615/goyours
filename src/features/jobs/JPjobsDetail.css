@@ -295,6 +295,8 @@
 .recommended-job-info {
   flex: 1;
   min-width: 0;
+
+  width: 100%;
 }
 
 .recommended-job-info h4 {
