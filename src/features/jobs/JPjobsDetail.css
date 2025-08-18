@@ -270,7 +270,7 @@
 .recommended-job-image {
   flex-shrink: 0;
   width: 60px;
-  height: 45px;
+  height: 60px;
   border-radius: 6px;
   overflow: hidden;
 }
