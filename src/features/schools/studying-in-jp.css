@@ -168,7 +168,7 @@
   flex-direction: column;
 }
 .guide-title h1::after {
-  content: '';
+  content: "";
   width: 4rem;
   margin: 0 auto;
   padding-top: 1rem;
@@ -189,11 +189,11 @@
 }
 .guide-content::before {
   position: absolute;
-  content: '';
+  content: "";
   background-image: url(/round-bg.svg);
   display: block;
   width: 100vw;
-  height: 20rem;
+  height: 14rem;
   background-size: 100%;
   background-position: bottom;
 
