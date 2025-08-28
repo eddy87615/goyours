@@ -137,9 +137,10 @@ const sendOmniChatNotification = async (formData) => {
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
                 appointmentTime: formData.callTime || "未指定",
                 appointmentLocation: "線上",
-                note: `姓名: ${formData.name || "N/A"}\\n電話: ${
-                  formData.phone || "N/A"
-                }`,
+                note: "無",
+                // note: `姓名: ${formData.name || "N/A"}\\n電話: ${
+                //   formData.phone || "N/A"
+                // }`,
                 contactInfo: "0277015618",
               },
             },
@@ -243,9 +244,10 @@ const sendOmniChatNotification = async (formData) => {
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
                 appointmentTime: formData.callTime || "未指定",
                 appointmentLocation: "線上",
-                note: `姓名: ${formData.name || "N/A"}\\n電話: ${
-                  formData.phone || "N/A"
-                }`,
+                note: "無",
+                // note: `姓名: ${formData.name || "N/A"}\\n電話: ${
+                //   formData.phone || "N/A"
+                // }`,
                 contactInfo: "0277015618",
               },
             },
