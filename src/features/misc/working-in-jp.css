@@ -494,6 +494,13 @@
   width: 5%;
   margin: 0 auto;
 }
+
+@media screen and (min-width: 2000px) {
+  .guide-content::before {
+    height: 20rem;
+  }
+}
+
 @media (min-width: 1025px) and (max-width: 1200px) {
   .guide-pic-animation-wrapper {
     height: 16rem;

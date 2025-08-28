@@ -363,6 +363,13 @@
 .scrollDown-side-studyingPage .scrollDown-side-Dot {
   background-color: #ffcd8d;
 }
+
+@media screen and (min-width: 2000px) {
+  .guide-content::before {
+    height: 20rem;
+  }
+}
+
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
   .guide-pic-animation-wrapper {
     height: calc(45 * var(--wrapperHeight));
