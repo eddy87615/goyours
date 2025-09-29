@@ -58,7 +58,7 @@
   padding-left: 3rem;
 }
 .postDetaildate::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 2rem;
   height: 2rem;
@@ -125,7 +125,7 @@
 
   padding: 1rem;
 
-  width: 4rem;
+  width: fit-content;
 }
 .gallery {
   width: 100%; /* 父容器寬度 */
@@ -220,7 +220,7 @@
   margin: 0;
 }
 .submitPostDate::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 2rem;
   height: 2rem;
@@ -244,9 +244,9 @@
   grid-template-columns: 0.1fr 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
-    'img title'
-    'img catrgory'
-    'img date';
+    "img title"
+    "img catrgory"
+    "img date";
   column-gap: 2rem;
 }
 .relatedpostsLink img {
