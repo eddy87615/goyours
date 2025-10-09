@@ -133,7 +133,7 @@
 }
 .contactForm p::after {
   display: none !important;
-  content: '＊必填';
+  content: "＊必填";
   color: #ef0000;
 
   position: absolute;
@@ -173,10 +173,10 @@ input:-webkit-autofill {
   display: flex;
   align-items: center;
 }
-.contactForm label:nth-of-type(8),
-.contactForm label:nth-of-type(9) {
+.contactForm label:nth-of-type(6) {
   width: 100%;
   align-items: start;
+  flex-direction: column;
 }
 .contactForm label:nth-of-type(8) input {
   flex-grow: 0;
@@ -207,9 +207,12 @@ input:-webkit-autofill {
 .caseOptions label {
   width: 100%;
 }
-.caseOptions label:nth-child(4) {
-  order: 5;
+.caseOptions > label > input {
+  flex-grow: 0 !important;
 }
+/* .caseOptions label:nth-child(4) {
+  order: 5;
+} */
 .contactForm p {
   width: fit-content;
 }

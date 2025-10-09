@@ -39,9 +39,9 @@ export default function ContactFormResume() {
     name: "",
     age: "",
     phone: "",
-    lineId: "",
+    // lineId: "",
     email: "",
-    callTime: "",
+    // callTime: "",
     resume: null,
   });
   const [isSubmited, setIsSubmited] = useState(false);
@@ -150,9 +150,9 @@ export default function ContactFormResume() {
       age: formData.age,
       major: formData.major,
       phone: formData.phone,
-      lineId: formData.lineId,
+      // lineId: formData.lineId,
       email: formData.email,
-      callTime: formData.callTime,
+      // callTime: formData.callTime,
       contacted: false, // 初始聯絡狀態為 false
       remarks: "", // 備註初始為空
       upTime: currentDateTime, // 表單送出時間
@@ -223,9 +223,9 @@ export default function ContactFormResume() {
           name: "",
           age: "",
           phone: "",
-          lineId: "",
+          // lineId: "",
           email: "",
-          callTime: "",
+          // callTime: "",
           resume: null,
         });
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -434,13 +434,10 @@ export default function ContactFormResume() {
                 inputMode="numeric"
               />
             </label>
-            <label htmlFor="lineId" className="lineId">
+            {/* <label htmlFor="lineId" className="lineId">
               <p>LINE ID（例：example12345）：</p>
               <br />
               <input
-                // placeholder={placeholdertxt[3]}
-                // onFocus={() => handleFocus(3)}
-                // onBlur={() => handleBlur(3, 'example12345')}
                 className="placeholder"
                 id="lineId"
                 name="lineId"
@@ -448,7 +445,7 @@ export default function ContactFormResume() {
                 onChange={handleChange}
                 required
               />
-            </label>
+            </label> */}
             <label htmlFor="email" className="email">
               <p>電子郵件（例：aaa@gmail.com）：</p>
               <br />
@@ -465,13 +462,10 @@ export default function ContactFormResume() {
               />
             </label>
 
-            <label className="contactTime">
+            {/* <label className="contactTime">
               <p>方便聯絡時段（例：早上10:00-12:00）：</p>
               <br />
               <input
-                // placeholder={placeholdertxt[5]}
-                // onFocus={() => handleFocus(5)}
-                // onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
                 className="placeholder"
                 type="text"
                 id="callTime"
@@ -480,7 +474,7 @@ export default function ContactFormResume() {
                 onChange={handleChange}
                 required
               />
-            </label>
+            </label> */}
             <div className="upload">
               <p>上傳履歷：</p>
               <div className="uploadSection">
@@ -536,13 +530,10 @@ export default function ContactFormResume() {
                 </div>
               </div>
             </div>
-            <label className="tellus">
+            {/* <label className="tellus">
               <p>想對我們說的話：</p>
               <br />
               <textarea
-                // placeholder={placeholdertxt[6]}
-                // onFocus={() => handleFocus(6)}
-                // onBlur={() => handleBlur(6, '我對這份工作有興趣')}
                 className="placeholder"
                 type="textarea"
                 id="tellus"
@@ -550,7 +541,7 @@ export default function ContactFormResume() {
                 value={formData.tellus}
                 onChange={handleChange}
               />
-            </label>
+            </label> */}
             <div className="privicy">
               <label>
                 <input type="checkbox" id="privicy" name="privicy" required />

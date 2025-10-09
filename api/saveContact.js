@@ -242,7 +242,7 @@ const sendOmniChatNotification = async (formData) => {
                   ? formData.case.join(", ")
                   : formData.case || "未指定",
                 appointmentDate: new Date().toLocaleDateString("zh-TW"),
-                appointmentTime: formData.callTime || "未指定",
+                appointmentTime: `${formData.age}歲 || 線上`,
                 appointmentLocation: "線上",
                 note: "無",
                 // note: `姓名: ${formData.name || "N/A"}\\n電話: ${
@@ -390,9 +390,6 @@ const sendEmailNotification = async (formData) => {
   - 想詢問的方案：${
     Array.isArray(formData.case) ? formData.case.join(", ") : "N/A"
   }
-  - 方便聯絡的時段：${formData.callTime || "N/A"}
-  - Line ID：${formData.lineId || "N/A"}
-  - 想對我們說的話：${formData.tellus || "N/A"}
   - 提交時間：${formData.upTime || "N/A"}
 快到後台查看更多資訊！
         `,
@@ -410,8 +407,6 @@ const sendEmailNotification = async (formData) => {
   - 科系：${formData.major || "N/A"}
   - 行動電話：${formData.phone || "N/A"}
   - 電子郵件：${formData.email || "N/A"}
-  - 方便聯絡時段：${formData.callTime || "N/A"}
-  - Line ID：${formData.lineId || "N/A"}
   - 履歷表：${formData.resume ? "已上傳" : "未上傳"}
 快到後台查看詳細資訊和履歷！
         `,
@@ -429,8 +424,6 @@ const sendEmailNotification = async (formData) => {
   - 科系：${formData.major || "N/A"}
   - 行動電話：${formData.phone || "N/A"}
   - 電子郵件：${formData.email || "N/A"}
-  - 方便聯絡時段：${formData.callTime || "N/A"}
-  - Line ID：${formData.lineId || "N/A"}
   - 履歷表：${formData.resume ? "已上傳" : "未上傳"}
 快到後台看看履歷吧！
         `,

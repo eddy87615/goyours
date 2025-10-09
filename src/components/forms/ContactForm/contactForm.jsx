@@ -23,19 +23,19 @@ export default function ContactForm() {
     name: "",
     age: "",
     phone: "",
-    lineId: "",
+    // lineId: "",
     email: "",
     selectedCases: [],
-    callTime: "",
-    tellus: initialMessage,
+    // callTime: "",
+    // tellus: initialMessage,
   });
 
-  useEffect(() => {
-    setFormData((prevData) => ({
-      ...prevData,
-      tellus: initialMessage,
-    }));
-  }, [initialMessage]);
+  // useEffect(() => {
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     tellus: initialMessage,
+  //   }));
+  // }, [initialMessage]);
 
   const [caseOptions, setCaseOptions] = useState([]);
   const [isSubmited, setIsSubmited] = useState(false);
@@ -147,13 +147,13 @@ export default function ContactForm() {
       age: formData.age,
       major: formData.major,
       phone: formData.phone,
-      lineId: formData.lineId,
+      // lineId: formData.lineId,
       email: formData.email,
       case: formData.selectedCases,
-      callTime: formData.callTime,
+      // callTime: formData.callTime,
       contacted: false, // 初始聯絡狀態為 false
       upTime: currentDateTime, // 表單送出時間
-      tellus: formData.tellus,
+      // tellus: formData.tellus,
     };
 
     try {
@@ -185,11 +185,11 @@ export default function ContactForm() {
           name: "",
           age: "",
           phone: "",
-          lineId: "",
+          // lineId: "",
           email: "",
           selectedCases: [],
-          callTime: "",
-          tellus: "",
+          // callTime: "",
+          // tellus: "",
         });
         window.scrollTo({ top: 0, behavior: "smooth" });
         scrollToTop();
@@ -328,10 +328,6 @@ export default function ContactForm() {
               <p>年齡（例：25）：</p>
               <br />
               <input
-                // // placeholder={placeholdertxt[1]}
-                // onFocus={() => handleFocus(1)}
-                // onBlur={() => handleBlur(1, '25')}
-                // className="placeholder"
                 type="text"
                 id="age"
                 name="age"
@@ -346,10 +342,6 @@ export default function ContactForm() {
               <p>科系（例：日文系）：</p>
               <br />
               <input
-                // // placeholder={placeholdertxt[1]}
-                // onFocus={() => handleFocus(1)}
-                // onBlur={() => handleBlur(1, '25')}
-                // className="placeholder"
                 type="text"
                 id="major"
                 name="major"
@@ -363,10 +355,6 @@ export default function ContactForm() {
               <p>行動電話（例：0912345678）：</p>
               <br />
               <input
-                // // placeholder={placeholdertxt[2]}
-                // onFocus={() => handleFocus(2)}
-                // onBlur={() => handleBlur(2, '0912345678')}
-                // className="placeholder"
                 id="phone"
                 name="phone"
                 value={formData.phone}
@@ -375,21 +363,17 @@ export default function ContactForm() {
                 inputMode="numeric"
               />
             </label>
-            <label htmlFor="lineId">
+            {/* <label htmlFor="lineId">
               <p>LINE ID（例：example12345）：</p>
               <br />
               <input
-                // // placeholder={placeholdertxt[3]}
-                // onFocus={() => handleFocus(3)}
-                // onBlur={() => handleBlur(3, 'example12345')}
-                // className="placeholder"
                 id="lineId"
                 name="lineId"
                 value={formData.lineId}
                 onChange={handleChange}
                 required
               />
-            </label>
+            </label> */}
             <label htmlFor="email" className="email">
               <p>電子郵件（例：aaa@gmail.com）：</p>
               <br />
@@ -406,14 +390,10 @@ export default function ContactForm() {
               />
               {emailError && <div className="error-message">{emailError}</div>}
             </label>
-            <label>
+            {/* <label>
               <p>方便聯絡時段（例：早上10:00-12:00）：</p>
               <br />
               <input
-                // // placeholder={placeholdertxt[5]}
-                // onFocus={() => handleFocus(5)}
-                // onBlur={() => handleBlur(5, '早上10:00-12:00/下午14:00-17:00')}
-                // className="placeholder"
                 type="text"
                 id="callTime"
                 name="callTime"
@@ -421,7 +401,7 @@ export default function ContactForm() {
                 onChange={handleChange}
                 required
               />
-            </label>
+            </label> */}
             <label htmlFor="case">
               <p>想詢問的方案：</p>
               <br />
@@ -442,20 +422,16 @@ export default function ContactForm() {
                 ))}
               </div>
             </label>
-            <label>
+            {/* <label>
               <p>想對我們說的話：</p>
               <br />
               <textarea
-                // // placeholder={placeholdertxt[6]}
-                // onFocus={() => handleFocus(6)}
-                // onBlur={() => handleBlur(6, '我想詢問關於日本留學的資訊')}
-                // className="placeholder"
                 value={formData.tellus}
                 id="tellus"
                 name="tellus"
                 onChange={handleChange}
               />
-            </label>
+            </label> */}
             <div className="privicy">
               <label>
                 <input type="checkbox" id="privicy" name="privicy" required />
