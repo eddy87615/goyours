@@ -50,7 +50,11 @@ const LoadingProvider = ({ children }) => {
   return (
     <LoadingContext.Provider value={value}>
       {children}
-      {isLoading() && <LoadingBear />}
+      {isLoading() && (
+        <div className="postLoading pageLoading">
+          <LoadingBear />
+        </div>
+      )}
     </LoadingContext.Provider>
   );
 };
