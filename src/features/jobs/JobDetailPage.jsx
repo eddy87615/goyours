@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react";
-import { client, urlFor } from "../../services/sanity/client";
-import { PortableText } from "@portabletext/react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { client, urlFor } from '../../services/sanity/client';
+import { PortableText } from '@portabletext/react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import "./JPjobsDetail.css";
-import { LoadingBear } from "../../components/common";
-import { HiOutlineOfficeBuilding } from "react-icons/hi";
-import { RiMoneyCnyCircleFill } from "react-icons/ri";
+import './JPjobsDetail.css';
+import { LoadingBear } from '../../components/common';
+import { HiOutlineOfficeBuilding } from 'react-icons/hi';
+import { RiMoneyCnyCircleFill } from 'react-icons/ri';
 
 // Swiper imports
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const cache = new Map();
 const CACHE_LIFETIME = 5 * 60 * 1000;
@@ -54,15 +54,17 @@ const RecommendedJobItem = ({ job }) => {
         {job.mainImage?.asset ? (
           <img
             src={urlFor(job.mainImage).width(150).height(100).url()}
-            alt={job.mainImage.alt || job.title || "職缺圖片"}
+            alt={job.mainImage.alt || job.title || '職缺圖片'}
           />
         ) : (
           <div className="no-image">無圖片</div>
         )}
       </div>
       <div className="recommended-job-info">
-        <h4>{job.hiringPotsition || job.title || "未命名職缺"}</h4>
-        <p className="company-name">{job.parentCompany?.name || "未知公司"}</p>
+        <h4>{job.hiringPotsition || job.title || '未命名職缺'}</h4>
+        <p className="company-name">
+          {job.parentCompany?.name || '未提供公司資訊'}
+        </p>
         {job.yearIncome && <p className="salary">年薪：{job.yearIncome}</p>}
         {job.workLocation && job.workLocation.length > 0 && (
           <p className="location">地點：{job.workLocation[0]}</p>
@@ -81,8 +83,8 @@ const RecommendedJobs = ({ currentJob, allJobs }) => {
     };
 
     checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   const recommendedJobs = allJobs
@@ -152,30 +154,30 @@ const ContentRenderer = ({ title, content }) => {
 
   const isPlainText =
     !Array.isArray(content) ||
-    (Array.isArray(content) && content[0]?._type !== "block");
+    (Array.isArray(content) && content[0]?._type !== 'block');
 
   return (
-    <div style={isPlainText ? { display: "flex", gap: "1rem" } : {}}>
+    <div style={isPlainText ? { display: 'flex', gap: '1rem' } : {}}>
       <h3>
         {/* <IoMdInformationCircle /> */}
         {title}
       </h3>
       {Array.isArray(content) ? (
-        content[0]._type === "block" ? (
+        content[0]._type === 'block' ? (
           <PortableText value={content} />
         ) : (
           <ul>
             {content.map((item, index) => (
               <li key={index}>
-                {typeof item === "string"
+                {typeof item === 'string'
                   ? item
-                  : item.text || item.content || ""}
+                  : item.text || item.content || ''}
               </li>
             ))}
           </ul>
         )
       ) : (
-        <p style={{ display: "inline-flex", alignItems: "center" }}>
+        <p style={{ display: 'inline-flex', alignItems: 'center' }}>
           {content}
         </p>
       )}
@@ -198,7 +200,7 @@ const ContentWithSupplement = ({ title, mainContent, supplementContent }) => {
     (hasMainContent && !Array.isArray(mainContent)) ||
     (hasMainContent &&
       Array.isArray(mainContent) &&
-      mainContent[0]?._type !== "block");
+      mainContent[0]?._type !== 'block');
 
   if (!hasMainContent && !hasSupplementContent) {
     return null;
@@ -209,16 +211,16 @@ const ContentWithSupplement = ({ title, mainContent, supplementContent }) => {
 
     if (Array.isArray(content)) {
       if (content.length === 0) return null;
-      if (content[0]._type === "block") {
+      if (content[0]._type === 'block') {
         return <PortableText value={content} />;
       } else {
         return (
           <ul>
             {content.map((item, index) => (
               <li key={index}>
-                {typeof item === "string"
+                {typeof item === 'string'
                   ? item
-                  : item.text || item.content || ""}
+                  : item.text || item.content || ''}
               </li>
             ))}
           </ul>
@@ -226,7 +228,7 @@ const ContentWithSupplement = ({ title, mainContent, supplementContent }) => {
       }
     } else {
       return (
-        <p style={{ display: "inline-flex", alignItems: "center" }}>
+        <p style={{ display: 'inline-flex', alignItems: 'center' }}>
           {content}
         </p>
       );
@@ -234,14 +236,14 @@ const ContentWithSupplement = ({ title, mainContent, supplementContent }) => {
   };
 
   return (
-    <div style={isPlainText ? { display: "flex", gap: "1rem" } : {}}>
+    <div style={isPlainText ? { display: 'flex', gap: '1rem' } : {}}>
       <h3>
         {/* <IoMdInformationCircle /> */}
         {title}
       </h3>
       {hasMainContent && renderContent(mainContent)}
       {hasSupplementContent && (
-        <div style={{ marginTop: "0.5rem", fontSize: "0.9rem", color: "#666" }}>
+        <div style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#666' }}>
           <strong>補足：</strong>
           {renderContent(supplementContent)}
         </div>
@@ -266,13 +268,13 @@ const JobActionButtons = ({ jobTitle }) => {
   const navigate = useNavigate();
 
   const handleInquiry = (jobTitle) => {
-    navigate("/contact-us", {
+    navigate('/contact-us', {
       state: { initialMessage: `我對${jobTitle}職缺有興趣，想要諮詢` },
     });
   };
 
   const handleApply = (jobTitle) => {
-    navigate("/japan-job-application", {
+    navigate('/japan-job-application', {
       state: { initialMessage: `${jobTitle}` },
     });
   };
@@ -300,7 +302,7 @@ export default function JPjobsDetail() {
     async function fetchData() {
       setLoading(true);
       try {
-        const cacheKey = "all-jobs-v2"; // 更新版本以清除舊快取
+        const cacheKey = 'all-jobs-v3'; // 更新版本以清除舊快取（移除 parentCompany 查詢）
 
         // 先檢查快取
         const cachedJobs = getCache(cacheKey);
@@ -312,28 +314,9 @@ export default function JPjobsDetail() {
           flatJobList = cachedJobs;
           setAllJobs(flatJobList);
         } else {
-          // 從 API 獲取新資料
-          const companiesWithNestedJobs = await client.fetch(
-            `
-                *[_type == "company" && !(_id in path("drafts.**"))] {
-                ...,
-                  "jobs": *[_type == "job" && references(^._id) && !(_id in path("drafts.**"))] | order(publishedAt desc) {
-                    ..., 
-                    "parentCompany": ^ {
-                      _id,
-                      name,
-                      logo,
-                      property,
-                      officialSite
-                    }
-                  }
-                }
-                | order(name asc)
-              `
-          );
-
-          flatJobList = companiesWithNestedJobs.flatMap(
-            (company) => company.jobs || []
+          // 從 API 獲取新資料 - 直接查詢 job 類型
+          flatJobList = await client.fetch(
+            `*[_type == "job" && !(_id in path("drafts.**"))] | order(publishedAt desc)`
           );
 
           // 存入快取
@@ -352,7 +335,7 @@ export default function JPjobsDetail() {
 
         setCurrentJob(job);
       } catch (error) {
-        console.error("Failed to fetch job list:", error);
+        console.error('Failed to fetch job list:', error);
       } finally {
         setLoading(false);
       }
@@ -371,8 +354,8 @@ export default function JPjobsDetail() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (loading) {
@@ -402,7 +385,7 @@ export default function JPjobsDetail() {
         {currentJob.mainImage?.asset ? (
           <img
             src={urlFor(currentJob.mainImage).url()}
-            alt={currentJob.mainImage.alt || currentJob.title || "職缺圖片"}
+            alt={currentJob.mainImage.alt || currentJob.title || '職缺圖片'}
           />
         ) : (
           <p className="noimg-notice">此職缺未提供圖片</p>
@@ -415,10 +398,10 @@ export default function JPjobsDetail() {
         >
           <div className="job-content-body">
             <div className="job-header">
-              <h1>{currentJob.hiringPotsition || "未命名職缺"}</h1>
+              <h1>{currentJob.hiringPotsition || '未命名職缺'}</h1>
               <JobActionButtons
                 jobTitle={
-                  currentJob.hiringPotsition || currentJob.title || "未命名職缺"
+                  currentJob.hiringPotsition || currentJob.title || '未命名職缺'
                 }
               />
             </div>
@@ -430,40 +413,43 @@ export default function JPjobsDetail() {
                     alt={
                       currentJob.parentCompany.logo.alt ||
                       currentJob.parentCompany.name ||
-                      "公司圖片"
+                      '公司圖片'
                     }
                   />
                 ) : (
-                  <p className="noimg-notice">未提供公司圖片</p>
+                  <img
+                    src="/public/goyoursbear-B.svg"
+                    alt="goyours bear gray"
+                  />
                 )}
               </div>
               <div className="job-and-company-type">
                 <div
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
                   }}
                 >
                   <HiOutlineOfficeBuilding className="yellow jobisticon" />
                   <Link
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: 'none' }}
                     to={currentJob.parentCompany?.officialSite}
                     target="_blank"
                   >
-                    {currentJob.parentCompany?.name || "未知公司"}
+                    {currentJob.parentCompany?.name || '未提供公司資訊'}
                   </Link>
                 </div>
                 <div
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
                   }}
                 >
                   <RiMoneyCnyCircleFill className="yellow jobisticon" />
                   資本額：
-                  {currentJob.parentCompany?.property || "未提供公司資本額"}
+                  {currentJob.parentCompany?.property || '未提供公司資本額'}
                 </div>
                 {currentJob.workLocation ? (
                   <div className="job-location">
@@ -508,7 +494,10 @@ export default function JPjobsDetail() {
                     title="工作內容"
                     content={currentJob.workContent}
                   />
-                  <ContentRenderer title="要求技能" content={currentJob.skill} />
+                  <ContentRenderer
+                    title="要求技能"
+                    content={currentJob.skill}
+                  />
                   <ContentWithSupplement
                     title="就業時間"
                     mainContent={currentJob.workingTime}
@@ -575,7 +564,10 @@ export default function JPjobsDetail() {
                     content={currentJob.promotion}
                   />
                   <ContentRenderer title="獎金" content={currentJob.price} />
-                  <ContentRenderer title="年薪" content={currentJob.yearIncome} />
+                  <ContentRenderer
+                    title="年薪"
+                    content={currentJob.yearIncome}
+                  />
                   <ContentWithSupplement
                     title="參考年薪"
                     mainContent={currentJob.modelYearIncome}
@@ -674,10 +666,10 @@ export default function JPjobsDetail() {
               <a href="#interview">選考內容</a>
             </li>
           </ul>
-          <div className={`job-nav-actions ${showActionButtons ? "show" : ""}`}>
+          <div className={`job-nav-actions ${showActionButtons ? 'show' : ''}`}>
             <JobActionButtons
               jobTitle={
-                currentJob.hiringPotsition || currentJob.title || "未命名職缺"
+                currentJob.hiringPotsition || currentJob.title || '未命名職缺'
               }
             />
           </div>

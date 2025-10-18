@@ -1,21 +1,20 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
-import { urlFor } from "../../../services/sanity/client";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { urlFor } from '../../../services/sanity/client';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { LuClipboardList } from "react-icons/lu";
-import { RiMoneyCnyCircleFill } from "react-icons/ri";
-import { FaCircleMinus } from "react-icons/fa6";
-import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import { TbThumbUpFilled } from "react-icons/tb";
-import { FaFireAlt } from "react-icons/fa";
-import { TbLanguageHiragana } from "react-icons/tb";
-import { HiOutlineOfficeBuilding } from "react-icons/hi";
+import { LuClipboardList } from 'react-icons/lu';
+import { RiMoneyCnyCircleFill } from 'react-icons/ri';
+import { FaCircleMinus } from 'react-icons/fa6';
+import { IoIosArrowDroprightCircle } from 'react-icons/io';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { TbThumbUpFilled } from 'react-icons/tb';
+import { FaFireAlt } from 'react-icons/fa';
+import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 
-import { useWindowSize } from "../../../hooks";
+import { useWindowSize } from '../../../hooks';
 
-import "./OfficialJob.css";
+import './OfficialJob.css';
 
 const MOBILE_BREAKPOINT = 480;
 const SCROLL_DELAY = 500;
@@ -25,13 +24,13 @@ const JobTags = ({ tags }) => {
 
   return (
     <div className="job-tags">
-      {tags.includes("我們的推薦") && (
+      {tags.includes('我們的推薦') && (
         <span className="tag-recommend">
           <TbThumbUpFilled />
           推薦職缺
         </span>
       )}
-      {tags.includes("高人氣職缺") && (
+      {tags.includes('高人氣職缺') && (
         <span className="tag-popular">
           <FaFireAlt />
           高人氣
@@ -84,29 +83,29 @@ const JobListItem = ({
           <li>
             <HiOutlineOfficeBuilding className="yellow jobisticon" />
             <Link
-              style={{ textDecoration: "none" }}
-              to={job.parentCompany?.officialSite}
+              style={{ textDecoration: 'none' }}
+              to={job?.officialSite}
               target="_blank"
             >
-              {job.parentCompany?.name || "公司名稱未提供"}
+              {job?.name || '公司名稱未提供'}
             </Link>
           </li>
           <li>
             <LuClipboardList className="yellow jobisticon" />
-            {job.syokusyu || "未提供職業類別"}
+            {job.syokusyu || '未提供職業類別'}
           </li>
           <li>
             <RiMoneyCnyCircleFill className="yellow jobisticon" />
-            月薪：{job.salary ? `${job.salary}日幣` : "未提供月薪資訊"}
+            月薪：{job.salary ? `${job.salary}日幣` : '未提供月薪資訊'}
           </li>
           <li>
             <span
               style={{
-                display: "flex",
-                flexShrink: "0",
-                alignItems: "center",
-                justifyContent: "top",
-                gap: "0.5rem",
+                display: 'flex',
+                flexShrink: '0',
+                alignItems: 'center',
+                justifyContent: 'top',
+                gap: '0.5rem',
               }}
             >
               <LuClipboardList className="yellow jobisticon" />
@@ -115,27 +114,27 @@ const JobListItem = ({
             <span className="work-content-item">
               {(() => {
                 if (!job.workContent) {
-                  return "未提供工作內容";
+                  return '未提供工作內容';
                 }
                 if (Array.isArray(job.workContent)) {
                   const content = job.workContent
                     .map((item) => {
-                      if (typeof item === "string") return item;
-                      if (item && typeof item === "object") {
-                        if (item._type === "block" && item.children) {
+                      if (typeof item === 'string') return item;
+                      if (item && typeof item === 'object') {
+                        if (item._type === 'block' && item.children) {
                           return item.children
-                            .map((child) => child.text || "")
-                            .join("");
+                            .map((child) => child.text || '')
+                            .join('');
                         }
-                        return item.text || item.content || item.value || "";
+                        return item.text || item.content || item.value || '';
                       }
-                      return "";
+                      return '';
                     })
                     .filter((text) => text) // Remove empty strings
-                    .join("、");
-                  return content || "未提供工作內容";
+                    .join('、');
+                  return content || '未提供工作內容';
                 }
-                return job.workContent || "未提供工作內容";
+                return job.workContent || '未提供工作內容';
               })()}
             </span>
           </li>
@@ -150,7 +149,7 @@ const JobListItem = ({
 
         <Link
           to={`/jp-jobs/${job.slug.current}`}
-          className={`openDetail ${isOpen ? "btnClose" : ""}`}
+          className={`openDetail ${isOpen ? 'btnClose' : ''}`}
           target="_blank"
         >
           職缺詳情
@@ -158,7 +157,7 @@ const JobListItem = ({
         </Link>
       </div>
 
-      <div className={`listdetail ${isOpen ? "" : "close"}`}>
+      <div className={`listdetail ${isOpen ? '' : 'close'}`}>
         <button onClick={() => onToggle(jobSlug)}>
           <FaCircleMinus className="yellow moreBtn" />
         </button>
@@ -179,13 +178,13 @@ export default function OfficialJob({
   const isMobile = windowSize < MOBILE_BREAKPOINT;
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
+    const hash = window.location.hash.replace('#', '');
 
     if (hash) {
       setTimeout(() => {
         const element = document.getElementById(hash);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          element.scrollIntoView({ behavior: 'smooth' });
           setIsOpenList((prev) => ({
             ...prev,
             [hash]: true,
@@ -203,13 +202,13 @@ export default function OfficialJob({
   };
 
   const handleInquiry = (jobTitle) => {
-    navigate("/contact-us", {
+    navigate('/contact-us', {
       state: { initialMessage: `我對${jobTitle}職缺有興趣，想要諮詢` },
     });
   };
 
   const handleInquiryResume = (jobTitle) => {
-    navigate("/japan-job-application", {
+    navigate('/japan-job-application', {
       state: { initialMessage: `${jobTitle}` },
     });
   };
