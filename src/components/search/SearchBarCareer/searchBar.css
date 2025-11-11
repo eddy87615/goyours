@@ -8,7 +8,7 @@
   --input-padding: 0.5rem 1rem;
   --input-radius: 0.5rem;
   --button-radius: 50rem;
-  --button-padding: 0.8rem 4rem;
+  --button-padding: 0.8rem 3rem;
   --select-arrow-size: 8%;
   --checkbox-size: 1.2rem;
   --transition-fast: 0.2s;
@@ -163,7 +163,7 @@
 
   .searchdown button {
     font-size: 0.75rem;
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 1rem;
   }
 
   .searchdown label {

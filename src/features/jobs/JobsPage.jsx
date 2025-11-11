@@ -24,15 +24,7 @@ const SALARY_RANGES = {
 };
 
 const SANITY_QUERY = `
-  *[_type == "company" && !(_id in path("drafts.**"))] {
-    ...,
-    "jobs": *[_type == "job" && references(^._id) && !(_id in path("drafts.**"))] | order(publishedAt desc) {
-      ..., 
-      "parentCompany": ^ {
-        ...,
-      }
-    }
-  } | order(name asc)
+  *[_type == "job" && !(_id in path("drafts.**"))] | order(publishedAt desc)
 `;
 
 const SEO_CONFIG = {
@@ -269,23 +261,20 @@ export default function JPjobs() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const companiesWithNestedJobs = await client.fetch(SANITY_QUERY);
-        const flatJobList = companiesWithNestedJobs.flatMap(
-          (company) => company.jobs || []
-        );
+        const jobListData = await client.fetch(SANITY_QUERY);
 
-        setJobList(flatJobList);
-        
+        setJobList(jobListData);
+
         // Apply initial filters if they exist
         if (initialFilters && Object.values(initialFilters).some(v => v.length > 0)) {
           const filteredJobs = sortJobs(
-            filterJobs(flatJobList, initialFilters),
+            filterJobs(jobListData, initialFilters),
             initialFilters.selectedTags
           );
           setFilteredJobList(filteredJobs);
           setIsSearchTriggered(true);
         } else {
-          setFilteredJobList(flatJobList);
+          setFilteredJobList(jobListData);
         }
       } catch (error) {
         console.error("Failed to fetch job list:", error);

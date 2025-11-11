@@ -10,7 +10,6 @@ import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { TbThumbUpFilled } from "react-icons/tb";
 import { FaFireAlt } from "react-icons/fa";
-import { TbLanguageHiragana } from "react-icons/tb";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 
 import { useWindowSize } from "../../../hooks";
@@ -83,13 +82,17 @@ const JobListItem = ({
           )}
           <li>
             <HiOutlineOfficeBuilding className="yellow jobisticon" />
-            <Link
-              style={{ textDecoration: "none" }}
-              to={job.parentCompany?.officialSite}
-              target="_blank"
-            >
-              {job.parentCompany?.name || "公司名稱未提供"}
-            </Link>
+            {job.officialSite ? (
+              <Link
+                style={{ textDecoration: "none" }}
+                to={job.officialSite}
+                target="_blank"
+              >
+                {job.company || "公司名稱未提供"}
+              </Link>
+            ) : (
+              <span>{job.company || "公司名稱未提供"}</span>
+            )}
           </li>
           <li>
             <LuClipboardList className="yellow jobisticon" />

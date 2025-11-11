@@ -62,7 +62,7 @@ const RecommendedJobItem = ({ job }) => {
       </div>
       <div className="recommended-job-info">
         <h4>{job.hiringPotsition || job.title || "未命名職缺"}</h4>
-        <p className="company-name">{job.parentCompany?.name || "未知公司"}</p>
+        <p className="company-name">{job.company || "未知公司"}</p>
         {job.yearIncome && <p className="salary">年薪：{job.yearIncome}</p>}
         {job.workLocation && job.workLocation.length > 0 && (
           <p className="location">地點：{job.workLocation[0]}</p>
@@ -312,28 +312,9 @@ export default function JPjobsDetail() {
           flatJobList = cachedJobs;
           setAllJobs(flatJobList);
         } else {
-          // 從 API 獲取新資料
-          const companiesWithNestedJobs = await client.fetch(
-            `
-                *[_type == "company" && !(_id in path("drafts.**"))] {
-                ...,
-                  "jobs": *[_type == "job" && references(^._id) && !(_id in path("drafts.**"))] | order(publishedAt desc) {
-                    ..., 
-                    "parentCompany": ^ {
-                      _id,
-                      name,
-                      logo,
-                      property,
-                      officialSite
-                    }
-                  }
-                }
-                | order(name asc)
-              `
-          );
-
-          flatJobList = companiesWithNestedJobs.flatMap(
-            (company) => company.jobs || []
+          // 從 API 獲取新資料 - 直接獲取所有職缺
+          flatJobList = await client.fetch(
+            `*[_type == "job" && !(_id in path("drafts.**"))] | order(publishedAt desc)`
           );
 
           // 存入快取
@@ -424,14 +405,10 @@ export default function JPjobsDetail() {
             </div>
             <div className="company-and-jobtype">
               <div className="company-info">
-                {currentJob.parentCompany?.logo?.asset ? (
+                {currentJob.logo?.asset ? (
                   <img
-                    src={urlFor(currentJob.parentCompany.logo).url()}
-                    alt={
-                      currentJob.parentCompany.logo.alt ||
-                      currentJob.parentCompany.name ||
-                      "公司圖片"
-                    }
+                    src={urlFor(currentJob.logo).url()}
+                    alt={currentJob.logo.alt || currentJob.company || "公司圖片"}
                   />
                 ) : (
                   <p className="noimg-notice">未提供公司圖片</p>
@@ -446,13 +423,17 @@ export default function JPjobsDetail() {
                   }}
                 >
                   <HiOutlineOfficeBuilding className="yellow jobisticon" />
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to={currentJob.parentCompany?.officialSite}
-                    target="_blank"
-                  >
-                    {currentJob.parentCompany?.name || "未知公司"}
-                  </Link>
+                  {currentJob.officialSite ? (
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={currentJob.officialSite}
+                      target="_blank"
+                    >
+                      {currentJob.company || "未知公司"}
+                    </Link>
+                  ) : (
+                    <span>{currentJob.company || "未知公司"}</span>
+                  )}
                 </div>
                 <div
                   style={{
@@ -463,7 +444,7 @@ export default function JPjobsDetail() {
                 >
                   <RiMoneyCnyCircleFill className="yellow jobisticon" />
                   資本額：
-                  {currentJob.parentCompany?.property || "未提供公司資本額"}
+                  {currentJob.property || "未提供公司資本額"}
                 </div>
                 {currentJob.workLocation ? (
                   <div className="job-location">
