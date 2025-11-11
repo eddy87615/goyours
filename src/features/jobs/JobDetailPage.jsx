@@ -300,7 +300,7 @@ export default function JPjobsDetail() {
     async function fetchData() {
       setLoading(true);
       try {
-        const cacheKey = "all-jobs-v2"; // 更新版本以清除舊快取
+        const cacheKey = "all-jobs-v3"; // 更新版本以清除舊快取（移除 parentCompany 查詢）
 
         // 先檢查快取
         const cachedJobs = getCache(cacheKey);
@@ -408,10 +408,15 @@ export default function JPjobsDetail() {
                 {currentJob.logo?.asset ? (
                   <img
                     src={urlFor(currentJob.logo).url()}
-                    alt={currentJob.logo.alt || currentJob.company || "公司圖片"}
+                    alt={
+                      currentJob.logo.alt || currentJob.company || "公司圖片"
+                    }
                   />
                 ) : (
-                  <p className="noimg-notice">未提供公司圖片</p>
+                  <img
+                    src="/public/goyoursbear-B.svg"
+                    alt="goyours bear gray"
+                  />
                 )}
               </div>
               <div className="job-and-company-type">
@@ -489,7 +494,10 @@ export default function JPjobsDetail() {
                     title="工作內容"
                     content={currentJob.workContent}
                   />
-                  <ContentRenderer title="要求技能" content={currentJob.skill} />
+                  <ContentRenderer
+                    title="要求技能"
+                    content={currentJob.skill}
+                  />
                   <ContentWithSupplement
                     title="就業時間"
                     mainContent={currentJob.workingTime}
@@ -556,7 +564,10 @@ export default function JPjobsDetail() {
                     content={currentJob.promotion}
                   />
                   <ContentRenderer title="獎金" content={currentJob.price} />
-                  <ContentRenderer title="年薪" content={currentJob.yearIncome} />
+                  <ContentRenderer
+                    title="年薪"
+                    content={currentJob.yearIncome}
+                  />
                   <ContentWithSupplement
                     title="參考年薪"
                     mainContent={currentJob.modelYearIncome}
