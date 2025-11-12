@@ -93,7 +93,7 @@ const Studying = () => {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Link
-                    to={`/studying-in-jp-school/${school.slug.current}`}
+                    to={school.slug?.current ? `/studying-in-jp-school/${school.slug.current}` : '#'}
                     className="studying-card-link"
                   >
                     <div className="studying-card">

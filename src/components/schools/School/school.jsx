@@ -39,7 +39,7 @@ export default function School({
           schools.map((school, index) => (
             <Link
               key={index}
-              to={`/studying-in-jp-school/${school.slug.current}`}
+              to={school.slug?.current ? `/studying-in-jp-school/${school.slug.current}` : '#'}
               className="schoolCard"
             >
               <h2>
