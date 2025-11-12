@@ -1,32 +1,31 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
-import { PortableText } from '@portabletext/react'; // 用來顯示富文本
-import { useParams } from 'react-router-dom'; // 用來獲取 URL 中的 slug
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import { Link } from 'react-router-dom';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { useEffect, useState } from "react";
+import { PortableText } from "@portabletext/react"; // 用來顯示富文本
+import { useParams } from "react-router-dom"; // 用來獲取 URL 中的 slug
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Link } from "react-router-dom";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
+import Modal from "react-modal"; // 引入 Modal 組件
+Modal.setAppElement("#root");
 
-import Modal from 'react-modal'; // 引入 Modal 組件
-Modal.setAppElement('#root');
+import { urlFor, client } from "../../services/sanity/client"; // 导入 urlFor
 
-import { urlFor, client } from '../../services/sanity/client'; // 导入 urlFor
+import { FaLocationDot, FaEarthAmericas } from "react-icons/fa6";
+import { FaSchool } from "react-icons/fa";
+import { FaTrainSubway } from "react-icons/fa6";
+import { ImCross } from "react-icons/im";
+import { TiArrowBackOutline } from "react-icons/ti";
 
-import { FaLocationDot, FaEarthAmericas } from 'react-icons/fa6';
-import { FaSchool } from 'react-icons/fa';
-import { FaTrainSubway } from 'react-icons/fa6';
-import { ImCross } from 'react-icons/im';
-import { TiArrowBackOutline } from 'react-icons/ti';
-
-import { BreadCrumb, LoadingBear } from '../../components/common';
-import ContactUs from '../../components/contactUs/contactUs';
-import './schoolDetail.css';
+import { BreadCrumb, LoadingBear } from "../../components/common";
+import ContactUs from "../../components/contactUs/contactUs";
+import "./schoolDetail.css";
 
 const cache = new Map();
 const CACHE_LIFETIME = 5 * 60 * 1000;
@@ -62,13 +61,17 @@ const Features = ({ school }) => {
         </div>
         <div className="featurestxt">
           <ul>
-            {school.character.map((character, index) => (
-              <li key={index}>
-                {/* <div>{index + 1}</div> */}
-                <h3>{character.title}</h3>
-                <p>{character.description}</p>
-              </li>
-            ))}
+            {school.character && school.character.length > 0 ? (
+              school.character.map((character, index) => (
+                <li key={index}>
+                  {/* <div>{index + 1}</div> */}
+                  <h3>{character.title}</h3>
+                  <p>{character.description}</p>
+                </li>
+              ))
+            ) : (
+              <li className="noInfo-warn">學校特色資訊未提供ಥ∀ಥ</li>
+            )}
           </ul>
         </div>
         {school.video && (
@@ -130,21 +133,20 @@ const Features = ({ school }) => {
 
 const Conditions = ({ school }) => {
   const formatCurrency = (amount) => {
-    if (!amount || isNaN(amount)) return 'N/A'; // 確保金額有效
-    return `¥${Number(amount).toLocaleString('ja-JP')}`; // 使用日本格式添加日圓符號和千位分隔
+    if (!amount || isNaN(amount)) return "N/A"; // 確保金額有效
+    return `¥${Number(amount).toLocaleString("ja-JP")}`; // 使用日本格式添加日圓符號和千位分隔
   };
   const renderTuition = (money) => {
-    if (!money) return '學費資訊未提供';
-    if (money.includes('~')) {
-      const [min, max] = money.split('~').map(Number);
+    if (!money) return "學費資訊未提供ಥ_ಥ";
+    const moneyStr = String(money);
+    if (moneyStr.includes("~")) {
+      const [min, max] = moneyStr.split("~").map(Number);
       return `${formatCurrency(min)} ~ ${formatCurrency(max)}`;
     } else {
       const amount = Number(money);
-      if (isNaN(amount)) return '學費資訊格式錯誤';
+      if (isNaN(amount)) return "學費資訊格式錯誤";
       return formatCurrency(amount);
     }
-    // const [min, max] = money.split('~').map(Number); // 分割範圍並轉換為數字
-    // return `${formatCurrency(min)} ~ ${formatCurrency(max)}`;
   };
 
   return (
@@ -161,7 +163,7 @@ const Conditions = ({ school }) => {
         <ul className="conditionsList">
           <li>
             <span className="conditionTitle">學校地區</span>
-            {school.city}
+            {school.city || "地區資訊未提供ಥ_ಥ"}
           </li>
           <li>
             <span className="conditionTitle">學校費用</span>
@@ -179,7 +181,7 @@ const Conditions = ({ school }) => {
                 school.purpose.map((purpose, index) => (
                   <span key={index}>
                     {purpose}
-                    {index < school.purpose.length - 1 && '／'}
+                    {index < school.purpose.length - 1 && "／"}
                   </span>
                 ))
               ) : (
@@ -194,7 +196,7 @@ const Conditions = ({ school }) => {
                 school.enrollTime.map((time, index) => (
                   <span key={index}>
                     {time}
-                    {index < school.enrollTime.length - 1 && '／'}
+                    {index < school.enrollTime.length - 1 && "／"}
                   </span>
                 ))
               ) : (
@@ -208,7 +210,7 @@ const Conditions = ({ school }) => {
               school.others.schoolTime.map((time, index) => (
                 <span key={index}>
                   {time}
-                  {index < school.others.schoolTime.length - 1 && '／'}
+                  {index < school.others.schoolTime.length - 1 && "／"}
                 </span>
               ))
             ) : (
@@ -222,7 +224,7 @@ const Conditions = ({ school }) => {
                 school.others.period.map((period, index) => (
                   <span key={index}>
                     {period}
-                    {index < school.others.period.length - 1 && '／'}
+                    {index < school.others.period.length - 1 && "／"}
                   </span>
                 ))
               ) : (
@@ -237,7 +239,7 @@ const Conditions = ({ school }) => {
                 school.others.support.map((support, index) => (
                   <span key={index}>
                     {support}
-                    {index < school.others.support.length - 1 && '／'}
+                    {index < school.others.support.length - 1 && "／"}
                   </span>
                 ))
               ) : (
@@ -398,16 +400,16 @@ export default function SchoolDetail() {
         <div className="picSlider">
           <BreadCrumb
             paths={[
-              { name: '日本留學', url: '/studying-in-jp' },
+              { name: "日本留學", url: "/studying-in-jp" },
               {
-                name: '日本語言學校',
-                url: '/studying-in-jp-school',
+                name: "日本語言學校",
+                url: "/studying-in-jp-school",
               },
               { name: school.name },
             ]}
           />
           <Swiper
-            loop={true}
+            loop={school.gallery && school.gallery.length > 0}
             spaceBetween={10}
             navigation={true}
             thumbs={{
@@ -417,7 +419,7 @@ export default function SchoolDetail() {
             modules={[FreeMode, Navigation, Thumbs]}
             className="upperSlider"
           >
-            {school.gallery.length > 0 ? (
+            {school.gallery && school.gallery.length > 0 ? (
               school.gallery.map((img, index) => {
                 return (
                   <SwiperSlide key={index}>
@@ -425,68 +427,75 @@ export default function SchoolDetail() {
                       src={urlFor(img.asset).url()}
                       alt={school.name}
                       onClick={() => openModal(urlFor(img.asset).url())}
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                     />
                   </SwiperSlide>
                 );
               })
             ) : (
-              // <SwiperSlide>
-              //   <p className="no-photo-note">未提供照片ＱＱ</p>
-              // </SwiperSlide>
-              <></>
+              <SwiperSlide>
+                <div className="no-photo-note noImg-notice">未提供照片 ಥ_ಥ</div>
+              </SwiperSlide>
             )}
           </Swiper>
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            loop={true}
-            spaceBetween={10}
-            slidesPerView={5}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="downSlider"
-          >
-            {school.gallery.map((img, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <img
-                    src={urlFor(img.asset).url()}
-                    alt={school.name}
-                    className="sliderPicnav"
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          {school.gallery && school.gallery.length > 0 && (
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              loop={true}
+              spaceBetween={10}
+              slidesPerView={5}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="downSlider"
+            >
+              {school.gallery.map((img, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={urlFor(img.asset).url()}
+                      alt={school.name}
+                      className="sliderPicnav"
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          )}
         </div>
         <div className="schoolUnfoSection">
           <h1>{school.name}</h1>
           <ul className="schoolInfo">
             <li>
               <FaLocationDot className="schoolDetailicon" />
-              {school.address}
+              {school.address || "地址資訊未提供ಥ_ಥ"}
             </li>
             <li>
               <FaTrainSubway className="schoolDetailicon" />
-              {school.transportation}
+              {school.transportation || "交通資訊未提供"}
             </li>
-            <li>
-              <FaEarthAmericas className="schoolDetailicon" />
-              <a href={school.officialSite} target="_blank">
-                學校官方網站
-              </a>
-            </li>
-            <li>
-              <FaSchool className="schoolDetailicon" />
-              <PortableText value={school.description} />
-            </li>
+            {school.officialSite && (
+              <li>
+                <FaEarthAmericas className="schoolDetailicon" />
+                <a href={school.officialSite} target="_blank">
+                  學校官方網站
+                </a>
+              </li>
+            )}
+            {school.description && (
+              <li>
+                <FaSchool className="schoolDetailicon" />
+                <PortableText value={school.description} />
+              </li>
+            )}
           </ul>
-          <img
-            src={urlFor(school.logo).url()}
-            alt={`${school.name} logo`}
-            className="schoollogo"
-          />
+          {school.logo && (
+            <img
+              src={urlFor(school.logo).url()}
+              alt={`${school.name} logo`}
+              className="schoollogo"
+            />
+          )}
         </div>
       </div>
       <Conditions school={school} />
