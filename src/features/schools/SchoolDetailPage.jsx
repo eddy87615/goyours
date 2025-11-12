@@ -397,7 +397,13 @@ export default function SchoolDetail() {
         <meta name="twitter:image" content={imageURL} />
       </Helmet>
       <div className="schoolDetailPage">
-        <div className="picSlider">
+        <div
+          className="picSlider"
+          style={{
+            width:
+              school.gallery && school.gallery.length > 0 ? "50%" : "unset",
+          }}
+        >
           <BreadCrumb
             paths={[
               { name: "日本留學", url: "/studying-in-jp" },
@@ -418,6 +424,10 @@ export default function SchoolDetail() {
             }} // 修改這裡
             modules={[FreeMode, Navigation, Thumbs]}
             className="upperSlider"
+            style={{
+              display:
+                school.gallery && school.gallery.length > 0 ? "block" : "none",
+            }}
           >
             {school.gallery && school.gallery.length > 0 ? (
               school.gallery.map((img, index) => {

@@ -424,7 +424,7 @@
     border: none;
   }
   .schoolUnfoSection h1::after {
-    content: '';
+    content: "";
     background-image: url(/goyoursbear-line-G.svg);
     position: absolute;
     width: 3.5rem;
@@ -437,7 +437,7 @@
     background-position: bottom;
   }
   .schoolUnfoSection h1::before {
-    content: '';
+    content: "";
     position: absolute;
 
     width: 100%;
