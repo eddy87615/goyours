@@ -98,11 +98,15 @@ const Studying = () => {
                   >
                     <div className="studying-card">
                       <div className="studying-card-image-container">
-                        <img
-                          src={urlFor(school.mainImage).url()}
-                          alt={school.title}
-                          className="studying-card-image"
-                        />
+                        {school.mainImage?.asset ? (
+                          <img
+                            src={urlFor(school.mainImage).url()}
+                            alt={school.title}
+                            className="studying-card-image"
+                          />
+                        ) : (
+                          <p className="noimg-notice">未提供圖片</p>
+                        )}
                         <div className="studying-card-rank">
                           #{school.schoolRank}
                         </div>

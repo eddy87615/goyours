@@ -71,14 +71,14 @@ export default function School({
                 </div>
               )}
               <div className="schoollinkimg">
-                <img
-                  src={
-                    school.mainImage?.asset
-                      ? urlFor(school.mainImage.asset).url()
-                      : '/placeholder.jpg'
-                  }
-                  alt={`${school.name || '學校'} image`}
-                />
+                {school.mainImage?.asset ? (
+                  <img
+                    src={urlFor(school.mainImage.asset).url()}
+                    alt={`${school.name || '學校'} image`}
+                  />
+                ) : (
+                  <p className="noimg-notice">未提供圖片</p>
+                )}
               </div>
               <h4>
                 <span className="schoolListNameHover">{school.name}</span>
