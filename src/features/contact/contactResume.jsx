@@ -5,6 +5,7 @@ import "./contactResume.css";
 
 export default function ContactResume() {
   const currentURL = `${window.location.origin}${location.pathname}`;
+  const imageURL = `${window.location.origin}/LOGO-02-text.png`;
   return (
     <HelmetProvider>
       <Helmet>
