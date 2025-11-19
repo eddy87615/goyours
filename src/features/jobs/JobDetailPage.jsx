@@ -413,10 +413,7 @@ export default function JPjobsDetail() {
                     }
                   />
                 ) : (
-                  <img
-                    src="/public/goyoursbear-B.svg"
-                    alt="goyours bear gray"
-                  />
+                  <img src="/goyoursbear-B.svg" alt="goyours bear gray" />
                 )}
               </div>
               <div className="job-and-company-type">
