@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .vercel
 .env
+.env.example
+
+# Documentation files (internal use only)
+SEO-SSR-GUIDE.md
+CLAUDE.md
