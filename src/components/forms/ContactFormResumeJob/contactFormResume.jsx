@@ -1,25 +1,25 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
-import { client } from "../../../services/sanity/client"; // 引入Sanity客戶端
+import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { client } from '../../../services/sanity/client'; // 引入Sanity客戶端
 // import { urlFor } from '../../../services/sanity/client'; // 导入 urlFor
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { MorePost } from "../../content";
-import ApplicationTitle from "../../../../public/applicationTitle";
-import ThankYouTitle from "../../../../public/thankYouTitle";
+import { MorePost } from '../../content';
+import ApplicationTitle from '../../../../public/applicationTitle';
+import ThankYouTitle from '../../../../public/thankYouTitle';
 
-import { useWindowSize } from "../../../hooks";
+import { useWindowSize } from '../../../hooks';
 
-import { FaCirclePlus } from "react-icons/fa6";
-import { BsTrashFill } from "react-icons/bs";
-import { FiDownload } from "react-icons/fi";
-import { GoArrowRight } from "react-icons/go";
+import { FaCirclePlus } from 'react-icons/fa6';
+import { BsTrashFill } from 'react-icons/bs';
+import { FiDownload } from 'react-icons/fi';
+import { GoArrowRight } from 'react-icons/go';
 
-import CryptoJS from "crypto-js";
+import CryptoJS from 'crypto-js';
 
-import "./contactFormResume.css";
-import "../ContactForm/contactForm.css";
+import './contactFormResume.css';
+import '../ContactForm/contactForm.css';
 
 export default function ContactFormResumeJob() {
   // const [placeholdertxt, setPlaceholdertxt] = useState([
@@ -33,14 +33,14 @@ export default function ContactFormResumeJob() {
   // ]);
   const location = useLocation();
   const jobTitle =
-    location.state?.initialMessage || "聯絡GoYours，打工度假、留學免費諮詢";
+    location.state?.initialMessage || '聯絡GoYours，打工度假、留學免費諮詢';
 
   const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    phone: "",
+    name: '',
+    age: '',
+    phone: '',
     // lineId: "",
-    email: "",
+    email: '',
     // callTime: "",
     resume: null,
   });
@@ -76,7 +76,7 @@ export default function ContactFormResumeJob() {
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
-    if (type === "file") {
+    if (type === 'file') {
       setFormData((prevData) => ({
         ...prevData,
         resume: files[0],
@@ -84,12 +84,12 @@ export default function ContactFormResumeJob() {
     } else {
       setFormData((prevData) => ({
         ...prevData,
-        [name]: type === "checked" ? checked : value,
+        [name]: type === 'checked' ? checked : value,
       }));
     }
-    if (name === "age" || name === "phone") {
+    if (name === 'age' || name === 'phone') {
       // 只保留數字
-      const numbersOnly = value.replace(/[^\d]/g, "");
+      const numbersOnly = value.replace(/[^\d]/g, '');
       setFormData((prevData) => ({
         ...prevData,
         [name]: numbersOnly,
@@ -98,7 +98,7 @@ export default function ContactFormResumeJob() {
       // 其他欄位保持原有的處理方式
       setFormData((prevData) => ({
         ...prevData,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: type === 'checkbox' ? checked : value,
       }));
     }
   };
@@ -108,9 +108,9 @@ export default function ContactFormResumeJob() {
   const scrollToTop = () => {
     // 嘗試多種滾動方法
     try {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-      document.body.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       // 如果 smooth 失敗，使用即時滾動
       window.scrollTo(0, 0);
@@ -121,7 +121,7 @@ export default function ContactFormResumeJob() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("檔案內容:", formData.resume); // 檢查 `resume` 是否包含檔案物件
+    console.log('檔案內容:', formData.resume); // 檢查 `resume` 是否包含檔案物件
 
     if (loading) return;
 
@@ -132,19 +132,19 @@ export default function ContactFormResumeJob() {
     let resumeAsset;
     if (formData.resume) {
       try {
-        resumeAsset = await client.assets.upload("file", formData.resume, {
+        resumeAsset = await client.assets.upload('file', formData.resume, {
           filename: formData.resume.name,
         });
-        console.log("上傳成功，返回的 resumeAsset:", resumeAsset); // 確認回傳的結果
+        console.log('上傳成功，返回的 resumeAsset:', resumeAsset); // 確認回傳的結果
       } catch (error) {
-        console.error("上傳履歷失敗：", error);
-        alert("上傳履歷失敗，請稍後再試");
+        console.error('上傳履歷失敗：', error);
+        alert('上傳履歷失敗，請稍後再試');
         return;
       }
     }
     // 準備發送到 Sanity 的資料
     const rawData = {
-      _type: "JPjobapply",
+      _type: 'JPjobapply',
       jobname: jobTitle,
       name: formData.name,
       age: formData.age,
@@ -154,90 +154,90 @@ export default function ContactFormResumeJob() {
       email: formData.email,
       // callTime: formData.callTime,
       contacted: false, // 初始聯絡狀態為 false
-      remarks: "", // 備註初始為空
+      remarks: '', // 備註初始為空
       upTime: currentDateTime, // 表單送出時間
       resume: resumeAsset?._id
         ? {
-            _type: "file",
-            asset: { _type: "reference", _ref: resumeAsset._id },
+            _type: 'file',
+            asset: { _type: 'reference', _ref: resumeAsset._id },
           }
         : null,
     };
 
-    console.log("目前的 formData:", formData);
+    console.log('目前的 formData:', formData);
     if (!formData.resume) {
-      console.error("沒有檔案可供上傳！");
+      console.error('沒有檔案可供上傳！');
       return;
     }
 
     try {
-      console.log("🚀 開始表單提交流程");
-      console.log("📝 原始表單資料:", rawData);
+      console.log('🚀 開始表單提交流程');
+      console.log('📝 原始表單資料:', rawData);
 
       // 加密資料
       const SECRET_KEY = import.meta.env.VITE_SECRET_KEY;
-      console.log("🔐 SECRET_KEY 狀態:", SECRET_KEY ? "已設置" : "未設置");
+      console.log('🔐 SECRET_KEY 狀態:', SECRET_KEY ? '已設置' : '未設置');
 
       const encryptedData = CryptoJS.AES.encrypt(
         JSON.stringify(rawData),
-        SECRET_KEY
+        SECRET_KEY,
       ).toString();
 
-      console.log("✅ 資料加密完成");
+      console.log('✅ 資料加密完成');
 
       // 發送加密資料到 Serverless Function
-      console.log("📡 發送請求到 /api/saveContact");
+      console.log('📡 發送請求到 /api/saveContact');
 
-      const response = await fetch("/api/saveContact", {
-        method: "POST",
+      const response = await fetch('/api/saveContact', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ encryptedData }),
       });
 
-      console.log("📥 收到回應:", {
+      console.log('📥 收到回應:', {
         status: response.status,
         statusText: response.statusText,
         ok: response.ok,
       });
 
       const responseData = await response.json();
-      console.log("📄 回應資料:", responseData);
+      console.log('📄 回應資料:', responseData);
 
       if (!response.ok) {
-        console.error("❌ API 回應錯誤:", responseData);
-        throw new Error("提交失敗");
+        console.error('❌ API 回應錯誤:', responseData);
+        throw new Error('提交失敗');
       }
 
       if (response.ok) {
-        console.log("✅ 表單提交成功!");
-        console.log("📊 通知狀態:", {
-          sanity: responseData.result ? "已儲存" : "狀態未知",
-          omnichat: responseData.omniChatNotificationSent ? "已發送" : "未發送",
-          email: responseData.emailNotificationSent ? "已發送" : "未發送",
+        console.log('✅ 表單提交成功!');
+        console.log('📊 通知狀態:', {
+          sanity: responseData.result ? '已儲存' : '狀態未知',
+          omnichat: responseData.omniChatNotificationSent ? '已發送' : '未發送',
+          email: responseData.emailNotificationSent ? '已發送' : '未發送',
         });
 
         setIsSubmited(true);
         setFormData({
-          name: "",
-          age: "",
-          phone: "",
+          name: '',
+          age: '',
+          phone: '',
           // lineId: "",
-          email: "",
+          email: '',
           // callTime: "",
           resume: null,
         });
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         scrollToTop();
       }
     } catch (error) {
-      console.error("❌ 表單提交失敗:", error);
-      console.error("🔍 錯誤詳情:", {
+      console.error('❌ 表單提交失敗:', error);
+      console.error('🔍 錯誤詳情:', {
         message: error.message,
         stack: error.stack,
       });
-      alert("提交失敗，請稍後再試");
+      alert('提交失敗，請稍後再試');
     } finally {
       setLoading(false);
     }
@@ -261,7 +261,7 @@ export default function ContactFormResumeJob() {
 
     // 檢查是否超過限制
     if (files.length + selectedFiles.length > 4) {
-      alert("最多只能上傳 4 個文件！");
+      alert('最多只能上傳 4 個文件！');
       return;
     }
 
@@ -485,7 +485,7 @@ export default function ContactFormResumeJob() {
                     accept=".pdf,.doc,.docx"
                     onChange={handleFileChange}
                     ref={fileInputRef}
-                    style={{ display: "none" }} // 隱藏
+                    style={{ display: 'none' }} // 隱藏
                     required
                   />
                   <span className="uploadNotice">
@@ -548,14 +548,15 @@ export default function ContactFormResumeJob() {
                 <span>
                   我已閱讀
                   <Link to="/privacy-policy" target="blank" required>
-                    隱私政策*
+                    隱私權政策與求職服務協議 (Privacy Policy & Service
+                    Agreement)*
                   </Link>
                 </span>
               </label>
             </div>
 
             <button type="submit" className="submitBtn">
-              {loading ? "送出中..." : "送出表單"}
+              {loading ? '送出中...' : '送出表單'}
             </button>
           </form>
         </div>

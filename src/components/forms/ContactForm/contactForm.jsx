@@ -1,30 +1,30 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useLoading } from "../../../contexts/LoadingContext";
-import { useSanityData } from "../../../contexts/SanityDataContext";
-import { useResponsive } from "../../../contexts/ResponsiveContext";
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLoading } from '../../../contexts/LoadingContext';
+import { useSanityData } from '../../../contexts/SanityDataContext';
+import { useResponsive } from '../../../contexts/ResponsiveContext';
 
-import ThankYouTitle from "../../../../public/thankYouTitle";
-import ContactUsTitle from "../../../../public/contactUsTitle";
+import ThankYouTitle from '../../../../public/thankYouTitle';
+import ContactUsTitle from '../../../../public/contactUsTitle';
 
-import "./contactForm.css";
-import { MorePost } from "../../content";
+import './contactForm.css';
+import { MorePost } from '../../content';
 
-import CryptoJS from "crypto-js";
+import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {
   const location = useLocation();
-  const initialMessage = location.state?.initialMessage || "";
+  const initialMessage = location.state?.initialMessage || '';
   const { withLoading } = useLoading();
   const { fetchData } = useSanityData();
 
   const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    phone: "",
+    name: '',
+    age: '',
+    phone: '',
     // lineId: "",
-    email: "",
+    email: '',
     selectedCases: [],
     // callTime: "",
     // tellus: initialMessage,
@@ -44,7 +44,7 @@ export default function ContactForm() {
   // 從Sanity中獲取方案選項
   useEffect(() => {
     const fetchCaseOptions = async () => {
-      await withLoading("caseOptions", async () => {
+      await withLoading('caseOptions', async () => {
         try {
           const cases = await fetchData(`
             *[_type == "caseOptions"]{
@@ -53,7 +53,7 @@ export default function ContactForm() {
           `);
           setCaseOptions(cases);
         } catch (error) {
-          console.error("Error fetching case options:", error);
+          console.error('Error fetching case options:', error);
         }
       });
     };
@@ -65,16 +65,16 @@ export default function ContactForm() {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === 'checkbox' ? checked : value,
     }));
     // 特殊處理電子郵件欄位
-    if (name === "email") {
-      setEmailError(""); // 清除錯誤訊息當使用者開始輸入
+    if (name === 'email') {
+      setEmailError(''); // 清除錯誤訊息當使用者開始輸入
     }
     // 特殊處理年齡欄位
-    if (name === "age" || name === "phone") {
+    if (name === 'age' || name === 'phone') {
       // 只保留數字
-      const numbersOnly = value.replace(/[^\d]/g, "");
+      const numbersOnly = value.replace(/[^\d]/g, '');
       setFormData((prevData) => ({
         ...prevData,
         [name]: numbersOnly,
@@ -83,7 +83,7 @@ export default function ContactForm() {
       // 其他欄位保持原有的處理方式
       setFormData((prevData) => ({
         ...prevData,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: type === 'checkbox' ? checked : value,
       }));
     }
   };
@@ -108,9 +108,9 @@ export default function ContactForm() {
   const scrollToTop = () => {
     // 嘗試多種滾動方法
     try {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-      document.body.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       // 如果 smooth 失敗，使用即時滾動
       window.scrollTo(0, 0);
@@ -131,8 +131,8 @@ export default function ContactForm() {
       setEmailError(error);
       // 滾動到電子郵件欄位
       document
-        .getElementById("email")
-        .scrollIntoView({ behavior: "smooth", block: "center" });
+        .getElementById('email')
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
@@ -142,7 +142,7 @@ export default function ContactForm() {
 
     // 準備發送到 Sanity 的資料
     const rawData = {
-      _type: "contact",
+      _type: 'contact',
       name: formData.name,
       age: formData.age,
       major: formData.major,
@@ -162,40 +162,40 @@ export default function ContactForm() {
 
       const encryptedData = CryptoJS.AES.encrypt(
         JSON.stringify(rawData),
-        SECRET_KEY
+        SECRET_KEY,
       ).toString();
 
       // 發送加密資料到 Serverless Function
 
-      const response = await fetch("/api/saveContact", {
-        method: "POST",
+      const response = await fetch('/api/saveContact', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ encryptedData }),
       });
 
       if (!response.ok) {
-        throw new Error("提交失敗");
+        throw new Error('提交失敗');
       }
 
       if (response.ok) {
         setIsSubmited(true);
         setFormData({
-          name: "",
-          age: "",
-          phone: "",
+          name: '',
+          age: '',
+          phone: '',
           // lineId: "",
-          email: "",
+          email: '',
           selectedCases: [],
           // callTime: "",
           // tellus: "",
         });
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         scrollToTop();
       }
     } catch (error) {
-      alert("提交失敗，請稍後再試");
+      alert('提交失敗，請稍後再試');
     } finally {
       setLoading(false);
     }
@@ -217,15 +217,15 @@ export default function ContactForm() {
   //   });
   // };
   // 只需要一個 emailError state
-  const [emailError, setEmailError] = useState("");
+  const [emailError, setEmailError] = useState('');
 
   // 驗證電子郵件格式
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return "請輸入有效的電子郵件地址";
+      return '請輸入有效的電子郵件地址';
     }
-    return "";
+    return '';
   };
 
   return (
@@ -443,14 +443,15 @@ export default function ContactForm() {
                     rel="noopener noreferrer"
                     required
                   >
-                    隱私政策*
+                    隱私權政策與求職服務協議 (Privacy Policy & Service
+                    Agreement)*
                   </Link>
                 </span>
               </label>
             </div>
 
             <button type="submit" className="submitBtn" disabled={loading}>
-              {loading ? "送出中..." : "送出表單"}
+              {loading ? '送出中...' : '送出表單'}
             </button>
           </form>
         </div>
