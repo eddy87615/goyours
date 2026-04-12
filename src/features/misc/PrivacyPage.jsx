@@ -237,7 +237,7 @@ export default function Privacy() {
         </div>
         <div className="privacy-content">
           <h3 className="sectionTitle__title">
-            求職服務協議 (依據就業服務法訂定)
+            隱私權保護政策 (依據個資法訂定)
           </h3>
           <p>
             本公司（以下簡稱本網站）非常重視您的隱私權。為了讓您能夠安心使用本網站的各項服務與資訊，特此向您說明本網站的隱私權保護政策。
